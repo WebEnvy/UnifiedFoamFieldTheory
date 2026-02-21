@@ -313,7 +313,7 @@ If Axiom Zero has three co-equal modes, three distinct families of stable topolo
 
 Under this reading, θ = 0.222 rad is the angle describing how far the three-fold symmetry of B, V, D breaks under the coupling α. It is not an independent parameter. It is α expressed as an angle in the three-dimensional modal space of foam excitations.
 
-**This means θ and α are not two separate open problems. They are one problem stated in two geometric languages. Solving one solves the other.**
+**This means θ and α are not two separate open problems. They are one problem stated in two geometric languages. Solving one solves the other. The Koide parameter θ is closed as an independent open problem. The hard open problems reduce from three to two.**
 
 **Covariant vacuum density:**
 
@@ -353,7 +353,7 @@ They just had no word for foam.
 | Cause and effect — no true chance | Quantum indeterminacy as resolution limit | Copenhagen randomness is epistemological, not ontological |
 | Emergent planes from one substance | Foam → particles → atoms → life → consciousness | Emergence hierarchy is required by substrate architecture |
 | No external observer | Consciousness as foam feedback loop | Measurement problem is resolved by observer embeddedness |
-| **Triadic structure (universal)** | **B, V, D as three co-equal modes** | **α and θ are one problem; vacuum density is a 3-component field** |
+| **Triadic structure (universal observation)** | **B, V, D as three co-equal modes of Axiom Zero** | **θ CLOSED as independent problem. α and θ are one calculation. Vacuum density is a three-component field. Hard open problems: 3 → 2.** |
 
 The last row is new. It is what the Hermetic framework contributes that the existing theory had not yet formalised. The tradition recorded three-fold structure as a universal feature of reality across centuries of observation. UFFT's Axiom Zero, read fully, has three co-equal aspects. Reading them as such is the path toward closing α, θ, and covariant vacuum density in a single mathematical programme.
 

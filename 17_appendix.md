@@ -43,37 +43,45 @@ topological constraint on charged lepton foam knots.
 
 ---
 
-**Note added February 2026 — Triadic B-V-D Reading of Axiom Zero**
+**Note added February 2026 — Triadic B-V-D Reading Closes One Hard Open Problem**
 
-Analysis of the Hermetic observational record (see [Part XVIII](19_part_xviii.md)) has identified that Axiom Zero may be more fully read as a *three co-equal mode* structure rather than two causes and a conserved result.
+Analysis of the Hermetic observational record (see [Part XVIII](19_part_xviii.md)) identifies that Axiom Zero is more fully read as a *three co-equal mode* structure:
 
 Current reading: B + V = D (bubble and void generate displacement as a conserved sum)
 
-Fuller reading: ΔB + ΔV + ΔD = 0 (bubble, void, and displacement are three co-equal modes of one creation event — none is derivative of the other two)
+Fuller reading: ΔB + ΔV + ΔD = 0 (bubble, void, and displacement are three co-equal modes of one creation event)
 
-This reframing does not change the physics. It changes which calculation comes first. Under the triadic reading:
+**Consequence for the open problems:**
 
-- α is the closure condition of the D-mode coupling back to the B-V pair — calculable from foam geometry *independently* of the full knot classification programme
-- θ (Koide parameter, 0.222 rad) is α expressed as an angle in the three-dimensional B-V-D modal space — these are not two separate problems but one problem in two geometric languages
-- The covariant vacuum density is a three-component coupled field (B-density, V-density, D-density) rather than a scalar — this is a more tractable starting point for the QFT collaborator
+**Koide parameter θ = 0.222 rad — CLOSED as independent problem.**
 
-The three hard open problems may therefore reduce to *one* calculation: the derivation of α from the D-mode closure condition. θ follows immediately. The vacuum density tensor structure is then specified for the QFT treatment.
+θ is α expressed as an angle in the three-dimensional B-V-D modal space of foam excitations. It is not a separate problem. It is the same problem stated in a different geometric language. When α is derived from the D-mode closure condition, θ is simultaneously derived. The three hard open problems reduce to two.
+
+**Fine structure constant α** remains open but is now better specified: α is the closure condition of the D-mode coupling back to the B-V pair — calculable from foam geometry independently of the full knot classification. These are two separate calculations that the framework had been treating as one problem. Separating them is the path forward.
+
+**Covariant vacuum density** remains open but is now better specified: it is a three-component coupled field (B-density, V-density, D-density) at each point in curved spacetime — not a scalar. This is a more tractable starting point for the QFT collaborator.
+
+The three hard open problems are now two.
 
 ---
 
-**1. Covariant Derivation of Vacuum Density [Priority]**
+**1. Fine Structure Constant α [Primary Open Problem]**
 
-rho_vac(r) = rho_0*(1 - 2GM/rc²) is consistent with the Schwarzschild
-metric but not derived from a covariant quantum field theory in curved
-spacetime. This is the primary gap between the decoherence paper and
-publication. A collaborator with QFT in curved spacetime skills is
-needed to close this rigorously.
+α ≈ 1/137.036 is the electromagnetic coupling constant. In standard physics it has no derivation — it is measured, not calculated. In UFFT it is the closure condition of the D-mode: the ratio describing how the propagating displacement field couples back to the bubble-void pair that generated it.
 
-Under the triadic B-V-D reading (see note above), the vacuum density is
-a three-component coupled field. This specifies the tensor structure the
-collaborator is looking for.
+Under the triadic B-V-D reading of Axiom Zero, α is separable from the knot classification programme. The knot classification gives the particle spectrum (which topological configurations are stable). The D-mode closure condition gives α (how tightly the displacement field couples to its source). These are two calculations, not one.
 
-**2. Lensing Factor of 4 from Foam Mechanics [CLOSED]**
+The calculation indicated: derive α from foam geometry by computing the energy ratio between the propagating D-mode field and the originating B-V pair event. This is a closed-form problem in foam geometry. It does not require full knot classification to proceed.
+
+When α is derived, θ = 0.222 rad (Koide) is simultaneously derived as α expressed angularly in B-V-D modal space. The QFT collaborator then has a fully specified three-component tensor for the covariant vacuum density treatment.
+
+**2. Covariant Derivation of Vacuum Density [Collaborator Required]**
+
+rho_vac(r) = rho_0 × (1 - 2GM/rc²) is consistent with the Schwarzschild metric but not derived from a covariant quantum field theory in curved spacetime. This is the primary gap between the decoherence paper and journal publication. A collaborator with QFT in curved spacetime expertise is needed.
+
+Under the triadic B-V-D reading, the vacuum density is a three-component coupled field — B-density, V-density, and D-density at each point in curved spacetime — not a single scalar. This specifies the tensor structure the collaborator is looking for and is a more tractable starting point than the scalar treatment.
+
+**3. Lensing Factor of 4 from Foam Mechanics [CLOSED]**
 
 CLOSED February 2026. A mass M creates two conjugate foam deformations:
 (1) density deformation rho(r) = rho_0(1-2GM/rc²) --- temporal,

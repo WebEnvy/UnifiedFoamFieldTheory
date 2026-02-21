@@ -56,15 +56,18 @@ From this single axiom, gravity, electromagnetism, quantum mechanics, entangleme
 
 ---
 
-## Three Hard Open Problems
+## Two Hard Open Problems
+
+*Updated February 2026. Previously three. The Koide parameter θ is no longer an independent open problem — see below.*
 
 | Problem | Status |
 |---|---|
-| Fine structure constant α | Topological charge — closure condition of D-mode coupling to B-V pair (see Part XVIII) |
-| Covariant vacuum density | Three-component coupled field (B, V, D densities) — needs QFT-in-curved-spacetime collaborator |
-| Exact Koide parameter θ = 0.222 rad | Not independent from α — θ is α expressed as an angle in three-dimensional modal space (see Part XVIII) |
+| Fine structure constant α | The primary calculation. Closure condition of the D-mode coupling back to the B-V pair — derivable from foam geometry. Knot classification gives the particle spectrum; D-mode closure gives α. These are separate calculations. |
+| Covariant vacuum density | Three-component coupled field (B-density, V-density, D-density). Needs QFT-in-curved-spacetime collaborator. Tensor structure now specified — more tractable starting point than previously stated. |
 
-> **Note — February 2026:** The Hermetic analysis in Part XVIII identifies that α and θ are one problem stated in two geometric languages, and that the vacuum density is a three-component field rather than a scalar. These are not new axioms — they follow from reading Axiom Zero's three modes (B, V, D) as co-equal. See Part XVIII, Section 3 for the full argument.
+**Koide parameter θ = 0.222 rad — CLOSED as independent problem (February 2026)**
+
+θ is α expressed as an angle in the three-dimensional B-V-D modal space of foam excitations. It is not a separate problem. It is the same problem in a different geometric language. When α is derived, θ is derived. See [Part XVIII, Section 3](19_part_xviii.md#section-3--what-the-hermetic-framework-implies-for-open-problems) for the full argument.
 
 ---
 
