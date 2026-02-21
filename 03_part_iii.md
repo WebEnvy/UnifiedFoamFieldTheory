@@ -84,6 +84,14 @@ medium, and Plato's association of them with the classical elements may
 have been an early classification of stable foam topologies.
 
 ---
+
+## Cross-Reference — The Hermetic Framework
+
+The analysis in this section focuses on specific ancient geometric and cosmological artefacts. A full treatment of the Hermetic tradition as an independent observational programme — covering the seven Hermetic principles re-read as proto-physics, eight deep structural connections to UFFT, and the implications for the three hard open problems — is developed in detail in **[Part XVIII — The Hermetic Framework as Proto-Physics](19_part_xviii.md)**.
+
+The key finding in Part XVIII: the Hermetic tradition's universal observation of three-fold structure in all natural processes points at a fuller reading of Axiom Zero in which B, V, and D are three co-equal modes rather than two causes and a result. This has direct implications for the derivation of α and the Koide parameter θ.
+
+---
 ### Navigation
 
 📘 [README — Full Index](README.md)

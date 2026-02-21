@@ -52,6 +52,7 @@ From this single axiom, gravity, electromagnetism, quantum mechanics, entangleme
 | [16_part_xvi.md](16_part_xvi.md) | Part XVI | Tesla in the UFFT Framework — The Ether Vindicated, Wardenclyffe Quantified |
 | [17_appendix.md](17_appendix.md) | Appendix | What Remains Open and Recommended Next Steps |
 | [18_part_xvii.md](18_part_xvii.md) | Part XVII | Experimental Methodology: Theory to Apparatus — The Millikan Oil Drop Experiment |
+| [19_part_xviii.md](19_part_xviii.md) | Part XVIII | The Hermetic Framework as Proto-Physics — Convergent Independent Verification of UFFT |
 
 ---
 
@@ -59,9 +60,11 @@ From this single axiom, gravity, electromagnetism, quantum mechanics, entangleme
 
 | Problem | Status |
 |---|---|
-| Fine structure constant α | Topological charge — requires foam knot classification |
-| Covariant vacuum density | Needs QFT-in-curved-spacetime collaborator |
-| Exact Koide parameter θ = 0.222 rad | Traces back to α |
+| Fine structure constant α | Topological charge — closure condition of D-mode coupling to B-V pair (see Part XVIII) |
+| Covariant vacuum density | Three-component coupled field (B, V, D densities) — needs QFT-in-curved-spacetime collaborator |
+| Exact Koide parameter θ = 0.222 rad | Not independent from α — θ is α expressed as an angle in three-dimensional modal space (see Part XVIII) |
+
+> **Note — February 2026:** The Hermetic analysis in Part XVIII identifies that α and θ are one problem stated in two geometric languages, and that the vacuum density is a three-component field rather than a scalar. These are not new axioms — they follow from reading Axiom Zero's three modes (B, V, D) as co-equal. See Part XVIII, Section 3 for the full argument.
 
 ---
 

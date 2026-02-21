@@ -41,6 +41,26 @@ topological constraint on charged lepton foam knots.
 
 **What Remains Open**
 
+---
+
+**Note added February 2026 — Triadic B-V-D Reading of Axiom Zero**
+
+Analysis of the Hermetic observational record (see [Part XVIII](19_part_xviii.md)) has identified that Axiom Zero may be more fully read as a *three co-equal mode* structure rather than two causes and a conserved result.
+
+Current reading: B + V = D (bubble and void generate displacement as a conserved sum)
+
+Fuller reading: ΔB + ΔV + ΔD = 0 (bubble, void, and displacement are three co-equal modes of one creation event — none is derivative of the other two)
+
+This reframing does not change the physics. It changes which calculation comes first. Under the triadic reading:
+
+- α is the closure condition of the D-mode coupling back to the B-V pair — calculable from foam geometry *independently* of the full knot classification programme
+- θ (Koide parameter, 0.222 rad) is α expressed as an angle in the three-dimensional B-V-D modal space — these are not two separate problems but one problem in two geometric languages
+- The covariant vacuum density is a three-component coupled field (B-density, V-density, D-density) rather than a scalar — this is a more tractable starting point for the QFT collaborator
+
+The three hard open problems may therefore reduce to *one* calculation: the derivation of α from the D-mode closure condition. θ follows immediately. The vacuum density tensor structure is then specified for the QFT treatment.
+
+---
+
 **1. Covariant Derivation of Vacuum Density [Priority]**
 
 rho_vac(r) = rho_0*(1 - 2GM/rc²) is consistent with the Schwarzschild
@@ -48,6 +68,10 @@ metric but not derived from a covariant quantum field theory in curved
 spacetime. This is the primary gap between the decoherence paper and
 publication. A collaborator with QFT in curved spacetime skills is
 needed to close this rigorously.
+
+Under the triadic B-V-D reading (see note above), the vacuum density is
+a three-component coupled field. This specifies the tensor structure the
+collaborator is looking for.
 
 **2. Lensing Factor of 4 from Foam Mechanics [CLOSED]**
 
