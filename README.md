@@ -54,6 +54,7 @@ From this single axiom, gravity, electromagnetism, quantum mechanics, entangleme
 | [18_part_xvii.md](18_part_xvii.md) | Part XVII | Experimental Methodology: Theory to Apparatus — The Millikan Oil Drop Experiment |
 | [19_part_xviii.md](19_part_xviii.md) | Part XVIII | The Hermetic Framework as Proto-Physics — Convergent Independent Verification of UFFT |
 | [20_part_xix.md](20_part_xix.md) | Part XIX | Statistical Mathematics and UFFT — Entropy, Information Theory, Renormalisation, and Prediction Models |
+| [21_part_xx.md](21_part_xx.md) | Part XX | Fringe Scientists Re-Examined — UFFT Quantitative Assessment of Schauberger, Rife, Russell, Keely, and Moray |
 
 ---
 
