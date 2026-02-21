@@ -53,6 +53,7 @@ From this single axiom, gravity, electromagnetism, quantum mechanics, entangleme
 | [17_appendix.md](17_appendix.md) | Appendix | What Remains Open and Recommended Next Steps |
 | [18_part_xvii.md](18_part_xvii.md) | Part XVII | Experimental Methodology: Theory to Apparatus — The Millikan Oil Drop Experiment |
 | [19_part_xviii.md](19_part_xviii.md) | Part XVIII | The Hermetic Framework as Proto-Physics — Convergent Independent Verification of UFFT |
+| [20_part_xix.md](20_part_xix.md) | Part XIX | Statistical Mathematics and UFFT — Entropy, Information Theory, Renormalisation, and Prediction Models |
 
 ---
 
@@ -63,7 +64,7 @@ From this single axiom, gravity, electromagnetism, quantum mechanics, entangleme
 | Problem | Status |
 |---|---|
 | Fine structure constant α | The primary calculation. Closure condition of the D-mode coupling back to the B-V pair — derivable from foam geometry. Knot classification gives the particle spectrum; D-mode closure gives α. These are separate calculations. |
-| Covariant vacuum density | Three-component coupled field (B-density, V-density, D-density). Needs QFT-in-curved-spacetime collaborator. Tensor structure now specified — more tractable starting point than previously stated. |
+| Covariant vacuum density | Three-component coupled field (B-density, V-density, D-density). Needs QFT-in-curved-spacetime collaborator. **This single derivation unlocks three downstream results:** decoherence prediction precision (Part VIII), Bekenstein-Hawking entropy grounding (Part XIX), and running coupling constants from foam averaging (Part XIX). |
 
 **Koide parameter θ = 0.222 rad — CLOSED as independent problem (February 2026)**
 

@@ -39,6 +39,22 @@ wave equation. Born rule as foam intensity rule. Double slit fringe
 visibility and complementarity V00b2 + D00b2 2264 1. Koide formula as
 topological constraint on charged lepton foam knots.
 
+**Added February 2026 — Part XIX:**
+Boltzmann entropy S = k_B ln W grounded in foam microstate counting.
+Second law of thermodynamics from foam configuration space geometry.
+Arrow of time as statistical consequence of low-entropy Big Bang initial
+state. Shannon information entropy and Boltzmann thermodynamic entropy
+identified as the same physical quantity — both measure observer
+ignorance about foam microstate. Renormalisation (QFT) given physical
+interpretation: UV divergences are the mathematical signature of the
+foam's Planck-scale discreteness; the renormalisation procedure is the
+correct correction for applying continuous mathematics to a discrete
+substrate. Superposition and quantum interference grounded in wave
+mechanics of foam medium — no additional postulates required beyond Born
+rule. Bekenstein-Hawking black hole entropy area scaling grounded in
+foam boundary microstate counting. Bayesian inference identified as the
+formally optimal framework for foam-resolution-limited observers.
+
 **What Remains Open**
 
 ---
@@ -349,7 +365,18 @@ Step 5: Begin the torsion tensor treatment of the foam lattice as the
 path toward the strong force derivation.
 
 Step 6: Close the covariant vacuum density derivation --- the primary
-open gap. A QFT in curved spacetime collaborator is needed.
+open gap. A QFT in curved spacetime collaborator is needed. Note: the
+three-component B-V-D tensor structure is now specified (Part XVIII).
+This single derivation unlocks three downstream results: decoherence
+prediction precision, Bekenstein-Hawking grounding, and running coupling
+programme.
+
+Step 6a (NEW — Part XIX): Once covariant vacuum density is established,
+derive QFT beta functions (running coupling constants) from foam
+statistical averaging as scale changes. This would reproduce the known
+energy-scale dependence of electromagnetic, weak, and strong force
+coupling strengths from foam geometry, and predict the GUT unification
+scale from foam properties rather than requiring it as empirical input.
 
 Step 7: Derive the full lensing factor from foam mechanics treating both
 metric components simultaneously.
