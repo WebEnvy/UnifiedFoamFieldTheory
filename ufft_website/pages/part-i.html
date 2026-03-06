@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part I — The Unified Foam Field Theory | UFFT</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container" style="max-width: 1200px;">
+            <a href="../index.html" class="logo">UFFT <span>Unified Foam Field Theory</span></a>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="part-i.html">Framework</a>
+                <a href="appendix.html">Predictions</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div style="margin: 48px 0 32px;">
+            <div style="color: var(--ufft-gold); font-size: 0.95rem; margin-bottom: 8px;">Part I</div>
+            <h1>The Unified Foam Field Theory</h1>
+        </div>
+
+
+<div class="visual-container">
+    <canvas id="foam-canvas" width="700" height="400"></canvas>
+    <p class="caption">Interactive: The truncated octahedron (Kelvin cell) — the equilibrium shape of foam bubbles</p>
+</div>
+<script src="../visuals/foam.js"></script>
+
+
+<hr>
+<h3>Navigation</h3>
+<hr>
+<h1>PART I</h1>
+<p><strong>The Unified Foam Field Theory</strong></p>
+<p><em>Complete Framework --- All Equations Verified</em></p>
+<p><strong>Luke Martin</strong></p>
+<p><em>Independent Researcher | 2026</em></p>
+<p><strong>Abstract</strong></p>
+<p>The Unified Foam Field Theory (UFFT) proposes that all fundamental forces and quantum phenomena emerge from mechanical and electromagnetic properties of a quantized Planck-scale vacuum medium --- the Foam. Gravity is a dielectric pressure gradient. Electromagnetism is foam bubble lattice tension. Quantum entanglement is the topological consequence of void-pair conservation: the law that every bubble displacement creates a complementary void and these two endpoints are one object. The Big Bang was a pressure wave in an infinite pre-existing electrical foam. The universe sits at its own Schwarzschild radius as a consequence of Axiom Zero. Linear mathematics is the correct description of the foam's emergent layer as observed from within it. All equations are dimensionally verified and numerically checked.</p>
+<p><strong>I. Axiom Zero --- Void-Pair Conservation</strong></p>
+<p>The foundation of the entire framework. Every displacement event in the vacuum foam creates exactly one bubble B at position x and one complementary void V at position x'. The displacement event D is the fundamental object:</p>
+<div class="equation">
+<pre><code>B(x) + V(x') = D</code></pre>
+<span class="label">[Axiom Zero --- Void-Pair Conservation] (1)</span>
+</div>
+<p>D is the displacement event. B and V are its endpoints. Neither exists without the other. The static space between bubbles is genuine emptiness --- the accumulated record of every void ever created. The foam has memory. The void pattern is the complete history of all displacement.</p>
+<blockquote><p><em>One displacement creates two things: the thing and its absence. You cannot have one without the other. This is not arithmetic. It is the deepest conservation law in the theory.</em></p></blockquote>
+<p><strong>II. The Foam Substrate</strong></p>
+<p>The vacuum is a quantized medium of Planck-scale bubble units at baseline density:</p>
+<div class="equation">
+<pre><code>rho_0 = m_Planck / l_Planck^3 = 5.155 x 10^96 kg/m^3</code></pre>
+<span class="label">(2)</span>
+</div>
+<blockquote><p><em>✓ Planck mass 2.176e-8 kg ÷ Planck volume 4.222e-105 m³ = 5.155e96 kg/m³</em></p></blockquote>
+<p>The foam equation of state --- required to recover Newton's law from pressure mechanics:</p>
+<div class="equation">
+<pre><code>P_0 = rho_0 * c^2 = 4.633 x 10^113 Pa</code></pre>
+<span class="label">[Foam Equation of State] (3)</span>
+</div>
+<blockquote><p><em>Equation of state of a maximally stiff medium. Pressure waves propagate at c. Required for dimensional consistency throughout the gravity derivation.</em></p></blockquote>
+<p>The foam's characteristic electromagnetic impedance:</p>
+<div class="equation">
+<pre><code>Z_0 = sqrt(mu_0 / epsilon_0) = 376.730 Ohms</code></pre>
+<span class="label">(4)</span>
+</div>
+<blockquote><p><em>✓ Exact to 6 significant figures. Emerges from foam lattice geometry as a mechanical property --- not a fundamental input.</em></p></blockquote>
+<p><strong>III. Gravity from Vacuum Density Gradient</strong></p>
+<p><strong>1. Vacuum Density Structure</strong></p>
+<p>Mass induces a radial modification of vacuum density, vanishing at the Schwarzschild radius r_s = 2GM/c²:</p>
+<div class="equation">
+<pre><code>rho(r) = rho_0 * (1 - 2GM/(r*c^2))</code></pre>
+<span class="label">(5)</span>
+</div>
+<p>where rho_0 is the Planck vacuum density and r_s = 2GM/c^2 is the radius at which density vanishes. This preserves the Schwarzschild horizon condition.</p>
+<p><strong>2. Vacuum Pressure</strong></p>
+<p>Vacuum pressure follows from the equation of state P = rho*c^2:</p>
+<div class="equation">
+<pre><code>P(r) = rho_0 * c^2 * (1 - 2GM/(r*c^2)) = P_0 * (1 - 2GM/(r*c^2))</code></pre>
+<span class="label">(6)</span>
+</div>
+<p><strong>3. Extraction of Gravitational Potential</strong></p>
+<p>The Schwarzschild metric contains the normalisation g_tt = 1 + 2*Phi/c^2. The density ansatz mirrors this structure. The effective gravitational potential therefore corresponds to half the normalised pressure deviation --- the 1/2 is recovered by inverting this GR normalisation, not inserted:</p>
+<div class="equation">
+<pre><code>Phi = (1/2) * (P - P_0) / rho_0 (7a)</code></pre>
+</div>
+<p>Substituting explicitly:</p>
+<div class="equation">
+<pre><code>Phi = (1/2) * [c^2*(1 - 2GM/rc^2) - c^2] = -GM/r (7b)</code></pre>
+</div>
+<p>This matches the Newtonian gravitational potential exactly.</p>
+<blockquote><p><em>✓ Phi = -GM/r recovered. Matches Newtonian potential at all radii. No free parameters.</em></p></blockquote>
+<p><strong>4. Acceleration</strong></p>
+<p>Acceleration follows from the gradient of the potential:</p>
+<div class="equation">
+<pre><code>a = -grad(Phi) = -GM/r^2 * r_hat</code></pre>
+<span class="label">[Newton --- recovered exactly] (8)</span>
+</div>
+<blockquote><p><em>✓ At Earth surface: a = 9.82 m/s^2. Known value: 9.81 m/s^2. ✓</em>  <em>✓ At Earth orbit: non-linearity parameter x = 1.97e-8. Newton error = 1.97e-8 --- 20 parts per billion.</em></p></blockquote>
+<p><strong>5. Horizon Behaviour</strong></p>
+<p>At r = r_s = 2GM/c^2, the vacuum density vanishes:</p>
+<div class="equation">
+<pre><code>rho(r_s) = rho_0 * (1 - 1) = 0</code></pre>
+<span class="label">(9)</span>
+</div>
+<p>The horizon is interpreted as complete vacuum density depletion --- the foam ceases to exist at r_s. This is a density condition, not an acceleration divergence. No infinite acceleration is required or claimed.</p>
+<blockquote><p><em>✓ Sun Schwarzschild radius: r_s = 2954 m = 2.954 km. Known value: 2.953 km. ✓</em></p></blockquote>
+<p><strong>6. Gravitational Lensing</strong></p>
+<p>Consistent with the full Schwarzschild metric result:</p>
+<div class="equation">
+<pre><code>delta_theta = 4GM / (r_0 * c^2)</code></pre>
+<span class="label">[GR lensing --- metric consistent] (10)</span>
+</div>
+<blockquote><p><em>✓ CORRECTED: The factor of 4 in lensing requires the full metric --- both time dilation and spatial curvature contributions. The foam model is consistent with this result. Independent foam derivation of the spatial curvature term is open work.</em></p></blockquote>
+<p><strong>Post-Audit Status</strong></p>
+<blockquote><p>*✓ CORRECTED: Mathematical audit (February 2026), conducted by an independent AI reviewer, identified a factor-of-2 inconsistency in the original force extraction rule a = -(1/rho_0)*grad(P), which produced a = -2GM/r^2. The correction derives acceleration via the effective potential Phi = (P-P_0)/(2*rho_0), where the 1/2 emerges from inverting the GR normalisation g_tt = 1 + 2<em>Phi/c^2 embedded in the density ansatz. Density ansatz, pressure definition, and horizon location are all unchanged. The strong-field acceleration divergence previously claimed is removed; the horizon is defined by density collapse, not acceleration blow-up, which is structurally cleaner. Final audit counts: arithmetic errors 0, dimensional inconsistencies 0, algebraic inconsistencies 0.</em></p></blockquote>
+<p><strong>IV. Electromagnetism as Foam Tension</strong></p>
+<div class="equation">
+<pre><code>P_em(r) = -Q^2 / (8*pi*epsilon_0 * r^4)</code></pre>
+<span class="label">(10)</span>
+</div>
+<p>The r⁻⁴ dependence versus r⁻¹ for gravity means electromagnetism dominates at quantum scales. The crossover length sets the scale of atomic structure. Maxwell's equations emerge from foam polarisation dynamics. The speed of light is the speed of a pressure wave through Planck-density foam.</p>
+<p><strong>V. Quantum Mechanics from Foam Topology</strong></p>
+<p>Particles are stable topological foam structures --- quantized vortices or standing displacement waves. Planck's constant h is the minimum action quantum of the foam lattice. The de Broglie wavelength lambda = h/p is the spatial period of the foam wake behind a moving particle. The uncertainty principle arises from the foam's granularity: position cannot be defined below the Planck scale because the foam has no structure there.</p>
+<p><strong>VI. Entanglement from Void-Pair Conservation</strong></p>
+<p>Two particles created together are two endpoints of one displacement event D. The void is the antipodal complement of the bubble --- in every direction, opposite. The unique quantum state encoding antipodal structure in every measurement direction simultaneously:</p>
+<div class="equation">
+<pre><code>|D&gt; = (1/sqrt(2)) * (|up,down&gt; - |down,up&gt;)</code></pre>
+<span class="label">[Singlet state --- selected by symmetry] (11)</span>
+</div>
+<p>The singlet state is not assigned arbitrarily. It is the unique state satisfying perfect anti-correlation in every direction --- precisely the relationship between bubble and void. From it:</p>
+<div class="equation">
+<pre><code>E(a,b) = &lt;D|(sigma_a x sigma_b)|D&gt; = -cos(theta_ab)</code></pre>
+<span class="label">(12)</span>
+</div>
+<blockquote><p><em>✓ Evaluated at 0°, 45°, 90°, 135°, 180° --- matches quantum mechanical prediction exactly.</em></p></blockquote>
+<p>The model escapes Bell's theorem because D is not a local hidden variable. Bell requires E(a,b) = integral A(a,lambda)*B(b,lambda)*rho(lambda)*d(lambda) where lambda is local. D is defined by its extension between both endpoints --- it cannot be factored. Bell's factorization does not apply.</p>
+<blockquote><p><em>Spooky action at a distance is two ends of the same object being measured separately --- connected not by a signal but by the fact that they were never separate.</em></p></blockquote>
+<p><strong>VII. The Layered Electrical Universe</strong></p>
+<p>The foam is embedded in a larger electrical medium, which is embedded in a larger one still. The hierarchy extends infinitely. Each layer n couples to adjacent layers:</p>
+<div class="equation">
+<pre><code>grad^2(V_n) = -rho_n/epsilon_n + alpha*(V\_{n+1}-V_n) + beta*(V\_{n-1}-V_n)</code></pre>
+<span class="label">(13)</span>
+</div>
+<p>When inter-layer voltage exceeds breakdown threshold, a discharge event occurs and a universe is born. Universes are the normal operating behaviour of an infinite electrical medium --- not rare accidents.</p>
+<p><strong>VIII. Dark Matter and Dark Energy</strong></p>
+<p>Dark energy is the baseline pressure P_0 of the undisturbed foam acting on all embedded structures --- the cosmological constant as foam pressure. Dark matter is the tension of the foam connectivity network between stars at galactic scales, producing flat rotation curves without any new particle. Both are structural properties of the foam. Neither requires new substance.</p>
+<p><strong>IX. Critical Density --- Universe at Its Own Schwarzschild Radius</strong></p>
+<div class="equation">
+<pre><code>rho_critical = 3*H_0^2 / (8*pi*G) = 8.53 x 10^-27 kg/m^3</code></pre>
+<span class="label">(14)</span>
+</div>
+<blockquote><p><em>✓ H_0 = 2.184e-18 s⁻¹, rho_critical = 8.53e-27 kg/m³. Observed density matches.</em></p></blockquote>
+<p>Void-pair conservation ties the mass-energy of a discharge event to the volume of its void simultaneously. Both are set by the same displacement event D. The ratio is fixed by Axiom Zero. A universe cannot be over or under its own Schwarzschild threshold --- the conservation law forbids it.</p>
+<hr>
+<h3>Navigation</h3>
+<hr>
+
+        <nav class="page-nav">
+            <a href="preface.html">← Previous</a>
+            <a href="../index.html">Index</a>
+            <a href="part-ii.html">Next →</a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>The Unified Foam Field Theory · Luke Martin · 2026</p>
+            <p style="margin-top: 8px;">
+                <a href="https://doi.org/10.5281/zenodo.18706756">DOI: 10.5281/zenodo.18706756</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
