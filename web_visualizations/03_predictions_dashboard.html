@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFFT - Predictions Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { 
+            text-align: center; 
+            font-size: 2rem; 
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7, #f107a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { text-align: center; color: #888; margin-bottom: 30px; }
+        
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label { color: #888; margin-top: 5px; }
+        
+        .predictions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .prediction-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .prediction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,212,255,0.2);
+        }
+        
+        .prediction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .prediction-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .status-testable { background: #00ff96; color: #000; }
+        .status-formalised { background: #00d4ff; color: #000; }
+        .status-awaiting { background: #ffd700; color: #000; }
+        .status-new { background: #f107a3; color: #fff; }
+        
+        .prediction-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 15px 0 10px 0;
+            color: #fff;
+        }
+        
+        .prediction-desc {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .prediction-formula {
+            background: rgba(123, 47, 247, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            border-left: 3px solid #7b2ff7;
+            margin-bottom: 15px;
+        }
+        
+        .prediction-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .meta-icon {
+            width: 20px;
+            height: 20px;
+            opacity: 0.6;
+        }
+        
+        .falsification-box {
+            background: rgba(255, 100, 100, 0.1);
+            border: 1px solid #ff6464;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .falsification-box strong { color: #ff6464; }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            color: #00d4ff;
+        }
+        
+        .verified-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .verified-item {
+            background: rgba(0, 255, 150, 0.1);
+            border: 1px solid rgba(0, 255, 150, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: #00ff96;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>UFFT Predictions Dashboard</h1>
+        <p class="subtitle">Falsifiable Claims · Experimental Status · February 2026</p>
+        
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Falsifiable Predictions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Verified Results</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Arithmetic Errors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">&lt;$200</div>
+                <div class="stat-label">Cheapest Test</div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Falsifiable Predictions</h2>
+        
+        <div class="predictions-grid">
+            <div class="prediction-card">
+                <div class="prediction-header">
+                    <div class="prediction-number">1</div>
+                    <span class="status-badge status-awaiting">Awaiting Test</span>
+                </div>
+                <div class="prediction-title">Gravitational Suppression of Decoherence</div>
+                <div class="prediction-desc">
+                    Near massive objects, foam density increases → collision rate decreases → 
+                    quantum coherence is ENHANCED, not destroyed.
+                </div>
+                <div class="prediction-formula">
+                    Δτ/τ = (Φ/c²) × τ<sub>lab</sub><br>
+                    = 8.22 × 10⁻¹¹ (fractional increase)
+                </div>
+                <div class="prediction-meta">
+                    <div class="meta-item">💰 Lab Access</div>
+                    <div class="meta-item">⏱️ Months</div>
+                </div>
+                <div class="falsification-box">
+                    <strong>Falsification:</strong> Decreased coherence near mass falsifies UFFT. 
+                    This is the OPPOSITE sign from Diosi-Penrose.
+                </div>
+            </div>
+            
+            <div class="prediction-card">
+                <div class="prediction-header">
+                    <div class="prediction-number">2</div>
+                    <span class="status-badge status-awaiting">Sharpest Test</span>
+                </div>
+                <div class="prediction-title">Universal Qubit-Independence</div>
+                <div class="prediction-desc">
+                    The gravitational suppression effect must be IDENTICAL for all qubit types — 
+                    superconducting, photonic, ion trap, NV center.
+                </div>
+                <div class="prediction-formula">
+                    Δτ/τ independent of qubit implementation
+                </div>
+                <div class="prediction-meta">
+                    <div class="meta-item">💰 Lab Access</div>
+                    <div class="meta-item">⏱️ Months</div>
+                </div>
+                <div class="falsification-box">
+                    <strong>Falsification:</strong> ANY variation between qubit types falsifies 
+                    the foam-density mechanism cleanly.
+                </div>
+            </div>
+            
+            <div class="prediction-card">
+                <div class="prediction-header">
+                    <div class="prediction-number">3</div>
+                    <span class="status-badge status-testable">Testable Now</span>
+                </div>
+                <div class="prediction-title">Foam Panel Layer-Count Scaling</div>
+                <div class="prediction-desc">
+                    Lift force from geometrically ordered cavity arrays scales with number of 
+                    stacked layers N.
+                </div>
+                <div class="prediction-formula">
+                    F<sub>lift</sub> ~ N (coherent)<br>
+                    F<sub>lift</sub> ~ √N (incoherent)
+                </div>
+                <div class="prediction-meta">
+                    <div class="meta-item">💰 Under $200</div>
+                    <div class="meta-item">⏱️ 2 Weeks</div>
+                </div>
+                <div class="falsification-box">
+                    <strong>Falsification:</strong> √N scaling falsifies coherent foam coupling.
+                </div>
+            </div>
+            
+            <div class="prediction-card">
+                <div class="prediction-header">
+                    <div class="prediction-number">4</div>
+                    <span class="status-badge status-formalised">Formalised</span>
+                </div>
+                <div class="prediction-title">Three-Particle Cascade Topology</div>
+                <div class="prediction-desc">
+                    Three particles from a single void-pair cascade form a distinct entanglement 
+                    class — neither GHZ nor W.
+                </div>
+                <div class="prediction-formula">
+                    |Ψ⟩ = (1/√2)(|010⟩ − |101⟩)<br>
+                    ⟨X⊗X⊗X⟩ = −1
+                </div>
+                <div class="prediction-meta">
+                    <div class="meta-item">💰 SPDC Setup</div>
+                    <div class="meta-item">⏱️ Months</div>
+                </div>
+                <div class="falsification-box">
+                    <strong>Falsification:</strong> ⟨X⊗X⊗X⟩ ≠ −1 falsifies foam cascade topology. 
+                    GHZ gives +1, W gives 0.
+                </div>
+            </div>
+            
+            <div class="prediction-card">
+                <div class="prediction-header">
+                    <div class="prediction-number">5</div>
+                    <span class="status-badge status-new">NEW</span>
+                </div>
+                <div class="prediction-title">Quadratic Lorentz Invariance Violation</div>
+                <div class="prediction-desc">
+                    High-energy photons travel at fractionally different speeds — QUADRATIC in 
+                    energy, not linear.
+                </div>
+                <div class="prediction-formula">
+                    δc/c = ±η × (E/E<sub>P</sub>)²
+                </div>
+                <div class="prediction-meta">
+                    <div class="meta-item">💰 Current: Unmeasurable</div>
+                    <div class="meta-item">⏱️ Future</div>
+                </div>
+                <div class="falsification-box">
+                    <strong>Falsification:</strong> Detection of LINEAR LIV at any energy scale 
+                    falsifies the foam's correspondence principle.
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Verified Results (Partial List)</h2>
+        
+        <div class="verified-list">
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Planck density ρ₀ = 5.155 × 10⁹⁶ kg/m³</div>
+            </div>
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Newton's law Φ = −GM/r</div>
+            </div>
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Bell correlation E(a,b) = −cos(θ)</div>
+            </div>
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Schwarzschild horizon r_s = 2GM/c²</div>
+            </div>
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Vacuum impedance Z₀ = 376.730 Ω</div>
+            </div>
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Lensing factor of 4</div>
+            </div>
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Critical density formula</div>
+            </div>
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Dark energy ρ_Λ ≈ ρ₀(l_P/R_U)² (18% accuracy)</div>
+            </div>
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Dark matter ratio Ω_DM/Ω_b = 5.43</div>
+            </div>
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Bekenstein-Hawking 1/4 factor</div>
+            </div>
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Hawking temperature 2π factor</div>
+            </div>
+            <div class="verified-item">
+                <div class="check-icon">✓</div>
+                <div>Gauge group SU(3)×SU(2)×U(1)</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            The Unified Foam Field Theory · Appendix · All Predictions Falsifiable<br>
+            <small>Luke Martin · Independent Researcher · 2026</small>
+        </div>
+    </div>
+</body>
+</html>

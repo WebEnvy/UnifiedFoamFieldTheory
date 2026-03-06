@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFFT - The Correspondence Principle</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { 
+            text-align: center; 
+            font-size: 2rem; 
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7, #f107a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { text-align: center; color: #888; margin-bottom: 30px; }
+        
+        .main-formula {
+            background: rgba(0,212,255,0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .main-formula .formula {
+            font-size: 2rem;
+            font-family: 'Times New Roman', serif;
+            color: #00d4ff;
+            margin: 15px 0;
+        }
+        
+        .viz-container {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+        
+        .scale-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .scale-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        .scale-card:hover {
+            border-color: #00d4ff;
+        }
+        
+        .scale-card .name {
+            color: #00d4ff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .scale-card .epsilon {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            color: #00ff96;
+            margin: 10px 0;
+        }
+        
+        .scale-card .newton-error {
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .parameter-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .parameter-section h3 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+        }
+        
+        .param-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        @media (max-width: 800px) {
+            .param-grid { grid-template-columns: 1fr; }
+        }
+        
+        .param-card {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid;
+        }
+        
+        .param-card.gravity { border-color: #7b2ff7; }
+        .param-card.quantum { border-color: #00d4ff; }
+        .param-card.relativistic { border-color: #f107a3; }
+        
+        .param-card h4 {
+            margin-bottom: 10px;
+        }
+        
+        .param-card.gravity h4 { color: #7b2ff7; }
+        .param-card.quantum h4 { color: #00d4ff; }
+        .param-card.relativistic h4 { color: #f107a3; }
+        
+        .param-formula {
+            background: rgba(123, 47, 247, 0.2);
+            padding: 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .key-insight {
+            background: rgba(0, 255, 150, 0.1);
+            border: 2px solid #00ff96;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .key-insight h3 {
+            color: #00ff96;
+            margin-bottom: 15px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .control-group {
+            text-align: center;
+        }
+        
+        .control-group label {
+            display: block;
+            color: #888;
+            margin-bottom: 8px;
+        }
+        
+        select {
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Correspondence Principle</h1>
+        <p class="subtitle">Part VI — How UFFT Degrades to Linear Mathematics</p>
+        
+        <div class="main-formula">
+            <p style="color: #888;">The non-linearity parameter:</p>
+            <div class="formula">ε = (l<sub>P</sub> / L)<sup>2</sup></div>
+            <p style="color: #aaa; margin-top: 15px;">
+                Planck length squared divided by observation scale squared.<br>
+                As L → ∞, ε → 0, and foam physics → linear physics.
+            </p>
+        </div>
+        
+        <div class="viz-container">
+            <h3 style="text-align: center; color: #00d4ff; margin-bottom: 20px;">
+                Non-linearity Across Scales
+            </h3>
+            <canvas id="scale-chart" width="800" height="350"></canvas>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label>Highlight Scale</label>
+                    <select id="scale-select">
+                        <option value="planck">Planck Scale</option>
+                        <option value="proton">Proton</option>
+                        <option value="atom" selected>Atom</option>
+                        <option value="molecule">Molecule</option>
+                        <option value="cell">Cell</option>
+                        <option value="human">Human</option>
+                        <option value="earth">Earth</option>
+                        <option value="solar">Solar System</option>
+                        <option value="galaxy">Galaxy</option>
+                        <option value="universe">Universe</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scale-grid">
+            <div class="scale-card">
+                <div class="name">Planck Scale</div>
+                <div class="epsilon">ε = 1</div>
+                <div class="newton-error">Full foam physics</div>
+            </div>
+            <div class="scale-card">
+                <div class="name">Proton</div>
+                <div class="epsilon">ε ≈ 10⁻³⁸</div>
+                <div class="newton-error">QCD dominates</div>
+            </div>
+            <div class="scale-card">
+                <div class="name">Atom</div>
+                <div class="epsilon">ε ≈ 10⁻⁵⁰</div>
+                <div class="newton-error">QM applies perfectly</div>
+            </div>
+            <div class="scale-card">
+                <div class="name">Earth Orbit</div>
+                <div class="epsilon">ε ≈ 10⁻⁸</div>
+                <div class="newton-error">Newton error: 20 ppb</div>
+            </div>
+            <div class="scale-card">
+                <div class="name">Solar System</div>
+                <div class="epsilon">ε ≈ 10⁻⁷⁶</div>
+                <div class="newton-error">Perfect Kepler</div>
+            </div>
+            <div class="scale-card">
+                <div class="name">Universe</div>
+                <div class="epsilon">ε ≈ 10⁻¹²²</div>
+                <div class="newton-error">Pure linearity</div>
+            </div>
+        </div>
+        
+        <div class="parameter-section">
+            <h3>Three Non-linearity Parameters</h3>
+            <p style="color: #888; margin-bottom: 20px;">
+                Different physical regimes are controlled by different ratios:
+            </p>
+            
+            <div class="param-grid">
+                <div class="param-card gravity">
+                    <h4>Gravitational</h4>
+                    <div class="param-formula">x = GM / rc²</div>
+                    <p style="color: #aaa; font-size: 0.9rem;">
+                        Ratio of Schwarzschild radius to distance.
+                        At Earth surface: x ≈ 10⁻⁹.
+                        At horizon: x → 1.
+                    </p>
+                </div>
+                
+                <div class="param-card quantum">
+                    <h4>Quantum</h4>
+                    <div class="param-formula">ε = (l_P / λ)²</div>
+                    <p style="color: #aaa; font-size: 0.9rem;">
+                        Ratio of Planck length to de Broglie wavelength.
+                        For atoms: ε ≈ 10⁻⁵⁰.
+                        Linear QM applies exactly.
+                    </p>
+                </div>
+                
+                <div class="param-card relativistic">
+                    <h4>Relativistic</h4>
+                    <div class="param-formula">β = v / c</div>
+                    <p style="color: #aaa; font-size: 0.9rem;">
+                        Ratio of velocity to light speed.
+                        At low speeds: γ ≈ 1.
+                        Galilean relativity recovered.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="key-insight">
+            <h3>Why Linear Mathematics Works</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                Linear mathematics is not wrong — it is the <strong>correct limit</strong>.<br><br>
+                At scales much larger than the Planck length, foam dynamics average out.<br>
+                The discrete becomes continuous. The non-linear becomes linear.<br>
+                Newton, Maxwell, Schrödinger — all recovered exactly where they apply.
+            </p>
+        </div>
+        
+        <div class="viz-container">
+            <h3 style="text-align: center; color: #00d4ff; margin-bottom: 20px;">
+                LHC Energy: Still Deeply Linear
+            </h3>
+            <div style="text-align: center; padding: 30px;">
+                <div style="font-size: 1.5rem; color: #888; margin-bottom: 10px;">
+                    At LHC energies (13 TeV):
+                </div>
+                <div style="font-size: 3rem; color: #00ff96; font-family: 'Courier New', monospace;">
+                    ε ≈ 10⁻³⁰
+                </div>
+                <div style="margin-top: 20px; color: #aaa;">
+                    Still 30 orders of magnitude from foam non-linearity.<br>
+                    The Standard Model applies with extraordinary precision.
+                </div>
+            </div>
+        </div>
+        
+        <div class="parameter-section">
+            <h3>Lorentz Violation Prediction</h3>
+            <p style="color: #888; margin-bottom: 20px;">
+                The correspondence principle predicts energy-dependent light speed:
+            </p>
+            <div class="param-formula" style="font-size: 1.2rem;">
+                δc/c = ±η × (E / E_P)²
+            </div>
+            <p style="color: #aaa; margin-top: 15px; line-height: 1.8;">
+                This is <strong>quadratic</strong> in energy — (E/E_P)² not (E/E_P).<br>
+                Many quantum gravity models predict linear violation.<br>
+                The power law distinguishes UFFT from competitors.<br><br>
+                At 100 GeV (gamma-ray bursts): δc/c ≈ 10⁻³⁵ — unmeasurably small.<br>
+                UFFT predicts Lorentz invariance holds to extraordinary precision.
+            </p>
+        </div>
+        
+        <div class="footer">
+            The Unified Foam Field Theory · Part VI<br>
+            <small>The emergent layer is linear. The substrate is not.</small>
+        </div>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById('scale-chart');
+        const ctx = canvas.getContext('2d');
+        const scaleSelect = document.getElementById('scale-select');
+        
+        const scales = {
+            planck: { name: 'Planck', L: 1.616e-35, logEps: 0 },
+            proton: { name: 'Proton', L: 1e-15, logEps: -38 },
+            atom: { name: 'Atom', L: 1e-10, logEps: -50 },
+            molecule: { name: 'Molecule', L: 1e-9, logEps: -52 },
+            cell: { name: 'Cell', L: 1e-5, logEps: -60 },
+            human: { name: 'Human', L: 1, logEps: -70 },
+            earth: { name: 'Earth', L: 1e7, logEps: -84 },
+            solar: { name: 'Solar System', L: 1e13, logEps: -96 },
+            galaxy: { name: 'Galaxy', L: 1e21, logEps: -112 },
+            universe: { name: 'Universe', L: 1e26, logEps: -122 }
+        };
+        
+        function drawChart(highlighted) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const padding = { left: 80, right: 40, top: 40, bottom: 60 };
+            const chartWidth = canvas.width - padding.left - padding.right;
+            const chartHeight = canvas.height - padding.top - padding.bottom;
+            
+            // Grid
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 10; i++) {
+                const y = padding.top + (chartHeight / 10) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(canvas.width - padding.right, y);
+                ctx.stroke();
+            }
+            
+            // Axes
+            ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, canvas.height - padding.bottom);
+            ctx.lineTo(canvas.width - padding.right, canvas.height - padding.bottom);
+            ctx.stroke();
+            
+            // Y-axis labels (log ε)
+            ctx.fillStyle = '#888';
+            ctx.font = '12px sans-serif';
+            ctx.textAlign = 'right';
+            for (let i = 0; i <= 10; i++) {
+                const logEps = -i * 12;
+                const y = padding.top + (chartHeight / 10) * i;
+                ctx.fillText(`10^${logEps}`, padding.left - 10, y + 4);
+            }
+            
+            ctx.save();
+            ctx.translate(20, canvas.height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.textAlign = 'center';
+            ctx.fillText('Non-linearity ε', 0, 0);
+            ctx.restore();
+            
+            // X-axis labels
+            ctx.textAlign = 'center';
+            ctx.fillText('Scale (log meters)', canvas.width / 2, canvas.height - 15);
+            
+            // Plot points
+            const scaleKeys = Object.keys(scales);
+            const minLog = -35;
+            const maxLog = 27;
+            
+            scaleKeys.forEach((key, index) => {
+                const scale = scales[key];
+                const logL = Math.log10(scale.L);
+                const x = padding.left + ((logL - minLog) / (maxLog - minLog)) * chartWidth;
+                const y = padding.top + ((-scale.logEps) / 122) * chartHeight;
+                
+                // Point
+                const isHighlighted = key === highlighted;
+                ctx.beginPath();
+                ctx.arc(x, y, isHighlighted ? 12 : 8, 0, Math.PI * 2);
+                ctx.fillStyle = isHighlighted ? '#00ff96' : '#00d4ff';
+                ctx.fill();
+                
+                // Label
+                ctx.fillStyle = isHighlighted ? '#00ff96' : '#888';
+                ctx.font = isHighlighted ? 'bold 12px sans-serif' : '11px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(scale.name, x, y - 18);
+                
+                if (isHighlighted) {
+                    ctx.fillStyle = '#00ff96';
+                    ctx.font = '11px Courier New';
+                    ctx.fillText(`ε ≈ 10^${scale.logEps}`, x, y + 25);
+                }
+            });
+            
+            // Trend line
+            ctx.strokeStyle = 'rgba(0, 212, 255, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            
+            for (let logL = minLog; logL <= maxLog; logL += 1) {
+                const x = padding.left + ((logL - minLog) / (maxLog - minLog)) * chartWidth;
+                const logEps = -2 * (logL + 35); // ε = (l_P / L)^2
+                const y = padding.top + (-logEps / 122) * chartHeight;
+                
+                if (logL === minLog) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Zone labels
+            ctx.fillStyle = 'rgba(123, 47, 247, 0.3)';
+            ctx.fillRect(padding.left, padding.top, chartWidth * 0.1, chartHeight * 0.3);
+            ctx.fillStyle = '#7b2ff7';
+            ctx.font = '11px sans-serif';
+            ctx.fillText('Foam Physics', padding.left + chartWidth * 0.05, padding.top + 20);
+            
+            ctx.fillStyle = 'rgba(0, 255, 150, 0.1)';
+            ctx.fillRect(padding.left + chartWidth * 0.3, padding.top + chartHeight * 0.4, chartWidth * 0.6, chartHeight * 0.6);
+            ctx.fillStyle = '#00ff96';
+            ctx.fillText('Linear Physics', padding.left + chartWidth * 0.6, padding.top + chartHeight * 0.5);
+        }
+        
+        scaleSelect.addEventListener('change', () => {
+            drawChart(scaleSelect.value);
+        });
+        
+        drawChart('atom');
+    </script>
+</body>
+</html>

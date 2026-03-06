@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFFT - Bell Correlations from Void-Pair Conservation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { 
+            text-align: center; 
+            font-size: 2rem; 
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7, #f107a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { text-align: center; color: #888; margin-bottom: 30px; }
+        
+        .main-visual {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .correlation-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .detector {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .detector-a { background: linear-gradient(135deg, #00ff96, #00d4ff); }
+        .detector-b { background: linear-gradient(135deg, #ff6464, #f107a3); }
+        
+        .detector-label {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .angle-control {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .connection-line {
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, #00ff96, #ffd700, #ff6464);
+            position: relative;
+        }
+        
+        .connection-line::before {
+            content: 'D';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffd700;
+            color: #000;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .slider-container {
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .slider-container label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .result-box {
+            background: rgba(0,212,255,0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .correlation-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        
+        .formula {
+            background: rgba(123, 47, 247, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            border-left: 4px solid #7b2ff7;
+            text-align: center;
+        }
+        
+        canvas {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            max-width: 100%;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 800px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+        
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .card h3 { color: #00d4ff; margin-bottom: 15px; }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .comparison-table th {
+            background: rgba(0,212,255,0.2);
+            color: #00d4ff;
+        }
+        
+        .match { color: #00ff96; }
+        .qm { color: #7b2ff7; }
+        .classical { color: #ff6464; }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bell Correlations from Void-Pair Conservation</h1>
+        <p class="subtitle">Part IX — How UFFT Reproduces Quantum Entanglement</p>
+        
+        <div class="main-visual">
+            <div class="correlation-display">
+                <div class="detector detector-a">
+                    <div class="detector-label">B</div>
+                    <small style="color:#000">Bubble</small>
+                </div>
+                <div class="connection-line"></div>
+                <div class="detector detector-b">
+                    <div class="detector-label">V</div>
+                    <small style="color:#000">Void</small>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <div class="slider-container">
+                    <label>
+                        <span>Detector Angle (θ)</span>
+                        <span id="angle-display">0°</span>
+                    </label>
+                    <input type="range" id="angle-slider" min="0" max="180" value="0" step="1">
+                </div>
+            </div>
+            
+            <div class="result-box">
+                <div>Correlation E(a,b)</div>
+                <div class="correlation-value" id="correlation-value">-1.000</div>
+                <div class="formula">E(a,b) = ⟨D|(σ_a ⊗ σ_b)|D⟩ = -cos(θ)</div>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Correlation Curve</h3>
+                <canvas id="correlation-chart" width="400" height="300"></canvas>
+            </div>
+            
+            <div class="card">
+                <h3>Key Angles</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Angle θ</th>
+                        <th>UFFT/QM</th>
+                        <th>Bell Limit</th>
+                    </tr>
+                    <tr>
+                        <td>0°</td>
+                        <td class="match">-1.000</td>
+                        <td class="classical">-1.000</td>
+                    </tr>
+                    <tr>
+                        <td>45°</td>
+                        <td class="qm">-0.707</td>
+                        <td class="classical">-0.500</td>
+                    </tr>
+                    <tr>
+                        <td>90°</td>
+                        <td class="match">0.000</td>
+                        <td class="classical">0.000</td>
+                    </tr>
+                    <tr>
+                        <td>135°</td>
+                        <td class="qm">+0.707</td>
+                        <td class="classical">+0.500</td>
+                    </tr>
+                    <tr>
+                        <td>180°</td>
+                        <td class="match">+1.000</td>
+                        <td class="classical">+1.000</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #888;">
+                    <span class="qm">Purple</span> values violate Bell's inequality. 
+                    UFFT matches quantum mechanics exactly at all angles.
+                </p>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top: 30px;">
+            <h3>Why UFFT Escapes Bell's Theorem</h3>
+            <div class="formula" style="text-align: left; background: rgba(255,215,0,0.1); border-color: #ffd700;">
+                Bell requires: E(a,b) = ∫ A(a,λ)·B(b,λ)·ρ(λ)·dλ<br><br>
+                where λ is a LOCAL hidden variable.
+            </div>
+            <p style="margin-top: 15px; line-height: 1.6;">
+                The displacement event <strong>D</strong> is not local. It is defined by its extension 
+                between both endpoints — the bubble B at position x and the void V at position x'. 
+                Bell's factorization assumption does not apply because D cannot be separated into 
+                independent parts at each detector.
+            </p>
+            <p style="margin-top: 15px; font-style: italic; color: #888;">
+                "Spooky action at a distance is two ends of the same object being measured separately — 
+                connected not by a signal but by the fact that they were never separate."
+            </p>
+        </div>
+        
+        <div class="footer">
+            The Unified Foam Field Theory · Part IX · All Equations Verified<br>
+            <small>DOI: 10.5281/zenodo.18706806</small>
+        </div>
+    </div>
+    
+    <script>
+        const angleSlider = document.getElementById('angle-slider');
+        const angleDisplay = document.getElementById('angle-display');
+        const correlationValue = document.getElementById('correlation-value');
+        const canvas = document.getElementById('correlation-chart');
+        const ctx = canvas.getContext('2d');
+        
+        function drawChart(currentAngle) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const padding = 50;
+            const chartWidth = canvas.width - 2 * padding;
+            const chartHeight = canvas.height - 2 * padding;
+            
+            // Grid
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 4; i++) {
+                const y = padding + (chartHeight / 4) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(canvas.width - padding, y);
+                ctx.stroke();
+            }
+            
+            // Axes
+            ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.stroke();
+            
+            // Labels
+            ctx.fillStyle = '#888';
+            ctx.font = '12px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('0°', padding, canvas.height - padding + 20);
+            ctx.fillText('90°', canvas.width/2, canvas.height - padding + 20);
+            ctx.fillText('180°', canvas.width - padding, canvas.height - padding + 20);
+            
+            ctx.textAlign = 'right';
+            ctx.fillText('+1', padding - 10, padding + 5);
+            ctx.fillText('0', padding - 10, canvas.height/2);
+            ctx.fillText('-1', padding - 10, canvas.height - padding + 5);
+            
+            // Bell limit (linear)
+            ctx.strokeStyle = '#ff6464';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            for (let angle = 0; angle <= 180; angle += 2) {
+                const x = padding + (angle / 180) * chartWidth;
+                const bellCorr = (angle <= 90) ? -1 + (2 * angle / 90) : -1 + (2 * angle / 90);
+                const y = padding + chartHeight/2 - (bellCorr * chartHeight/2);
+                if (angle === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Quantum/UFFT curve (cosine)
+            ctx.strokeStyle = '#00d4ff';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            for (let angle = 0; angle <= 180; angle += 2) {
+                const x = padding + (angle / 180) * chartWidth;
+                const corr = -Math.cos(angle * Math.PI / 180);
+                const y = padding + chartHeight/2 - (corr * chartHeight/2);
+                if (angle === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            
+            // Current point
+            const currentX = padding + (currentAngle / 180) * chartWidth;
+            const currentCorr = -Math.cos(currentAngle * Math.PI / 180);
+            const currentY = padding + chartHeight/2 - (currentCorr * chartHeight/2);
+            
+            ctx.beginPath();
+            ctx.arc(currentX, currentY, 8, 0, Math.PI * 2);
+            ctx.fillStyle = '#ffd700';
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Legend
+            ctx.fillStyle = '#00d4ff';
+            ctx.fillRect(canvas.width - 120, 20, 15, 3);
+            ctx.fillStyle = '#888';
+            ctx.textAlign = 'left';
+            ctx.fillText('UFFT/QM', canvas.width - 100, 25);
+            
+            ctx.fillStyle = '#ff6464';
+            ctx.fillRect(canvas.width - 120, 40, 15, 3);
+            ctx.fillStyle = '#888';
+            ctx.fillText('Bell Limit', canvas.width - 100, 45);
+        }
+        
+        function updateCorrelation() {
+            const angle = parseInt(angleSlider.value);
+            const corr = -Math.cos(angle * Math.PI / 180);
+            
+            angleDisplay.textContent = angle + '°';
+            correlationValue.textContent = corr.toFixed(3);
+            
+            drawChart(angle);
+        }
+        
+        angleSlider.addEventListener('input', updateCorrelation);
+        
+        // Initial draw
+        updateCorrelation();
+    </script>
+</body>
+</html>

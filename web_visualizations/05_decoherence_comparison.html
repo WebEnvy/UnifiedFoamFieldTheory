@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFFT - Decoherence: UFFT vs Diosi-Penrose</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { 
+            text-align: center; 
+            font-size: 2rem; 
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7, #f107a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { text-align: center; color: #888; margin-bottom: 30px; }
+        
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 800px) {
+            .comparison-box { grid-template-columns: 1fr; }
+        }
+        
+        .model-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid;
+        }
+        
+        .model-card.ufft { border-color: #00ff96; }
+        .model-card.dp { border-color: #ff6464; }
+        
+        .model-card h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .model-card.ufft h2 { color: #00ff96; }
+        .model-card.dp h2 { color: #ff6464; }
+        
+        .prediction {
+            font-size: 1.3rem;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .ufft .prediction { background: rgba(0,255,150,0.1); }
+        .dp .prediction { background: rgba(255,100,100,0.1); }
+        
+        .formula {
+            background: rgba(123, 47, 247, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            border-left: 4px solid #7b2ff7;
+            text-align: center;
+        }
+        
+        .visualization {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .control-group {
+            text-align: center;
+        }
+        
+        .control-group label {
+            display: block;
+            color: #888;
+            margin-bottom: 8px;
+        }
+        
+        input[type="range"] {
+            width: 200px;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+        }
+        
+        .value-display {
+            font-family: 'Courier New', monospace;
+            color: #00d4ff;
+            margin-top: 5px;
+        }
+        
+        .experiment-box {
+            background: rgba(0,212,255,0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .experiment-box h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+        
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .platform {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .platform-name { font-weight: bold; color: #fff; }
+        .platform-detail { font-size: 0.9rem; color: #888; margin-top: 5px; }
+        
+        .key-result {
+            background: linear-gradient(135deg, rgba(0,255,150,0.2), rgba(0,212,255,0.2));
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .key-result .number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00ff96;
+        }
+        
+        .key-result .label {
+            color: #888;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gravitational Decoherence: Two Models, Opposite Predictions</h1>
+        <p class="subtitle">Part VIII — The Sign Difference That Distinguishes UFFT</p>
+        
+        <div class="comparison-box">
+            <div class="model-card ufft">
+                <h2>
+                    <span style="font-size: 2rem;">🟢</span>
+                    UFFT (Vacuum Foam)
+                </h2>
+                <p>Near mass, vacuum density <strong>decreases</strong>.</p>
+                <p>Fewer vacuum fluctuations → fewer collisions.</p>
+                <div class="prediction">
+                    Coherence is <strong>ENHANCED</strong> near mass
+                </div>
+                <div class="formula">
+                    Γ(r)/Γ₀ = 1 − 2GM/rc²
+                </div>
+                <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">
+                    Decoherence rate decreases as gravitational potential deepens
+                </p>
+            </div>
+            
+            <div class="model-card dp">
+                <h2>
+                    <span style="font-size: 2rem;">🔴</span>
+                    Diosi-Penrose
+                </h2>
+                <p>Gravity induces objective collapse.</p>
+                <p>Stronger gravity → faster collapse.</p>
+                <div class="prediction">
+                    Coherence is <strong>DESTROYED</strong> near mass
+                </div>
+                <div class="formula">
+                    Γ(r)/Γ₀ = 1 + GM/rc²
+                </div>
+                <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">
+                    Decoherence rate increases as gravitational potential deepens
+                </p>
+            </div>
+        </div>
+        
+        <div class="key-result">
+            <div class="number">3GM/rc²</div>
+            <div class="label">
+                The difference between predictions — a factor of 3 and opposite sign
+            </div>
+        </div>
+        
+        <div class="visualization">
+            <h3 style="text-align: center; color: #00d4ff; margin-bottom: 20px;">
+                Coherence Time vs Altitude
+            </h3>
+            <canvas id="decoherence-chart" width="700" height="400"></canvas>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label>View Mode</label>
+                    <select id="view-mode" onchange="drawChart()">
+                        <option value="ratio">Coherence Ratio τ/τ₀</option>
+                        <option value="deviation">Deviation from 1.0 (×10⁻¹⁰)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Planet</label>
+                    <select id="planet-select" onchange="drawChart()">
+                        <option value="earth">Earth (1 M⊕)</option>
+                        <option value="mars">Mars (0.11 M⊕)</option>
+                        <option value="jupiter">Jupiter (318 M⊕)</option>
+                        <option value="sun">Sun (333,000 M⊕)</option>
+                        <option value="neutron">Neutron Star (1.4 M☉)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="experiment-box">
+            <h3>Experimental Platforms</h3>
+            <p>The effect magnitude at Earth surface vs ISS (~400 km altitude):</p>
+            <div class="key-result" style="margin: 20px 0; padding: 15px;">
+                <div class="number" style="font-size: 2rem;">Δτ/τ ≈ 8 × 10⁻¹¹</div>
+                <div class="label">Fractional coherence time change</div>
+            </div>
+            
+            <div class="platform-grid">
+                <div class="platform">
+                    <div class="platform-name">BECCAL</div>
+                    <div class="platform-detail">Bose-Einstein Condensate and Cold Atom Lab on ISS</div>
+                </div>
+                <div class="platform">
+                    <div class="platform-name">STE-QUEST</div>
+                    <div class="platform-detail">Proposed ESA mission for quantum tests</div>
+                </div>
+                <div class="platform">
+                    <div class="platform-name">CAL</div>
+                    <div class="platform-detail">Cold Atom Laboratory (operational on ISS)</div>
+                </div>
+                <div class="platform">
+                    <div class="platform-name">Ground-Tower</div>
+                    <div class="platform-detail">Compare basement vs mountaintop labs</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="visualization">
+            <h3 style="text-align: center; color: #00d4ff; margin-bottom: 20px;">
+                Altitude Comparison: Earth Surface vs ISS
+            </h3>
+            <canvas id="altitude-viz" width="700" height="300"></canvas>
+        </div>
+        
+        <div class="footer">
+            The Unified Foam Field Theory · Part VIII · DOI: 10.5281/zenodo.18706756<br>
+            <small>One model must be wrong. The experiment decides.</small>
+        </div>
+    </div>
+    
+    <script>
+        const chartCanvas = document.getElementById('decoherence-chart');
+        const chartCtx = chartCanvas.getContext('2d');
+        const altVizCanvas = document.getElementById('altitude-viz');
+        const altVizCtx = altVizCanvas.getContext('2d');
+        
+        const viewMode = document.getElementById('view-mode');
+        const planetSelect = document.getElementById('planet-select');
+        
+        const G = 6.674e-11;
+        const c = 3e8;
+        const M_earth = 5.972e24;
+        const M_sun = 1.989e30;
+        const R_earth = 6.371e6;
+        
+        const planets = {
+            earth: { M: M_earth, R: R_earth, name: 'Earth', maxAlt: 1000e3 },
+            mars: { M: 0.107 * M_earth, R: 3.39e6, name: 'Mars', maxAlt: 500e3 },
+            jupiter: { M: 318 * M_earth, R: 6.99e7, name: 'Jupiter', maxAlt: 5000e3 },
+            sun: { M: M_sun, R: 6.96e8, name: 'Sun', maxAlt: 1e9 },
+            neutron: { M: 1.4 * M_sun, R: 10e3, name: 'Neutron Star', maxAlt: 100e3 }
+        };
+        
+        function drawChart() {
+            const width = chartCanvas.width;
+            const height = chartCanvas.height;
+            const padding = 60;
+            const chartWidth = width - 2 * padding;
+            const chartHeight = height - 2 * padding;
+            
+            chartCtx.clearRect(0, 0, width, height);
+            
+            const mode = viewMode.value;
+            const planet = planets[planetSelect.value];
+            const M = planet.M;
+            const R = planet.R;
+            const maxAlt = planet.maxAlt;
+            
+            // Grid
+            chartCtx.strokeStyle = 'rgba(255,255,255,0.1)';
+            chartCtx.lineWidth = 1;
+            for (let i = 0; i <= 5; i++) {
+                const y = padding + (chartHeight / 5) * i;
+                chartCtx.beginPath();
+                chartCtx.moveTo(padding, y);
+                chartCtx.lineTo(width - padding, y);
+                chartCtx.stroke();
+            }
+            
+            // Axes
+            chartCtx.strokeStyle = 'rgba(255,255,255,0.5)';
+            chartCtx.lineWidth = 2;
+            chartCtx.beginPath();
+            chartCtx.moveTo(padding, padding);
+            chartCtx.lineTo(padding, height - padding);
+            chartCtx.lineTo(width - padding, height - padding);
+            chartCtx.stroke();
+            
+            // Labels
+            chartCtx.fillStyle = '#888';
+            chartCtx.font = '12px sans-serif';
+            chartCtx.textAlign = 'center';
+            
+            // Dynamic X label based on scale
+            const altUnit = maxAlt >= 1e9 ? 'million km' : (maxAlt >= 1e6 ? '1000 km' : 'km');
+            const altDivisor = maxAlt >= 1e9 ? 1e9 : (maxAlt >= 1e6 ? 1e6 : 1e3);
+            chartCtx.fillText(`Altitude (${altUnit})`, width / 2, height - 10);
+            
+            const yLabel = mode === 'deviation' ? 'Deviation from 1.0 (×10⁻¹⁰)' : 'Relative Coherence Time τ/τ₀';
+            chartCtx.save();
+            chartCtx.translate(15, height / 2);
+            chartCtx.rotate(-Math.PI / 2);
+            chartCtx.fillText(yLabel, 0, 0);
+            chartCtx.restore();
+            
+            // X-axis labels
+            for (let i = 0; i <= 5; i++) {
+                const alt = (i / 5) * maxAlt;
+                const x = padding + (i / 5) * chartWidth;
+                chartCtx.fillText((alt / altDivisor).toFixed(0), x, height - padding + 20);
+            }
+            
+            // Calculate y-range based on mode
+            let minY, maxY;
+            const step = maxAlt / 100;
+            
+            if (mode === 'deviation') {
+                // Show deviation from 1.0 scaled by 10^10
+                let minDev = 0, maxDev = 0;
+                for (let alt = 0; alt <= maxAlt; alt += step) {
+                    const r = R + alt;
+                    const phi = G * M / (r * c * c);
+                    const ufftDev = (1 / (1 - 2 * phi) - 1) * 1e10;
+                    const dpDev = (1 / (1 + phi) - 1) * 1e10;
+                    minDev = Math.min(minDev, ufftDev, dpDev);
+                    maxDev = Math.max(maxDev, ufftDev, dpDev);
+                }
+                const range = maxDev - minDev;
+                minY = minDev - range * 0.1;
+                maxY = maxDev + range * 0.1;
+            } else {
+                // Ratio mode
+                let minRatio = 1, maxRatio = 1;
+                for (let alt = 0; alt <= maxAlt; alt += step) {
+                    const r = R + alt;
+                    const phi = G * M / (r * c * c);
+                    const ufftRatio = 1 / (1 - 2 * phi);
+                    const dpRatio = 1 / (1 + phi);
+                    minRatio = Math.min(minRatio, ufftRatio, dpRatio);
+                    maxRatio = Math.max(maxRatio, ufftRatio, dpRatio);
+                }
+                const range = maxRatio - minRatio;
+                minY = minRatio - range * 0.1;
+                maxY = maxRatio + range * 0.1;
+            }
+            
+            // Y-axis labels
+            chartCtx.textAlign = 'right';
+            for (let i = 0; i <= 4; i++) {
+                const val = maxY - (i / 4) * (maxY - minY);
+                const y = padding + (chartHeight / 4) * i;
+                if (mode === 'deviation') {
+                    chartCtx.fillText(val.toFixed(1), padding - 10, y + 4);
+                } else {
+                    chartCtx.fillText(val.toFixed(6), padding - 10, y + 4);
+                }
+            }
+            
+            // UFFT curve (green)
+            chartCtx.strokeStyle = '#00ff96';
+            chartCtx.lineWidth = 3;
+            chartCtx.beginPath();
+            
+            for (let alt = 0; alt <= maxAlt; alt += step) {
+                const r = R + alt;
+                const phi = G * M / (r * c * c);
+                let val;
+                if (mode === 'deviation') {
+                    val = (1 / (1 - 2 * phi) - 1) * 1e10;
+                } else {
+                    val = 1 / (1 - 2 * phi);
+                }
+                
+                const x = padding + (alt / maxAlt) * chartWidth;
+                const y = padding + ((maxY - val) / (maxY - minY)) * chartHeight;
+                
+                if (alt === 0) chartCtx.moveTo(x, y);
+                else chartCtx.lineTo(x, y);
+            }
+            chartCtx.stroke();
+            
+            // Diosi-Penrose curve (red)
+            chartCtx.strokeStyle = '#ff6464';
+            chartCtx.lineWidth = 3;
+            chartCtx.beginPath();
+            
+            for (let alt = 0; alt <= maxAlt; alt += step) {
+                const r = R + alt;
+                const phi = G * M / (r * c * c);
+                let val;
+                if (mode === 'deviation') {
+                    val = (1 / (1 + phi) - 1) * 1e10;
+                } else {
+                    val = 1 / (1 + phi);
+                }
+                
+                const x = padding + (alt / maxAlt) * chartWidth;
+                const y = padding + ((maxY - val) / (maxY - minY)) * chartHeight;
+                
+                if (alt === 0) chartCtx.moveTo(x, y);
+                else chartCtx.lineTo(x, y);
+            }
+            chartCtx.stroke();
+            
+            // Baseline (τ/τ₀ = 1 or deviation = 0)
+            const baseVal = mode === 'deviation' ? 0 : 1;
+            if (baseVal >= minY && baseVal <= maxY) {
+                const baseY = padding + ((maxY - baseVal) / (maxY - minY)) * chartHeight;
+                chartCtx.strokeStyle = 'rgba(255,255,255,0.3)';
+                chartCtx.lineWidth = 1;
+                chartCtx.setLineDash([5, 5]);
+                chartCtx.beginPath();
+                chartCtx.moveTo(padding, baseY);
+                chartCtx.lineTo(width - padding, baseY);
+                chartCtx.stroke();
+                chartCtx.setLineDash([]);
+            }
+            
+            // Legend
+            chartCtx.fillStyle = '#00ff96';
+            chartCtx.fillRect(width - 150, 30, 20, 3);
+            chartCtx.fillStyle = '#888';
+            chartCtx.textAlign = 'left';
+            chartCtx.fillText('UFFT', width - 125, 35);
+            
+            chartCtx.fillStyle = '#ff6464';
+            chartCtx.fillRect(width - 150, 50, 20, 3);
+            chartCtx.fillStyle = '#888';
+            chartCtx.fillText('Diosi-Penrose', width - 125, 55);
+            
+            // Planet name
+            chartCtx.fillStyle = '#ffd700';
+            chartCtx.font = 'bold 14px sans-serif';
+            chartCtx.textAlign = 'left';
+            chartCtx.fillText(planet.name, padding + 10, padding + 20);
+        }
+        
+        function drawAltitudeViz() {
+            const width = altVizCanvas.width;
+            const height = altVizCanvas.height;
+            
+            altVizCtx.clearRect(0, 0, width, height);
+            
+            // Earth
+            const earthRadius = 80;
+            const earthX = 150;
+            const earthY = height / 2;
+            
+            const gradient = altVizCtx.createRadialGradient(earthX, earthY, 0, earthX, earthY, earthRadius);
+            gradient.addColorStop(0, '#4a90d9');
+            gradient.addColorStop(0.8, '#2d5a87');
+            gradient.addColorStop(1, '#1a3a5c');
+            
+            altVizCtx.beginPath();
+            altVizCtx.arc(earthX, earthY, earthRadius, 0, Math.PI * 2);
+            altVizCtx.fillStyle = gradient;
+            altVizCtx.fill();
+            
+            // Atmosphere glow
+            altVizCtx.beginPath();
+            altVizCtx.arc(earthX, earthY, earthRadius + 10, 0, Math.PI * 2);
+            altVizCtx.strokeStyle = 'rgba(100, 200, 255, 0.3)';
+            altVizCtx.lineWidth = 10;
+            altVizCtx.stroke();
+            
+            // Surface lab
+            altVizCtx.fillStyle = '#00ff96';
+            altVizCtx.beginPath();
+            altVizCtx.arc(earthX + earthRadius - 5, earthY, 8, 0, Math.PI * 2);
+            altVizCtx.fill();
+            
+            // ISS orbit
+            const issOrbitRadius = earthRadius + 50;
+            altVizCtx.strokeStyle = 'rgba(255, 215, 0, 0.3)';
+            altVizCtx.lineWidth = 2;
+            altVizCtx.setLineDash([5, 5]);
+            altVizCtx.beginPath();
+            altVizCtx.arc(earthX, earthY, issOrbitRadius, 0, Math.PI * 2);
+            altVizCtx.stroke();
+            altVizCtx.setLineDash([]);
+            
+            // ISS
+            altVizCtx.fillStyle = '#ffd700';
+            const issAngle = -Math.PI / 4;
+            const issX = earthX + Math.cos(issAngle) * issOrbitRadius;
+            const issY = earthY + Math.sin(issAngle) * issOrbitRadius;
+            altVizCtx.fillRect(issX - 15, issY - 3, 30, 6);
+            altVizCtx.fillRect(issX - 3, issY - 10, 6, 20);
+            
+            // Comparison boxes
+            const boxX = 350;
+            
+            // UFFT prediction
+            altVizCtx.fillStyle = 'rgba(0, 255, 150, 0.1)';
+            altVizCtx.strokeStyle = '#00ff96';
+            altVizCtx.lineWidth = 2;
+            altVizCtx.beginPath();
+            altVizCtx.roundRect(boxX, 30, 300, 100, 10);
+            altVizCtx.fill();
+            altVizCtx.stroke();
+            
+            altVizCtx.fillStyle = '#00ff96';
+            altVizCtx.font = 'bold 14px sans-serif';
+            altVizCtx.fillText('UFFT Prediction', boxX + 15, 55);
+            altVizCtx.fillStyle = '#fff';
+            altVizCtx.font = '13px sans-serif';
+            altVizCtx.fillText('ISS coherence time > Surface', boxX + 15, 80);
+            altVizCtx.fillText('τ(ISS)/τ(surface) ≈ 1 + 8×10⁻¹¹', boxX + 15, 100);
+            
+            // DP prediction
+            altVizCtx.fillStyle = 'rgba(255, 100, 100, 0.1)';
+            altVizCtx.strokeStyle = '#ff6464';
+            altVizCtx.beginPath();
+            altVizCtx.roundRect(boxX, 150, 300, 100, 10);
+            altVizCtx.fill();
+            altVizCtx.stroke();
+            
+            altVizCtx.fillStyle = '#ff6464';
+            altVizCtx.font = 'bold 14px sans-serif';
+            altVizCtx.fillText('Diosi-Penrose Prediction', boxX + 15, 175);
+            altVizCtx.fillStyle = '#fff';
+            altVizCtx.font = '13px sans-serif';
+            altVizCtx.fillText('ISS coherence time < Surface', boxX + 15, 200);
+            altVizCtx.fillText('τ(ISS)/τ(surface) ≈ 1 − 4×10⁻¹¹', boxX + 15, 220);
+            
+            // Labels
+            altVizCtx.fillStyle = '#00ff96';
+            altVizCtx.font = '11px sans-serif';
+            altVizCtx.fillText('Surface Lab', earthX + earthRadius + 10, earthY + 4);
+            
+            altVizCtx.fillStyle = '#ffd700';
+            altVizCtx.fillText('ISS (400 km)', issX + 20, issY - 15);
+        }
+        
+        // Initial draw
+        drawChart();
+        drawAltitudeViz();
+    </script>
+</body>
+</html>

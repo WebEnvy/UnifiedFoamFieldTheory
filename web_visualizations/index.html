@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFFT - Interactive Visualizations</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        h1 { 
+            font-size: 3rem; 
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7, #f107a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .axiom {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 30px;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,212,255,0.3);
+            border-color: #00d4ff;
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .card p {
+            color: #888;
+            line-height: 1.6;
+        }
+        
+        .card-tag {
+            display: inline-block;
+            background: rgba(123, 47, 247, 0.3);
+            color: #a78bfa;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 15px;
+        }
+        
+        .info-section {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 50px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .info-section h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .info-section p {
+            color: #888;
+            line-height: 1.8;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+        }
+        
+        .footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .links a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .links a:hover { color: #00d4ff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>The Unified Foam Field Theory</h1>
+            <p class="subtitle">Interactive Visualizations · Luke Martin · 2026</p>
+            <div class="axiom">B + V = D</div>
+        </div>
+        
+        <div class="cards">
+            <a href="01_foam_axiom_zero.html" class="card">
+                <div class="card-icon">⬡</div>
+                <h2>Axiom Zero & Foam Structure</h2>
+                <p>
+                    Interactive 3D visualization of the foam cell and the 
+                    fundamental B + V = D conservation law.
+                </p>
+                <span class="card-tag">3D Interactive</span>
+            </a>
+            
+            <a href="11_axiom_zero_animation.html" class="card">
+                <div class="card-icon">✨</div>
+                <h2>B + V = D Animation</h2>
+                <p>
+                    Watch void-pair creation in action. See bubbles displace, 
+                    voids form, and displacement connections propagate.
+                </p>
+                <span class="card-tag">Animated</span>
+            </a>
+            
+            <a href="02_bell_correlations.html" class="card">
+                <div class="card-icon">⚛</div>
+                <h2>Bell Correlations</h2>
+                <p>
+                    Explore how void-pair conservation produces E(a,b) = -cos(θ) — 
+                    matching quantum mechanics exactly while escaping Bell's theorem.
+                </p>
+                <span class="card-tag">Part IX</span>
+            </a>
+            
+            <a href="06_three_particle_cascade.html" class="card">
+                <div class="card-icon">🔺</div>
+                <h2>Three-Particle Cascade</h2>
+                <p>
+                    The formalised prediction: a new entanglement class 
+                    distinguishable from GHZ and W states with one measurement.
+                </p>
+                <span class="card-tag">Prediction 4</span>
+            </a>
+            
+            <a href="03_predictions_dashboard.html" class="card">
+                <div class="card-icon">📊</div>
+                <h2>Predictions Dashboard</h2>
+                <p>
+                    All 5 falsifiable predictions with experimental status, 
+                    falsification conditions, and verified results tracker.
+                </p>
+                <span class="card-tag">Appendix</span>
+            </a>
+            
+            <a href="04_gravity_density_gradient.html" class="card">
+                <div class="card-icon">🌐</div>
+                <h2>Gravity from Foam Density</h2>
+                <p>
+                    Interactive visualization showing how mass creates a vacuum 
+                    density gradient, recovering Φ = -GM/r exactly.
+                </p>
+                <span class="card-tag">Part I</span>
+            </a>
+            
+            <a href="05_decoherence_comparison.html" class="card">
+                <div class="card-icon">⚖️</div>
+                <h2>Decoherence: UFFT vs DP</h2>
+                <p>
+                    Compare UFFT and Diosi-Penrose predictions. Opposite signs, 
+                    distinguishable by experiment. Which model is right?
+                </p>
+                <span class="card-tag">Part VIII</span>
+            </a>
+            
+            <a href="07_cosmological_density.html" class="card">
+                <div class="card-icon">🌌</div>
+                <h2>Cosmological Density Budget</h2>
+                <p>
+                    Dark energy and dark matter derived from foam geometry alone. 
+                    Zero free parameters. Complete universe composition.
+                </p>
+                <span class="card-tag">Part XXI</span>
+            </a>
+            
+            <a href="08_double_slit_wake.html" class="card">
+                <div class="card-icon">〰️</div>
+                <h2>Double Slit: Foam Wake</h2>
+                <p>
+                    Watch particles create wakes that interfere. Toggle observer 
+                    to see pattern collapse. Wave-particle = wake-particle.
+                </p>
+                <span class="card-tag">Part IV</span>
+            </a>
+            
+            <a href="09_correspondence_principle.html" class="card">
+                <div class="card-icon">📉</div>
+                <h2>Correspondence Principle</h2>
+                <p>
+                    How non-linearity degrades with scale. Why linear mathematics 
+                    is correct at human scales. The ε parameter across 60 orders.
+                </p>
+                <span class="card-tag">Part VI</span>
+            </a>
+            
+            <a href="10_black_hole_entropy.html" class="card">
+                <div class="card-icon">🕳️</div>
+                <h2>Black Hole Entropy: 1/4</h2>
+                <p>
+                    Why S = A/4? Derived from foam geometry: 1 free face per 4 
+                    total faces at the horizon boundary. Plus the 2π factor.
+                </p>
+                <span class="card-tag">Part XIX</span>
+            </a>
+            
+            <a href="12_fine_structure_constant.html" class="card">
+                <div class="card-icon">α</div>
+                <h2>Fine Structure Constant</h2>
+                <p>
+                    The 100-year mystery. The 8π^(5/2) near-miss. Why continuous 
+                    math may never solve it. The primary open problem.
+                </p>
+                <span class="card-tag">Open Problem</span>
+            </a>
+        </div>
+        
+        <div class="info-section">
+            <h3>About These Visualizations</h3>
+            <p>
+                These interactive tools accompany the full UFFT documentation. Each visualization 
+                represents a mathematically verified component of the framework. The physics is 
+                derived from a single axiom — Void-Pair Conservation — which states that every 
+                bubble displacement creates a complementary void.
+            </p>
+            <p style="margin-top: 15px;">
+                All visualizations run entirely in the browser with no external dependencies. 
+                They are designed to be educational tools for understanding the core mechanisms 
+                of the theory.
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p>
+                <strong>The Unified Foam Field Theory</strong> · All Equations Verified
+            </p>
+            <div class="links">
+                <a href="https://doi.org/10.5281/zenodo.18706756">Decoherence Paper (DOI)</a>
+                <a href="https://doi.org/10.5281/zenodo.18706806">Bell Correlations Paper (DOI)</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem;">
+                AI Disclosure: Developed in collaboration with Claude (Anthropic)<br>
+                Ideas, theory, and direction: Luke Martin · Mathematical verification: Claude
+            </p>
+        </div>
+    </div>
+</body>
+</html>

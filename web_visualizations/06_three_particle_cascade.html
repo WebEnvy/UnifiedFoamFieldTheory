@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFFT - Three-Particle Cascade State</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { 
+            text-align: center; 
+            font-size: 2rem; 
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7, #f107a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { text-align: center; color: #888; margin-bottom: 30px; }
+        
+        .state-display {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .quantum-state {
+            font-size: 2.5rem;
+            font-family: 'Times New Roman', serif;
+            margin: 20px 0;
+            color: #00d4ff;
+        }
+        
+        .ket { color: #00ff96; }
+        .minus { color: #ff6464; margin: 0 15px; }
+        
+        .topology-viz {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .topology-diagram {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+        
+        .particle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .p1 { background: #00ff96; color: #000; top: 10px; left: 50%; transform: translateX(-50%); }
+        .p2 { background: #00d4ff; color: #000; bottom: 30px; left: 20px; }
+        .p3 { background: #f107a3; color: #fff; bottom: 30px; right: 20px; }
+        
+        .connection {
+            position: absolute;
+            background: linear-gradient(90deg, #ffd700, #ff8c00);
+            height: 3px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            border-collapse: collapse;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .comparison-table th {
+            background: rgba(0,212,255,0.2);
+            color: #00d4ff;
+            font-size: 1.1rem;
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .state-ghz { color: #ff6464; }
+        .state-w { color: #ffd700; }
+        .state-foam { color: #00ff96; }
+        
+        .discriminator-box {
+            background: linear-gradient(135deg, rgba(0,255,150,0.2), rgba(0,212,255,0.2));
+            border: 2px solid #00ff96;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .discriminator-box h3 {
+            color: #00ff96;
+            margin-bottom: 15px;
+        }
+        
+        .measurement {
+            font-size: 2rem;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .result-card {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .result-card.ghz { background: rgba(255, 100, 100, 0.2); border: 2px solid #ff6464; }
+        .result-card.w { background: rgba(255, 215, 0, 0.2); border: 2px solid #ffd700; }
+        .result-card.foam { background: rgba(0, 255, 150, 0.2); border: 2px solid #00ff96; }
+        
+        .result-value {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        
+        .result-card.ghz .result-value { color: #ff6464; }
+        .result-card.w .result-value { color: #ffd700; }
+        .result-card.foam .result-value { color: #00ff96; }
+        
+        .formula {
+            background: rgba(123, 47, 247, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            border-left: 4px solid #7b2ff7;
+        }
+        
+        .animation-container {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .experiment-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .experiment-section h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Three-Particle Cascade State</h1>
+        <p class="subtitle">Prediction 4 — A Topologically Distinct Entanglement Class</p>
+        
+        <div class="state-display">
+            <p style="color: #888; margin-bottom: 15px;">The foam cascade state:</p>
+            <div class="quantum-state">
+                |Ψ<sub>foam</sub>⟩ = <span style="font-size: 1.5rem;">1/√2</span> ( <span class="ket">|010⟩</span> <span class="minus">−</span> <span class="ket">|101⟩</span> )
+            </div>
+            <p style="color: #888; margin-top: 20px;">
+                This is <strong>neither GHZ nor W</strong> — it is a distinct entanglement class<br>
+                forced by the cascade geometry of void-pair creation.
+            </p>
+        </div>
+        
+        <div class="animation-container">
+            <canvas id="cascade-canvas" width="700" height="300"></canvas>
+        </div>
+        
+        <div class="discriminator-box">
+            <h3>The Single-Setting Discriminator</h3>
+            <p>Measure all three particles in the X basis simultaneously:</p>
+            <div class="measurement">⟨X ⊗ X ⊗ X⟩</div>
+            
+            <div class="result-grid">
+                <div class="result-card ghz">
+                    <div style="font-weight: bold; margin-bottom: 10px;">GHZ State</div>
+                    <div class="result-value">+1</div>
+                </div>
+                <div class="result-card w">
+                    <div style="font-weight: bold; margin-bottom: 10px;">W State</div>
+                    <div class="result-value">0</div>
+                </div>
+                <div class="result-card foam">
+                    <div style="font-weight: bold; margin-bottom: 10px;">Foam Cascade</div>
+                    <div class="result-value">−1</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; color: #888;">
+                A single measurement setting distinguishes all three states.
+            </p>
+        </div>
+        
+        <div class="experiment-section">
+            <h3>The Three Standard States Compared</h3>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>State</th>
+                    <th>Definition</th>
+                    <th>⟨X⊗X⊗X⟩</th>
+                    <th>Physical Origin</th>
+                </tr>
+                <tr>
+                    <td class="state-ghz" style="font-weight: bold;">GHZ</td>
+                    <td style="font-family: monospace; font-size: 0.9rem;">
+                        1/√2 (|000⟩ + |111⟩)
+                    </td>
+                    <td style="font-size: 1.5rem; font-weight: bold;" class="state-ghz">+1</td>
+                    <td>Simultaneous creation</td>
+                </tr>
+                <tr>
+                    <td class="state-w" style="font-weight: bold;">W</td>
+                    <td style="font-family: monospace; font-size: 0.9rem;">
+                        1/√3 (|001⟩ + |010⟩ + |100⟩)
+                    </td>
+                    <td style="font-size: 1.5rem; font-weight: bold;" class="state-w">0</td>
+                    <td>Symmetric superposition</td>
+                </tr>
+                <tr>
+                    <td class="state-foam" style="font-weight: bold;">Foam Cascade</td>
+                    <td style="font-family: monospace; font-size: 0.9rem;">
+                        1/√2 (|010⟩ − |101⟩)
+                    </td>
+                    <td style="font-size: 1.5rem; font-weight: bold;" class="state-foam">−1</td>
+                    <td>Sequential void-pair cascade</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="experiment-section">
+            <h3>Experimental Protocol</h3>
+            <div class="formula">
+                Cascaded SPDC: Signal photon from first crystal pumps second crystal
+            </div>
+            <ol style="line-height: 2; padding-left: 25px; color: #aaa;">
+                <li>Generate entangled pair via spontaneous parametric down-conversion (SPDC)</li>
+                <li>Route signal photon to pump second nonlinear crystal</li>
+                <li>Second crystal produces second entangled pair</li>
+                <li>Three output photons share topological void-pair connection</li>
+                <li>Measure X⊗X⊗X correlations across all three</li>
+            </ol>
+            
+            <div style="background: rgba(255,100,100,0.1); border: 1px solid #ff6464; border-radius: 10px; padding: 15px; margin-top: 20px;">
+                <strong style="color: #ff6464;">Falsification Condition:</strong><br>
+                ⟨X⊗X⊗X⟩ ≠ −1 falsifies the foam cascade topology.<br>
+                Any result consistent with GHZ (+1) or W (0) falsifies it.
+            </div>
+        </div>
+        
+        <div class="experiment-section">
+            <h3>Why This State?</h3>
+            <p style="line-height: 1.8; color: #aaa;">
+                In the foam model, the first void-pair creation produces particles 1 and 2 as antipodal 
+                complements. When particle 2 triggers the second creation event, particles 2 and 3 
+                become antipodal complements. But particle 2 is now shared between both events — 
+                it is simultaneously the void of the first event and the bubble of the second.
+            </p>
+            <p style="line-height: 1.8; color: #aaa; margin-top: 15px;">
+                This topological constraint forces the specific superposition |010⟩ − |101⟩, 
+                where the middle particle (2) is always in the opposite state from the outer particles.
+                The minus sign comes from the void-pair antisymmetry inherited from the singlet.
+            </p>
+        </div>
+        
+        <div class="footer">
+            The Unified Foam Field Theory · Prediction 4 · Formalised February 2026<br>
+            <small>Three distinct states, one measurement, zero ambiguity.</small>
+        </div>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById('cascade-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let time = 0;
+        
+        function drawCascade() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const centerY = canvas.height / 2;
+            
+            // Animation phase
+            const phase = (Math.sin(time * 0.02) + 1) / 2;
+            
+            // First pair creation
+            const pair1X = 150;
+            const particle1Y = centerY - 60 - phase * 20;
+            const particle2Y = centerY + 60 + phase * 20;
+            
+            // Draw void-pair connection 1
+            ctx.strokeStyle = '#ffd700';
+            ctx.lineWidth = 3;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(pair1X, particle1Y);
+            ctx.lineTo(pair1X, particle2Y);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Particle 1 (Bubble)
+            ctx.beginPath();
+            ctx.arc(pair1X, particle1Y, 25, 0, Math.PI * 2);
+            ctx.fillStyle = '#00ff96';
+            ctx.fill();
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 16px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('B₁', pair1X, particle1Y);
+            
+            // Particle 2 (Void of first, Bubble of second)
+            ctx.beginPath();
+            ctx.arc(pair1X, particle2Y, 25, 0, Math.PI * 2);
+            const gradient = ctx.createLinearGradient(pair1X - 25, particle2Y, pair1X + 25, particle2Y);
+            gradient.addColorStop(0, '#ff6464');
+            gradient.addColorStop(1, '#00d4ff');
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            ctx.fillStyle = '#fff';
+            ctx.fillText('V₁/B₂', pair1X, particle2Y);
+            
+            // Arrow to second creation
+            ctx.strokeStyle = '#888';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(pair1X + 50, particle2Y);
+            ctx.lineTo(pair1X + 150, particle2Y);
+            ctx.stroke();
+            
+            // Arrow head
+            ctx.beginPath();
+            ctx.moveTo(pair1X + 150, particle2Y);
+            ctx.lineTo(pair1X + 140, particle2Y - 8);
+            ctx.lineTo(pair1X + 140, particle2Y + 8);
+            ctx.closePath();
+            ctx.fillStyle = '#888';
+            ctx.fill();
+            
+            // Second pair creation
+            const pair2X = 350;
+            const particle2bY = particle2Y;
+            const particle3Y = centerY - 60 - phase * 20;
+            
+            // Draw void-pair connection 2
+            ctx.strokeStyle = '#ffd700';
+            ctx.lineWidth = 3;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(pair2X, particle2bY);
+            ctx.lineTo(pair2X + 100, particle3Y);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Particle 2 position at cascade
+            ctx.beginPath();
+            ctx.arc(pair2X, particle2bY, 25, 0, Math.PI * 2);
+            ctx.fillStyle = '#00d4ff';
+            ctx.fill();
+            ctx.fillStyle = '#000';
+            ctx.fillText('B₂', pair2X, particle2bY);
+            
+            // Particle 3 (Void)
+            ctx.beginPath();
+            ctx.arc(pair2X + 100, particle3Y, 25, 0, Math.PI * 2);
+            ctx.fillStyle = '#f107a3';
+            ctx.fill();
+            ctx.fillStyle = '#fff';
+            ctx.fillText('V₂', pair2X + 100, particle3Y);
+            
+            // Output state
+            ctx.fillStyle = '#00d4ff';
+            ctx.font = '18px sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Output:', 520, 80);
+            
+            ctx.font = '24px Times New Roman';
+            ctx.fillStyle = '#00ff96';
+            ctx.fillText('|Ψ⟩ = (|010⟩ − |101⟩)/√2', 520, 120);
+            
+            // Particle labels
+            ctx.fillStyle = '#888';
+            ctx.font = '14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Particle 1', pair1X, particle1Y - 40);
+            ctx.fillText('Particle 2', pair2X, particle2bY + 45);
+            ctx.fillText('Particle 3', pair2X + 100, particle3Y - 40);
+            
+            // Creation event labels
+            ctx.fillStyle = '#ffd700';
+            ctx.fillText('D₁', pair1X - 40, centerY);
+            ctx.fillText('D₂', pair2X + 50, (particle2bY + particle3Y) / 2);
+            
+            time++;
+            requestAnimationFrame(drawCascade);
+        }
+        
+        drawCascade();
+    </script>
+</body>
+</html>

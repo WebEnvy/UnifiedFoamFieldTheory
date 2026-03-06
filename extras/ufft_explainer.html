@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFFT Explained for Everyone</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: linear-gradient(180deg, #0a0e1a 0%, #0d1525 50%, #0a0e1a 100%);
+            min-height: 100vh;
+        }
+        #root { min-height: 100vh; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+const SECTIONS = [
+  { id: "axiom", title: "The One Rule", subtitle: "Everything starts here" },
+  { id: "foam", title: "The Foam", subtitle: "Space isn't empty" },
+  { id: "gravity", title: "Gravity", subtitle: "A push, not a pull" },
+  { id: "shape", title: "The Shape", subtitle: "Nature's perfect bubble" },
+  { id: "darkmatter", title: "Dark Matter", subtitle: "Skin vs filling" },
+  { id: "alpha", title: "The Number", subtitle: "137 from geometry" },
+  { id: "predictions", title: "Prove It", subtitle: "5 ways to test this" },
+];
+
+function BubbleVoidCanvas({ width = 400, height = 300 }) {
+  const canvasRef = useRef(null);
+  const frameRef = useRef(0);
+  const [triggered, setTriggered] = useState(false);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let animFrame;
+    let t = 0;
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      t += 0.02;
+
+      ctx.fillStyle = "rgba(180, 200, 220, 0.15)";
+      for (let i = 0; i < 80; i++) {
+        const x = ((i * 37 + Math.sin(t + i * 0.3) * 8) % width + width) % width;
+        const y = ((i * 23 + Math.cos(t + i * 0.5) * 6) % height + height) % height;
+        ctx.beginPath();
+        ctx.arc(x, y, 2 + Math.sin(t + i) * 0.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      const cx = width / 2;
+      const cy = height / 2;
+
+      if (!triggered) {
+        ctx.fillStyle = "rgba(100, 160, 220, 0.08)";
+        for (let i = 0; i < 30; i++) {
+          const angle = (i / 30) * Math.PI * 2 + t * 0.3;
+          const r = 40 + Math.sin(t * 2 + i) * 5;
+          ctx.beginPath();
+          ctx.arc(cx + Math.cos(angle) * r, cy + Math.sin(angle) * r, 4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+        ctx.font = "14px Georgia";
+        ctx.textAlign = "center";
+        ctx.fillText("tap to displace", cx, height - 20);
+      } else {
+        const progress = Math.min((t - frameRef.current) * 1.5, 1);
+        const spread = progress * 80;
+
+        const bx = cx - spread;
+        const bSize = 18 + Math.sin(t * 3) * 2;
+        const grad1 = ctx.createRadialGradient(bx, cy, 0, bx, cy, bSize);
+        grad1.addColorStop(0, "rgba(80, 160, 255, 0.9)");
+        grad1.addColorStop(1, "rgba(80, 160, 255, 0.1)");
+        ctx.fillStyle = grad1;
+        ctx.beginPath();
+        ctx.arc(bx, cy, bSize, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 20px Georgia";
+        ctx.textAlign = "center";
+        ctx.fillText("B", bx, cy + 7);
+
+        const vx = cx + spread;
+        const vSize = 18 + Math.sin(t * 3 + 1) * 2;
+        const grad2 = ctx.createRadialGradient(vx, cy, 0, vx, cy, vSize);
+        grad2.addColorStop(0, "rgba(20, 20, 40, 0.9)");
+        grad2.addColorStop(1, "rgba(20, 20, 40, 0.1)");
+        ctx.fillStyle = grad2;
+        ctx.beginPath();
+        ctx.arc(vx, cy, vSize, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "#aaa";
+        ctx.font = "bold 20px Georgia";
+        ctx.fillText("V", vx, cy + 7);
+
+        if (progress > 0.3) {
+          const alpha = Math.min((progress - 0.3) * 2, 1);
+          ctx.fillStyle = `rgba(255, 200, 100, ${alpha})`;
+          ctx.font = "bold 24px Georgia";
+          ctx.fillText("D", cx, cy + 8);
+          ctx.strokeStyle = `rgba(255, 200, 100, ${alpha * 0.4})`;
+          ctx.lineWidth = 1;
+          ctx.setLineDash([4, 4]);
+          ctx.beginPath();
+          ctx.moveTo(bx + bSize, cy);
+          ctx.lineTo(vx - vSize, cy);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        if (progress > 0.6) {
+          const alpha = Math.min((progress - 0.6) * 2.5, 1);
+          ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+          ctx.font = "italic 16px Georgia";
+          ctx.fillText("B + V = D", cx, cy + 55);
+          ctx.font = "12px Georgia";
+          ctx.fillStyle = `rgba(200, 200, 200, ${alpha * 0.7})`;
+          ctx.fillText("bubble + void = displacement", cx, cy + 75);
+        }
+
+        for (let ring = 0; ring < 3; ring++) {
+          const ringProgress = Math.max(0, progress - ring * 0.15);
+          if (ringProgress > 0) {
+            const r = ringProgress * 120;
+            const alpha = Math.max(0, 0.3 - ringProgress * 0.3);
+            ctx.strokeStyle = `rgba(255, 200, 100, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(cx, cy, r, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
+
+        if (progress >= 1 && t - frameRef.current > 3) {
+          setTriggered(false);
+        }
+      }
+      animFrame = requestAnimationFrame(draw);
+    }
+    draw();
+    return () => cancelAnimationFrame(animFrame);
+  }, [triggered, width, height]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      width={width}
+      height={height}
+      onClick={() => {
+        if (!triggered) {
+          setTriggered(true);
+          frameRef.current = performance.now() / 1000 * 0.02;
+        }
+      }}
+      style={{ cursor: triggered ? "default" : "pointer", borderRadius: 12, display: "block", margin: "0 auto" }}
+    />
+  );
+}
+
+function FoamCanvas({ width = 400, height = 260 }) {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let animFrame;
+    let t = 0;
+
+    const cells = [];
+    for (let i = 0; i < 60; i++) {
+      cells.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: 15 + Math.random() * 15,
+        phase: Math.random() * Math.PI * 2,
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      t += 0.015;
+
+      cells.forEach((cell) => {
+        const pulse = 1 + Math.sin(t * 2 + cell.phase) * 0.1;
+        const r = cell.r * pulse;
+        const grad = ctx.createRadialGradient(cell.x, cell.y, 0, cell.x, cell.y, r);
+        grad.addColorStop(0, "rgba(60, 120, 180, 0.15)");
+        grad.addColorStop(0.7, "rgba(60, 120, 180, 0.05)");
+        grad.addColorStop(1, "rgba(60, 120, 180, 0)");
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(cell.x, cell.y, r, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = "rgba(100, 160, 220, 0.2)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(cell.x, cell.y, r * 0.9, 0, Math.PI * 2);
+        ctx.stroke();
+      });
+
+      ctx.fillStyle = "rgba(255, 200, 100, 0.6)";
+      ctx.font = "11px Georgia";
+      ctx.textAlign = "center";
+      ctx.fillText("Each bubble touches its neighbours — no gaps, no overlaps", width / 2, height - 15);
+
+      animFrame = requestAnimationFrame(draw);
+    }
+    draw();
+    return () => cancelAnimationFrame(animFrame);
+  }, [width, height]);
+
+  return <canvas ref={canvasRef} width={width} height={height} style={{ borderRadius: 12, display: "block", margin: "0 auto" }} />;
+}
+
+function GravityCanvas({ width = 400, height = 280 }) {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let animFrame;
+    let t = 0;
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      t += 0.02;
+
+      const massX = width / 2;
+      const massY = height / 2;
+      const massR = 35;
+
+      for (let ring = 1; ring <= 6; ring++) {
+        const r = massR + ring * 30;
+        const density = 1 - ring * 0.12;
+        ctx.strokeStyle = `rgba(60, 120, 180, ${density * 0.3})`;
+        ctx.lineWidth = 8 - ring;
+        ctx.beginPath();
+        ctx.arc(massX, massY, r, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      const grad = ctx.createRadialGradient(massX, massY, 0, massX, massY, massR);
+      grad.addColorStop(0, "#ffd700");
+      grad.addColorStop(1, "#b8860b");
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(massX, massY, massR, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#fff";
+      ctx.font = "bold 16px Georgia";
+      ctx.textAlign = "center";
+      ctx.fillText("M", massX, massY + 6);
+
+      const numArrows = 8;
+      for (let i = 0; i < numArrows; i++) {
+        const angle = (i / numArrows) * Math.PI * 2 + t * 0.3;
+        const startR = massR + 120;
+        const endR = massR + 50;
+        const sx = massX + Math.cos(angle) * startR;
+        const sy = massY + Math.sin(angle) * startR;
+        const ex = massX + Math.cos(angle) * endR;
+        const ey = massY + Math.sin(angle) * endR;
+
+        ctx.strokeStyle = "rgba(255, 100, 100, 0.6)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(ex, ey);
+        ctx.stroke();
+
+        const arrowLen = 8;
+        const arrowAngle = angle + Math.PI;
+        ctx.fillStyle = "rgba(255, 100, 100, 0.8)";
+        ctx.beginPath();
+        ctx.moveTo(ex, ey);
+        ctx.lineTo(ex + Math.cos(arrowAngle - 0.4) * arrowLen, ey + Math.sin(arrowAngle - 0.4) * arrowLen);
+        ctx.lineTo(ex + Math.cos(arrowAngle + 0.4) * arrowLen, ey + Math.sin(arrowAngle + 0.4) * arrowLen);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      ctx.fillStyle = "rgba(255, 200, 100, 0.7)";
+      ctx.font = "12px Georgia";
+      ctx.fillText("Dense foam pushes → Less dense near mass", width / 2, height - 15);
+
+      animFrame = requestAnimationFrame(draw);
+    }
+    draw();
+    return () => cancelAnimationFrame(animFrame);
+  }, [width, height]);
+
+  return <canvas ref={canvasRef} width={width} height={height} style={{ borderRadius: 12, display: "block", margin: "0 auto" }} />;
+}
+
+function ShapeCanvas({ width = 400, height = 300 }) {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let animFrame;
+    let angle = 0;
+
+    const vertices = [
+      [0, 1, 2], [0, 1, -2], [0, -1, 2], [0, -1, -2],
+      [0, 2, 1], [0, 2, -1], [0, -2, 1], [0, -2, -1],
+      [1, 0, 2], [1, 0, -2], [-1, 0, 2], [-1, 0, -2],
+      [2, 0, 1], [2, 0, -1], [-2, 0, 1], [-2, 0, -1],
+      [1, 2, 0], [1, -2, 0], [-1, 2, 0], [-1, -2, 0],
+      [2, 1, 0], [2, -1, 0], [-2, 1, 0], [-2, -1, 0]
+    ].map(v => v.map(c => c * 40));
+
+    const edges = [];
+    for (let i = 0; i < vertices.length; i++) {
+      for (let j = i + 1; j < vertices.length; j++) {
+        const d = Math.sqrt(
+          (vertices[i][0] - vertices[j][0]) ** 2 +
+          (vertices[i][1] - vertices[j][1]) ** 2 +
+          (vertices[i][2] - vertices[j][2]) ** 2
+        );
+        if (Math.abs(d - 80) < 5) edges.push([i, j]);
+      }
+    }
+
+    function rotateY(v, a) {
+      return [v[0] * Math.cos(a) + v[2] * Math.sin(a), v[1], -v[0] * Math.sin(a) + v[2] * Math.cos(a)];
+    }
+    function rotateX(v, a) {
+      return [v[0], v[1] * Math.cos(a) - v[2] * Math.sin(a), v[1] * Math.sin(a) + v[2] * Math.cos(a)];
+    }
+    function project(v) {
+      const scale = 200 / (200 + v[2]);
+      return [width / 2 + v[0] * scale, height / 2 + v[1] * scale, v[2]];
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      angle += 0.008;
+
+      const rotated = vertices.map(v => project(rotateX(rotateY(v, angle), angle * 0.7)));
+
+      edges.forEach(([i, j]) => {
+        const avgZ = (rotated[i][2] + rotated[j][2]) / 2;
+        const alpha = 0.3 + (100 + avgZ) / 300;
+        ctx.strokeStyle = `rgba(80, 180, 255, ${Math.min(alpha, 0.8)})`;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(rotated[i][0], rotated[i][1]);
+        ctx.lineTo(rotated[j][0], rotated[j][1]);
+        ctx.stroke();
+      });
+
+      rotated.forEach((v, i) => {
+        const alpha = 0.4 + (100 + v[2]) / 250;
+        ctx.fillStyle = `rgba(100, 200, 255, ${Math.min(alpha, 1)})`;
+        ctx.beginPath();
+        ctx.arc(v[0], v[1], 3, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.fillStyle = "rgba(255, 200, 100, 0.7)";
+      ctx.font = "12px Georgia";
+      ctx.textAlign = "center";
+      ctx.fillText("14 faces · 24 vertices · 48 symmetries", width / 2, height - 15);
+
+      animFrame = requestAnimationFrame(draw);
+    }
+    draw();
+    return () => cancelAnimationFrame(animFrame);
+  }, [width, height]);
+
+  return <canvas ref={canvasRef} width={width} height={height} style={{ borderRadius: 12, display: "block", margin: "0 auto" }} />;
+}
+
+function DarkMatterCanvas({ width = 400, height = 240 }) {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let animFrame;
+    let t = 0;
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      t += 0.02;
+
+      const leftX = width * 0.28;
+      const rightX = width * 0.72;
+      const centerY = height * 0.45;
+      const r = 55;
+
+      const pulse = 1 + Math.sin(t * 2) * 0.03;
+      const grad1 = ctx.createRadialGradient(leftX, centerY, 0, leftX, centerY, r * pulse);
+      grad1.addColorStop(0, "rgba(80, 140, 220, 0.8)");
+      grad1.addColorStop(0.7, "rgba(80, 140, 220, 0.4)");
+      grad1.addColorStop(1, "rgba(80, 140, 220, 0.1)");
+      ctx.fillStyle = grad1;
+      ctx.beginPath();
+      ctx.arc(leftX, centerY, r * pulse, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "#fff";
+      ctx.font = "bold 14px Georgia";
+      ctx.textAlign = "center";
+      ctx.fillText("Volume", leftX, centerY + 5);
+      ctx.font = "11px Georgia";
+      ctx.fillStyle = "rgba(255,255,255,0.6)";
+      ctx.fillText("(regular matter)", leftX, centerY + 20);
+
+      ctx.strokeStyle = "rgba(180, 100, 220, 0.9)";
+      ctx.lineWidth = 8 + Math.sin(t * 2) * 1;
+      ctx.beginPath();
+      ctx.arc(rightX, centerY, r * pulse, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.fillStyle = "rgba(180, 100, 220, 0.1)";
+      ctx.beginPath();
+      ctx.arc(rightX, centerY, r * pulse - 10, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "#fff";
+      ctx.font = "bold 14px Georgia";
+      ctx.fillText("Surface", rightX, centerY + 5);
+      ctx.font = "11px Georgia";
+      ctx.fillStyle = "rgba(255,255,255,0.6)";
+      ctx.fillText("(dark matter)", rightX, centerY + 20);
+
+      ctx.fillStyle = "rgba(255, 200, 100, 0.8)";
+      ctx.font = "bold 16px Georgia";
+      ctx.fillText("Ratio: 5.31", width / 2, height - 35);
+      ctx.font = "12px Georgia";
+      ctx.fillStyle = "rgba(255, 200, 100, 0.6)";
+      ctx.fillText("Observed: 5.36 ± 0.05", width / 2, height - 15);
+
+      animFrame = requestAnimationFrame(draw);
+    }
+    draw();
+    return () => cancelAnimationFrame(animFrame);
+  }, [width, height]);
+
+  return <canvas ref={canvasRef} width={width} height={height} style={{ borderRadius: 12, display: "block", margin: "0 auto" }} />;
+}
+
+function SectionAxiom() {
+  return (
+    <div>
+      <BubbleVoidCanvas width={380} height={280} />
+      <p style={{ fontSize: 18, lineHeight: 1.8, color: "#c8d8e8", marginTop: 24 }}>
+        One rule explains everything: <strong style={{ color: "#ffc864" }}>B + V = D</strong>
+      </p>
+      <p style={{ fontSize: 16, lineHeight: 1.8, color: "#a0b8d0", marginTop: 12 }}>
+        When something moves (<strong>B</strong>ubble), it leaves behind an absence (<strong>V</strong>oid). 
+        The movement itself is <strong>D</strong>isplacement. You cannot have presence without absence. 
+        Every action creates its opposite.
+      </p>
+    </div>
+  );
+}
+
+function SectionFoam() {
+  return (
+    <div>
+      <FoamCanvas width={380} height={240} />
+      <p style={{ fontSize: 18, lineHeight: 1.8, color: "#c8d8e8", marginTop: 20 }}>
+        Space isn't empty. It's packed with <strong style={{ color: "#ffc864" }}>bubbles</strong> — 
+        so small you can't see them, so dense you can't feel them.
+      </p>
+      <div style={{ background: "rgba(255,200,100,0.06)", borderRadius: 10, padding: 16, margin: "16px 0" }}>
+        <p style={{ color: "#ffc864", fontSize: 14, margin: 0, textAlign: "center" }}>
+          Density: 5.155 × 10⁹⁶ kg/m³
+        </p>
+        <p style={{ color: "#a0b8d0", fontSize: 12, margin: "8px 0 0", textAlign: "center" }}>
+          More mass per cubic metre than all the stars in the universe
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function SectionGravity() {
+  return (
+    <div>
+      <GravityCanvas width={380} height={260} />
+      <p style={{ fontSize: 18, lineHeight: 1.8, color: "#c8d8e8", marginTop: 20 }}>
+        Gravity isn't a mysterious pull. It's a <strong style={{ color: "#ff8888" }}>push</strong>.
+      </p>
+      <p style={{ fontSize: 16, lineHeight: 1.8, color: "#a0b8d0", marginTop: 12 }}>
+        Mass thins the foam around it. The denser foam behind you pushes harder than 
+        the thinner foam between you and Earth. You're pushed down, not pulled.
+      </p>
+    </div>
+  );
+}
+
+function SectionShape() {
+  return (
+    <div>
+      <ShapeCanvas width={380} height={280} />
+      <p style={{ fontSize: 18, lineHeight: 1.8, color: "#c8d8e8", marginTop: 16 }}>
+        Every bubble in the foam is the same shape: the <strong style={{ color: "#ffc864" }}>truncated octahedron</strong>.
+      </p>
+      <p style={{ fontSize: 16, lineHeight: 1.8, color: "#a0b8d0", marginTop: 12 }}>
+        It's the most efficient way to pack bubbles — minimum surface area, no gaps. 
+        Bees use it. The universe uses it. This shape determines the laws of physics.
+      </p>
+    </div>
+  );
+}
+
+function SectionDarkMatter() {
+  return (
+    <div>
+      <DarkMatterCanvas width={380} height={220} />
+      <p style={{ fontSize: 18, lineHeight: 1.8, color: "#c8d8e8", marginTop: 16 }}>
+        Regular matter is about <strong style={{ color: "#5aadff" }}>volume</strong>. 
+        Dark matter is about <strong style={{ color: "#b864ff" }}>surface</strong>.
+      </p>
+      <p style={{ fontSize: 16, lineHeight: 1.8, color: "#a0b8d0", marginTop: 12 }}>
+        The walls between bubbles have energy too. That energy pulls on galaxies 
+        without glowing. No exotic particles needed — just the bubble walls.
+      </p>
+    </div>
+  );
+}
+
+function SectionAlpha() {
+  return (
+    <div>
+      <p style={{ fontSize: 18, lineHeight: 1.8, color: "#c8d8e8", marginBottom: 20 }}>
+        The number <strong style={{ color: "#ffcc66" }}>137</strong> haunted physicists for a century. 
+        It measures how strongly light interacts with matter. Nobody could explain it.
+      </p>
+      <div style={{
+        background: "rgba(255, 200, 100, 0.04)",
+        border: "1px solid rgba(255, 200, 100, 0.12)",
+        borderRadius: 12,
+        padding: "24px 20px",
+        textAlign: "center",
+        margin: "20px 0",
+      }}>
+        <p style={{ color: "#a0b8d0", fontSize: 13, margin: "0 0 12px 0" }}>THE FORMULA</p>
+        <p style={{ color: "#ffcc66", fontSize: 20, fontFamily: "Georgia", margin: "0 0 4px 0", fontWeight: "bold" }}>
+          α⁻¹ = 8π^(5/2) × (47/48 + correction)
+        </p>
+        <p style={{ color: "#ffc864", fontSize: 28, fontFamily: "Georgia", margin: "12px 0 4px", fontWeight: "bold" }}>
+          = 137.036
+        </p>
+        <p style={{ color: "#a0b8d0", fontSize: 13, margin: "4px 0 0" }}>measured: 137.035999</p>
+      </div>
+      <p style={{ fontSize: 15, lineHeight: 1.8, color: "#a0b8d0" }}>
+        <strong style={{ color: "#ffcc66" }}>47/48</strong> — the bubble has 48 symmetries, but one is "do nothing." 
+        That's not a real displacement. So 47 count.
+      </p>
+    </div>
+  );
+}
+
+function SectionPredictions() {
+  const predictions = [
+    { num: 1, name: "Gravity slows decoherence", desc: "Quantum computers in orbit should stay coherent longer.", cost: "Lab access", color: "#5aadff" },
+    { num: 2, name: "Same effect for every qubit", desc: "Ion traps, superconductors, photons — all show the same effect.", cost: "Lab access", color: "#88ccff" },
+    { num: 3, name: "Layer-count scaling", desc: "Stack aluminium foil and wool, measure temperature. Linear or √N?", cost: "Under $200", color: "#c8a0e8" },
+    { num: 4, name: "Three-particle cascade", desc: "A specific quantum pattern standard theory doesn't predict.", cost: "Lab access", color: "#ffc864" },
+    { num: 5, name: "Speed-of-light variation", desc: "Light travels slightly differently at extreme energies.", cost: "Existing data", color: "#ff8888" },
+  ];
+
+  return (
+    <div>
+      <p style={{ fontSize: 18, lineHeight: 1.8, color: "#c8d8e8", marginBottom: 24 }}>
+        A theory that can't be proven wrong isn't science. Here are five tests:
+      </p>
+      {predictions.map((p) => (
+        <div key={p.num} style={{
+          background: "rgba(255,255,255,0.03)",
+          border: `1px solid ${p.color}22`,
+          borderLeft: `3px solid ${p.color}`,
+          borderRadius: 8,
+          padding: "14px 16px",
+          marginBottom: 12,
+        }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+            <span style={{ color: p.color, fontWeight: "bold", fontSize: 14 }}>#{p.num} — {p.name}</span>
+            <span style={{ color: "rgba(255,255,255,0.35)", fontSize: 11, background: "rgba(255,255,255,0.05)", padding: "2px 8px", borderRadius: 20 }}>{p.cost}</span>
+          </div>
+          <p style={{ color: "#a0b8d0", fontSize: 13, margin: 0, lineHeight: 1.6 }}>{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const SECTION_COMPONENTS = {
+  axiom: SectionAxiom,
+  foam: SectionFoam,
+  gravity: SectionGravity,
+  shape: SectionShape,
+  darkmatter: SectionDarkMatter,
+  alpha: SectionAlpha,
+  predictions: SectionPredictions,
+};
+
+function UFTExplainer() {
+  const [activeSection, setActiveSection] = useState(0);
+  const ActiveContent = SECTION_COMPONENTS[SECTIONS[activeSection].id];
+
+  return (
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(180deg, #0a0e1a 0%, #0d1525 50%, #0a0e1a 100%)",
+      color: "#e0e8f0",
+      fontFamily: "Georgia, 'Times New Roman', serif",
+      padding: 0,
+      margin: 0,
+    }}>
+      <div style={{ textAlign: "center", padding: "32px 20px 0" }}>
+        <h1 style={{ fontSize: 26, fontWeight: "normal", color: "#fff", margin: 0, letterSpacing: 2 }}>
+          THE UNIFIED FOAM FIELD THEORY
+        </h1>
+        <p style={{ color: "rgba(255, 200, 100, 0.7)", fontSize: 13, marginTop: 6, letterSpacing: 3 }}>
+          EXPLAINED FOR EVERYONE
+        </p>
+        <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 11, marginTop: 4 }}>
+          by Luke Martin · 2026
+        </p>
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "center", gap: 8, padding: "20px 10px 12px", flexWrap: "wrap", maxWidth: 460, margin: "0 auto" }}>
+        {SECTIONS.map((s, i) => (
+          <button
+            key={s.id}
+            onClick={() => setActiveSection(i)}
+            style={{
+              background: i === activeSection ? "rgba(255, 200, 100, 0.2)" : "rgba(255,255,255,0.05)",
+              border: i === activeSection ? "1px solid rgba(255, 200, 100, 0.4)" : "1px solid rgba(255,255,255,0.08)",
+              borderRadius: 20,
+              padding: "6px 14px",
+              color: i === activeSection ? "#ffc864" : "rgba(255,255,255,0.45)",
+              fontSize: 11,
+              cursor: "pointer",
+              fontFamily: "Georgia",
+            }}
+          >
+            {s.title}
+          </button>
+        ))}
+      </div>
+
+      <div style={{ textAlign: "center", padding: "12px 20px 0" }}>
+        <h2 style={{ fontSize: 24, color: "#fff", margin: 0, fontWeight: "normal" }}>
+          {SECTIONS[activeSection].title}
+        </h2>
+        <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, marginTop: 4 }}>
+          {SECTIONS[activeSection].subtitle}
+        </p>
+      </div>
+
+      <div style={{ maxWidth: 420, margin: "16px auto 0", padding: "0 20px 24px" }}>
+        <ActiveContent />
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, padding: "8px 0 32px" }}>
+        <button
+          onClick={() => setActiveSection(Math.max(0, activeSection - 1))}
+          disabled={activeSection === 0}
+          style={{
+            background: "rgba(255,255,255,0.05)",
+            border: "1px solid rgba(255,255,255,0.1)",
+            borderRadius: 8,
+            padding: "8px 20px",
+            color: activeSection === 0 ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.6)",
+            cursor: activeSection === 0 ? "default" : "pointer",
+            fontFamily: "Georgia",
+            fontSize: 13,
+          }}
+        >
+          ← previous
+        </button>
+        <button
+          onClick={() => setActiveSection(Math.min(SECTIONS.length - 1, activeSection + 1))}
+          disabled={activeSection === SECTIONS.length - 1}
+          style={{
+            background: activeSection === SECTIONS.length - 1 ? "rgba(255,255,255,0.05)" : "rgba(255, 200, 100, 0.1)",
+            border: activeSection === SECTIONS.length - 1 ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(255, 200, 100, 0.2)",
+            borderRadius: 8,
+            padding: "8px 20px",
+            color: activeSection === SECTIONS.length - 1 ? "rgba(255,255,255,0.15)" : "#ffc864",
+            cursor: activeSection === SECTIONS.length - 1 ? "default" : "pointer",
+            fontFamily: "Georgia",
+            fontSize: 13,
+          }}
+        >
+          next →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<UFTExplainer />);
+    </script>
+</body>
+</html>

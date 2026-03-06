@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFFT - Double Slit: Foam Wake Mechanism</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { 
+            text-align: center; 
+            font-size: 2rem; 
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7, #f107a3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { text-align: center; color: #888; margin-bottom: 30px; }
+        
+        .simulation-container {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: #0a0a1a;
+            border-radius: 10px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .control-group {
+            text-align: center;
+        }
+        
+        .control-group label {
+            display: block;
+            color: #888;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        input[type="range"] {
+            width: 150px;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+        }
+        
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .explanation-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #00d4ff;
+        }
+        
+        .explanation-card h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+        
+        .explanation-card p {
+            color: #aaa;
+            line-height: 1.7;
+        }
+        
+        .formula {
+            background: rgba(123, 47, 247, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            border-left: 4px solid #7b2ff7;
+            text-align: center;
+        }
+        
+        .key-insight {
+            background: rgba(0, 255, 150, 0.1);
+            border: 2px solid #00ff96;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .key-insight h3 {
+            color: #00ff96;
+            margin-bottom: 15px;
+        }
+        
+        .stages {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .stage {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .stage-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .stage h4 { color: #00d4ff; margin-bottom: 10px; }
+        .stage p { color: #888; font-size: 0.9rem; }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Double Slit Experiment: Foam Wake Mechanism</h1>
+        <p class="subtitle">Part IV — How Particle Wakes Create Interference</p>
+        
+        <div class="simulation-container">
+            <canvas id="double-slit" width="800" height="400"></canvas>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label>Slit Separation</label>
+                    <input type="range" id="slit-sep" min="20" max="80" value="50">
+                </div>
+                <div class="control-group">
+                    <label>Wavelength</label>
+                    <input type="range" id="wavelength" min="10" max="40" value="20">
+                </div>
+                <div class="control-group">
+                    <label>Particle Rate</label>
+                    <input type="range" id="rate" min="1" max="10" value="5">
+                </div>
+                <div class="control-group" style="display: flex; align-items: flex-end;">
+                    <button onclick="toggleObserver()">Toggle Observer</button>
+                </div>
+                <div class="control-group" style="display: flex; align-items: flex-end;">
+                    <button onclick="resetScreen()">Clear Screen</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stages">
+            <div class="stage">
+                <div class="stage-number">1</div>
+                <h4>Particle Launched</h4>
+                <p>Particle creates displacement wake in foam</p>
+            </div>
+            <div class="stage">
+                <div class="stage-number">2</div>
+                <h4>Wake Spreads</h4>
+                <p>Wake propagates through both slits</p>
+            </div>
+            <div class="stage">
+                <div class="stage-number">3</div>
+                <h4>Interference</h4>
+                <p>Wakes from both slits overlap and interfere</p>
+            </div>
+            <div class="stage">
+                <div class="stage-number">4</div>
+                <h4>Detection</h4>
+                <p>Particle follows high-density wake paths</p>
+            </div>
+        </div>
+        
+        <div class="key-insight">
+            <h3>The Foam Explanation</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                The particle is always a particle. It goes through one slit.<br>
+                Its <strong>wake</strong> goes through both slits and interferes.<br>
+                The particle follows the wake — landing where the wake is strong.
+            </p>
+        </div>
+        
+        <div class="explanation-grid">
+            <div class="explanation-card">
+                <h3>The de Broglie Wavelength</h3>
+                <div class="formula">λ = h / p</div>
+                <p>
+                    In UFFT, this is the spatial period of the foam wake behind a moving particle.
+                    The wake has a characteristic wavelength determined by the particle's momentum.
+                    This is not a "wave nature" of the particle — it's literally a wave in the medium.
+                </p>
+            </div>
+            
+            <div class="explanation-card">
+                <h3>Which Slit?</h3>
+                <p>
+                    The particle always goes through one slit — never both. But the wake propagates
+                    through both slits and recombines on the other side. The interference pattern
+                    forms in the wake, and the particle follows high-wake-density paths to the screen.
+                </p>
+            </div>
+            
+            <div class="explanation-card">
+                <h3>Observation Destroys Pattern</h3>
+                <p>
+                    Observing which slit the particle uses requires interaction with the foam.
+                    This interaction disrupts the wake coherence. The wake from the "observed" slit
+                    is decohered — it no longer interferes cleanly with the wake from the other slit.
+                </p>
+            </div>
+            
+            <div class="explanation-card">
+                <h3>Single Particle Interference</h3>
+                <p>
+                    Even single particles build up the interference pattern over time. Each particle
+                    creates its own wake, which interferes with itself after passing both slits.
+                    The particle lands according to the self-interference of its own wake.
+                </p>
+            </div>
+        </div>
+        
+        <div class="explanation-card" style="margin-top: 30px;">
+            <h3>Complementarity: V² + D² ≤ 1</h3>
+            <div class="formula">
+                V = Visibility (fringe contrast)  |  D = Distinguishability (which-path info)
+            </div>
+            <p>
+                In UFFT terms: the more you disturb the wake to determine the path (increasing D),
+                the more you decohere the interference (decreasing V). Perfect path information
+                (D = 1) completely destroys interference (V = 0). This is not mysterious — it's
+                the same physics as disturbing a water wave to see where the disturbance originated.
+            </p>
+        </div>
+        
+        <div class="footer">
+            The Unified Foam Field Theory · Part IV<br>
+            <small>Wave-particle duality is wake-particle duality.</small>
+        </div>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById('double-slit');
+        const ctx = canvas.getContext('2d');
+        
+        const slitSepSlider = document.getElementById('slit-sep');
+        const wavelengthSlider = document.getElementById('wavelength');
+        const rateSlider = document.getElementById('rate');
+        
+        let observerOn = false;
+        let particles = [];
+        let screenHits = new Array(400).fill(0);
+        let time = 0;
+        
+        const barrierX = 300;
+        const screenX = 700;
+        const centerY = 200;
+        
+        function toggleObserver() {
+            observerOn = !observerOn;
+        }
+        
+        function resetScreen() {
+            screenHits = new Array(400).fill(0);
+            particles = [];
+        }
+        
+        function spawnParticle() {
+            const slitSep = parseInt(slitSepSlider.value);
+            const wavelength = parseInt(wavelengthSlider.value);
+            
+            // Spawn particle aimed at one of the slits
+            const slit1Y = centerY - slitSep / 2;
+            const slit2Y = centerY + slitSep / 2;
+            
+            // Randomly choose target slit (but wake will go through both)
+            const targetSlit = Math.random() < 0.5 ? slit1Y : slit2Y;
+            
+            // Start position with some spread
+            const startY = centerY + (Math.random() - 0.5) * slitSep;
+            
+            // Calculate velocity to reach the target slit at the barrier
+            const dx = barrierX - 50; // distance to barrier
+            const dy = targetSlit - startY;
+            const speed = 3;
+            const travelTime = dx / speed;
+            
+            particles.push({
+                x: 50,
+                y: startY,
+                vx: speed,
+                vy: dy / travelTime,
+                wavelength: wavelength,
+                passedBarrier: false,
+                whichSlit: null,
+                targetSlitY: targetSlit,
+                wake: []
+            });
+        }
+        
+        function calculateInterference(y, slitSep, wavelength) {
+            const slit1Y = centerY - slitSep / 2;
+            const slit2Y = centerY + slitSep / 2;
+            
+            // Path difference
+            const d1 = Math.sqrt(Math.pow(screenX - barrierX, 2) + Math.pow(y - slit1Y, 2));
+            const d2 = Math.sqrt(Math.pow(screenX - barrierX, 2) + Math.pow(y - slit2Y, 2));
+            const pathDiff = d2 - d1;
+            
+            // Interference intensity
+            const phase = (pathDiff / wavelength) * 2 * Math.PI;
+            return Math.pow(Math.cos(phase / 2), 2);
+        }
+        
+        function update() {
+            const slitSep = parseInt(slitSepSlider.value);
+            const wavelength = parseInt(wavelengthSlider.value);
+            const rate = parseInt(rateSlider.value);
+            
+            // Spawn particles
+            if (Math.random() < rate * 0.02) {
+                spawnParticle();
+            }
+            
+            // Update particles
+            particles = particles.filter(p => {
+                // Move particle
+                p.x += p.vx;
+                p.y += p.vy;
+                
+                // Add wake trail before barrier
+                if (p.x < barrierX - 10) {
+                    p.wake.push({ x: p.x, y: p.y, age: 0, type: 'pre' });
+                }
+                
+                // At barrier - determine which slit
+                if (!p.passedBarrier && p.x >= barrierX - 5) {
+                    p.passedBarrier = true;
+                    
+                    const slit1Y = centerY - slitSep / 2;
+                    const slit2Y = centerY + slitSep / 2;
+                    const slitWidth = 20;
+                    
+                    // Check if particle can pass through either slit
+                    const dist1 = Math.abs(p.y - slit1Y);
+                    const dist2 = Math.abs(p.y - slit2Y);
+                    
+                    if (dist1 < slitWidth) {
+                        p.whichSlit = 1;
+                        p.y = slit1Y; // Snap to slit center
+                    } else if (dist2 < slitWidth) {
+                        p.whichSlit = 2;
+                        p.y = slit2Y; // Snap to slit center
+                    } else {
+                        // Blocked by barrier - particle absorbed
+                        return false;
+                    }
+                    
+                    // Reset vy for post-barrier behavior
+                    p.vy = 0;
+                }
+                
+                // After barrier - particle follows interference pattern (unless observed)
+                if (p.passedBarrier && p.x < screenX) {
+                    // Add wake behind particle
+                    p.wake.push({ x: p.x, y: p.y, age: 0, type: 'post' });
+                    
+                    if (!observerOn) {
+                        // Interference mode - particle drifts toward high-intensity regions
+                        const intensity = calculateInterference(p.y, slitSep, wavelength);
+                        const intensityUp = calculateInterference(p.y - 3, slitSep, wavelength);
+                        const intensityDown = calculateInterference(p.y + 3, slitSep, wavelength);
+                        
+                        // Stronger drift toward interference maxima
+                        if (intensityUp > intensity) p.vy -= 0.15;
+                        if (intensityDown > intensity) p.vy += 0.15;
+                        p.vy *= 0.92; // Damping
+                        p.y += p.vy;
+                        
+                        // Keep within bounds
+                        p.y = Math.max(50, Math.min(350, p.y));
+                    } else {
+                        // Observer mode - particle continues in straighter path from the slit
+                        const slit1Y = centerY - slitSep / 2;
+                        const slit2Y = centerY + slitSep / 2;
+                        const slitY = p.whichSlit === 1 ? slit1Y : slit2Y;
+                        
+                        // Small spread from the slit
+                        const spreadAngle = (Math.random() - 0.5) * 0.3;
+                        p.vy += spreadAngle * 0.1;
+                        p.vy *= 0.98;
+                        p.y += p.vy;
+                    }
+                }
+                
+                // Hit screen
+                if (p.x >= screenX) {
+                    const screenY = Math.floor(p.y);
+                    if (screenY >= 0 && screenY < 400) {
+                        screenHits[screenY]++;
+                    }
+                    return false;
+                }
+                
+                // Age wake
+                p.wake.forEach(w => w.age++);
+                p.wake = p.wake.filter(w => w.age < 40);
+                
+                return true;
+            });
+            
+            time++;
+        }
+        
+        function draw() {
+            ctx.fillStyle = '#0a0a1a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            const slitSep = parseInt(slitSepSlider.value);
+            const wavelength = parseInt(wavelengthSlider.value);
+            
+            // Draw interference pattern (faint guide)
+            if (!observerOn) {
+                for (let y = 0; y < 400; y++) {
+                    const intensity = calculateInterference(y, slitSep, wavelength);
+                    ctx.fillStyle = `rgba(0, 212, 255, ${intensity * 0.1})`;
+                    ctx.fillRect(barrierX + 10, y, screenX - barrierX - 20, 1);
+                }
+            }
+            
+            // Draw barrier with two slits
+            const slitWidth = 20;
+            ctx.fillStyle = '#00d4ff';
+            
+            // Top section of barrier
+            ctx.fillRect(barrierX - 5, 0, 10, centerY - slitSep / 2 - slitWidth);
+            
+            // Middle section (between slits)
+            ctx.fillRect(barrierX - 5, centerY - slitSep / 2 + slitWidth, 10, slitSep - 2 * slitWidth);
+            
+            // Bottom section
+            ctx.fillRect(barrierX - 5, centerY + slitSep / 2 + slitWidth, 10, 400 - centerY - slitSep / 2 - slitWidth);
+            
+            // Highlight the slit openings
+            ctx.fillStyle = 'rgba(0, 255, 150, 0.3)';
+            ctx.fillRect(barrierX - 3, centerY - slitSep / 2 - slitWidth, 6, slitWidth * 2);
+            ctx.fillRect(barrierX - 3, centerY + slitSep / 2 - slitWidth, 6, slitWidth * 2);
+            
+            // Observer indicator
+            if (observerOn) {
+                ctx.fillStyle = '#ff6464';
+                ctx.font = '12px sans-serif';
+                ctx.fillText('👁 OBSERVING', barrierX - 30, 30);
+                
+                // Observer beam
+                ctx.strokeStyle = 'rgba(255, 100, 100, 0.3)';
+                ctx.lineWidth = 20;
+                ctx.beginPath();
+                ctx.moveTo(barrierX, centerY - slitSep / 2);
+                ctx.lineTo(barrierX + 50, centerY - slitSep / 2);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(barrierX, centerY + slitSep / 2);
+                ctx.lineTo(barrierX + 50, centerY + slitSep / 2);
+                ctx.stroke();
+            }
+            
+            // Draw screen
+            ctx.fillStyle = '#222';
+            ctx.fillRect(screenX, 0, 10, 400);
+            
+            // Draw hits on screen
+            const maxHits = Math.max(...screenHits, 1);
+            for (let y = 0; y < 400; y++) {
+                const intensity = screenHits[y] / maxHits;
+                ctx.fillStyle = `rgba(0, 255, 150, ${intensity})`;
+                ctx.fillRect(screenX + 15, y, 30 * intensity + 2, 1);
+            }
+            
+            // Draw particles and wakes
+            particles.forEach(p => {
+                const slitSep = parseInt(slitSepSlider.value);
+                const slit1Y = centerY - slitSep / 2;
+                const slit2Y = centerY + slitSep / 2;
+                
+                // Pre-barrier wake (behind particle)
+                p.wake.forEach(w => {
+                    if (w.type === 'pre') {
+                        const alpha = 1 - w.age / 40;
+                        ctx.fillStyle = `rgba(0, 212, 255, ${alpha * 0.4})`;
+                        ctx.beginPath();
+                        ctx.arc(w.x, w.y, 2 + w.age * 0.1, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+                
+                // If particle has passed barrier, show wake emanating from BOTH slits
+                if (p.passedBarrier && !observerOn) {
+                    const timeSinceBarrier = (p.x - barrierX) / p.vx;
+                    const wakeRadius = timeSinceBarrier * 3;
+                    
+                    // Wake from slit 1
+                    if (wakeRadius > 0 && wakeRadius < 300) {
+                        const alpha = Math.max(0, 0.15 - wakeRadius / 2000);
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${alpha})`;
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        ctx.arc(barrierX, slit1Y, wakeRadius, -Math.PI/2, Math.PI/2);
+                        ctx.stroke();
+                    }
+                    
+                    // Wake from slit 2
+                    if (wakeRadius > 0 && wakeRadius < 300) {
+                        const alpha = Math.max(0, 0.15 - wakeRadius / 2000);
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${alpha})`;
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        ctx.arc(barrierX, slit2Y, wakeRadius, -Math.PI/2, Math.PI/2);
+                        ctx.stroke();
+                    }
+                }
+                
+                // Post-barrier wake (behind particle)
+                p.wake.forEach(w => {
+                    if (w.type === 'post') {
+                        const alpha = 1 - w.age / 40;
+                        ctx.fillStyle = `rgba(0, 255, 150, ${alpha * 0.3})`;
+                        ctx.beginPath();
+                        ctx.arc(w.x, w.y, 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+                
+                // Particle itself
+                ctx.fillStyle = '#00ff96';
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            });
+            
+            // Labels
+            ctx.fillStyle = '#888';
+            ctx.font = '12px sans-serif';
+            ctx.fillText('Source', 20, 390);
+            ctx.fillText('Barrier', barrierX - 15, 390);
+            ctx.fillText('Screen', screenX + 5, 390);
+            
+            // Stats
+            const totalHits = screenHits.reduce((a, b) => a + b, 0);
+            ctx.fillStyle = '#00d4ff';
+            ctx.fillText(`Particles: ${totalHits}`, 20, 20);
+            ctx.fillText(`Mode: ${observerOn ? 'Observed (no interference)' : 'Unobserved (interference)'}`, 20, 40);
+        }
+        
+        function animate() {
+            update();
+            draw();
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+    </script>
+</body>
+</html>
