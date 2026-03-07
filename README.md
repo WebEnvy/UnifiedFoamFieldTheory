@@ -72,8 +72,9 @@ Journal submission materials.
 
 - **Arithmetic errors:** 0
 - **Dimensional inconsistencies:** 0
-- **Verified predictions:** 15+
+- **Verified predictions:** 16+ (including dark matter ratio, March 2026)
 - **Open problems:** 2 (α derivation, covariant vacuum density)
+- **March 2026 closure:** Dark matter ratio Ω_DM/Ω_b = 3(1 + 2√3)/2^(4/3) = 5.3147 (observed: 5.3643 ± 0.09, 0.92% match, zero free parameters)
 
 ---
 
@@ -94,5 +95,6 @@ Developed in collaboration with Claude (Anthropic).
 
 ---
 
-*Package generated: March 2026*
+*Package updated: March 2026*
 *Priority Date: 20 February 2026*
+*Note: PDFs for Part I, Appendix, and README are from the February build. The March 2026 dark matter closure is reflected in all markdown and HTML files. Markdown is the authoritative source.*

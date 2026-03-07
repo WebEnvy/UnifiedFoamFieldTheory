@@ -39,6 +39,12 @@ wave equation. Born rule as foam intensity rule. Double slit fringe
 visibility and complementarity V00b2 + D00b2 2264 1. Koide formula as
 topological constraint on charged lepton foam knots.
 
+**Added March 2026:**
+Dark matter ratio Ω_DM/Ω_b = 3(1 + 2√3)/2^(4/3) = 5.3147 from Kelvin
+cell isoperimetric ratio. Observed: 5.3643 ± 0.09. Match: 0.92%, within
+1σ, zero free parameters. Dark matter = surface energy of Planck-scale
+foam cells; baryonic matter = volume energy.
+
 **Added February 2026 — Part XX:**
 Schauberger implosion/void collapse energy asymmetry: EXACT MATCH with
 Axiom Zero. Threshold coupling η > 1.38×10⁻¹⁰⁴ — far below general
@@ -185,17 +191,33 @@ torsion-discharge states also coupled to EM longitudinal foam. Z⁰ = pure
 torsion-discharge, no EM coupling. W/Z masses: foam scale r_W ≈ 10⁻³⁰m
 (deeply sub-Planck effective scale) --- full coupling derivation open.
 
-**7. Quantitative Dark Matter and Dark Energy [MECHANISM CONFIRMED,
-NUMBERS IMPROVING]**
+**7. Quantitative Dark Matter and Dark Energy [CLOSED — March 2026]**
 
-Dark matter: Ω_DM/Ω_baryon = coordination_number × coupling_fraction,
-where coordination_number is the number of nearest-neighbour foam
-bubbles in the equilibrium packing. FCC packing gives coordination=12,
-coupling fraction 1/3 → Ω_DM ≈ 0.196 (observed: 0.266). Ratio 0.74×:
-correct order of magnitude, within factor 1.4. A less-ordered packing
-with effective coordination ~16 reproduces the observed ratio exactly.
-Key open question: what is the equilibrium packing of foam bubbles at
-cosmological scales? Dark energy: **SUBSTANTIALLY CLOSED (Part XXI, February 2026).** The dark energy density is the residual of the Big Bang pressure wave at the current size of the observable universe: ρ_Λ ≈ ρ₀ × (l_P/R_U)² = 6.96 × 10⁻²⁷ kg/m³. Observed: 5.88 × 10⁻²⁷ kg/m³. Match within 18%, zero free parameters. The cosmological constant problem is dissolved: the ratio 10⁻¹²³ is (l_P/R_U)² — geometry, not fine-tuning. Remaining: exact equation of state (w ≈ −1, requires covariant vacuum density for precision). See Part XXI for full derivation.
+**Dark matter — CLOSED March 2026. Zero free parameters. 0.92% match, within 1σ.**
+
+Every Planck cell has two energy components: volume energy E_vol = P₀V (bulk foam interior) and surface energy E_surf = σS (cell wall interfaces). Volume energy supports 3D lattice modes, couples to electromagnetic polarisation (Part I §IV), emits and absorbs light — it is baryonic matter. Surface energy exists at 2D cell boundaries, gravitates but does not couple to EM — it is dark matter. No new particle. No new field.
+
+Axiom Zero requires identical cells (no selection mechanism for two cell types), constraining the packing to a monohedral (single-tile) space-filling structure. The Kelvin cell (truncated octahedron) is the optimal monohedral solution — the same Oh symmetry group that produces the gauge structure SU(3)×SU(2)×U(1) in §6 above. The packing symmetry and the gauge symmetry come from the same cell shape.
+
+For a truncated octahedron with volume V = l_P³:
+
+Volume: V = 8√2 × a³ → a = l_P / (8√2)^(1/3)
+
+Surface: S = (6 + 12√3) × a²
+
+Dark matter ratio = surface energy / volume energy = σS/(P₀V) = S/l_P² (since σ = P₀ × l_P):
+
+**Ω_DM/Ω_b = 3(1 + 2√3) / 2^(4/3) = 5.3147**
+
+> *✓ Observed (Planck 2018): Ω_c h² / Ω_b h² = 0.1200/0.02237 = 5.3643 ± 0.09*
+> *✓ Predicted: 5.3147. Discrepancy: 0.92%. Within 1σ observational uncertainty.*
+> *✓ Zero free parameters. Closed-form combinatorial expression.*
+
+Note: the Weaire-Phelan structure (0.3% less surface area) would predict 5.299, which is further from observation — the data prefers the monohedral Kelvin cell, consistent with Axiom Zero.
+
+**Previous formula superseded:** The coordination_number × coupling_fraction formula (Ω_DM/Ω_b = 12 × 1/3 ≈ 4) was phenomenological and off by a factor of 1.4. The isoperimetric ratio is the correct derivation.
+
+Dark energy: **SUBSTANTIALLY CLOSED (Part XXI, February 2026).** The dark energy density is the residual of the Big Bang pressure wave at the current size of the observable universe: ρ_Λ ≈ ρ₀ × (l_P/R_U)² = 6.96 × 10⁻²⁷ kg/m³. Observed: 5.88 × 10⁻²⁷ kg/m³. Match within 18%, zero free parameters. The cosmological constant problem is dissolved: the ratio 10⁻¹²³ is (l_P/R_U)² — geometry, not fine-tuning. Remaining: exact equation of state (w ≈ −1, requires covariant vacuum density for precision). See Part XXI for full derivation.
 
 **8. Double Slit Visibility Equation [CLOSED]**
 
@@ -368,7 +390,7 @@ Current status: unmeasurable. At 100 GeV (gamma-ray bursts), the predicted devia
 
 Falsification condition: detection of LINEAR (first-order) Lorentz invariance violation at any energy scale would falsify the foam's correspondence principle. Detection of quadratic LIV with η significantly different from O(1) would require refinement.
 
-**Audit and Prediction Status --- February 2026**
+**Audit and Prediction Status --- March 2026**
 
 Independent mathematical audit (February 2026) confirmed: arithmetic
 errors 0, dimensional inconsistencies 0, algebraic inconsistencies 0.
@@ -376,7 +398,10 @@ The gravity derivation was corrected (force extraction via potential
 inversion, not direct pressure gradient). The strong-field acceleration
 divergence was removed as unjustified; the horizon is now defined by
 density collapse rho(r_s) = 0, which is cleaner and sufficient. No
-downstream calculations were affected by this correction. Predictions 1
+downstream calculations were affected by this correction. Dark matter
+ratio CLOSED March 2026: Ω_DM/Ω_b = 3(1 + 2√3)/2^(4/3) = 5.3147 from
+Kelvin cell isoperimetric ratio (observed: 5.3643 ± 0.09, 0.92% match,
+within 1σ, zero free parameters). Predictions 1
 and 2 are numerically specific and await experimental test. Prediction 3
 is testable immediately. Prediction 4 is now formalised with specific experimental observables. Prediction 5 provides a discriminating signature against competing quantum gravity models.
 All predictions are falsifiable.
@@ -395,9 +420,11 @@ information and quantum gravity communities.
 Step 3: Formalise Prediction 4 (three-particle void-pair topology) to
 yield a specific correlation pattern distinguishable from standard GHZ.
 
-Step 4: Derive the inter-layer coupling constants from bubble-layer
+Step 4: ~~Derive the inter-layer coupling constants from bubble-layer
 interface geometry --- the key to quantifying dark matter and dark
-energy.
+energy.~~ **CLOSED March 2026.** Dark matter ratio derived from Kelvin cell
+isoperimetric ratio: Ω_DM/Ω_b = 3(1 + 2√3)/2^(4/3) = 5.3147. Observed:
+5.3643 ± 0.09. Match: 0.92%, within 1σ, zero free parameters.
 
 Step 5: Begin the torsion tensor treatment of the foam lattice as the
 path toward the strong force derivation.

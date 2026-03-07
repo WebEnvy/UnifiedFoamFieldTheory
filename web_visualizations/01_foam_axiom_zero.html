@@ -184,6 +184,10 @@
                     ρ_Λ ≈ ρ₀(l_P/R_U)²
                 </div>
                 <div class="formula" style="text-align: center;">
+                    <strong>Dark Matter</strong><br>
+                    Ω_DM/Ω_b = 3(1+2√3)/2<sup>4/3</sup>
+                </div>
+                <div class="formula" style="text-align: center;">
                     <strong>Gauge Groups</strong><br>
                     SU(3)×SU(2)×U(1)
                 </div>
@@ -244,40 +248,36 @@
             
             scene.add(new THREE.AmbientLight(0x333333));
             
-            // Add bubble (green sphere) - positioned outside cell
-            const bubbleGeom = new THREE.SphereGeometry(0.12, 32, 32);
-            const bubbleMat = new THREE.MeshPhongMaterial({ color: 0x00ff96, emissive: 0x004422 });
+            // Add bubble (green sphere)
+            const bubbleGeom = new THREE.SphereGeometry(0.15, 32, 32);
+            const bubbleMat = new THREE.MeshPhongMaterial({ color: 0x00ff96 });
             const bubble = new THREE.Mesh(bubbleGeom, bubbleMat);
-            bubble.position.set(1.0, 0.6, 0.3);
+            bubble.position.set(0.5, 0.3, 0);
             bubble.name = 'bubble';
-            cell.add(bubble);  // Attach to cell so it rotates with it
+            scene.add(bubble);
             
-            // Add void (red sphere) - positioned opposite to bubble
-            const voidGeom = new THREE.SphereGeometry(0.12, 32, 32);
+            // Add void (red outline sphere)
+            const voidGeom = new THREE.SphereGeometry(0.15, 32, 32);
             const voidMat = new THREE.MeshPhongMaterial({ 
-                color: 0xff6464,
-                emissive: 0x331111
+                color: 0xff6464, 
+                transparent: true, 
+                opacity: 0.5 
             });
             const voidMesh = new THREE.Mesh(voidGeom, voidMat);
-            voidMesh.position.set(-1.0, -0.6, -0.3);
+            voidMesh.position.set(-0.5, -0.3, 0);
             voidMesh.name = 'void';
-            cell.add(voidMesh);  // Attach to cell so it rotates with it
+            scene.add(voidMesh);
             
-            // Displacement line connecting B and V
+            // Displacement line (hidden initially)
             const lineGeom = new THREE.BufferGeometry().setFromPoints([
-                new THREE.Vector3(1.0, 0.6, 0.3),
-                new THREE.Vector3(-1.0, -0.6, -0.3)
+                new THREE.Vector3(0.5, 0.3, 0),
+                new THREE.Vector3(-0.5, -0.3, 0)
             ]);
-            const lineMat = new THREE.LineDashedMaterial({ 
-                color: 0xffd700, 
-                dashSize: 0.1, 
-                gapSize: 0.05 
-            });
+            const lineMat = new THREE.LineBasicMaterial({ color: 0xffd700, linewidth: 3 });
             const line = new THREE.Line(lineGeom, lineMat);
-            line.computeLineDistances();
             line.visible = false;
             line.name = 'displacement';
-            cell.add(line);  // Attach to cell
+            scene.add(line);
             
             animate();
             
@@ -301,63 +301,30 @@
         }
         
         function createTruncatedOctahedron(size) {
-            const s = size * 0.4;
-            
-            // 24 vertices of truncated octahedron: permutations of (0, ±1, ±2)
-            const V = [
-                [ 0,  1,  2], [ 0,  1, -2], [ 0, -1,  2], [ 0, -1, -2],
-                [ 0,  2,  1], [ 0,  2, -1], [ 0, -2,  1], [ 0, -2, -1],
-                [ 1,  0,  2], [ 1,  0, -2], [-1,  0,  2], [-1,  0, -2],
-                [ 2,  0,  1], [ 2,  0, -1], [-2,  0,  1], [-2,  0, -1],
-                [ 1,  2,  0], [ 1, -2,  0], [-1,  2,  0], [-1, -2,  0],
-                [ 2,  1,  0], [ 2, -1,  0], [-2,  1,  0], [-2, -1,  0]
+            // Vertices of truncated octahedron
+            const a = size;
+            const vertices = [];
+            const permutations = [
+                [0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]
             ];
+            const signs = [[1,1], [1,-1], [-1,1], [-1,-1]];
             
-            const positions = [];
-            V.forEach(v => positions.push(v[0]*s, v[1]*s, v[2]*s));
-            
-            // 14 faces defined with vertex indices (CCW winding from outside)
-            // 6 squares
-            const squares = [
-                [12, 20, 13, 21],  // +X face
-                [14, 23, 15, 22],  // -X face  
-                [4, 16, 5, 18],    // +Y face
-                [6, 19, 7, 17],    // -Y face
-                [0, 8, 2, 10],     // +Z face
-                [1, 11, 3, 9]      // -Z face
-            ];
-            
-            // 8 hexagons (one per octant)
-            const hexagons = [
-                [0, 4, 16, 20, 12, 8],    // +++
-                [1, 9, 13, 20, 16, 5],    // ++-
-                [2, 8, 12, 21, 17, 6],    // +-+
-                [3, 7, 17, 21, 13, 9],    // +--
-                [0, 10, 14, 22, 18, 4],   // -++
-                [1, 5, 18, 22, 15, 11],   // -+-
-                [2, 6, 19, 23, 14, 10],   // --+
-                [3, 11, 15, 23, 19, 7]    // ---
-            ];
-            
-            const indices = [];
-            
-            // Triangulate squares (2 triangles each)
-            squares.forEach(sq => {
-                indices.push(sq[0], sq[1], sq[2]);
-                indices.push(sq[0], sq[2], sq[3]);
-            });
-            
-            // Triangulate hexagons (4 triangles each, fan from first vertex)
-            hexagons.forEach(hex => {
-                for (let i = 1; i < 5; i++) {
-                    indices.push(hex[0], hex[i], hex[i+1]);
+            // Generate vertices
+            for (let perm of permutations) {
+                for (let sign of signs) {
+                    const coords = [0, a, 2*a];
+                    const v = [
+                        coords[perm[0]] * (perm[0] === 0 ? 1 : sign[0]),
+                        coords[perm[1]] * (perm[1] === 0 ? 1 : sign[1]),
+                        coords[perm[2]] * (perm[2] === 0 ? 1 : (sign[0] * sign[1]))
+                    ];
+                    vertices.push(new THREE.Vector3(v[0] * 0.4, v[1] * 0.4, v[2] * 0.4));
                 }
-            });
+            }
             
-            const geometry = new THREE.BufferGeometry();
-            geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-            geometry.setIndex(indices);
-            geometry.computeVertexNormals();
+            const geometry = new THREE.ConvexGeometry ?
+                new THREE.ConvexGeometry(vertices) :
+                new THREE.IcosahedronGeometry(size, 1);
             
             return geometry;
         }
@@ -381,8 +348,8 @@
         }
         
         function showDisplacement() {
-            const line = cell.getObjectByName('displacement');
-            if (line) line.visible = !line.visible;
+            const line = scene.getObjectByName('displacement');
+            line.visible = !line.visible;
         }
         
         window.addEventListener('load', init);

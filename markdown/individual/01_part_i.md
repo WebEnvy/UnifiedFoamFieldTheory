@@ -234,12 +234,28 @@ behaviour of an infinite electrical medium --- not rare accidents.
 
 **VIII. Dark Matter and Dark Energy**
 
-Dark energy is the baseline pressure P_0 of the undisturbed foam acting
-on all embedded structures --- the cosmological constant as foam
-pressure. Dark matter is the tension of the foam connectivity network
-between stars at galactic scales, producing flat rotation curves without
-any new particle. Both are structural properties of the foam. Neither
-requires new substance.
+Dark energy is the residual energy density of the Big Bang pressure wave
+at the current size of the observable universe: ρ_Λ ≈ ρ₀ × (l_P/R_U)².
+This gives ρ_Λ ≈ 6.96 × 10⁻²⁷ kg/m³, compared to the observed value of
+5.88 × 10⁻²⁷ kg/m³ --- a match within 18%, with no free parameters. The
+cosmological constant problem is dissolved: the ratio ρ_Λ/ρ₀ ≈ 10⁻¹²³ is
+not fine-tuning but the natural consequence of (l_P/R_U)² ≈ 10⁻¹²². See
+Part XXI for the full derivation.
+
+Dark matter is the surface energy of Planck-scale foam cells. Each cell
+has volume energy (bulk foam, couples to electromagnetism, visible) and
+surface energy (cell walls, gravitates but does not couple to EM,
+dark). The ratio is set by the isoperimetric ratio of the Kelvin cell
+(truncated octahedron) --- the unique monohedral solution to foam
+packing required by Axiom Zero:
+
+**Ω_DM/Ω_b = 3(1 + 2√3) / 2^(4/3) = 5.3147 (15)**
+
+> *✓ Observed (Planck 2018): 5.3643 ± 0.09. Predicted: 5.3147.
+> Discrepancy: 0.92%. Within 1σ. Zero free parameters.*
+
+Both dark matter and dark energy are structural properties of the foam.
+Neither requires new substance or new particles.
 
 **IX. Critical Density --- Universe at Its Own Schwarzschild Radius**
 

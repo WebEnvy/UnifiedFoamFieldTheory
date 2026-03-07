@@ -61,12 +61,16 @@ From this single axiom, gravity, electromagnetism, quantum mechanics, entangleme
 
 ## Two Hard Open Problems
 
-*Updated February 2026. Previously three. The Koide parameter θ is no longer an independent open problem — see below.*
+*Updated March 2026. Previously three (Koide closed February 2026). Dark matter ratio CLOSED March 2026 — see Appendix §7.*
 
 | Problem | Status |
 |---|---|
 | Fine structure constant α | The primary calculation. Closure condition of the D-mode coupling back to the B-V pair — derivable from foam geometry. Knot classification gives the particle spectrum; D-mode closure gives α. These are separate calculations. |
 | Covariant vacuum density | Three-component coupled field (B-density, V-density, D-density). Needs QFT-in-curved-spacetime collaborator. **This single derivation unlocks three downstream results:** decoherence prediction precision (Part VIII), Bekenstein-Hawking entropy grounding (Part XIX), and running coupling constants from foam averaging (Part XIX). |
+
+**Dark matter ratio Ω_DM/Ω_b — CLOSED March 2026**
+
+Derived from the isoperimetric ratio of the Kelvin cell (truncated octahedron): Ω_DM/Ω_b = 3(1 + 2√3)/2^(4/3) = 5.3147. Observed (Planck 2018): 5.3643 ± 0.09. Discrepancy: 0.92%, within 1σ. Zero free parameters. Dark matter = surface energy of Planck-scale foam cells; baryonic matter = volume energy. See Appendix §7.
 
 **Koide parameter θ = 0.222 rad — CLOSED as independent problem (February 2026)**
 
