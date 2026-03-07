@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFFT — Void Pair Dynamics</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --anthropic-dark: #141413;
+            --anthropic-light: #faf9f5;
+            --anthropic-mid-gray: #b0aea5;
+            --anthropic-light-gray: #e8e6dc;
+            --anthropic-orange: #d97757;
+            --anthropic-blue: #6a9bcc;
+            --anthropic-green: #788c5d;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--anthropic-light) 0%, #f5f3ee 100%);
+            min-height: 100vh;
+            color: var(--anthropic-dark);
+        }
+        .container { display: flex; min-height: 100vh; padding: 20px; gap: 20px; }
+        .sidebar {
+            width: 300px; flex-shrink: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 24px; border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(20,20,19,0.1);
+            overflow-y: auto; overflow-x: hidden;
+        }
+        .sidebar h1 { font-family: 'Lora', serif; font-size: 20px; font-weight: 500; color: var(--anthropic-dark); margin-bottom: 4px; }
+        .sidebar .subtitle { color: var(--anthropic-mid-gray); font-size: 12px; margin-bottom: 8px; line-height: 1.4; }
+        .axiom {
+            background: var(--anthropic-dark); color: var(--anthropic-light);
+            border-radius: 8px; padding: 10px 14px; margin-bottom: 24px;
+            font-family: 'Courier New', monospace; font-size: 13px; text-align: center;
+            letter-spacing: 0.05em;
+        }
+        .axiom span { color: #d97757; }
+        .control-section { margin-bottom: 28px; }
+        .control-section h3 {
+            font-size: 13px; font-weight: 600; color: var(--anthropic-dark);
+            margin-bottom: 14px; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .control-section h3::before { content: '•'; color: var(--anthropic-orange); font-weight: bold; }
+        .seed-input {
+            width: 100%; background: var(--anthropic-light); padding: 10px;
+            border-radius: 8px; font-family: 'Courier New', monospace; font-size: 13px;
+            margin-bottom: 10px; border: 1px solid var(--anthropic-light-gray); text-align: center;
+        }
+        .seed-input:focus { outline: none; border-color: var(--anthropic-orange); background: white; }
+        .seed-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px; }
+        .control-group { margin-bottom: 16px; }
+        .control-group label { display: block; font-size: 12px; font-weight: 500; color: var(--anthropic-dark); margin-bottom: 6px; }
+        .slider-container { display: flex; align-items: center; gap: 10px; }
+        .slider-container input[type="range"] {
+            flex: 1; height: 4px; background: var(--anthropic-light-gray); border-radius: 2px; outline: none; -webkit-appearance: none;
+        }
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; width: 14px; height: 14px;
+            background: var(--anthropic-orange); border-radius: 50%; cursor: pointer;
+        }
+        .slider-container input[type="range"]::-moz-range-thumb {
+            width: 14px; height: 14px; background: var(--anthropic-orange);
+            border-radius: 50%; border: none; cursor: pointer;
+        }
+        .value-display { font-family: 'Courier New', monospace; font-size: 11px; color: var(--anthropic-mid-gray); min-width: 44px; text-align: right; }
+        .button {
+            width: 100%; padding: 9px 14px; border: none; border-radius: 8px;
+            font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 500;
+            cursor: pointer; transition: all 0.2s ease; background: var(--anthropic-light-gray); color: var(--anthropic-dark);
+        }
+        .button:hover { background: var(--anthropic-orange); color: white; }
+        .button.primary { background: var(--anthropic-dark); color: var(--anthropic-light); margin-bottom: 8px; }
+        .button.primary:hover { background: #2a2a28; }
+        .button-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .legend { margin-bottom: 24px; }
+        .legend-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 12px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+        .legend-label { font-weight: 500; }
+        .legend-desc { color: var(--anthropic-mid-gray); font-size: 11px; }
+        .toggle-group { display: flex; flex-direction: column; gap: 6px; }
+        .toggle-item { display: flex; align-items: center; gap: 8px; font-size: 12px; cursor: pointer; }
+        .toggle-item input[type="checkbox"] { accent-color: var(--anthropic-orange); width: 14px; height: 14px; }
+        .canvas-area { flex: 1; display: flex; align-items: center; justify-content: center; }
+        #canvas-container canvas { border-radius: 12px; box-shadow: 0 20px 60px rgba(20,20,19,0.3); display: block; }
+        .loading { color: var(--anthropic-mid-gray); font-size: 14px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <h1>Void Pair Dynamics</h1>
+        <p class="subtitle">Unified Foam Field Theory — Luke Martin, 2026</p>
+
+        <div class="axiom">
+            <span>B</span> + <span>V</span> = <span style="color:#6a9bcc">D</span>&nbsp;&nbsp;·&nbsp;&nbsp;Axiom Zero
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#f0a070; box-shadow:0 0 6px #f0a07088"></div>
+                <div>
+                    <div class="legend-label">B — Bubble Mode</div>
+                    <div class="legend-desc">Active foam displacement</div>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#1a6b9a; border: 2px solid #4a9bca; width:10px;height:10px"></div>
+                <div>
+                    <div class="legend-label">V — Void Mode</div>
+                    <div class="legend-desc">Complementary absence</div>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#c8c4b8"></div>
+                <div>
+                    <div class="legend-label">D — Displacement</div>
+                    <div class="legend-desc">Propagating force field</div>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:white; box-shadow:0 0 8px #ffffff, 0 0 16px #f0a07066"></div>
+                <div>
+                    <div class="legend-label">Stable Knots</div>
+                    <div class="legend-desc">Particles — topological vortices</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seed -->
+        <div class="control-section">
+            <h3>Seed</h3>
+            <input type="number" class="seed-input" id="seed-input" value="42" onchange="updateSeed()">
+            <div class="seed-controls">
+                <button class="button" onclick="previousSeed()">← Prev</button>
+                <button class="button" onclick="nextSeed()">Next →</button>
+                <button class="button" onclick="randomSeedAndUpdate()">Random</button>
+                <button class="button" onclick="updateSeed()">Jump</button>
+            </div>
+        </div>
+
+        <!-- Parameters -->
+        <div class="control-section">
+            <h3>Parameters</h3>
+
+            <div class="control-group">
+                <label>Foam Density</label>
+                <div class="slider-container">
+                    <input type="range" id="foamDensity" min="200" max="800" step="50" value="420" oninput="updateParam('foamDensity', +this.value)">
+                    <span class="value-display" id="foamDensity-value">420</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Oscillation Rate</label>
+                <div class="slider-container">
+                    <input type="range" id="oscRate" min="0.2" max="3.0" step="0.1" value="1.0" oninput="updateParam('oscRate', +this.value)">
+                    <span class="value-display" id="oscRate-value">1.0</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Coupling Strength</label>
+                <div class="slider-container">
+                    <input type="range" id="coupling" min="0.1" max="1.0" step="0.05" value="0.55" oninput="updateParam('coupling', +this.value)">
+                    <span class="value-display" id="coupling-value">0.55</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Stable Particles</label>
+                <div class="slider-container">
+                    <input type="range" id="particleCount" min="0" max="12" step="1" value="5" oninput="updateParam('particleCount', +this.value)">
+                    <span class="value-display" id="particleCount-value">5</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Arc Opacity</label>
+                <div class="slider-container">
+                    <input type="range" id="arcOpacity" min="5" max="80" step="5" value="28" oninput="updateParam('arcOpacity', +this.value)">
+                    <span class="value-display" id="arcOpacity-value">28</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display -->
+        <div class="control-section">
+            <h3>Display Layers</h3>
+            <div class="toggle-group">
+                <label class="toggle-item"><input type="checkbox" id="showBubbles" checked onchange="updateToggle('showBubbles', this.checked)"> Show B-mode (Bubbles)</label>
+                <label class="toggle-item"><input type="checkbox" id="showVoids" checked onchange="updateToggle('showVoids', this.checked)"> Show V-mode (Voids)</label>
+                <label class="toggle-item"><input type="checkbox" id="showDisplacement" checked onchange="updateToggle('showDisplacement', this.checked)"> Show D-mode (Arcs)</label>
+                <label class="toggle-item"><input type="checkbox" id="showParticles" checked onchange="updateToggle('showParticles', this.checked)"> Show Stable Particles</label>
+                <label class="toggle-item"><input type="checkbox" id="showHex" checked onchange="updateToggle('showHex', this.checked)"> Show Foam Lattice</label>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="control-section">
+            <h3>Actions</h3>
+            <button class="button primary" onclick="initializeSystem()">Regenerate</button>
+            <div class="button-row">
+                <button class="button" onclick="resetParameters()">Reset</button>
+                <button class="button" onclick="downloadPNG()">Save PNG</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="canvas-area">
+        <div id="canvas-container">
+            <div class="loading">Initialising foam substrate…</div>
+        </div>
+    </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// UFFT — VOID PAIR DYNAMICS
+// Every bubble displacement creates a paired void. B + V = D.
+// The foam never rests. Particles are knots. Forces are pressure.
+// ═══════════════════════════════════════════════════════════════
+
+let params = {
+    seed: 42,
+    foamDensity: 420,
+    oscRate: 1.0,
+    coupling: 0.55,
+    particleCount: 5,
+    arcOpacity: 28,
+    showBubbles: true,
+    showVoids: true,
+    showDisplacement: true,
+    showParticles: true,
+    showHex: true
+};
+let defaultParams = {...params};
+
+// System state
+let bubbles = [];
+let voids = [];
+let pairs = [];
+let stableParticles = [];
+let hexGrid = [];
+let t = 0;
+let CANVAS_SIZE = 800;
+
+// ── Hex grid geometry ──────────────────────────────────────────
+function hexPoints(cx, cy, r) {
+    let pts = [];
+    for (let i = 0; i < 6; i++) {
+        let a = (Math.PI / 180) * (60 * i - 30);
+        pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]);
+    }
+    return pts;
+}
+
+// ── Foam bubble class ──────────────────────────────────────────
+class FoamBubble {
+    constructor(x, y, phase, radius) {
+        this.x = x;
+        this.y = y;
+        this.baseX = x;
+        this.baseY = y;
+        this.phase = phase;
+        this.radius = radius;
+        this.driftX = (random() - 0.5) * 0.3;
+        this.driftY = (random() - 0.5) * 0.3;
+        this.energy = random() * 0.4 + 0.6;
+        this.pairedVoid = null;
+        this.isStable = false;
+    }
+
+    update(time) {
+        let osc = Math.sin(time * params.oscRate + this.phase);
+        this.x = this.baseX + Math.cos(this.phase) * osc * 1.2;
+        this.y = this.baseY + Math.sin(this.phase * 0.7) * osc * 1.2;
+        // Gravity pull toward stable particles
+        if (stableParticles.length > 0) {
+            for (let p of stableParticles) {
+                let dx = p.x - this.x, dy = p.y - this.y;
+                let d = Math.sqrt(dx*dx + dy*dy);
+                if (d > 0 && d < 120) {
+                    let force = (params.coupling * 0.6) / (d * d + 100);
+                    this.baseX += dx * force * 0.8;
+                    this.baseY += dy * force * 0.8;
+                    // pull back toward origin gently
+                    this.baseX += (this.x - this.baseX) * 0.002;
+                    this.baseY += (this.y - this.baseY) * 0.002;
+                }
+            }
+        }
+    }
+
+    draw(pg) {
+        if (!params.showBubbles) return;
+        let osc = (Math.sin(t * params.oscRate + this.phase) + 1) * 0.5;
+        let alpha = (0.5 + osc * 0.5) * 200;
+        let r = this.radius * (0.85 + osc * 0.3);
+
+        pg.noStroke();
+        // Outer glow
+        pg.fill(240, 140, 80, alpha * 0.18);
+        pg.ellipse(this.x, this.y, r * 3.2, r * 3.2);
+        // Mid glow
+        pg.fill(240, 160, 100, alpha * 0.3);
+        pg.ellipse(this.x, this.y, r * 2.0, r * 2.0);
+        // Core bubble
+        pg.fill(255, 190, 130, alpha * 0.85);
+        pg.ellipse(this.x, this.y, r * 1.1, r * 1.1);
+        // Highlight
+        pg.fill(255, 240, 220, alpha * 0.6);
+        pg.ellipse(this.x - r*0.18, this.y - r*0.18, r * 0.38, r * 0.38);
+    }
+}
+
+// ── Void class ─────────────────────────────────────────────────
+class FoamVoid {
+    constructor(x, y, phase) {
+        this.x = x;
+        this.y = y;
+        this.baseX = x;
+        this.baseY = y;
+        this.phase = phase;
+        this.pairedBubble = null;
+    }
+
+    update(time) {
+        // Voids oscillate in anti-phase to their bubble
+        let osc = Math.sin(time * params.oscRate + this.phase + Math.PI);
+        this.x = this.baseX + Math.cos(this.phase + Math.PI) * osc * 1.4;
+        this.y = this.baseY + Math.sin(this.phase * 0.7 + Math.PI) * osc * 1.4;
+    }
+
+    draw(pg) {
+        if (!params.showVoids) return;
+        let osc = (Math.sin(t * params.oscRate + this.phase + Math.PI) + 1) * 0.5;
+        let alpha = (0.4 + osc * 0.5) * 180;
+        let r = 4.5 * (0.85 + osc * 0.25);
+
+        pg.noStroke();
+        // Void outer ring — defined by absence, glows at edge
+        pg.fill(20, 80, 140, alpha * 0.15);
+        pg.ellipse(this.x, this.y, r * 3.5, r * 3.5);
+        // Inner dark void
+        pg.fill(8, 14, 32, alpha * 0.9);
+        pg.ellipse(this.x, this.y, r * 1.4, r * 1.4);
+        // Edge glow — the boundary of the void is where the foam touches it
+        pg.noFill();
+        pg.stroke(60, 150, 210, alpha * 0.7);
+        pg.strokeWeight(0.7);
+        pg.ellipse(this.x, this.y, r * 1.4, r * 1.4);
+        pg.noStroke();
+    }
+}
+
+// ── Stable particle (topological knot) ────────────────────────
+class StableParticle {
+    constructor(x, y, charge) {
+        this.x = x;
+        this.y = y;
+        this.baseX = x;
+        this.baseY = y;
+        this.charge = charge; // +1 or -1
+        this.phase = random() * Math.PI * 2;
+        this.spin = (random() - 0.5) * 0.02;
+        this.angle = 0;
+        this.trailPoints = [];
+    }
+
+    update() {
+        this.angle += this.spin * params.oscRate;
+        // Gentle drift
+        this.x = this.baseX + Math.cos(this.angle) * 3;
+        this.y = this.baseY + Math.sin(this.angle * 1.3) * 3;
+        this.trailPoints.unshift({x: this.x, y: this.y});
+        if (this.trailPoints.length > 40) this.trailPoints.pop();
+    }
+
+    draw(pg) {
+        if (!params.showParticles) return;
+        let osc = (Math.sin(t * 0.8 + this.phase) + 1) * 0.5;
+
+        // Draw vortex trail
+        pg.noFill();
+        for (let i = 1; i < this.trailPoints.length; i++) {
+            let a = (1 - i / this.trailPoints.length) * 120;
+            let col = this.charge > 0 ? [255, 180, 100] : [100, 180, 255];
+            pg.stroke(col[0], col[1], col[2], a);
+            pg.strokeWeight(1.5 * (1 - i / this.trailPoints.length));
+            pg.line(this.trailPoints[i-1].x, this.trailPoints[i-1].y,
+                    this.trailPoints[i].x, this.trailPoints[i].y);
+        }
+        pg.noStroke();
+
+        // Outer gravity halo
+        pg.fill(255, 240, 200, 12 + osc * 10);
+        pg.ellipse(this.x, this.y, 80 + osc * 20, 80 + osc * 20);
+        pg.fill(255, 220, 160, 20 + osc * 15);
+        pg.ellipse(this.x, this.y, 44 + osc * 10, 44 + osc * 10);
+
+        // Draw knot — concentric rings showing topology
+        let rings = 3;
+        for (let r = rings; r >= 1; r--) {
+            let a = (r === 1) ? 220 : (r === 2 ? 120 : 50);
+            pg.fill(255, 240, 220, a);
+            pg.ellipse(this.x, this.y, r * 5.5 + osc * 2, r * 5.5 + osc * 2);
+        }
+
+        // Vortex arms — visible topological twist
+        pg.push();
+        pg.translate(this.x, this.y);
+        pg.rotate(this.angle);
+        let armColor = this.charge > 0 ? [240, 160, 80] : [80, 160, 240];
+        for (let arm = 0; arm < 3; arm++) {
+            pg.rotate(Math.PI * 2 / 3);
+            pg.stroke(armColor[0], armColor[1], armColor[2], 160);
+            pg.strokeWeight(1.2);
+            pg.noFill();
+            pg.beginShape();
+            for (let i = 0; i <= 12; i++) {
+                let angle = i * 0.3;
+                let radius = i * 0.8;
+                pg.vertex(Math.cos(angle) * radius, Math.sin(angle) * radius);
+            }
+            pg.endShape();
+        }
+        pg.noStroke();
+        pg.pop();
+    }
+}
+
+// ── p5.js sketch ───────────────────────────────────────────────
+let pg; // graphics buffer
+
+function setup() {
+    let cnv = createCanvas(CANVAS_SIZE, CANVAS_SIZE);
+    cnv.parent('canvas-container');
+    document.querySelector('.loading').style.display = 'none';
+    pg = createGraphics(CANVAS_SIZE, CANVAS_SIZE);
+    initializeSystem();
+}
+
+function initializeSystem() {
+    randomSeed(params.seed);
+    noiseSeed(params.seed);
+    t = 0;
+    bubbles = [];
+    voids = [];
+    pairs = [];
+    stableParticles = [];
+    hexGrid = [];
+
+    // Build hex lattice
+    let hexR = 22;
+    let hexW = hexR * 2;
+    let hexH = Math.sqrt(3) * hexR;
+    let margin = 30;
+
+    for (let col = 0; col * hexW * 0.75 < CANVAS_SIZE - margin; col++) {
+        for (let row = 0; row * hexH < CANVAS_SIZE - margin; row++) {
+            let x = margin + col * hexW * 0.75;
+            let y = margin + row * hexH + (col % 2 === 0 ? 0 : hexH * 0.5);
+            if (x > CANVAS_SIZE - margin || y > CANVAS_SIZE - margin) continue;
+            hexGrid.push({x, y, r: hexR * 0.92});
+        }
+    }
+
+    // Create foam bubble-void pairs
+    let pairCount = Math.floor(params.foamDensity / 2);
+    let shuffled = [...hexGrid].sort(() => random() - 0.5);
+
+    for (let i = 0; i < Math.min(pairCount, Math.floor(shuffled.length / 2)); i++) {
+        let bSite = shuffled[i * 2];
+        let vSite = shuffled[i * 2 + 1];
+        if (!bSite || !vSite) continue;
+
+        let phase = random() * Math.PI * 2;
+        let bR = random() * 2.5 + 3.5;
+        let b = new FoamBubble(bSite.x + (random()-0.5)*8, bSite.y + (random()-0.5)*8, phase, bR);
+        let v = new FoamVoid(vSite.x + (random()-0.5)*8, vSite.y + (random()-0.5)*8, phase);
+
+        b.pairedVoid = v;
+        v.pairedBubble = b;
+        bubbles.push(b);
+        voids.push(v);
+        pairs.push({bubble: b, void: v});
+    }
+
+    // Create stable topological knots (particles)
+    let charges = [1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1];
+    for (let i = 0; i < params.particleCount; i++) {
+        let x = margin * 2 + random() * (CANVAS_SIZE - margin * 4);
+        let y = margin * 2 + random() * (CANVAS_SIZE - margin * 4);
+        stableParticles.push(new StableParticle(x, y, charges[i % charges.length]));
+    }
+}
+
+function draw() {
+    t += 0.016;
+
+    // Dark foam substrate background
+    pg.background(6, 8, 20);
+
+    // Subtle deep space gradient
+    pg.noStroke();
+    for (let r = CANVAS_SIZE; r > 0; r -= 40) {
+        let a = map(r, 0, CANVAS_SIZE, 30, 0);
+        pg.fill(20, 30, 60, a);
+        pg.ellipse(CANVAS_SIZE/2, CANVAS_SIZE/2, r, r);
+    }
+
+    // Draw hex lattice
+    if (params.showHex) {
+        pg.noFill();
+        for (let h of hexGrid) {
+            let pts = hexPoints(h.x, h.y, h.r * 0.48);
+            let d = CANVAS_SIZE / 2;
+            let distFromCenter = Math.sqrt((h.x-d)*(h.x-d)+(h.y-d)*(h.y-d));
+            let alpha = map(distFromCenter, 0, d, 18, 8);
+            pg.stroke(100, 140, 180, alpha);
+            pg.strokeWeight(0.5);
+            pg.beginShape();
+            for (let p of pts) pg.vertex(p[0], p[1]);
+            pg.endShape(CLOSE);
+        }
+        pg.noStroke();
+    }
+
+    // Update all entities
+    for (let b of bubbles) b.update(t);
+    for (let v of voids) v.update(t);
+    for (let p of stableParticles) p.update();
+
+    // Draw displacement arcs (D-mode) between paired B-V
+    if (params.showDisplacement) {
+        pg.noFill();
+        for (let pair of pairs) {
+            let b = pair.bubble, v = pair.void;
+            let dx = v.x - b.x, dy = v.y - b.y;
+            let d = Math.sqrt(dx*dx + dy*dy);
+            // Only draw arcs within coupling range
+            let maxDist = 120 + params.coupling * 160;
+            if (d < maxDist) {
+                let alpha = map(d, 0, maxDist, params.arcOpacity * 2.5, 0);
+                let osc = (Math.sin(t * params.oscRate + pair.bubble.phase) + 1) * 0.5;
+                alpha *= (0.5 + osc * 0.5);
+
+                // Arc control point — perpendicular offset creates visible field curvature
+                let mx = (b.x + v.x) / 2;
+                let my = (b.y + v.y) / 2;
+                let perp = 0.2 + params.coupling * 0.3;
+                let cpx = mx + (-dy * perp);
+                let cpy = my + (dx * perp);
+
+                // D-mode arc: silver/grey = displacement field
+                pg.stroke(200, 196, 185, alpha);
+                pg.strokeWeight(0.7 + osc * 0.5);
+                pg.beginShape();
+                pg.vertex(b.x, b.y);
+                pg.quadraticVertex(cpx, cpy, v.x, v.y);
+                pg.endShape();
+
+                // Pulsing midpoint energy bead on the arc
+                let arcT = (Math.sin(t * params.oscRate * 2 + pair.bubble.phase) + 1) * 0.5;
+                let bx = lerp(lerp(b.x, cpx, arcT), lerp(cpx, v.x, arcT), arcT);
+                let by = lerp(lerp(b.y, cpy, arcT), lerp(cpy, v.y, arcT), arcT);
+                pg.noStroke();
+                pg.fill(220, 210, 190, alpha * 1.5);
+                pg.ellipse(bx, by, 2.5, 2.5);
+            }
+        }
+    }
+
+    // Draw voids
+    for (let v of voids) v.draw(pg);
+
+    // Draw bubbles
+    for (let b of bubbles) b.draw(pg);
+
+    // Draw stable particles last (on top)
+    for (let p of stableParticles) p.draw(pg);
+
+    // Scale label overlay
+    pg.noStroke();
+    pg.fill(100, 130, 160, 50);
+    pg.textSize(9);
+    pg.textFont('monospace');
+    pg.text('PLANCK SCALE FOAM SUBSTRATE', 14, CANVAS_SIZE - 14);
+    pg.text('B + V = D  ·  AXIOM ZERO  ·  © LUKE MARTIN 2026', CANVAS_SIZE - 270, CANVAS_SIZE - 14);
+
+    // Render buffer to canvas
+    image(pg, 0, 0);
+}
+
+// ── UI Handlers ────────────────────────────────────────────────
+
+function updateParam(name, value) {
+    params[name] = value;
+    document.getElementById(name + '-value').textContent =
+        Number.isInteger(value) ? value : value.toFixed(2);
+    if (name === 'foamDensity' || name === 'particleCount') {
+        initializeSystem();
+    }
+}
+
+function updateToggle(name, value) {
+    params[name] = value;
+}
+
+function updateSeedDisplay() {
+    document.getElementById('seed-input').value = params.seed;
+}
+
+function updateSeed() {
+    let v = parseInt(document.getElementById('seed-input').value);
+    if (v && v > 0) { params.seed = v; initializeSystem(); }
+    else updateSeedDisplay();
+}
+
+function previousSeed() {
+    params.seed = Math.max(1, params.seed - 1);
+    updateSeedDisplay(); initializeSystem();
+}
+
+function nextSeed() {
+    params.seed += 1;
+    updateSeedDisplay(); initializeSystem();
+}
+
+function randomSeedAndUpdate() {
+    params.seed = Math.floor(Math.random() * 999999) + 1;
+    updateSeedDisplay(); initializeSystem();
+}
+
+function resetParameters() {
+    params = {...defaultParams};
+    document.getElementById('foamDensity').value = params.foamDensity;
+    document.getElementById('foamDensity-value').textContent = params.foamDensity;
+    document.getElementById('oscRate').value = params.oscRate;
+    document.getElementById('oscRate-value').textContent = params.oscRate.toFixed(1);
+    document.getElementById('coupling').value = params.coupling;
+    document.getElementById('coupling-value').textContent = params.coupling.toFixed(2);
+    document.getElementById('particleCount').value = params.particleCount;
+    document.getElementById('particleCount-value').textContent = params.particleCount;
+    document.getElementById('arcOpacity').value = params.arcOpacity;
+    document.getElementById('arcOpacity-value').textContent = params.arcOpacity;
+    document.getElementById('showBubbles').checked = true;
+    document.getElementById('showVoids').checked = true;
+    document.getElementById('showDisplacement').checked = true;
+    document.getElementById('showParticles').checked = true;
+    document.getElementById('showHex').checked = true;
+    updateSeedDisplay();
+    initializeSystem();
+}
+
+function downloadPNG() {
+    saveCanvas('UFFT_VoidPairDynamics_seed' + params.seed, 'png');
+}
+
+window.addEventListener('load', () => { updateSeedDisplay(); });
+</script>
+</body>
+</html>
