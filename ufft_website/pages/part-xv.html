@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Part XV — Bohr Radius Derivation | UFFT</title>
+    <title>Part XV — Foam Pressure Propulsion | UFFT</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -12,6 +12,7 @@
             <a href="../index.html" class="logo">UFFT <span>Unified Foam Field Theory</span></a>
             <nav>
                 <a href="../index.html">Home</a>
+                <a href="definitions.html">Definitions</a>
                 <a href="part-i.html">Framework</a>
                 <a href="appendix.html">Predictions</a>
                 <a href="about.html">About</a>
@@ -21,53 +22,180 @@
 
     <main class="container">
         <div style="margin: 48px 0 32px;">
-            <div style="color: var(--ufft-gold); font-size: 0.95rem; margin-bottom: 8px;">Part XV</div>
-            <h1>Bohr Radius Derivation</h1>
+            <div style="color: var(--ufft-gold); font-size: 0.95rem; margin-bottom: 8px;">Part XV · Full Version</div>
+            <h1>Foam Pressure Differential Propulsion</h1>
+            <p style="color: var(--ufft-text-dim);">Acoustic Levitation · Large Object Movement · UAP Propulsion</p>
+            <p style="color: var(--ufft-text-dim);">A UFFT Audit of Bob Lazar's Technical Claims</p>
         </div>
 
+        <div class="visual-container">
+            <canvas id="propulsion-canvas" width="500" height="250"></canvas>
+            <p class="caption">Three emitters at 120° separation create a foam pressure null at the centroid</p>
+        </div>
+        <script src="../visuals/propulsion.js"></script>
 
+        <h2>Abstract</h2>
 
-<hr>
-<h3>Navigation</h3>
-<hr>
-<h1>PART XV</h1>
-<p><strong>Foam Pressure Differential Propulsion</strong></p>
-<p><em>Acoustic Levitation · Large Object Movement · UAP Propulsion · A UFFT Audit of Bob Lazar's Technical Claims</em></p>
-<p><strong>Luke Martin</strong></p>
-<p><em>Independent Researcher | 2026</em></p>
-<p>This section applies UFFT to the problem of moving large objects using frequencies and to the specific technical claims made by physicist Bob Lazar in 1989 regarding UAP propulsion. It is published as a separate standalone document. The full treatment appears in UFFT_PartXV_Propulsion_UAP_2026.docx. A summary of findings follows.</p>
-<p><strong>I. Gravity as a Foam Pressure Gradient --- The Engineering Consequence</strong></p>
-<p>In UFFT gravity is a foam pressure gradient: rho_vac(r) = rho_0*(1-2GM/rc²). Objects are pushed toward regions of lower foam density. To move a large object, you do not overpower this gradient mechanically. You create a competing local foam pressure gradient that redirects the net pressure differential in any chosen direction. Create a foam rarefaction above the object and the higher-pressure foam below pushes it up. The foam does the work. The wave geometry determines where.</p>
-<p>The interference angle formula (Part XI) gives the crossing angle theta required to position a foam rarefaction node at height h above an object using wavelength lambda: theta = 2*arcsin(lambda/(2h)). For a 10cm wavelength node 1 metre above an object: theta = 5.73 degrees. Achievable with existing acoustic or microwave sources.</p>
-<blockquote><p><em>Acoustic levitation is foam pressure differential levitation already demonstrated. NASA and ETH Zurich use it. The mechanism is real. The question is whether coupling can be extended from the air medium to the foam substrate directly, accessing the full P_0 pressure differential rather than just acoustic pressure in air.</em></p></blockquote>
-<p><strong>II. Bob Lazar's Technical Claims --- Verdict Summary</strong></p>
-<p>In 1989 Bob Lazar described a UAP propulsion system in specific technical detail. Element 115 as fuel was unknown to science at the time and was confirmed as Moscovium in 2003. The UFFT audit of each claim:</p>
-<p><strong>Claim 1 --- Gravity wave propulsion without thrust: FULLY CONSISTENT</strong></p>
-<p><strong>Claim 2 --- Three amplifiers in equilateral triangle: GEOMETRICALLY OPTIMAL</strong></p>
-<p><strong>Claim 3 --- Element 115 produces antimatter and gravity wave: MECHANISTICALLY SOUND</strong></p>
-<p><strong>Claim 4 --- Equal-length wave guides from reactor to amplifiers: TECHNICALLY REQUIRED</strong></p>
-<p><strong>Claim 5 --- Light bending, no windows, external cameras: DIRECT CONSEQUENCE</strong></p>
-<p><strong>Claim 6 --- Instant direction change, zero felt g-force: FULLY EXPLAINED</strong></p>
-<p><strong>Disc shape from first principles: ENGINEERING OPTIMUM --- INDEPENDENTLY DERIVED</strong></p>
-<p>UFFT does not prove Lazar's account is true. It proves the propulsion mechanism he described is not physically impossible --- and provides the theoretical framework within which every specific technical detail he gave is internally consistent. Either he was describing something real, or he independently constructed a propulsion concept consistent with UFFT in every verifiable detail. Both possibilities deserve serious consideration.</p>
-<p>For the full derivation of each claim, the disc shape derivation from first principles, the historical anomalies (Coral Castle, pyramid stones, Stonehenge), and the experimental pathway, see the standalone Part XV document.</p>
-<hr>
-<h3>Navigation</h3>
-<hr>
+        <p>Within the Unified Foam Field Theory (UFFT), gravity is a foam pressure gradient rather than spacetime curvature. This reframing has a direct engineering consequence: objects need not be moved by overcoming gravity mechanically. A locally modified foam pressure gradient, created by resonant standing wave interference at calculated angles, can redirect the pressure differential acting on any object.</p>
+
+        <p>We derive the mechanism from UFFT first principles, identify acoustic levitation as the already-demonstrated macroscopic proof of concept, extend the analysis to large object movement, and apply the full framework to the specific technical claims made by physicist Bob Lazar in 1989 regarding UAP propulsion.</p>
+
+        <h2>1. Gravity as a Foam Pressure Gradient</h2>
+
+        <p>Standard physics describes gravity as the curvature of spacetime produced by mass. Within UFFT, gravity has a different physical picture. The vacuum is a structured medium at baseline density ρ₀. Near a massive object, the foam is displaced and local vacuum density decreases:</p>
+
+        <div class="equation">
+            <code>ρ<sub>vac</sub>(r) = ρ₀ · (1 - 2GM/rc²)</code>
+            <span class="label">(1)</span>
+        </div>
+
+        <p>Near mass: less foam, lower pressure. Far from mass: more foam, higher pressure. An object sits in this pressure gradient and is pushed toward the low-pressure region near the mass. That push is what we experience as gravity.</p>
+
+        <blockquote>
+            <p>Gravity is not a force pulling you down. It is the foam pushing you toward where there is less foam to resist. To move a large object, you do not overpower gravity mechanically. You locally modify the foam pressure gradient around it. The foam then does the work.</p>
+        </blockquote>
+
+        <h2>2. The Foam Pressure Differential Mechanism</h2>
+
+        <h3>2.1 Creating a Foam Rarefaction by Interference</h3>
+
+        <p>A resonant standing wave creates pressure nodes at its interference minima. In UFFT these nodes are local foam rarefactions. Two coherent wave sources at wavelength λ crossing at angle θ create node spacing d:</p>
+
+        <div class="equation">
+            <code>d = λ / (2 · sin(θ/2))</code>
+            <span class="label">(2)</span>
+        </div>
+
+        <p>To position a foam rarefaction node at height h above an object:</p>
+
+        <div class="equation">
+            <code>θ = 2 · arcsin(λ / (2h))</code>
+            <span class="label">Interference angle formula (3)</span>
+        </div>
+
+        <h3>Sample Calculations</h3>
+
+        <table>
+            <tr>
+                <th>Node Height (h)</th>
+                <th>Wavelength (λ)</th>
+                <th>Required Angle (θ)</th>
+            </tr>
+            <tr>
+                <td>1 m</td>
+                <td>10 cm</td>
+                <td>5.73°</td>
+            </tr>
+            <tr>
+                <td>2 m</td>
+                <td>10 cm</td>
+                <td>2.87°</td>
+            </tr>
+            <tr>
+                <td>1 m</td>
+                <td>1 m</td>
+                <td>60.00°</td>
+            </tr>
+        </table>
+
+        <p>These angles are achievable with acoustic or microwave sources using existing technology.</p>
+
+        <h3>2.2 Acoustic Levitation — The Existing Proof of Concept</h3>
+
+        <p>Acoustic levitation — the stable suspension of objects in standing acoustic waves — has been demonstrated since the 1970s. NASA has used it to containerlessly process molten materials in space. ETH Zürich has levitated and manipulated droplets of reactive chemicals without contact. The mechanism is identical to UFFT foam pressure differential levitation operating in the air medium rather than the vacuum foam directly.</p>
+
+        <div class="prediction testable">
+            <span class="status">Already Demonstrated</span>
+            <h4>Acoustic levitation is foam pressure differential levitation</h4>
+            <p>The question is whether coupling can be extended from the air medium to the foam substrate directly, accessing the full P₀ pressure differential rather than just acoustic pressure in air.</p>
+        </div>
+
+        <h2>3. The Three-Cone Geometry</h2>
+
+        <p>A single emitter creates a pressure gradient along one axis. Two emitters in a line create a stable null point between them but only in one dimension. Three emitters in an equilateral triangle create a <strong>three-dimensional stable null point</strong> at their centroid.</p>
+
+        <p>This is the minimum geometry for full directional control. Tilting the phase relationship between the three sources moves the null point in any direction continuously. The object at the null point experiences no net foam pressure — it floats.</p>
+
+        <blockquote>
+            <p>The disc shape of reported UAP craft is derived independently from first principles as the engineering optimum for foam pressure differential propulsion with a triangular phased array. A triangular emitter arrangement maps naturally onto a disc. The disc shape would be convergently arrived at by any civilisation independently developing this propulsion, because the physics demands it.</p>
+        </blockquote>
+
+        <h2>4. Bob Lazar's Technical Claims — UFFT Audit</h2>
+
+        <p>In 1989 Bob Lazar described a UAP propulsion system in specific technical detail. Element 115 as fuel was unknown to science at the time and was confirmed as Moscovium in 2003.</p>
+
+        <table>
+            <tr>
+                <th>Lazar Claim</th>
+                <th>UFFT Verdict</th>
+            </tr>
+            <tr>
+                <td><strong>1. Gravity wave propulsion without thrust</strong></td>
+                <td style="color: var(--ufft-green);">FULLY CONSISTENT — Foam pressure differential requires no reaction mass</td>
+            </tr>
+            <tr>
+                <td><strong>2. Three amplifiers in equilateral triangle</strong></td>
+                <td style="color: var(--ufft-green);">GEOMETRICALLY OPTIMAL — Minimum for 3D stable null</td>
+            </tr>
+            <tr>
+                <td><strong>3. Element 115 produces antimatter and gravity wave</strong></td>
+                <td style="color: var(--ufft-green);">MECHANISTICALLY SOUND — Nuclear decay cascades couple to foam</td>
+            </tr>
+            <tr>
+                <td><strong>4. Equal-length wave guides from reactor to amplifiers</strong></td>
+                <td style="color: var(--ufft-green);">TECHNICALLY REQUIRED — Phase coherence demands path length matching</td>
+            </tr>
+            <tr>
+                <td><strong>5. Light bending, no windows, external cameras</strong></td>
+                <td style="color: var(--ufft-green);">DIRECT CONSEQUENCE — High foam gradient lenses all EM radiation</td>
+            </tr>
+            <tr>
+                <td><strong>6. Instant direction change, zero felt g-force</strong></td>
+                <td style="color: var(--ufft-green);">FULLY EXPLAINED — Occupants are inside the foam null; no differential pressure acts on them</td>
+            </tr>
+        </table>
+
+        <p><span class="verified">✓</span> All six of Lazar's specific technical claims are internally consistent with UFFT.</p>
+
+        <h2>5. Viktor Grebennikov — The Beetle Wing Case</h2>
+
+        <p>Viktor Grebennikov was a Russian entomologist who claimed in the 1980s that panels made from beetle wing cases (elytra) produced an unexplained levitation effect. The elytra of certain beetle families (Scarabaeidae, Cerambycidae) have hexagonal microstructures spaced at approximately 20 μm.</p>
+
+        <p>At that scale, the structures resonate at approximately <strong>7.5 THz</strong> (far infrared). A single panel of 5cm × 30cm contains approximately <strong>37 million cavity cells</strong>, each a natural emitter at the same frequency, all geometrically phase-locked by the biological structure.</p>
+
+        <blockquote>
+            <p>This is a phased array — the same geometry as the Lazar craft, operating at far infrared rather than microwave frequencies, using biology instead of electronics.</p>
+        </blockquote>
+
+        <p>Whether Grebennikov's claims are genuine is not settled. What UFFT establishes is that <em>if</em> the mechanism is real, the physics is consistent with foam pressure differential propulsion at the THz scale.</p>
+
+        <h2>6. Practical Development Path</h2>
+
+        <h3>Stage 1: Acoustic Proof of Concept ($60, this week)</h3>
+        <p>Three ultrasonic emitters (40 kHz piezo transducers) in equilateral triangle, 10 cm separation. Demonstrate stable acoustic null at centroid. Levitate small polystyrene sphere.</p>
+
+        <h3>Stage 2: RF Validation (months)</h3>
+        <p>Replace acoustic emitters with microwave phased array. Test for temperature anomaly at null point indicating foam coupling beyond air acoustics.</p>
+
+        <h3>Stage 3: Scale-Up (years)</h3>
+        <p>Increase power, refine geometry, test for net force on larger objects. This stage requires serious engineering and resources.</p>
+
+        <div class="prediction testable">
+            <span class="status">Under $200</span>
+            <h4>Acoustic Cone Interference Pattern</h4>
+            <p>Three acoustic emitters at 120° separation should create a measurable temperature anomaly at the centroid — a garage experiment proving the foam pressure differential mechanism.</p>
+        </div>
 
         <nav class="page-nav">
-            <a href="part-xiv.html">← Previous</a>
+            <a href="part-xiv.html">← Part XIV</a>
             <a href="../index.html">Index</a>
-            <a href="part-xvi.html">Next →</a>
+            <a href="part-xvi.html">Part XVI →</a>
         </nav>
     </main>
 
     <footer>
         <div class="container">
             <p>The Unified Foam Field Theory · Luke Martin · 2026</p>
-            <p style="margin-top: 8px;">
-                <a href="https://doi.org/10.5281/zenodo.18706756">DOI: 10.5281/zenodo.18706756</a>
-            </p>
         </div>
     </footer>
 </body>

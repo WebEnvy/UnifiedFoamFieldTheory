@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definitions & Methodology | UFFT</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container" style="max-width: 1200px;">
+            <a href="../index.html" class="logo">UFFT <span>Unified Foam Field Theory</span></a>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="definitions.html" class="active">Definitions</a>
+                <a href="part-i.html">Framework</a>
+                <a href="appendix.html">Predictions</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div style="margin: 48px 0 32px;">
+            <div style="color: var(--ufft-gold); font-size: 0.95rem; margin-bottom: 8px;">Reference</div>
+            <h1>Definitions and Conventions</h1>
+        </div>
+
+        <h2>Key Terms Used Throughout This Work</h2>
+
+        <h3>Foam (Vacuum Foam)</h3>
+        <p>The quantized Planck-scale structure of the vacuum. Not empty space, but a medium composed of discrete units at the Planck scale (l<sub>P</sub> = 1.616 × 10⁻³⁵ m). Each unit is termed a "bubble." The foam has baseline density ρ₀ = 5.155 × 10⁹⁶ kg/m³ and baseline pressure P₀ = 4.633 × 10¹¹³ Pa.</p>
+
+        <h3>Bubble</h3>
+        <p>A single quantized unit of the vacuum foam. Bubbles are not particles but structural units of the medium. Their density determines local vacuum properties.</p>
+
+        <h3>Void</h3>
+        <p>The complementary absence created when a bubble is displaced. Voids are genuine emptiness — regions where foam density is reduced or absent. The void is not a mathematical abstraction but a physical structure with measurable consequences.</p>
+
+        <h3>Void-Pair (Axiom Zero)</h3>
+        <p>The fundamental conservation law of the theory. Every displacement event D creates exactly one bubble B at position x and one complementary void V at position x':</p>
+        
+        <div class="axiom-box">
+            <div class="equation">B(x) + V(x') = D</div>
+            <div class="label">Neither exists without the other. This is the single axiom from which entanglement, the singlet state, and Bell correlation escape derive.</div>
+        </div>
+
+        <h3>Displacement Event (D)</h3>
+        <p>The fundamental object in UFFT. Not a particle, not a wave, but a topological event in the foam that creates both a bubble and a void simultaneously. Entangled particles are two addresses of one displacement event.</p>
+
+        <h3>Imprint</h3>
+        <p>The record of a measurement outcome written into the foam structure. When a quantum system interacts with its environment, the foam records which state was realized. This imprint is what causes decoherence — the loss of quantum superposition.</p>
+
+        <h3>Emergent Layer</h3>
+        <p>The macroscopic scale at which foam dynamics average to produce linear physics. At scales much larger than the Planck length, the foam's non-linear behavior averages out, producing Newtonian gravity, Maxwell electromagnetism, and linear quantum mechanics. This is not an approximation error — it is the correct description of foam physics as observed from within the emergent layer.</p>
+
+        <h2>Verification Markers</h2>
+        <p>Throughout this document:</p>
+        <ul>
+            <li><span class="verified">✓</span> indicates a claim that has been numerically computed and verified</li>
+            <li><code>~</code> indicates a qualitative argument that is logically sound but not a full mathematical derivation</li>
+        </ul>
+        <p>All numerical verifications use SI units unless otherwise stated. Physical constants use CODATA 2018 values.</p>
+
+        <h2 style="margin-top: 60px;">Methodology</h2>
+        <h3>How This Theory Was Developed and Verified</h3>
+
+        <h4>Research Process</h4>
+        <p>This work was developed through iterative dialogue between the author (Luke Martin) and Claude (Anthropic), an AI assistant. The development process spanned 18 sessions over approximately three weeks in February–March 2026.</p>
+
+        <table>
+            <tr>
+                <th>Role</th>
+                <th>Contributions</th>
+            </tr>
+            <tr>
+                <td><strong>Human Author (Luke Martin)</strong></td>
+                <td>All theoretical ideas, physical intuitions, and conceptual frameworks. Direction of inquiry and identification of which questions to pursue. Final judgment on which claims are supported and which remain open.</td>
+            </tr>
+            <tr>
+                <td><strong>AI Assistant (Claude)</strong></td>
+                <td>Numerical verification of all equations. Dimensional analysis to check unit consistency. Identification of connections to existing mathematical literature. Document preparation and formatting. Independent audit of claims (finding errors that required correction).</td>
+            </tr>
+        </table>
+
+        <h4>Verification Standards</h4>
+        <p>Every quantitative claim in this document was subjected to the following checks:</p>
+
+        <div class="prediction derived">
+            <h4>1. Dimensional Analysis</h4>
+            <p>Each equation was verified to have consistent units on both sides.</p>
+            <pre><code>Equation (3): P₀ = ρ₀ × c²
+Left side:  [Pa] = [kg/(m·s²)]
+Right side: [kg/m³] × [m²/s²] = [kg/(m·s²)] ✓</code></pre>
+        </div>
+
+        <div class="prediction derived">
+            <h4>2. Numerical Computation</h4>
+            <p>Key predictions were computed explicitly.</p>
+            <pre><code>Earth surface gravitational potential:
+φ = GM/Rc² = (6.674×10⁻¹¹)(5.972×10²⁴) / (6.371×10⁶)(2.998×10⁸)²
+φ = 6.961 × 10⁻¹⁰ ✓
+
+ISS altitude (400 km) gravitational potential:
+φ_ISS = GM/(R+h)c² = 6.550 × 10⁻¹⁰ ✓
+
+Fractional coherence improvement prediction:
+Δτ/τ = 2 × Δφ = 2 × (6.961 - 6.550) × 10⁻¹⁰ = 8.22 × 10⁻¹¹ ✓</code></pre>
+        </div>
+
+        <div class="prediction derived">
+            <h4>3. Consistency Check</h4>
+            <p>Each new result was checked against prior results and established physics. The factor-of-two error in the original gravity derivation was caught by this process.</p>
+        </div>
+
+        <div class="prediction derived">
+            <h4>4. Boundary Conditions</h4>
+            <p>Each equation was evaluated at limiting cases (r → ∞, r → r<sub>s</sub>, etc.) to verify physically sensible behavior.</p>
+        </div>
+
+        <h4>Corrections Made During Audit</h4>
+        <p>Four errors were identified and corrected during the development process:</p>
+
+        <table>
+            <tr>
+                <th>Error</th>
+                <th>Original</th>
+                <th>Corrected</th>
+            </tr>
+            <tr>
+                <td>Gravitational Acceleration</td>
+                <td>a = −(1/ρ₀)∇P gave a = −2GM/r² (incorrect)</td>
+                <td>Use potential extraction Φ = (P−P₀)/(2ρ₀), recovering Φ = −GM/r exactly</td>
+            </tr>
+            <tr>
+                <td>Lensing Factor</td>
+                <td>Initial derivation recovered factor of 2</td>
+                <td>Full GR result requires factor of 4 from both temporal and spatial metric contributions</td>
+            </tr>
+            <tr>
+                <td>Howard Frequency Base</td>
+                <td>40.5 Hz treated as derived</td>
+                <td>Noted as Howard's empirical value, not derived from first principles</td>
+            </tr>
+            <tr>
+                <td>Wardenclyffe Assessment</td>
+                <td>Initial analysis omitted Q factor</td>
+                <td>Explicit Q ≈ 5 computation showing why planetary-scale resonance is impractical</td>
+            </tr>
+        </table>
+
+        <p style="margin-top: 24px;"><strong>No errors were found in the core theoretical framework</strong> (Axiom Zero, void-pair conservation, vacuum density equation, decoherence prediction). All corrections were in secondary derivations or applications.</p>
+
+        <nav class="page-nav">
+            <a href="../index.html">← Home</a>
+            <a href="../index.html">Index</a>
+            <a href="preface.html">Next →</a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>The Unified Foam Field Theory · Luke Martin · 2026</p>
+        </div>
+    </footer>
+</body>
+</html>

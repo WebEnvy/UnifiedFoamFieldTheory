@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part XI — Elemental Resonance | UFFT</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container" style="max-width: 1200px;">
+            <a href="../index.html" class="logo">UFFT <span>Unified Foam Field Theory</span></a>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="definitions.html">Definitions</a>
+                <a href="definitions.html">Definitions</a>
+                <a href="part-i.html">Framework</a>
+                <a href="appendix.html">Predictions</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div style="margin: 48px 0 32px;">
+            <div style="color: var(--ufft-gold); font-size: 0.95rem; margin-bottom: 8px;">Part XI</div>
+            <h1>Elemental Resonance and Interference Angles</h1>
+            <p style="color: var(--ufft-text-dim);">Frequencies, Foam Topology, and the Spiral Periodic Table</p>
+        </div>
+
+        <p>Terrence Howard has proposed that elements can be manipulated using frequencies at specific angles, organised according to a spiral arrangement of the periodic table. This section examines that proposition through the UFFT framework — what is mathematically derivable, what is consistent with established physics, and what remains to be experimentally confirmed.</p>
+
+        <h2>I. Every Element is a Foam Topology</h2>
+
+        <p>In UFFT every element is a <strong>stable composite topological foam structure</strong>:</p>
+
+        <ul>
+            <li><strong>Protons and neutrons</strong> are tightly bound foam vortex clusters at the nuclear scale (~10⁻¹⁵ m)</li>
+            <li><strong>Electrons</strong> are standing foam waves in orbital shells at progressively larger radii (a₀ = 5.29 × 10⁻¹¹ m for hydrogen ground state)</li>
+            <li><strong>The atom</strong> as a whole is a composite resonant structure — each shell a distinct foam topology at a distinct scale</li>
+        </ul>
+
+        <p>Each element therefore has real natural resonant frequencies. These are not hypothetical — they are the <strong>spectral lines already measured by physics</strong>. In foam terms they are the natural oscillation frequencies of each shell's standing wave topology.</p>
+
+        <div class="equation">
+            <code>f(n₁→n₂) = R<sub>∞</sub> · c · (1/n₁² - 1/n₂²)</code>
+            <span class="label">Spectral Line Formula</span>
+        </div>
+
+        <p><span class="verified">✓</span> Hydrogen transitions: n=1→2 at 121.54 nm (2.47×10¹⁵ Hz), n=2→3 at 656.34 nm (4.57×10¹⁴ Hz). All confirmed.</p>
+
+        <h2>II. The Spiral Table — Structure and the Octave Series</h2>
+
+        <h3>The Core Observation</h3>
+
+        <p>Terrence Howard's claim (JRE #2152): hydrogen, carbon, silicon, and cobalt share the same colour on the spectrometer and the same tone, just doubled with each octave.</p>
+
+        <table>
+            <tr>
+                <th>Element</th>
+                <th>Z</th>
+                <th>Frequency</th>
+                <th>Octave</th>
+            </tr>
+            <tr>
+                <td>Hydrogen</td>
+                <td>1</td>
+                <td>40.5 Hz</td>
+                <td>0 (base)</td>
+            </tr>
+            <tr>
+                <td>Carbon</td>
+                <td>6</td>
+                <td>81.0 Hz (×2)</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Silicon</td>
+                <td>14</td>
+                <td>162.0 Hz (×4)</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Cobalt</td>
+                <td>27</td>
+                <td>324.0 Hz (×8)</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Rhodium</td>
+                <td>45</td>
+                <td>648.0 Hz (×16)</td>
+                <td>4</td>
+            </tr>
+        </table>
+
+        <p><em>Note: The base frequency of 40.5 Hz is Howard's empirical value. The doubling relationship is consistent with foam topology, but the absolute base is not derived from first principles in this work.</em></p>
+
+        <h3>Why These Elements — The Noble Gas Midpoint Structure</h3>
+
+        <p>Every one of these elements sits at the <strong>exact midpoint between two consecutive noble gas closed shells</strong>:</p>
+
+        <div class="visual-container">
+            <svg viewBox="0 0 600 200" width="600" height="200" style="display: block; margin: 0 auto;">
+                <rect fill="#0a0e14" width="600" height="200"/>
+                <!-- Noble gas endpoints -->
+                <circle cx="50" cy="100" r="20" fill="none" stroke="#D4A84B" stroke-width="2"/>
+                <text x="50" y="105" fill="#D4A84B" text-anchor="middle" font-size="12">He</text>
+                
+                <circle cx="150" cy="100" r="20" fill="none" stroke="#D4A84B" stroke-width="2"/>
+                <text x="150" y="105" fill="#D4A84B" text-anchor="middle" font-size="12">Ne</text>
+                
+                <circle cx="250" cy="100" r="20" fill="none" stroke="#D4A84B" stroke-width="2"/>
+                <text x="250" y="105" fill="#D4A84B" text-anchor="middle" font-size="12">Ar</text>
+                
+                <circle cx="400" cy="100" r="20" fill="none" stroke="#D4A84B" stroke-width="2"/>
+                <text x="400" y="105" fill="#D4A84B" text-anchor="middle" font-size="12">Kr</text>
+                
+                <circle cx="550" cy="100" r="20" fill="none" stroke="#D4A84B" stroke-width="2"/>
+                <text x="550" y="105" fill="#D4A84B" text-anchor="middle" font-size="12">Xe</text>
+                
+                <!-- Midpoint elements -->
+                <circle cx="100" cy="50" r="15" fill="#00C896" stroke="none"/>
+                <text x="100" y="55" fill="#0a0e14" text-anchor="middle" font-size="11" font-weight="bold">C</text>
+                
+                <circle cx="200" cy="50" r="15" fill="#00C896" stroke="none"/>
+                <text x="200" y="55" fill="#0a0e14" text-anchor="middle" font-size="11" font-weight="bold">Si</text>
+                
+                <circle cx="325" cy="50" r="15" fill="#00C896" stroke="none"/>
+                <text x="325" y="55" fill="#0a0e14" text-anchor="middle" font-size="11" font-weight="bold">Co</text>
+                
+                <circle cx="475" cy="50" r="15" fill="#00C896" stroke="none"/>
+                <text x="475" y="55" fill="#0a0e14" text-anchor="middle" font-size="11" font-weight="bold">Rh</text>
+                
+                <!-- Connecting lines -->
+                <line x1="50" y1="80" x2="100" y2="65" stroke="#2E74B5" stroke-width="1"/>
+                <line x1="100" y1="65" x2="150" y2="80" stroke="#2E74B5" stroke-width="1"/>
+                <line x1="150" y1="80" x2="200" y2="65" stroke="#2E74B5" stroke-width="1"/>
+                <line x1="200" y1="65" x2="250" y2="80" stroke="#2E74B5" stroke-width="1"/>
+                <line x1="250" y1="80" x2="325" y2="65" stroke="#2E74B5" stroke-width="1"/>
+                <line x1="325" y1="65" x2="400" y2="80" stroke="#2E74B5" stroke-width="1"/>
+                <line x1="400" y1="80" x2="475" y2="65" stroke="#2E74B5" stroke-width="1"/>
+                <line x1="475" y1="65" x2="550" y2="80" stroke="#2E74B5" stroke-width="1"/>
+                
+                <text x="300" y="180" fill="#7a8a9d" text-anchor="middle" font-size="11">Each midpoint element has half-filled shells — maximum topological openness</text>
+            </svg>
+            <p class="caption">The octave series: midpoint elements between noble gas shells</p>
+        </div>
+
+        <p>In UFFT: noble gases are fully closed foam shell topologies — every orbital filled, no topological flexibility, no reactivity. The element at the midpoint has <strong>exactly half-filled shells</strong>. It is at maximum topological openness.</p>
+
+        <p>This is why carbon can bond with virtually everything. This is why silicon underpins all semiconductor technology. This is why cobalt is biologically and magnetically active.</p>
+
+        <blockquote>
+            <p>They are not different substances. They are the same topological condition — maximum foam shell openness — at progressively larger scales.</p>
+        </blockquote>
+
+        <p><span class="verified">✓</span> Noble gas boundaries verified. All midpoint positions confirmed: Z=1 midpoint of 0-2, Z=6 midpoint of 2-10, Z=14 midpoint of 10-18, Z=27 midpoint of 18-36, Z=45 midpoint of 36-54.</p>
+
+        <h2>III. The Interference Angle Formula</h2>
+
+        <p>Two coherent beams at wavelength λ crossing at angle θ create a standing wave with spatial fringe spacing:</p>
+
+        <div class="equation">
+            <code>d<sub>fringe</sub> = λ / (2 · sin(θ/2))</code>
+            <span class="label">(1)</span>
+        </div>
+
+        <p>For maximum coupling to an orbital shell of radius r, the fringe spacing must match the orbital scale: d<sub>fringe</sub> = r. Solving for the crossing angle:</p>
+
+        <div class="equation">
+            <code>θ = 2 · arcsin(λ / (2 · r<sub>orbital</sub>))</code>
+            <span class="label">Interference angle formula — derived from UFFT (2)</span>
+        </div>
+
+        <p><span class="verified">✓</span> Dimensional check: λ [m] / r [m] = dimensionless argument of arcsin. Correct.</p>
+
+        <h3>Calculated Shell Coupling Angles</h3>
+
+        <table>
+            <tr>
+                <th>Shell</th>
+                <th>Angle θ</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>n = 1</td>
+                <td>180°</td>
+                <td>Beams head-on — standing wave matches innermost shell</td>
+            </tr>
+            <tr>
+                <td>n = 2</td>
+                <td>28.96°</td>
+                <td>Same wavelength, shallower crossing</td>
+            </tr>
+            <tr>
+                <td>n = 3</td>
+                <td>12.76°</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>n = 4</td>
+                <td>7.17°</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p><span class="verified">✓</span> All angles calculated from θ = 2·arcsin(λ<sub>base</sub> / (2·n²·a₀)). Confirmed numerically.</p>
+
+        <h2>IV. Multi-Frequency Combinations — The UFFT Prediction</h2>
+
+        <p>A single frequency couples to one shell. A composite atom has multiple shells at multiple scales. UFFT predicts that applying <strong>multiple frequencies simultaneously</strong> — each at the angle matched to its corresponding shell — should couple to the atom's complete foam topology rather than one shell in isolation.</p>
+
+        <div class="prediction derived">
+            <span class="status">Novel Prediction</span>
+            <h4>Multi-frequency matched-angle combinations produce enhanced coupling</h4>
+            <p>The combined standing wave pattern would resonate with the entire composite structure at once. One frequency reaches one shell. The right combination reaches the entire atom.</p>
+        </div>
+
+        <blockquote>
+            <p>The atom is a composite foam topology at multiple scales simultaneously. To couple to the whole structure, you need multiple frequencies at angles matched to each scale simultaneously.</p>
+        </blockquote>
+
+        <h2>V. The Honest Boundary — Atomic vs Nuclear Manipulation</h2>
+
+        <table>
+            <tr>
+                <th>Scale</th>
+                <th>Radius</th>
+                <th>Energy Range</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Atomic (electron shells)</td>
+                <td>~10⁻¹⁰ m</td>
+                <td>eV to keV</td>
+                <td>Experimentally accessible — established in laser spectroscopy</td>
+            </tr>
+            <tr>
+                <td>Nuclear (protons/neutrons)</td>
+                <td>~10⁻¹⁵ m</td>
+                <td>MeV range</td>
+                <td>Gamma ray territory — transmutation not yet demonstrated</td>
+            </tr>
+        </table>
+
+        <p>The energy gap between atomic and nuclear scales is approximately <strong>six orders of magnitude</strong>. This boundary is stated honestly.</p>
+
+        <p>The following section (Part XII) examines whether the foam's void pressure can bridge this gap — providing the nuclear-scale energy from a stored source while the resonant wave serves only as the trigger.</p>
+
+        <nav class="page-nav">
+            <a href="part-x.html">← Part X</a>
+            <a href="../index.html">Index</a>
+            <a href="part-xii.html">Part XII →</a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>The Unified Foam Field Theory · Luke Martin · 2026</p>
+        </div>
+    </footer>
+</body>
+</html>
