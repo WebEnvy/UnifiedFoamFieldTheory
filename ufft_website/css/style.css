@@ -228,7 +228,7 @@ li {
     color: var(--ufft-gold);
     background: none;
     padding: 0;
-    white-space: pre;
+    white-space: break-space;
     letter-spacing: 0.5px;
 }
 
