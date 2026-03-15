@@ -1,430 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UFFT — Unified Foam Field Theory | Core Mathematical Framework</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UFFT — Unified Foam Field Theory | Core Mathematical Framework</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<nav id="nav">
-    <div class="nav-inner">
-        <a href="#hero" class="nav-logo">UFFT</a>
-        <div class="nav-links">
-            <a href="#axiom">Axiom</a>
-            <a href="#results">Results</a>
-            <a href="#parts">Framework</a>
-            <a href="#predictions">Predictions</a>
-            <a href="#papers">Papers</a>
-            <a href="#limitations">Limitations</a>
-        </div>
-        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
-    </div>
-</nav>
-
-<!-- HERO -->
-<section id="hero" class="hero">
-    <div class="hero-bg">
-        <canvas id="foam-canvas"></canvas>
-    </div>
+<section class="hero">
+    <div class="hero-bg"><canvas id="foam-canvas"></canvas></div>
     <div class="hero-content">
         <p class="hero-label">Core Mathematical Framework · March 2026</p>
         <h1>THE UNIFIED<br>FOAM FIELD THEORY</h1>
         <p class="hero-sub">A single axiom. One cell geometry. Zero free parameters.</p>
         <div class="hero-stats">
-            <div class="stat">
-                <span class="stat-num">18</span>
-                <span class="stat-label">Parts</span>
-            </div>
-            <div class="stat">
-                <span class="stat-num">4</span>
-                <span class="stat-label">Published</span>
-            </div>
-            <div class="stat">
-                <span class="stat-num">0.21</span>
-                <span class="stat-label">ppb accuracy (α)</span>
-            </div>
-            <div class="stat">
-                <span class="stat-num">5</span>
-                <span class="stat-label">Falsifiable predictions</span>
-            </div>
+            <div class="stat"><span class="stat-num">18</span><span class="stat-label">Parts</span></div>
+            <div class="stat"><span class="stat-num">4</span><span class="stat-label">Published</span></div>
+            <div class="stat"><span class="stat-num">0.21</span><span class="stat-label">ppb (α)</span></div>
+            <div class="stat"><span class="stat-num">5</span><span class="stat-label">Predictions</span></div>
         </div>
         <p class="hero-author">Luke Martin · Independent Researcher</p>
     </div>
 </section>
 
-<!-- AXIOM ZERO -->
-<section id="axiom" class="section">
-    <div class="container">
-        <h2 class="section-title">Axiom Zero</h2>
-        <div class="axiom-box">
-            <div class="axiom-eq">B(x) + V(x') = D</div>
-            <p class="axiom-desc">Every displacement in the foam creates a bubble at position x and a void at position x'. Neither exists without the other. This is not arithmetic. It is the deepest conservation law in the theory.</p>
-        </div>
-
-        <div class="two-col">
-            <div class="col">
-                <h3>The Foam</h3>
-                <p>The foam is a mechanical substrate at Planck density, structured into truncated octahedral cells. It is more primitive than any force or field. Electromagnetism, gravity, and the nuclear forces all emerge from its mechanical properties.</p>
-                <ul class="clean-list">
-                    <li><strong>Density:</strong> ρ₀ = 5.155 × 10⁹⁶ kg/m³</li>
-                    <li><strong>Pressure:</strong> P₀ = ρ₀c² = 4.633 × 10¹¹³ Pa</li>
-                    <li><strong>Cell:</strong> Truncated octahedron, O<sub>h</sub> symmetry</li>
-                    <li><strong>Sound speed:</strong> c (the speed of light)</li>
-                </ul>
-            </div>
-            <div class="col">
-                <h3>What Emerges</h3>
-                <p>From one axiom and one cell geometry, the framework derives — not postulates — the following:</p>
-                <ul class="clean-list">
-                    <li>Gravity (foam density gradient)</li>
-                    <li>Quantum mechanics (foam wave equation)</li>
-                    <li>Entanglement (void-pair topology)</li>
-                    <li>Gauge group SU(3)×SU(2)×U(1)</li>
-                    <li>Fine structure constant α</li>
-                    <li>Dark matter ratio</li>
-                    <li>Dark energy density</li>
-                    <li>Covariant vacuum density</li>
-                </ul>
-            </div>
-        </div>
+<div class="idx-section">
+    <div class="axiom-box">
+        <div class="axiom-eq">B(x) + V(x') = D</div>
+        <p class="axiom-desc">Every displacement creates a bubble and a void. Neither exists without the other.</p>
     </div>
-</section>
+</div>
 
-<!-- CELL GEOMETRY VISUAL -->
-<section class="section section-dark">
-    <div class="container">
-        <h2 class="section-title">The Kelvin Cell</h2>
-        <p class="section-intro">The truncated octahedron — 24 vertices, 36 edges, 14 faces (6 squares, 8 hexagons). The unique Archimedean solid that tiles 3D space. Every number in the α derivation comes from this geometry.</p>
-        <div class="visual-container">
-            <canvas id="cell-canvas" width="600" height="400"></canvas>
-            <div class="visual-labels">
-                <div class="v-label"><span class="v-num">24</span> vertices (V)</div>
-                <div class="v-label"><span class="v-num">36</span> edges (E)</div>
-                <div class="v-label"><span class="v-num">14</span> faces (F)</div>
-                <div class="v-label"><span class="v-num">48</span> symmetries (|O<sub>h</sub>|)</div>
-            </div>
-        </div>
+<div class="idx-section">
+    <h2>Verified Results</h2>
+    <p class="intro">Zero free parameters. Every input is a topological integer or fundamental constant.</p>
+</div>
+<div class="results-grid">
+    <div class="result-card highlight">
+        <div class="result-label">Fine Structure Constant</div>
+        <div class="result-eq">α⁻¹ = 8π<sup>5/2</sup>[47/48 + 10/(3·48³) + 22/(3·48⁵)]</div>
+        <div class="result-value">= 137.035 999 055</div>
+        <div class="result-compare"><span>Observed: 137.035 999 084</span><span class="result-accuracy">0.21 ppb</span></div>
     </div>
-</section>
-
-<!-- KEY RESULTS -->
-<section id="results" class="section">
-    <div class="container">
-        <h2 class="section-title">Verified Results</h2>
-        <p class="section-intro">Zero free parameters. Every input is a topological integer of the truncated octahedron or a fundamental constant.</p>
-
-        <div class="result-cards">
-            <div class="result-card result-highlight">
-                <div class="result-label">Fine Structure Constant</div>
-                <div class="result-eq">α⁻¹ = 8π<sup>5/2</sup> × [47/48 + 10/(3·48³) + 22/(3·48⁵)]</div>
-                <div class="result-value">= 137.035 999 055</div>
-                <div class="result-compare">
-                    <span>Observed: 137.035 999 084 ± 0.021</span>
-                    <span class="result-accuracy">0.21 ppb · 1.4σ</span>
-                </div>
-            </div>
-
-            <div class="result-card">
-                <div class="result-label">Dark Matter Ratio</div>
-                <div class="result-eq">Ω<sub>DM</sub>/Ω<sub>b</sub> = 3(1+2√3) / 2<sup>4/3</sup></div>
-                <div class="result-value">= 5.3147</div>
-                <div class="result-compare">
-                    <span>Observed: 5.3272</span>
-                    <span class="result-accuracy">0.23%</span>
-                </div>
-            </div>
-
-            <div class="result-card">
-                <div class="result-label">Dark Energy Density</div>
-                <div class="result-eq">ρ<sub>Λ</sub> = ρ₀ × (l<sub>P</sub>/R<sub>U</sub>)²</div>
-                <div class="result-value">= 6.96 × 10⁻²⁷ kg/m³</div>
-                <div class="result-compare">
-                    <span>Observed: 5.88 × 10⁻²⁷</span>
-                    <span class="result-accuracy">~18%</span>
-                </div>
-            </div>
-
-            <div class="result-card">
-                <div class="result-label">Covariant Vacuum Density</div>
-                <div class="result-eq">ρ<sub>foam</sub> = ρ₀ × (−g<sub>tt</sub>/c²)</div>
-                <div class="result-value">Unique to w = 1 (stiff EOS)</div>
-                <div class="result-compare">
-                    <span>Recovers Schwarzschild, Kerr, de Sitter, FLRW</span>
-                    <span class="result-accuracy">Derived</span>
-                </div>
-            </div>
-
-            <div class="result-card">
-                <div class="result-label">Face Laplacian Spectrum</div>
-                <div class="result-eq">Spec(L) = {0¹, ((9−√17)/2)³, 4², ((9+√17)/2)³, 7⁴, 9¹}</div>
-                <div class="result-value">All eigenvalues in ℚ(√17)</div>
-                <div class="result-compare">
-                    <span>Irreps: A<sub>1g</sub>, T<sub>1u</sub>, E<sub>g</sub>, T<sub>1u</sub>, A<sub>1g</sub>⊕T<sub>2g</sub>, A<sub>2u</sub></span>
-                    <span class="result-accuracy">Exact</span>
-                </div>
-            </div>
-        </div>
+    <div class="result-card">
+        <div class="result-label">Dark Matter Ratio</div>
+        <div class="result-eq">Ω<sub>DM</sub>/Ω<sub>b</sub> = 3(1+2√3)/2<sup>4/3</sup></div>
+        <div class="result-value">= 5.3147</div>
+        <div class="result-compare"><span>Observed: 5.3272</span><span class="result-accuracy">0.23%</span></div>
     </div>
-</section>
-
-<!-- FRAMEWORK PARTS -->
-<section id="parts" class="section section-dark">
-    <div class="container">
-        <h2 class="section-title">The Framework</h2>
-        <p class="section-intro">18 Parts — pure physics, no philosophy. Each result traces back to Axiom Zero, the cell geometry, or the equation of state P = ρc².</p>
-
-        <div class="parts-grid">
-            <div class="part-card"><span class="pn">I</span><span class="pt">Axiom Zero and the Complete Framework</span><span class="ps">Core</span></div>
-            <div class="part-card"><span class="pn">II</span><span class="pt">The Universe at Its Own Schwarzschild Radius</span><span class="ps">Core</span></div>
-            <div class="part-card"><span class="pn">III</span><span class="pt">Quantum Interference from Foam Mechanics</span><span class="ps">Core</span></div>
-            <div class="part-card"><span class="pn">IV</span><span class="pt">Quantum Computing in the Foam Substrate</span><span class="ps">Core</span></div>
-            <div class="part-card"><span class="pn">V</span><span class="pt">The Correspondence Principle</span><span class="ps">Core</span></div>
-            <div class="part-card"><span class="pn">VI</span><span class="pt">Why Linear Mathematics Describes the Emergent Layer</span><span class="ps">Core</span></div>
-            <div class="part-card pub"><span class="pn">VII ★</span><span class="pt">Gravitational Suppression of Quantum Decoherence</span><span class="ps">Published</span></div>
-            <div class="part-card pub"><span class="pn">VIII ★</span><span class="pt">Void-Pair Conservation and Bell Correlations</span><span class="ps">Published</span></div>
-            <div class="part-card pub"><span class="pn">IX ★</span><span class="pt">The Fine Structure Constant from Foam Geometry</span><span class="ps">Published</span></div>
-            <div class="part-card pub"><span class="pn">X ★</span><span class="pt">The Laplacian Spectrum of the Kelvin Cell</span><span class="ps">Published</span></div>
-            <div class="part-card"><span class="pn">XI</span><span class="pt">Elemental Resonance and the Foam Resonance Table</span><span class="ps">Core</span></div>
-            <div class="part-card"><span class="pn">XII</span><span class="pt">The Void as Energy Reservoir</span><span class="ps">Core</span></div>
-            <div class="part-card"><span class="pn">XIII</span><span class="pt">Sustained Cavitation and Energy Transfer</span><span class="ps">Core</span></div>
-            <div class="part-card"><span class="pn">XIV</span><span class="pt">The Mathematics of the Foam Substrate</span><span class="ps">Core</span></div>
-            <div class="part-card"><span class="pn">XV</span><span class="pt">Experimental Methodology</span><span class="ps">Core</span></div>
-            <div class="part-card"><span class="pn">XVI</span><span class="pt">Cosmological Expansion and Dark Energy</span><span class="ps">Core</span></div>
-            <div class="part-card"><span class="pn">XVII</span><span class="pt">The Covariant Vacuum Density</span><span class="ps">March 2026</span></div>
-            <div class="part-card"><span class="pn">XVIII</span><span class="pt">From Foam to Atoms: The Particle Hierarchy</span><span class="ps">March 2026</span></div>
-        </div>
+    <div class="result-card">
+        <div class="result-label">Dark Energy Density</div>
+        <div class="result-eq">ρ<sub>Λ</sub> = ρ₀(l<sub>P</sub>/R<sub>U</sub>)²</div>
+        <div class="result-value">= 6.96 × 10⁻²⁷ kg/m³</div>
+        <div class="result-compare"><span>Observed: 5.88 × 10⁻²⁷</span><span class="result-accuracy">~18%</span></div>
     </div>
-</section>
-
-<!-- DERIVATION CHAIN -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title">The Derivation Chain</h2>
-        <p class="section-intro">From the foam equation of state to the Schrödinger equation in four steps. No postulates beyond P = ρc².</p>
-        <div class="chain">
-            <div class="chain-step">
-                <div class="chain-num">1</div>
-                <div class="chain-content">
-                    <h4>Foam Wave Equation</h4>
-                    <p class="chain-eq">∂²ψ/∂t² = c²∇²ψ</p>
-                    <p>Pressure waves in a medium with P = ρc². Sound speed = c.</p>
-                </div>
-            </div>
-            <div class="chain-arrow">↓</div>
-            <div class="chain-step">
-                <div class="chain-num">2</div>
-                <div class="chain-content">
-                    <h4>Klein-Gordon Equation</h4>
-                    <p class="chain-eq">∂²ψ/∂t² − c²∇²ψ + (mc²/ℏ)²ψ = 0</p>
-                    <p>Mass term from topological restoring force of stable defects.</p>
-                </div>
-            </div>
-            <div class="chain-arrow">↓</div>
-            <div class="chain-step">
-                <div class="chain-num">3</div>
-                <div class="chain-content">
-                    <h4>Schrödinger Equation</h4>
-                    <p class="chain-eq">iℏ ∂φ/∂t = −(ℏ²/2m)∇²φ + V(r)φ</p>
-                    <p>Non-relativistic limit. Factor out rest energy, drop ∂²/∂t².</p>
-                </div>
-            </div>
-            <div class="chain-arrow">↓</div>
-            <div class="chain-step">
-                <div class="chain-num">4</div>
-                <div class="chain-content">
-                    <h4>Born Rule & Interference</h4>
-                    <p class="chain-eq">P = |ψ|² · I(θ) = 4I₀cos²(πd sinθ/λ)</p>
-                    <p>Wave intensity = amplitude². Standard wave physics.</p>
-                </div>
-            </div>
-        </div>
+    <div class="result-card">
+        <div class="result-label">Covariant Vacuum Density</div>
+        <div class="result-eq">ρ = ρ₀ × (−g<sub>tt</sub>/c²)</div>
+        <div class="result-value">Unique to w = 1</div>
+        <div class="result-compare"><span>Schwarzschild, Kerr, de Sitter, FLRW</span><span class="result-accuracy">Derived</span></div>
     </div>
-</section>
+</div>
 
-<!-- PREDICTIONS -->
-<section id="predictions" class="section section-dark">
-    <div class="container">
-        <h2 class="section-title">Falsifiable Predictions</h2>
-        <p class="section-intro">Five specific, quantitative predictions that distinguish UFFT from standard physics. Each can be tested with current or near-future technology.</p>
+<div class="idx-section">
+    <h2>The Framework</h2>
+    <p class="intro">18 Parts. Pure physics. Each result traces to Axiom Zero, the cell geometry, or P = ρc².</p>
+</div>
+<div class="parts-grid">
+    <a href="preface.html" class="part-link"><span class="pn">—</span><span class="pt">Preface</span></a>
+    <a href="part-i.html" class="part-link"><span class="pn">I</span><span class="pt">Axiom Zero and the Complete Framework</span></a>
+    <a href="part-i.html#part-ii" class="part-link"><span class="pn">II</span><span class="pt">The Universe at Its Own Schwarzschild Radius</span></a>
+    <a href="part-i.html#part-iii" class="part-link"><span class="pn">III</span><span class="pt">Quantum Interference from Foam Mechanics</span></a>
+    <a href="part-iv.html" class="part-link"><span class="pn">IV</span><span class="pt">Quantum Computing in the Foam Substrate</span></a>
+    <a href="part-v.html" class="part-link"><span class="pn">V</span><span class="pt">The Correspondence Principle</span></a>
+    <a href="part-vi.html" class="part-link"><span class="pn">VI</span><span class="pt">Why Linear Mathematics Describes the Emergent Layer</span></a>
+    <a href="part-vii.html" class="part-link pub"><span class="pn">VII ★</span><span class="pt">Gravitational Suppression of Decoherence</span></a>
+    <a href="part-vii.html#part-viii" class="part-link pub"><span class="pn">VIII ★</span><span class="pt">Void-Pair Conservation and Bell Correlations</span></a>
+    <a href="part-vii.html#part-ix" class="part-link pub"><span class="pn">IX ★</span><span class="pt">The Fine Structure Constant from Foam Geometry</span></a>
+    <a href="part-x.html" class="part-link pub"><span class="pn">X ★</span><span class="pt">The Laplacian Spectrum of the Kelvin Cell</span></a>
+    <a href="part-xi.html" class="part-link"><span class="pn">XI</span><span class="pt">Elemental Resonance and the Foam Resonance Table</span></a>
+    <a href="part-xi.html#part-xii" class="part-link"><span class="pn">XII</span><span class="pt">The Void as Energy Reservoir</span></a>
+    <a href="part-xiii.html" class="part-link"><span class="pn">XIII</span><span class="pt">Sustained Cavitation and Energy Transfer</span></a>
+    <a href="part-xiv.html" class="part-link"><span class="pn">XIV</span><span class="pt">The Mathematics of the Foam Substrate</span></a>
+    <a href="part-xv.html" class="part-link"><span class="pn">XV</span><span class="pt">Experimental Methodology</span></a>
+    <a href="part-xvi.html" class="part-link"><span class="pn">XVI</span><span class="pt">Cosmological Expansion and Dark Energy</span></a>
+    <a href="part-xvii.html" class="part-link"><span class="pn">XVII</span><span class="pt">The Covariant Vacuum Density</span></a>
+    <a href="part-xvii.html#part-xviii" class="part-link"><span class="pn">XVIII</span><span class="pt">From Foam to Atoms: The Particle Hierarchy</span></a>
+    <a href="limitations.html" class="part-link"><span class="pn">—</span><span class="pt">Known Limitations</span></a>
+    <a href="appendix.html" class="part-link"><span class="pn">—</span><span class="pt">Appendix: Predictions & Status</span></a>
+</div>
 
-        <div class="pred-list">
-            <div class="pred-card">
-                <div class="pred-num">1</div>
-                <div class="pred-body">
-                    <h4>Gravitational Suppression of Decoherence</h4>
-                    <p>Γ(r)/Γ(∞) = 1 − 2GM/rc². Decoherence rates decrease near massive objects. Standard QM predicts no gravitational effect. Diósi-Penrose predicts enhancement. UFFT predicts suppression — opposite sign.</p>
-                    <span class="pred-status">Primary discriminator · Published</span>
-                </div>
-            </div>
-            <div class="pred-card">
-                <div class="pred-num">2</div>
-                <div class="pred-body">
-                    <h4>Universal Qubit-Independence</h4>
-                    <p>The suppression factor is independent of qubit type — photonic, superconducting, trapped ion. Same formula, same coefficient. Sharpest test of the mechanism.</p>
-                    <span class="pred-status">Testable now</span>
-                </div>
-            </div>
-            <div class="pred-card">
-                <div class="pred-num">3</div>
-                <div class="pred-body">
-                    <h4>Foam Panel Layer-Count Scaling</h4>
-                    <p>Acoustic shielding scales with the number of foam layers, not total thickness. Testable with commercial foam panels for ~$200.</p>
-                    <span class="pred-status">Testable for ~$200</span>
-                </div>
-            </div>
-            <div class="pred-card">
-                <div class="pred-num">4</div>
-                <div class="pred-body">
-                    <h4>Three-Particle Cascade Topology</h4>
-                    <p>|Ψ⟩ = (1/√2)(|010⟩ − |101⟩). Distinct from GHZ and W states. X⊗X⊗X = −1 correlation.</p>
-                    <span class="pred-status">Formalised</span>
-                </div>
-            </div>
-            <div class="pred-card">
-                <div class="pred-num">5</div>
-                <div class="pred-body">
-                    <h4>Quadratic Lorentz Invariance Violation</h4>
-                    <p>δc/c ~ (E/E<sub>P</sub>)². Quadratic, not linear — distinguishes UFFT from competing Planck-scale proposals. ~10⁻³⁸ at LHC energies.</p>
-                    <span class="pred-status">Future technology</span>
-                </div>
-            </div>
-        </div>
+<div class="idx-section" style="text-align:center;">
+    <h2>Published Papers</h2>
+    <p class="intro">Four preprints on Zenodo with permanent DOIs.</p>
+    <div class="results-grid" style="max-width:640px; margin:24px auto;">
+        <a href="https://zenodo.org/records/18706756" target="_blank" class="result-card" style="text-decoration:none;">
+            <div class="result-label">Part VII</div>
+            <div class="result-eq" style="color:var(--text);">Gravitational Suppression of Decoherence</div>
+            <div class="result-compare"><span>10.5281/zenodo.18706756</span></div>
+        </a>
+        <a href="https://zenodo.org/records/18706806" target="_blank" class="result-card" style="text-decoration:none;">
+            <div class="result-label">Part VIII</div>
+            <div class="result-eq" style="color:var(--text);">Void-Pair Conservation and Bell Correlations</div>
+            <div class="result-compare"><span>10.5281/zenodo.18706806</span></div>
+        </a>
+        <a href="https://zenodo.org/records/19011758" target="_blank" class="result-card" style="text-decoration:none;">
+            <div class="result-label">Part IX</div>
+            <div class="result-eq" style="color:var(--text);">The Fine Structure Constant from Foam Geometry</div>
+            <div class="result-compare"><span>10.5281/zenodo.19011758</span></div>
+        </a>
+        <a href="https://zenodo.org/records/19030062" target="_blank" class="result-card" style="text-decoration:none;">
+            <div class="result-label">Part X</div>
+            <div class="result-eq" style="color:var(--text);">The Laplacian Spectrum of the Kelvin Cell</div>
+            <div class="result-compare"><span>10.5281/zenodo.19030062</span></div>
+        </a>
     </div>
-</section>
+</div>
 
-<!-- PAPERS -->
-<section id="papers" class="section">
-    <div class="container">
-        <h2 class="section-title">Published Papers</h2>
-        <p class="section-intro">Four preprints on Zenodo with permanent DOIs. Full derivations, reproduction guides, and AI disclosure.</p>
+<div class="idx-footer">
+    <p>The Unified Foam Field Theory · Luke Martin · Independent Researcher · March 2026</p>
+    <p style="font-family:'JetBrains Mono',monospace; color:var(--gold); margin-top:8px; letter-spacing:2px;">B + V = D</p>
+    <p style="margin-top:8px; font-size:0.75rem; opacity:0.4;">Developed in collaboration with Claude (Anthropic)</p>
+</div>
 
-        <div class="paper-list">
-            <a href="https://zenodo.org/records/18706756" class="paper-card" target="_blank">
-                <span class="paper-part">Part VII</span>
-                <h4>Gravitational Suppression of Quantum Decoherence</h4>
-                <span class="paper-doi">10.5281/zenodo.18706756</span>
-            </a>
-            <a href="https://zenodo.org/records/18706806" class="paper-card" target="_blank">
-                <span class="paper-part">Part VIII</span>
-                <h4>Void-Pair Conservation and Bell Correlations</h4>
-                <span class="paper-doi">10.5281/zenodo.18706806</span>
-            </a>
-            <a href="https://zenodo.org/records/19011758" class="paper-card" target="_blank">
-                <span class="paper-part">Part IX</span>
-                <h4>The Fine Structure Constant from Foam Geometry</h4>
-                <span class="paper-doi">10.5281/zenodo.19011758</span>
-            </a>
-            <a href="https://zenodo.org/records/19030062" class="paper-card" target="_blank">
-                <span class="paper-part">Part X</span>
-                <h4>The Laplacian Spectrum of the Kelvin Cell</h4>
-                <span class="paper-doi">10.5281/zenodo.19030062</span>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- COVARIANT DENSITY -->
-<section class="section section-dark">
-    <div class="container">
-        <h2 class="section-title">The Covariant Vacuum Density</h2>
-        <p class="section-intro">The sole remaining hard open problem — closed March 2026. Five lines of textbook physics.</p>
-
-        <div class="derivation-box">
-            <div class="deriv-step"><span class="ds-n">1</span> The foam is a perfect fluid with P = ρc²</div>
-            <div class="deriv-step"><span class="ds-n">2</span> Relativistic Euler: a = −∇P/(ρ + P/c²) = −(c²/2)∇(ln ρ)</div>
-            <div class="deriv-step"><span class="ds-n">3</span> GR acceleration: a = −(c²/2)∇(ln(−g<sub>tt</sub>))</div>
-            <div class="deriv-step"><span class="ds-n">4</span> Equating: ∇(ln ρ) = ∇(ln(−g<sub>tt</sub>/c²))</div>
-            <div class="deriv-step result"><span class="ds-n">5</span> <strong>ρ<sub>foam</sub> = ρ₀ × (−g<sub>tt</sub>/c²)</strong></div>
-        </div>
-
-        <p style="text-align:center; margin-top: 24px; color: #7a8a9d;">Unique to w = 1. The factor of 2 from relativistic enthalpy cancels the factor of 2 in GR. No other equation of state produces a linear density-metric relation.</p>
-    </div>
-</section>
-
-<!-- LIMITATIONS -->
-<section id="limitations" class="section">
-    <div class="container">
-        <h2 class="section-title">Known Limitations</h2>
-        <p class="section-intro">Honest boundaries. What we derive, what we identify, and what remains open.</p>
-
-        <div class="tier-grid">
-            <div class="tier-card tier-derived">
-                <h3>Derived</h3>
-                <p class="tier-desc">Zero free parameters, verified against experiment</p>
-                <ul>
-                    <li>Gravity from density gradient</li>
-                    <li>Covariant vacuum density</li>
-                    <li>Fine structure constant (0.21 ppb)</li>
-                    <li>Dark matter ratio (0.23%)</li>
-                    <li>Dark energy density (~18%)</li>
-                    <li>Face Laplacian spectrum</li>
-                    <li>Gauge group SU(3)×SU(2)×U(1)</li>
-                    <li>Bell correlations</li>
-                    <li>Decoherence suppression</li>
-                    <li>Correspondence principle</li>
-                </ul>
-            </div>
-            <div class="tier-card tier-mechanism">
-                <h3>Mechanism Established</h3>
-                <p class="tier-desc">Physical process identified, quantitative completion in progress</p>
-                <ul>
-                    <li>Strong force (foam torsion)</li>
-                    <li>Weak force (chiral discharge)</li>
-                    <li>Gluons (torsion waves)</li>
-                    <li>W±/Z⁰ (masses open)</li>
-                    <li>Dark matter connectivity</li>
-                </ul>
-            </div>
-            <div class="tier-card tier-identified">
-                <h3>Identified</h3>
-                <p class="tier-desc">What the entity IS in the foam — mass not yet computed</p>
-                <ul>
-                    <li>Electron, muon, tau</li>
-                    <li>Quarks</li>
-                    <li>Neutrinos</li>
-                    <li>Proton/neutron</li>
-                    <li>Higgs mechanism</li>
-                </ul>
-            </div>
-            <div class="tier-card tier-open">
-                <h3>Not Derived</h3>
-                <p class="tier-desc">Acknowledged future programme</p>
-                <ul>
-                    <li>Maxwell's equations from foam</li>
-                    <li>Einstein-Hilbert action</li>
-                    <li>Spatial metric g<sub>rr</sub></li>
-                    <li>Friedmann equations</li>
-                    <li>Particle mass spectrum</li>
-                    <li>Full QFT emergence</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div>
-                <p class="footer-title">The Unified Foam Field Theory</p>
-                <p>Luke Martin · Independent Researcher · March 2026</p>
-                <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.5;">Developed in collaboration with Claude (Anthropic)</p>
-            </div>
-            <div class="footer-links">
-                <p>B + V = D</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script src="js/foam.js"></script>
-<script src="js/cell.js"></script>
-<script src="js/nav.js"></script>
-
+<script>
+// Animated foam background
+(function() {
+    const canvas = document.getElementById('foam-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    function resize() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = canvas.parentElement.offsetHeight; }
+    resize(); window.addEventListener('resize', resize);
+    const cells = [];
+    for (let i = 0; i < 50; i++) {
+        cells.push({ x:Math.random()*2000, y:Math.random()*1200, r:20+Math.random()*35,
+            vx:(Math.random()-0.5)*0.25, vy:(Math.random()-0.5)*0.25,
+            phase:Math.random()*Math.PI*2, sides:Math.random()>0.4?6:4 });
+    }
+    function draw(t) {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        cells.forEach(c => {
+            c.x+=c.vx; c.y+=c.vy;
+            if(c.x<-50)c.x=canvas.width+50; if(c.x>canvas.width+50)c.x=-50;
+            if(c.y<-50)c.y=canvas.height+50; if(c.y>canvas.height+50)c.y=-50;
+            const r=c.r+Math.sin(t*0.001+c.phase)*3;
+            const a=0.05+Math.sin(t*0.0008+c.phase)*0.025;
+            ctx.beginPath();
+            for(let i=0;i<=c.sides;i++){const ang=(i/c.sides)*Math.PI*2-Math.PI/2;
+                const px=c.x+Math.cos(ang)*r,py=c.y+Math.sin(ang)*r;
+                i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);}
+            ctx.closePath(); ctx.strokeStyle=`rgba(61,139,253,${a})`; ctx.lineWidth=1; ctx.stroke();
+        });
+        for(let i=0;i<cells.length;i++)for(let j=i+1;j<cells.length;j++){
+            const d=Math.hypot(cells[i].x-cells[j].x,cells[i].y-cells[j].y);
+            if(d<110){ctx.beginPath();ctx.moveTo(cells[i].x,cells[i].y);ctx.lineTo(cells[j].x,cells[j].y);
+                ctx.strokeStyle=`rgba(232,184,75,${(1-d/110)*0.03})`;ctx.lineWidth=0.5;ctx.stroke();}}
+        requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Part XVII — The Covariant Vacuum Density | UFFT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+<div class="layout">
+<nav class="sidebar">
+<div class="sidebar-header"><a href="index.html" class="sidebar-logo">UFFT</a></div>
+<ul>
+<li><a href="preface.html">Preface</a></li>
+<li><a href="part-i.html">I — Framework</a></li>
+<li><a href="part-iv.html">IV — Quantum Computing</a></li>
+<li><a href="part-v.html">V — Correspondence</a></li>
+<li><a href="part-vi.html">VI — Linear Mathematics</a></li>
+<li><a href="part-vii.html">VII — Decoherence ★</a></li>
+<li><a href="part-x.html">X — Face Laplacian ★</a></li>
+<li><a href="part-xi.html">XI — Elemental Resonance</a></li>
+<li><a href="part-xiii.html">XIII — Cavitation</a></li>
+<li><a href="part-xiv.html">XIV — Foam Mathematics</a></li>
+<li><a href="part-xv.html">XV — Methodology</a></li>
+<li><a href="part-xvi.html">XVI — Dark Energy</a></li>
+<li><a href="part-xvii.html" class="active">XVII — Covariant Density</a></li>
+<li><a href="limitations.html">Known Limitations</a></li>
+<li><a href="appendix.html">Appendix</a></li>
+</ul>
+</nav>
+<main>
+<header class="page-header">
+<h1>Part XVII — The Covariant Vacuum Density</h1>
+<p class="word-count">1,196 words</p>
+</header>
+<article>
+<p><em>Luke Martin · Independent Researcher · March 2026</em></p>
+<h2>The Problem</h2>
+<p>The density ansatz ρ(r) = ρ₀(1 − 2GM/rc²) was stated in Part I as consistent with the Schwarzschild metric. It was not derived from a covariant principle. Generalising it to arbitrary curved spacetime — Kerr black holes, FLRW cosmology, gravitational waves — was identified as the sole remaining open problem.</p>
+<h2>The Derivation</h2>
+<p>The foam is a perfect fluid with equation of state P = ρc² (maximally stiff; sound speed equals c). In general relativity, the relativistic Euler equation for hydrostatic equilibrium is:</p>
+<div class="equation">a = −∇P / (ρ + P/c²)</div>
+<p>For P = ρc², the relativistic enthalpy is ρ + P/c² = 2ρ. Therefore:</p>
+<div class="equation">a_foam = −(c²/2) ∇(ln ρ)     [Equation 1]</div>
+<p>The gravitational acceleration of a static observer in a metric with time-time component g_tt is:</p>
+<div class="equation">a_GR = −(c²/2) ∇(ln(−g_tt))     [Equation 2]</div>
+<p>These have identical form. Equating and integrating with the boundary condition ρ → ρ₀ as g_tt → −c² (flat space):</p>
+<div class="equation">ρ_foam = ρ₀ × (−g_tt/c²)     [Equation 3]</div>
+<p>The factor of 2 in the foam equation (from relativistic enthalpy) exactly cancels the factor of 2 in the GR equation (from the metric). This cancellation occurs ONLY for the stiff equation of state w = 1.</p>
+<h2>Uniqueness</h2>
+<p>For a general barotropic equation of state P = wρc², the same procedure gives:</p>
+<div class="equation">ρ = ρ₀ × (−g_tt/c²)^((1+w)/(2w))     [Equation 4]</div>
+<p>The exponent (1+w)/(2w) equals 1 only when w = 1. For any other equation of state, the density-metric relation is nonlinear: | EOS | w | Exponent | Relation |</p>
+<table>
+<tr><th>Stiff (foam)</th><th>1</th><th>1</th><th>ρ = ρ₀(−g_tt/c²) — LINEAR</th></tr>
+<tr><td>Radiation</td><td>1/3</td><td>2</td><td>ρ ∝ (−g_tt)²</td></tr>
+<tr><td>Cosmological constant</td><td>−1</td><td>0</td><td>ρ = ρ₀ = const</td></tr>
+</table>
+<p>The linear identification ρ ∝ (−g_tt) is unique to the foam equation of state. This is a prediction: if the vacuum has P = ρc², the density profile MUST be linear in g_tt.</p>
+<h2>Verification</h2>
+<p>Spacetime | g_tt | ρ_foam | Status |</p>
+<table>
+<tr><th>Schwarzschild</th><th>−(1−2GM/rc²)c²</th><th>ρ₀(1−2GM/rc²)</th><th>✓ Recovers Part I</th></tr>
+<tr><td>Weak field (same limit)</td><td>−(1+2Φ/c²)c²</td><td>ρ₀(1−2GM/rc²)</td><td>✓ Newtonian limit Φ = −GM/r</td></tr>
+<tr><td>Horizon</td><td>g_tt = 0</td><td>ρ = 0</td><td>✓ Foam depleted</td></tr>
+<tr><td>FLRW comoving</td><td>−c²</td><td>ρ₀</td><td>✓ Uniform vacuum</td></tr>
+<tr><td>Kerr (rotating BH)</td><td>−(1−r_s r/Σ)c²</td><td>ρ₀(1−r_s r/Σ)</td><td>Prediction: angle-dependent</td></tr>
+<tr><td>de Sitter</td><td>−(1−H²r²/c²)c²</td><td>ρ₀(1−H²r²/c²)</td><td>Prediction: cosmological horizon at r = c/H</td></tr>
+<tr><td>Gravitational wave</td><td>−(1+h₊)c²</td><td>ρ₀(1+h₊)</td><td>Prediction: density oscillates with wave</td></tr>
+</table>
+<h2>Interpretive</h2>
+<p>Caveat</p>
+<p>The relation ρ = ρ₀(−g_tt/c²) is a foam-geometry identity: the foam density IS the metric component g_tt, expressed in foam variables. The foam does not source gravity through Einstein's equations as additional matter — the foam IS spacetime. Curvature is measured relative to the vacuum state ρ₀, which defines flat space. Only non-foam matter (particles, radiation) enters the stress-energy tensor T_μν.</p>
+<p>This avoids the self-gravity catastrophe: the foam perturbation δρ = ρ₀ × 2GM/(rc²) at Planck density would otherwise contain 10¹¹⁰ times more energy than the source mass. The resolution is that δρ is not an energy source — it is the geometric description of the curvature itself.</p>
+<h2>What</h2>
+<p>This Closes This was the sole remaining open problem identified in the Appendix. With its closure: - The decoherence prediction (Part VII) is grounded: ρ(r) is now derived, not assumed - Running coupling constants become a programme: α in curved spacetime is computable - Bekenstein-Hawking entropy is tightened: ρ → 0 at the horizon is a theorem - The dark energy equation of state is constrained by g_tt in FLRW coordinates - Kerr black holes get a non-trivial foam density prediction</p>
+<p><strong>The covariant vacuum density (g_tt component) is closed. The spatial metric component g_rr remains as noted in Known Limitations.</strong></p>
+<hr>
+<p>--- # Part XVIII — From Foam to Atoms: The Particle Hierarchy</p>
+<p><em>Luke Martin · Independent Researcher · March 2026</em></p>
+<p><strong>What every known particle and force IS in the Unified Foam Field Theory</strong></p>
+<p>Standard physics has a zoo of particles, forces, and constants that are measured but not explained. UFFT says they all emerge from one substrate (Planck-scale foam) and one axiom (B + V = D). This Part walks from the smallest scale to the largest.</p>
+<p><strong>Level 0 — The Substrate (Planck scale, 10⁻³⁵ m)</strong></p>
+<p>An infinite, pre-existing electrical foam. Each bubble is a truncated octahedron with O_h symmetry (48 elements), V = 24 vertices, E = 36 edges, F = 14 faces. Planck density ρ₀ = 5.155 × 10⁹⁶ kg/m³. Fine structure constant α⁻¹ = 137.035999055 from O_h representation theory (0.21 ppb, zero free parameters). Axiom Zero: B(x) + V(x') = D.</p>
+<p><strong>Level 1 — Forces</strong></p>
+<p>Gravity (DERIVED): Foam density gradient. ρ(r) = ρ₀(1 − 2GM/rc²) gives Φ = −GM/r exactly. Electromagnetism (DERIVED): Foam lattice tension. c = √(P₀/ρ₀). Coupling strength α derived from O_h symmetry. Strong force (MECHANISM): Torsion around 3 independent lattice axes = 3 colour charges. 8 gluons = 8 generators of SU(3). Confinement from torsion potential V(θ) = k(1−cosθ). Asymptotic freedom from harmonic limit at small θ. Weak force (MECHANISM): Chiral helical discharge. Left-handed particles couple; right-handed don't. Parity violation is geometric. Gauge group SU(3)×SU(2)×U(1) (DERIVED): Emerges from torsion topology of the foam cell.</p>
+<p><strong>Level 2 — Particles</strong></p>
+<p>Particles are stable topological structures in the foam — quantised vortices, knots, or standing displacement waves protected by topology.</p>
+<p>Photon (DERIVED): Transverse pressure wave at c. Massless because the dispersion relation is linear. Electron (IDENTIFIED): Simplest stable charged topological defect. Mass: OPEN (requires knot classification). Muon and Tau (IDENTIFIED): Higher-energy versions of the electron. Three generations from B-V-D triadic structure. Mass ratios: OPEN.</p>
+<p>Neutrinos (IDENTIFIED): Chiral foam modes, no electric charge. Nearly massless because topological structure is minimal. Quarks (IDENTIFIED): Bound bubble-void clusters carrying fractional charge AND colour charge. Can't exist alone — isolated colour = unclosed torsion = infinite energy.</p>
+<p>Gluons (MECHANISM): Propagating torsion waves. 8 types = 8 SU(3) generators. Massless. Self-interacting. Proton and Neutron (IDENTIFIED): Three quarks locked by colour-neutral torsion. W±, Z⁰ (MECHANISM, masses OPEN): Torsion-discharge excitations. Higgs boson (OPEN): Foam's resistance to topological deformation.</p>
+<p><strong>Level 3 — Composite Objects</strong></p>
+<p>Nuclei: Clusters of protons and neutrons held by residual strong force. Atoms (DERIVED framework): Nucleus surrounded by electrons in quantised standing-wave patterns. Schrödinger equation, Born rule, double-slit interference, and complementarity all derived from foam wave mechanics.</p>
+<p><strong>Level 4 — What About Strings?</strong></p>
+<p>UFFT does not need strings. String theory: 1D objects, 10--11 dimensions, ~10⁵⁰⁰ free parameters, α not derived. UFFT: 3D foam cells, 3+1 dimensions (observed), 0 free parameters, α derived to 0.21 ppb. Strings are emergent, not fundamental.</p>
+<p><strong>What's Honestly Open</strong></p>
+<p>The particle spectrum problem — computing which topological knots are stable and their masses — is the major unfinished programme. The structure is: substrate → symmetry → forces → particles. The first three levels are derived. The fourth is mapped but not yet computed.</p>
+<p>Luke Martin · The Unified Foam Field Theory · Part XVIII · March 2026 ---</p>
+<hr>
+</article>
+<div class="page-nav"><a href="part-xvi.html" class="prev">← Part XVI — Cosmological Expansion and Da</a><a href="limitations.html" class="next">Known Limitations and Future Programme →</a></div>
+<footer>
+<p>The Unified Foam Field Theory · Luke Martin · March 2026</p>
+<p class="axiom-footer">B + V = D</p>
+</footer>
+</main>
+</div>
+<script>
+document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+    document.querySelector('.sidebar').classList.toggle('open');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Known Limitations and Future Programme | UFFT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+<div class="layout">
+<nav class="sidebar">
+<div class="sidebar-header"><a href="index.html" class="sidebar-logo">UFFT</a></div>
+<ul>
+<li><a href="preface.html">Preface</a></li>
+<li><a href="part-i.html">I — Framework</a></li>
+<li><a href="part-iv.html">IV — Quantum Computing</a></li>
+<li><a href="part-v.html">V — Correspondence</a></li>
+<li><a href="part-vi.html">VI — Linear Mathematics</a></li>
+<li><a href="part-vii.html">VII — Decoherence ★</a></li>
+<li><a href="part-x.html">X — Face Laplacian ★</a></li>
+<li><a href="part-xi.html">XI — Elemental Resonance</a></li>
+<li><a href="part-xiii.html">XIII — Cavitation</a></li>
+<li><a href="part-xiv.html">XIV — Foam Mathematics</a></li>
+<li><a href="part-xv.html">XV — Methodology</a></li>
+<li><a href="part-xvi.html">XVI — Dark Energy</a></li>
+<li><a href="part-xvii.html">XVII — Covariant Density</a></li>
+<li><a href="limitations.html" class="active">Known Limitations</a></li>
+<li><a href="appendix.html">Appendix</a></li>
+</ul>
+</nav>
+<main>
+<header class="page-header">
+<h1>Known Limitations and Future Programme</h1>
+<p class="word-count">1,316 words</p>
+</header>
+<article>
+<p>We derive gravity, quantum mechanics, gauge groups, the fine structure constant, the dark matter ratio, the dark energy density, and the covariant vacuum density from a single axiom and cell geometry. The following are honestly acknowledged as NOT derived and represent the boundaries of the current framework.</p>
+<h2>Not Derived from Foam</h2>
+<div class="equation">Maxwell's equations.** The gauge group U(1) we derive from foam displacement topology (Appendix §6), but Gauss's law, Faraday's law, Ampère's law, and gauge invariance have not been explicitly constructed from foam lattice dynamics. The identification "electromagnetism = foam lattice tension" is structural, not a derivation of the Maxwell field equations. This is the most significant gap in the framework's coverage of known physics.</div>
+<div class="equation">The Einstein-Hilbert action.** The metric component g_tt we derive from foam equilibrium (Part XVII). The full Einstein field equations G_μν = 8πGT_μν/c⁴ are not derived from a foam action principle. We recover Schwarzschild geometry but do not produce the Einstein equations as dynamical equations of the foam.</div>
+<div class="equation">The spatial metric component g_rr.** The covariant vacuum density derivation gives g_tt = −c²(ρ/ρ₀). The Schwarzschild form g_rr = 1/(1−2GM/rc²) is consistent with the foam model but not independently derived. The cell conservation law ρl³ = const gives g_rr = (1−x)^(−2/3), which differs from the Schwarzschild (1−x)^(−1). Resolving this discrepancy requires understanding how proper volume relates to cell geometry in curved spacetime.</div>
+<div class="equation">The Friedmann equations.** Dark energy density we derive ρ_Λ = ρ₀(l_P/R_U)² (Part XVI, 18% accuracy). The full Friedmann equations governing cosmological expansion are not derived from foam dynamics. The model of expansion (new cells created via Axiom Zero) is qualitative, not quantitative.</div>
+<p><strong>Individual particle masses.</strong> We explain what particles ARE (topological foam defects) and derives their symmetry properties (gauge groups, coupling constants), but does not compute individual masses (electron, muon, quarks, W/Z, Higgs). This requires the knot classification programme — determining which topological configurations in the foam are stable and computing their energies.</p>
+<h2>Clarifications on Bell Correlations (Part VIII)</h2>
+<p>We do not claim to violate Bell's theorem or to provide a local hidden-variable theory. The void-pair created by a displacement event is non-local by construction — it spans both endpoints simultaneously. We provide a physical mechanism for WHY entangled particles are in the singlet state: Axiom Zero (B + V = D) forces the antisymmetric pairing with total displacement zero. The singlet state |ψ⟩ = (|↑↓⟩ − |↓↑⟩)/√2 is a consequence of this conservation law, not a postulate. The correlation E(a,b) = −cos θ and the CHSH violation S = 2√2 follow from standard quantum mechanics applied to this state. No-signaling is inherited from the singlet's reduced density matrix properties. The foam does not replace quantum mechanics — it provides the substrate from which quantum mechanics emerges.</p>
+<h2>Primary Experimental Discriminator</h2>
+<p>Our principal testable distinction from standard quantum mechanics is the gravitational suppression of quantum decoherence (Part VII, published as 10.5281/zenodo.18706756). Standard QM predicts that decoherence rates are independent of gravitational potential. UFFT predicts a specific, altitude-dependent suppression: Γ(r)/Γ(∞) = 1 − 2GM/rc², derived from the covariant vacuum density (Part XVII). This is a quantitative, sign-specific prediction that differs from both standard QM and from competing quantum gravity proposals (Diósi-Penrose, which predict gravitational ENHANCEMENT of decoherence, not suppression). The prediction is testable with current technology using entangled photon pairs at different altitudes or satellite-based quantum key distribution comparing ground and orbital decoherence rates.</p>
+<h2>The Foam Wave Equation</h2>
+<p>The wave equation for displacement perturbations in the foam follows from the equation of state P = ρc²:</p>
+<div class="equation">∂²ψ/∂t² = c²∇²ψ     (massless: photons)</div>
+<div class="equation">∂²ψ/∂t² − c²∇²ψ + (mc²/ℏ)²ψ = 0     (massive: Klein-Gordon)</div>
+<p>The mass term arises from the topological restoring force of a stable defect. The non-relativistic limit gives the Schrödinger equation: iℏ ∂φ/∂t = −(ℏ²/2m)∇²φ + V(r)φ. The Born rule follows from wave intensity = amplitude². The double-slit interference pattern I(θ) = 4I₀cos²(πd sinθ/λ) follows from superposition of foam wakes. Which-path decoherence follows from void-pair imprint creation. Complementarity we derive V² + D² ≤ 1. The complete chain — foam EOS → wave equation → Klein-Gordon → Schrödinger → Born rule → interference → complementarity — uses no postulates beyond the foam's mechanical properties.</p>
+<h2>Why the Foam Does Not Cause Scattering or Drag</h2>
+<p>A natural objection: if the vacuum is a Planck-density lattice, why don't particles scatter off it? The answer: particles are excitations OF the foam, not objects moving THROUGH it. A phonon in a crystal does not scatter off the crystal lattice — it IS a collective excitation of the lattice. Similarly, a photon does not scatter off the foam — it IS a pressure wave in the foam. An electron does not experience foam drag — it IS a topological defect in the foam. There is no scattering for the same reason there is no luminiferous ether drag: the medium is not separate from the physics. The foam IS spacetime. Particles are its excitations. The null results of direct dark matter detection experiments, collider searches, and structure formation constraints are consistent with this: there is no new particle to find, because dark matter is a structural property of the foam itself.</p>
+<h2>Equivalence Principle</h2>
+<p>The covariant vacuum density ρ = ρ₀(−g_tt/c²) is universal — it depends only on the local metric, not on the properties of any test particle. All particles experience the same foam density gradient, and therefore the same gravitational acceleration. This IS the weak equivalence principle. The foam does not introduce a preferred frame, foam drag, or scale-dependent gravitational constant G, because the foam density profile is determined by the metric (Part XVII), and the metric satisfies standard GR to the precision tested. Deviations from GR are predicted only at the Planck scale: the quadratic Lorentz invariance violation δc/c ~ (E/E_P)² is the framework's specific prediction for where foam discreteness becomes detectable.</p>
+<h2>Emergence of Standard Quantum Field Theory</h2>
+<p>We derive the foam wave equation → Klein-Gordon equation → Schrödinger equation → Born rule → interference patterns → complementarity as an unbroken chain from the foam equation of state P = ρc². This establishes the first layer of emergence: non-relativistic quantum mechanics from foam dynamics.</p>
+<p>The second layer — the full apparatus of quantum field theory (Feynman diagrams, S-matrix elements, running coupling constants, renormalisation group flow) — is expected to emerge as the long-wavelength, many-particle limit of foam excitations, analogous to how continuum hydrodynamics emerges from discrete molecular interactions. The foam's discrete structure at the Planck scale provides a natural ultraviolet cutoff, potentially resolving the divergences that necessitate renormalisation in standard QFT. This programme has not been carried out and is identified as future work.</p>
+<h2>Statement of Confidence</h2>
+<p>We distinguish three levels of completion within the framework:</p>
+<div class="equation">DERIVED (zero free parameters, verified against experiment):** Gravity from foam density gradient. Covariant vacuum density ρ = ρ₀(−g_tt/c²). Fine structure constant α⁻¹ = 137.035999055 (0.21 ppb). Dark matter ratio Ω_DM/Ω_b = 5.3147 (0.23%). Dark energy density ρ_Λ within 18%. Face Laplacian spectrum (exact algebraic eigenvalues). Gauge group SU(3)×SU(2)×U(1) from foam torsion topology. Bell correlations from void-pair conservation. Decoherence suppression from density gradient. Correspondence principle with three nonlinearity parameters.</div>
+<p><strong>MECHANISM ESTABLISHED (physical process identified, quantitative completion in progress):</strong> Strong force as foam torsion. Weak force as chiral discharge. Gluons as torsion waves. W±/Z⁰ as torsion-discharge excitations (masses open). Dark matter from anisotropic BCC connectivity (formula derived, physical identification as programme).</p>
+<p><strong>IDENTIFIED (what the entity IS in the foam, mass/coupling not yet computed):</strong> Electron, muon, tau as topological defects of increasing complexity. Quarks as fractional-charge clusters. Neutrinos as chiral foam modes. Proton/neutron as colour-neutral torsion bound states. Higgs as foam resistance to topological deformation.</p>
+<p>The three hard open problems originally identified (fine structure constant, Koide parameter, covariant vacuum density) are all closed. The particle mass spectrum, Maxwell's equations from foam dynamics, the spatial metric g_rr, and the Friedmann equations remain as future programme. These are honestly acknowledged and not claimed as solved.</p>
+<hr>
+</article>
+<div class="page-nav"><a href="part-xvii.html" class="prev">← Part XVII — The Covariant Vacuum Density</a><a href="appendix.html" class="next">Appendix — Predictions, Verified Results →</a></div>
+<footer>
+<p>The Unified Foam Field Theory · Luke Martin · March 2026</p>
+<p class="axiom-footer">B + V = D</p>
+</footer>
+</main>
+</div>
+<script>
+document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+    document.querySelector('.sidebar').classList.toggle('open');
+});
+</script>
+</body>
+</html>
