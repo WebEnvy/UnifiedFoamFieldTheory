@@ -2044,7 +2044,15 @@ The second layer — the full apparatus of quantum field theory (Feynman diagram
 
 ## Statement of Confidence
 
-Our strongest results are those verified against experiment with zero free parameters: α⁻¹ = 137.035999055 (0.21 ppb), Ω_DM/Ω_b = 5.3147 (0.23%), ρ_Λ within 18%, and the face Laplacian spectrum (exact algebraic eigenvalues). The weakest areas are the connection to electrodynamics (Maxwell's equations), the full metric in curved spacetime (g_rr), and the particle mass spectrum (knot classification). These are acknowledged as future programme, not claimed as solved.
+We distinguish three levels of completion within the framework:
+
+**DERIVED (zero free parameters, verified against experiment):** Gravity from foam density gradient. Covariant vacuum density ρ = ρ₀(−g_tt/c²). Fine structure constant α⁻¹ = 137.035999055 (0.21 ppb). Dark matter ratio Ω_DM/Ω_b = 5.3147 (0.23%). Dark energy density ρ_Λ within 18%. Face Laplacian spectrum (exact algebraic eigenvalues). Gauge group SU(3)×SU(2)×U(1) from foam torsion topology. Bell correlations from void-pair conservation. Decoherence suppression from density gradient. Correspondence principle with three nonlinearity parameters.
+
+**MECHANISM ESTABLISHED (physical process identified, quantitative completion in progress):** Strong force as foam torsion. Weak force as chiral discharge. Gluons as torsion waves. W±/Z⁰ as torsion-discharge excitations (masses open). Dark matter from anisotropic BCC connectivity (formula derived, physical identification as programme).
+
+**IDENTIFIED (what the entity IS in the foam, mass/coupling not yet computed):** Electron, muon, tau as topological defects of increasing complexity. Quarks as fractional-charge clusters. Neutrinos as chiral foam modes. Proton/neutron as colour-neutral torsion bound states. Higgs as foam resistance to topological deformation.
+
+The three hard open problems originally identified (fine structure constant, Koide parameter, covariant vacuum density) are all closed. The particle mass spectrum, Maxwell's equations from foam dynamics, the spatial metric g_rr, and the Friedmann equations remain as future programme. These are honestly acknowledged and not claimed as solved.
 
 ---
 
