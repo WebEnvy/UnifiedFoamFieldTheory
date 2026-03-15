@@ -91,13 +91,13 @@ D is the displacement event. B and V are its endpoints. Neither exists without t
 
 The foam is the electromagnetic vacuum field at Planck density, structured into truncated octahedral cells.
 
-This is not a metaphor. The foam's measurable properties are electromagnetic quantities: the vacuum impedance Z₀ = √(μ₀/ε₀) = 376.730 Ω is the characteristic impedance of this medium. The equation of state P = ρc² is the radiation pressure relation for electromagnetic energy. The speed of light c = √(P₀/ρ₀) is the sound speed in this medium — light travels at c because the medium IS electromagnetic.
+This is not a metaphor. The foam's measurable properties are electromagnetic quantities: the vacuum impedance Z₀ = √(μ₀/ε₀) = 376.730 Ω is the characteristic impedance of this medium. The equation of state P = ρc² is the radiation pressure relation for electromagnetic energy. The speed of light c = √(P₀/ρ₀) is the sound speed in this medium — light travels at c because the medium IS electromagnetic. This is a consistency relation, not a derivation: P = ρc² is the axiom; c = √(P₀/ρ₀) confirms dimensional consistency.
 
 A bubble is a Planck-scale compression of electromagnetic energy: one Planck mass (2.176 × 10⁻⁸ kg) of electromagnetic field in one Planck volume (4.22 × 10⁻¹⁰⁵ m³). A void is the absence of that energy — a rarefaction. Displacement D is the redistribution of electromagnetic energy from one cell to another.
 
 There is no deeper substrate. The foam is the fundamental level. Asking what the foam is made of is equivalent to asking what space is made of in general relativity — the answer is that it is the irreducible foundation. All particles, forces, and spacetime geometry emerge from the mechanical behaviour of this medium.
 
-The fine structure constant α = 1/137.036 is the foam's self-coupling constant — the probability that a displacement in the electromagnetic field couples back to its source. It we derive from the cell geometry (Part IX) precisely because α is a geometric property of the foam cell.
+The fine structure constant α = 1/137.036 is the foam's self-coupling constant — the probability that a displacement in the electromagnetic field couples back to its source. We derive it from the cell geometry (Part IX) precisely because α is a geometric property of the foam cell.
 
 ## Why This Framework Does Not Use Quantum Field Theory
 
@@ -163,11 +163,11 @@ The horizon is interpreted as complete vacuum density depletion — the foam cea
 
 **Post-Audit Status**
 
-grad(P), which produced a = -2GM/r². The correction derives acceleration via the effective potential Phi = (P-P_0)/(2*rho_0), where the 1/2 emerges from the relativistic enthalpy of the foam equation of state P = ρc² (see Part XVII for the full derivation from the relativistic Euler equation). Density ansatz, pressure definition, and horizon location are all unchanged. Final audit counts: arithmetic errors 0, dimensional inconsistencies 0, algebraic inconsistencies 0.*
+grad(P), which produced a = -2GM/r². The correction derives acceleration via the effective potential Phi = (P-P_0)/(2*rho_0), where the 1/2 emerges from the relativistic enthalpy of the foam equation of state P = ρc² (see Part XVII for the full derivation from the relativistic Euler equation). Density ansatz, pressure definition, and horizon location are all unchanged. Final audit counts: four corrections identified and applied; all predictions unchanged.*
 
 **IV. Electromagnetism as Foam Tension**
 
-*P_EM(r) = -Q^2 / (8piepsilon_0 r^4) (10)*
+*P_EM(r) = -Q^2 / (8pi epsilon_0 r^4) [negative sign: tension, not compression] (12)*
 
 The r⁻⁴ dependence versus r⁻¹ for gravity means electromagnetism dominates at quantum scales. The crossover length sets the scale of atomic structure. Maxwell's equations emerge from foam polarisation dynamics. The speed of light is the speed of a pressure wave through Planck-density foam.
 
@@ -181,11 +181,11 @@ Particles are stable topological foam structures — quantized vortices or stand
 
 Two particles created together are two endpoints of one displacement event D. The void is the antipodal complement of the bubble — in every direction, opposite. The unique quantum state encoding antipodal structure in every measurement direction simultaneously:
 
-*|D> = (1/sqrt(2)) (|up,down> - |down,up>) [Singlet state — selected by symmetry] (11)*
+*|D> = (1/sqrt(2)) (|up,down> - |down,up>) [Singlet state — selected by symmetry] (12)*
 
 The singlet state is not assigned arbitrarily. It is the unique state satisfying perfect anti-correlation in every direction — precisely the relationship between bubble and void. From it:
 
-E(a,b) = \<D|(sigma_a x sigma_b)|D> = -cos(theta_ab) (12)
+E(a,b) = \<D|(sigma_a x sigma_b)|D> = -cos(theta_ab) (13)
 
 The model escapes Bell's theorem because D is not a local hidden
 
@@ -199,7 +199,7 @@ D is defined by its extension between both endpoints — it cannot be factored. 
 
 The foam is embedded in a larger electrical medium, which is embedded in a larger one still. The hierarchy extends infinitely. Each layer n couples to adjacent layers:
 
-*grad^2(V_n) = -rho_n/epsilon_n + alpha(V\_{n+1}-V_n) + beta(V\_{n-1}-V_n) (13)*
+*grad^2(V_n) = -rho_n/epsilon_n + alpha(V\_{n+1}-V_n) + beta(V\_{n-1}-V_n) (14)*
 
 where α is the upward inter-layer coupling (compression toward the layer above) and β is the downward inter-layer coupling (rarefaction toward the layer below), both determined by the foam density gradient at the layer boundary.
 
@@ -215,7 +215,7 @@ Dark matter is the gravitational effect of anisotropic foam connectivity tension
 
 **IX. Critical Density — Universe at Its Own Schwarzschild Radius**
 
-*rho_critical = 3H_0^2 / (8piG) = 8.53 x 10^-27 kg/m^3 (14)*
+*rho_critical = 3H_0^2 / (8piG) = 8.53 x 10^-27 kg/m^3 (15)*
 
 Void-pair conservation ties the mass-energy of a discharge event to the volume of its void simultaneously. Both are set by the same displacement event D. The ratio is fixed by Axiom Zero. A universe cannot be over or under its own Schwarzschild threshold — the conservation law forbids it. --- # Part II — The Universe at Its Own Schwarzschild Radius
 
@@ -360,7 +360,7 @@ Quantum algorithms work by setting up interference patterns across computational
 
 A quantum computer is not magic. It is a precisely engineered interference device — a sophisticated application of the same foam wake mechanics that produces double slit patterns. The engineering challenge is maintaining foam coherence long enough for the interference to complete.
 
-> *A quantum perform computation. The correct answer is the bright fringe. The foam finds it by interference, not by exhaustive search.*
+> *A quantum computer performs computation. The correct answer is the bright fringe. The foam finds it by interference, not by exhaustive search.*
 
 **V. Decoherence — Void-Pair Imprinting by the Environment**
 
@@ -596,13 +596,13 @@ Gravitational potential difference:
 
 > *delta_phi = GM/R_E - GM/(R_E + h) = 4.11 x 10⁻¹¹ (10)*
 
-Fractional coherence time improvement (vacuum foam model): delta_tau / tau_0 = 2 * delta_phi = 8.22 x 10⁻¹¹ (11)
+Fractional coherence time improvement (vacuum foam model): delta_tau / tau_0 = 2 * delta_phi = 8.22 x 10⁻¹¹ (12)
 
 Absolute improvement for different qubit technologies:
 
 Superconducting qubits (tau_0 ~ 1 ms): delta_tau ~ 0.08 ps [below current sensitivity] Trapped ion qubits (tau_0 ~ 100 s): delta_tau ~ 8.2 ns [within reach of precision experiments] The Diosi-Penrose model predicts the opposite sign: coherence time should be shorter at higher altitude by a comparable magnitude. The two models therefore make predictions that differ by approximately 2 × 8.22 × 10⁻¹¹ = 1.64 × 10⁻¹⁰ fractionally — the combined separation of the two predictions. 3.2 Scaling with Gravitational Potential The effect scales linearly with gravitational potential difference.
 
-Experiments at higher gravitational potential difference — lunar surface vs orbit, or deep gravitational wells — would produce proportionally larger signals. For a laboratory at altitude h₂ vs sea level h₁ = 0: delta_tau / tau_0 = 2  G  M_E / c² * (1/R_E - 1/(R_E + h)) (12)
+Experiments at higher gravitational potential difference — lunar surface vs orbit, or deep gravitational wells — would produce proportionally larger signals. For a laboratory at altitude h₂ vs sea level h₁ = 0: delta_tau / tau_0 = 2  G  M_E / c² * (1/R_E - 1/(R_E + h)) (13)
 
 > *At*
 
@@ -1154,7 +1154,7 @@ For maximum coupling to an orbital shell of radius r, the fringe spacing must ma
 
 formula — derived from UFFT] (2)
 
-arcsin. Correct.
+arcsin formula.
 
 We derive this formula directly from foam wave mechanics. It gives the precise crossing angle at which two coherent beams create a standing wave pattern that maximally couples to a given electron shell. Using the soft X-ray wavelength matching the hydrogen n=1 orbital diameter (0.106 nm) as the base wavelength:
 
@@ -1195,9 +1195,7 @@ It is presented with full statement of what is established, what is logically de
 
 In UFFT the static void is genuine emptiness — the accumulated record of every displacement event since the universe began. It is not fluctuating, not energetic, not virtual. It is simply the absence of foam.
 
-> *The 4.633*
-
-× 10¹¹³ Pa. The void inside has pressure zero. This is a real pressure differential at every void boundary in the universe. It follows directly from the definitions — not an assumption but a consequence of what the void is.
+> *The foam baseline pressure is 4.633 × 10¹¹³ Pa. The void inside has pressure zero. This is a real pressure differential at every void boundary in the universe. It follows directly from the definitions — not an assumption but a consequence of what the void is.
 
 **Delta_P = P_0 - 0 = P_0 = 4.633 x 10^113 Pa [Void boundary pressure differential] (1)**
 
@@ -1239,7 +1237,7 @@ The sequence: a resonant standing wave at the target element's nuclear frequency
 
 The resonant wave is the trigger. The foam pressure is the energy source. This distinction is essential and must not be collapsed.
 
-> *The You do not need to supply MeV of energy. You need to supply precisely the right geometry to release MeV of already-stored foam energy.*
+> *You do not need to supply MeV of energy. You need to supply precisely the right geometry to release MeV of already-stored foam energy.*
 
 **V. Energy Conservation — This Is Not Free Energy**
 
@@ -1920,12 +1918,12 @@ The exponent (1+w)/(2w) equals 1 only when w = 1. For any other equation of stat
 
 The linear identification ρ ∝ (−g_tt) is unique to the foam equation of state. This is a prediction: if the vacuum has P = ρc², the density profile MUST be linear in g_tt.
 
-## Verification |
+## Verification
 
 Spacetime | g_tt | ρ_foam | Status |
 |-----------|------|--------|--------|
 | Schwarzschild | −(1−2GM/rc²)c² | ρ₀(1−2GM/rc²) | ✓ Recovers Part I |
-| Weak field | −(1+2Φ/c²)c² | ρ₀(1−2GM/rc²) | ✓ Newtonian limit Φ = −GM/r |
+| Weak field (same limit) | −(1+2Φ/c²)c² | ρ₀(1−2GM/rc²) | ✓ Newtonian limit Φ = −GM/r |
 | Horizon | g_tt = 0 | ρ = 0 | ✓ Foam depleted |
 | FLRW comoving | −c² | ρ₀ | ✓ Uniform vacuum |
 | Kerr (rotating BH) | −(1−r_s r/Σ)c² | ρ₀(1−r_s r/Σ) | Prediction: angle-dependent |
@@ -1948,7 +1946,7 @@ This Closes This was the sole remaining open problem identified in the Appendix.
 - The dark energy equation of state is constrained by g_tt in FLRW coordinates
 - Kerr black holes get a non-trivial foam density prediction
 
-**Zero open problems remain in the framework.**
+**The covariant vacuum density (g_tt component) is closed. The spatial metric component g_rr remains as noted in Known Limitations.**
 
 ---
 
@@ -1990,7 +1988,7 @@ UFFT does not need strings. String theory: 1D objects, 10--11 dimensions, ~10⁵
 
 The particle spectrum problem — computing which topological knots are stable and their masses — is the major unfinished programme. The structure is: substrate → symmetry → forces → particles. The first three levels are derived. The fourth is mapped but not yet computed.
 
-Luke Martin · The Unified Foam Field Theory · Part XXII · March 2026 --- 
+Luke Martin · The Unified Foam Field Theory · Part XVIII · March 2026 --- 
 
 ---
 
@@ -2002,7 +2000,7 @@ We derive gravity, quantum mechanics, gauge groups, the fine structure constant,
 
 **Maxwell's equations.** The gauge group U(1) we derive from foam displacement topology (Appendix §6), but Gauss's law, Faraday's law, Ampère's law, and gauge invariance have not been explicitly constructed from foam lattice dynamics. The identification "electromagnetism = foam lattice tension" is structural, not a derivation of the Maxwell field equations. This is the most significant gap in the framework's coverage of known physics.
 
-**The Einstein-Hilbert action.** The metric component g_tt we derive from foam equilibrium (Part XVII). The full Einstein field equations G_μν = 8πGT_μν/c⁴ are not derived from a foam action principle. We recover Schwarzschild geometry but does not produce the Einstein equations as dynamical equations of the foam.
+**The Einstein-Hilbert action.** The metric component g_tt we derive from foam equilibrium (Part XVII). The full Einstein field equations G_μν = 8πGT_μν/c⁴ are not derived from a foam action principle. We recover Schwarzschild geometry but do not produce the Einstein equations as dynamical equations of the foam.
 
 **The spatial metric component g_rr.** The covariant vacuum density derivation gives g_tt = −c²(ρ/ρ₀). The Schwarzschild form g_rr = 1/(1−2GM/rc²) is consistent with the foam model but not independently derived. The cell conservation law ρl³ = const gives g_rr = (1−x)^(−2/3), which differs from the Schwarzschild (1−x)^(−1). Resolving this discrepancy requires understanding how proper volume relates to cell geometry in curved spacetime.
 
@@ -2229,7 +2227,7 @@ Current status: unmeasurable. At 100 GeV (gamma-ray bursts), the predicted devia
 
 Falsification condition: detection of LINEAR (first-order) Lorentz invariance violation at any energy scale would falsify the foam's correspondence principle. Detection of quadratic LIV with η significantly different from O(1) would require refinement.
 
-Independent mathematical audit (February 2026) confirmed: arithmetic errors 0, dimensional inconsistencies 0, algebraic inconsistencies 0.
+Independent mathematical audit (February 2026) confirmed: four corrections identified and applied; all predictions unchanged.
 
 The gravity derivation was corrected (force extraction via potential inversion, not direct pressure gradient). The strong-field acceleration divergence was removed as unjustified; the horizon is now defined by > *density collapse rho(r_s) = 0, which is cleaner and sufficient. No downstream calculations were affected by this correction. Predictions 1 and 2 are numerically specific and await experimental test. Prediction 3 is testable immediately. Prediction 4 is now formalised with specific experimental observables. Prediction 5 provides a discriminating signature against competing quantum gravity models.*
 
@@ -2247,7 +2245,7 @@ Step 4: Derive the inter-layer coupling constants from bubble-layer interface ge
 
 Step 5: Begin the torsion tensor treatment of the foam lattice as the path toward the strong force derivation.
 
-Step 6: The covariant vacuum density is now derived (Part XVII). The scalar vacuum density (Part XVII). The three-component B-V-D tensor structure is specified (Part XVIII).
+Step 6: The covariant vacuum density is now derived (Part XVII). The scalar component is complete; the tensor extension to B-V-D components is specified for future work. The three-component B-V-D tensor structure is specified (Part XVIII).
 
 This single derivation unlocks three downstream results: decoherence prediction precision, Bekenstein-Hawking grounding, and running coupling programme.
 
