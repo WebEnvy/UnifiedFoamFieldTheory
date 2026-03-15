@@ -4,7 +4,7 @@
 
 **Axiom Zero: B + V = D** *(Bubble + Void = Displacement — every event is a displacement in an infinite pre-existing electrical foam at the Planck scale)*
 
-Zenodo DOIs: 10.5281/zenodo.18706756 · 10.5281/zenodo.18706806 · 10.5281/zenodo.19011758 · 10.5281/zenodo.19030062 18 Parts · Appendix · All Programme Problems Closed · Known Limitations Documented --- ## Contents |
+Zenodo DOIs: 10.5281/zenodo.18706756 · 10.5281/zenodo.18706806 · 10.5281/zenodo.19011758 · 10.5281/zenodo.19030062 18 Parts · Appendix · All Hard Open Problems Closed · Known Limitations Documented --- ## Contents |
 
 Part | Title | Status |
 |------|-------|--------|
@@ -57,7 +57,7 @@ Developed by asking what each idea implied, following the logic wherever it led,
 
 The decisive moments: the recognition that every bubble displacement creates a paired void — Axiom Zero — which explains entanglement more cleanly than any existing interpretation. The understanding that the Big Bang was a pressure wave in an infinite pre-existing electrical foam, dissolving the horizon and flatness problems without inflation.
 
-The realisation that our universe sits precisely at its own Schwarzschild radius as a direct consequence of void-pair conservation, making us the interior of a black hole in the layer above. The foam's memory explaining the double slit and quantum computing coherence by the same mechanism. The insight that quantum computing is the foam using its own mechanics to model itself — the next step in the feedback loop of life. The conclusion that linear mathematics is the correct description of the foam's emergent layer as observed from within it — not the fundamental language of reality but the best approximation available to observers embedded within it. the language that any observer confined to that layer could only ever have developed. These are not impositions on the theory. They are All equations have been fully audited. Four corrections were made. None change the core predictions. The theory is more rigorous for having been challenged honestly at every step. 2026
+The realisation that our universe sits precisely at its own Schwarzschild radius as a direct consequence of void-pair conservation, making us the interior of a black hole in the layer above. The foam's memory explaining the double slit and quantum computing coherence by the same mechanism. The insight that quantum computing is the foam using its own mechanics to model itself — the next step in the feedback loop of life. The conclusion that linear mathematics is the effective description of the foam's emergent layer as observed from within it — not the fundamental language of reality but the best approximation available to observers embedded within it. the language that any observer confined to that layer could only ever have developed. These are not impositions on the theory. All equations have been fully audited. Four corrections were made. None change the core predictions. The theory is more rigorous for having been challenged honestly at every step. 2026
 
 ---
 
@@ -75,7 +75,7 @@ Complete Framework — All Equations Verified
 
 The Unified Foam Field Theory (UFFT) proposes that all fundamental forces and quantum phenomena emerge from mechanical and electromagnetic properties of a quantized Planck-scale vacuum medium — the Foam.
 
-Gravity is a dielectric pressure gradient. Electromagnetism is foam bubble lattice tension. Quantum entanglement is the topological consequence of void-pair conservation: the law that every bubble displacement creates a complementary void and these two endpoints are one object. The Big Bang was a pressure wave in an infinite pre-existing electrical foam. The universe sits at its own Schwarzschild radius as a consequence of Axiom Zero. Linear mathematics is the correct description of the foam's emergent layer as observed from within it. All equations are dimensionally verified and numerically checked.
+Gravity is a dielectric pressure gradient. Electromagnetism is foam bubble lattice tension. Quantum entanglement is the topological consequence of void-pair conservation: the law that every bubble displacement creates a complementary void and these two endpoints are one object. The Big Bang was a pressure wave in an infinite pre-existing electrical foam. The universe sits at its own Schwarzschild radius as a consequence of Axiom Zero. Linear mathematics is the effective description of the foam's emergent layer as observed from within it. All equations are dimensionally verified and numerically checked.
 
 **I. Axiom Zero — Void-Pair Conservation**
 
@@ -95,9 +95,9 @@ This is not a metaphor. The foam's measurable properties are electromagnetic qua
 
 A bubble is a Planck-scale compression of electromagnetic energy: one Planck mass (2.176 × 10⁻⁸ kg) of electromagnetic field in one Planck volume (4.22 × 10⁻¹⁰⁵ m³). A void is the absence of that energy — a rarefaction. Displacement D is the redistribution of electromagnetic energy from one cell to another.
 
-There is no deeper substrate. The electromagnetic field is not made of something else. It is the fundamental level. Asking what the foam is made of is equivalent to asking what space is made of in general relativity — the answer is that it is the irreducible foundation. All particles, forces, and spacetime geometry emerge from the mechanical behaviour of this medium.
+There is no deeper substrate. The foam is the fundamental level. Asking what the foam is made of is equivalent to asking what space is made of in general relativity — the answer is that it is the irreducible foundation. All particles, forces, and spacetime geometry emerge from the mechanical behaviour of this medium.
 
-The fine structure constant α = 1/137.036 is the foam's self-coupling constant — the probability that a displacement in the electromagnetic field couples back to its source. It we derive from the cell geometry (Part IX) precisely because the foam IS the electromagnetic field.
+The fine structure constant α = 1/137.036 is the foam's self-coupling constant — the probability that a displacement in the electromagnetic field couples back to its source. It we derive from the cell geometry (Part IX) precisely because α is a geometric property of the foam cell.
 
 ## Why This Framework Does Not Use Quantum Field Theory
 
@@ -163,7 +163,7 @@ The horizon is interpreted as complete vacuum density depletion — the foam cea
 
 **Post-Audit Status**
 
-grad(P), which produced a = -2GM/r². The correction derives acceleration via the effective potential Phi = (P-P_0)/(2*rho_0), where the 1/2 emerges from the relativistic enthalpy of the foam equation of state P = ρc² (see Part XVII for the full derivation from the relativistic Euler equation). Density ansatz, pressure definition, and horizon location are all unchanged. The strong-field acceleration divergence previously claimed is removed; the horizon is defined by density collapse, not acceleration blow-up, which is structurally cleaner. Final audit counts: arithmetic errors 0, dimensional inconsistencies 0, algebraic inconsistencies 0.*
+grad(P), which produced a = -2GM/r². The correction derives acceleration via the effective potential Phi = (P-P_0)/(2*rho_0), where the 1/2 emerges from the relativistic enthalpy of the foam equation of state P = ρc² (see Part XVII for the full derivation from the relativistic Euler equation). Density ansatz, pressure definition, and horizon location are all unchanged. Final audit counts: arithmetic errors 0, dimensional inconsistencies 0, algebraic inconsistencies 0.*
 
 **IV. Electromagnetism as Foam Tension**
 
@@ -430,7 +430,7 @@ Non-linear corrections to quantum mechanics are suppressed by 10⁻⁵⁰ at ato
 
 **A. Near the Schwarzschild Radius [Proven]**
 
-> *As r → r_s = 2GM/c², the non-linearity parameter x = 2GM/rc² → 1. The Taylor expansion fails. The vacuum density approaches zero — the foam ceases to exist at r_s. This is precisely where GR and quantum mechanics are known to be incompatible. The foam predicts that the breakdown of linear physics near a black hole is a feature — the full non-linear substrate is required and linear quantum field theory is insufficient. ✓ Divergence of acceleration at r_s confirmed analytically.*
+> *As r → r_s = 2GM/c², the non-linearity parameter x = 2GM/rc² → 1. The Taylor expansion fails. The vacuum density approaches zero — the foam ceases to exist at r_s. This is precisely where GR and quantum mechanics are known to be incompatible. The foam predicts that the breakdown of linear physics near a black hole is a feature — the full non-linear substrate is required and linear quantum field theory is insufficient. ✓ At the Schwarzschild radius, the non-linearity parameter x → 1 and the linear approximation breaks down completely. *
 
 **B. At the Planck Scale [By definition]**
 
@@ -527,11 +527,11 @@ What would describe the foam's non-linear substrate directly is not yet known. I
 
 *Published: [10.5281/zenodo.18706756](https://zenodo.org/records/18706756)*
 
-**Peer Review Paper: Gravitational Decoherence**
+**Preprint: Gravitational Decoherence**
 
 *Luke Martin · Independent Researcher · 2026*
 
-Peer Review Paper — Gravitational Suppression of Quantum Decoherence Full Version via Variable Vacuum Foam Density Luke Martin Independent Researcher February 2026 Preprint — Not yet peer reviewed Published: https://zenodo.org/records/18706756 Abstract We present a derivation of quantum decoherence rates within a vacuum pressure gradient model of gravity, in which local vacuum density
+Preprint — Gravitational Suppression of Quantum Decoherence Full Version via Variable Vacuum Foam Density Luke Martin Independent Researcher February 2026 Preprint — Not yet peer reviewed Published: https://zenodo.org/records/18706756 Abstract We present a derivation of quantum decoherence rates within a vacuum pressure gradient model of gravity, in which local vacuum density
 
 > *decreases near massive objects according to rho_vac(r) = rho_0*(1 - 2GM/rc²). This model predicts that decoherence rates are suppressed near massive objects — in direct opposition to the Diosi-Penrose (DP) model, which predicts enhancement. The sign reversal in the gravitational correction term produces a measurable difference of 3GM/rc² in decoherence rate ratios at two gravitational potentials. We additionally identify that quantum decoherence and macroscopic void decay are the same physical process at different scales — both governed by local vacuum bubble density eroding void-pair boundaries. We propose a concrete experimental protocol using atomic interferometry at varying gravitational potentials, achievable with existing space-based platforms, that can discriminate between this model and Diosi-Penrose.*
 
@@ -644,11 +644,11 @@ Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften, 5, 440
 
 *Published: [10.5281/zenodo.18706806](https://zenodo.org/records/18706806)*
 
-**Peer Review Paper: Bell's Theorem**
+**Preprint: Bell's Theorem**
 
 *Luke Martin · Independent Researcher · 2026*
 
-Peer Review Paper — Void-Pair Conservation and Bell's Theorem Full Version of Quantum Entanglement and Bell Correlations Luke Martin Independent Researcher February 2026 Preprint — Not yet peer reviewed Published: https://zenodo.org/records/18706806 Paper 3 — The Fine Structure Constant from Planck-Scale Foam Geometry Published: https://zenodo.org/records/19011758 Paper 4 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph Published: https://zenodo.org/records/19030062 Abstract We propose that quantum entanglement is the physical manifestation of void-pair conservation in a quantized vacuum foam. In this model, every vacuum displacement event D creates exactly one bubble B at position x and one complementary void V at position x' --- the conservation law B(x) + V(x') = D. Entangled particles are not two correlated objects but two addresses of one displacement event. This ontological reframing escapes Bell's theorem without invoking hidden variables: Bell's factorization assumption requires the correlation function to be writable as a product of local functions, but D is inherently non-local and cannot be so factored. We show that the antipodal symmetry of the void-pair uniquely selects the quantum singlet state, which produces the > *experimentally confirmed correlation E(a,b) = -cos(theta_ab). We verify*
+Preprint — Void-Pair Conservation and Bell's Theorem Full Version of Quantum Entanglement and Bell Correlations Luke Martin Independent Researcher February 2026 Preprint — Not yet peer reviewed Published: https://zenodo.org/records/18706806 Paper 3 — The Fine Structure Constant from Planck-Scale Foam Geometry Published: https://zenodo.org/records/19011758 Paper 4 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph Published: https://zenodo.org/records/19030062 Abstract We propose that quantum entanglement is the physical manifestation of void-pair conservation in a quantized vacuum foam. In this model, every vacuum displacement event D creates exactly one bubble B at position x and one complementary void V at position x' --- the conservation law B(x) + V(x') = D. Entangled particles are not two correlated objects but two addresses of one displacement event. This ontological reframing escapes Bell's theorem without invoking hidden variables: Bell's factorization assumption requires the correlation function to be writable as a product of local functions, but D is inherently non-local and cannot be so factored. We show that the antipodal symmetry of the void-pair uniquely selects the quantum singlet state, which produces the > *experimentally confirmed correlation E(a,b) = -cos(theta_ab). We verify*
 
 this numerically against the classical local hidden variable bound. We distinguish the void-pair model from pilot wave and many-worlds interpretations. We propose a testable prediction for three-particle connected foam topologies that differs from the standard GHZ prediction.
 
@@ -2247,7 +2247,7 @@ Step 4: Derive the inter-layer coupling constants from bubble-layer interface ge
 
 Step 5: Begin the torsion tensor treatment of the foam lattice as the path toward the strong force derivation.
 
-Step 6: Close the covariant vacuum density derivation — the primary open gap. The scalar we derive the vacuum density (Part XVII). The three-component B-V-D tensor structure is specified (Part XVIII).
+Step 6: The covariant vacuum density is now derived (Part XVII). The scalar vacuum density (Part XVII). The three-component B-V-D tensor structure is specified (Part XVIII).
 
 This single derivation unlocks three downstream results: decoherence prediction precision, Bekenstein-Hawking grounding, and running coupling programme.
 
