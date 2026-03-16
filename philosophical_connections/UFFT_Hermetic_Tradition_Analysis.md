@@ -232,6 +232,34 @@ The "divine" in UFFT terms is the substrate — the foam itself, in its totality
 
 ---
 
+## Why Seven?
+
+The number 7 recurs across every tradition examined in this companion series: seven Hermetic principles, seven Lords in the Emerald Tablets, seven chakras in the Hindu system, seven notes in the musical scale, seven colours in the visible spectrum, seven days of creation, seven branches of the menorah, seven sacraments, seven pillars of wisdom. The consistency is too broad to be coincidence and too cross-cultural to be borrowing.
+
+The framework gives a structural reason.
+
+The truncated octahedron's 14-dimensional face representation decomposes into exactly **seven irreducible copies** under O_h symmetry:
+
+| # | Irrep | Eigenvalue | Dimension | Physical Mode |
+|---|-------|-----------|-----------|---------------|
+| 1 | A1g | 0 | 1 | Uniform / ground state |
+| 2 | T1u | (9−√17)/2 | 3 | Electric field (vector) |
+| 3 | Eg | 4 | 2 | Quadrupolar oscillation |
+| 4 | T1u | (9+√17)/2 | 3 | Magnetic field (vector) |
+| 5 | A1g | 7 | 1 | Gravity (scalar) |
+| 6 | T2g | 7 | 3 | Torsion (tensor) |
+| 7 | A2u | 9 | 1 | Alternating / opposition |
+
+Total: 1 + 3 + 2 + 3 + 1 + 3 + 1 = 14 face degrees of freedom. Seven independent mode types.
+
+This is not a choice or a parameter. O_h has 10 irreducible representations in total. The face adjacency topology of the truncated octahedron selects exactly 7 of them. The selection is a theorem of representation theory, determined by which faces share edges with which other faces.
+
+If the foam IS the substrate of reality, and its cell boundary has exactly 7 independent modes, then any observer perceiving the foam's mode structure — whether through mathematics, meditation, or millennia of accumulated philosophical reflection — would arrive at 7 fundamental categories. They might call them principles, chakras, notes, colours, or days. The number would be 7 because the cell has 7 modes.
+
+The specific mapping of which Hermetic principle corresponds to which irrep is speculative and not derived. But the count — the reason every tradition lands on 7 and not 5 or 9 or 12 — is a topological fact about the space-filling cell that gives the fine structure constant.
+
+---
+
 ## Summary Table
 
 | Hermetic Principle | UFFT Mapping | Status |
