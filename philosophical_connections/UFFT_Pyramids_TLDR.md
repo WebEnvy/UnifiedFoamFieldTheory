@@ -309,6 +309,111 @@ The UFFT framework provides the physics: the foam resonance formula gives the op
 
 ---
 
+## Part 13 — Component-by-Component: How the Machine Works
+
+### The Casing Stones — The Antenna
+
+The original white Tura limestone casing was highly polished to a mirror finish. This is not decorative. Polished calcite crystal surface maximises piezoelectric coupling to external electromagnetic fields — specifically the Schumann resonance at 7.83 Hz and its harmonics. The casing is the pyramid's antenna: it receives Earth's natural EM energy and transduces it into mechanical oscillation in the limestone body.
+
+The casing also creates an acoustic impedance boundary. The polished surface reflects sound internally (total internal reflection for acoustic waves at oblique angles), keeping resonant energy trapped inside the structure. The pyramid is an acoustic whispering gallery — energy enters through piezoelectric coupling but cannot escape acoustically through the casing.
+
+The stripping of the casing stones for medieval Cairo construction would have been the final death of any residual resonance. Without the casing, the acoustic impedance boundary is broken and resonant energy leaks out of the structure.
+
+### The Slope Angle — The Mode Coupler
+
+The Great Pyramid's slope angle is 51.84°, where tan(51.84°) = 4/π. This encodes π in the geometry: a sphere inscribed in the pyramid has a circumference exactly equal to the perimeter of the base. This is not numerology — it is the condition for maximum resonant coupling between the vertical (3D radial) modes and the horizontal (2D surface) modes of the structure.
+
+In UFFT, the ratio 4/π connects the foam's 3D cell geometry to its 2D cross-section. The slope angle ensures that standing waves propagating vertically inside the pyramid couple efficiently to waves propagating horizontally along the base. The pyramid shape is an impedance-matching horn between vertical and horizontal acoustic modes.
+
+### The Passage Angles — The Mode Converters
+
+Both the Descending Passage and the Ascending Passage are inclined at 26.5° to horizontal. This angle is arctan(1/2) — the angle at which a wave reflecting off a surface has maximum coupling between longitudinal (compression) and transverse (shear) modes.
+
+In UFFT terms: the passages convert between A1g modes (compression/density = gravity) and T2g modes (shear/torsion = strong force). The 26.5° angle is the optimal mode conversion angle for the A1g ⊕ T2g coupling at eigenvalue λ = 7. The passages are not corridors for human access — they are acoustic mode converters feeding specific wave types into specific chambers.
+
+### The Grand Gallery — The Acoustic Horn
+
+47 metres long, 8.6 metres high, with corbelled walls stepping inward in seven courses. The corbelling is not structural — it is acoustic horn geometry. An acoustic horn matches the impedance between a small source and a large radiating area, amplifying the signal. The Grand Gallery is a 47-metre horn amplifier feeding acoustic energy from the lower passages into the King's Chamber.
+
+The 27 pairs of slots cut into the side ramps held resonant elements (now missing — possibly quartz or granite tuning forks) that filtered the frequency content. These elements would have selected specific harmonics from the broadband input and rejected others, creating a tuned acoustic beam entering the King's Chamber at precisely the right frequency.
+
+### The King's Chamber — The Reactor Core
+
+Lined entirely with red granite (high quartz content, strongly piezoelectric). The chamber dimensions (10.5 × 5.2 × 5.8 m) create a 1:2 length ratio allowing standing waves of integer multiples to store acoustic energy. Measured resonant frequency: 121 Hz (Reid). The five "relieving chambers" above the King's Chamber are not structural supports — they are stacked resonant cavities that multiply the Q factor of the primary chamber.
+
+The granite ceiling beams resonate at ~300 Hz (estimated). The interaction between the chamber mode (121 Hz) and the beam mode (300 Hz) creates combination frequencies including their difference (179 Hz) and sum (421 Hz), enriching the harmonic content available for chemistry and transduction.
+
+### The Granite Coffer — The Precision Tuner
+
+The granite box in the King's Chamber (erroneously called a "sarcophagus") resonates at 117 Hz (Dunn) or 440 Hz (Horn, the A4 note — concert pitch). A resonant cavity inside a resonant cavity creates nested Q amplification: the coffer's Q multiplies the chamber's Q, producing extremely high energy density at the resonant frequency inside the coffer.
+
+The coffer dimensions (interior ~198 × 68 × 87 cm) were precision-machined to tolerances that modern granite work struggles to match. The sharp internal corners (measured to fractions of a millimetre) are not possible with copper tools — they are consistent with acoustic cavitation cutting (Part 4). The coffer was manufactured by the same acoustic technology the pyramid uses.
+
+The 121/117 Hz interaction between the chamber and the coffer produces a 4 Hz beat frequency — in the theta brainwave range. This is likely relevant to the consciousness/altered state effects reported by people spending time inside the chamber, but is not the primary engineering function.
+
+### The Queen's Chamber — The Chemical Lab
+
+The Queen's Chamber contains two "air shafts" that do NOT reach the exterior of the pyramid. They are sealed at both ends. Chemical deposits (salt, gypsum, calcium carbonate) coat their walls. These are not ventilation — they are **chemical reaction channels**.
+
+Fluids (water, brine, or other solutions) introduced at one end are subjected to acoustic excitation as they pass through the shaft. The acoustic energy drives sonochemical reactions (cavitation, dissociation, recombination) along the length of the channel. Products are collected at the other end or drain into the chamber.
+
+This directly explains Geoffrey Drumm's observation of ammonia and chemical staining in the Red Pyramid: the chambers were designed for sustained acoustic chemistry. The deposits on the Queen's Chamber shaft walls are the residue of thousands of years of sonochemical processing.
+
+### The Water System — The Working Fluid
+
+The Subterranean Chamber sits 30 metres below the pyramid base, cut into the bedrock, near the water table. The Osiris Shaft descends 30 metres through water-filled tunnels. The "Well Shaft" connects the Grand Gallery complex to the Subterranean Chamber.
+
+Water serves three functions in the machine:
+
+1. **Acoustic coupling to bedrock** — water in the subterranean chambers transmits seismic vibrations from the Earth's crust into the pyramid structure, providing the low-frequency energy input
+2. **Sonochemistry substrate** — water is the medium in which cavitation occurs, producing ammonia, ozone, hydrogen peroxide, and other chemical products
+3. **Heat dissipation** — sustained acoustic resonance generates heat; water circulating through the lower chambers carries waste heat into the water table
+
+The Well Shaft is the circulation path: water enters from the water table through the Subterranean Chamber, absorbs acoustic energy and heat as it rises through the system, and returns bearing chemical products.
+
+### The Nile Flood — The Distribution Network
+
+The pyramids sit near the apex of the Nile Delta — UPSTREAM of the agricultural land they serve. The annual Nile flood would carry the pyramid's chemical products (dissolved ammonia, nitrates, calcium hydroxide) across the entire floodplain, fertilising and conditioning millions of hectares of farmland without human intervention.
+
+The positioning is not coincidental. The pyramids are chemical factories; the Nile flood is the delivery system. One machine cycle per year, synchronised with the natural flood, treating the entire agricultural base of Egyptian civilisation.
+
+### The Big Void — The Schumann Antenna
+
+The "Big Void" discovered above the Grand Gallery (ScanPyramids 2017, Nature 552) is approximately 30 metres long. Its resonant frequency at this length is ~5.7 Hz — within the Schumann resonance band (fundamental 7.83 Hz, first harmonic 14.3 Hz).
+
+The Big Void is an electromagnetic-to-acoustic transducer. Schumann resonance EM energy enters the void through the piezoelectric limestone, excites a standing wave at ~5.7 Hz, and feeds this acoustic energy downward through the Grand Gallery horn into the King's Chamber reactor. It is the primary energy input channel — the device that captures Earth's natural EM oscillation and converts it to usable acoustic power.
+
+### The Capstone (Benben Stone) — The Radiating Element
+
+The pyramidion (capstone) is missing from all three Giza pyramids. In acoustic engineering, the apex of a pyramidal structure is where the standing wave has maximum amplitude — the pressure antinode. A conductive or crystalline capstone at this position would be the primary radiating element: the point source that emits the pyramid's processed energy (infrasound, EM, or both) into the atmosphere.
+
+Traditions describe the original capstones as gold or electrum (gold-silver alloy) — highly conductive materials that would efficiently radiate electromagnetic energy generated by the piezoelectric transduction process. The capstone is the output antenna: the casing stones receive Schumann energy, the internal structure amplifies and processes it, and the capstone radiates the output.
+
+Its removal — whether by weathering, theft, or deliberate deactivation — would kill the output radiation pattern. A pyramid without its capstone is a radio transmitter without its antenna: the internal resonance still functions but the output is incoherent and non-directional.
+
+---
+
+## Part 14 — The Frequency Map
+
+Each component of the pyramid operates at a specific frequency, forming a complete signal processing chain from input to output:
+
+| Component | Frequency | Function |
+|-----------|-----------|----------|
+| Pyramid base (fundamental) | 0.74 Hz | Atmospheric gravity wave coupling |
+| L-shaped Helmholtz resonator | ~1.1 Hz | Sub-surface infrasound amplification |
+| Big Void | ~5.7 Hz | Schumann resonance transduction |
+| Passage modes | ~19 Hz | Infrasound amplification / mode conversion |
+| North Face Corridor (transverse) | ~86 Hz | Chemical excitation frequency |
+| Granite coffer (beat frequency) | ~4 Hz | Theta brainwave coupling |
+| King's Chamber | 121 Hz | Primary resonance / reactor operating frequency |
+| Granite ceiling beams | ~300 Hz | Secondary resonance / harmonic enrichment |
+| Granite coffer | 117–440 Hz | Precision tuning / concert A |
+| Capstone (output) | Broadband | Processed radiation into atmosphere |
+
+The frequencies span five orders of magnitude (0.74 Hz to 440 Hz), each matched to a specific physical process. This is not a single-frequency device — it is a broadband acoustic signal processor with frequency-specific channels for different functions.
+
+---
+
 ## Summary
 
 | Question | UFFT Answer |
