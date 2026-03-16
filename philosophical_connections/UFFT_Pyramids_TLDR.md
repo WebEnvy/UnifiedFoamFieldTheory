@@ -86,7 +86,35 @@ The mechanism is NOT acoustic levitation (suspending objects on sound pressure a
 
 ---
 
-## Part 4 — Function: Chemical Processing
+## Part 4 — Stone Cutting: Acoustic Cavitation Erosion
+
+The quarrying and precision shaping problem is as significant as the transport problem. The granite blocks in the King's Chamber have sharp internal corners and flat surfaces to tolerances of fractions of a millimetre. Copper tools (the hardest metal available to the Egyptians per mainstream archaeology) cannot cut granite — quartz is harder than copper on the Mohs scale (7 vs 3.5).
+
+**The UFFT mechanism:**
+
+Acoustic cavitation erosion (Part XIII of the Core Framework). When a liquid is subjected to intense acoustic waves, cavitation bubbles form and collapse violently. Each collapse produces:
+
+- Localised temperatures exceeding 5,000 K
+- Localised pressures exceeding 1,000 atm (10⁸ Pa)
+- Micro-jets of liquid at velocities exceeding 100 m/s
+
+These micro-jets are sufficient to erode ANY material, including granite and quartz. This is not speculative — cavitation erosion is a well-documented industrial problem that destroys ship propellers, pump impellers, and hydraulic turbines made of hardened steel.
+
+**Application to stone cutting:**
+
+A water-filled channel on the stone surface, driven at the resonant frequency of the cavity (determined by the channel dimensions), produces sustained cavitation along the cut line. The erosion follows the channel geometry precisely. No metal tool harder than the stone is required — the cutting agent is the collapsing cavitation bubbles in the water.
+
+**Evidence:**
+- The spiral drill marks found in granite at Egyptian sites show a feed rate and cutting depth inconsistent with any known abrasive drilling process — but consistent with cavitation erosion, which removes material volumetrically rather than by surface abrasion
+- The kerf marks in quarried stone show smooth, polished cut faces — characteristic of cavitation erosion (which melts and re-solidifies the surface) rather than abrasive cutting (which leaves scratch marks)
+- Keely (1880s) specifically claimed to "disintegrate granite" using acoustic resonance. Granite contains quartz crystals; driving the quartz at its piezoelectric resonance frequency concentrates energy at grain boundaries, causing the stone to fracture along crystal planes
+- The water channels cut into unfinished obelisks at Aswan are consistent with cavitation cutting troughs, not manual chiselling
+
+The same acoustic resonance that moves the stones also cuts them. One technology, two applications: the resonance formula from Part XI gives the frequency, and the cavitation mechanism from Part XIII gives the cutting action.
+
+---
+
+## Part 5 — Function: Chemical Processing
 
 Geoffrey Drumm's observation: the Red Pyramid at Dahshur has an intense ammonia smell and visible chemical staining on the interior chamber walls.
 
@@ -115,7 +143,7 @@ The chemical staining Drumm observed is the residue of millennia of these reacti
 
 ---
 
-## Part 5 — The Three-Source Geometry
+## Part 6 — The Three-Source Geometry
 
 The Giza plateau has THREE major pyramids arranged in a specific geometric configuration. In UFFT, three coherent sources at approximately 120° separation create a directional interference pattern with 9× gain over a single source (Part XV analysis, λ=7 degeneracy).
 
@@ -130,7 +158,7 @@ This is the same three-source geometry described in the propulsion analysis (UFF
 
 ---
 
-## Part 6 — What UFFT Adds That Other Theories Don't
+## Part 7 — What UFFT Adds That Other Theories Don't
 
 Previous researchers have identified:
 - Acoustic resonance properties of the pyramids (Dunn, Reid, Horn)
@@ -160,6 +188,7 @@ No other framework connects the construction method, the functional purpose, the
 | Why those dimensions? | Chamber sizes select resonant frequencies; pyramid base tunes to infrasound sub-harmonics of Earth's Schumann resonance |
 | Why three pyramids? | Three-source interference gives 9× gain and directional steering |
 | What's the ammonia? | Sonochemical product of sustained resonant excitation of atmospheric nitrogen and water in the limestone chambers |
+| How did they cut granite? | Acoustic cavitation erosion — water in a resonant channel produces collapsing bubbles at 5,000K and 10⁸ Pa, cutting any material without metal tools |
 | Why the chemical staining? | Residue of thousands of years of acoustic-chemical reactions |
 | Where does the energy come from? | Seismic/atmospheric infrasound transduced through piezoelectric stone; the pyramid amplifies ambient Earth vibrations |
 
