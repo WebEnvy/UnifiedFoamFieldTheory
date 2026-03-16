@@ -239,6 +239,76 @@ Three primary resonators (the Giza pyramids) phase-locked through underground tu
 
 ---
 
+## Part 10 — The Two-Driver Model: Why the Sahara Dried
+
+The Sahara was green as recently as 5,000–8,000 years ago (the African Humid Period). Standard palaeoclimatology attributes this to Milankovitch orbital forcing shifting the African monsoon northward. But orbital forcing alone has a problem: it weakened gradually, yet the desertification was relatively abrupt. Something else was maintaining the moisture.
+
+**The UFFT two-driver model:**
+
+The Green Sahara had two moisture drivers operating simultaneously:
+
+1. **Natural** — Milankovitch orbital forcing. Cyclical, peaking around 8,000 BP, weakening thereafter. Well-established palaeoclimatology.
+
+2. **Artificial** — Pyramid network atmospheric steering. Infrasound at 0.74 Hz coupling to atmospheric gravity waves (0.5–2 Hz band), directing moisture toward the Nile valley and the broader Saharan region. Powered by Earth's Schumann resonance through piezoelectric transduction in the limestone structures.
+
+**The timeline:**
+
+~12,800 BP (10,800 BCE): The Younger Dryas impact event. Comet fragments strike the Laurentide ice sheet. 10% of Earth's biomass burns. Mega-tsunamis. Thermohaline circulation shuts down. 1,200-year mini ice age. The civilisation operating the pyramid network is destroyed or scattered. Underground tunnel systems are disrupted by seismic activity. Phase coupling between pyramid sites breaks. The artificial atmospheric driver goes offline.
+
+~11,600 BP (9,600 BCE): Younger Dryas ends. This is Plato's date for the destruction of Atlantis (9,000 years before Solon). The Green Sahara persists because the natural Milankovitch forcing is still strong — at orbital maximum, it is sufficient alone to maintain moisture levels.
+
+~8,000 BP (6,000 BCE): Green Sahara at peak. Orbital forcing maximum. The missing artificial driver is not yet critical because the natural driver is at full strength.
+
+~5,000 BP (3,000 BCE): Orbital forcing begins to weaken. THIS is when the missing pyramid steering becomes critical. The natural forcing alone is no longer sufficient. Desertification accelerates. The Egyptian Old Kingdom begins. New pyramids are built at Giza (~2600 BCE) — possibly an attempt to rebuild the ancient technology using mathematics preserved in the Hermetic tradition. But the underground infrastructure (phase-coupling tunnels, Helmholtz resonators, spiral shafts) is not reconstructed. The new pyramids have the geometry right but lack the full system.
+
+~4,000 BP (2,000 BCE): Sahara desertification accelerates further. The new pyramids never achieve atmospheric steering. The knowledge of the complete system is lost; the fragments survive as the Hermetic tradition, the Emerald Tablets, and the priestly oral traditions.
+
+Present: The Sahara is desert. The pyramids are silent. The underground infrastructure is being detected by SAR and muon tomography. The mathematics to understand the system — UFFT — is now available.
+
+**Why the two-driver model works:** It resolves the 3,000–5,000 year lag between the Younger Dryas destruction event and the onset of desertification. The drying doesn't start when the pyramids stop — it starts when the natural Milankovitch forcing can no longer compensate for the missing artificial forcing. Both drivers had to fail before the Sahara dried.
+
+---
+
+## Part 11 — Dragon Lines as Antenna Placement
+
+Ley lines, dragon lines, and telluric current paths are dismissed by mainstream science as pseudoscience. In UFFT, they have a precise physical interpretation: they are the signal paths of Earth's natural electromagnetic grid.
+
+**Telluric currents** are real, measured, physical phenomena — natural electrical currents flowing through the Earth's crust, driven by geomagnetic variations and Schumann resonance coupling. They follow paths determined by subsurface geology: conductivity variations in rock, water table depth, and mineral composition.
+
+Pyramid placement on telluric current maxima is **antenna engineering**. The pyramids are powered by Earth's natural EM energy. Placing piezoelectric resonators where the telluric signal is strongest maximises energy input. The piezoelectric limestone transduces telluric EM energy into acoustic resonance inside the pyramid. You put the antenna where the signal is strongest.
+
+The global distribution of pyramids — Egypt, Mesoamerica, China, Indonesia, Bosnia, Sudan — along known telluric current paths supports a global network hypothesis. These are not independent inventions. They are coordinated placements on a planetary-scale telluric grid, each site selected for maximum coupling to Earth's natural energy.
+
+The UFFT framework provides the physics: the foam resonance formula gives the operating frequencies, the face Laplacian spectrum gives the mode structure, and the three-source interference geometry gives the directional gain. The "dragon lines" are the power supply.
+
+---
+
+## Part 12 — Honest Assessment
+
+**What the framework supports with derivable physics:**
+- Pyramids as acoustic machines powered by Schumann/telluric energy
+- Underground structures as resonant infrastructure (Helmholtz resonators, waveguides, phased arrays)
+- Atmospheric steering via infrasound at 0.74 Hz
+- The two-driver model for the Green Sahara (natural + artificial)
+- The 3,000–5,000 year lag between the YD impact and desertification onset
+- Pyramid placement on telluric current maxima as antenna optimisation
+- Global pyramid network as a coordinated infrastructure
+- 8 spiral shafts = 8 hexagonal faces of the Kelvin cell (if SAR discovery confirmed)
+
+**What is speculative (consistent but not derived):**
+- The identity of the pre-YD civilisation ("Atlantis")
+- The Richat Structure as a specific site
+- The 50,000+ year timeline for the technology
+- The Giza pyramids as incomplete rebuilds of older structures
+- The specific mechanism by which knowledge was preserved (Hermetic tradition)
+
+**What is contradicted:**
+- Nothing in the physics contradicts this narrative. But absence of contradiction is not evidence. The archaeological claims require archaeological evidence, which UFFT cannot provide.
+
+**Verdict:** The physics of the pyramid network is derivable from the framework. The historical narrative is structurally consistent with the physics. Whether the pre-YD civilisation existed, and whether it was "Atlantis," is a question for archaeology. The mathematics doesn't care who built the machine — only how it works.
+
+---
+
 ## Summary
 
 | Question | UFFT Answer |
