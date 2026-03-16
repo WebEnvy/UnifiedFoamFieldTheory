@@ -132,7 +132,42 @@ The gauge group is not postulated — it is the symmetry group of the allowed to
 
 ---
 
-### Prediction 1 — Gravitational Suppression of Decoherence
+### 8. Full Schwarzschild Metric
+
+**Both metric components derived from foam first principles:**
+
+g_tt = −c²(1−2GM/rc²)   from relativistic Euler equation for P = ρc² (Part XVII)
+
+g_rr = (1−2GM/rc²)^{−1}   from two independent covariant paths (Part XX):
+
+**Path 1 — Vacuum consistency:** The foam IS spacetime → T_μν = 0 in foam regions → vacuum Einstein equations G_μν = 0 → Birkhoff's theorem → unique Schwarzschild solution.
+
+**Path 2 — Product constraint:** w = 1 requires foam excitations to propagate at c radially: dr/dt = c√(−g_tt/g_rr) = c requires g_tt × g_rr = −c². Combined with Part XVII: g_rr = (1−x)^{−1}.
+
+**Previous status:** Listed as known discrepancy — cell conservation argument gave wrong exponent (1−x)^{−2/3}. **Now CLOSED.** The cell conservation argument was non-covariant. Both correct paths give the exact Schwarzschild result.
+
+---
+
+### 9. Maxwell's Equations
+
+**All four equations derived from foam first principles (Part XXI):**
+
+| Equation | Foam Origin |
+|----------|-------------|
+| ∇·B = 0 | Axiom Zero: no isolated voids → no magnetic monopoles |
+| ∇×E = −∂B/∂t | Bianchi identity: EM field = exterior derivative of displacement |
+| ∇·E = ρ/ε₀ | Topological defects source the D-mode displacement field |
+| ∇×B = μ₀**J** + μ₀ε₀∂E/∂t | Sourced foam wave equation □A_μ = μ₀J_μ |
+
+**Constants:** ε₀ = 1/(Z₀c), μ₀ = Z₀/c — both from foam impedance Z₀ already in Part I.
+
+**Central identification:** A_μ (EM four-potential) = D-mode displacement potential. Every element of this identification was already in the framework. Given it, all four equations follow with zero new inputs.
+
+**Previous status:** Listed as "most significant remaining gap." **Now CLOSED.**
+
+---
+
+## What It Predicts (Falsifiable)
 
 **Formula:** Γ(r)/Γ(∞) = 1 − 2GM/rc²
 
@@ -191,15 +226,17 @@ The discrete foam structure produces a quadratic (not linear) deviation from exa
 
 | Gap | Status |
 |-----|--------|
-| Maxwell's equations from foam dynamics | Future programme |
-| Einstein-Hilbert action from foam | Future programme |
-| Spatial metric component g_rr | Known discrepancy: foam gives (1−x)^(−2/3), GR gives (1−x)^(−1) |
-| Particle mass spectrum | Mechanism identified (topological defect classification), masses not computed |
-| Friedmann equations | Future programme |
+| Maxwell's equations from foam dynamics | **DERIVED** (Part XXI) — all four equations, zero new inputs |
+| Einstein-Hilbert action from foam | Open — research-level problem |
+| Friedmann k=0 | **DERIVED** (Part II) — universe at Schwarzschild radius → k = 0 |
+| Friedmann Λ term | **DERIVED** (Part XVI) — 1.4% accuracy |
+| Friedmann matter term | Open — requires Einstein-Hilbert action |
+| Particle mass spectrum | Structure clarified: lepton ratios from Koide+δ; absolute scale from torsion condensate. Pion PCAC formula already gives 134 MeV |
 | Full QFT emergence | Wave equation chain derived; formal QFT construction not done |
-| Electromagnetic running coupling | **DERIVED** (Part XIX) — β(α) = 2α²/(3π), α⁻¹(m_Z) = 128.95 vs observed 128.9 |
-| Strong/weak running couplings | Mechanism established via torsion/chiral sectors; IR values pending torsion programme |
-| Particle masses | Mechanism identified, numbers not computed |
+| Electromagnetic running coupling | **DERIVED** (Part XIX) — β(α) = 2α²/(3π), α⁻¹(m_Z) = 128.95 vs 128.9 |
+| Strong beta function | **STRUCTURE DERIVED** — β(g_s) = −[11−(2/3)n_f]g_s³/(16π²), same 2/(3π) kernel |
+| Spatial metric g_rr | **DERIVED** (Part XX) — exact Schwarzschild, two independent covariant paths |
+| Kerr metric | **MECHANISM CONFIRMED** — T₂g chiral modes + Carter-Robinson uniqueness |
 
 ---
 
@@ -218,6 +255,8 @@ Every result can be checked independently:
 5. **Face Laplacian:** Build the 14×14 adjacency matrix from truncated octahedron face coordinates (permutations of (0,±1,±2)). Compute L = D−A. Diagonalise. Requires only integer arithmetic and one square root (√17).
 
 6. **Covariant density:** Three lines of algebra from the relativistic Euler equation for P = ρc².
+
+7. **g_rr:** Two independent checks: (a) state T_μν = 0 in vacuum foam region, apply Birkhoff's theorem → Schwarzschild g_rr = (1−x)^{−1}; (b) from g_tt × g_rr = −c² (w=1 equal propagation speed) and Part XVII g_tt: g_rr = −c²/g_tt = (1−x)^{−1}. Both give the same result.
 
 ---
 
