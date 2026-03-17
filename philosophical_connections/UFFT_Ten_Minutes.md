@@ -199,6 +199,31 @@ g_rr = (1−2GM/rc²)^{−1}   from two independent covariant paths (Part XX):
 
 ---
 
+### 12. Lepton Mass Ratios
+
+**Both Koide parameters derived from the face Laplacian spectrum (Part XXIV):**
+
+**ε = √(dim T₂g − 1) = √2**     → enforces Q = 2/3 exactly (Koide identity)
+
+**θ = (λ_A₂u − λ_T₂g) / λ_A₂u = (9−7)/9 = 2/9**     → mass ratios to 10–70 ppm
+
+| Ratio | UFFT | Observed | Error |
+|-------|------|----------|-------|
+| m_μ/m_e | 206.7703 | 206.7683 | 10 ppm |
+| m_τ/m_μ | 16.8180 | 16.8170 | 60 ppm |
+
+**Ingredients:**
+- ε: T₂g dimension d = 3 from O_h character table. Z₃ Clebsch-Gordan: ε = √(d−1) = √2.
+- θ: Axiom Zero (gives numerator 2 = spectral gap 9−7) and λ_A₂u = 9 from Part X face Laplacian.
+
+The same integers (2, 3, 9) that appear in the α formula and the beta function coefficient also determine both Koide parameters. One foam geometry; every result is a different question asked of the same substrate.
+
+**Absolute mass scale:** Still requires Λ_QCD from the torsion condensate programme.
+
+**Previous status:** Listed as "pending torsion condensate." **Ratios now CLOSED.**
+
+---
+
 ## What It Predicts (Falsifiable)
 
 **Formula:** Γ(r)/Γ(∞) = 1 − 2GM/rc²
@@ -262,7 +287,9 @@ The discrete foam structure produces a quadratic (not linear) deviation from exa
 | Einstein-Hilbert action | **DERIVED** (Part XXIII) — Lovelock's theorem: foam equations are covariant, second-order, correct Newtonian limit → unique GR + Λ. Coefficient cℏ/(16πl_P²) from foam geometry |
 | Friedmann equations | **DERIVED** (Part XXII) — both equations. k=0 (Part II) makes Newtonian derivation exact. G = c³l_P²/ℏ from cell size |
 | Newton's constant G | **DERIVED** — G = c³l_P²/ℏ from foam cell size l_P, propagation speed c, action quantum ℏ |
-| Particle mass spectrum | Structure clarified: lepton ratios from Koide+δ; absolute scale from torsion condensate. Pion PCAC formula already gives 134 MeV |
+| Lepton mass RATIOS | **DERIVED** (Part XXIV) — ε = √2 from T₂g dim; θ = 2/9 from (λ_A₂u − λ_T₂g)/λ_A₂u; m_μ/m_e to 10 ppm |
+| Absolute lepton mass scale | Open — requires Λ_QCD from torsion condensate programme |
+| Quark masses, W/Z, Higgs | Open — torsion condensate programme |
 | Full QFT emergence | Wave equation chain derived; formal QFT construction not done |
 | Electromagnetic running coupling | **DERIVED** (Part XIX) — β(α) = 2α²/(3π), α⁻¹(m_Z) = 128.95 vs 128.9 |
 | Strong beta function | **STRUCTURE DERIVED** — β(g_s) = −[11−(2/3)n_f]g_s³/(16π²), same 2/(3π) kernel |
