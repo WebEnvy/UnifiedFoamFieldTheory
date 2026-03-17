@@ -14,11 +14,13 @@
 
 ## Abstract
 
+*(This result assumes covariance holds in the continuum limit of the foam. The emergence of Lorentz invariance from O_h symmetry remains an open problem — see UFFT Core Framework v2 Scope and Status.)*
+
 We derive both Friedmann cosmological field equations and the Einstein-Hilbert action from the Unified Foam Field Theory (UFFT) framework using only existing ingredients. No new inputs are required.
 
 **Friedmann equations:** For a flat (k = 0) homogeneous universe — where k = 0 is independently derived from the universe sitting at its own Schwarzschild radius (Part II) — Newton's law gives the exact first Friedmann equation H² = (8πG/3)ρ + Λc²/3 without relativistic correction. The k = 0 result makes the Newtonian derivation exact, not approximate, by Birkhoff's theorem. The second Friedmann equation ä/a = −(4πG/3)(ρ + 3P/c²) + Λc²/3 follows from differentiating the first and applying the relativistic continuity equation (already in the framework). Newton's constant G = c³l_P²/ℏ is derived from the foam cell size l_P — it is not a free parameter.
 
-**Einstein-Hilbert action:** Lovelock's theorem (1971) states that in 4-dimensional spacetime, the only generally covariant, second-order gravitational theory with the correct Newtonian limit is GR with a cosmological constant. The foam satisfies all three conditions: (1) general covariance — from the relativistic Euler equation (Part XVII), (2) second-order dynamics — the Schwarzschild and Kerr metrics are confirmed GR solutions (Parts XVII, XX), (3) Newtonian limit — Newton's law derived exactly (Part I). Lovelock's theorem uniquely identifies the Einstein field equations G_μν + Λg_μν = (8πG/c⁴)T_μν. The action that produces these equations by variation is the Einstein-Hilbert action S = cℏ/(16πl_P²) ∫(R−2Λ)√(−g)d⁴x, with coefficient cℏ/(16πl_P²) fully determined by foam geometry — c from the equation of state, ℏ from the quantum of action, l_P from the cell size.
+**Einstein-Hilbert action:** Lovelock's theorem (1971) states that in 4-dimensional spacetime, the only generally covariant, second-order gravitational theory with the correct Newtonian limit is GR with a cosmological constant. The foam satisfies all three conditions: (1) general covariance — from the relativistic Euler equation (Part XII), (2) second-order dynamics — the Schwarzschild and Kerr metrics are confirmed GR solutions (Parts XVII, XX), (3) Newtonian limit — Newton's law derived exactly (Part I). Lovelock's theorem uniquely identifies the Einstein field equations G_μν + Λg_μν = (8πG/c⁴)T_μν. The action that produces these equations by variation is the Einstein-Hilbert action S = cℏ/(16πl_P²) ∫(R−2Λ)√(−g)d⁴x, with coefficient cℏ/(16πl_P²) fully determined by foam geometry — c from the equation of state, ℏ from the quantum of action, l_P from the cell size.
 
 Both derivations use the same uniqueness-theorem strategy as the Schwarzschild g_rr derivation (Birkhoff) and the Kerr metric derivation (Carter-Robinson). The resulting framework contains no free gravitational parameters: G, c, and Λ are all determined by foam geometry.
 
@@ -64,7 +66,7 @@ This identification means the Einstein-Hilbert coefficient c⁴/(16πG) = cℏ/(
 
 Consider a homogeneous, isotropic universe described by the FLRW metric. The scale factor a(t) measures the relative expansion. A test particle on a spherical shell of physical radius r = a(t)R₀ experiences the gravitational effect of the mass M enclosed within the shell.
 
-By Birkhoff's theorem [2], the gravitational field outside a spherically symmetric mass distribution depends only on the total enclosed mass — the shell itself is irrelevant. This is exact in GR and reproduced by the foam framework (Part XX).
+By Birkhoff's theorem [2], the gravitational field outside a spherically symmetric mass distribution depends only on the total enclosed mass — the shell itself is irrelevant. This is exact in GR and reproduced by the foam framework (Part XV).
 
 The mass inside radius r: M = (4π/3)r³ρ_matter.
 
@@ -82,7 +84,7 @@ Substituting M = (4π/3)r³ρ_matter and ṙ = Ȧ/A × r = Hr:
 
 **H² = (8πG/3)ρ_matter     [First Friedmann, matter only]**
 
-Adding the cosmological constant Λ = 8πGρ_Λ/c² from the dark energy derivation [1, Part XVI]:
+Adding the cosmological constant Λ = 8πGρ_Λ/c² from the dark energy derivation [1, Part XI]:
 
 **H² = (8πG/3)ρ_matter + Λc²/3     [First Friedmann — EXACT for k = 0]     [2]**
 
@@ -94,7 +96,7 @@ Differentiating Equation [2] with respect to time:
 
 2HḢ = (8πG/3)ρ̇_matter
 
-The relativistic continuity equation follows from energy-momentum conservation ∇_μT^μν = 0 for a perfect fluid — the same relativistic Euler equation already used in Part XVII to derive g_tt:
+The relativistic continuity equation follows from energy-momentum conservation ∇_μT^μν = 0 for a perfect fluid — the same relativistic Euler equation already used in Part XII to derive g_tt:
 
 **ρ̇ = −3H(ρ + P/c²)     [Relativistic continuity]     [3]**
 
@@ -119,8 +121,8 @@ The 3P/c² term is the relativistic pressure contribution, which is non-zero for
 | Newton's law F = −GMm/r² | Part I | DERIVED |
 | k = 0 | Part II | DERIVED |
 | G = c³l_P²/ℏ | Section 2 this paper | DERIVED |
-| Λ = 8πGρ_Λ/c² | Part XVI | DERIVED (1.4%) |
-| Relativistic continuity ρ̇ = −3H(ρ+P/c²) | Part XVII (Euler eq) | DERIVED |
+| Λ = 8πGρ_Λ/c² | Part XI | DERIVED (1.4%) |
+| Relativistic continuity ρ̇ = −3H(ρ+P/c²) | Part XII (Euler eq) | DERIVED |
 
 Zero new inputs. Both Friedmann equations follow from assembling previously derived results.
 
@@ -146,11 +148,11 @@ This is a uniqueness theorem — not a physical assumption. The Einstein equatio
 
 **Condition (a) — General covariance:**
 
-The covariant vacuum density ρ_foam = ρ₀(−g_tt/c²) is derived from the relativistic Euler equation in Part XVII — a generally covariant equation. The derivation makes no reference to any preferred coordinate system and holds in any coordinate chart. The resulting foam density transforms as a scalar under diffeomorphisms. ✓
+The covariant vacuum density ρ_foam = ρ₀(−g_tt/c²) is derived from the relativistic Euler equation in Part XII — a generally covariant equation. The derivation makes no reference to any preferred coordinate system and holds in any coordinate chart. The resulting foam density transforms as a scalar under diffeomorphisms. ✓
 
 **Condition (b) — Second-order in metric derivatives:**
 
-The foam produces the exact Schwarzschild metric (Parts XVII and XX) and the exact Kerr metric (Part XX extension). The Einstein tensor G_μν contains metric derivatives up to second order. The Schwarzschild and Kerr solutions satisfy G_μν = 0 in vacuum — a second-order differential equation in g_μν. The foam equations of motion are therefore second-order in metric derivatives. ✓
+The foam produces the exact Schwarzschild metric (Parts XVII and XX) and the exact Kerr metric (Part XV extension). The Einstein tensor G_μν contains metric derivatives up to second order. The Schwarzschild and Kerr solutions satisfy G_μν = 0 in vacuum — a second-order differential equation in g_μν. The foam equations of motion are therefore second-order in metric derivatives. ✓
 
 **Condition (c) — Correct Newtonian limit:**
 
@@ -164,7 +166,7 @@ All conditions of Lovelock's theorem are satisfied. By the theorem, the foam's g
 
 where:
 - G_μν: identified from the Schwarzschild solution (G_μν = 0 in vacuum)
-- Λ: identified from ρ_Λ = Λc²/(8πG), using ρ_Λ derived in Part XVI
+- Λ: identified from ρ_Λ = Λc²/(8πG), using ρ_Λ derived in Part XI
 - G: from Section 2 this paper: G = c³l_P²/ℏ
 - T_μν: stress-energy of topological defects (matter sources)
 
@@ -181,12 +183,12 @@ Every factor in the coefficient cℏ/(16πl_P²) is from foam geometry: c from t
 ### 4.4 Honest Assessment
 
 **What this derivation is:** A uniqueness proof by Lovelock's theorem, in the same spirit as:
-- Birkhoff's theorem for g_rr (Part XX) — symmetry + vacuum condition → unique Schwarzschild
-- Carter-Robinson for Kerr (Part XX) — symmetry + vacuum condition → unique Kerr
+- Birkhoff's theorem for g_rr (Part XV) — symmetry + vacuum condition → unique Schwarzschild
+- Carter-Robinson for Kerr (Part XV) — symmetry + vacuum condition → unique Kerr
 
 Given that the foam produces covariant, second-order equations with the correct Newtonian limit, Lovelock tells us the equations must be Einstein's. The action follows uniquely.
 
-**What this derivation is not:** A microscopic derivation of the Ricci curvature scalar R from the discrete foam lattice — i.e., showing explicitly that the Planck-scale cell geometry produces R√(−g) as its effective action. That microscopic derivation is the deeper programme and remains open. Part XXIII establishes what the action must be; the microscopic programme establishes why the foam lattice produces that action from its structure.
+**What this derivation is not:** A microscopic derivation of the Ricci curvature scalar R from the discrete foam lattice — i.e., showing explicitly that the Planck-scale cell geometry produces R√(−g) as its effective action. That microscopic derivation is the deeper programme and remains open. Part XVIII establishes what the action must be; the microscopic programme establishes why the foam lattice produces that action from its structure.
 
 ---
 
@@ -234,16 +236,16 @@ The Einstein-Hilbert coefficient cℏ/(16πl_P²) provides a natural ultraviolet
 
 1. Invoke k = 0 (Part II). This gives total mechanical energy = 0 for any shell.
 2. Apply Newton's law F = −GM/r² (Part I) to a shell of radius r = aR₀ with M = (4π/3)r³ρ.
-3. Set (1/2)ṙ² = GM/r. Substitute ṙ = Hr. Simplify to H² = (8πG/3)ρ. Add Λc²/3 from Part XVI.
+3. Set (1/2)ṙ² = GM/r. Substitute ṙ = Hr. Simplify to H² = (8πG/3)ρ. Add Λc²/3 from Part XI.
 4. Differentiate H² = (8πG/3)ρ + Λc²/3 with respect to time.
-5. Apply continuity equation ρ̇ = −3H(ρ+P/c²) (from relativistic Euler, Part XVII).
+5. Apply continuity equation ρ̇ = −3H(ρ+P/c²) (from relativistic Euler, Part XII).
 6. Use ä/a = Ḣ + H² to assemble the second Friedmann equation.
 
 **Einstein-Hilbert action:**
 
-1. State the three Lovelock conditions: covariance (Part XVII), second-order (Schwarzschild/Kerr), Newtonian limit (Part I).
+1. State the three Lovelock conditions: covariance (Part XII), second-order (Schwarzschild/Kerr), Newtonian limit (Part I).
 2. Apply Lovelock's theorem (see [4] or any standard GR textbook).
-3. Identify Λ from Part XVI and G = c³l_P²/ℏ.
+3. Identify Λ from Part XI and G = c³l_P²/ℏ.
 4. Write G_μν + Λg_μν = (8πG/c⁴)T_μν.
 5. The unique action is S = (c⁴/16πG)∫(R−2Λ)√(−g)d⁴x = cℏ/(16πl_P²)∫(R−2Λ)√(−g)d⁴x.
 
@@ -253,9 +255,9 @@ The Einstein-Hilbert coefficient cℏ/(16πl_P²) provides a natural ultraviolet
 
 The Friedmann equations and Einstein-Hilbert action are derived from the UFFT framework with zero new inputs.
 
-**First Friedmann:** H² = (8πG/3)ρ + Λc²/3 — from Newton's law (Part I) + k = 0 (Part II) + Λ (Part XVI) + G = c³l_P²/ℏ. Exact for k = 0.
+**First Friedmann:** H² = (8πG/3)ρ + Λc²/3 — from Newton's law (Part I) + k = 0 (Part II) + Λ (Part XI) + G = c³l_P²/ℏ. Exact for k = 0.
 
-**Second Friedmann:** ä/a = −(4πG/3)(ρ + 3P/c²) + Λc²/3 — from differentiating the first + relativistic Euler equation (Part XVII).
+**Second Friedmann:** ä/a = −(4πG/3)(ρ + 3P/c²) + Λc²/3 — from differentiating the first + relativistic Euler equation (Part XII).
 
 **Einstein-Hilbert action:** S = cℏ/(16πl_P²) ∫(R−2Λ)√(−g)d⁴x — from Lovelock's theorem applied to the foam's three derivable gravitational properties.
 
@@ -263,9 +265,11 @@ The gravitational sector of UFFT is now complete. G, c, Λ, and the field equati
 
 ---
 
+**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis — physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
+
 ## References
 
-[1] Martin, L. (2026). The Unified Foam Field Theory: Complete Works (v13). Independent publication. DOIs: 10.5281/zenodo.18706756, 10.5281/zenodo.18706806.
+[1] Martin, L. (2026). The Unified Foam Field Theory: Complete Works (v14). Independent publication. DOIs: 10.5281/zenodo.18706756, 10.5281/zenodo.18706806.
 
 [2] Birkhoff, G. D. (1923). *Relativity and Modern Physics*. Harvard University Press.
 

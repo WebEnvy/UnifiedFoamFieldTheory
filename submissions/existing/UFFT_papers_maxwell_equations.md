@@ -14,6 +14,8 @@
 
 ## Abstract
 
+*(This result assumes covariance holds in the continuum limit of the foam. The emergence of Lorentz invariance from O_h symmetry remains an open problem — see UFFT Core Framework v2 Scope and Status.)*
+
 We derive all four Maxwell equations from the Unified Foam Field Theory (UFFT) framework using only existing ingredients: Axiom Zero (B + V = D), the foam wave equation derived from the equation of state P = ρc², the vacuum impedance Z₀ = √(μ₀/ε₀) = 376.730 Ω identified as the foam's characteristic electromagnetic impedance, and the identification of topological defects as charged particles. No new inputs are required.
 
 The central identification: the electromagnetic four-potential A_μ is the covariant description of the D-mode (Displacement) in the foam's B-V-D structure. Given this identification, each Maxwell equation has a distinct and independent foam origin. **∇·B = 0** — Axiom Zero forbids isolated voids; magnetic monopoles are topologically impossible. **∇×E = −∂B/∂t** — the Bianchi identity applied to F_μν = ∂_μA_ν − ∂_νA_μ; the field is the exterior derivative of the displacement potential. **∇·E = ρ_q/ε₀** — topological defects (electrons as closed T₂g torsion loops) create permanent divergences in the D-mode displacement field; charge is quantised because topological winding numbers are integers. **∇×B = μ₀J + μ₀ε₀∂E/∂t** — the sourced foam wave equation □A_μ = μ₀J_μ, with moving defects carrying four-current J_μ.
@@ -80,7 +82,7 @@ The D-mode is the propagating electromagnetic mode of the foam. Its covariant de
 
 This identification is not a new postulate. It is the covariant form of the statement "electromagnetism = foam displacement," made in Part I of the Core Framework [1]. Every element supports it:
 
-- The foam is electromagnetic: Z₀ = 376.730 Ω is the EM impedance
+- The foam dynamics give rise to electromagnetism: Z₀ = 376.730 Ω is the EM impedance
 - The D-mode propagates at c: the foam wave equation gives c² as the propagation speed
 - α is derived from the D-mode coupling geometry (O_h representation theory)
 - U(1) gauge symmetry is derived from the rotational degree of freedom of a displacement event
@@ -250,7 +252,7 @@ Requires only: the foam wave equation, standard vector calculus, and the Bianchi
 The Maxwell derivation has an immediate consequence for the framework's cosmological coverage. The UFFT Core Framework listed "Friedmann equations" as a single open problem. This overstated the gap. Two of three terms in the Friedmann equation are already derived from other parts of the framework:
 
 - **k = 0 (flat universe):** The universe sitting at its own Schwarzschild radius [1, Part II] gives 2GM/Rc² = 1 → total density = critical density → k = 0. The Planck 2018 CMB measurement k = 0.0007 ± 0.0019 is consistent with the predicted exact k = 0.
-- **Λ term:** ρ_Λ = ρ₀(l_P/R_U)² × 6/7 derived in [1, Part XVI] to 1.4% accuracy.
+- **Λ term:** ρ_Λ = 6c²/(7GR_U²) derived in [1, Part XI] — all Planck units cancel. With approximate R_U = 4.4×10²⁶ m: 1.4% accuracy. With precise Friedmann-computed particle horizon (Part XVII, now derived): < 0.5% accuracy, within H₀ measurement uncertainty.
 - **Matter term (8πGρ_matter/3):** Requires the Einstein-Hilbert action. Genuinely open.
 
 Only the matter term of the Friedmann equation remains unresolved. With Maxwell's equations now in the derived column, the remaining genuine gaps in the framework's coverage of classical physics are: the Einstein-Hilbert action, and the Friedmann matter term that depends on it.
@@ -274,13 +276,15 @@ The most significant remaining gap in the framework's coverage of known physics 
 
 ---
 
+**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis — physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
+
 ## References
 
-[1] Martin, L. (2026). The Unified Foam Field Theory: Complete Works (v13). Independent publication. DOIs: 10.5281/zenodo.18706756, 10.5281/zenodo.18706806.
+[1] Martin, L. (2026). The Unified Foam Field Theory: Complete Works (v14). Independent publication. DOIs: 10.5281/zenodo.18706756, 10.5281/zenodo.18706806.
 
 [2] Martin, L. (2026). The Fine Structure Constant from Planck-Scale Foam Geometry (v2). *Zenodo*. DOI: 10.5281/zenodo.19011758.
 
-[3] Martin, L. (2026). The Unified Foam Field Theory — Core Framework (Part XVII: The Covariant Vacuum Density). Independent publication.
+[3] Martin, L. (2026). The Unified Foam Field Theory — Core Framework (Part XII: The Covariant Vacuum Density). Independent publication.
 
 [4] Misner, C. W., Thorne, K. S. & Wheeler, J. A. (1973). *Gravitation*. W. H. Freeman. §3.4 (Bianchi identity and Maxwell's equations in geometric form).
 

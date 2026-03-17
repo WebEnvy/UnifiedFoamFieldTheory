@@ -220,7 +220,7 @@ The following procedure reproduces the entire derivation from scratch with stand
 
 The derivation uses only finite group theory and CW-complex combinatorics. Every input is either a mathematical constant or a topological integer fixed by the cell geometry.
 
-The Koide parameter θ = 0.222 rad is simultaneously determined as α expressed in angular coordinates of the B-V-D modal space [1, Part XVIII].
+The Koide parameter θ = 0.222 rad is simultaneously determined as α expressed in angular coordinates of the B-V-D modal space [1, Part XIII].
 
 ---
 
@@ -243,6 +243,8 @@ Derived from foam geometry. Zero free parameters. 0.21 ppb accuracy. 1.4σ from 
 **v3 addition — Running Coupling:** The three foam ingredients used in this derivation (2 endpoints from Axiom Zero, d = 3, Gaussian return weight π) are the same three ingredients that derive the one-loop electromagnetic beta function β(α) = 2α²/(3π). The infrared value α(IR) derived here and the running law β(α) are one computation. Running from α⁻¹(0) = 137.035999055 gives α⁻¹(m_Z) = 128.95, consistent with the observed 128.9 to better than 0.1%. See companion paper for the full derivation.
 
 ---
+
+**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis — physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
 
 ## References
 

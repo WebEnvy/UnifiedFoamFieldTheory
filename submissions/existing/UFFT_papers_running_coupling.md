@@ -14,7 +14,7 @@
 
 ## Abstract
 
-The fine structure constant α was previously derived from the geometry of a Planck-scale foam with truncated octahedral cell structure (Part IX, DOI: 10.5281/zenodo.19011758). That derivation used three structural ingredients: (1) two endpoints per displacement event from Axiom Zero B + V = D, (2) d = 3 spatial dimensions, and (3) the Gaussian return weight π from the B-V-D phase-space prefactor. We show here that these identical three ingredients, applied to virtual loop processes rather than static coupling, produce the one-loop QED beta function coefficient:
+The fine structure constant α was previously derived from the geometry of a Planck-scale foam with truncated octahedral cell structure (Part VIII, DOI: 10.5281/zenodo.19011758). That derivation used three structural ingredients: (1) two endpoints per displacement event from Axiom Zero B + V = D, (2) d = 3 spatial dimensions, and (3) the Gaussian return weight π from the B-V-D phase-space prefactor. We show here that these identical three ingredients, applied to virtual loop processes rather than static coupling, produce the one-loop QED beta function coefficient:
 
 **β(α) = 2α²/(3π)**
 
@@ -153,7 +153,7 @@ The electromagnetic running coupling is derived (this paper). The strong and wea
 
 ## 6. Falsification Conditions
 
-1. Any measurement of α⁻¹(m_Z) significantly outside 128.95 ± 0.05 falsifies the derived beta function combined with the Part IX α(IR) value.
+1. Any measurement of α⁻¹(m_Z) significantly outside 128.95 ± 0.05 falsifies the derived beta function combined with the Part VIII α(IR) value.
 
 2. Detection of additional charged particles below m_Z that are not present in the Standard Model spectrum would change the running sum and require updating the species table. UFFT predicts no such particles within the perturbative window.
 
@@ -181,6 +181,10 @@ Running from α⁻¹(0) = 137.035999055 to α⁻¹(m_Z) = 128.95 with the derive
 
 ---
 
+**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis — physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
+
+**Extension (March 2026):** The 2-loop QED beta coefficient b₁^EM = 352/27 is now derived from the same foam sector charges (Part XXXI of the Core Framework v2), using the same Casimir operators C_A and C_F that appear in the QCD 2-loop formula. The self-consistent 2-loop GUT calculation (Part XXXV) uses all three 2-loop coefficients to find M_GUT = 1.50×10¹⁶ GeV and reproduce α_s(M_Z) = 0.1179 exactly from the GUT chain.
+
 ## References
 
 [1] Martin, L. (2026). The Fine Structure Constant from Planck-Scale Foam Geometry (v2). *Zenodo*. DOI: 10.5281/zenodo.19011758.
@@ -191,7 +195,7 @@ Running from α⁻¹(0) = 137.035999055 to α⁻¹(m_Z) = 128.95 with the derive
 
 [4] Workman, R. L. et al. (Particle Data Group) (2022). *Review of Particle Physics*. *Prog. Theor. Exp. Phys.* 2022, 083C01.
 
-[5] Martin, L. (2026). The Unified Foam Field Theory: Complete Works (v13). Independent publication.
+[5] Martin, L. (2026). The Unified Foam Field Theory: Complete Works (v14). Independent publication.
 
 ---
 

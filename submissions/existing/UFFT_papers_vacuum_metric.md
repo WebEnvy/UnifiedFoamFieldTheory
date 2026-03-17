@@ -14,9 +14,11 @@
 
 ## Abstract
 
+*(This result assumes covariance holds in the continuum limit of the foam. The emergence of Lorentz invariance from O_h symmetry remains an open problem — see UFFT Core Framework v2 Scope and Status.)*
+
 We derive the complete vacuum metric of general relativity — both the Schwarzschild and Kerr solutions — from the Unified Foam Field Theory (UFFT) framework using only existing ingredients: Axiom Zero (B + V = D), the truncated octahedral foam geometry, the equation of state P = ρc² (w = 1), and the identification of the foam as spacetime rather than matter. No new inputs are required.
 
-The temporal component g_tt = −c²(1 − 2GM/rc²) was previously derived from the relativistic Euler equation for P = ρc² (Part XVII). We close the last metric open problem — the spatial component g_rr — by two independent covariant paths. **Path 1 (vacuum consistency):** the foam IS spacetime, not matter, therefore T_μν = 0 in pure foam regions; the vacuum Einstein equations G_μν = 0 hold; for static spherical symmetry, Birkhoff's theorem gives the unique solution g_rr = (1 − 2GM/rc²)^{−1}. **Path 2 (propagation isotropy):** the equation of state w = 1 implies foam excitations propagate at c in all directions; null radial geodesics require g_tt × g_rr = −c²; combined with the derived g_tt this gives g_rr = (1 − 2GM/rc²)^{−1} exactly. The angular metric g_θθ = r² and g_φφ = r²sin²θ are derived from O_h acting transitively on the vacuum foam — no preferred angular direction exists, so the cell-crossing count for any closed surface scales as 4πr² identically.
+The temporal component g_tt = −c²(1 − 2GM/rc²) was previously derived from the relativistic Euler equation for P = ρc² (Part XII). We close the last metric open problem — the spatial component g_rr — by two independent covariant paths. **Path 1 (vacuum consistency):** the foam IS spacetime, not matter, therefore T_μν = 0 in pure foam regions; the vacuum Einstein equations G_μν = 0 hold; for static spherical symmetry, Birkhoff's theorem gives the unique solution g_rr = (1 − 2GM/rc²)^{−1}. **Path 2 (propagation isotropy):** the equation of state w = 1 implies foam excitations propagate at c in all directions; null radial geodesics require g_tt × g_rr = −c²; combined with the derived g_tt this gives g_rr = (1 − 2GM/rc²)^{−1} exactly. The angular metric g_θθ = r² and g_φφ = r²sin²θ are derived from O_h acting transitively on the vacuum foam — no preferred angular direction exists, so the cell-crossing count for any closed surface scales as 4πr² identically.
 
 The two derivation paths are independent and agree exactly. The previous discrepancy (g_rr ∝ (1−x)^{−2/3} from non-covariant cell-volume conservation) is identified as an error: the isotropic dilation assumption is invalid in areal coordinates where angular dimensions are pinned.
 
@@ -51,6 +53,8 @@ Equation of state (w = 1): P = ρc²
 Symmetry group: O_h (order 48), acting transitively on all cell orientations
 
 BCC tiling: truncated octahedral cells (V = 24, E = 36, F = 14) tile ℝ³ on a BCC lattice [3]
+
+**Newton's constant from foam geometry:** The Planck length is defined as l_P = √(ħG/c³), giving G = c³l_P²/ħ. Since l_P is the foam cell edge length, c follows from the equation of state, and ħ is the quantum of action in the foam lattice, Newton's constant G is determined entirely by foam geometry — it is not a free parameter. This means the Einstein-Hilbert action coefficient c⁴/(16πG) = cħ/(16πl_P²) is fully determined by foam geometry [5].
 
 ### 2.2 The Temporal Component (from [2])
 
@@ -254,21 +258,25 @@ Every component is independently justified. The previously reported discrepancy 
 
 ---
 
+**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis — physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
+
 ## References
 
-[1] Martin, L. (2026). The Unified Foam Field Theory: Complete Works (v13). Independent publication. DOIs: 10.5281/zenodo.18706756, 10.5281/zenodo.18706806.
+[1] Martin, L. (2026). The Unified Foam Field Theory: Complete Works (v14). Independent publication. DOIs: 10.5281/zenodo.18706756, 10.5281/zenodo.18706806.
 
-[2] Martin, L. (2026). The Unified Foam Field Theory — Core Framework (Part XVII: The Covariant Vacuum Density). Independent publication.
+[2] Martin, L. (2026). The Unified Foam Field Theory — Core Framework (Part XII: The Covariant Vacuum Density). Independent publication.
 
 [3] Thomson, W. (Lord Kelvin) (1887). On the division of space with minimum partitional area. *Philosophical Magazine*, 24, 503.
 
 [4] Birkhoff, G. D. (1923). *Relativity and Modern Physics*. Harvard University Press. (Birkhoff's theorem: the unique static spherically symmetric vacuum solution is Schwarzschild.)
 
-[5] Carter, B. (1971). Axisymmetric black hole has only two degrees of freedom. *Physical Review Letters*, 26(6), 331.
+[5] Martin, L. (2026). The Friedmann Equations and Einstein-Hilbert Action from Foam Dynamics. Independent publication. (G = c³l_P²/ħ derived from foam cell size; Einstein-Hilbert action S = cħ/(16πl_P²)∫(R−2Λ)√(−g)d⁴x via Lovelock's theorem.)
 
-[6] Robinson, D. C. (1975). Uniqueness of the Kerr black hole. *Physical Review Letters*, 34(14), 905.
+[6] Carter, B. (1971). Axisymmetric black hole has only two degrees of freedom. *Physical Review Letters*, 26(6), 331.
 
-[7] Martin, L. (2026). The Fine Structure Constant from Planck-Scale Foam Geometry (v2). *Zenodo*. DOI: 10.5281/zenodo.19011758.
+[7] Robinson, D. C. (1975). Uniqueness of the Kerr black hole. *Physical Review Letters*, 34(14), 905.
+
+[8] Martin, L. (2026). The Fine Structure Constant from Planck-Scale Foam Geometry (v3). *Zenodo*. DOI: 10.5281/zenodo.19011758.
 
 ---
 
