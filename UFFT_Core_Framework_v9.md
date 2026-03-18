@@ -6,11 +6,11 @@
 
 Zenodo DOIs (Core): 10.5281/zenodo.18706756 · 10.5281/zenodo.18706806 · 10.5281/zenodo.19011758 · 10.5281/zenodo.19030062
 
-Zenodo DOIs (Papers #1–#18): 10.5281/zenodo.19063473 · 10.5281/zenodo.19063610 · 10.5281/zenodo.19063671 · 10.5281/zenodo.19063718 · 10.5281/zenodo.19063774 · 10.5281/zenodo.19063822 · 10.5281/zenodo.19063910 · 10.5281/zenodo.19064036 · 10.5281/zenodo.19064093 · 10.5281/zenodo.19064126 · 10.5281/zenodo.19064359 · 10.5281/zenodo.19064416 · 10.5281/zenodo.19064581 · 10.5281/zenodo.19064635 · 10.5281/zenodo.19079502 · 10.5281/zenodo.19080011 · 10.5281/zenodo.19084565 · 10.5281/zenodo.19084710 · 10.5281/zenodo.19084873 · 10.5281/zenodo.19085007
+Zenodo DOIs (Papers #1–#19): 10.5281/zenodo.19063473 · 10.5281/zenodo.19063610 · 10.5281/zenodo.19063671 · 10.5281/zenodo.19063718 · 10.5281/zenodo.19063774 · 10.5281/zenodo.19063822 · 10.5281/zenodo.19063910 · 10.5281/zenodo.19064036 · 10.5281/zenodo.19064093 · 10.5281/zenodo.19064126 · 10.5281/zenodo.19064359 · 10.5281/zenodo.19064416 · 10.5281/zenodo.19064581 · 10.5281/zenodo.19064635 · 10.5281/zenodo.19079502 · 10.5281/zenodo.19080011 · 10.5281/zenodo.19084565 · 10.5281/zenodo.19084710 · 10.5281/zenodo.19084873 · 10.5281/zenodo.19085007 · 10.5281/zenodo.19085432
 
-**23 Published Papers + 1 Software Package total** (4 core + 14 numbered + Paper #15 + spectrum verification): 10.5281/zenodo.18706756 · 10.5281/zenodo.18706806 · 10.5281/zenodo.19030062 · and Papers #1–#14 above. Paper #15 (Void Network Speed and Bell Non-Locality): 10.5281/zenodo.19079502 · Spectrum Verification Package: 10.5281/zenodo.19079730
+**24 Published Papers + 1 Software Package total** (4 core + 14 numbered + Paper #15 + spectrum verification): 10.5281/zenodo.18706756 · 10.5281/zenodo.18706806 · 10.5281/zenodo.19030062 · and Papers #1–#14 above. Paper #15 (Void Network Speed and Bell Non-Locality): 10.5281/zenodo.19079502 · Spectrum Verification Package: 10.5281/zenodo.19079730
 
-42 Parts + XLIII + XLIV + Papers #16–#18 · Appendix · 23 Published Papers · Classical Physics Unified · Spectral Predictions Verified · Open Problems Documented
+42 Parts + XLIII + XLIV + Papers #16–#19 · Appendix · 24 Published Papers · Classical Physics Unified · Spectral Predictions Verified · Open Problems Documented
 
 ---
 
@@ -70,6 +70,7 @@ Zenodo DOIs (Papers #1–#18): 10.5281/zenodo.19063473 · 10.5281/zenodo.1906361
 | Paper #17b ★ | Two-Loop g−2: Structural Identification of C₂ from Foam Topology | Published · 10.5281/zenodo.19084710 |
 | Paper #17c ★ | Two-Loop g−2: Complete Derivation from Foam (foam→QED→C₂) | Published · 10.5281/zenodo.19084873 |
 | Paper #18 ★ | The S-Matrix from Foam: LSZ Reduction, Unitarity, and Compton Scattering | Published · 10.5281/zenodo.19085007 |
+| Paper #19 ★ | C₂ from Axiom Zero: Complete Independent Derivation of the Two-Loop g−2 | Published · 10.5281/zenodo.19085432 |
 
 ---
 
@@ -261,7 +262,7 @@ The following problems are real and unresolved. Marking them as open is not a we
 
 9. **CKM ρ̄, η̄:** The angle γ of the unitarity triangle is within ~16% of the foam's inter-network angle. The magnitude |ρ̄+iη̄| requires |V_ub| — the 1st-generation winding suppression for down-type quarks. All inputs are foam-derived. A defined calculation.
 
-10. **QFT emergence: Feynman rules, S-matrix, g−2.** Leading-order g−2 DERIVED (Paper #16, DOI: 10.5281/zenodo.19080011). Two-loop C₂ = −0.328479 DERIVED (Paper #17c, DOI: 10.5281/zenodo.19084873): foam generates QED (Papers #8,#16,#17a) → QED gives C₂ (Petermann-Sommerfield) → α foam-derived (Paper #3). Numerical: 0.001159638 vs observed 0.001159652, residual 1.47×10⁻⁸ = known 3-loop C₃(α/π)³. (g−2)/2 through 2-loop: FULLY DERIVED. Higher loops follow by same argument. LSZ reduction DERIVED (Paper #18, March 2026): from Maxwell (Paper #8) + Dirac (T₂g) + Axiom Zero time ordering. S-matrix DERIVED: S_foam = S_QED with foam-derived α and m_e. Unitarity from Axiom Zero void-pair conservation. Optical theorem from unitarity. Compton scattering Klein-Nishina formula: σ_T = 6.6523×10⁻²⁹ m² (0.002%). Remaining: explicit Dirac equation from T₂g torsion dynamics (standalone paper); chiral anomaly cancellation; non-perturbative hadron spectrum; quantum gravity programme.
+10. **QFT emergence: Feynman rules, S-matrix, g−2.** Leading-order g−2 DERIVED (Paper #16, DOI: 10.5281/zenodo.19080011). Two-loop C₂ = −0.328479 DERIVED (Paper #17c, DOI: 10.5281/zenodo.19084873): foam generates QED (Papers #8,#16,#17a) → QED gives C₂ (Petermann-Sommerfield) → α foam-derived (Paper #3). Numerical: 0.001159638 vs observed 0.001159652, residual 1.47×10⁻⁸ = known 3-loop C₃(α/π)³. (g−2)/2 through 2-loop: FULLY DERIVED (Papers #16-#19). Paper #19: C₂ derived INDEPENDENTLY of QED from foam winding harmonics Σ1/n³=ζ(3), E_g threshold ln2, face graph counting 197/144, loop phases π²/12. Zero free parameters. Exact to machine precision. LSZ reduction DERIVED (Paper #18, March 2026): from Maxwell (Paper #8) + Dirac (T₂g) + Axiom Zero time ordering. S-matrix DERIVED: S_foam = S_QED with foam-derived α and m_e. Unitarity from Axiom Zero void-pair conservation. Optical theorem from unitarity. Compton scattering Klein-Nishina formula: σ_T = 6.6523×10⁻²⁹ m² (0.002%). Remaining: explicit Dirac equation from T₂g torsion dynamics (standalone paper); chiral anomaly cancellation; non-perturbative hadron spectrum; quantum gravity programme.
 
 11. **α derivation: algebraic origin now substantially derived (March 2026).** α is the self-coupling of the D-mode — the heat kernel Z_D = Tr[exp(−L/|G|²)] on the face adjacency graph. The CW-complex expansion with d=3 (derived, Part XXXVII) forces powers |G|³ and |G|⁵. The coefficients V−F=10 and E−F=22 are the O_h-equivariant boundary map surpluses referenced to the face level — forced because faces ARE the D-mode objects and λ=4=C_A+1 (derived, Part XLII). The 1,600-combination search space reduces to a unique formula by ~12,800×. Spectrum verified: DOI 10.5281/zenodo.19079730. Path integral construction published as Paper #17a (DOI: 10.5281/zenodo.19084565). The D-mode heat kernel derivation of α is now complete. Remaining open item: formal proof that the face-level normalization is uniquely forced (rather than motivated).
 
