@@ -6,11 +6,11 @@
 
 Zenodo DOIs (Core): 10.5281/zenodo.18706756 · 10.5281/zenodo.18706806 · 10.5281/zenodo.19011758 · 10.5281/zenodo.19030062
 
-Zenodo DOIs (Papers #1–#19): 10.5281/zenodo.19063473 · 10.5281/zenodo.19063610 · 10.5281/zenodo.19063671 · 10.5281/zenodo.19063718 · 10.5281/zenodo.19063774 · 10.5281/zenodo.19063822 · 10.5281/zenodo.19063910 · 10.5281/zenodo.19064036 · 10.5281/zenodo.19064093 · 10.5281/zenodo.19064126 · 10.5281/zenodo.19064359 · 10.5281/zenodo.19064416 · 10.5281/zenodo.19064581 · 10.5281/zenodo.19064635 · 10.5281/zenodo.19079502 · 10.5281/zenodo.19080011 · 10.5281/zenodo.19084565 · 10.5281/zenodo.19084710 · 10.5281/zenodo.19084873 · 10.5281/zenodo.19085007 · 10.5281/zenodo.19085432
+Zenodo DOIs (Papers #1–#19c): 10.5281/zenodo.19063473 · 10.5281/zenodo.19063610 · 10.5281/zenodo.19063671 · 10.5281/zenodo.19063718 · 10.5281/zenodo.19063774 · 10.5281/zenodo.19063822 · 10.5281/zenodo.19063910 · 10.5281/zenodo.19064036 · 10.5281/zenodo.19064093 · 10.5281/zenodo.19064126 · 10.5281/zenodo.19064359 · 10.5281/zenodo.19064416 · 10.5281/zenodo.19064581 · 10.5281/zenodo.19064635 · 10.5281/zenodo.19079502 · 10.5281/zenodo.19080011 · 10.5281/zenodo.19084565 · 10.5281/zenodo.19084710 · 10.5281/zenodo.19084873 · 10.5281/zenodo.19085007 · 10.5281/zenodo.19085432 · 10.5281/zenodo.19085997
 
-**24 Published Papers + 1 Software Package total** (4 core + 14 numbered + Paper #15 + spectrum verification): 10.5281/zenodo.18706756 · 10.5281/zenodo.18706806 · 10.5281/zenodo.19030062 · and Papers #1–#14 above. Paper #15 (Void Network Speed and Bell Non-Locality): 10.5281/zenodo.19079502 · Spectrum Verification Package: 10.5281/zenodo.19079730
+**25 Published Papers + 1 Software Package total** (4 core + 14 numbered + Paper #15 + spectrum verification): 10.5281/zenodo.18706756 · 10.5281/zenodo.18706806 · 10.5281/zenodo.19030062 · and Papers #1–#14 above. Paper #15 (Void Network Speed and Bell Non-Locality): 10.5281/zenodo.19079502 · Spectrum Verification Package: 10.5281/zenodo.19079730
 
-42 Parts + XLIII + XLIV + Papers #16–#19 · Appendix · 24 Published Papers · Classical Physics Unified · Spectral Predictions Verified · Open Problems Documented
+42 Parts + XLIII + XLIV + Papers #16–#19c · Appendix · 25 Published Papers · Classical Physics Unified · Spectral Predictions Verified · Open Problems Documented
 
 ---
 
@@ -71,6 +71,7 @@ Zenodo DOIs (Papers #1–#19): 10.5281/zenodo.19063473 · 10.5281/zenodo.1906361
 | Paper #17c ★ | Two-Loop g−2: Complete Derivation from Foam (foam→QED→C₂) | Published · 10.5281/zenodo.19084873 |
 | Paper #18 ★ | The S-Matrix from Foam: LSZ Reduction, Unitarity, and Compton Scattering | Published · 10.5281/zenodo.19085007 |
 | Paper #19 ★ | C₂ from Axiom Zero: Complete Independent Derivation of the Two-Loop g−2 | Published · 10.5281/zenodo.19085432 |
+| Paper #19c ★ | Corrigendum to Paper #19: Precise Status of the Rational Term 197/144 | Published · 10.5281/zenodo.19085997 |
 
 ---
 
