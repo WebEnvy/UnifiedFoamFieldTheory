@@ -1,6 +1,6 @@
 # Supersymmetry is Geometrically Forbidden by the Kelvin Cell
 
-**DOI:** 10.5281/zenodo.XXXXXXX
+**DOI:** 10.5281/zenodo.19064126
 
 *Luke Martin · Independent Researcher · March 2026*
 

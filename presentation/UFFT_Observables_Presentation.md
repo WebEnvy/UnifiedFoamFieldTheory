@@ -38,7 +38,7 @@ This single quadratic plus the cell's topological integers generates all results
 | Observable | UFFT formula | Value | Experiment | Accuracy |
 |-----------|-------------|-------|------------|----------|
 | Fine structure constant | α⁻¹ = 8π^(5/2) × [(\|G\|−1)/\|G\| + (V−F)/(d·\|G\|³) + (E−F)/(d·\|G\|⁵)]⁻¹ | 137.035999055 | 137.035999046(27) [Cs] | **0.3σ** |
-| Dark matter ratio | Ω_DM/Ω_b = 3(1+2√3)/2^(4/3) | 5.3147 | 5.36 ± 0.05 [Planck] | **0.85%** |
+| Dark matter ratio | Ω_DM/Ω_b = 3(1+2√3)/2^(4/3) | 5.3147 | 5.36 ± 0.06 [Planck] | **0.92% (0.8σ)** |
 | Dark energy density | ρ_Λ = ρ₀(l_P/R_U)² × (F−χ)/F | 5.96 × 10⁻²⁷ kg/m³ | 5.88 × 10⁻²⁷ [Planck] | **1.4%** |
 | Speed of light | c = √(P₀/ρ₀) | Derived | Defined | Exact |
 | Spatial curvature | k = 0 | 0 | \|Ω_k\| < 0.002 | Consistent |
@@ -127,6 +127,81 @@ All relations use only C_A = 3, the master equation integers, measured m_u + m_d
 
 ---
 
+## PMNS Neutrino Mixing Matrix
+
+All from two foam integers: Δ = 17 (discriminant) and C_A = 3 (colour number).
+
+| Parameter | UFFT formula | Value | Experiment | Accuracy |
+|-----------|-------------|-------|------------|----------|
+| tan²θ₁₂ (solar) | √Δ/C_A² = √17/9 | 0.4581 | 0.443 ± 0.027 | **0.56σ** |
+| sin²θ₂₃ (atmospheric) | 1/2 (T₁u Z₂ symmetry) | 0.500 | 0.546 ± 0.021 | 2.2σ (LO) |
+| sinθ₁₃ (reactor) | √Δ/C_A³ = √17/27 | 0.1527 | 0.1484 ± 0.0019 | 2.3σ |
+| \|Δm²₃₂\|/Δm²₂₁ | 2Δ − 1 | 33 | 32.6 ± 0.9 | **0.5σ** |
+| δ_CP | — | — | 197° ± 25° | OPEN |
+
+---
+
+## CKM Quark Mixing Matrix
+
+From face count F = 14 and master equation root r₁ = (9−√17)/2.
+
+| Parameter | UFFT formula | Value | Experiment | Accuracy |
+|-----------|-------------|-------|------------|----------|
+| λ (Cabibbo) | sin(π/F) = sin(π/14) | 0.2225 | 0.2250 ± 0.0007 | **1.1% (3.7σ)** |
+| A | r₁/C_A = (9−√17)/6 | 0.8128 | 0.826 ± 0.015 | **1.6% (0.9σ)** |
+| \|V_cb\| | Aλ² | 0.0402 | 0.0412 | 2.4% |
+| \|V_ts\| | Aλ² | 0.0402 | 0.0404 | 0.5% |
+| m_d/m_s | sin²(π/F) | 0.0495 | 0.0500 | **1.0%** |
+| ρ̄, η̄ | — | — | 0.159, 0.348 | OPEN |
+
+---
+
+## Lepton Masses
+
+| Observable | UFFT formula | Value | Experiment | Accuracy |
+|-----------|-------------|-------|------------|----------|
+| Koide angle | θ = 2/C_A² = 2/9 | 0.2222 rad | 0.2222 rad | **Exact** |
+| m_τ | b-τ unification boundary | input | 1776.86 MeV | input |
+| m_μ | Koide with θ = 2/9 | 105.652 MeV | 105.658 MeV | **0.006%** |
+| m_e | Koide with θ = 2/9 | 0.51096 MeV | 0.51100 MeV | **0.007%** |
+
+---
+
+## Strong CP and Hierarchy
+
+| Result | UFFT | Status |
+|--------|------|--------|
+| θ_phys = θ_QCD + arg(det M_q) | 0 exactly | **Dissolved** — no axion, no new symmetry |
+| Neutron EDM | 0 exactly | Prediction (current bound: < 1.8 × 10⁻²⁶ e·cm) |
+| Quadratic divergence | Does not exist (physical lattice) | **Dissolved** — SUSY unnecessary |
+| m_H/M_Z | 18/(9+√17) = 1.3716 | **0.14%** — from face Laplacian |
+| α_GUT⁻¹ | (\|O_h\| + χ)/2 = 25 | New — requires ~12 heavy flavours at GUT |
+| Superpartners | None (O_h forbids Z₂ R-parity) | Prediction: no SUSY detection at any energy |
+
+---
+
+## Anomalous Magnetic Moment
+
+| Observable | UFFT | Experiment | Accuracy |
+|-----------|------|------------|----------|
+| a_e (Schwinger, 1-loop) | α/(2π) from D-mode path integral | α/(2π) | Exact (structure reproduced) |
+| C₂ (2-loop coefficient) | 197/144 + ζ(3)/2 + π²ln2/2 − π²/4 | −0.32848... | **Exact structure** |
+| ζ(3) origin | Foam knot-counting function | — | Independent topological derivation |
+
+---
+
+## S-Matrix and Field Theory
+
+| Result | UFFT derivation | Status |
+|--------|----------------|--------|
+| LSZ reduction formula | Foam propagator → asymptotic states | Derived |
+| S-matrix unitarity | Void-pair conservation (Axiom Zero) | Derived |
+| Compton cross-section | Klein-Nishina from foam | Derived |
+| Baryon number conservation | Topological winding number theorem | Derived |
+| Lepton number conservation | Topological knot invariant theorem | Derived |
+
+---
+
 ## Precision Physics Predictions (Time-Stamped, March 2026)
 
 | Prediction | UFFT value | Current data | Status |
@@ -134,6 +209,9 @@ All relations use only C_A = 3, the master equation integers, measured m_u + m_d
 | α⁻¹ | 137.035999055 | Cs: 137.035999046(27), g-2: 137.035999206(11) | **Sides with Cs (0.3σ), disagrees with g-2 (14σ)** |
 | Muon g-2 anomaly | Δa_μ = 19 × 10⁻¹¹ (0.3σ) with BMW HVP | Experiment: 116592059(22) × 10⁻¹¹ | **No new physics** |
 | Dark matter particles | None (DM = lattice geometry) | LUX/XENON null results | Prediction: null results continue |
+| Superpartners | None (geometrically forbidden) | LHC null results | Prediction: null results continue |
+| Axion | None (θ_phys = 0 exactly) | ADMX/ABRACADABRA null | Prediction: null results continue |
+| Neutron EDM | Exactly zero | < 1.8 × 10⁻²⁶ e·cm | Prediction: remains zero |
 | NS core c_s | Must exceed c/√3 | NICER data trending this way | Prediction |
 
 ---
@@ -142,9 +220,9 @@ All relations use only C_A = 3, the master equation integers, measured m_u + m_d
 
 | Tier | Meaning | Count |
 |------|---------|-------|
-| **Derived** | Mathematical consequence of framework, no free parameters | 8 core + periodic table + charge |
-| **Consistent** | Framework accommodates correctly, doesn't uniquely predict | 7 (Hawking, GW, CMB, NS, Lamb shift, etc.) |
-| **Suggestive** | Pattern matches, may need additional input or NLO corrections | 9+ (hadron masses, brainwaves, colour-frequency) |
+| **Derived** | Mathematical consequence of framework, no free parameters | 30+ (α, DM, DE, Schwarzschild, Einstein, Maxwell, Friedmann, periodic table, charge, gauge group, lepton masses, 5 quark masses, PMNS 3/4, CKM 2/4, Higgs/Z, Koide, Weinberg, β₀, β₁, strong CP, hierarchy L1-2, GUT coupling, g-2 2-loop, S-matrix, EW counting, Aufbau, hadron triangle) |
+| **Consistent** | Framework accommodates correctly, doesn't uniquely predict | 7 (Hawking, GW speed, CMB, NS, Lamb shift, etc.) |
+| **Suggestive** | Pattern matches, may need additional input or NLO corrections | 9+ (mass-squared ratio, hadron masses, brainwaves, colour-frequency) |
 
 ---
 
@@ -152,12 +230,14 @@ All relations use only C_A = 3, the master equation integers, measured m_u + m_d
 
 | Problem | Status | Needed |
 |---------|--------|--------|
-| Particle mass spectrum | Knot classification programme | Major mathematical research |
+| CP-violating phases (δ_CP in PMNS, ρ̄/η̄ in CKM) | OPEN | Complex torsion coupling structure |
+| Top Yukawa y_t | OPEN | Full RG flow from foam GUT scale |
+| v/M_P hierarchy (Layer 3) | OPEN | Complete electroweak-to-Planck RG |
+| Particle mass spectrum (complete) | Knot classification programme | Major mathematical research |
 | Kerr metric | Density prediction exists | Extend ν = 1/2 to axisymmetric |
 | H₀ from first principles | Boundary condition | Not derivable from dynamics |
 | Spectral index n_s | — | Displacement cascade statistics |
 | Baryon-to-photon ratio η | — | Foam baryogenesis |
-| Weinberg angle running | GUT value derived (3/8) | Full particle spectrum for running |
 | Neutron-proton mass difference | Ingredients derived | Full Cottingham calculation |
 
 ---
@@ -169,4 +249,4 @@ All relations use only C_A = 3, the master equation integers, measured m_u + m_d
 ---
 
 *UFFT Core Framework v10: github.com/WebEnvy/UnifiedFoamFieldTheory*
-*Zenodo DOIs: 10.5281/zenodo.18706756 · 18706806 · 19011758 · 19030062*
+*36 papers published on Zenodo with permanent DOIs*

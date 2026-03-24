@@ -1,6 +1,6 @@
 # Baryon and Lepton Number Conservation as Topological Theorems
 
-**DOI:** 10.5281/zenodo.XXXXXXX
+**DOI:** 10.5281/zenodo.19064093
 
 *Luke Martin · Independent Researcher · March 2026*
 

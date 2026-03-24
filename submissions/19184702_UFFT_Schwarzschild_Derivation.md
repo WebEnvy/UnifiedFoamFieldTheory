@@ -239,7 +239,7 @@ Accuracy: 1.4% from Planck 2018 observation.
 
 1. **Dark energy density from geometry** — ρ_Λ = ρ₀(l_P/R_U)² × 6/7 (1.4%)
 2. **Evolving dark energy** — w ≈ −1 with small deviations at high redshift (DESI 2024 preliminary data consistent)
-3. **Dark matter ratio** — Ω_DM/Ω_b = 3(1+2√3)/2^(4/3) = 5.3147 (0.23%)
+3. **Dark matter ratio** — Ω_DM/Ω_b = 3(1+2√3)/2^(4/3) = 5.3147 (0.92%)
 4. **Flat universe** — k = 0 from Axiom Zero
 5. **Nested universe** — R_U = 2GM_U/c² (the universe is interior to its own horizon)
 

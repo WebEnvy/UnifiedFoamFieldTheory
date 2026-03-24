@@ -1,6 +1,6 @@
 # The Higgs-to-Z Mass Ratio from the Face Laplacian Spectrum
 
-**DOI:** 10.5281/zenodo.XXXXXXX
+**DOI:** 10.5281/zenodo.19064036
 
 *Luke Martin · Independent Researcher · March 2026*
 

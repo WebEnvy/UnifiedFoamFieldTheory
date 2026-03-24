@@ -4,7 +4,7 @@
 
 *Independent Researcher · Sydney, Australia*
 
-**DOI:** 10.5281/zenodo.XXXXXXX
+**DOI:** 10.5281/zenodo.19079502
 
 **Priority Date:** March 2026
 
@@ -34,7 +34,7 @@ All results are integer or exact ratio theorems from mode dimensions. They are i
 
 At tree level: M_W/M_Z = cosθ_W = √(1−sin²θ_W(M_Z)).
 
-From foam: sin²θ_W=3/8 at M_GUT (exact theorem, DOI: 10.5281/zenodo.19063822), running to sin²θ_W(M_Z)≈0.231 with foam-derived beta coefficients (DOI: 10.5281/zenodo.XXXXXXX [2-loop paper]).
+From foam: sin²θ_W=3/8 at M_GUT (exact theorem, DOI: 10.5281/zenodo.19063822), running to sin²θ_W(M_Z)≈0.231 with foam-derived beta coefficients (DOI: 10.5281/zenodo.19064416).
 
 **M_W/M_Z = √(1−0.231) = 0.8769**
 
