@@ -4,7 +4,7 @@
 
 **Axiom Zero: B + V = D** *(Bubble + Void = Displacement — every event is a displacement in an infinite pre-existing electrical foam at the Planck scale)*
 
-42+ Parts · 36 Published Papers · All Hard Open Problems Closed · Known Limitations Documented · v10 March 2026
+42+ Parts · 36 Preprints on Zenodo · Known Limitations Documented · v10 March 2026
 
 ---
 
@@ -18,10 +18,10 @@
 | IV | Quantum Computing in the Foam Substrate | Core |
 | V | The Correspondence Principle | Core |
 | VI | Why Linear Mathematics Describes the Emergent Layer | Core |
-| VII ★ | Gravitational Suppression of Quantum Decoherence | Published |
-| VIII ★ | Void-Pair Conservation and Bell Correlations | Published |
-| IX ★ | The Fine Structure Constant from Foam Geometry | Published |
-| X ★ | The Laplacian Spectrum of the Kelvin Cell | Published |
+| VII ★ | Gravitational Suppression of Quantum Decoherence | Preprint |
+| VIII ★ | Void-Pair Conservation and Bell Correlations | Preprint |
+| IX ★ | The Fine Structure Constant from Foam Geometry | Preprint |
+| X ★ | The Laplacian Spectrum of the Kelvin Cell | Preprint |
 | XI | Elemental Resonance and the Foam Resonance Periodic Table | Core |
 | XII | The Void as Energy Reservoir | Core |
 | XIII | Sustained Cavitation and Energy Transfer | Core |
@@ -30,42 +30,42 @@
 | XVI | Cosmological Expansion and Dark Energy | Core |
 | XVII | The Covariant Vacuum Density | Core |
 | XVIII | From Foam to Atoms: The Particle Hierarchy | Core |
-| XIX ★ | The Complete Vacuum Metric from Foam Dynamics | Published |
-| XX ★ | The Complete Schwarzschild Metric from Foam | Published |
-| XXI ★ | Maxwell's Equations from Foam Displacement Dynamics | Published |
-| XXII ★ | The Friedmann Equations and Einstein-Hilbert Action from Foam | Published |
-| XXIII ★ | The Electromagnetic Running Coupling from Foam Geometry | Published |
-| XXIV ★ | Lepton Mass Ratios from the Face Laplacian Spectrum | Published |
-| XXV ★ | The Weinberg Angle from Foam Geometry | Published |
-| XXVI ★ | The Higgs-to-Z Mass Ratio from the Face Laplacian Spectrum | Published |
-| XXVII ★ | The Master Equation of the Standard Model from Foam Geometry | Published |
-| XXVIII ★ | Baryon and Lepton Number Conservation as Topological Theorems | Published |
-| XXIX ★ | Supersymmetry is Geometrically Forbidden by the Kelvin Cell | Published |
-| XXX ★ | Two-Loop Beta Functions and the Self-Consistent GUT Scale | Published |
-| XXXI ★ | Asymptotic Freedom and Quark Confinement as Geometric Theorems | Published |
-| XXXII ★ | Electroweak Predictions: M_W/M_Z, N_ν=3, d=3+1, ρ=1 | Published |
-| XXXIII ★ | Void Network Speed and the Mechanism of Bell Non-Locality | Published |
-| XXXIV ★ | The Anomalous Magnetic Moment: Leading Order (Schwinger) | Published |
-| XXXV ★ | The D-Mode Path Integral: Algebraic Origin of α and g-2 Foundation | Published |
-| XXXVI ★ | The Two-Loop Anomalous Magnetic Moment: C₂ from Foam Topology | Published |
-| XXXVII ★ | C₂ from Axiom Zero: Complete Independent Derivation | Published |
-| XXXVIII ★ | The S-Matrix from Foam: LSZ Reduction, Unitarity, Compton Scattering | Published |
-| XXXIX ★ | Corrigendum: Precise Status of the Rational Term 197/144 | Published |
-| XL ★ | The Rational Term in C₂: Closure of the Two-Loop Programme | Published |
-| XLI ★ | Aufbau Ordering from Foam Geometry | Published |
-| XLII ★ | The Strong CP Problem Dissolved by Foam Torsion Dynamics | Published |
-| XLIII ★ | The Hierarchy Problem Dissolved by Foam Lattice Dynamics | Published |
-| XLIV ★ | The CKM Quark Mixing Matrix from Foam Cell Geometry | Published |
-| XLV ★ | The PMNS Neutrino Mixing Matrix from Foam Cell Geometry | Published |
-| XLVI ★ | CP-Violating Phases of the CKM and PMNS Matrices | Published |
-| XLVII ★ | Spectral Verification: Face Adjacency Laplacian | Published |
+| XIX ★ | The Complete Vacuum Metric from Foam Dynamics | Preprint |
+| XX ★ | The Complete Schwarzschild Metric from Foam | Preprint |
+| XXI ★ | Maxwell's Equations from Foam Displacement Dynamics | Preprint |
+| XXII ★ | The Friedmann Equations and Einstein-Hilbert Action from Foam | Preprint |
+| XXIII ★ | The Electromagnetic Running Coupling from Foam Geometry | Preprint |
+| XXIV ★ | Lepton Mass Ratios from the Face Laplacian Spectrum | Preprint |
+| XXV ★ | The Weinberg Angle from Foam Geometry | Preprint |
+| XXVI ★ | The Higgs-to-Z Mass Ratio from the Face Laplacian Spectrum | Preprint |
+| XXVII ★ | The Master Equation of the Standard Model from Foam Geometry | Preprint |
+| XXVIII ★ | Baryon and Lepton Number Conservation as Topological Theorems | Preprint |
+| XXIX ★ | Supersymmetry is Geometrically Forbidden by the Kelvin Cell | Preprint |
+| XXX ★ | Two-Loop Beta Functions and the Self-Consistent GUT Scale | Preprint |
+| XXXI ★ | Asymptotic Freedom and Quark Confinement as Geometric Theorems | Preprint |
+| XXXII ★ | Electroweak Predictions: M_W/M_Z, N_ν=3, d=3+1, ρ=1 | Preprint |
+| XXXIII ★ | Void Network Speed and the Mechanism of Bell Non-Locality | Preprint |
+| XXXIV ★ | The Anomalous Magnetic Moment: Leading Order (Schwinger) | Preprint |
+| XXXV ★ | The D-Mode Path Integral: Algebraic Origin of α and g-2 Foundation | Preprint |
+| XXXVI ★ | The Two-Loop Anomalous Magnetic Moment: C₂ from Foam Topology | Preprint |
+| XXXVII ★ | C₂ from Axiom Zero: Complete Independent Derivation | Preprint |
+| XXXVIII ★ | The S-Matrix from Foam: LSZ Reduction, Unitarity, Compton Scattering | Preprint |
+| XXXIX ★ | Corrigendum: Precise Status of the Rational Term 197/144 | Preprint |
+| XL ★ | The Rational Term in C₂: Closure of the Two-Loop Programme | Preprint |
+| XLI ★ | Aufbau Ordering from Foam Geometry | Preprint |
+| XLII ★ | The Strong CP Problem Dissolved by Foam Torsion Dynamics | Preprint |
+| XLIII ★ | The Hierarchy Problem Dissolved by Foam Lattice Dynamics | Preprint |
+| XLIV ★ | The CKM Quark Mixing Matrix from Foam Cell Geometry | Preprint |
+| XLV ★ | The PMNS Neutrino Mixing Matrix from Foam Cell Geometry | Preprint |
+| XLVI ★ | CP-Violating Phases of the CKM and PMNS Matrices | Preprint |
+| XLVII ★ | Spectral Verification: Face Adjacency Laplacian | Preprint |
 | Appendix | Predictions, Verified Results & Status | |
 
-★ Published on Zenodo with permanent DOIs
+★ Preprint on Zenodo with permanent DOI (not yet peer reviewed)
 
 ---
 
-## Published Papers — Complete Index
+## Preprints — Complete Index
 
 All papers published on Zenodo under Creative Commons Attribution 4.0 International.
 
@@ -588,13 +588,13 @@ What would describe the foam's non-linear substrate directly is not yet known. I
 
 # Part VII — Gravitational Suppression of Quantum Decoherence
 
-*Published: [10.5281/zenodo.18706756](https://zenodo.org/records/18706756)*
+*Preprint: [10.5281/zenodo.18706756](https://zenodo.org/records/18706756)*
 
 **Preprint: Gravitational Decoherence**
 
 *Luke Martin · Independent Researcher · 2026*
 
-Preprint — Gravitational Suppression of Quantum Decoherence Full Version via Variable Vacuum Foam Density Luke Martin Independent Researcher February 2026 Preprint — Not yet peer reviewed Published: https://zenodo.org/records/18706756 Abstract We present a derivation of quantum decoherence rates within a vacuum pressure gradient model of gravity, in which local vacuum density
+Preprint — Gravitational Suppression of Quantum Decoherence Full Version via Variable Vacuum Foam Density Luke Martin Independent Researcher February 2026 Preprint — Not yet peer reviewed Preprint: https://zenodo.org/records/18706756 Abstract We present a derivation of quantum decoherence rates within a vacuum pressure gradient model of gravity, in which local vacuum density
 
 > *decreases near massive objects according to rho_vac(r) = rho_0*(1 - 2GM/rc²). This model predicts that decoherence rates are suppressed near massive objects — in direct opposition to the Diosi-Penrose (DP) model, which predicts enhancement. The sign reversal in the gravitational correction term produces a measurable difference of 3GM/rc² in decoherence rate ratios at two gravitational potentials. We additionally identify that quantum decoherence and macroscopic void decay are the same physical process at different scales — both governed by local vacuum bubble density eroding void-pair boundaries. We propose a concrete experimental protocol using atomic interferometry at varying gravitational potentials, achievable with existing space-based platforms, that can discriminate between this model and Diosi-Penrose.*
 
@@ -705,13 +705,13 @@ Nature Communications, 14, 7910. [4] Frye, K., et al. (2021). The Bose-Einstein
 
 Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften, 5, 440–480. --- # Part VIII — Void-Pair Conservation and Bell Correlations
 
-*Published: [10.5281/zenodo.18706806](https://zenodo.org/records/18706806)*
+*Preprint: [10.5281/zenodo.18706806](https://zenodo.org/records/18706806)*
 
 **Preprint: Bell's Theorem**
 
 *Luke Martin · Independent Researcher · 2026*
 
-Preprint — Void-Pair Conservation and Bell's Theorem Full Version of Quantum Entanglement and Bell Correlations Luke Martin Independent Researcher February 2026 Preprint — Not yet peer reviewed Published: https://zenodo.org/records/18706806 Paper 3 — The Fine Structure Constant from Planck-Scale Foam Geometry Published: https://zenodo.org/records/19011758 Paper 4 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph Published: https://zenodo.org/records/19030062 Abstract We propose that quantum entanglement is the physical manifestation of void-pair conservation in a quantized vacuum foam. In this model, every vacuum displacement event D creates exactly one bubble B at position x and one complementary void V at position x' --- the conservation law B(x) + V(x') = D. Entangled particles are not two correlated objects but two addresses of one displacement event. This ontological reframing escapes Bell's theorem without invoking hidden variables: Bell's factorization assumption requires the correlation function to be writable as a product of local functions, but D is inherently non-local and cannot be so factored. We show that the antipodal symmetry of the void-pair uniquely selects the quantum singlet state, which produces the > *experimentally confirmed correlation E(a,b) = -cos(theta_ab). We verify*
+Preprint — Void-Pair Conservation and Bell's Theorem Full Version of Quantum Entanglement and Bell Correlations Luke Martin Independent Researcher February 2026 Preprint — Not yet peer reviewed Preprint: https://zenodo.org/records/18706806 Paper 3 — The Fine Structure Constant from Planck-Scale Foam Geometry Preprint: https://zenodo.org/records/19011758 Paper 4 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph Preprint: https://zenodo.org/records/19030062 Abstract We propose that quantum entanglement is the physical manifestation of void-pair conservation in a quantized vacuum foam. In this model, every vacuum displacement event D creates exactly one bubble B at position x and one complementary void V at position x' --- the conservation law B(x) + V(x') = D. Entangled particles are not two correlated objects but two addresses of one displacement event. This ontological reframing escapes Bell's theorem without invoking hidden variables: Bell's factorization assumption requires the correlation function to be writable as a product of local functions, but D is inherently non-local and cannot be so factored. We show that the antipodal symmetry of the void-pair uniquely selects the quantum singlet state, which produces the > *experimentally confirmed correlation E(a,b) = -cos(theta_ab). We verify*
 
 this numerically against the classical local hidden variable bound. We distinguish the void-pair model from pilot wave and many-worlds interpretations. We propose a testable prediction for three-particle connected foam topologies that differs from the standard GHZ prediction.
 
@@ -820,7 +820,7 @@ Physics Physique Fizika, 1(3), 195–200. [2] Aspect, A., Grangier, P., & Roger,
 
 Proposed experiment to test local hidden-variable theories. Physical Review Letters, 23(15), 880–884. [6] Bohm, D. (1952). A suggested interpretation of the quantum theory in terms of 'hidden' variables. Physical Review, 85(2), 166–193. [7] Maldacena, J., & Susskind, L. (2013). Cool horizons for entangled black holes. Fortschritte der Physik, 61(9), 781–811. [8] Greenberger, D. M., Horne, M. A., & Zeilinger, A. (1989). Going beyond Bell's theorem. In Bell's Theorem, Quantum Theory and Conceptions of the Universe, pp. 69–72. Kluwer Academic. [9] Tsirelson, B. S. (1980). Quantum generalizations of Bell's inequality. Letters in Mathematical Physics, 4(2), 93–100. [10] Nielsen, M. A., & Chuang, I. L. (2000). Quantum Computation and Quantum Information. Cambridge University Press. --- # Part IX — The Fine Structure Constant from Foam Geometry
 
-*Published: [10.5281/zenodo.19011758](https://zenodo.org/records/19011758)*
+*Preprint: [10.5281/zenodo.19011758](https://zenodo.org/records/19011758)*
 
 ---
 
@@ -996,7 +996,7 @@ Martin, L. (2026). The Unified Foam Field Theory: Core Mathematical Framework. D
 
 ---
 
-# Part X — The Laplacian Spectrum of the Kelvin Cell *Published: [10.5281/zenodo.19030062](https://zenodo.org/records/19030062)*
+# Part X — The Laplacian Spectrum of the Kelvin Cell *Preprint: [10.5281/zenodo.19030062](https://zenodo.org/records/19030062)*
 
 ---
 
@@ -2083,29 +2083,29 @@ We derive gravity, quantum mechanics, gauge groups, the fine structure constant,
 
 **Charge quantisation.** NEW. Electric charge is the topological winding number of a torsion defect (disclination) in the foam lattice. The minimum rotation compatible with O_h symmetry is 2π/C_A = 2π/3 = 120°. A single step of 2π/3 corresponds to charge e/3 (one colour charge = one quark). Two steps = 2e/3. Three steps = e (colour-neutral = full rotation). Fractional quark charges are lattice rotation fractions. Charge conservation is winding number conservation = Axiom Zero applied to topological defects.
 
-**Lepton mass ratios.** CLOSED. The Koide angle θ = 2/C_A² = 2/9 is an exact theorem from the face Laplacian eigenvalue ratio (λ_A₂u − λ_T₂g)/λ_A₂u = (9−7)/9 = 2/9. Combined with b-τ unification (the tau mass is the boundary condition for the lepton Koide formula), all three charged lepton masses are determined: m_τ exact (input), m_μ to 0.006%, m_e to 0.007%. Published: DOI 10.5281/zenodo.19063774, 10.5281/zenodo.19185685.
+**Lepton mass ratios.** CLOSED. The Koide angle θ = 2/C_A² = 2/9 is an exact theorem from the face Laplacian eigenvalue ratio (λ_A₂u − λ_T₂g)/λ_A₂u = (9−7)/9 = 2/9. Combined with b-τ unification (the tau mass is the boundary condition for the lepton Koide formula), all three charged lepton masses are determined: m_τ exact (input), m_μ to 0.006%, m_e to 0.007%. Preprint DOI: 10.5281/zenodo.19063774, 10.5281/zenodo.19185685.
 
-**Quark masses.** Five of six quark masses derived to <3% from torsion eigenvalues and the Orbit-Stabiliser theorem. The top quark Yukawa y_t remains open (requires the full RG flow from the foam GUT scale). Published within the lepton mass ratio and master equation papers.
+**Quark masses.** Five of six quark masses derived to <3% from torsion eigenvalues and the Orbit-Stabiliser theorem. The top quark Yukawa y_t remains open (requires the full RG flow from the foam GUT scale). Preprint within the lepton mass ratio and master equation papers.
 
-**The PMNS neutrino mixing matrix.** CLOSED (4 of 4 parameters). Solar angle: tan²θ₁₂ = √Δ/C_A² = √17/9 = 0.4581 (observed 0.443, 0.56σ). Atmospheric angle: θ₂₃ = π/4 from exact T₁u Z₂ exchange symmetry (observed sin²θ₂₃ = 0.546, 2.2σ — leading order, correction calculable). Reactor angle: sinθ₁₃ = √Δ/C_A³ = √17/27 = 0.1527 (observed 0.1484, 2.3σ). CP phase: δ_PMNS = C_A × πR = 3πR = 200.7° (observed 197° ± 25°, 0.15σ — CONSISTENT, pending precision improvement). Mass-squared ratio: |Δm²₃₂|/Δm²₂₁ = 2Δ−1 = 33 (observed 32.6, 0.5σ — SUGGESTIVE). Published: DOI 10.5281/zenodo.19198422, 10.5281/zenodo.19198775.
+**The PMNS neutrino mixing matrix.** CLOSED (4 of 4 parameters). Solar angle: tan²θ₁₂ = √Δ/C_A² = √17/9 = 0.4581 (observed 0.443, 0.56σ). Atmospheric angle: θ₂₃ = π/4 from exact T₁u Z₂ exchange symmetry (observed sin²θ₂₃ = 0.546, 2.2σ — leading order, correction calculable). Reactor angle: sinθ₁₃ = √Δ/C_A³ = √17/27 = 0.1527 (observed 0.1484, 2.3σ). CP phase: δ_PMNS = C_A × πR = 3πR = 200.7° (observed 197° ± 25°, 0.15σ — CONSISTENT, pending precision improvement). Mass-squared ratio: |Δm²₃₂|/Δm²₂₁ = 2Δ−1 = 33 (observed 32.6, 0.5σ — SUGGESTIVE). Preprint DOI: 10.5281/zenodo.19198422, 10.5281/zenodo.19198775.
 
-**The CKM quark mixing matrix.** CLOSED (4 of 4 parameters). Cabibbo angle: λ = sin(π/F) = sin(π/14) = 0.2225 (observed 0.2250, 1.1%, 3.7σ). Parameter A: A = r₁/C_A = (9−√17)/6 = 0.8128 (observed 0.826, 1.6%, 0.9σ). CP phase: δ_CKM = πR = π(9−√17)/(9+√17) = 66.89° (observed 65.5° ± 3.4°, 0.4σ). Unitarity triangle: ρ̄ = R cos(πR) = 0.146 (1.3σ SUGGESTIVE), η̄ = R sin(πR) = 0.342 (0.6σ). sin(2β) = 0.690 (observed 0.699, 0.5σ). Froggatt-Nielsen connection: m_d/m_s ≈ sin²(π/14) = 0.0495 (observed 0.0500, 1.0%). Published: DOI 10.5281/zenodo.19198360, 10.5281/zenodo.19198775.
+**The CKM quark mixing matrix.** CLOSED (4 of 4 parameters). Cabibbo angle: λ = sin(π/F) = sin(π/14) = 0.2225 (observed 0.2250, 1.1%, 3.7σ). Parameter A: A = r₁/C_A = (9−√17)/6 = 0.8128 (observed 0.826, 1.6%, 0.9σ). CP phase: δ_CKM = πR = π(9−√17)/(9+√17) = 66.89° (observed 65.5° ± 3.4°, 0.4σ). Unitarity triangle: ρ̄ = R cos(πR) = 0.146 (1.3σ SUGGESTIVE), η̄ = R sin(πR) = 0.342 (0.6σ). sin(2β) = 0.690 (observed 0.699, 0.5σ). Froggatt-Nielsen connection: m_d/m_s ≈ sin²(π/14) = 0.0495 (observed 0.0500, 1.0%). Preprint DOI: 10.5281/zenodo.19198360, 10.5281/zenodo.19198775.
 
-**The strong CP problem.** DISSOLVED. θ_phys = θ_QCD + arg(det M_q) = 0 exactly. θ_QCD = 0 from the torsion potential ground state V(θ) = k(1−cos θ). arg(det M_q) = 0 from Hermiticity of the torsion Hamiltonian (real potential → real eigenvalues → real determinant). No axion required. No new symmetry. No fine-tuning. Predictions: no axion detection, neutron EDM exactly zero. Published: DOI 10.5281/zenodo.19196872.
+**The strong CP problem.** DISSOLVED. θ_phys = θ_QCD + arg(det M_q) = 0 exactly. θ_QCD = 0 from the torsion potential ground state V(θ) = k(1−cos θ). arg(det M_q) = 0 from Hermiticity of the torsion Hamiltonian (real potential → real eigenvalues → real determinant). No axion required. No new symmetry. No fine-tuning. Predictions: no axion detection, neutron EDM exactly zero. Preprint DOI: 10.5281/zenodo.19196872.
 
-**The hierarchy problem.** PARTIALLY DISSOLVED. Layer 1 (no divergences): the foam's physical Planck-scale lattice provides a natural UV cutoff — 14 finite face modes per cell. Quadratic divergences do not exist. SUSY is unnecessary. Layer 2 (Higgs/Z ratio): m_H/M_Z = 2C_A²/(C_A² + √Δ) = 18/(9+√17) = 1.3716 (observed 1.3735, 0.14%). Layer 3 (v/M_P hierarchy): the full electroweak-to-Planck scale ratio requires the complete RG flow and remains open. Published: DOI 10.5281/zenodo.19196942.
+**The hierarchy problem.** PARTIALLY DISSOLVED. Layer 1 (no divergences): the foam's physical Planck-scale lattice provides a natural UV cutoff — 14 finite face modes per cell. Quadratic divergences do not exist. SUSY is unnecessary. Layer 2 (Higgs/Z ratio): m_H/M_Z = 2C_A²/(C_A² + √Δ) = 18/(9+√17) = 1.3716 (observed 1.3735, 0.14%). Layer 3 (v/M_P hierarchy): the full electroweak-to-Planck scale ratio requires the complete RG flow and remains open. Preprint DOI: 10.5281/zenodo.19196942.
 
-**GUT coupling.** NEW. α_GUT⁻¹ = (|O_h| + χ)/2 = (48 + 2)/2 = 25. Unification at this coupling requires ~12 effective heavy flavours at the GUT scale. The Kelvin cell has F = 14 faces (suggestive match). Published within the hierarchy problem paper.
+**GUT coupling.** NEW. α_GUT⁻¹ = (|O_h| + χ)/2 = (48 + 2)/2 = 25. Unification at this coupling requires ~12 effective heavy flavours at the GUT scale. The Kelvin cell has F = 14 faces (suggestive match). Preprint within the hierarchy problem paper.
 
-**Anomalous magnetic moment.** CLOSED through two loops. Leading order (Schwinger term): a_e = α/(2π) reproduced from the D-mode path integral (DOI 10.5281/zenodo.19080011, 10.5281/zenodo.19084565). Two-loop coefficient C₂: the foam derivation identifies the rational term 197/144 and the transcendental ζ(3)/2 + π²ln2/2 − π²/4 structure from independent topological arguments. ζ(3) emerges from the foam's knot-counting function. Published: DOI 10.5281/zenodo.19084710, 19084873, 19085997, 19102302.
+**Anomalous magnetic moment.** CLOSED through two loops. Leading order (Schwinger term): a_e = α/(2π) reproduced from the D-mode path integral (DOI 10.5281/zenodo.19080011, 10.5281/zenodo.19084565). Two-loop coefficient C₂: the foam derivation identifies the rational term 197/144 and the transcendental ζ(3)/2 + π²ln2/2 − π²/4 structure from independent topological arguments. ζ(3) emerges from the foam's knot-counting function. Preprint DOI: 10.5281/zenodo.19084710, 19084873, 19085997, 19102302.
 
-**S-matrix and LSZ reduction.** CLOSED. The foam provides a physical substrate for the LSZ reduction formula, unitarity of the S-matrix, and Compton scattering cross-section. Published: DOI 10.5281/zenodo.19085007.
+**S-matrix and LSZ reduction.** CLOSED. The foam provides a physical substrate for the LSZ reduction formula, unitarity of the S-matrix, and Compton scattering cross-section. Preprint DOI: 10.5281/zenodo.19085007.
 
-**Aufbau ordering.** CLOSED. The Madelung (n+l) rule for electron shell filling order derived from O_h crystal field splitting of the foam lattice. Published: DOI 10.5281/zenodo.19185628.
+**Aufbau ordering.** CLOSED. The Madelung (n+l) rule for electron shell filling order derived from O_h crystal field splitting of the foam lattice. Preprint DOI: 10.5281/zenodo.19185628.
 
-**Electroweak predictions.** CLOSED. M_W/M_Z = cos θ_W from sin²θ_W = 3/8 running (0.51%). N_ν = dim(T₁u) = 3 (exact). d = 3+1 from BCC uniqueness + wave equation. ρ = 1 from custodial SU(2) in the T₁u Z₂ sector. N_gauge = 12 from Casimir counting. Published: DOI 10.5281/zenodo.19079502.
+**Electroweak predictions.** CLOSED. M_W/M_Z = cos θ_W from sin²θ_W = 3/8 running (0.51%). N_ν = dim(T₁u) = 3 (exact). d = 3+1 from BCC uniqueness + wave equation. ρ = 1 from custodial SU(2) in the T₁u Z₂ sector. N_gauge = 12 from Casimir counting. Preprint DOI: 10.5281/zenodo.19079502.
 
-**Void network speed.** CLOSED. Bell correlations propagate through the void network at c√(3/2) ≈ 1.22c — the BCC nearest-neighbour speed. Published: DOI 10.5281/zenodo.19079502.
+**Void network speed.** CLOSED. Bell correlations propagate through the void network at c√(3/2) ≈ 1.22c — the BCC nearest-neighbour speed. Preprint DOI: 10.5281/zenodo.19079502.
 
 **Hadron triangle.** CLOSED (self-consistent, not independently derived). f_π = √C_A/(C_A+1) × Λ_QCD = 92.2 MeV (0.1%). ⟨q̄q⟩^(1/3) = −289 MeV (0.1% from GMOR physical value). m_π(GMOR) = 139.2 MeV (0.2%). The three form a self-consistent triangle through the Gell-Mann-Oakes-Renner relation. The condensate ⟨q̄q⟩ is fixed by requiring GMOR self-consistency — it is not independently derived from foam parameters.
 
@@ -2167,9 +2167,152 @@ The three hard open problems originally identified (fine structure constant, Koi
 
 ---
 
-# Appendix — Complete Results and Predictions
+# Appendix — Complete Results, Status, and Predictions
 
-## Derived Numerical Results
+## Epistemological Status Table
+
+Every claim in the framework falls into one of four categories for each of three dimensions. This table makes the status of each result explicit.
+
+**Derivation status** (within the framework):
+- **Exact** — mathematical consequence of axiom + cell geometry, no physical assumptions beyond Axiom Zero
+- **Derived** — closed-form result from foam inputs, zero free parameters, physical identification required
+- **Consistent** — framework accommodates correctly, does not uniquely predict
+- **Suggestive** — pattern match, may require NLO corrections or additional input
+- **Open** — not yet derived
+
+**Independent verification status:**
+- **Reproducible** — verification script available, anyone can run in <1 minute
+- **Preprint** — full derivation on Zenodo (CC BY 4.0), not yet peer reviewed
+- **Not checked** — result exists only in the framework document
+
+**Experimental status:**
+- **Postdiction** — matches previously known experimental data
+- **Novel prediction** — predicts something not known or not measured to sufficient precision
+- **Null prediction** — predicts continued absence of a signal others expect to find
+
+### Fundamental Constants
+
+| Claim | Derivation | Independent verification | Experimental |
+|-------|-----------|------------------------|-------------|
+| α⁻¹ = 137.035999055 | Derived (O_h representation theory) | Reproducible (script) + preprint | Postdiction (0.21 ppb from Cs 2020) |
+| Ω_DM/Ω_b = 5.3147 | Derived (BCC cell anisotropy) | Preprint | Postdiction (0.92% from Planck 2018) |
+| ρ_Λ = ρ₀(l_P/R_U)² × 6/7 | Derived (pressure wave + Euler correction) | Preprint | Postdiction (1.4% from Planck 2018) |
+| m_H/M_Z = 18/(9+√17) | Derived (face Laplacian eigenvalue ratio) | Reproducible + preprint | Postdiction (0.14%) |
+| Koide θ = 2/9 | Exact (eigenvalue ratio identity) | Reproducible + preprint | Postdiction (exact match) |
+| r_p = 4ℏ/(m_p c) | Derived (integer from cell topology) | Reproducible + preprint | Postdiction (0.02%) |
+| α_GUT⁻¹ = 25 | Derived (cell integers) | Preprint | Novel prediction — not directly measurable |
+
+### Lepton Masses
+
+| Claim | Derivation | Independent verification | Experimental |
+|-------|-----------|------------------------|-------------|
+| m_μ = 105.652 MeV | Derived (Koide with θ = 2/9, m_τ input) | Reproducible + preprint | Postdiction (0.006%) |
+| m_e = 0.51096 MeV | Derived (Koide with θ = 2/9, m_τ input) | Reproducible + preprint | Postdiction (0.007%) |
+| m_τ | Input (boundary condition for Koide) | — | Input, not derived |
+
+### PMNS Neutrino Mixing
+
+| Claim | Derivation | Independent verification | Experimental |
+|-------|-----------|------------------------|-------------|
+| tan²θ₁₂ = √17/9 | Derived (T₁u eigenvalue splitting) | Reproducible + preprint | Postdiction (0.56σ) |
+| sin²θ₂₃ = 1/2 | Exact (T₁u Z₂ symmetry) | Preprint | Postdiction (2.2σ, leading order) |
+| sinθ₁₃ = √17/27 | Derived (T₁u suppression by C_A) | Reproducible + preprint | Postdiction (2.3σ) |
+| δ_PMNS = 3πR = 200.7° | Derived (colour factor × eigenvalue ratio) | Preprint | Consistent (0.15σ, ±25° uncertainty) |
+| \|Δm²₃₂\|/Δm²₂₁ = 33 | Suggestive (2Δ−1 scaling) | Preprint | Postdiction (0.5σ, pending formal derivation) |
+
+### CKM Quark Mixing
+
+| Claim | Derivation | Independent verification | Experimental |
+|-------|-----------|------------------------|-------------|
+| λ = sin(π/14) | Derived (face count quantisation) | Reproducible + preprint | Postdiction (1.1%, 3.7σ) |
+| A = (9−√17)/6 | Derived (spectral root / colour number) | Reproducible + preprint | Postdiction (1.6%, 0.9σ) |
+| δ_CKM = πR = 66.89° | Derived (T₁u eigenvalue ratio phase) | Preprint | Postdiction (0.4σ) |
+| ρ̄ = R cos(πR) = 0.146 | Suggestive (R_b = R hypothesis) | Preprint | Postdiction (1.3σ) |
+| η̄ = R sin(πR) = 0.342 | Derived (if δ holds) | Preprint | Postdiction (0.6σ) |
+| sin(2β) = 0.690 | Derived (from triangle) | Preprint | Postdiction (0.5σ) |
+| m_d/m_s = sin²(π/14) | Derived (Froggatt-Nielsen from face count) | Preprint | Postdiction (1.0%) |
+| δ_PMNS/δ_CKM = 3 | Derived (colour factor) | Preprint | Novel prediction — testable by DUNE (~2035) |
+
+### Gravity and Spacetime
+
+| Claim | Derivation | Independent verification | Experimental |
+|-------|-----------|------------------------|-------------|
+| Schwarzschild g_tt | Derived (covariant vacuum density) | Preprint | Postdiction (exact match to GR) |
+| Schwarzschild g_rr | Derived (ν = 1/2 incompressibility) | Preprint | Postdiction (exact match to GR) |
+| Einstein equations (unimodular) | Derived (foam action principle) | Preprint | Postdiction (consistent with all GR tests) |
+| Maxwell equations (all 4) | Derived (□D=0 + Helmholtz + Volterra) | Preprint | Postdiction (exact) |
+| Friedmann equations (both) | Derived (foam energy conservation) | Preprint | Postdiction (exact) |
+| k = 0 (spatial flatness) | Exact (Axiom Zero) | Preprint | Postdiction (\|Ω_k\| < 0.002) |
+| Cosmological constant dissolved | Derived (Λ = integration constant) | Preprint | Postdiction (resolves 10¹²³ discrepancy) |
+
+### QCD and Gauge Structure
+
+| Claim | Derivation | Independent verification | Experimental |
+|-------|-----------|------------------------|-------------|
+| Gauge group SU(3)×SU(2)×U(1) | Derived (torsion topology) | Preprint | Postdiction (exact) |
+| C_A = 3 colours, 8 gluons | Exact (T₂g dimension, adjoint) | Reproducible | Postdiction (exact) |
+| β₀ = 9, β₁ = 64 (n_f = 3) | Exact (eigenvalue identities) | Reproducible + preprint | Postdiction (exact) |
+| sin²θ_W = 3/8 at GUT | Exact (C_A/(C_A²−1)) | Preprint | Postdiction (standard GUT value) |
+| Charge quantisation (e/3, 2e/3, e) | Derived (lattice rotation 2π/C_A) | Preprint | Postdiction (exact) |
+| θ_phys = 0 (strong CP) | Derived (torsion ground state + Hermiticity) | Preprint | Consistent (nEDM < 1.8×10⁻²⁶) |
+
+### Periodic Table
+
+| Claim | Derivation | Independent verification | Experimental |
+|-------|-----------|------------------------|-------------|
+| 4 subshell types (s,p,d,f) | Derived (O_h crystal field splitting) | Preprint | Postdiction (exact) |
+| Capacities 2,6,10,14 | Derived (irrep dim × spin) | Preprint | Postdiction (exact) |
+| Period lengths 2,8,8,18,18,32,32 | Derived (shell filling) | Preprint | Postdiction (exact) |
+| Aufbau ordering (n+l rule) | Derived (eigenvalue ordering) | Preprint | Postdiction (exact) |
+
+### QFT Emergence
+
+| Claim | Derivation | Independent verification | Experimental |
+|-------|-----------|------------------------|-------------|
+| g-2 leading order = α/(2π) | Derived (foam → QED in IR limit) | Preprint | Postdiction (exact structure) |
+| g-2 two-loop C₂ structure | Derived (foam topology → QED integrals) | Preprint | Postdiction (exact structure) |
+| S-matrix, LSZ, Compton | Derived (foam wave mechanics) | Preprint | Postdiction (standard results) |
+| Full lattice-to-continuum limit | Open — formal theorem not yet written | Not checked | — |
+
+### Light Hadrons
+
+| Claim | Derivation | Independent verification | Experimental |
+|-------|-----------|------------------------|-------------|
+| m_π = 138.7 MeV | Consistent (GOR with foam B₀) | Reproducible | Postdiction (0.66%) |
+| f_π = 92.2 MeV | Consistent (foam Λ_QCD scaling) | Preprint | Postdiction (0.1%) |
+| r_p = 0.8412 fm | Derived (integer formula) | Reproducible | Postdiction (0.02%) |
+| m_p = 946 MeV | Consistent (π√2 × Λ_QCD) | Reproducible | Postdiction (0.9%) |
+
+### Problems Dissolved
+
+| Claim | Derivation | Independent verification | Experimental |
+|-------|-----------|------------------------|-------------|
+| Cosmological constant (10¹²³) | Derived (geometry, not fine-tuning) | Preprint | Postdiction |
+| Strong CP (θ = 0) | Derived (torsion dynamics) | Preprint | Null prediction: no axion, nEDM = 0 |
+| Hierarchy Layer 1 (no divergences) | Exact (physical lattice) | Preprint | Null prediction: no SUSY |
+| Hierarchy Layer 2 (m_H/M_Z) | Derived (0.14%) | Reproducible + preprint | Postdiction |
+| Hierarchy Layer 3 (v/M_P) | Open | — | — |
+
+---
+
+## Falsifiable Predictions
+
+| Prediction | UFFT value | How to test | What falsifies it |
+|-----------|-----------|------------|------------------|
+| Decoherence suppression near mass | ΔΓ/Γ = 8.22×10⁻¹¹ (Earth-ISS) | Atom interferometry at different altitudes | No change, or increase near mass, or wrong scaling |
+| Universal qubit-independence | Same ΔΓ/Γ for all qubit types | Two qubit systems at same altitude | Different fractional changes for different systems |
+| Three-particle cascade: ⟨X⊗X⊗X⟩ = −1 | −1 (not GHZ +1, not W 0) | Cascaded SPDC | ⟨X⊗X⊗X⟩ ≠ −1 |
+| Quadratic Lorentz violation δc/c ~ (E/E_P)² | ~10⁻³⁸ at LHC | GRB timing, energy-dependent photon speed | Linear (first-order) violation detected |
+| No dark matter particles | Permanent null | LUX-ZEPLIN, XENONnT, future detectors | Any DM particle detection |
+| No superpartners | Permanent null | LHC, future colliders | Any SUSY partner detected |
+| No axion | Permanent null | ADMX, ABRACADABRA, CASPEr | Axion detected |
+| Neutron EDM = 0 exactly | 0 | n2EDM at PSI | Any nonzero nEDM |
+| δ_PMNS/δ_CKM = 3 exactly | 3.000 | DUNE + precision CKM (~2035) | Ratio ≠ 3 at >3σ |
+| NS core sound speed > c/√3 | c_s > 0.577c | NICER + LIGO merger data | c_s < c/√3 confirmed |
+
+---
+
+## Numerical Results (Quick Reference)
 
 All results use only the topological integers of the truncated octahedron (|O_h| = 48, V = 24, E = 36, F = 14, d = 3, χ = 2) and the master equation λ² − 9λ + 16 = 0 (roots r₁ = (9−√17)/2, r₂ = (9+√17)/2, discriminant Δ = 17). Zero free parameters throughout.
 
@@ -2234,79 +2377,34 @@ sin²θ_W(GUT) = C_A/(C_A²−1) = 3/8. N_ν = dim(T₁u) = 3. d = 3+1 from BCC 
 | m_p × r_p | (C_A+1)ℏc | 4ℏc | 4.0008ℏc | 0.02% |
 | ⟨q̄q⟩^(1/3) | Self-consistent via GMOR | −289 MeV | −290 MeV | 0.1% |
 
-### Exact Derivations (No Numerical Accuracy — Structural)
-
-The complete Schwarzschild metric (g_tt from covariant vacuum density, g_rr from ν = 1/2 incompressibility). All four Maxwell equations from □D = 0 + Helmholtz + Volterra. The unimodular Einstein field equations from the foam action. Both Friedmann equations. The periodic table (4 subshell types, capacities 2/6/10/14, period lengths 2,8,8,18,18,32,32, intra-shell ordering, Aufbau rule, l_max = 3). Charge quantisation from lattice rotation discreteness. Spatial curvature k = 0 from Axiom Zero. Bell correlations E(a,b) = −cos θ from void-pair conservation. Complementarity V² + D² ≤ 1 from foam wake action transfer. Born rule from wave intensity. Schrödinger equation as non-relativistic limit of foam wave equation. Baryon and lepton number conservation as topological winding number theorems. SUSY geometrically forbidden by O_h (no Z₂ R-parity). Strong CP dissolved: θ_phys = 0 from torsion dynamics. Hierarchy problem Layer 1 dissolved: no divergences from physical lattice. The anomalous magnetic moment through two loops (Schwinger term + C₂ with ζ(3) from foam topology). The S-matrix from foam (LSZ reduction, unitarity, Compton scattering). Void network speed c√(3/2) for Bell non-locality. The cosmological constant problem dissolved: ρ_Λ/ρ₀ = (l_P/R_U)² × 6/7 is geometry, not fine-tuning.
-
----
-
-## Falsifiable Predictions
-
-### Prediction 1 — Gravitational Suppression of Decoherence
-
-Decoherence rates decrease near massive objects:
-
-ΔΓ/Γ = 2(GM/c²)(1/r₁ − 1/r₂)
-
-For Earth surface to ISS (408 km): ΔΓ/Γ = 8.22 × 10⁻¹¹. Standard QM predicts no effect. Diósi-Penrose predicts the opposite sign. The sign is the primary discriminator.
-
-Falsification: any experiment showing no change, increase near mass, or scaling inconsistent with 2GM/rc².
-
-### Prediction 2 — Universal Qubit-Independence
-
-The suppression factor is identical for all qubit types at the same altitude: trapped ions, superconducting qubits, and neutral atom interferometers all give the same fractional change. This tests whether decoherence couples to gravity universally (UFFT) or through system-specific channels (alternatives).
-
-Falsification: two different qubit systems at the same altitude giving different fractional decoherence changes.
-
-### Prediction 3 — Three-Particle Cascade Topology
-
-The cascade state |Ψ⟩ = (1/√2)(|010⟩ − |101⟩) is neither GHZ nor W. The discriminator is X⊗X⊗X: GHZ gives +1, W gives 0, foam cascade gives −1.
-
-Falsification: ⟨X⊗X⊗X⟩ ≠ −1.
-
-### Prediction 4 — Quadratic Lorentz Violation
-
-δc/c ~ (E/E_P)². Quadratic, not linear. At LHC energies: δc/c ~ 10⁻³⁸. Below current detection but distinguishes UFFT from loop quantum gravity and string-inspired models predicting linear violation.
-
-Falsification: detection of linear Lorentz invariance violation at any energy.
-
-### Prediction 5 — Null Results
-
-No dark matter particles (DM = lattice geometry). No superpartners (SUSY geometrically forbidden). No axion (θ_phys = 0 exactly). Neutron EDM exactly zero.
-
-### Prediction 6 — CP Phase Ratio
-
-δ_PMNS/δ_CKM = C_A = 3 exactly. The lepton CP phase is exactly three times the quark CP phase. Testable by DUNE and Hyper-Kamiokande as δ_PMNS precision improves from ±25° to ±5°.
-
-Falsification: δ_PMNS/δ_CKM ≠ 3 at >3σ when both phases are measured to sufficient precision.
-
-All predictions are falsifiable. All are consistent with current experimental data.
-
 ---
 
 ## What Remains Open
 
 | Problem | Status | Path Forward |
 |---------|--------|-------------|
+| Lattice-to-continuum limit theorem | Formal proof not yet written | Show foam heat kernel → QED Feynman rules rigorously |
+| Inter-generation torsion coupling operator | Mechanism identified, operator not constructed | Explicit construction in O_h regular representation |
 | Top Yukawa y_t | Open | Full RG flow from foam GUT scale |
-| v/M_P hierarchy (Layer 3) | Open | Complete electroweak-to-Planck RG |
+| v/M_P hierarchy (Layer 3) | Open | Complete electroweak-to-Planck RG with thresholds |
 | Complete particle mass spectrum | Programme identified | Knot classification of stable foam topologies |
 | Kerr metric | Density prediction exists | Extend ν = 1/2 incompressibility to axisymmetric |
 | H₀ from first principles | Boundary condition | Not derivable from dynamics — initial condition |
 | Spectral index n_s | Open | Displacement cascade statistics |
 | Baryon-to-photon ratio η | Open | Foam baryogenesis mechanism |
+| Peer review | No papers peer reviewed | Submit to journals; seek independent replication |
 
 These are honestly acknowledged and not claimed as solved.
 
 ---
 
-## Published Papers
+## Preprints
 
-36 papers published on Zenodo under Creative Commons Attribution 4.0 International. Complete index in the Published Papers table at the beginning of this document.
+36 preprints on Zenodo under Creative Commons Attribution 4.0 International. None yet peer reviewed. Complete index in the Preprints table at the beginning of this document.
 
 GitHub: github.com/WebEnvy/UnifiedFoamFieldTheory
 
-Spectrum verification script: confirms all numerical predictions. Runs in under one minute on any laptop.
+Spectrum verification script: confirms all numerical predictions. Runs in under one minute on any laptop. Independent reproduction is invited.
 
 ---
 
