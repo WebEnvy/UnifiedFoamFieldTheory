@@ -26,11 +26,12 @@ From this axiom and the cell geometry, the framework derives 60+ observables wit
 | Higgs/Z mass ratio | m_H/M_Z = 18/(9+√17) | 1.3716 | 1.3735 | 0.14% |
 | Electron mass | Koide with θ = 2/9, m_τ input | 0.51096 MeV | 0.51100 MeV | 0.007% |
 | Muon mass | Koide with θ = 2/9, m_τ input | 105.652 MeV | 105.658 MeV | 0.006% |
-| CKM CP phase | δ = π(9−√17)/(9+√17) | 66.89° | 65.5° ± 3.4° | 0.4σ |
-| PMNS CP phase | δ = 3π(9−√17)/(9+√17) | 200.7° | 197° ± 25° | 0.15σ |
+| CKM CP phase | δ from [(C_A−1)P_sq+P_hx]·T operator | 66.36° | 65.5° ± 3.4° | 0.25σ |
+| PMNS CP phase | δ = 3 × CKM operator phase | 199.1° | 197° ± 25° | 0.08σ |
 | Proton charge radius | r_p = 4ℏ/(m_p c) | 0.8412 fm | 0.8414 fm | 0.02% |
+| Weinberg angle (EW) | (Δ−C_A√Δ)/2(V−F) = (17−3√17)/20 | 0.23153 | 0.23122 | 0.14% |
 
-Plus: complete CKM matrix (4/4 Wolfenstein parameters), complete PMNS matrix (3 angles + phase + mass-squared ratio), all four Maxwell equations, unimodular Einstein equations, both Friedmann equations, Schwarzschild metric, periodic table structure, charge quantisation, gauge group SU(3)×SU(2)×U(1), strong CP dissolution, hierarchy problem (Layers 1–2), anomalous magnetic moment through two loops, S-matrix, and baryon/lepton conservation.
+Plus: complete CKM matrix (4/4 Wolfenstein parameters), complete PMNS matrix (3 angles + phase + mass-squared ratio), all four Maxwell equations, unimodular Einstein equations, both Friedmann equations, Schwarzschild metric, periodic table structure, charge quantisation, gauge group SU(3)×SU(2)×U(1), strong CP dissolution, hierarchy problem (Layers 1–2 + SSB forced by A₂u = −1), anomalous magnetic moment through two loops, S-matrix, baryon/lepton conservation, three generations as BCC lattice theorem (N_gen = F_sq/2 = 3), electroweak face-type partition (Eg = square faces = weak force, A₂u = hexagonal faces = Higgs), torsion annihilation of Eg (T·v_Eg = 0), Feynman path integral from torsion-weighted multi-route walks, Born rule from displacement counting, and foam equilibration timescale τ = (9+√17)/32 × t_P.
 
 The complete mixing sector — 9 parameters — comes from three integers: F = 14, C_A = 3, Δ = 17.
 
@@ -68,9 +69,9 @@ Takes under one minute. Every derived number is recomputed from cell integers. N
 
 ## Canonical Source
 
-**`UFFT_Core_Framework_v10.md`** is the authoritative document. It contains:
+**`UFFT_Core_Framework_v9.md`** is the authoritative document. It contains:
 
-- 42+ Parts covering all derivations
+- 53 Parts covering all derivations
 - 4-column epistemological status table (derivation / independent verification / experimental status for every claim)
 - Complete preprint index with DOIs
 - Honest open problems list
@@ -80,7 +81,7 @@ Takes under one minute. Every derived number is recomputed from cell integers. N
 
 ## Preprints
 
-36 preprints on [Zenodo](https://zenodo.org) under CC BY 4.0. **Not yet peer reviewed.** Independent reproduction invited.
+42 preprints on [Zenodo](https://zenodo.org) under CC BY 4.0. **Not yet peer reviewed.** Independent reproduction invited.
 
 | # | Title | DOI |
 |---|-------|-----|
@@ -120,6 +121,12 @@ Takes under one minute. Every derived number is recomputed from cell integers. N
 | 34 | The CKM Quark Mixing Matrix | [10.5281/zenodo.19198360](https://zenodo.org/records/19198360) |
 | 35 | The PMNS Neutrino Mixing Matrix | [10.5281/zenodo.19198422](https://zenodo.org/records/19198422) |
 | 36 | CP-Violating Phases of CKM and PMNS | [10.5281/zenodo.19198775](https://zenodo.org/records/19198775) |
+| 37 | The Visible Spectrum from the Face Laplacian | Pending upload |
+| 38 | Three Generations from the BCC Lattice | Pending upload |
+| 39 | The Inter-Type Torsion Operator | Pending upload |
+| 40 | Total Torsion Identity and Foam Equilibration | Pending upload |
+| 41 | The Weinberg Angle from Cell Topology | Pending upload |
+| 42 | The Path Integral from Planck-Scale Foam | Pending upload |
 
 ---
 
@@ -127,13 +134,14 @@ Takes under one minute. Every derived number is recomputed from cell integers. N
 
 | Problem | Path forward |
 |---------|-------------|
-| Lattice-to-continuum limit theorem | Formal proof that foam heat kernel → QED Feynman rules |
-| Inter-generation torsion coupling operator | Explicit O_h construction giving phase πR (structural framework established, exact operator narrowed to 0.54°) |
+| Lattice-to-continuum limit theorem | Programme established: torsion walks = path integral; explicit loop-order matching needed |
+| Inter-generation torsion coupling operator | Substantially closed: (C_A−1):1 operator gives 66.36° (0.25σ); residual is wall physics at O(1/|G|) |
+| v/M_P hierarchy (Layer 3) | Formula identified: (F²+C_A³√Δ)/8 gives 0.07% on exponent; NNLO closes to 0.04% |
 | Top Yukawa coupling | Full RG flow from foam GUT scale |
-| v/M_P hierarchy (Layer 3) | Complete threshold-corrected RG (Layers 1–2 closed) |
-| Particle mass spectrum | Knot classification of stable foam topologies |
+| Complete particle mass spectrum | Knot classification of stable foam topologies + BCC band structure |
 | Kerr metric | Extend incompressibility argument to axisymmetric |
 | Cosmological initial conditions (H₀, n_s, η) | Boundary conditions / displacement cascade statistics |
+| Wall thickness corrections | O(1/|G|) ≈ 2% NLO corrections to all observables; programme identified |
 | Peer review | Not yet submitted to journals; independent replication invited |
 
 These are honestly acknowledged. The framework's self-assessment distinguishes derived results from suggestive matches from open problems. See the 4-column epistemological status table in `UFFT_Core_Framework_v10.md`.
@@ -143,13 +151,20 @@ These are honestly acknowledged. The framework's self-assessment distinguishes d
 ## Repository Structure
 
 ```
-UFFT_Core_Framework_v10.md          ← Canonical source (all derivations)
+UFFT_Core_Framework_v9.md          ← Canonical source (all derivations)
 UFFT_Spectrum_Verification.py       ← Run this to verify all numbers
 UFFT_CP_Phases.md                   ← CP phases paper (#36)
 UFFT_PMNS_Matrix.md                 ← PMNS paper (#35)
 UFFT_CKM_Matrix_corrected.md       ← CKM paper (#34)
+UFFT_Visible_Spectrum.md            ← Visible spectrum paper (#37)
+UFFT_Three_Generations.md           ← Three generations paper (#38)
+UFFT_InterType_Operator.md          ← Inter-type operator paper (#39)
+UFFT_Total_Torsion.md               ← Total torsion identity (#40)
+UFFT_Weinberg_Angle.md              ← Weinberg angle paper (#41)
+UFFT_Path_Integral.md               ← Path integral paper (#42)
 UFFT_Observables_Presentation.md    ← Summary of all observables
 UFFT_Ten_Minutes.md                 ← 10-minute introduction
+UFFT_Outreach_Strategy.md           ← Outreach plan
 TheFoamUnitesUs_corrected.md        ← Extended narrative (non-technical)
 /web_visualizations/                ← Interactive HTML visualisations
 /pdf/                               ← PDF versions
@@ -180,6 +195,6 @@ All content is released under [Creative Commons Attribution 4.0 International (C
 ---
 
 *Priority Date: 20 February 2026*
-*Current version: v10 — March 2026*
+*Current version: v9 — March 2026*
 
 *B + V = D*
