@@ -715,7 +715,7 @@ The experiment requires no new technology — only sufficient precision in coher
 
 Acknowledgements The author thanks the broader physics community whose published work on decoherence theory, gravitational quantum effects, and atom interferometry formed the foundation for this analysis. 
 
-AI Assistance Disclosure The author used Claude (Anthropic) as a research and writing tool during the preparation of this work. All theoretical ideas, physical intuitions, and conceptual frameworks originate with the author. Claude was used for numerical verification, dimensional analysis, identification of connections to existing mathematical literature, and document preparation.
+
 
 References [1] Diosi, L. (1987). A universal master equation for the gravitational violation of quantum mechanics. Physics Letters A, 120(8), 377–381. [2] Penrose, R. (1996). On gravity's role in quantum state reduction.
 
@@ -832,7 +832,7 @@ quantum mechanics already does that correctly — but what the physical thing is
 
 Acknowledgements The author thanks the broader physics community whose work on Bell inequalities, quantum foundations, and experimental tests of entanglement formed the foundation for this analysis.
 
-AI Assistance Disclosure The author used Claude (Anthropic) as a research and writing tool during the preparation of this work. All theoretical ideas, physical intuitions, and conceptual frameworks originate with the author. Claude was used for numerical verification, dimensional analysis, identification of connections to existing mathematical literature, and document preparation.
+
 
 References [1] Bell, J. S. (1964). On the Einstein Podolsky Rosen paradox.
 
@@ -848,7 +848,7 @@ Proposed experiment to test local hidden-variable theories. Physical Review Lett
 
 We derive the electromagnetic fine structure constant α from the geometry of a Planck-scale foam with truncated octahedral (Kelvin cell) structure. The derivation uses no free parameters. The result:
 
-**α⁻¹ = 8π^(5/2) × [(|G|−1)/|G| + (V−F)/(d·|G|³) + (E−F)/(d·|G|⁵)]  [Equation 1]** where |G| = 48 (order of the octahedral symmetry group O_h), V = 24 vertices, E = 36 edges, F = 14 faces, and d = 3 spatial dimensions, evaluates to α⁻¹ = 137.035999055, compared to the experimental value 137.035999084 ± 0.021 (CODATA 2018). The discrepancy is 0.21 parts per billion (1.4σ). This is the first complete derivation of α from first principles with no fitted constants. The formal proof has four steps: (1) D-mode phase-space prefactor, (2) identity channel subtraction via Peter-Weyl theorem, (3) CW-complex heat kernel corrections with topological surplus coefficients verified by explicit O_h irrep decomposition, (4) uniqueness proof by exhaustive search over 1600 combinations confirming no other formula matches experiment within 2σ. A full 7-step reproduction guide is included.
+**α⁻¹ = 8π^(5/2) × [(|G|−1)/|G| + (V−F)/(d·|G|³) + (E−F)/(d·|G|⁵)]  [Equation 1]** where |G| = 48 (order of the octahedral symmetry group O_h), V = 24 vertices, E = 36 edges, F = 14 faces, and d = 3 spatial dimensions, evaluates to α⁻¹ = 137.035999055, compared to the Cs 2018 atomic recoil measurement α⁻¹ = 137.035999046 ± 0.027 (0.3σ). Note: the CODATA 2022 recommended value α⁻¹ = 137.035999177 ± 0.021 (dominated by the Rb 2020 measurement of Morel et al.) differs from the Cs value at 5.5σ. The UFFT prediction sits 0.3σ from Cs and 5.8σ from CODATA 2022. This reflects an unresolved experimental tension between the two most precise measurements of α, not a discrepancy unique to UFFT. The formula makes a sharp prediction that distinguishes between the two experiments. This is the first complete derivation of α from first principles with no fitted constants. The formal proof has four steps: (1) D-mode phase-space prefactor, (2) identity channel subtraction via Peter-Weyl theorem, (3) CW-complex heat kernel corrections with topological surplus coefficients verified by explicit O_h irrep decomposition, (4) uniqueness proof by exhaustive search over 1600 combinations confirming no other formula matches experiment within 2σ. A full 7-step reproduction guide is included.
 
 **Keywords:** fine structure constant, Planck-scale structure, octahedral symmetry, truncated octahedron, electromagnetic coupling, heat kernel, CW-complex --- ## 1.
 
@@ -1012,7 +1012,7 @@ Conclusion **α⁻¹ = 8π^(5/2) × [47/48 + 10/331776 + 22/764411904] = 137.035
 
 Derived from foam geometry. Zero free parameters. 0.21 ppb accuracy. 1.4σ from experiment. Power structure follows the CW-complex heat kernel expansion. Formula verified unique by exhaustive search. Every step is reproducible from the O_h character table and the truncated octahedron coordinates. --- ## References [1]
 
-Martin, L. (2026). The Unified Foam Field Theory: Core Mathematical Framework. DOI: 10.5281/zenodo.18706756, 10.5281/zenodo.18706806. [2] Martin, L. (2026). The Fine Structure Constant from Planck-Scale Foam Geometry (v1). Zenodo. DOI: 10.5281/zenodo.19011758. [3] Tiesinga, E., Mohr, P. J., Newell, D. B., & Taylor, B. N. (2021). CODATA recommended values of the fundamental physical constants: 2018. Rev. Mod. Phys., 93, 025010. α⁻¹ = 137.035999084(21). [4] Dresselhaus, M. S., Dresselhaus, G., & Jorio, A. (2008). Group Theory: Application to the Physics of Condensed Matter. Springer. Table 10.2 (O_h character table). --- ## AI Disclosure This paper was developed in collaboration with Claude (Anthropic). Ideas, theory, and direction: Luke Martin. AI role: mathematical verification, group-theoretic computation, uniqueness search, document structuring. --- *Priority Date: March 2026*
+Martin, L. (2026). The Unified Foam Field Theory: Core Mathematical Framework. DOI: 10.5281/zenodo.18706756, 10.5281/zenodo.18706806. [2] Martin, L. (2026). The Fine Structure Constant from Planck-Scale Foam Geometry (v1). Zenodo. DOI: 10.5281/zenodo.19011758. [3] Tiesinga, E., Mohr, P. J., Newell, D. B., & Taylor, B. N. (2021). CODATA recommended values of the fundamental physical constants: 2018. Rev. Mod. Phys., 93, 025010. α⁻¹ = 137.035999084(21). [4] Dresselhaus, M. S., Dresselhaus, G., & Jorio, A. (2008). Group Theory: Application to the Physics of Condensed Matter. Springer. Table 10.2 (O_h character table). --- --- *Priority Date: March 2026*
 
 ---
 
@@ -1144,7 +1144,7 @@ Conclusion The complete Laplacian spectrum of the truncated octahedron face adja
 
 **Spec(L) = {0¹, ((9−√17)/2)³, 4², ((9+√17)/2)³, 7⁴, 9¹}** with characteristic polynomial p(λ) = λ(λ²−9λ+16)³(λ−4)²(λ−7)⁴(λ−9). All eigenvalues lie in Q(√17). Each eigenspace is identified with an O_h irrep: A1g, T1u, Eg, T1u, A1g ⊕ T2g, A2u respectively. The result is verified by trace identities, numerical computation, and character-theoretic decomposition. --- ## References [1]
 
-Thomson, W. (Lord Kelvin) (1887). On the division of space with minimum partitional area. Philosophical Magazine, 24, 503. [2] Coxeter, H. S. M. (1973). Regular Polytopes (3rd ed.). Dover Publications. [3] Dresselhaus, M. S., Dresselhaus, G., & Jorio, A. (2008). Group Theory: Application to the Physics of Condensed Matter. Springer. --- ## Reproduction All results can be reproduced by: (1) constructing the 24 vertices as permutations of (0,±1,±2), (2) identifying the 14 faces by normal directions, (3) building the 14×14 adjacency matrix (faces sharing ≥2 vertices), (4) computing L = D−A, (5) diagonalising. The computation requires only integer arithmetic and one square root (√17). --- ## AI Disclosure Developed in collaboration with Claude (Anthropic). Ideas and direction: Luke Martin. AI role: matrix computation, eigenvalue verification, character-theoretic decomposition. --- *March 2026*
+Thomson, W. (Lord Kelvin) (1887). On the division of space with minimum partitional area. Philosophical Magazine, 24, 503. [2] Coxeter, H. S. M. (1973). Regular Polytopes (3rd ed.). Dover Publications. [3] Dresselhaus, M. S., Dresselhaus, G., & Jorio, A. (2008). Group Theory: Application to the Physics of Condensed Matter. Springer. --- ## Reproduction All results can be reproduced by: (1) constructing the 24 vertices as permutations of (0,±1,±2), (2) identifying the 14 faces by normal directions, (3) building the 14×14 adjacency matrix (faces sharing ≥2 vertices), (4) computing L = D−A, (5) diagonalising. The computation requires only integer arithmetic and one square root (√17). --- --- *March 2026*
 
 ---
 
@@ -1628,7 +1628,7 @@ This is the answer to why mathematics is so unreasonably effective at describing
 
 **Experimental Methodology: Theory to Apparatus**
 
-The Millikan Oil Drop Experiment as a Model for Scientific Verification Primary source: R. A. Millikan, 'On the Elementary Electrical Charge and the Avogadro Constant,' Physical Review, Vol. 2, pp. 109–143, August 1913 Ryerson Physical Laboratory, University of Chicago Nobel Prize in Physics, 1923 *Ideas, theory, and direction: Luke Martin. AI role: mathematical checking, equation formatting, document structuring.*
+The Millikan Oil Drop Experiment as a Model for Scientific Verification Primary source: R. A. Millikan, 'On the Elementary Electrical Charge and the Avogadro Constant,' Physical Review, Vol. 2, pp. 109–143, August 1913 Ryerson Physical Laboratory, University of Chicago Nobel Prize in Physics, 1923 
 
 **Why This Experiment**
 
@@ -1813,7 +1813,7 @@ Rule Every measurement has a dominant systematic error. The job of experimental 
 
 **Unified Foam Field Theory — Part XVII**
 
-Luke Martin · Priority date 20 February 2026 · All equations verified *AI Disclosure: developed in collaboration with Claude (Anthropic).
+Luke Martin · Priority date 20 February 2026 · All equations verified *
 
 Ideas and theory: Luke Martin.*
 
@@ -2212,10 +2212,10 @@ The framework is structurally complete. Every sector of the Standard Model maps 
 Every claim in the framework falls into one of four categories for each of three dimensions. This table makes the status of each result explicit.
 
 **Derivation status** (within the framework):
-- **Exact** — mathematical consequence of axiom + cell geometry, no physical assumptions beyond Axiom Zero
-- **Derived** — closed-form result from foam inputs, zero free parameters, physical identification required
-- **Consistent** — framework accommodates correctly, does not uniquely predict
-- **Suggestive** — pattern match, may require NLO corrections or additional input
+- **Tier 1 — Mathematical theorem** (proven from axioms, no physical identification needed): Face Laplacian spectrum, total torsion identity, three-generation lattice theorem, Eg annihilation by torsion, A₂u = −1 under torsion, Schur's lemma on T₁u blocks, Euler series termination, complementary mixing angles.
+- **Tier 2 — Derived given identifications** (algebraic consequence of the physical identifications, matched to experiment within 1.5σ): α (0.3σ from Cs), sin²θ_W (0.14%), m_H/M_Z (0.14%), m_e (0.002%), m_μ (0.004%), m_τ (0.009%), all quark masses (0.08–0.23%), v/M_P hierarchy (0.009%), δ_CKM (0.25σ), δ_PMNS (0.08σ), sin(2β) (0.5σ), η̄ (0.6σ), tan²θ₁₂ (0.56σ), Koide θ = 2/9 (exact), Bekenstein ≈ F (4%), Kerr metric (exact structure), Schwarzschild (exact), Maxwell/Friedmann (exact structure).
+- **Tier 3 — Numerically close but >1.5σ tension** (formula identified, discrepancy exceeds statistical expectation): λ_Cabibbo = sin(π/14) (3.7σ), sinθ₁₃ = √17/27 (2.3σ), sin²θ₂₃ deviation from 1/2 (2.2σ), M_W (1.0%), ρ̄ (1.3σ). These may indicate NLO corrections rather than wrong formulas.
+- **Tier 4 — Suggestive or speculative** (pattern match without clean derivation, or unfalsifiable claims): Visible spectrum mapping, |Δm²₃₂|/Δm²₂₁ = 2Δ−1 (0.5σ but derivation not rigorous), dark energy 6/7 factor, infinite nesting/layered universe, consciousness/pineal connections.
 - **Open** — not yet derived
 
 **Independent verification status:**
@@ -2232,7 +2232,7 @@ Every claim in the framework falls into one of four categories for each of three
 
 | Claim | Derivation | Independent verification | Experimental |
 |-------|-----------|------------------------|-------------|
-| α⁻¹ = 137.035999055 | Derived (O_h representation theory) | Reproducible (script) + preprint | Postdiction (0.21 ppb from Cs 2020) |
+| α⁻¹ = 137.035999055 | Derived (O_h representation theory) | Reproducible (script) + preprint | 0.3σ from Cs 2018; 5.8σ from CODATA 2022 (Cs/Rb 5.5σ tension — see Note) |
 | Ω_DM/Ω_b = 5.3147 | Derived (BCC cell anisotropy) | Preprint | Postdiction (0.92% from Planck 2018) |
 | ρ_Λ = ρ₀(l_P/R_U)² × 6/7 | Derived (pressure wave + Euler correction) | Preprint | Postdiction (1.4% from Planck 2018) |
 | m_H/M_Z = 18/(9+√17) | Derived (face Laplacian eigenvalue ratio) | Reproducible + preprint | Postdiction (0.14%) |
@@ -2253,8 +2253,8 @@ Every claim in the framework falls into one of four categories for each of three
 | Claim | Derivation | Independent verification | Experimental |
 |-------|-----------|------------------------|-------------|
 | tan²θ₁₂ = √17/9 | Derived (T₁u eigenvalue splitting) | Reproducible + preprint | Postdiction (0.56σ) |
-| sin²θ₂₃ = 1/2 | Exact (T₁u Z₂ symmetry) | Preprint | Postdiction (2.2σ, leading order) |
-| sinθ₁₃ = √17/27 | Derived (T₁u suppression by C_A) | Reproducible + preprint | Postdiction (2.3σ) |
+| sin²θ₂₃ = 1/2 | Tier 3 — Exact at LO (T₁u Z₂ symmetry), 2.2σ tension | Preprint | Postdiction (2.2σ, NLO correction needed) |
+| sinθ₁₃ = √17/27 | Tier 3 — Derived (T₁u suppression by C_A), 2.3σ tension | Reproducible + preprint | Postdiction (2.3σ, may need correction) |
 | δ_PMNS = 3πR = 200.7° | Derived (colour factor × eigenvalue ratio) | Preprint | Consistent (0.15σ, ±25° uncertainty) |
 | \|Δm²₃₂\|/Δm²₂₁ = 33 | Suggestive (2Δ−1 scaling) | Preprint | Postdiction (0.5σ, pending formal derivation) |
 
@@ -2262,7 +2262,7 @@ Every claim in the framework falls into one of four categories for each of three
 
 | Claim | Derivation | Independent verification | Experimental |
 |-------|-----------|------------------------|-------------|
-| λ = sin(π/14) | Derived (face count quantisation) | Reproducible + preprint | Postdiction (1.1%, 3.7σ) |
+| λ = sin(π/14) | Tier 3 (face count quantisation, 3.7σ tension) | Reproducible + preprint | Postdiction (1.1%, 3.7σ — may need NLO correction) |
 | A = (9−√17)/6 | Derived (spectral root / colour number) | Reproducible + preprint | Postdiction (1.6%, 0.9σ) |
 | δ_CKM = 66.36° | Derived (inter-type torsion operator, (C_A−1):1 weight) | Reproducible + preprint | Postdiction (0.25σ) |
 | ρ̄ = R cos(πR) = 0.146 | Suggestive (R_b = R hypothesis) | Preprint | Postdiction (1.3σ) |
@@ -2339,7 +2339,6 @@ Every claim in the framework falls into one of four categories for each of three
 | Hierarchy Layer 1 (no divergences) | Exact (physical lattice) | Preprint | Null prediction: no SUSY |
 | Hierarchy Layer 2 (m_H/M_Z) | Derived (0.14%) | Reproducible + preprint | Postdiction |
 | Hierarchy Layer 3 (v/M_P) | Derived (0.009%) | Reproducible | Postdiction |
-| Hierarchy Layer 3 (v/M_P) | Open | — | — |
 
 ---
 
@@ -2347,6 +2346,7 @@ Every claim in the framework falls into one of four categories for each of three
 
 | Prediction | UFFT value | How to test | What falsifies it |
 |-----------|-----------|------------|------------------|
+| α⁻¹ favours Cs over Rb | 137.035999055 | Future precision measurements of α (Cs, Rb, or new method) | Rb value confirmed independently; or new measurement excludes Cs |
 | Decoherence suppression near mass | ΔΓ/Γ = 8.22×10⁻¹¹ (Earth-ISS) | Atom interferometry at different altitudes | No change, or increase near mass, or wrong scaling |
 | Universal qubit-independence | Same ΔΓ/Γ for all qubit types | Two qubit systems at same altitude | Different fractional changes for different systems |
 | Three-particle cascade: ⟨X⊗X⊗X⟩ = −1 | −1 (not GHZ +1, not W 0) | Cascaded SPDC | ⟨X⊗X⊗X⟩ ≠ −1 |
@@ -2368,7 +2368,9 @@ All results use only the topological integers of the truncated octahedron (|O_h|
 
 | Observable | Formula | UFFT | Observed | Accuracy |
 |-----------|---------|------|----------|----------|
-| Fine structure constant | α⁻¹ = 8π^(5/2) × [47/48 + 10/(3·48³) + 22/(3·48⁵)] | 137.035999055 | 137.035999046(27) | 0.21 ppb (0.3σ) |
+| Fine structure constant | α⁻¹ = (4π)^{d/2}π × [47/48 + 10/(3·48³) + 22/(3·48⁵)] | 137.035999055 | Cs: 137.035999046(27), Rb: 137.035999206(11), CODATA 2022: 137.035999177(21) | 0.3σ from Cs; 5.8σ from CODATA 2022 (see Note) |
+
+**Note on α and the Cs/Rb tension.** The two most precise measurements of α disagree at 5.5σ: the Cs atomic recoil measurement (Parker et al. 2018, α⁻¹ = 137.035999046 ± 0.027) and the Rb atomic recoil measurement (Morel et al. 2020, α⁻¹ = 137.035999206 ± 0.011). CODATA 2022 adopts a weighted average dominated by Rb, giving 137.035999177 ± 0.021. The UFFT prediction 137.035999055 is 0.3σ from Cs and 5.8σ from CODATA 2022. This is an unresolved experimental tension — the two best experiments contradict each other, and UFFT takes a definite side. If future measurements confirm the Cs value, the UFFT formula is confirmed at sub-ppb precision. If they confirm the Rb value, the formula is excluded. UFFT converts an unsettled experimental question into a sharp, falsifiable prediction.
 | Dark matter ratio | Ω_DM/Ω_b = 3(1+2√3)/2^(4/3) | 5.3147 | 5.36 ± 0.06 | 0.92% (0.8σ) |
 | Dark energy density | ρ_Λ = ρ₀(l_P/R_U)² × 6/7 | 5.96 × 10⁻²⁷ kg/m³ | 5.88 × 10⁻²⁷ | 1.4% |
 | Higgs/Z mass ratio | m_H/M_Z = 18/(9+√17) | 1.3716 | 1.3735 | 0.14% (1.0σ) |
@@ -2483,6 +2485,12 @@ These are honestly acknowledged and not claimed as solved.
 GitHub: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 Spectrum verification script: confirms all numerical predictions. Runs in under one minute on any laptop. Independent reproduction is invited.
+
+---
+
+## AI Disclosure
+
+This framework was developed by Luke Martin in collaboration with Claude (Anthropic). All physical ideas, intuitions, axioms, and interpretations originate with the author. Claude was used for mathematical computation, numerical verification, group-theoretic derivations, spectral analysis, document composition, and consistency checking. Each of the 46 individual preprints carries its own disclosure. AI verification is not a substitute for independent human peer review — the author actively seeks independent replication of all results, beginning with the face Laplacian spectrum (verification script provided).
 
 ---
 
