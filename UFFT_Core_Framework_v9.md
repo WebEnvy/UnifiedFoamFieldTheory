@@ -192,6 +192,8 @@ Standard quantum field theory is extraordinarily successful — QED predicts the
 
 The fine structure constant is the proof of concept. Standard QFT has not derived α in over 100 years. The foam derives it to 0.21 parts per billion using the representation theory of a 48-element group acting on a 14-face CW-complex. No path integrals, no Feynman diagrams, no renormalisation. The correct tool for a discrete substrate is discrete mathematics.
 
+**The graphene precedent.** The claim that a discrete lattice produces emergent relativistic physics is not speculative — it is experimentally established. In graphene (Nobel Prize 2010), a 2D honeycomb lattice of carbon atoms produces massless Dirac fermions: relativistic quantum mechanics from a non-relativistic substrate. The lattice geometry produces the physics automatically. UFFT makes the same claim in 3D: the BCC lattice of truncated octahedra produces the Standard Model. Same mechanism, same logic, different dimension. Graphene proves the mechanism. The 13 masses and the α formula test the specific lattice.
+
 The standard QFT apparatus — Feynman diagrams, S-matrix, running couplings — is expected to emerge as the long-wavelength limit of foam dynamics, in the same way that continuum fluid mechanics emerges from molecular dynamics. The foam wave equation (Klein-Gordon) is the first step in this emergence and is already derived. The full QFT emergence programme is future work, documented in the Known Limitations section.
 
 ## Lorentz Invariance
