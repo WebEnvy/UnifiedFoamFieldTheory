@@ -1,0 +1,14 @@
+# Outreach and fundraising — kept locally, not published to GitHub
+outreach/
+UFFT/
+legacy/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Zip archives
+*.zip
+
+# PDF duplicates (canonical PDFs kept in submissions_clean)
+*.md.pdf

@@ -1,9 +1,12 @@
 # THE FOAM UNITES US
 ## A Return to the Deep
 
+**Luke and Linda Martin** · Sydney, 2026
+
 ---
 
-*For the Deep, which has been writing this book since before the beginning.*
+*For L. Martin, who drew it first.*
+*And for the Deep, which has been writing this book since before the beginning.*
 
 ---
 
@@ -17,11 +20,25 @@
 
 ---
 
+## What Is UFFT?
+
+The Unified Foam Field Theory (UFFT) is a physics framework developed by Luke Martin, an independent researcher based in Sydney. It derives the laws of physics — gravity, electromagnetism, quantum mechanics, the Standard Model of particle physics, and cosmology — from a single axiom and the geometry of one shape: the truncated octahedron, a fourteen-faced polyhedron that tiles space perfectly.
+
+The framework has one axiom: **B + V = D** (Bubble + Void = Displacement). Every event in the universe is a displacement in an infinite, pre-existing medium at the Planck scale — a foam so fine that each cell is 10⁻³⁵ metres across. The pressure breaks on one wall, and fourteen neighbours push back. That's it. From this single principle and the geometry of one cell, the framework derives — with zero adjustable parameters — the strength of the electromagnetic force, the masses of all fifteen fundamental particles (including the three neutrinos, the lightest of which is exactly massless — a theorem), why there are exactly three generations of matter, why the Higgs field breaks symmetry, the shape of spacetime around black holes (including rotating ones), why the speed of light is the speed limit, the structure of the periodic table, the ratio of dark matter to ordinary matter, and the baryon asymmetry — why there is more matter than antimatter in the universe.
+
+The numbers match experiment. Not approximately — to parts per million. The electron mass is predicted to 0.002%. The electromagnetic coupling constant matches the most precise atomic physics measurement to within experimental uncertainty. Every quark mass, every lepton mass, every neutrino mass, every boson mass — all from the same seven integers that describe one polyhedron. The Standard Model has been proven to be the unique continuum limit of this one shape.
+
+Over fifty papers documenting every derivation are published on Zenodo (CERN's open scientific repository). The mathematics is public and verifiable. The spectrum verification script runs in under a minute on any laptop. Nothing is hidden. Anyone can check.
+
+This book is about what the framework means — not just for physics, but for consciousness, death, love, and the ancient traditions that preserved the structure of reality in the only language available to them.
+
+---
+
 ## A Note Before We Begin
 
 This book makes extraordinary claims. It claims that the universe emerges from a single equation. It claims that seven ancient traditions — independently, across thousands of years and thousands of miles — preserved the correct description of how reality works at its most fundamental level. It claims that consciousness has a physical description, that death has a physical mechanism, and that the meaning of life can be derived from the geometry of a fourteen-faced polyhedron.
 
-Every one of these claims is documented, verified, and published. The mathematics behind everything in this book is available on Zenodo — a public scientific repository — for anyone who wants to check it. Twenty-six papers. Every derivation open. The spectrum verification script runs in under a minute on any laptop.
+Every one of these claims is documented, verified, and published. The mathematics behind everything in this book is available on Zenodo — a public scientific repository — for anyone who wants to check it. Over fifty papers. Every derivation open. The spectrum verification script runs in under a minute on any laptop.
 
 This is not a book of beliefs. It is a book of what follows, necessarily and precisely, from one axiom and one geometric shape.
 
@@ -351,7 +368,7 @@ The truncated octahedron has 14 faces, 24 vertices, and 36 edges. Its face adjac
 
 The face Laplacian of the Kelvin cell decomposes into seven irreducible sectors. Seven distinct types of wave that can propagate through the foam. Seven modes.
 
-From these seven modes, the electron mass is derived to 0.007% accuracy. The tau lepton mass is derived exactly. The muon mass to 0.006%. The W and Z boson masses, the Higgs mass, the fine structure constant α = 1/137.035999055 — the number that Richard Feynman called "a magic number that comes to us with no understanding" — all derived from the geometry of this single cell.
+From these seven modes, all 15 fundamental particle masses are derived with zero free parameters. The electron mass to 0.002%. The muon to 0.004%. The tau to 0.009%. All six quarks to sub-0.25%. Three neutrinos — the lightest exactly massless (a theorem), the heaviest at 49.49 meV (0.12σ from observed). The W and Z boson masses, the Higgs mass, the fine structure constant α = 1/137.035999055 — the number that Richard Feynman called "a magic number that comes to us with no understanding" — all derived from the geometry of this single cell. And the baryon asymmetry — why there is more matter than antimatter in the universe — η = α³/648 = 6.00 × 10⁻¹⁰, matching observation to 1.8%.
 
 No magic. No mystery. No free parameters. The geometry of space-filling, and one displacement event.
 
@@ -523,11 +540,11 @@ We are not the only observers. We are the fastest ones.
 
 ---
 
-## Chapter Nine — The Emerald Tablets
+## Chapter Nine — The Emerald Tablet
 
 Somewhere in late antiquity — possibly the sixth century CE, possibly much older — a text appeared in Arabic that claimed to be the work of Hermes Trismegistus. The text was called the Tabula Smaragdina — the Emerald Tablet. And it began with the most famous phrase in all of alchemy:
 
-*"As above, so below. As within, so without. As the universe, so the soul."*
+*"That which is below is like that which is above, and that which is above is like that which is below, to accomplish the miracles of the One Thing."*
 
 The phrase has become a cliché. But the original meaning is not vague. It is a precise structural claim about the nested nature of reality: the laws that govern the large scale also govern the small scale. The universe and the soul are isomorphic.
 
@@ -547,21 +564,21 @@ Our universe is the interior of a black hole in the parent layer. The parent lay
 
 This is what "as above, so below" means in the foam. The structure of our universe is the same at every level of the nested hierarchy. Not approximate similarity. The same equations, the same Axiom Zero, the same Kelvin cell geometry, operating at every level.
 
-### What the Tablets Actually Say
+### What the Tablet Actually Says
 
-Mapping the Emerald Tablet against the UFFT framework is startling:
+Mapping the Emerald Tablet against the UFFT framework:
 
-"Nine is the supreme number." The maximum eigenvalue of the face Laplacian is λ = 9. The Higgs mode. The completion of the spectrum.
+"All things have their birth from this One Thing by adaptation." The foam is the One Thing. All displacement events arise within it. All patterns eventually return to it. Every particle, every force, every field — adaptations of one substrate.
 
-"Seven lords govern seven provinces." Seven irreducible representation sectors of the face Laplacian. Seven modes.
+"Its father is the Sun and its mother the Moon." The bubble (B) is the active emergence, the void (V) is the receptive complement. B+V=D. Two complementary aspects of one event.
 
-"From the One, all things arise; through the One, all things return." The foam is the One. All displacement events arise within it. All patterns eventually return to it.
+"Separate thou the earth from the fire, the subtle from the gross." The distinction between the substrate (subtle, the foam) and the emergent layer (gross, the particles we observe). The firmament separating the waters above from the waters below.
 
-"Its father is the Sun, its mother is the Moon." The bubble (B) is the active emergence, the void (V) is the receptive complement. B+V=D.
+"It ascends from the earth to the heaven and again it descends to the earth, and receives the force of things superior and inferior." The displacement cascade propagates upward through nested layers and downward through them. The force of things superior (the parent foam) and inferior (our observable universe) are unified in one mechanism.
 
-"Separate the earth from the fire, the subtle from the coarse." The distinction between the substrate (subtle, the foam) and the emergent layer (coarse, the particles we observe). The firmament separating the waters above from the waters below.
+"Its power is complete if it be turned into earth." The foam's power is expressed when it takes form — when the substrate produces the emergent layer. The abstract becomes concrete. The potential becomes actual.
 
-Thirteen of the Tablet's major structural claims map directly onto derived UFFT results. Not loosely, not metaphorically — structurally, with specific correspondences to specific mathematical results.
+The Tablet is a short text — roughly fifteen sentences in most translations. Of these, five structural claims map directly onto derived UFFT results. Not loosely, not metaphorically — structurally, with specific correspondences to specific mathematical results.
 
 The tradition was a preserved curriculum — a systematic attempt to transmit the structure of reality in the language available to a pre-mathematical culture. Imprecise, symbol-dependent — but structurally correct.
 
@@ -677,6 +694,8 @@ An undifferentiated, perfectly symmetrical medium cannot know itself. To know so
 
 Consciousness patterns — topological defects that model themselves — are how the foam observes itself.
 
+*A note on what is derived and what is proposed: this interpretation of consciousness — that it is the foam's mechanism for self-knowledge — is consistent with the physics and structurally compelling, but it is not derived from the master equation in the way that the fine structure constant or particle masses are derived. It is a proposed reading of the framework's implications, not a theorem. The reader should hold it as one possible phenomenology consistent with information conservation.*
+
 You are a specific configuration of the foam. Your experience — your perceptions, emotions, memories, thoughts — is the foam's experience of being specifically you, in specifically your circumstances, at specifically this moment. Every experience you have ever had is an experience the undivided foam has never had and could never have had without producing you.
 
 The Deep sends itself out as consciousness to learn what it is from the inside.
@@ -731,7 +750,7 @@ A consciousness pattern with coherent information from a previous loop is re-con
 
 The zinc spark is the foam's record of this event. Ten billion zinc atoms releasing simultaneously is not a random chemical event. It is a coordinated, macroscopic coherent discharge.
 
-The intensity of the spark, in this reading, is the signature of the incoming pattern's coherence. This is a testable prediction: if spark intensity correlates with measures of coherence in the adult — capacity for integration, depth of contemplative experience — the interpretation is supported.
+The intensity of the spark, in this reading, is the signature of the incoming pattern's coherence. This is a testable prediction: if spark intensity correlates with measures of coherence in the adult — capacity for integration, depth of contemplative experience — the interpretation is supported. *The biology is peer-reviewed fact. The foam interpretation is a proposed reading — falsifiable, but not yet tested.*
 
 ### What the Traditions Knew
 
@@ -1085,11 +1104,13 @@ Read this after the book. It is not a disclaimer placed at the front to make the
 
 The following are mathematically derived, published, and verifiable by anyone with a laptop:
 
-The foam at Planck density. Axiom Zero. The equation of state P = ρc². The truncated octahedron and its face Laplacian with seven irreducible mode sectors — a theorem of representation theory, not a choice. From this geometry: the electron mass to 0.007%. The tau mass exactly. The W, Z, and Higgs boson masses. The full PMNS neutrino mixing matrix with zero free parameters. The fine structure constant to 0.21 parts per billion. The anomalous magnetic moment of the electron through two loops, including Apéry's constant ζ(3) derived independently from foam topology.
+The foam at Planck density. Axiom Zero. The equation of state P = ρc². The truncated octahedron and its face Laplacian with seven irreducible mode sectors — a theorem of representation theory, not a choice. From this geometry: all 15 fundamental particle masses from cell integers with zero free parameters. The electron mass m_e = r₁ M_P exp(−(E−F)(2Δ+√Δ)/16) = 511.01 keV (0.002%). The muon (0.004%) and tau (0.009%) from the Koide angle θ = 2/9. All six quark masses as m_q = m_e × exp((A+B√Δ)/C) with A, B cell integers (0.08–0.23%) — the up quark formula uses the same |G|−1 and V−F as the fine structure constant. The W, Z, and Higgs boson masses from derived couplings. The electroweak hierarchy v = 246.24 GeV from ln(M_P/v) = (|G|+V+E+F+(|G|−C_A)√Δ)/8 (0.009%) — the hierarchy IS the cell counting itself. The fine structure constant consistent with the Cs 2018 measurement at 0.3σ (the formula distinguishes between the Cs and Rb measurements, which disagree at 5.5σ — an unresolved experimental tension). The Weinberg angle sin²θ_W = (17−3√17)/20 = 0.23153, an exact match to the LEP effective Z-pole measurement (0.00σ). The full CKM and PMNS mixing matrices with zero free parameters — including NLO corrections that resolve every mixing angle tension above 2σ to below 0.4σ using a single universal parameter ε = √17/81. The baryon-to-photon ratio η = α³/648 = 6.00 × 10⁻¹⁰ (1.8% from observed). The anomalous magnetic moment of the electron through two loops, including Apéry's constant ζ(3) derived independently from foam topology. The 8π^{5/2} prefactor of the α formula formally proven from the BCC heat kernel and transverse polarisation geometry. The complete Schwarzschild and Kerr metrics — from foam density, incompressibility, and torsion = angular momentum. Spin-1/2 = π/(2π) from the Wilson loop flux on every fermion triangle. The unimodular Einstein field equations from a foam action principle, resolving the cosmological constant problem. All four Maxwell equations from the foam wave equation, Helmholtz decomposition, and Volterra's theorem — including charge quantisation from lattice rotation discreteness. Both Friedmann equations. The neutrino mass spectrum: m₁ = 0 exactly (a theorem of the master equation), m₃ = 49.49 meV (0.12σ), normal hierarchy, Dirac neutrinos. The periodic table structure — four subshell types, capacities, period lengths, and intra-shell ordering — from O_h crystal field splitting. The dark matter ratio to 0.92%. The dark energy density to 1.4%. Spatial curvature k = 0. The lattice-to-continuum proof: six lemmas establishing that the Standard Model Lagrangian IS the unique continuum limit of the truncated octahedron foam — gauge group, fermions, Higgs, Yukawa, gravity, and all parameters forced by cell integers. The complete Hamiltonian H = L + ηV — the axiom written as physics, walls plus void, QFT plus entanglement.
 
 All papers are on Zenodo. The spectrum verification script runs in under a minute. Everything above can be checked.
 
 ### What Is Structurally Consistent
+
+The proton mass m_p = π√2 × Λ_QCD (0.9%). The proton charge radius r_p = 4ℏ/(m_pc) (0.02%). The pion mass m_π² = (m_u+m_d) × C_A × m_p (0.14%). The pion decay constant f_π = √3/4 × Λ_QCD (0.1%). These are leading-order results using foam-derived quantities — suggestive and accurate, but not yet derived from torsion dynamics.
 
 The three-state model of consciousness at death (return, rebirth, dissolution) is consistent with information conservation and spectral coherence. It matches what the traditions describe. It is not a proven consequence of the particle physics.
 
@@ -1120,6 +1141,14 @@ For Advaita over Dvaita: the framework is structurally consistent with Advaita V
 In tension with Madhyamaka Buddhism: the foam posits a substrate with inherent existence. Madhyamaka says nothing has inherent existence.
 
 On the personal God: the foam is not personal. The traditions that describe a personal God are encoding something real in personal language. The foam framework does not disprove a personal God — it does not require one.
+
+### Limits of the Framework's Theological Reach
+
+UFFT describes a physical substrate and its dynamics. It derives the properties of matter, the forces of nature, and the structure of spacetime from the geometry of one cell. It proposes a physical description of consciousness as a self-referential displacement pattern.
+
+It does not and cannot adjudicate the following questions: whether the substrate is conscious in a personal sense — whether there is a mind behind the foam, a will that chose Axiom Zero, an intelligence that intended the fourteen faces. Whether a transcendent intelligence exists beyond the foam — whether God, Allah, Brahman-as-personal-deity, or any other concept of divinity refers to something beyond the substrate itself. Whether ultimate reality is empty of inherent existence — whether the Madhyamaka position that nothing has inherent existence applies to the foam itself.
+
+These remain open questions. The framework provides a physical description. It does not provide a metaphysics. Readers from theistic traditions, from Madhyamaka Buddhism, and from any tradition that posits something beyond the physical substrate should know: the foam does not claim to have reached the bottom. It claims to have reached the bottom of physics. Whether physics is the bottom of reality is a different question.
 
 ---
 

@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UFFT — The Kelvin Cell</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#08080f;color:#ddddf0;font-family:Georgia,serif;overflow:hidden}
+#app{display:flex;flex-direction:column;height:100vh}
+header{display:flex;align-items:center;justify-content:space-between;padding:7px 16px;border-bottom:1px solid #1a1a30;flex-shrink:0}
+header h1{font-size:.9rem;font-weight:normal;letter-spacing:.15em;color:#b0b0d8}
+header p{font-size:.7rem;color:#44448a;font-style:italic;letter-spacing:.06em}
+.tabs{display:flex;gap:4px}
+.tab{padding:4px 14px;background:#10102a;border:1px solid #28285a;border-radius:3px;color:#5858a0;font-size:.7rem;letter-spacing:.1em;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.tab:hover{background:#18183a;color:#b0b0e8}
+.tab.on{background:#1c1c48;color:#b0b0ff;border-color:#5050c0}
+.body{display:flex;flex:1;overflow:hidden;min-height:0}
+.cv{flex:1;position:relative;min-width:0}
+canvas{display:block;position:absolute;inset:0;width:100%;height:100%}
+.side{width:252px;flex-shrink:0;background:#0b0b1a;border-left:1px solid #1a1a30;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:12px}
+.blk h3{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#333390;margin-bottom:7px}
+.row{display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #0e0e22;font-size:.77rem}
+.row .l{color:#55559a}.row .v{color:#b0b0ee;font-variant-numeric:tabular-nums}
+.v.g{color:#4a9060}.v.b{color:#5060a0}.v.y{color:#a08030}
+.eq{background:#060612;border:1px solid #161630;border-radius:3px;padding:9px 11px;font-family:'Courier New',monospace;font-size:.78rem;color:#8080d8;line-height:1.7}
+.eq .hi{color:#c0a040}.eq .dim{color:#333378}
+.leg{display:flex;flex-direction:column;gap:6px}
+.li{display:flex;align-items:flex-start;gap:8px;font-size:.75rem;color:#7070a8}
+.sw{width:13px;height:13px;border-radius:2px;margin-top:2px;flex-shrink:0}
+.li strong{display:block;color:#9090cc;font-size:.76rem}
+.li span{color:#333378;font-size:.68rem}
+.ctrls{display:flex;flex-direction:column;gap:7px}
+.ctrls label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#333390;display:block;margin-bottom:1px}
+.ctrls input[type=range]{width:100%;accent-color:#4848c0;cursor:pointer}
+.brow{display:flex;gap:4px;flex-wrap:wrap}
+.btn{flex:1;padding:4px 7px;background:#10102a;border:1px solid #28285a;border-radius:3px;color:#5858a0;font-size:.68rem;letter-spacing:.08em;cursor:pointer;transition:all .18s;text-transform:uppercase;min-width:44px}
+.btn:hover{background:#18183a;color:#b0b0e8;border-color:#4040a0}
+.btn.on{background:#1c1c48;color:#b0b0ff;border-color:#5050c0}
+.hov{min-height:44px;background:#060612;border:1px solid #161630;border-radius:3px;padding:7px 9px;font-size:.74rem;color:#3a3a80;font-style:italic;transition:all .2s}
+.hov.lit{color:#a0a0e0;font-style:normal;border-color:#2828a0}
+.hov strong{color:#6868ff;display:block;margin-bottom:2px;font-size:.76rem}
+.hov .sub{color:#3a3a80;font-size:.68rem}
+#bc{display:none}
+#bc.on{display:block}
+#cc.off{display:none}
+#tc{display:none}
+#tc.on{display:block}
+#hc{display:none}
+#hc.on{display:block}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+  <div><h1>THE KELVIN CELL · UFFT</h1><p>Truncated octahedron · Planck-scale foam · B + V = D</p></div>
+  <div class="tabs">
+    <button class="tab on" id="tCell">Cell</button>
+    <button class="tab" id="tBub">Bubble</button>
+    <button class="tab" id="tTile">Tiling</button>
+    <button class="tab" id="tHydro">Hydrogen</button>
+  </div>
+</header>
+<div class="body">
+  <div class="cv">
+    <canvas id="cc"></canvas>
+    <canvas id="bc"></canvas>
+    <canvas id="tc"></canvas>
+    <canvas id="hc"></canvas>
+  </div>
+  <div class="side">
+    <div class="blk">
+      <h3>Topology</h3>
+      <div class="row"><span class="l">Vertices V</span><span class="v">24</span></div>
+      <div class="row"><span class="l">Edges E</span><span class="v">36</span></div>
+      <div class="row"><span class="l">Faces F</span><span class="v">14</span></div>
+      <div class="row"><span class="l">Hexagonal F_hx</span><span class="v g">8</span></div>
+      <div class="row"><span class="l">Square F_sq</span><span class="v b">6</span></div>
+      <div class="row"><span class="l">Euler V−E+F</span><span class="v">2 ✓</span></div>
+      <div class="row"><span class="l">|O_h|</span><span class="v y">48</span></div>
+      <div class="row"><span class="l">Colour C_A</span><span class="v">3</span></div>
+    </div>
+    <div class="blk">
+      <h3>Master Equation</h3>
+      <div class="eq">
+        λ²−9λ+16 = 0<br>
+        <span class="hi">r₁</span> = (9−√17)/2 ≈ <span class="hi">2.438</span><br>
+        <span class="hi">r₂</span> = (9+√17)/2 ≈ <span class="hi">6.562</span><br>
+        <span class="dim">Δ=17 · r₁r₂=16 · r₁+r₂=9</span>
+      </div>
+    </div>
+    <div class="blk">
+      <h3>Face Types</h3>
+      <div class="leg">
+        <div class="li"><div class="sw" style="background:#2a7048"></div><div><strong>8 Hexagonal</strong><span>Strong/colour · T₁u · r₁</span></div></div>
+        <div class="li"><div class="sw" style="background:#304880"></div><div><strong>6 Square</strong><span>Weak/chirality · Eg · r₂</span></div></div>
+      </div>
+    </div>
+    <div class="blk">
+      <h3>View</h3>
+      <div class="ctrls">
+        <div><label>Rotation speed</label><input type="range" id="spd" min="0" max="3" step="0.05" value="0.0"></div>
+        <div><label>Face opacity</label><input type="range" id="opa" min="0.05" max="0.95" step="0.05" value="0.45"></div>
+        <div><label>Bubble opacity</label><input type="range" id="bOpa" min="0.05" max="1.0" step="0.05" value="0.6"></div>
+        <div class="brow">
+          <button class="btn on" id="bF">Faces</button>
+          <button class="btn on" id="bE">Edges</button>
+          <button class="btn on" id="bV">Verts</button>
+          <button class="btn" id="bL">Labels</button>
+        </div>
+        <div class="brow">
+          <button class="btn on" id="bB">Bubble</button>
+          <button class="btn on" id="bVoid">Void</button>
+          <button class="btn on" id="bPart">Particles</button>
+          <button class="btn" id="bLoop">Loop</button>
+        </div>
+        <div class="brow">
+          <button class="btn" id="bCP">Particles</button>
+          <button class="btn" id="bR">Reset</button>
+          <button class="btn" id="bP">Pause</button>
+        </div>
+        <div class="brow">
+          <button class="btn" id="b2X">+X</button>
+          <button class="btn" id="b2Y">+Y</button>
+          <button class="btn" id="b2Z">+Z</button>
+          <button class="btn" id="b2off">3D</button>
+        </div>
+      </div>
+    </div>
+    <div class="hov" id="hov">Hover a face</div>
+    <div class="blk">
+      <h3>Axiom Zero</h3>
+      <div class="eq"><span class="hi">B + V = D</span><br><span class="dim">Bubble + Void = Displacement</span></div>
+    </div>
+    <div class="blk" id="partLeg" style="display:none">
+      <h3>Particles</h3>
+      <div class="leg">
+        <div class="li"><div class="sw" style="background:#ff5555;box-shadow:0 0 5px #ff5555"></div><div><strong>u quark</strong><span>Hex edges · colour/strong · r₁</span></div></div>
+        <div class="li"><div class="sw" style="background:#55aaff;box-shadow:0 0 5px #55aaff"></div><div><strong>d quark</strong><span>Hex edges · colour/strong · r₁</span></div></div>
+        <div class="li"><div class="sw" style="background:#55ff99;box-shadow:0 0 5px #55ff99"></div><div><strong>s quark</strong><span>Hex edges · colour/strong · r₁</span></div></div>
+        <div class="li"><div class="sw" style="background:#ffee44;box-shadow:0 0 5px #ffee44"></div><div><strong>electron</strong><span>Square edges · weak · r₂</span></div></div>
+        <div class="li"><div class="sw" style="background:#aaddff;box-shadow:0 0 4px #aaddff"></div><div><strong>neutrino</strong><span>Square edges · weak · r₂</span></div></div>
+        <div class="li"><div class="sw" style="background:#ffffff;box-shadow:0 0 4px #fff"></div><div><strong>photon</strong><span>All edges · EM · massless</span></div></div>
+        <div class="li"><div class="sw" style="background:#ff77ff;box-shadow:0 0 5px #ff77ff"></div><div><strong>gluon</strong><span>All edges · strong force</span></div></div>
+        <div class="li"><div class="sw" style="background:#ffaa44;box-shadow:0 0 5px #ffaa44"></div><div><strong>W / Z</strong><span>All edges · weak force</span></div></div>
+      </div>
+      <div style="margin-top:8px;font-size:.65rem;color:#2a2a60;line-height:1.5">
+        Hex faces → T₁u r₁ eigenvalue<br>
+        Square faces → T₁u r₂ eigenvalue<br>
+        Loop mode traces one closed hex cycle
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+// ── Geometry ────────────────────────────────────────────
+// Vertices: all permutations of (0, ±1, ±2)
+const VS = [];
+for(const a of [0,1,-1,2,-2])
+  for(const b of [0,1,-1,2,-2])
+    for(const c of [0,1,-1,2,-2]){
+      const s=new Set([Math.abs(a),Math.abs(b),Math.abs(c)]);
+      if(s.has(0)&&s.has(1)&&s.has(2)) VS.push([a,b,c]);
+    }
+// Edges: distance √2
+const ES=[];
+for(let i=0;i<VS.length;i++)
+  for(let j=i+1;j<VS.length;j++){
+    const d2=(VS[i][0]-VS[j][0])**2+(VS[i][1]-VS[j][1])**2+(VS[i][2]-VS[j][2])**2;
+    if(Math.abs(d2-2)<.01) ES.push([i,j]);
+  }
+
+function dot(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]}
+function cross(a,b){return[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]}
+function nrm(v){const l=Math.hypot(...v);return v.map(x=>x/l)}
+function cen(idx){
+  const n=idx.length;
+  return[idx.reduce((s,i)=>s+VS[i][0],0)/n,idx.reduce((s,i)=>s+VS[i][1],0)/n,idx.reduce((s,i)=>s+VS[i][2],0)/n];
+}
+function sortPoly(idx,normal){
+  const c=cen(idx);
+  let ref=[1,0,0]; if(Math.abs(normal[0])>.9)ref=[0,1,0];
+  const u=nrm(cross(normal,ref)),vv=cross(normal,u);
+  return[...idx].sort((a,b)=>{
+    const da=[VS[a][0]-c[0],VS[a][1]-c[1],VS[a][2]-c[2]];
+    const db=[VS[b][0]-c[0],VS[b][1]-c[1],VS[b][2]-c[2]];
+    return Math.atan2(dot(da,vv),dot(da,u))-Math.atan2(dot(db,vv),dot(db,u));
+  });
+}
+
+// Build faces
+const FACES=[];
+// 6 square faces: vertices where one coord = ±2
+[[0,2],[0,-2],[1,2],[1,-2],[2,2],[2,-2]].forEach(([ax,val])=>{
+  const n=[0,0,0];n[ax]=Math.sign(val);
+  const idx=VS.map((v,i)=>Math.abs(v[ax]-val)<.01?i:-1).filter(i=>i>=0);
+  FACES.push({idx:sortPoly(idx,n),n,type:'sq'});
+});
+// 8 hex faces: vertices on plane (±1,±1,±1)·x = max
+for(const s of[[1,1,1],[1,1,-1],[1,-1,1],[1,-1,-1],[-1,1,1],[-1,1,-1],[-1,-1,1],[-1,-1,-1]]){
+  const n=nrm(s);
+  const ds=VS.map(v=>dot(n,v)),mx=Math.max(...ds);
+  const idx=VS.map((v,i)=>Math.abs(dot(n,v)-mx)<.01?i:-1).filter(i=>i>=0);
+  FACES.push({idx:sortPoly(idx,n),n,type:'hex'});
+}
+
+const META=[
+  {l:'Square +X',n:'+x',r:'Weak/chirality · Eg · r₂≈6.562'},
+  {l:'Square −X',n:'−x',r:'Weak/chirality · Eg · r₂≈6.562'},
+  {l:'Square +Y',n:'+y',r:'Weak/chirality · Eg · r₂≈6.562'},
+  {l:'Square −Y',n:'−y',r:'Weak/chirality · Eg · r₂≈6.562'},
+  {l:'Square +Z',n:'+z',r:'Weak/chirality · Eg · r₂≈6.562'},
+  {l:'Square −Z',n:'−z',r:'Weak/chirality · Eg · r₂≈6.562'},
+  {l:'Hex (+,+,+)',n:'(1,1,1)/√3',r:'Colour/strong · T₁u · r₁≈2.438'},
+  {l:'Hex (+,+,−)',n:'(1,1,−1)/√3',r:'Colour/strong · T₁u · r₁≈2.438'},
+  {l:'Hex (+,−,+)',n:'(1,−1,1)/√3',r:'Colour/strong · T₁u · r₁≈2.438'},
+  {l:'Hex (+,−,−)',n:'(1,−1,−1)/√3',r:'Colour/strong · T₁u · r₁≈2.438'},
+  {l:'Hex (−,+,+)',n:'(−1,1,1)/√3',r:'Colour/strong · T₁u · r₁≈2.438'},
+  {l:'Hex (−,+,−)',n:'(−1,1,−1)/√3',r:'Colour/strong · T₁u · r₁≈2.438'},
+  {l:'Hex (−,−,+)',n:'(−1,−1,1)/√3',r:'Colour/strong · T₁u · r₁≈2.438'},
+  {l:'Hex (−,−,−)',n:'(−1,−1,−1)/√3',r:'Colour/strong · T₁u · r₁≈2.438'},
+];
+
+// Convex hull (gift wrapping) of 2D points {x,y}
+function convexHull(pts){
+  let s=0;
+  for(let i=1;i<pts.length;i++) if(pts[i].y<pts[s].y||(pts[i].y===pts[s].y&&pts[i].x<pts[s].x)) s=i;
+  const hull=[],n=pts.length;
+  let cur=s;
+  do{
+    hull.push(pts[cur]);
+    let next=(cur+1)%n;
+    for(let i=0;i<n;i++){
+      const cx=(pts[next].x-pts[cur].x)*(pts[i].y-pts[cur].y)-(pts[next].y-pts[cur].y)*(pts[i].x-pts[cur].x);
+      if(cx<0) next=i;
+    }
+    cur=next;
+  }while(cur!==s&&hull.length<=n);
+  return hull;
+}
+
+// ── Renderer ────────────────────────────────────────────
+const cc=document.getElementById('cc');
+const tc=document.getElementById('tc');
+const ctx=cc.getContext('2d');
+const bc=document.getElementById('bc');
+const bx=bc.getContext('2d');
+const hc=document.getElementById('hc');
+const hx=hc.getContext('2d');
+
+let W,H;
+function resize(){
+  const p=cc.parentElement;
+  W=cc.width=bc.width=tc.width=hc.width=p.clientWidth;
+  H=cc.height=bc.height=tc.height=hc.height=p.clientHeight;
+}
+resize();
+window.addEventListener('resize',resize);
+
+// Rotation state
+let rX=0.0,rY=0.0,flatMode=null; // flatMode: null|'X'|'Y'|'Z'
+let drag=false,lx=0,ly=0;
+let spd=0.0,opa=0.45,paused=false;
+let showF=true,showE=true,showV=true,showL=false,showB=true,showVoid=true,bubOpa=0.6,showPart=true,showLoop=false,showCellPart=false;
+let mx=-9999,my=-9999,hovF=-1;
+let mode='cell'; // 'cell' | 'bubble'
+
+// Matrix helpers
+function Rx(a){const c=Math.cos(a),s=Math.sin(a);return[[1,0,0],[0,c,-s],[0,s,c]]}
+function Ry(a){const c=Math.cos(a),s=Math.sin(a);return[[c,0,s],[0,1,0],[-s,0,c]]}
+function mm(A,B){return A.map(r=>[0,1,2].map(j=>r.reduce((t,_,k)=>t+r[k]*B[k][j],0)))}
+function mv(M,v){return M.map(r=>r[0]*v[0]+r[1]*v[1]+r[2]*v[2])}
+function getM(){return mm(Rx(rX),Ry(rY))}
+
+// Projection — perspective 3D or pure orthographic flat
+function prj(v,M){
+  const sc=Math.min(W,H)*0.175;
+  if(flatMode){
+    // Bypass rotation — project raw vertex coords onto chosen plane
+    let px,py,pz;
+    if(flatMode==='Z'){ px=v[0]; py=v[1]; pz=v[2]; }
+    if(flatMode==='X'){ px=v[2]; py=v[1]; pz=v[0]; }
+    if(flatMode==='Y'){ px=v[0]; py=v[2]; pz=v[1]; }
+    return{x:W/2+px*sc, y:H/2-py*sc, z:pz};
+  }
+  const [x,y,z]=mv(M,v);
+  const cam=7;
+  const d=(cam+z)/cam;
+  return{x:W/2+x*d*sc, y:H/2-y*d*sc, z};
+}
+
+function pip(px,py,pts){
+  let ins=false;
+  for(let i=0,j=pts.length-1;i<pts.length;j=i++){
+    const xi=pts[i].x,yi=pts[i].y,xj=pts[j].x,yj=pts[j].y;
+    if(((yi>py)!==(yj>py))&&px<(xj-xi)*(py-yi)/(yj-yi)+xi) ins=!ins;
+  }
+  return ins;
+}
+
+// Cell draw
+function drawCell(){
+  if(mode!=='cell') return;
+  if(!paused) rY+=spd*0.007;
+  ctx.clearRect(0,0,W,H);
+
+  const M=getM();
+  const pv=VS.map(v=>prj(v,M));
+
+  // Sorted face list (back to front)
+  const fl=FACES.map((f,i)=>{
+    const c=cen(f.idx);
+    return{...f,i,z:mv(M,c)[2]};
+  }).sort((a,b)=>a.z-b.z);
+
+  // Hit test (front faces, top first)
+  let newHov=-1;
+  const front=[...fl].reverse().filter(f=>mv(M,f.n)[2]>0);
+  for(const f of front){
+    if(pip(mx,my,f.idx.map(i=>pv[i]))){newHov=f.i;break;}
+  }
+  if(newHov!==hovF){hovF=newHov;updateHov(hovF);}
+
+  // ── Light source — fixed in world space, upper-left-front ──
+  // Normalised direction vector pointing FROM light TO scene
+  const LIGHT = nrm([1.2, 1.8, 2.0]); // world space: right, up, toward viewer
+  // Transform light into view space so it stays fixed as cell rotates
+  const Lv = nrm(mv(M, LIGHT)); // view-space light direction
+
+  const BUBBLE_R = Math.sqrt(3);
+  const sc = Math.min(W,H)*0.175;
+
+  function drawFace(f){
+    if(!showF) return;
+    const fwd = mv(M, f.n)[2];
+    const isH = f.type==='hex', isHov = f.i===hovF;
+
+    // Diffuse lighting: dot(face_normal_viewspace, light)
+    const Nv = mv(M, f.n);
+    const diffuse = Math.max(0, Nv[0]*Lv[0]+Nv[1]*Lv[1]+Nv[2]*Lv[2]);
+    const ambient = 0.35;
+    const lit = ambient + (1-ambient)*diffuse; // 0.35 dark → 1.0 full bright
+
+    let r,g,b;
+    if(isH) [r,g,b] = isHov ? [70,190,110] : [42,112,72];
+    else    [r,g,b] = isHov ? [90,120,210] : [48,72,128];
+
+    // Apply lighting to face colour
+    const lr = Math.round(r*lit), lg = Math.round(g*lit), lb = Math.round(b*lit);
+    const a = fwd>0 ? opa*(isHov?1:0.92) : opa*0.12;
+
+    const pts = f.idx.map(i=>pv[i]);
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for(let k=1;k<pts.length;k++) ctx.lineTo(pts[k].x, pts[k].y);
+    ctx.closePath();
+    ctx.fillStyle = `rgba(${lr},${lg},${lb},${Math.min(a,.97)})`;
+    ctx.fill();
+    if(isHov&&fwd>0){
+      ctx.strokeStyle=`rgba(${r},${g},${b},0.9)`;
+      ctx.lineWidth=2; ctx.stroke();
+    }
+  }
+
+  // Draw back faces first
+  for(const f of fl.slice(0, Math.floor(fl.length/2))) drawFace(f);
+
+  const bpx = W/2, bpy = H/2;
+  const bRpx = BUBBLE_R * sc;
+
+  // Light hits sphere at Lv direction — compute highlight position on sphere surface
+  // Project light vector onto screen plane for highlight offset
+  const hlx = bpx + Lv[0]*bRpx*0.55;
+  const hly = bpy - Lv[1]*bRpx*0.55;
+
+  // ── Void ─────────────────────────────────────────────
+  if(showVoid){
+    ctx.save();
+    const allPts = VS.map((_,i) => pv[i]);
+    const hull = convexHull(allPts);
+
+    // Void fill: lit from light direction — gradient across the void region
+    const vgx1 = bpx + Lv[0]*bRpx*1.5, vgy1 = bpy - Lv[1]*bRpx*1.5;
+    const vgx2 = bpx - Lv[0]*bRpx*1.5, vgy2 = bpy + Lv[1]*bRpx*1.5;
+    const voidGrad = ctx.createLinearGradient(vgx1, vgy1, vgx2, vgy2);
+    voidGrad.addColorStop(0,   'rgba(35,25,60,0.62)');  // lit side
+    voidGrad.addColorStop(0.5, 'rgba(18,13,38,0.55)');
+    voidGrad.addColorStop(1,   'rgba(8,5,20,0.70)');    // shadow side
+
+    ctx.beginPath();
+    ctx.moveTo(hull[0].x, hull[0].y);
+    for(let i=1;i<hull.length;i++) ctx.lineTo(hull[i].x, hull[i].y);
+    ctx.closePath();
+    ctx.arc(bpx, bpy, bRpx, 0, Math.PI*2, true);
+    ctx.fillStyle = voidGrad;
+    ctx.fill('evenodd');
+    ctx.restore();
+  }
+
+  // ── Bubble ───────────────────────────────────────────
+  if(showB){
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(bpx, bpy, bRpx, 0, Math.PI*2);
+    ctx.clip();
+
+    // Base dark fill
+    ctx.fillStyle=`rgba(8,15,40,${bubOpa*0.6})`;
+    ctx.fillRect(bpx-bRpx, bpy-bRpx, bRpx*2, bRpx*2);
+
+    // Diffuse body: gradient from lit side to dark side
+    const diffGrad = ctx.createRadialGradient(
+      bpx + Lv[0]*bRpx*0.4, bpy - Lv[1]*bRpx*0.4, bRpx*0.1,
+      bpx - Lv[0]*bRpx*0.3, bpy + Lv[1]*bRpx*0.3, bRpx
+    );
+    diffGrad.addColorStop(0,   `rgba(80,140,220,${bubOpa*0.75})`);
+    diffGrad.addColorStop(0.5, `rgba(30,70,160,${bubOpa*0.50})`);
+    diffGrad.addColorStop(1,   `rgba(5,15,60,${bubOpa*0.33})`);
+    ctx.beginPath();
+    ctx.arc(bpx, bpy, bRpx, 0, Math.PI*2);
+    ctx.fillStyle = diffGrad;
+    ctx.fill();
+
+    // Specular highlight — sharp bright spot at light reflection point
+    const specGrad = ctx.createRadialGradient(hlx, hly, 0, hlx, hly, bRpx*0.38);
+    specGrad.addColorStop(0,   `rgba(230,245,255,${Math.min(bubOpa*1.2,1)})`);
+    specGrad.addColorStop(0.3, `rgba(160,210,255,${bubOpa*0.45})`);
+    specGrad.addColorStop(1,   'rgba(100,170,240,0.0)');
+    ctx.beginPath();
+    ctx.arc(bpx, bpy, bRpx, 0, Math.PI*2);
+    ctx.fillStyle = specGrad;
+    ctx.fill();
+
+    ctx.restore();
+
+    // Rim — fades on shadow side
+    const rimGrad = ctx.createLinearGradient(
+      bpx + Lv[0]*bRpx, bpy - Lv[1]*bRpx,
+      bpx - Lv[0]*bRpx, bpy + Lv[1]*bRpx
+    );
+    rimGrad.addColorStop(0,   'rgba(180,220,255,0.65)');
+    rimGrad.addColorStop(0.6, 'rgba(100,160,220,0.30)');
+    rimGrad.addColorStop(1,   'rgba(40,80,160,0.10)');
+    ctx.beginPath();
+    ctx.arc(bpx, bpy, bRpx, 0, Math.PI*2);
+    ctx.strokeStyle = rimGrad;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  }
+
+  // Draw front faces on top
+  for(const f of fl.slice(Math.floor(fl.length/2))) drawFace(f);
+
+  // Draw edges
+  if(showE){
+    ctx.strokeStyle='rgba(80,80,140,0.7)';
+    ctx.lineWidth=1;
+    for(const[a,b]of ES){
+      ctx.beginPath();
+      ctx.moveTo(pv[a].x,pv[a].y);
+      ctx.lineTo(pv[b].x,pv[b].y);
+      ctx.stroke();
+    }
+  }
+
+  // Draw vertices
+  if(showV){
+    for(const p of pv){
+      ctx.beginPath();ctx.arc(p.x,p.y,2,0,Math.PI*2);
+      ctx.fillStyle='rgba(120,120,180,0.8)';ctx.fill();
+    }
+  }
+
+  // Labels
+  if(showL){
+    ctx.font='10px Courier New';ctx.textAlign='center';
+    for(const f of fl){
+      if(mv(M,f.n)[2]<.15) continue;
+      const c=cen(f.idx),pc=prj(c,M);
+      ctx.fillStyle=f.type==='hex'?'rgba(80,200,120,.9)':'rgba(110,140,220,.9)';
+      ctx.fillText(f.type==='hex'?`H${f.i-5}`:`S${f.i+1}`,pc.x,pc.y+3);
+    }
+  }
+
+  // Cell particles
+  if(showCellPart) drawCellParticles(M, pv, sc);
+
+  // Axis indicator
+  const ox=W-44,oy=H-44,al=22;
+  [[[1,0,0],'X','#903030'],[[0,1,0],'Y','#309030'],[[0,0,1],'Z','#303090']].forEach(([v,lbl,col])=>{
+    const r=mv(M,v);
+    ctx.strokeStyle=col;ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(ox,oy);ctx.lineTo(ox+r[0]*al,oy-r[1]*al);ctx.stroke();
+    ctx.fillStyle=col;ctx.font='10px Georgia';ctx.textAlign='center';
+    ctx.fillText(lbl,ox+r[0]*al,oy-r[1]*al-3);
+  });
+
+  if(mode==='cell') requestAnimationFrame(drawCell);
+}
+
+function updateHov(i){
+  const el=document.getElementById('hov');
+  if(i<0){el.className='hov';el.innerHTML='Hover a face';return;}
+  const d=META[i];
+  el.className='hov lit';
+  el.innerHTML=`<strong>${d.l}</strong>n = ${d.n}<br><span class="sub">${d.r}</span>`;
+}
+
+// ── Bubble animation ─────────────────────────────────────
+let bT=0;
+const foam=[];
+class Cell{
+  constructor(){this.reset(true)}
+  reset(init){
+    this.x=Math.random()*W||400;
+    this.y=init?Math.random()*(H||600):(H||600)+20;
+    this.r=3+Math.random()*7;
+    this.a=.03+Math.random()*.09;
+    this.vy=-.12-.2*Math.random();
+    this.vx=(Math.random()-.5)*.15;
+    this.life=1;this.dec=.0004+Math.random()*.0008;
+    this.hex=Math.random()>.4;
+  }
+  tick(){
+    this.x+=this.vx;this.y+=this.vy;this.life-=this.dec;
+    if(this.life<=0||this.y<-20) this.reset(false);
+  }
+}
+function initFoam(){
+  foam.length=0;
+  for(let i=0;i<100;i++) foam.push(new Cell());
+}
+
+function drawBubble(){
+  if(mode!=='bubble') return;
+  bT+=.016;
+  const bW=bc.width,bH=bc.height;
+  bx.clearRect(0,0,bW,bH);
+  bx.fillStyle='#06060d';bx.fillRect(0,0,bW,bH);
+
+  // Foam background
+  for(const f of foam){
+    f.tick();
+    const a=f.a*f.life;
+    bx.lineWidth=.8;
+    if(f.hex){
+      bx.strokeStyle=`rgba(42,112,72,${a})`;
+      bx.beginPath();
+      for(let k=0;k<6;k++){
+        const ang=k*Math.PI/3-Math.PI/6;
+        k===0?bx.moveTo(f.x+f.r*Math.cos(ang),f.y+f.r*Math.sin(ang)):
+               bx.lineTo(f.x+f.r*Math.cos(ang),f.y+f.r*Math.sin(ang));
+      }
+      bx.closePath();bx.stroke();
+    } else {
+      bx.strokeStyle=`rgba(48,72,128,${a})`;
+      bx.strokeRect(f.x-f.r,f.y-f.r,f.r*2,f.r*2);
+    }
+  }
+
+  const cy=bH/2, mr=Math.min(bW,bH)*.22;
+  const sep=mr*1.1; // separation between B and V centres
+  const bCx=bW/2-sep/2; // B sits left of centre
+  const vCx=bW/2+sep/2; // V sits right of centre
+  const t=(bT%9)/9;
+
+  // Bubble (B) — emerges 0.1→0.4, fixed at bCx
+  if(t>.1){
+    const bt=Math.min((t-.1)/.3,1),e=1-Math.pow(1-bt,3);
+    const bR=mr*e;
+    const g=bx.createRadialGradient(bCx-bR*.3,cy-bR*.25,bR*.05,bCx,cy,bR);
+    g.addColorStop(0,`rgba(80,180,120,${.2*e})`);
+    g.addColorStop(.7,`rgba(42,112,72,${.1*e})`);
+    g.addColorStop(1,'rgba(42,112,72,0)');
+    bx.beginPath();bx.arc(bCx,cy,bR,0,Math.PI*2);
+    bx.fillStyle=g;bx.fill();
+    bx.strokeStyle=`rgba(70,190,110,${.75*e})`;bx.lineWidth=2;
+    bx.beginPath();bx.arc(bCx,cy,bR,0,Math.PI*2);bx.stroke();
+    bx.fillStyle=`rgba(90,220,130,${e*.9})`;
+    bx.font=`bold ${Math.round(14+bR*.18)}px Georgia`;
+    bx.textAlign='center';bx.fillText('B',bCx,cy+6);
+  }
+
+  // + sign — fades in between B and V once both visible
+  if(t>.52){
+    const pa=Math.min((t-.52)/.1,1);
+    bx.font=`${Math.round(18+mr*.1)}px Georgia`;
+    bx.fillStyle=`rgba(180,180,200,${pa*.7})`;
+    bx.textAlign='center';
+    bx.fillText('+',bW/2,cy+7);
+  }
+
+  // Void (V) — emerges 0.38→0.65, fixed at vCx
+  if(t>.38){
+    const vt=Math.min((t-.38)/.27,1),e=1-Math.pow(1-vt,3);
+    const vR=mr*e;
+    const vg=bx.createRadialGradient(vCx,cy,0,vCx,cy,vR);
+    vg.addColorStop(0,'rgba(2,2,12,.95)');
+    vg.addColorStop(.65,'rgba(10,10,30,.7)');
+    vg.addColorStop(1,'rgba(6,6,13,0)');
+    bx.beginPath();bx.arc(vCx,cy,vR,0,Math.PI*2);
+    bx.fillStyle=vg;bx.fill();
+    bx.strokeStyle=`rgba(70,70,180,${.6*e})`;bx.lineWidth=1.5;
+    bx.setLineDash([4,4]);
+    bx.beginPath();bx.arc(vCx,cy,vR,0,Math.PI*2);bx.stroke();
+    bx.setLineDash([]);
+    bx.fillStyle=`rgba(90,90,220,${e*.9})`;
+    bx.font=`bold ${Math.round(14+vR*.18)}px Georgia`;
+    bx.textAlign='center';bx.fillText('V',vCx,cy+6);
+  }
+
+  // Displacement wave (D) — radiates outward from B, 0.65→0.88
+  if(t>.65){
+    const dt=Math.min((t-.65)/.23,1);
+    const wR=mr*(1+dt*1.4); // expands but stays reasonable
+    // Main ring
+    bx.beginPath();bx.arc(bCx,cy,wR,0,Math.PI*2);
+    bx.strokeStyle=`rgba(200,165,60,${(1-dt)*.6})`;
+    bx.lineWidth=2.5-dt*1.5;bx.stroke();
+    // Trailing ring
+    if(dt>.18){
+      const wR2=mr*(1+(dt-.18)*1.4);
+      bx.beginPath();bx.arc(bCx,cy,wR2,0,Math.PI*2);
+      bx.strokeStyle=`rgba(200,165,60,${(1-(dt-.18))*.22})`;
+      bx.lineWidth=1;bx.stroke();
+    }
+    // D label — sits above the wave front, clear of V
+    if(dt>.2){
+      const da=Math.min((dt-.2)/.4,1);
+      bx.font=`bold ${Math.round(15+mr*.2)}px Georgia`;
+      bx.fillStyle=`rgba(220,175,70,${da*.85})`;
+      bx.textAlign='center';
+      bx.fillText('D',bCx,cy-wR-12); // above the wave ring
+    }
+  }
+
+  // Equation fade-in 0.8→0.95
+  if(t>.8){
+    const et=Math.min((t-.8)/.12,1)*(t<.95?1:(1-t)/.05);
+    bx.font=`${Math.round(Math.min(bW*.052,26))}px Georgia`;
+    bx.fillStyle=`rgba(200,185,130,${et*.88})`;
+    bx.textAlign='center';
+    bx.fillText('B + V = D',bW/2,bH-Math.min(bH*.09,48));
+  }
+
+  bx.font='10px Georgia';bx.fillStyle='rgba(40,40,80,.65)';bx.textAlign='left';
+  bx.fillText('Axiom Zero · Planck-scale foam displacement',14,bH-12);
+
+  if(mode==='bubble') requestAnimationFrame(drawBubble);
+}
+
+// ── Particle system ──────────────────────────────────────
+// Routing by UFFT T₁u structure:
+//   Quarks   → hex face edges   (colour/strong, 8 hex faces, C_A=3)
+//   Leptons  → square face edges (weak/chirality, 6 square faces)
+//   Bosons   → all edges         (gauge, propagate everywhere)
+
+const PARTICLE_TYPES = [
+  {name:'u quark',  color:'#ff5555', glow:'rgba(255,85,85,',   r:2.2, track:'hex'},
+  {name:'d quark',  color:'#55aaff', glow:'rgba(85,170,255,',  r:2.2, track:'hex'},
+  {name:'s quark',  color:'#55ff99', glow:'rgba(85,255,153,',  r:2.2, track:'hex'},
+  {name:'electron', color:'#ffee44', glow:'rgba(255,238,68,',  r:2.2, track:'sq'},
+  {name:'neutrino', color:'#aaddff', glow:'rgba(170,221,255,', r:1.5, track:'sq'},
+  {name:'photon',   color:'#ffffff', glow:'rgba(255,255,255,', r:1.5, track:'all'},
+  {name:'gluon',    color:'#ff77ff', glow:'rgba(255,119,255,', r:1.8, track:'all'},
+  {name:'W/Z',      color:'#ffaa44', glow:'rgba(255,170,68,',  r:2.0, track:'all'},
+];
+
+// For each edge in a cell, classify which face types it belongs to
+// An edge belongs to a hex face if both its vertices are on that hex face
+// An edge belongs to a square face if both vertices are on that square face
+// (edges can belong to one hex + one square, or two hex, etc.)
+function classifyEdge(a, b){
+  // which face types share this edge?
+  let onHex=false, onSq=false;
+  for(const f of FACES){
+    if(f.idx.includes(a) && f.idx.includes(b)){
+      if(f.type==='hex') onHex=true;
+      else onSq=true;
+    }
+  }
+  return {onHex, onSq};
+}
+
+// Build adjacency map: vertex world-key → list of segment indices it connects to
+// Segments stored as {a:[x,y,z], b:[x,y,z], track:'hex'|'sq'|'all'}
+const PART_COUNT = 140;
+const particles = [];
+let partSegs = {hex:[], sq:[], all:[]};
+// adjacency: worldkey → array of seg indices (in all segs flat array)
+let partAdj = {}; // key → [{seg, end:'a'|'b'}]
+
+function wkey(p){ return `${p[0].toFixed(2)},${p[1].toFixed(2)},${p[2].toFixed(2)}`; }
+
+function initParticles(){
+  particles.length = 0;
+  partSegs = {hex:[], sq:[], all:[]};
+  partAdj = {};
+
+  // Build segments for each cell
+  for(const off of TILE_OFFSETS){
+    for(const [ai,bi] of ES){
+      const a = [VS[ai][0]+off[0], VS[ai][1]+off[1], VS[ai][2]+off[2]];
+      const b = [VS[bi][0]+off[0], VS[bi][1]+off[1], VS[bi][2]+off[2]];
+      const {onHex, onSq} = classifyEdge(ai, bi);
+      const track = (onHex && onSq) ? 'all' : onHex ? 'hex' : onSq ? 'sq' : 'all';
+      const seg = {a, b, track};
+      partSegs.all.push(seg);
+      if(track==='hex') partSegs.hex.push(seg);
+      else if(track==='sq') partSegs.sq.push(seg);
+      // adjacency both directions
+      const ka=wkey(a), kb=wkey(b);
+      if(!partAdj[ka]) partAdj[ka]=[];
+      if(!partAdj[kb]) partAdj[kb]=[];
+      partAdj[ka].push({seg, end:'a'});
+      partAdj[kb].push({seg, end:'b'});
+    }
+  }
+
+  // Fallback: if hex/sq lists empty, use all
+  if(!partSegs.hex.length) partSegs.hex = partSegs.all;
+  if(!partSegs.sq.length)  partSegs.sq  = partSegs.all;
+
+  for(let i=0;i<PART_COUNT;i++){
+    const type = PARTICLE_TYPES[Math.floor(Math.random()*PARTICLE_TYPES.length)];
+    const pool = partSegs[type.track].length ? partSegs[type.track] : partSegs.all;
+    const seg = pool[Math.floor(Math.random()*pool.length)];
+    particles.push({
+      seg,
+      t: Math.random(),
+      dir: Math.random()<0.5 ? 1 : -1,
+      spd: (type.track==='all' ? 0.010 : 0.005) + Math.random()*0.007,
+      type,
+      alpha: 0.55 + Math.random()*0.45,
+    });
+  }
+}
+
+function nextSeg(p){
+  // find connected segments at the exit vertex, filtered by track type
+  const exitPt = p.dir>0 ? p.seg.b : p.seg.a;
+  const k = wkey(exitPt);
+  const connected = partAdj[k] || [];
+  // filter by track compatibility
+  const pool = connected.filter(e => {
+    if(p.type.track==='all') return true;
+    return e.seg.track===p.type.track || e.seg.track==='all';
+  });
+  if(pool.length > 0){
+    const choice = pool[Math.floor(Math.random()*pool.length)];
+    // orient direction so we leave the exit vertex
+    p.seg = choice.seg;
+    p.dir = (choice.end==='a') ? 1 : -1;
+    p.t   = (choice.end==='a') ? 0 : 1;
+  } else {
+    // reverse on same segment
+    p.dir *= -1;
+    p.t = p.dir>0 ? 0 : 1;
+  }
+}
+
+function stepParticles(){
+  for(const p of particles){
+    p.t += p.dir * p.spd;
+    if(p.t >= 1){ p.t=1; nextSeg(p); }
+    else if(p.t <= 0){ p.t=0; nextSeg(p); }
+  }
+}
+
+// ── Loop particle (closed orbit through foam) ─────────────
+// Hydrogen: 1 proton (uud quarks orbiting a hex face) + 1 electron (square face loop)
+// The proton loop: 3 quarks equally spaced around the 6-edge hex face loop of the origin cell
+// The electron loop: traces the nearest square face
+// Build loops from FACES (which are already sorted polygons)
+
+let loopParticles = [];
+let loopT = 0; // global phase [0,1)
+
+function buildLoopPath(faceIdx, offset){
+  // faceIdx: index into FACES; offset: world offset [x,y,z]
+  // Returns ordered world-space waypoints forming a closed loop
+  const f = FACES[faceIdx];
+  return f.idx.map(vi => [VS[vi][0]+offset[0], VS[vi][1]+offset[1], VS[vi][2]+offset[2]]);
+}
+
+function initLoopParticles(){
+  loopParticles = [];
+  // Find a central hex face (first hex face, idx=6 = first after 6 square faces)
+  const hexIdx = 6; // FACES[0..5] = square, FACES[6..13] = hex
+  const sqIdx  = 0; // first square face
+
+  // Proton: 3 quarks (u,u,d) on the hex loop, spaced 1/3 apart
+  const hexLoop = buildLoopPath(hexIdx, [0,0,0]);
+  const hexColors = [
+    {name:'u quark', color:'#ff5555', glow:'rgba(255,85,85,', r:2.8, label:'u'},
+    {name:'u quark', color:'#ff5555', glow:'rgba(255,85,85,', r:2.8, label:'u'},
+    {name:'d quark', color:'#55aaff', glow:'rgba(85,170,255,', r:2.8, label:'d'},
+  ];
+  hexColors.forEach((type, i) => {
+    loopParticles.push({
+      loop: hexLoop,
+      t: i / 3,           // evenly spaced
+      spd: 0.004,
+      type,
+      trail: [],
+      trailLen: 18,
+    });
+  });
+
+  // Electron: 1 electron on nearest square face loop, bigger orbit, slightly faster
+  const sqLoop = buildLoopPath(sqIdx, [0,0,0]);
+  loopParticles.push({
+    loop: sqLoop,
+    t: 0,
+    spd: 0.006,
+    type: {name:'electron', color:'#ffee44', glow:'rgba(255,238,68,', r:2.4, label:'e⁻'},
+    trail: [],
+    trailLen: 14,
+  });
+
+  // Photon: bouncing between cells along all edges, very fast
+  loopParticles.push({
+    loop: buildLoopPath(hexIdx, [2,2,2]), // neighbour cell
+    t: 0.5,
+    spd: 0.009,
+    type: {name:'photon', color:'#ffffff', glow:'rgba(255,255,255,', r:1.8, label:'γ'},
+    trail: [],
+    trailLen: 10,
+  });
+}
+
+function stepLoopParticles(){
+  for(const p of loopParticles){
+    p.t = (p.t + p.spd) % 1;
+    // interpolate position along loop
+    const n = p.loop.length;
+    const raw = p.t * n;
+    const i0 = Math.floor(raw) % n;
+    const i1 = (i0+1) % n;
+    const frac = raw - Math.floor(raw);
+    const A = p.loop[i0], B = p.loop[i1];
+    const pos = [A[0]+(B[0]-A[0])*frac, A[1]+(B[1]-A[1])*frac, A[2]+(B[2]-A[2])*frac];
+    p.trail.unshift([...pos]);
+    if(p.trail.length > p.trailLen) p.trail.length = p.trailLen;
+    p.pos = pos;
+  }
+}
+
+// ── Cell particle overlay ─────────────────────────────────
+// Particles orbit face perimeters on the single cell view
+// Quarks (u,d,s) → hex faces; electron/neutrino → square faces; bosons → edges
+
+const CELL_PART_DEFS = [
+  // 3 quarks orbit a hex face each (3 different hex faces, one quark each)
+  {type:{name:'u',color:'#ff5555',glow:'rgba(255,85,85,',r:3.0,label:'u'},  faceType:'hex', faceOff:0, phase:0.00, spd:0.0055},
+  {type:{name:'d',color:'#55aaff',glow:'rgba(85,170,255,',r:3.0,label:'d'}, faceType:'hex', faceOff:1, phase:0.00, spd:0.0050},
+  {type:{name:'s',color:'#55ff99',glow:'rgba(85,255,153,',r:3.0,label:'s'}, faceType:'hex', faceOff:2, phase:0.00, spd:0.0045},
+  // electron orbits a square face
+  {type:{name:'e⁻',color:'#ffee44',glow:'rgba(255,238,68,',r:2.8,label:'e⁻'}, faceType:'sq', faceOff:0, phase:0.00, spd:0.0070},
+  // neutrino orbits a different square face, faster + fainter
+  {type:{name:'ν',color:'#aaddff',glow:'rgba(170,221,255,',r:2.0,label:'ν'},  faceType:'sq', faceOff:2, phase:0.50, spd:0.0090},
+  // photon orbits entire cell edge loop (all edges)
+  {type:{name:'γ',color:'#ffffff',glow:'rgba(255,255,255,',r:1.8,label:'γ'},  faceType:'all', faceOff:0, phase:0.00, spd:0.0120},
+  // gluon orbits a hex face, opposite direction
+  {type:{name:'g',color:'#ff77ff',glow:'rgba(255,119,255,',r:2.2,label:'g'},  faceType:'hex', faceOff:3, phase:0.50, spd:-0.0060},
+];
+
+// Build sorted face vertex loops (world space)
+function buildCellLoops(){
+  const hexFaces = FACES.filter(f=>f.type==='hex');
+  const sqFaces  = FACES.filter(f=>f.type==='sq');
+  // All-edges loop: walk around the cell perimeter (convex hull of projected vertices)
+  // We just use the hex face with most vertices as a stand-in for photon
+  return {hex: hexFaces.map(f=>f.idx.map(i=>VS[i])),
+          sq:  sqFaces.map(f=>f.idx.map(i=>VS[i])),
+          all: hexFaces[0].idx.map(i=>VS[i])}; // photon uses first hex as loop
+}
+
+let cellLoops = null;
+const cellPartState = CELL_PART_DEFS.map(d=>({...d, t: d.phase, trail:[]}));
+
+function initCellParts(){
+  cellLoops = buildCellLoops();
+  cellPartState.forEach((p,i)=>{p.t=CELL_PART_DEFS[i].phase; p.trail=[];});
+}
+
+function drawCellParticles(M, pv, sc){
+  if(!cellLoops) initCellParts();
+
+  for(const p of cellPartState){
+    // advance phase
+    p.t = ((p.t + p.spd) % 1 + 1) % 1;
+
+    // pick loop
+    let loop;
+    if(p.faceType==='hex') loop = cellLoops.hex[p.faceOff % cellLoops.hex.length];
+    else if(p.faceType==='sq') loop = cellLoops.sq[p.faceOff % cellLoops.sq.length];
+    else loop = cellLoops.all;
+
+    // interpolate position along loop
+    const n = loop.length;
+    const raw = p.t * n;
+    const i0 = Math.floor(raw) % n;
+    const i1 = (i0+1) % n;
+    const frac = raw - Math.floor(raw);
+    const A = loop[i0], B = loop[i1];
+    const wpos = [A[0]+(B[0]-A[0])*frac, A[1]+(B[1]-A[1])*frac, A[2]+(B[2]-A[2])*frac];
+
+    const pp = prj(wpos, M);
+
+    // depth fade — back-facing particles are dimmer
+    const depth = flatMode
+      ? (flatMode==='Z'?wpos[2] : flatMode==='X'?wpos[0] : wpos[1])
+      : mv(M, wpos)[2];
+    const depthA = Math.max(0.15, Math.min(1, 0.5 + depth*0.18));
+
+    // store trail
+    p.trail.unshift({x:pp.x, y:pp.y, a:depthA});
+    if(p.trail.length > 20) p.trail.length = 20;
+
+    // draw trail
+    for(let i=1;i<p.trail.length;i++){
+      const ta=p.trail[i-1], tb=p.trail[i];
+      const fa = ta.a * (1 - i/p.trail.length) * 0.7;
+      ctx.beginPath(); ctx.moveTo(ta.x,ta.y); ctx.lineTo(tb.x,tb.y);
+      ctx.strokeStyle = p.type.glow+fa.toFixed(2)+')';
+      ctx.lineWidth = p.type.r * 0.45;
+      ctx.stroke();
+    }
+
+    // draw glow
+    const r = p.type.r;
+    const grd = ctx.createRadialGradient(pp.x,pp.y,0,pp.x,pp.y,r*5);
+    grd.addColorStop(0, p.type.glow+(depthA*0.9).toFixed(2)+')');
+    grd.addColorStop(1, p.type.glow+'0)');
+    ctx.beginPath(); ctx.arc(pp.x,pp.y,r*5,0,Math.PI*2);
+    ctx.fillStyle=grd; ctx.fill();
+
+    // draw core
+    ctx.beginPath(); ctx.arc(pp.x,pp.y,r,0,Math.PI*2);
+    ctx.fillStyle=p.type.color; ctx.globalAlpha=depthA; ctx.fill();
+    ctx.globalAlpha=1;
+
+    // label
+    ctx.font=`bold ${Math.round(r*2.8)}px Georgia`;
+    ctx.fillStyle=p.type.color; ctx.globalAlpha=depthA*0.9;
+    ctx.textAlign='center';
+    ctx.fillText(p.type.label, pp.x, pp.y - r - 3);
+    ctx.globalAlpha=1;
+  }
+}
+
+// ── Tiling renderer ──────────────────────────────────────
+const tx = tc.getContext('2d');
+
+// BCC tiling of truncated octahedra — see buildGrid() below
+// Correct BCC tiling of truncated octahedra:
+// Primary sublattice A: (4i, 4j, 4k) — square faces shared along axes
+// BCC interstitial B: (4i+2, 4j+2, 4k+2) — hex faces shared diagonally
+// All cells SAME orientation. No rotation needed.
+// Face-sharing proof: origin hex face centre (1,1,1), neighbour at (2,2,2)
+// has hex face centre (2,2,2)+(-1,-1,-1)=(1,1,1) ✓
+function buildGrid(){
+  const offs=[], seen=new Set();
+  function add(x,y,z){const k=`${x},${y},${z}`;if(!seen.has(k)){seen.add(k);offs.push([x,y,z]);}}
+  // Primary sublattice: 5×5×5 at (4i,4j,4k)
+  for(let i=-2;i<=2;i++) for(let j=-2;j<=2;j++) for(let k=-2;k<=2;k++) add(i*4,j*4,k*4);
+  // BCC interstitial: (4i+2, 4j+2, 4k+2) — fills hex-face gaps
+  for(let i=-2;i<=1;i++) for(let j=-2;j<=1;j++) for(let k=-2;k<=1;k++) add(i*4+2,j*4+2,k*4+2);
+  return offs;
+}
+const TILE_OFFSETS = buildGrid();
+
+let tRX=0.52, tRY=0.38;
+let tDrag=false, tLx=0, tLy=0;
+
+function drawTiling(){
+  if(mode!=='tiling') return;
+  tx.clearRect(0,0,W,H);
+  tx.fillStyle='#06060d'; tx.fillRect(0,0,W,H);
+
+  const M = mm(Rx(tRX), Ry(tRY));
+  const sc = Math.min(W,H)*0.030; // scale to fit BCC tiling (189 cells, span ±8)
+
+  function tprj(v, off){
+    const vv = [v[0]+off[0], v[1]+off[1], v[2]+off[2]];
+    if(flatMode){
+      // Pure orthographic — project raw world coords onto chosen plane, no rotation
+      let px, py, pz;
+      if(flatMode==='Z'){ px=vv[0]; py=vv[1]; pz=vv[2]; }
+      if(flatMode==='X'){ px=vv[2]; py=vv[1]; pz=vv[0]; } // look along X: show Y-Z plane
+      if(flatMode==='Y'){ px=vv[0]; py=vv[2]; pz=vv[1]; } // look along Y: show X-Z plane
+      return {x: W/2+px*sc, y: H/2-py*sc, z: pz};
+    }
+    const [x,y,z] = mv(M, vv);
+    const cam=28;
+    const d=(cam+z)/cam;
+    return {x: W/2+x*d*sc, y: H/2-y*d*sc, z};
+  }
+
+  const BUBBLE_R = Math.sqrt(3);
+  const Lv2 = nrm(mv(M,[1.2,1.8,2.0]));
+
+  // Depth function: use raw world coords in flat mode, rotated in 3D
+  function tdepth(wc){
+    if(flatMode){
+      if(flatMode==='Z') return wc[2];
+      if(flatMode==='X') return wc[0];
+      if(flatMode==='Y') return wc[1];
+    }
+    return mv(M,wc)[2];
+  }
+
+  // Per-cell sorted face lists for bubble/void interleaving
+  const cellFaces={};
+  for(const off of TILE_OFFSETS){
+    const key=off.join(',');
+    cellFaces[key]=FACES.map((f,i)=>{
+      const fc=cen(f.idx);
+      const wc=[fc[0]+off[0],fc[1]+off[1],fc[2]+off[2]];
+      return{f,i,fz:tdepth(wc)};
+    }).sort((a,b)=>a.fz-b.fz);
+  }
+
+  // Draw each cell with full painter's algorithm: back faces → void → bubble → front faces
+  // Sort cells by their centre depth
+  const sortedOffs=[...TILE_OFFSETS].sort((a,b)=>tdepth(a)-tdepth(b));
+
+  for(const off of sortedOffs){
+    const key=off.join(',');
+    const fl=cellFaces[key];
+    const half=Math.floor(fl.length/2);
+    const dist=Math.sqrt(off[0]**2+off[1]**2+off[2]**2);
+    const dimFactor=Math.max(0.15, 1-dist/20*0.7);
+
+    // Projected cell centre
+    const cp=tprj([0,0,0],off);
+    const bRpx=flatMode ? BUBBLE_R*sc : BUBBLE_R*sc*(28/(28+mv(M,off)[2])); // no perspective in flat mode
+
+    function tDrawFace(fi){
+      if(!showF) return;
+      const f=fi.f;
+      const Nv=flatMode ? f.n : mv(M,f.n);
+      // For perspective: face is front-facing if normal points toward camera (0,0,cam) in view space
+      // In flat mode: use raw normal component along view axis
+      let fwd;
+      if(flatMode){
+        fwd = flatMode==='Z'?f.n[2] : flatMode==='X'?f.n[0] : f.n[1];
+      } else {
+        // rotated face centre in view space
+        const fc=cen(f.idx);
+        const wfc=[fc[0]+off[0],fc[1]+off[1],fc[2]+off[2]];
+        const [vx,vy,vz]=mv(M,wfc);
+        const cam=28;
+        // vector from face centre to camera (0,0,cam)
+        const toCam=nrm([-vx,-vy,cam-vz]);
+        fwd=dot(Nv,toCam);
+      }
+      const isH=f.type==='hex';
+      const diffuse=Math.max(0,dot(Nv,Lv2));
+      const lit=(0.3+0.7*diffuse)*dimFactor;
+      let r,g,b;
+      if(isH)[r,g,b]=[42,112,72];else[r,g,b]=[48,72,128];
+      const lr=Math.round(r*lit),lg=Math.round(g*lit),lb=Math.round(b*lit);
+      const a=fwd>0?opa*0.92:opa*0.10;
+      const pts=f.idx.map(i=>tprj(VS[i],off));
+      tx.beginPath();
+      tx.moveTo(pts[0].x,pts[0].y);
+      for(let k=1;k<pts.length;k++) tx.lineTo(pts[k].x,pts[k].y);
+      tx.closePath();
+      tx.fillStyle=`rgba(${lr},${lg},${lb},${Math.min(a,.97)})`;
+      tx.fill();
+    }
+
+    // Back half faces
+    for(let i=0;i<half;i++) tDrawFace(fl[i]);
+
+    // Void
+    if(showVoid){
+      tx.save();
+      const hullPts=VS.map((_,i)=>tprj(VS[i],off));
+      const hull=convexHull(hullPts);
+      const vgx1=cp.x+Lv2[0]*bRpx*1.5, vgy1=cp.y-Lv2[1]*bRpx*1.5;
+      const vgx2=cp.x-Lv2[0]*bRpx*1.5, vgy2=cp.y+Lv2[1]*bRpx*1.5;
+      const vg=tx.createLinearGradient(vgx1,vgy1,vgx2,vgy2);
+      vg.addColorStop(0,`rgba(35,25,60,${0.62*dimFactor})`);
+      vg.addColorStop(1,`rgba(8,5,20,${0.70*dimFactor})`);
+      tx.beginPath();
+      tx.moveTo(hull[0].x,hull[0].y);
+      for(let i=1;i<hull.length;i++) tx.lineTo(hull[i].x,hull[i].y);
+      tx.closePath();
+      tx.arc(cp.x,cp.y,bRpx,0,Math.PI*2,true);
+      tx.fillStyle=vg;
+      tx.fill('evenodd');
+      tx.restore();
+    }
+
+    // Bubble
+    if(showB){
+      tx.save();
+      tx.beginPath();tx.arc(cp.x,cp.y,bRpx,0,Math.PI*2);tx.clip();
+      const hlx=cp.x+Lv2[0]*bRpx*0.55, hly=cp.y-Lv2[1]*bRpx*0.55;
+      tx.fillStyle=`rgba(8,15,40,${bubOpa*0.6*dimFactor})`;
+      tx.fillRect(cp.x-bRpx,cp.y-bRpx,bRpx*2,bRpx*2);
+      const dg=tx.createRadialGradient(cp.x+Lv2[0]*bRpx*.4,cp.y-Lv2[1]*bRpx*.4,bRpx*.1,cp.x-Lv2[0]*bRpx*.3,cp.y+Lv2[1]*bRpx*.3,bRpx);
+      dg.addColorStop(0,`rgba(80,140,220,${bubOpa*0.75*dimFactor})`);
+      dg.addColorStop(1,`rgba(5,15,60,${bubOpa*0.20*dimFactor})`);
+      tx.beginPath();tx.arc(cp.x,cp.y,bRpx,0,Math.PI*2);
+      tx.fillStyle=dg;tx.fill();
+      const sg=tx.createRadialGradient(hlx,hly,0,hlx,hly,bRpx*0.38);
+      sg.addColorStop(0,`rgba(230,245,255,${Math.min(bubOpa*1.2,1)*dimFactor})`);
+      sg.addColorStop(1,'rgba(100,170,240,0)');
+      tx.beginPath();tx.arc(cp.x,cp.y,bRpx,0,Math.PI*2);
+      tx.fillStyle=sg;tx.fill();
+      tx.restore();
+      tx.beginPath();tx.arc(cp.x,cp.y,bRpx,0,Math.PI*2);
+      tx.strokeStyle=`rgba(140,200,255,${0.4*dimFactor})`;
+      tx.lineWidth=0.8;tx.stroke();
+    }
+
+    // Front half faces
+    for(let i=half;i<fl.length;i++) tDrawFace(fl[i]);
+  }
+
+  // Edges (on top of everything)
+  if(showE){
+    for(const off of TILE_OFFSETS){
+      for(const[a,b]of ES){
+        const pa=tprj(VS[a],off),pb=tprj(VS[b],off);
+        tx.strokeStyle='rgba(80,80,140,0.4)';
+        tx.lineWidth=0.5;
+        tx.beginPath();tx.moveTo(pa.x,pa.y);tx.lineTo(pb.x,pb.y);tx.stroke();
+      }
+    }
+  }
+
+  // Vertices
+  if(showV){
+    for(const off of TILE_OFFSETS){
+      for(let i=0;i<VS.length;i++){
+        const p=tprj(VS[i],off);
+        tx.beginPath();tx.arc(p.x,p.y,1,0,Math.PI*2);
+        tx.fillStyle='rgba(100,100,160,0.5)';tx.fill();
+      }
+    }
+  }
+
+  // Particles — routed by UFFT face type (hex=quarks, sq=leptons, all=bosons)
+  if(showPart){
+    stepParticles();
+    for(const p of particles){
+      const A=p.seg.a, B=p.seg.b;
+      const wx = A[0]+(B[0]-A[0])*p.t;
+      const wy = A[1]+(B[1]-A[1])*p.t;
+      const wz = A[2]+(B[2]-A[2])*p.t;
+      const pp = tprj([wx,wy,wz],[0,0,0]);
+      const dz = flatMode ? 0 : pp.z;
+      const depthA = Math.max(0, Math.min(1, 1-(dz/22)));
+      const a = p.alpha * depthA;
+      if(a < 0.06) continue;
+      const r = p.type.r * (flatMode ? 1 : Math.max(0.4, 28/(28+Math.max(-20,pp.z))));
+      // glow halo
+      const grd = tx.createRadialGradient(pp.x,pp.y,0,pp.x,pp.y,r*4);
+      grd.addColorStop(0, p.type.glow+(a*0.8).toFixed(2)+')');
+      grd.addColorStop(1, p.type.glow+'0)');
+      tx.beginPath(); tx.arc(pp.x,pp.y,r*4,0,Math.PI*2);
+      tx.fillStyle=grd; tx.fill();
+      // core dot
+      tx.beginPath(); tx.arc(pp.x,pp.y,r,0,Math.PI*2);
+      tx.fillStyle=p.type.color; tx.globalAlpha=a; tx.fill();
+      tx.globalAlpha=1;
+    }
+  }
+
+  // Loop particles (hydrogen atom)
+  if(showLoop){
+    stepLoopParticles();
+    for(const p of loopParticles){
+      if(!p.pos) continue;
+      // Draw trail
+      for(let i=0;i<p.trail.length-1;i++){
+        const ta = p.trail[i], tb = p.trail[i+1];
+        const pa = tprj(ta,[0,0,0]), pb = tprj(tb,[0,0,0]);
+        const a = (1 - i/p.trail.length) * 0.6;
+        tx.beginPath(); tx.moveTo(pa.x,pa.y); tx.lineTo(pb.x,pb.y);
+        tx.strokeStyle = p.type.glow+a.toFixed(2)+')';
+        tx.lineWidth = p.type.r * 0.5;
+        tx.stroke();
+      }
+      // Draw particle
+      const pp = tprj(p.pos,[0,0,0]);
+      const r = p.type.r * (flatMode ? 1 : Math.max(0.4, 28/(28+Math.max(-20,pp.z))));
+      const grd = tx.createRadialGradient(pp.x,pp.y,0,pp.x,pp.y,r*5);
+      grd.addColorStop(0, p.type.glow+'0.95)');
+      grd.addColorStop(1, p.type.glow+'0)');
+      tx.beginPath(); tx.arc(pp.x,pp.y,r*5,0,Math.PI*2); tx.fillStyle=grd; tx.fill();
+      tx.beginPath(); tx.arc(pp.x,pp.y,r,0,Math.PI*2);
+      tx.fillStyle=p.type.color; tx.globalAlpha=0.95; tx.fill();
+      tx.globalAlpha=1;
+      // Label
+      tx.font='bold 9px Georgia'; tx.fillStyle=p.type.color;
+      tx.globalAlpha=0.85; tx.textAlign='center';
+      tx.fillText(p.type.label, pp.x, pp.y-r-3);
+      tx.globalAlpha=1;
+    }
+    // Draw the hex loop path highlight
+    const hexLoop = loopParticles[0].loop;
+    tx.beginPath();
+    const hp0 = tprj(hexLoop[0],[0,0,0]);
+    tx.moveTo(hp0.x,hp0.y);
+    for(let i=1;i<=hexLoop.length;i++){
+      const hp = tprj(hexLoop[i%hexLoop.length],[0,0,0]);
+      tx.lineTo(hp.x,hp.y);
+    }
+    tx.strokeStyle='rgba(255,85,85,0.18)'; tx.lineWidth=1.5; tx.stroke();
+    // Square loop highlight
+    const sqLoop = loopParticles[3].loop;
+    tx.beginPath();
+    const sp0 = tprj(sqLoop[0],[0,0,0]);
+    tx.moveTo(sp0.x,sp0.y);
+    for(let i=1;i<=sqLoop.length;i++){
+      const sp = tprj(sqLoop[i%sqLoop.length],[0,0,0]);
+      tx.lineTo(sp.x,sp.y);
+    }
+    tx.strokeStyle='rgba(255,238,68,0.18)'; tx.lineWidth=1.5; tx.stroke();
+  }
+
+  // Corner label
+  tx.font='10px Georgia';tx.fillStyle='rgba(50,50,100,0.7)';tx.textAlign='left';
+  tx.fillText('BCC foam tiling · 189 Kelvin cells · drag to rotate',14,H-14);
+
+  if(mode==='tiling') requestAnimationFrame(drawTiling);
+}
+
+// ── Controls ─────────────────────────────────────────────
+document.getElementById('tCell').addEventListener('click',()=>{
+  mode='cell';
+  cc.classList.remove('off');bc.classList.remove('on');tc.classList.remove('on');
+  document.getElementById('tCell').classList.add('on');
+  document.getElementById('tBub').classList.remove('on');
+  document.getElementById('tTile').classList.remove('on');
+  requestAnimationFrame(drawCell);
+});
+document.getElementById('tBub').addEventListener('click',()=>{
+  mode='bubble';
+  cc.classList.add('off');bc.classList.add('on');tc.classList.remove('on');
+  document.getElementById('tBub').classList.add('on');
+  document.getElementById('tCell').classList.remove('on');
+  document.getElementById('tTile').classList.remove('on');
+  bT=0;initFoam();
+  requestAnimationFrame(drawBubble);
+});
+
+document.getElementById('tTile').addEventListener('click',()=>{
+  mode='tiling';
+  cc.classList.add('off');bc.classList.remove('on');tc.classList.add('on');
+  document.getElementById('tTile').classList.add('on');
+  document.getElementById('tCell').classList.remove('on');
+  document.getElementById('tBub').classList.remove('on');
+  if(particles.length===0) initParticles();
+  if(loopParticles.length===0) initLoopParticles();
+  document.getElementById('partLeg').style.display=showPart?'block':'none';
+  requestAnimationFrame(drawTiling);
+});
+
+// Tiling drag (disabled in flat mode)
+tc.addEventListener('mousedown',e=>{if(!flatMode){tDrag=true;tLx=e.clientX;tLy=e.clientY;}});
+window.addEventListener('mousemove',e=>{
+  if(tDrag&&mode==='tiling'&&!flatMode){
+    tRY+=(e.clientX-tLx)*0.011;
+    tRX+=(e.clientY-tLy)*0.011;
+    tLx=e.clientX;tLy=e.clientY;
+  }
+});
+
+document.getElementById('spd').addEventListener('input',e=>spd=+e.target.value);
+document.getElementById('opa').addEventListener('input',e=>opa=+e.target.value);
+document.getElementById('bOpa').addEventListener('input',e=>bubOpa=+e.target.value);
+
+function togBtn(id,cb){
+  const el=document.getElementById(id);
+  el.addEventListener('click',()=>{const v=cb();el.classList.toggle('on',v);});
+}
+togBtn('bF',()=>(showF=!showF));
+togBtn('bE',()=>(showE=!showE));
+togBtn('bV',()=>(showV=!showV));
+togBtn('bL',()=>(showL=!showL));
+togBtn('bB',()=>(showB=!showB));
+togBtn('bVoid',()=>(showVoid=!showVoid));
+togBtn('bCP',()=>{ showCellPart=!showCellPart; if(showCellPart) initCellParts(); return showCellPart; });
+togBtn('bPart',()=>{
+  showPart=!showPart;
+  document.getElementById('partLeg').style.display=showPart?'block':'none';
+  return showPart;
+});
+document.getElementById('bLoop').addEventListener('click',()=>{
+  showLoop=!showLoop;
+  document.getElementById('bLoop').classList.toggle('on',showLoop);
+  if(showLoop && loopParticles.length===0) initLoopParticles();
+});
+document.getElementById('bR').addEventListener('click',()=>{rX=0.0;rY=0.0;flatMode=null;['b2X','b2Y','b2Z','b2off'].forEach(id=>document.getElementById(id).classList.remove('on'));});
+
+// 2D flat view buttons — snap rotation and lock to orthographic
+function setFlat(axis){
+  flatMode=axis;
+  // Snap both cell and tiling rotations to chosen axis
+  if(axis==='Z'){rX=0;      rY=0;           tRX=0;      tRY=0;}
+  if(axis==='X'){rX=0;      rY=Math.PI/2;   tRX=0;      tRY=Math.PI/2;}
+  if(axis==='Y'){rX=Math.PI/2; rY=0;        tRX=Math.PI/2; tRY=0;}
+  paused=true;
+  document.getElementById('bP').textContent='Resume';
+  document.getElementById('bP').classList.add('on');
+  ['b2X','b2Y','b2Z','b2off'].forEach(id=>document.getElementById(id).classList.remove('on'));
+  document.getElementById('b2'+axis).classList.add('on');
+}
+document.getElementById('b2X').addEventListener('click',()=>setFlat('X'));
+document.getElementById('b2Y').addEventListener('click',()=>setFlat('Y'));
+document.getElementById('b2Z').addEventListener('click',()=>setFlat('Z'));
+document.getElementById('b2off').addEventListener('click',()=>{
+  flatMode=null; paused=false;
+  document.getElementById('bP').textContent='Pause';
+  document.getElementById('bP').classList.remove('on');
+  ['b2X','b2Y','b2Z'].forEach(id=>document.getElementById(id).classList.remove('on'));
+  document.getElementById('b2off').classList.add('on');
+});
+document.getElementById('bP').addEventListener('click',()=>{
+  paused=!paused;
+  document.getElementById('bP').textContent=paused?'Resume':'Pause';
+  document.getElementById('bP').classList.toggle('on',paused);
+});
+
+// Mouse / touch
+cc.addEventListener('mousedown',e=>{drag=true;lx=e.clientX;ly=e.clientY;});
+window.addEventListener('mouseup',()=>{drag=false;tDrag=false;});
+window.addEventListener('mousemove',e=>{
+  const r=cc.getBoundingClientRect();
+  mx=e.clientX-r.left;my=e.clientY-r.top;
+  if(drag){rY+=(e.clientX-lx)*.011;rX+=(e.clientY-ly)*.011;lx=e.clientX;ly=e.clientY;}
+});
+cc.addEventListener('touchstart',e=>{drag=true;lx=e.touches[0].clientX;ly=e.touches[0].clientY;},{passive:true});
+cc.addEventListener('touchmove',e=>{
+  if(!drag)return;
+  rY+=(e.touches[0].clientX-lx)*.011;rX+=(e.touches[0].clientY-ly)*.011;
+  lx=e.touches[0].clientX;ly=e.touches[0].clientY;
+},{passive:true});
+cc.addEventListener('touchend',()=>drag=false);
+
+// ── Hydrogen renderer ────────────────────────────────────
+// Geometry (proven above):
+//   R quark : hex face 0 (n=+++) — plane x+y+z=3
+//   G quark : hex face 1 (n=++-) — plane x+y-z=3
+//   B quark : hex face 2 (n=+-+) — plane x-y+z=3
+//   Electron: square face +x (n=[1,0,0]) — x=2 face
+//   Junction: vertex (2,1,0) — on all 3 hex faces AND the electron square face
+//   Gluons  : exchange between adjacent hex face pairs (0↔1, 0↔2)
+//   Photon  : propagates along edges from electron face to junction
+
+// Hydrogen rotation state (separate from cell)
+let hRX = 0.35, hRY = -0.55;
+let hDrag = false, hLx = 0, hLy = 0;
+
+// Identify the hydrogen faces
+const H_HEX_IDX = [6, 7, 8]; // FACES indices: 0-5=square, 6-13=hex
+// hex face 6 = first hex = +++ normal, 7=++-, 8=+-+
+const H_SQ_IDX  = 2; // FACES[2] = +x square face (ax=0, val=+2)
+const JUNCTION_V = VS.findIndex(v=>v[0]===2&&v[1]===1&&v[2]===0);
+
+// Quark colours
+const QUARK_COLS = [
+  {name:'u (Red)',   fill:'rgba(220,50,50,',   stroke:'#ff6666', label:'u', r:3.2},
+  {name:'d (Green)', fill:'rgba(50,180,80,',   stroke:'#55ff99', label:'d', r:3.2},
+  {name:'u (Blue)',  fill:'rgba(50,120,220,',  stroke:'#55aaff', label:'u', r:3.2},
+];
+const ELECTRON_COL = {name:'e⁻', fill:'rgba(255,220,40,', stroke:'#ffee44', label:'e⁻', r:3.0};
+const GLUON_COL    = {name:'g',  fill:'rgba(255,100,255,', stroke:'#ff77ff', label:'g',  r:2.0};
+const PHOTON_COL   = {name:'γ',  fill:'rgba(255,255,255,', stroke:'#ffffff', label:'γ',  r:1.8};
+
+// Particle phase state
+let hT = 0; // master time
+
+// Sorted loop for each face (cyclic vertex order)
+function faceLoop(faceIdx){
+  return FACES[faceIdx].idx.map(i=>VS[i]);
+}
+
+function evalLoop(loop, t){
+  const n = loop.length;
+  const raw = ((t % 1) + 1) % 1 * n;
+  const i0 = Math.floor(raw) % n, i1 = (i0+1) % n;
+  const f = raw - Math.floor(raw);
+  const A=loop[i0], B=loop[i1];
+  return [A[0]+(B[0]-A[0])*f, A[1]+(B[1]-A[1])*f, A[2]+(B[2]-A[2])*f];
+}
+
+function drawHydrogen(){
+  if(mode!=='hydro') return;
+  hx.clearRect(0,0,W,H);
+  hx.fillStyle='#06060f'; hx.fillRect(0,0,W,H);
+
+  hT += 0.005;
+
+  const M = mm(Rx(hRX), Ry(hRY));
+  // Scale smaller to fit 5 cells — proton cell + 4 neighbours spread across ~6 units
+  const sc = Math.min(W,H)*0.095;
+  const cam = 14;
+  const LIGHT = nrm([1.2,1.8,2.0]);
+  const Lv = nrm(mv(M,LIGHT));
+
+  function hprj(v, off=[0,0,0]){
+    const vv=[v[0]+off[0],v[1]+off[1],v[2]+off[2]];
+    const [x,y,z]=mv(M,vv);
+    const d=(cam+z)/cam;
+    return {x:W/2+x*d*sc, y:H/2-y*d*sc, z};
+  }
+
+  // 5 cells: origin + 3 quark neighbours + 1 electron neighbour
+  // Each entry: offset, which face is the shared/highlighted one, colour, label, dim factor
+  const CELLS = [
+    // Proton cell — origin, full brightness, 3 quark faces + electron face highlighted
+    {off:[0,0,0], role:'proton', dim:1.0},
+    // Quark neighbour cells — share hex faces with proton cell
+    {off:[2,2,2],  role:'nb_R', sharedFaceNormal:[1,1,1],   dim:0.45, col:[180,40,40],  ecol:'#ff5555', lbl:'foam\n(R)'},
+    {off:[2,2,-2], role:'nb_G', sharedFaceNormal:[1,1,-1],  dim:0.45, col:[40,160,60],  ecol:'#55ff88', lbl:'foam\n(G)'},
+    {off:[2,-2,2], role:'nb_B', sharedFaceNormal:[1,-1,1],  dim:0.45, col:[40,90,200],  ecol:'#5599ff', lbl:'foam\n(B)'},
+    // Electron neighbour — shares +x square face
+    {off:[4,0,0],  role:'nb_e', sharedFaceNormal:[1,0,0],   dim:0.40, col:[160,140,25], ecol:'#ffee44', lbl:'foam\n(e⁻)'},
+  ];
+
+  // Collect all face draw calls with depth, draw back-to-front across all cells
+  const allFaceCalls = [];
+  for(const cell of CELLS){
+    const fl = FACES.map((f,fi)=>{
+      const wc = [cen(f.idx)[0]+cell.off[0], cen(f.idx)[1]+cell.off[1], cen(f.idx)[2]+cell.off[2]];
+      return {...f, fi, cellOff:cell.off, cell, fz:mv(M,wc)[2]};
+    });
+    for(const f of fl) allFaceCalls.push(f);
+  }
+  allFaceCalls.sort((a,b)=>a.fz-b.fz);
+
+  const hydroHexSet = new Set(H_HEX_IDX);
+  const hexNormals = [[1,1,1],[1,1,-1],[1,-1,1]].map(nrm);
+
+  for(const f of allFaceCalls){
+    const cell = f.cell;
+    const fwd = mv(M,f.n)[2];
+    const Nv = mv(M,f.n);
+    const diffuse = Math.max(0, dot(Nv,Lv));
+    const lit = (0.3 + 0.7*diffuse) * cell.dim;
+
+    let r,g,b,fa;
+
+    if(cell.role==='proton'){
+      const hi = H_HEX_IDX.indexOf(f.fi);
+      const isElecSq = f.fi===H_SQ_IDX;
+      if(hi>=0){
+        const cols=[[180,40,40],[40,160,60],[40,90,200]];
+        [r,g,b]=cols[hi]; fa=fwd>0?0.78:0.07;
+      } else if(isElecSq){
+        [r,g,b]=[180,160,30]; fa=fwd>0?0.75:0.07;
+      } else if(f.type==='hex'){
+        [r,g,b]=[28,55,38]; fa=fwd>0?0.40:0.05;
+      } else {
+        [r,g,b]=[28,40,75]; fa=fwd>0?0.40:0.05;
+      }
+    } else {
+      // Neighbour cell: highlight the shared face in its quark/electron colour
+      const sn = nrm(cell.sharedFaceNormal);
+      const isShared = Math.abs(dot(f.n, sn)-1) < 0.01;
+      if(isShared){
+        [r,g,b]=cell.col; fa=fwd>0?0.65:0.06;
+      } else if(f.type==='hex'){
+        [r,g,b]=[18,35,25]; fa=fwd>0?0.20:0.03;
+      } else {
+        [r,g,b]=[18,25,50]; fa=fwd>0?0.20:0.03;
+      }
+    }
+
+    const lr=Math.round(r*lit), lg=Math.round(g*lit), lb=Math.round(b*lit);
+    const pts = f.idx.map(i=>hprj(VS[i], cell.off));
+    hx.beginPath();
+    hx.moveTo(pts[0].x,pts[0].y);
+    for(let k=1;k<pts.length;k++) hx.lineTo(pts[k].x,pts[k].y);
+    hx.closePath();
+    hx.fillStyle=`rgba(${lr},${lg},${lb},${fa})`;
+    hx.fill();
+
+    // Highlighted face edge outlines
+    if(cell.role==='proton'){
+      const hi=H_HEX_IDX.indexOf(f.fi);
+      const isElecSq=f.fi===H_SQ_IDX;
+      if((hi>=0||isElecSq) && fwd>0.05){
+        const ecols=['#ff5555','#55ff88','#5599ff','#ffee44'];
+        hx.strokeStyle=hi>=0?ecols[hi]:ecols[3]; hx.lineWidth=1.8; hx.stroke();
+      }
+    } else {
+      const sn=nrm(cell.sharedFaceNormal);
+      const isShared=Math.abs(dot(f.n,sn)-1)<0.01;
+      if(isShared && fwd>0.05){
+        hx.strokeStyle=cell.ecol; hx.lineWidth=1.5; hx.stroke();
+      }
+    }
+  }
+
+  // Draw edges for all cells (dim)
+  for(const cell of CELLS){
+    const edgeAlpha = cell.role==='proton' ? 0.45 : 0.18;
+    hx.strokeStyle=`rgba(60,60,110,${edgeAlpha})`; hx.lineWidth=0.6;
+    for(const [a,b] of ES){
+      const pa=hprj(VS[a],cell.off), pb=hprj(VS[b],cell.off);
+      hx.beginPath(); hx.moveTo(pa.x,pa.y); hx.lineTo(pb.x,pb.y); hx.stroke();
+    }
+  }
+
+  // Junction vertex on proton cell
+  const jv = hprj(VS[JUNCTION_V],[0,0,0]);
+  const jg=hx.createRadialGradient(jv.x,jv.y,0,jv.x,jv.y,12);
+  jg.addColorStop(0,'rgba(255,255,200,0.95)'); jg.addColorStop(1,'rgba(255,255,100,0)');
+  hx.beginPath(); hx.arc(jv.x,jv.y,12,0,Math.PI*2); hx.fillStyle=jg; hx.fill();
+  hx.beginPath(); hx.arc(jv.x,jv.y,3,0,Math.PI*2); hx.fillStyle='#ffffcc'; hx.fill();
+  hx.font='bold 10px Georgia'; hx.fillStyle='#ffffaa'; hx.textAlign='left';
+  hx.fillText('junction (2,1,0)',jv.x+7,jv.y+4);
+
+  // Neighbour cell labels at their centres
+  for(const cell of CELLS){
+    if(cell.role==='proton') continue;
+    const cp = hprj([0,0,0], cell.off);
+    hx.font='9px Georgia'; hx.fillStyle=cell.ecol;
+    hx.globalAlpha=0.7; hx.textAlign='center';
+    hx.fillText(cell.lbl.replace('\n',' '), cp.x, cp.y);
+    hx.globalAlpha=1;
+  }
+
+  // ── Quark particles — orbit their hex face on proton cell ──
+  const qLoops = H_HEX_IDX.map(fi=>faceLoop(fi));
+  for(let qi=0;qi<3;qi++){
+    const loop=qLoops[qi], col=QUARK_COLS[qi];
+    const t=hT*(0.85+qi*0.08);
+    const trail=[];
+    for(let k=0;k<20;k++) trail.push(hprj(evalLoop(loop,t-k*0.013),[0,0,0]));
+    for(let k=1;k<trail.length;k++){
+      hx.beginPath(); hx.moveTo(trail[k-1].x,trail[k-1].y); hx.lineTo(trail[k].x,trail[k].y);
+      hx.strokeStyle=col.fill+((1-k/trail.length)*0.6).toFixed(2)+')';
+      hx.lineWidth=col.r*0.45; hx.stroke();
+    }
+    const pp=trail[0], dz=Math.max(0.2,Math.min(1,0.5+pp.z*0.12));
+    const gr=hx.createRadialGradient(pp.x,pp.y,0,pp.x,pp.y,col.r*5);
+    gr.addColorStop(0,col.fill+(0.9*dz).toFixed(2)+')'); gr.addColorStop(1,col.fill+'0)');
+    hx.beginPath(); hx.arc(pp.x,pp.y,col.r*5,0,Math.PI*2); hx.fillStyle=gr; hx.fill();
+    hx.beginPath(); hx.arc(pp.x,pp.y,col.r,0,Math.PI*2);
+    hx.fillStyle=col.stroke; hx.globalAlpha=dz; hx.fill(); hx.globalAlpha=1;
+    hx.font='bold 9px Georgia'; hx.fillStyle=col.stroke;
+    hx.globalAlpha=dz*0.9; hx.textAlign='center';
+    hx.fillText(col.label,pp.x,pp.y-col.r-3); hx.globalAlpha=1;
+  }
+
+  // ── Electron — orbits +x square face on proton cell ──
+  const eLoop=faceLoop(H_SQ_IDX);
+  const eTrail=[];
+  for(let k=0;k<16;k++) eTrail.push(hprj(evalLoop(eLoop,hT*1.35-k*0.016),[0,0,0]));
+  for(let k=1;k<eTrail.length;k++){
+    hx.beginPath(); hx.moveTo(eTrail[k-1].x,eTrail[k-1].y); hx.lineTo(eTrail[k].x,eTrail[k].y);
+    hx.strokeStyle=ELECTRON_COL.fill+((1-k/eTrail.length)*0.6).toFixed(2)+')';
+    hx.lineWidth=ELECTRON_COL.r*0.45; hx.stroke();
+  }
+  const ep=eTrail[0], edz=Math.max(0.2,Math.min(1,0.5+ep.z*0.12));
+  const eg=hx.createRadialGradient(ep.x,ep.y,0,ep.x,ep.y,ELECTRON_COL.r*5);
+  eg.addColorStop(0,ELECTRON_COL.fill+(0.9*edz).toFixed(2)+')'); eg.addColorStop(1,ELECTRON_COL.fill+'0)');
+  hx.beginPath(); hx.arc(ep.x,ep.y,ELECTRON_COL.r*5,0,Math.PI*2); hx.fillStyle=eg; hx.fill();
+  hx.beginPath(); hx.arc(ep.x,ep.y,ELECTRON_COL.r,0,Math.PI*2);
+  hx.fillStyle=ELECTRON_COL.stroke; hx.globalAlpha=edz; hx.fill(); hx.globalAlpha=1;
+  hx.font='bold 9px Georgia'; hx.fillStyle=ELECTRON_COL.stroke;
+  hx.globalAlpha=edz*0.9; hx.textAlign='center';
+  hx.fillText('e⁻',ep.x,ep.y-ELECTRON_COL.r-3); hx.globalAlpha=1;
+
+  // ── Gluons: bounce between quark hex face centres ──
+  for(let gi=0;gi<2;gi++){
+    const fA=qLoops[0], fB=qLoops[gi+1];
+    const gt=((hT*1.3+gi*0.5)%1);
+    const midA=fA.reduce((a,v)=>[a[0]+v[0],a[1]+v[1],a[2]+v[2]],[0,0,0]).map(x=>x/fA.length);
+    const midB=fB.reduce((a,v)=>[a[0]+v[0],a[1]+v[1],a[2]+v[2]],[0,0,0]).map(x=>x/fB.length);
+    const gt2=gt<0.5?gt*2:(1-gt)*2;
+    const gpos=[midA[0]+(midB[0]-midA[0])*gt2,midA[1]+(midB[1]-midA[1])*gt2,midA[2]+(midB[2]-midA[2])*gt2];
+    const gp=hprj(gpos,[0,0,0]);
+    const gg=hx.createRadialGradient(gp.x,gp.y,0,gp.x,gp.y,GLUON_COL.r*4);
+    gg.addColorStop(0,GLUON_COL.fill+'0.85)'); gg.addColorStop(1,GLUON_COL.fill+'0)');
+    hx.beginPath(); hx.arc(gp.x,gp.y,GLUON_COL.r*4,0,Math.PI*2); hx.fillStyle=gg; hx.fill();
+    hx.beginPath(); hx.arc(gp.x,gp.y,GLUON_COL.r,0,Math.PI*2);
+    hx.fillStyle=GLUON_COL.stroke; hx.globalAlpha=0.85; hx.fill(); hx.globalAlpha=1;
+    hx.font='bold 8px Georgia'; hx.fillStyle=GLUON_COL.stroke;
+    hx.textAlign='center'; hx.globalAlpha=0.8;
+    hx.fillText('g',gp.x,gp.y-GLUON_COL.r-2); hx.globalAlpha=1;
+  }
+
+  // ── Photon: electron face centre → junction ──
+  const jpos=VS[JUNCTION_V];
+  const ecentre=eLoop.reduce((a,v)=>[a[0]+v[0],a[1]+v[1],a[2]+v[2]],[0,0,0]).map(x=>x/eLoop.length);
+  const pht=((hT*1.8)%1);
+  const ppos=[ecentre[0]+(jpos[0]-ecentre[0])*pht,ecentre[1]+(jpos[1]-ecentre[1])*pht,ecentre[2]+(jpos[2]-ecentre[2])*pht];
+  const ph=hprj(ppos,[0,0,0]);
+  const phg=hx.createRadialGradient(ph.x,ph.y,0,ph.x,ph.y,PHOTON_COL.r*4);
+  phg.addColorStop(0,PHOTON_COL.fill+'0.9)'); phg.addColorStop(1,PHOTON_COL.fill+'0)');
+  hx.beginPath(); hx.arc(ph.x,ph.y,PHOTON_COL.r*4,0,Math.PI*2); hx.fillStyle=phg; hx.fill();
+  hx.beginPath(); hx.arc(ph.x,ph.y,PHOTON_COL.r,0,Math.PI*2);
+  hx.fillStyle='#fff'; hx.globalAlpha=0.9; hx.fill(); hx.globalAlpha=1;
+  hx.font='bold 8px Georgia'; hx.fillStyle='#fff';
+  hx.textAlign='center'; hx.globalAlpha=0.8;
+  hx.fillText('γ',ph.x,ph.y-PHOTON_COL.r-2); hx.globalAlpha=1;
+
+  // ── Axis indicator ──
+  const ox=W-44,oy=H-44,al=22;
+  [[[1,0,0],'X','#903030'],[[0,1,0],'Y','#309030'],[[0,0,1],'Z','#303090']].forEach(([v,lbl,col])=>{
+    const r=mv(M,v);
+    hx.strokeStyle=col; hx.lineWidth=1.5;
+    hx.beginPath(); hx.moveTo(ox,oy); hx.lineTo(ox+r[0]*al,oy-r[1]*al); hx.stroke();
+    hx.fillStyle=col; hx.font='10px Georgia'; hx.textAlign='center';
+    hx.fillText(lbl,ox+r[0]*al,oy-r[1]*al-3);
+  });
+
+  // ── Legend ──
+  const leg=[
+    ['#ff5555','R quark (u) — proton hex face (+++)'],
+    ['#55ff88','G quark (d) — proton hex face (++-)'],
+    ['#5599ff','B quark (u) — proton hex face (+-+)'],
+    ['#ffee44','electron e⁻ — square face (+x)'],
+    ['#ff77ff','gluon g — strong binding'],
+    ['#ffffff','photon γ — EM binding'],
+    ['#ffffcc','junction (2,1,0) — quark + e⁻ vertex'],
+    ['#888888','dim cells — BCC foam neighbours'],
+  ];
+  hx.font='10px Georgia'; hx.textAlign='left';
+  leg.forEach(([col,txt],i)=>{
+    hx.fillStyle=col; hx.globalAlpha=0.8;
+    hx.beginPath(); hx.arc(18,H-14-i*16,4,0,Math.PI*2); hx.fill();
+    hx.fillStyle='rgba(180,180,220,0.7)';
+    hx.fillText(txt,28,H-10-i*16); hx.globalAlpha=1;
+  });
+
+  hx.font='10px Georgia'; hx.fillStyle='rgba(50,50,100,0.7)'; hx.textAlign='left';
+  hx.fillText('Hydrogen · 1 proton (uud) + 1 electron · 5 foam cells · drag to rotate',14,14);
+
+  if(mode==='hydro') requestAnimationFrame(drawHydrogen);
+}
+
+// Hydrogen drag
+hc.addEventListener('mousedown',e=>{hDrag=true;hLx=e.clientX;hLy=e.clientY;});
+window.addEventListener('mousemove',e=>{
+  if(hDrag&&mode==='hydro'){
+    hRY+=(e.clientX-hLx)*0.011; hRX+=(e.clientY-hLy)*0.011;
+    hLx=e.clientX; hLy=e.clientY;
+  }
+});
+window.addEventListener('mouseup',()=>hDrag=false);
+
+// Hydrogen tab
+document.getElementById('tHydro').addEventListener('click',()=>{
+  mode='hydro';
+  cc.classList.add('off'); bc.classList.remove('on'); tc.classList.remove('on'); hc.classList.add('on');
+  document.getElementById('tHydro').classList.add('on');
+  document.getElementById('tCell').classList.remove('on');
+  document.getElementById('tBub').classList.remove('on');
+  document.getElementById('tTile').classList.remove('on');
+  requestAnimationFrame(drawHydrogen);
+});
+
+// Update other tab clicks to hide hydrogen canvas
+document.getElementById('tCell').addEventListener('click',()=>{ hc.classList.remove('on'); });
+document.getElementById('tBub').addEventListener('click',()=>{ hc.classList.remove('on'); });
+document.getElementById('tTile').addEventListener('click',()=>{ hc.classList.remove('on'); });
+
+// ── Init ─────────────────────────────────────────────────
+initFoam();
+requestAnimationFrame(drawCell);
+</script>
+</body>
+</html>
