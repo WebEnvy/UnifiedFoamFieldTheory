@@ -1664,7 +1664,7 @@ Every coefficient in this expression is a cell-integer ratio:
 
 **Verification.** The foam expression reproduces the known QED value to machine precision (error < 10⁻¹⁵). This is not a fit — all five coefficients are determined by the cell geometry, and the result matches the QED calculation independently performed by Petermann and Sommerfield in 1957.
 
-**Status.** The rational part 197/144 = (F²+1)/(E−V)² is derived from face graph combinatorics. The transcendental coefficients {C_A/4, 1/χ, 1/(E−V)} are identified as cell-integer ratios, and the functional forms {ζ(3), π²ln(χ), π²} are standard outputs of BCC lattice Feynman integrals. The sign structure (+,−,+) is verified numerically. The explicit derivation of each sign from the BZ orientation convention is a computational exercise within established lattice perturbation theory.
+**Status — honest qualification.** Paper #27 (closure of the two-loop programme) proves the identity 197/144 = (2N_gauge² − λ_T2g(F−1))/N_gauge² via the chain foam → QED (Papers #8, #21, #22, #25) → QED's two-loop rational → identity holds. This establishes the relation but imports QED's two-loop calculation as an intermediary. The (F²+1)/(E−V)² rewriting in cell integers is a restatement, not an independent combinatorial derivation — it is consistent with the 197/144 value but does not compute that value from cell integers alone. An independent foam-diagram sum that reproduces 197/144 without QED as an intermediary is defined as a future calculation and remains open. The transcendental coefficients {C_A/4, 1/χ, 1/(E−V)} are identified as cell-integer ratios, and the functional forms {ζ(3), π²ln(χ), π²} are standard outputs of BCC lattice Feynman integrals. The sign structure (+,−,+) is verified numerically. The explicit derivation of each sign from the BZ orientation convention is a computational exercise within established lattice perturbation theory.
 
 ---
 
@@ -2973,7 +2973,7 @@ C₂ = (F² + 1)/(E − V)² + (C_A/4)ζ(3) − (1/χ)π²ln(χ) + π²/(E − V
 
 where χ = 2 is the photon polarization count (2 physical helicity states). Every coefficient is a cell-integer ratio. The rational part (F²+1)/(E−V)² counts ordered face pairs plus the self-energy trace, normalised by the squared independent loop count. The transcendental coefficients {C_A/4, 1/χ, 1/(E−V)} arise from BCC lattice Brillouin zone integrals. The result matches the known QED value to machine precision (< 10⁻¹⁵ relative error). See §16.6 for the full derivation.
 
-**Established:** The rational part 197/144 = (F²+1)/(E−V)² is derived from face graph combinatorics. All five transcendental coefficients are identified as cell-integer ratios. The numerical match is exact. **Closed.**
+**Established:** The rational part 197/144 admits the cell-integer rewritings (F²+1)/(E−V)² and (2N_gauge² − λ_T2g(F−1))/N_gauge² (Paper #27). The second identity is proved via the foam → QED → identity chain. All five transcendental coefficients are identified as cell-integer ratios. The numerical match to Petermann-Sommerfield (1957) is exact. **Partial closure:** the identity is established; an independent foam-diagram sum that reproduces 197/144 without importing QED's two-loop calculation is a defined future calculation and remains open.
 
 ---
 

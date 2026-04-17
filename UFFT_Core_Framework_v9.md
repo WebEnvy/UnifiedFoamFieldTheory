@@ -2287,7 +2287,7 @@ With (1)–(4) granted, the seven cell integers determine the derived observable
 
 > **Seven cell integers + Axiom Zero + L_T identification + one reference scale → 60+ Standard Model and cosmological observables.**
 
-Phrases such as "proven," "theorem," and "derived" below are used in the framework-internal sense: *given (1)–(4), the result is an algebraic or combinatorial consequence.* External reviewers will want to see each of these words audited against whether the step requires only (1)–(4) or also an additional physical identification; the Epistemological Status Table below makes this explicit on a claim-by-claim basis.
+Phrases such as "proven," "theorem," and "derived" below are used in the framework-internal sense: *given (1)–(4), the result is an algebraic or combinatorial consequence.* Any future independent audit will want each of these words checked against whether the step requires only (1)–(4) or also an additional physical identification; the Epistemological Status Table below makes this explicit on a claim-by-claim basis.
 
 ### Levels of completion
 
@@ -2647,7 +2647,7 @@ Publication strategy: hold until (a) Papers 47–50 establish public record for 
 
 | Problem | Status | Path Forward |
 |---------|--------|-------------|
-| g-2 C₂ explicit foam-diagram sum | **CLOSED** | C₂ = (F²+1)/(E−V)² + (C_A/4)ζ(3) − (1/χ_γ)π²ln(χ_γ) + π²/(E−V) = −0.328478966, where χ_γ = 2 is the photon polarization count (distinct from the inert-mode count χ = 2 used in the dark energy and Euler characteristic context). All five coefficients are cell-integer ratios: 197/144, 3/4, −1/2, +1/12, ln2=ln(χ_γ). Matches Petermann-Sommerfield to machine precision. |
+| g-2 C₂ explicit foam-diagram sum | **Partial closure — rational part via foam→QED identity chain (Paper #27), transcendentals identified** | C₂ = (F²+1)/(E−V)² + (C_A/4)ζ(3) − (1/χ_γ)π²ln(χ_γ) + π²/(E−V) = −0.328478966, where χ_γ = 2 is the photon polarization count (distinct from the inert-mode count χ = 2 used in the dark energy and Euler characteristic context). All five coefficients are cell-integer ratios: 197/144, 3/4, −1/2, +1/12, ln2=ln(χ_γ). Matches Petermann-Sommerfield to machine precision. **Honest status:** Paper #27 proves the identity 197/144 = (2N_gauge² − λ_T2g(F−1))/N_gauge² via the chain foam → QED (Papers #8, #21, #22, #25) → QED's two-loop rational → identity holds. This establishes the relation but imports QED's two-loop calculation. An independent foam-diagram sum that reproduces 197/144 without QED as intermediary is defined as a future calculation and remains open. The (F²+1)/(E−V)² representation is a rewriting in cell integers, not an independent combinatorial derivation. |
 | Individual Feynman diagram matching | **CLOSED** | 24 triangles (all HHS = F_hx×C_A) + 42 four-cycles (7×F_sq: 6 chordless HHHH + 24 one-chord HHHS + 12 one-chord HHSS) = 66 = C(E−V,2). Each cycle class maps to a specific SM diagram topology: HHS→fermion loops, HHHH→QCD boxes, HHHS→mixed vertex corrections, HHSS→EW self-energy. Classification exhaustive. |
 | Prefactor 8π^{5/2} formal proof | 95% | Decomposition (4π)^{d/2}×π derived (heat kernel × vertex angle); needs formal matching of lattice proper-time integral |
 | Neutron star mass-radius | 70% | Two-phase EOS (nuclear Γ=2.17, quark Γ=1.5) with proper crust-core matching |
@@ -2919,7 +2919,15 @@ Most recent publications (April 2026):
 
 GitHub: github.com/WebEnvy/UnifiedFoamFieldTheory
 
-Spectrum verification script: confirms all numerical predictions. Runs in under one minute on any laptop. Independent reproduction is invited.
+**Verification scripts** (all runnable in under one minute, no data imported):
+
+- `verification/19079730_UFFT_Spectrum_Verification.py` — face Laplacian spectrum, O_h irrep decomposition, master-equation roots r₁, r₂.
+- `verification/UFFT_Master_Verification_v10.py` — end-to-end reproduction of the major observable table, lepton masses via Koide, quark-mass PDG comparison.
+- `verification/Symanzik_Matching_BCC.py` — O(a²) matching corrections for the BCC lattice (confirms ~10⁻³⁵ at EW scale).
+- `verification/Quark_Walk_Action_Reproducibility.py` — reproduces all six quark masses from the Theorem 36.2 walk-action formulas using only cell integers {V,E,F,|G|,C_A,Δ,F_hx,F_sq} plus M_P. Mean |deviation| from PDG: 0.14%.
+- `verification/LookElsewhere_Harness.py` — brute-force enumeration of candidate formulas in the cell vocabulary (rational in √17, rational multiples of π in sin/cos). Computes hit-density for each UFFT target so a reader can quantify what "0.1% agreement" is worth in this search space. Addresses the external peer-review concern about look-elsewhere degrees of freedom (§3.4 of `peer_review.md`).
+
+Independent reproduction is invited. Any script reporting a deviation greater than the quoted accuracy is evidence that a cell-integer identification or a step-lemma is wrong.
 
 ---
 
