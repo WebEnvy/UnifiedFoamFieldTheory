@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UFFT Lecture 4 — Making Hydrogen</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0e17; color: #c8d0e0; font-family: 'Segoe UI', system-ui, sans-serif; overflow: hidden; }
+  #canvas { width: 100vw; height: 100vh; display: block; }
+
+  #sidebar {
+    position: absolute; top: 0; left: 0; width: 420px; height: 100vh;
+    background: rgba(10,14,23,0.94); border-right: 1px solid rgba(46,109,180,0.25);
+    display: flex; flex-direction: column;
+  }
+  #progress { position: absolute; top: 0; left: 0; width: 420px; height: 3px; background: rgba(91,163,230,0.1); }
+  #progress-bar { height: 100%; width: 0%; background: #5ba3e6; transition: width 0.5s ease; }
+
+  #sidebar-header { padding: 28px 28px 0; }
+  #sidebar-header .lecture-num { font-size: 14px; color: #5a6577; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; }
+  #sidebar-header h1 { font-size: 26px; color: #5ba3e6; font-weight: 600; margin-bottom: 4px; }
+  #sidebar-header .subtitle { font-size: 16px; color: #7a8599; margin-bottom: 16px; }
+
+  #sidebar-content { flex: 1; overflow-y: auto; padding: 0 28px 28px; }
+  #sidebar-content::-webkit-scrollbar { width: 4px; }
+  #sidebar-content::-webkit-scrollbar-track { background: transparent; }
+  #sidebar-content::-webkit-scrollbar-thumb { background: rgba(91,163,230,0.2); border-radius: 2px; }
+
+  .step {
+    position: relative; margin-bottom: 20px; padding: 16px; border-radius: 8px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.4s ease;
+  }
+  .step.active { background: rgba(91,163,230,0.06); border-color: rgba(91,163,230,0.2); }
+  .step.completed { background: rgba(91,163,230,0.03); border-color: rgba(91,163,230,0.1); opacity: 0.7; }
+  .step.active.completed { background: rgba(74,222,128,0.05); border-color: rgba(74,222,128,0.25); opacity: 1; }
+  .step .step-num { font-size: 14px; color: #5ba3e6; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+  .step h3 { font-size: 18px; color: #dde3ef; margin-bottom: 8px; font-weight: 500; }
+  .step p { font-size: 16px; line-height: 1.7; color: #8a9ab5; }
+  .step .instruction { margin-top: 10px; padding: 10px 14px; border-radius: 5px; background: rgba(91,163,230,0.08); font-size: 14px; color: #5ba3e6; }
+  .step .check {
+    position: absolute; top: 12px; right: 12px; width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid rgba(91,163,230,0.15); display: flex; align-items: center; justify-content: center;
+    transition: all 0.4s ease;
+  }
+  .step .check svg { opacity: 0; transition: opacity 0.3s; }
+  .step.completed .check { border-color: #4ade80; background: rgba(74,222,128,0.15); }
+  .step.completed .check svg { opacity: 1; }
+
+  .toggle-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .toggle-btn {
+    padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);
+    color: #7a8599; transition: all 0.3s; display: flex; align-items: center; gap: 8px;
+  }
+  .toggle-btn:hover { background: rgba(255,255,255,0.06); }
+  .toggle-btn.on { border-color: currentColor; opacity: 1; }
+  .toggle-btn .dot { width: 12px; height: 12px; border-radius: 50%; }
+
+  #nav-buttons { padding: 16px 28px 24px; display: flex; gap: 10px; }
+  .nav-btn {
+    flex: 1; padding: 12px; border: 1px solid rgba(91,163,230,0.3); border-radius: 6px;
+    background: rgba(91,163,230,0.08); color: #5ba3e6; font-size: 14px; cursor: pointer;
+    transition: all 0.2s; text-align: center; text-decoration: none;
+  }
+  .nav-btn:hover { background: rgba(91,163,230,0.15); }
+  .nav-btn.primary { background: rgba(91,163,230,0.2); font-weight: 600; }
+
+  #axiom { position: absolute; bottom: 24px; right: 24px; font-size: 28px; font-weight: 700; color: rgba(91,163,230,0.12); letter-spacing: 4px; }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div id="sidebar">
+  <div id="progress"><div id="progress-bar"></div></div>
+  <div id="sidebar-header">
+    <div class="lecture-num">Lecture 4 of 8</div>
+    <h1>Making Hydrogen</h1>
+    <div class="subtitle">Six vibrations on one cell</div>
+  </div>
+  <div id="sidebar-content">
+    <div class="step active" id="step-0">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 1</div>
+      <h3>The electron</h3>
+      <p>Start with one T₁ᵤ dipole — the electron from Lecture 3. Two hex faces glow pink.</p>
+      <div class="toggle-row">
+        <button class="toggle-btn on" id="tog-electron" onclick="toggleMode('electron')" style="color:#ff6b9d"><div class="dot" style="background:#ff6b9d"></div>Electron</button>
+      </div>
+    </div>
+    <div class="step" id="step-1">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 2</div>
+      <h3>Three quarks</h3>
+      <p>Add three more T₁ᵤ modes — one for each quark. Each gets two hex faces. Red, green, blue: the three colours of the strong force.</p>
+      <div class="toggle-row">
+        <button class="toggle-btn" id="tog-red" onclick="toggleMode('red')" style="color:#ff4444"><div class="dot" style="background:#ff4444"></div>Up (red)</button>
+        <button class="toggle-btn" id="tog-green" onclick="toggleMode('green')" style="color:#44cc44"><div class="dot" style="background:#44cc44"></div>Up (green)</button>
+        <button class="toggle-btn" id="tog-blue" onclick="toggleMode('blue')" style="color:#4488ff"><div class="dot" style="background:#4488ff"></div>Down (blue)</button>
+      </div>
+    </div>
+    <div class="step" id="step-2">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 3</div>
+      <h3>The glue</h3>
+      <p>The T₂g colour lock mode (λ = 7) binds the quarks. Watch the golden shimmer spread across quark faces — that's the strong force holding them together.</p>
+      <div class="toggle-row">
+        <button class="toggle-btn" id="tog-colour" onclick="toggleMode('colour')" style="color:#ffaa00"><div class="dot" style="background:#ffaa00"></div>Colour lock (T₂g)</button>
+      </div>
+    </div>
+    <div class="step" id="step-3">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 4</div>
+      <h3>The binding</h3>
+      <p>Finally, A₁g electromagnetic binding — a white shimmer across all 14 faces. This is the force that holds the electron to the proton.</p>
+      <p style="margin-top:8px;color:#5ba3e6;">Hydrogen is six vibrations on one cell. Four particles, two binding forces. Everything you see around you is patterns like this.</p>
+      <div class="toggle-row">
+        <button class="toggle-btn" id="tog-em" onclick="toggleMode('em')" style="color:#ffffff"><div class="dot" style="background:#ffffff; border:1px solid #555"></div>EM binding (A₁g)</button>
+      </div>
+    </div>
+  </div>
+  <div id="nav-buttons">
+    <a href="lecture_03_making_an_electron.html" class="nav-btn">← Lecture 3</a>
+    <a href="lecture_05_how_patterns_spread.html" class="nav-btn primary">Lecture 5 →</a>
+  </div>
+</div>
+<div id="axiom">B + V = D</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ========= Setup =========
+const canvas = document.getElementById('canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const scene = new THREE.Scene();
+const SIDEBAR_W = 420;
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
+camera.position.set(5, 3.5, 5);
+camera.lookAt(0,0,0);
+
+function applyCameraOffset() {
+  const w = window.innerWidth, h = window.innerHeight;
+  camera.aspect = w / h;
+  camera.setViewOffset(w, h, -SIDEBAR_W/2, 0, w, h);
+  camera.updateProjectionMatrix();
+}
+applyCameraOffset();
+
+scene.add(new THREE.AmbientLight(0x334466, 0.6));
+const dl = new THREE.DirectionalLight(0x88aacc, 0.8); dl.position.set(5,8,5); scene.add(dl);
+const dl2 = new THREE.DirectionalLight(0x5577aa, 0.4); dl2.position.set(-3,-2,-5); scene.add(dl2);
+
+// ========= Truncated Octahedron =========
+const S = 0.65;
+function getTOVerts(s) {
+  const v = [];
+  for (let i=0;i<3;i++) for (let s1 of [1,-1]) for (let s2 of [1,-1]) {
+    const a=[0,0,0]; a[(i+1)%3]=s1; a[(i+2)%3]=s2*2;
+    v.push(new THREE.Vector3(a[0]*s,a[1]*s,a[2]*s));
+    const b=[0,0,0]; b[(i+1)%3]=s1*2; b[(i+2)%3]=s2;
+    v.push(new THREE.Vector3(b[0]*s,b[1]*s,b[2]*s));
+  }
+  const u=[]; for (const p of v) { if (!u.find(q=>q.distanceTo(p)<0.01*s)) u.push(p); } return u;
+}
+
+function orderPoly(verts, normal) {
+  const c=new THREE.Vector3(); verts.forEach(v=>c.add(v)); c.divideScalar(verts.length);
+  const n=normal.clone().normalize();
+  let t=new THREE.Vector3(1,0,0); if(Math.abs(n.dot(t))>0.9) t=new THREE.Vector3(0,1,0);
+  const u=new THREE.Vector3().crossVectors(n,t).normalize();
+  const w=new THREE.Vector3().crossVectors(n,u).normalize();
+  return verts.slice().sort((a,b)=>{
+    const da=new THREE.Vector3().subVectors(a,c), db=new THREE.Vector3().subVectors(b,c);
+    return Math.atan2(da.dot(w),da.dot(u))-Math.atan2(db.dot(w),db.dot(u));
+  });
+}
+
+function buildFace(fv, normal, color, opacity) {
+  const ordered=orderPoly(fv,normal);
+  const center=new THREE.Vector3(); ordered.forEach(v=>center.add(v)); center.divideScalar(ordered.length);
+  const geo=new THREE.BufferGeometry(); const pos=[];
+  for(let i=1;i<ordered.length-1;i++){
+    pos.push(ordered[0].x-center.x,ordered[0].y-center.y,ordered[0].z-center.z,
+             ordered[i].x-center.x,ordered[i].y-center.y,ordered[i].z-center.z,
+             ordered[i+1].x-center.x,ordered[i+1].y-center.y,ordered[i+1].z-center.z);
+  }
+  geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
+  geo.computeVertexNormals();
+  const mat=new THREE.MeshPhongMaterial({color,transparent:true,opacity,side:THREE.DoubleSide,shininess:40,specular:0x224466});
+  const mesh=new THREE.Mesh(geo,mat);
+  const group=new THREE.Group(); group.add(mesh); group.position.copy(center); scene.add(group);
+  return {group,mesh,mat,center:center.clone(),normal:normal.clone().normalize()};
+}
+
+const verts = getTOVerts(S);
+
+// Build hex faces (normals ±1,±1,±1)
+const hexFaces = [];
+for(let sx of [1,-1]) for(let sy of [1,-1]) for(let sz of [1,-1]){
+  const n=new THREE.Vector3(sx,sy,sz);
+  const fv=verts.filter(v=>Math.abs(n.x*v.x+n.y*v.y+n.z*v.z-3*S)<0.01*S);
+  if(fv.length===6) hexFaces.push(buildFace(fv,n,0x2a5a7a,0.3));
+}
+
+// Build square faces (normals ±x,±y,±z)
+const sqFaces = [];
+for(let a=0;a<3;a++) for(let s of [1,-1]){
+  const n=new THREE.Vector3(); n.setComponent(a,s);
+  const fv=verts.filter(v=>Math.abs(v.getComponent(a)-s*2*S)<0.01*S);
+  if(fv.length===4) sqFaces.push(buildFace(fv,n,0x1a3050,0.2));
+}
+
+// Wireframe
+const edgeSet=new Set();
+for(let i=0;i<verts.length;i++) for(let j=i+1;j<verts.length;j++){
+  if(Math.abs(verts[i].distanceTo(verts[j])-Math.sqrt(2)*S)<0.05*S){
+    if(!edgeSet.has(`${i}-${j}`)){
+      edgeSet.add(`${i}-${j}`);
+      scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([verts[i],verts[j]]),
+        new THREE.LineBasicMaterial({color:0x3a5a7a,transparent:true,opacity:0.4})));
+    }
+  }
+}
+// Vertex dots
+verts.forEach(v=>{
+  const d=new THREE.Mesh(new THREE.SphereGeometry(0.02,6,6),new THREE.MeshBasicMaterial({color:0x5ba3e6,transparent:true,opacity:0.4}));
+  d.position.copy(v); scene.add(d);
+});
+
+// ========= Mode Assignment =========
+// 8 hex faces: 2 per particle
+// Assignment: hex 0,1 = red quark; 2,3 = green; 4,5 = blue; 6,7 = electron
+const hexAssign = ['red','red','green','green','blue','blue','electron','electron'];
+const modeColors = {
+  electron: 0xff6b9d, red: 0xff4444, green: 0x44cc44, blue: 0x4488ff,
+  colour: 0xffaa00, em: 0xffffff
+};
+
+const modes = { electron: true, red: false, green: false, blue: false, colour: false, em: false };
+
+// ========= Step Logic =========
+let currentStep = 0;
+const totalSteps = 4;
+const stepsCompleted = new Set();
+
+function completeStep(n) {
+  if(stepsCompleted.has(n)) return;
+  stepsCompleted.add(n);
+  updateStepClasses();
+  document.getElementById('progress-bar').style.width = (stepsCompleted.size/totalSteps*100)+'%';
+  setTimeout(()=>{
+    let next=-1;
+    for(let i=0;i<totalSteps;i++){if(!stepsCompleted.has(i)){next=i;break;}}
+    if(next>=0&&next!==currentStep){currentStep=next;updateStepClasses();
+      document.getElementById('step-'+currentStep).scrollIntoView({behavior:'smooth',block:'nearest'});}
+  },500);
+}
+
+function updateStepClasses(){
+  for(let i=0;i<totalSteps;i++){
+    const el=document.getElementById('step-'+i);
+    if(i===currentStep) el.className='step active'+(stepsCompleted.has(i)?' completed':'');
+    else if(stepsCompleted.has(i)) el.className='step completed';
+    else el.className='step';
+  }
+}
+
+function toggleMode(name) {
+  modes[name] = !modes[name];
+  const btn = document.getElementById('tog-'+name);
+  btn.classList.toggle('on', modes[name]);
+
+  // Step completion logic
+  if(name==='electron' && modes.electron) completeStep(0);
+  if((name==='red'||name==='green'||name==='blue') && modes.red && modes.green && modes.blue) completeStep(1);
+  if(name==='colour' && modes.colour) completeStep(2);
+  if(name==='em' && modes.em) completeStep(3);
+}
+
+// Auto-complete step 0 since electron starts on
+setTimeout(()=>completeStep(0), 2000);
+
+// ========= Orbit Controls =========
+let isDragging=false, prevMouse={x:0,y:0};
+let spherical={theta:Math.PI/4, phi:Math.PI/6, radius:7.5};
+
+function updateCamera(){
+  camera.position.x=spherical.radius*Math.sin(spherical.phi+Math.PI/2)*Math.cos(spherical.theta);
+  camera.position.y=spherical.radius*Math.cos(spherical.phi+Math.PI/2);
+  camera.position.z=spherical.radius*Math.sin(spherical.phi+Math.PI/2)*Math.sin(spherical.theta);
+  camera.lookAt(0,0,0);
+}
+updateCamera();
+
+canvas.addEventListener('pointerdown',e=>{if(e.button===0){isDragging=true;prevMouse={x:e.clientX,y:e.clientY};}});
+canvas.addEventListener('pointermove',e=>{
+  if(isDragging){
+    spherical.theta-=(e.clientX-prevMouse.x)*0.005;
+    spherical.phi=Math.max(-Math.PI/2.2,Math.min(Math.PI/2.2,spherical.phi-(e.clientY-prevMouse.y)*0.005));
+    prevMouse={x:e.clientX,y:e.clientY}; updateCamera();
+  }
+});
+canvas.addEventListener('pointerup',()=>{isDragging=false;});
+canvas.addEventListener('wheel',e=>{spherical.radius=Math.max(4,Math.min(15,spherical.radius+e.deltaY*0.005));updateCamera();});
+
+// ========= Animation =========
+function animate(){
+  requestAnimationFrame(animate);
+  const t = Date.now()*0.001;
+
+  hexFaces.forEach((f,i)=>{
+    const assign = hexAssign[i];
+    let color = 0x2a5a7a;
+    let opacity = 0.15;
+    let emissive = 0x000000;
+    let emInt = 0;
+
+    // Fermion mode
+    if(modes[assign]){
+      color = modeColors[assign];
+      opacity = 0.55 + 0.2*Math.sin(t*2+i*0.5);
+      emissive = color;
+      emInt = 0.15;
+    }
+
+    // T₂g colour lock: golden shimmer on quark faces
+    if(modes.colour && assign!=='electron' && modes[assign]){
+      const base = new THREE.Color(color);
+      const gold = new THREE.Color(0xffaa00);
+      base.lerp(gold, 0.3+0.15*Math.sin(t*3+i*0.7));
+      f.mat.color.copy(base);
+      opacity += 0.1;
+      emissive = 0xffaa00;
+      emInt = 0.2+0.1*Math.sin(t*3+i);
+    } else {
+      f.mat.color.setHex(color);
+    }
+
+    // A₁g EM: white shimmer on ALL faces
+    if(modes.em){
+      const c = f.mat.color.clone();
+      c.lerp(new THREE.Color(0xffffff), 0.08+0.04*Math.sin(t*1.5));
+      f.mat.color.copy(c);
+      opacity = Math.max(opacity, 0.4);
+    }
+
+    f.mat.opacity = opacity;
+    f.mat.emissive.setHex(emissive);
+    f.mat.emissiveIntensity = emInt;
+  });
+
+  sqFaces.forEach((f,i)=>{
+    let opacity = 0.1;
+    let color = 0x1a3050;
+
+    // Electron T₁u has small amplitude on square faces
+    if(modes.electron){
+      color = 0x993366;
+      opacity = 0.25+0.1*Math.sin(t*2+i*0.8);
+    }
+
+    // A₁g EM on squares too
+    if(modes.em){
+      const c = new THREE.Color(color);
+      c.lerp(new THREE.Color(0xffffff), 0.1+0.05*Math.sin(t*1.5));
+      f.mat.color.copy(c);
+      opacity = Math.max(opacity, 0.35);
+    } else {
+      f.mat.color.setHex(color);
+    }
+    f.mat.opacity = opacity;
+  });
+
+  // Gentle auto-rotate
+  if(!isDragging){ spherical.theta+=0.0008; updateCamera(); }
+  renderer.render(scene,camera);
+}
+animate();
+
+// ========= Resize =========
+window.addEventListener('resize',()=>{renderer.setSize(window.innerWidth,window.innerHeight);applyCameraOffset();});
+
+// ========= Keyboard =========
+document.addEventListener('keydown',e=>{
+  if(e.key===' '){e.preventDefault();}
+});
+</script>
+</body>
+</html>

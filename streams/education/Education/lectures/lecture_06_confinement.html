@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UFFT Lecture 6 — Confinement</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #050810; color: #c8d0e0; font-family: 'Segoe UI', system-ui, sans-serif; overflow: hidden; }
+  #canvas { width: 100vw; height: 100vh; display: block; }
+
+  #ui {
+    position: absolute; top: 0; left: 0; width: 420px; height: 100vh;
+    background: rgba(5,8,16,0.95); border-right: 1px solid rgba(46,109,180,0.2);
+    padding: 24px; overflow-y: auto;
+  }
+  #ui::-webkit-scrollbar { width: 4px; }
+  #ui::-webkit-scrollbar-track { background: transparent; }
+  #ui::-webkit-scrollbar-thumb { background: rgba(91,163,230,0.2); border-radius: 2px; }
+
+  .lecture-num { font-size: 14px; color: #5a6577; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; }
+  #ui h1 { font-size: 26px; color: #ff4444; margin-bottom: 4px; font-weight: 600; }
+  #ui h2 { font-size: 16px; color: #7a8599; margin-bottom: 16px; font-weight: 400; }
+  #ui h3 { font-size: 14px; color: #5ba3e6; text-transform: uppercase; letter-spacing: 2px; margin: 18px 0 8px; }
+
+  .row { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 14px; color: #7a8a9f; }
+  .row input[type=range] { flex: 1; accent-color: #5ba3e6; }
+  .row .val { width: 44px; text-align: right; color: #5ba3e6; font-variant-numeric: tabular-nums; font-size: 14px; }
+
+  .quark-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 10px; margin: 3px; border-radius: 5px; font-size: 14px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  }
+  .quark-tag .cd { width: 12px; height: 12px; border-radius: 50%; }
+
+  .info {
+    margin-top: 12px; padding: 12px; background: rgba(91,163,230,0.04);
+    border: 1px solid rgba(91,163,230,0.1); border-radius: 6px;
+    font-size: 14px; line-height: 1.7; color: #8a9ab5;
+  }
+  .info strong { color: #5ba3e6; }
+
+  #energy-bar-wrap {
+    margin: 12px 0; padding: 12px; background: rgba(255,170,0,0.05);
+    border: 1px solid rgba(255,170,0,0.15); border-radius: 6px;
+  }
+  #energy-label { font-size: 14px; color: #aa8844; margin-bottom: 6px; }
+  #energy-track { height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  #energy-fill { height: 100%; width: 5%; background: linear-gradient(90deg, #ffaa00, #ff4444); border-radius: 4px; transition: width 0.1s; }
+  #energy-val { font-size: 14px; color: #cc8833; margin-top: 4px; text-align: right; font-variant-numeric: tabular-nums; }
+  #snap-msg {
+    display: none; margin-top: 8px; padding: 10px 12px;
+    background: rgba(255,60,60,0.1); border: 1px solid rgba(255,60,60,0.3);
+    border-radius: 6px; font-size: 16px; color: #ff6666; text-align: center; font-weight: 600;
+  }
+
+  .nav-links { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(91,163,230,0.1); display: flex; gap: 10px; }
+  .nav-link {
+    flex: 1; padding: 12px; border: 1px solid rgba(91,163,230,0.3); border-radius: 6px;
+    background: rgba(91,163,230,0.08); color: #5ba3e6; font-size: 14px;
+    text-align: center; text-decoration: none; transition: all 0.2s;
+  }
+  .nav-link:hover { background: rgba(91,163,230,0.15); }
+
+  #axiom {
+    position: absolute; bottom: 24px; right: 24px;
+    font-size: 28px; font-weight: 700; color: rgba(91,163,230,0.12);
+    letter-spacing: 4px;
+  }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<div id="ui">
+  <div class="lecture-num">Lecture 6 of 8</div>
+  <h1>Confinement</h1>
+  <h2>Why you can never free a quark</h2>
+
+  <div style="display:flex; flex-wrap:wrap; margin: 8px 0;">
+    <div class="quark-tag"><div class="cd" style="background:#ff4444"></div> up (red)</div>
+    <div class="quark-tag"><div class="cd" style="background:#44cc44"></div> up (green)</div>
+    <div class="quark-tag"><div class="cd" style="background:#4488ff"></div> down (blue)</div>
+  </div>
+
+  <h3>Confinement Test</h3>
+  <div class="row">
+    <span>Pull red quark</span>
+    <input type="range" id="stretch" min="0" max="1" step="0.005" value="0">
+    <span class="val" id="stretch-val">0%</span>
+  </div>
+
+  <div id="energy-bar-wrap">
+    <div id="energy-label">Flux tube potential energy</div>
+    <div id="energy-track"><div id="energy-fill"></div></div>
+    <div id="energy-val">V(r) = σr → 0 MeV</div>
+  </div>
+  <div id="snap-msg">STRING BREAK — qq̄ pair produced!<br>Can't isolate a single colour.</div>
+
+  <h3>Display</h3>
+  <div class="row">
+    <span>Vibration</span>
+    <input type="range" id="vib" min="0" max="0.4" step="0.01" value="0.15">
+    <span class="val" id="vib-val">0.15</span>
+  </div>
+  <div class="row">
+    <span>Speed</span>
+    <input type="range" id="spd" min="0.2" max="3" step="0.1" value="1.0">
+    <span class="val" id="spd-val">1.0×</span>
+  </div>
+
+  <div class="info">
+    <strong>Y-junction topology:</strong> The junction cell at the centre is where three T₂g flux tubes meet. Each tube connects to one quark through a shared hexagonal face.<br><br>
+    <strong>The gold glow</strong> on shared faces is the colour field — gluons. It oscillates at √7 ≈ 2.65× the base frequency.<br><br>
+    <strong>Pull the red quark</strong> to see confinement in action. Energy rises linearly with distance (V = σr). At ~1 GeV the string snaps and a new quark-antiquark pair materialises from the vacuum — you can never isolate a single colour charge.
+  </div>
+
+  <div class="info" style="margin-top: 8px;">
+    <strong>5 dormant neighbours</strong> surround the junction — they share hex faces too, but T₂g only flows along the three colour channels. That selectivity is what makes exactly 3 colours, not 8.
+  </div>
+
+  <div class="nav-links">
+    <a href="lecture_05_how_patterns_spread.html" class="nav-link">← Lecture 5</a>
+    <a href="lecture_07_particles_to_cosmos.html" class="nav-link">Lecture 7 →</a>
+  </div>
+</div>
+
+<div id="axiom">B + V = D</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const canvas = document.getElementById('canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x050810);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
+camera.position.set(6, 4.5, 6);
+camera.lookAt(0, 0, 0);
+
+scene.add(new THREE.AmbientLight(0x445566, 0.7));
+const dl1 = new THREE.DirectionalLight(0x99bbdd, 1.0); dl1.position.set(5,10,5); scene.add(dl1);
+const dl2 = new THREE.DirectionalLight(0x556677, 0.5); dl2.position.set(-4,-3,-5); scene.add(dl2);
+const dl3 = new THREE.DirectionalLight(0x445566, 0.4); dl3.position.set(0,-5,0); scene.add(dl3);
+
+// === Cell geometry ===
+const S = 0.5;
+const r1 = (9 - Math.sqrt(17)) / 2;
+
+function makeVerts(offset) {
+  const raw = [];
+  for (let i = 0; i < 3; i++) for (const s1 of [1,-1]) for (const s2 of [1,-1]) {
+    let a=[0,0,0]; a[i]=0; a[(i+1)%3]=s1; a[(i+2)%3]=s2*2; raw.push(new THREE.Vector3(...a));
+    let b=[0,0,0]; b[i]=0; b[(i+1)%3]=s1*2; b[(i+2)%3]=s2; raw.push(new THREE.Vector3(...b));
+  }
+  const u = [];
+  for (const v of raw) { if (!u.find(w => w.distanceTo(v)<0.01)) u.push(v); }
+  u.forEach(v => v.multiplyScalar(S).add(offset));
+  return u;
+}
+
+function orderPoly(verts, normal) {
+  const c = new THREE.Vector3(); verts.forEach(v=>c.add(v)); c.divideScalar(verts.length);
+  const n = normal.clone().normalize();
+  let t = new THREE.Vector3(1,0,0); if(Math.abs(n.dot(t))>0.9) t.set(0,1,0);
+  const u = new THREE.Vector3().crossVectors(n,t).normalize();
+  const w = new THREE.Vector3().crossVectors(n,u).normalize();
+  return verts.slice().sort((a,b)=>{
+    const da=new THREE.Vector3().subVectors(a,c), db=new THREE.Vector3().subVectors(b,c);
+    return Math.atan2(da.dot(w),da.dot(u))-Math.atan2(db.dot(w),db.dot(u));
+  });
+}
+
+function buildCell(offset, role) {
+  const verts = makeVerts(offset);
+  const cell = { hex:[], sq:[], edges:[], group: new THREE.Group(), offset: offset.clone(), role, verts };
+
+  // Hex faces
+  for (const sx of [1,-1]) for (const sy of [1,-1]) for (const sz of [1,-1]) {
+    const n = new THREE.Vector3(sx,sy,sz);
+    const fv = verts.filter(v => {
+      const r = v.clone().sub(offset);
+      return Math.abs(sx*r.x+sy*r.y+sz*r.z - 3*S) < 0.03*S;
+    });
+    if (fv.length===6) {
+      const ordered = orderPoly(fv, n);
+      const c = new THREE.Vector3(); ordered.forEach(v=>c.add(v)); c.divideScalar(6);
+      const inset = c.clone().sub(offset).normalize().multiplyScalar(-0.002);
+      const pos = [];
+      for (let i=1;i<ordered.length-1;i++) for(const p of [ordered[0],ordered[i],ordered[i+1]])
+        pos.push(p.x+inset.x, p.y+inset.y, p.z+inset.z);
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.Float32BufferAttribute(pos,3));
+      geo.computeVertexNormals();
+      const mat = new THREE.MeshPhongMaterial({
+        color:0x0a1520, transparent:true, opacity:0.15, side:THREE.DoubleSide,
+        shininess:40, specular:0x223344, depthWrite:false
+      });
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.userData = { normal:n.clone(), center:c.clone(), type:'hex', basePos: pos.slice() };
+      cell.hex.push(mesh);
+      cell.group.add(mesh);
+    }
+  }
+
+  // Square faces
+  for (let ax=0;ax<3;ax++) for(const sg of [1,-1]) {
+    const n = new THREE.Vector3(); n.setComponent(ax,sg);
+    const fv = verts.filter(v => Math.abs(v.clone().sub(offset).getComponent(ax)-sg*2*S)<0.03*S);
+    if(fv.length===4){
+      const ordered = orderPoly(fv,n);
+      const c = new THREE.Vector3(); ordered.forEach(v=>c.add(v)); c.divideScalar(4);
+      const inset = c.clone().sub(offset).normalize().multiplyScalar(-0.002);
+      const pos=[];
+      for(let i=1;i<ordered.length-1;i++) for(const p of [ordered[0],ordered[i],ordered[i+1]])
+        pos.push(p.x+inset.x, p.y+inset.y, p.z+inset.z);
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.Float32BufferAttribute(pos,3));
+      geo.computeVertexNormals();
+      const mat = new THREE.MeshPhongMaterial({
+        color:0x0e1825, transparent:true, opacity:0.12, side:THREE.DoubleSide,
+        shininess:20, specular:0x112233, depthWrite:false
+      });
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.userData = { normal:n.clone(), center:c.clone(), type:'sq' };
+      cell.sq.push(mesh);
+      cell.group.add(mesh);
+    }
+  }
+
+  // Edges
+  const edgeLen = Math.sqrt(2)*S;
+  const isDormant = role === 'dormant';
+  const eMat = new THREE.LineBasicMaterial({
+    color: isDormant ? 0x1a2840 : 0x3a6a90,
+    transparent:true, opacity: isDormant ? 0.2 : 0.5
+  });
+  for(let i=0;i<verts.length;i++) for(let j=i+1;j<verts.length;j++) {
+    if(Math.abs(verts[i].distanceTo(verts[j])-edgeLen)<0.05*S){
+      const geo = new THREE.BufferGeometry().setFromPoints([verts[i],verts[j]]);
+      const line = new THREE.Line(geo, eMat.clone());
+      cell.edges.push(line);
+      cell.group.add(line);
+    }
+  }
+
+  // Vertex dots for active cells
+  if (!isDormant) {
+    const dGeo = new THREE.SphereGeometry(0.018, 6, 6);
+    const dMat = new THREE.MeshBasicMaterial({color:0x5bb3dd, transparent:true, opacity:0.6});
+    verts.forEach(v => { const d=new THREE.Mesh(dGeo,dMat); d.position.copy(v); cell.group.add(d); });
+  }
+
+  scene.add(cell.group);
+  return cell;
+}
+
+// === Cell layout ===
+// Y-junction: 3 hex directions at tetrahedral angles
+const hexStep = 2 * S; // BCC hex neighbor distance per component
+const dirs = [
+  new THREE.Vector3(1, 1, 1),    // red arm
+  new THREE.Vector3(1, -1, -1),  // green arm
+  new THREE.Vector3(-1, 1, -1)   // blue arm
+];
+const dirNorms = dirs.map(d => d.clone().normalize());
+
+// Build cells
+const junction = buildCell(new THREE.Vector3(0,0,0), 'junction');
+const quarkCells = dirs.map((d, i) => {
+  const roles = ['quark-red', 'quark-green', 'quark-blue'];
+  return buildCell(d.clone().multiplyScalar(hexStep), roles[i]);
+});
+
+// Extension cells for stretch animation — fill the gap as red moves out
+const extCells = [];
+for (let i = 0; i < 5; i++) {
+  const pos = dirs[0].clone().multiplyScalar(hexStep * (i + 1));
+  const cell = buildCell(pos, 'flux-ext');
+  cell.group.visible = false;
+  extCells.push(cell);
+}
+
+// Dormant hex neighbors (the 5 not used by quarks)
+const allHexDirs = [];
+for(const sx of [1,-1]) for(const sy of [1,-1]) for(const sz of [1,-1])
+  allHexDirs.push(new THREE.Vector3(sx,sy,sz));
+const dormantDirs = allHexDirs.filter(d =>
+  !dirs.some(q => q.x===d.x && q.y===d.y && q.z===d.z)
+);
+const dormantCells = dormantDirs.map(d =>
+  buildCell(d.clone().multiplyScalar(hexStep), 'dormant')
+);
+
+// === Quark colors ===
+const quarkColors = [
+  new THREE.Color(0xff3333), // red
+  new THREE.Color(0x33cc33), // green
+  new THREE.Color(0x3377ff)  // blue
+];
+const goldColor = new THREE.Color(0xffaa00);
+const dimColor = new THREE.Color(0x0a1520);
+const juncGold = new THREE.Color(0x8B6914);
+
+// === Determine which hex face of each cell points toward its neighbor ===
+function facingDir(cell, targetDir) {
+  // Returns index of hex face whose normal is closest to targetDir
+  let best = -1, bestDot = -2;
+  cell.hex.forEach((mesh, i) => {
+    const dot = mesh.userData.normal.dot(targetDir);
+    if (dot > bestDot) { bestDot = dot; best = i; }
+  });
+  return best;
+}
+
+// Junction: find which hex face points toward each quark
+const juncFaceToQuark = dirs.map(d => facingDir(junction, d.clone().normalize()));
+
+// Each quark: find which hex face points back toward junction
+const quarkFaceToJunc = dirs.map((d, i) =>
+  facingDir(quarkCells[i], d.clone().normalize().negate())
+);
+
+// === State ===
+let stretchAmt = 0, vibAmp = 0.15, speed = 1.0, phase = 0;
+let snapped = false;
+
+document.getElementById('stretch').addEventListener('input', e => {
+  stretchAmt = parseFloat(e.target.value);
+  document.getElementById('stretch-val').textContent = Math.round(stretchAmt*100)+'%';
+  snapped = stretchAmt >= 0.95;
+  document.getElementById('snap-msg').style.display = snapped ? 'block' : 'none';
+});
+document.getElementById('vib').addEventListener('input', e => {
+  vibAmp = parseFloat(e.target.value);
+  document.getElementById('vib-val').textContent = vibAmp.toFixed(2);
+});
+document.getElementById('spd').addEventListener('input', e => {
+  speed = parseFloat(e.target.value);
+  document.getElementById('spd-val').textContent = speed.toFixed(1)+'×';
+});
+
+// === Animation ===
+function updateScene(clock) {
+  const t = phase;
+  const stretchDist = stretchAmt * 4; // max 4 cell-widths
+  const numExtVisible = Math.ceil(stretchDist);
+
+  // Move red quark
+  const redBasePos = dirs[0].clone().multiplyScalar(hexStep);
+  const redOffset = dirNorms[0].clone().multiplyScalar(stretchDist * hexStep);
+  const redPos = redBasePos.clone().add(redOffset);
+
+  // Reposition red quark cell
+  const redDelta = redPos.clone().sub(quarkCells[0].offset);
+  quarkCells[0].group.position.copy(redDelta);
+  // Store current position for rendering
+  quarkCells[0]._currentOffset = redPos;
+
+  // Show/hide extension cells
+  extCells.forEach((cell, i) => {
+    cell.group.visible = i < numExtVisible && !snapped;
+  });
+
+  // If snapped, show pair production: new antiquark near break point, new quark beyond
+  if (snapped) {
+    // Show last 2 ext cells as the new qq̄ pair
+    if (extCells.length >= 2) {
+      extCells[0].group.visible = true;
+      extCells[1].group.visible = true;
+      extCells[0].role = 'anti-blue'; // antiquark
+      extCells[1].role = 'new-red';   // new quark
+    }
+  }
+
+  // === Color & animate faces ===
+  const sqrt7 = Math.sqrt(7);
+  const sqrtR1 = Math.sqrt(r1);
+
+  // JUNCTION CELL — gold T₂g on faces pointing to quarks
+  junction.hex.forEach((mesh, fi) => {
+    const isFluxFace = juncFaceToQuark.includes(fi);
+    if (isFluxFace) {
+      const pulse = 0.55 + 0.3 * Math.sin(t * sqrt7 + fi);
+      const stretchGlow = 1 + stretchAmt * 0.5;
+      mesh.material.color.copy(dimColor).lerp(goldColor, pulse * stretchGlow);
+      mesh.material.opacity = 0.4 + pulse * 0.4 * stretchGlow;
+      if (snapped) {
+        // Dim the red-facing tube
+        const isRedFace = fi === juncFaceToQuark[0];
+        if (isRedFace) {
+          mesh.material.opacity *= 0.15;
+          mesh.material.color.lerp(dimColor, 0.85);
+        }
+      }
+    } else {
+      // Dormant hex faces — T₂g does NOT flow here
+      mesh.material.color.copy(dimColor);
+      mesh.material.opacity = 0.1;
+    }
+  });
+  junction.sq.forEach(mesh => {
+    mesh.material.color.setHex(0x0e1825);
+    mesh.material.opacity = 0.08;
+  });
+  junction.edges.forEach(line => {
+    line.material.color.setHex(0x4a8aaa);
+    line.material.opacity = 0.45 + 0.15 * Math.sin(t * sqrt7);
+  });
+
+  // QUARK CELLS — T₁u vibration + T₂g on junction-facing face
+  quarkCells.forEach((cell, qi) => {
+    const qCol = quarkColors[qi];
+    const fluxFace = quarkFaceToJunc[qi];
+
+    cell.hex.forEach((mesh, fi) => {
+      // T₁u fermion vibration — dipole pattern
+      const nDot = mesh.userData.normal.dot(dirNorms[qi]);
+      const fermionAmp = nDot / Math.sqrt(3);
+      const fermionPhase = fermionAmp * Math.sin(t * sqrtR1 + qi * 2.1);
+
+      const col = new THREE.Color(0x0a1520);
+      // Fermion color
+      const fIntensity = 0.3 + 0.25 * (fermionPhase + 1) * 0.5;
+      col.lerp(qCol, fIntensity);
+
+      // Vibration displacement
+      if (vibAmp > 0) {
+        const disp = fermionAmp * Math.sin(t * sqrtR1 + qi * 2.1) * vibAmp;
+        // Shift face verts along normal
+        const posAttr = mesh.geometry.getAttribute('position');
+        const base = mesh.userData.basePos;
+        const n = mesh.userData.normal.clone().normalize();
+        for (let k = 0; k < posAttr.count; k++) {
+          posAttr.array[k*3]   = base[k*3]   + n.x * disp * S;
+          posAttr.array[k*3+1] = base[k*3+1] + n.y * disp * S;
+          posAttr.array[k*3+2] = base[k*3+2] + n.z * disp * S;
+        }
+        posAttr.needsUpdate = true;
+      }
+
+      // Flux face — gold overlay
+      if (fi === fluxFace) {
+        const fluxPulse = 0.45 + 0.35 * Math.sin(t * sqrt7 + qi);
+        const stretchGlow = qi === 0 ? (1 + stretchAmt * 0.8) : 1;
+        col.lerp(goldColor, fluxPulse * stretchGlow);
+        mesh.material.opacity = 0.45 + fluxPulse * 0.4;
+        if (snapped && qi === 0) {
+          col.lerp(dimColor, 0.9);
+          mesh.material.opacity = 0.06;
+        }
+      } else {
+        mesh.material.opacity = 0.2 + Math.abs(fermionPhase) * 0.35;
+      }
+
+      mesh.material.color.copy(col);
+    });
+
+    cell.sq.forEach(mesh => {
+      mesh.material.color.setHex(0x0e1825);
+      mesh.material.opacity = 0.08;
+    });
+
+    cell.edges.forEach(line => {
+      line.material.color.copy(qCol.clone().multiplyScalar(0.5).addScalar(0.1));
+      line.material.opacity = 0.4 + 0.15 * Math.sin(t * sqrtR1 + qi);
+    });
+  });
+
+  // EXTENSION CELLS (flux tube when stretched)
+  extCells.forEach((cell, ei) => {
+    if (!cell.group.visible) return;
+    cell.hex.forEach((mesh, fi) => {
+      const nDot = mesh.userData.normal.dot(dirNorms[0]);
+      const isFlux = Math.abs(nDot) > 0.4; // faces along the tube axis
+      if (isFlux) {
+        const pulse = 0.4 + 0.3 * Math.sin(t * sqrt7 + ei * 1.5 + fi);
+        const tension = 1 + stretchAmt * 1.5; // brighter = more energy
+        if (snapped) {
+          // Pair production coloring
+          if (ei === 0) {
+            // Anti-blue (cyan-ish)
+            mesh.material.color.set(0x0a1520).lerp(new THREE.Color(0x44ddff), pulse * 0.5);
+          } else {
+            // New red
+            mesh.material.color.set(0x0a1520).lerp(new THREE.Color(0xff4444), pulse * 0.4);
+          }
+        } else {
+          mesh.material.color.set(0x0a1520).lerp(goldColor, pulse * 0.6 * tension);
+        }
+        mesh.material.opacity = 0.25 + pulse * 0.35;
+      } else {
+        mesh.material.color.setHex(0x0e1825);
+        mesh.material.opacity = 0.08;
+      }
+    });
+    cell.sq.forEach(m => { m.material.color.setHex(0x0e1825); m.material.opacity = 0.06; });
+    cell.edges.forEach(line => {
+      if (snapped && ei === 0) {
+        line.material.color.setHex(0x226688);
+      } else if (snapped && ei === 1) {
+        line.material.color.setHex(0x662222);
+      } else {
+        line.material.color.setHex(0x5a4a10);
+      }
+      line.material.opacity = 0.15 + stretchAmt * 0.15;
+    });
+  });
+
+  // DORMANT CELLS — visible but muted
+  dormantCells.forEach(cell => {
+    cell.hex.forEach(m => { m.material.color.setHex(0x0e1825); m.material.opacity = 0.08; });
+    cell.sq.forEach(m => { m.material.color.setHex(0x0a1420); m.material.opacity = 0.05; });
+    cell.edges.forEach(l => { l.material.opacity = 0.15; });
+  });
+
+  // Energy bar
+  const energy = stretchAmt * stretchAmt * 0.3 + stretchAmt * 0.7; // roughly linear with distance
+  const energyMeV = Math.round(energy * 1000); // ~1 GeV at max
+  document.getElementById('energy-fill').style.width = (energy * 100) + '%';
+  document.getElementById('energy-val').textContent = snapped
+    ? 'V(r) = σr → SNAP at ~1 GeV'
+    : `V(r) = σr → ${energyMeV} MeV`;
+  const barColor = snapped ? '#ff4444' : '#ffaa00';
+  document.getElementById('energy-fill').style.background = snapped
+    ? 'linear-gradient(90deg, #ff4444, #ff0000)'
+    : 'linear-gradient(90deg, #ffaa00, #ff4444)';
+}
+
+// === Flux tube beam (line connecting junction to quarks through space) ===
+const tubeMat = new THREE.LineBasicMaterial({ color: 0xffaa00, transparent: true, opacity: 0.3, linewidth: 2 });
+const tubeLines = dirs.map(d => {
+  const pts = [new THREE.Vector3(0,0,0), d.clone().multiplyScalar(hexStep)];
+  const geo = new THREE.BufferGeometry().setFromPoints(pts);
+  const line = new THREE.Line(geo, tubeMat.clone());
+  scene.add(line);
+  return line;
+});
+
+function updateTubeLines() {
+  // Update red tube to follow stretched quark
+  const redEnd = dirs[0].clone().multiplyScalar(hexStep * (1 + stretchAmt * 4));
+  const posAttr = tubeLines[0].geometry.getAttribute('position');
+  posAttr.array[3] = redEnd.x; posAttr.array[4] = redEnd.y; posAttr.array[5] = redEnd.z;
+  posAttr.needsUpdate = true;
+
+  tubeLines.forEach((line, i) => {
+    if (snapped && i === 0) {
+      line.material.opacity = 0.03;
+      line.material.color.setHex(0x333333);
+    } else {
+      const pulse = 0.2 + 0.15 * Math.sin(phase * Math.sqrt(7) + i);
+      const tension = i === 0 ? (1 + stretchAmt) : 1;
+      line.material.opacity = pulse * tension;
+      line.material.color.setHex(0xffaa00);
+    }
+  });
+}
+
+// === Orbit ===
+let isDrag=false, prev={x:0,y:0}, rY=0.6, rX=0.35, autoRot=true, zoom=camera.position.length();
+canvas.addEventListener('mousedown',e=>{if(e.clientX>420){isDrag=true;autoRot=false;prev={x:e.clientX,y:e.clientY};}});
+canvas.addEventListener('mousemove',e=>{if(isDrag){rY+=(e.clientX-prev.x)*0.005;rX+=(e.clientY-prev.y)*0.005;rX=Math.max(-1.3,Math.min(1.3,rX));prev={x:e.clientX,y:e.clientY};}});
+canvas.addEventListener('mouseup',()=>isDrag=false);
+canvas.addEventListener('wheel',e=>{zoom*=e.deltaY>0?1.05:0.95;zoom=Math.max(3,Math.min(20,zoom));});
+canvas.addEventListener('touchstart',e=>{if(e.touches.length===1&&e.touches[0].clientX>420){isDrag=true;autoRot=false;prev={x:e.touches[0].clientX,y:e.touches[0].clientY};}});
+canvas.addEventListener('touchmove',e=>{if(isDrag&&e.touches.length===1){rY+=(e.touches[0].clientX-prev.x)*0.005;rX+=(e.touches[0].clientY-prev.y)*0.005;rX=Math.max(-1.3,Math.min(1.3,rX));prev={x:e.touches[0].clientX,y:e.touches[0].clientY};}});
+canvas.addEventListener('touchend',()=>isDrag=false);
+window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight;camera.updateProjectionMatrix();renderer.setSize(window.innerWidth,window.innerHeight);});
+
+function animate() {
+  requestAnimationFrame(animate);
+  phase += 0.016 * speed;
+  if (autoRot) rY += 0.0015;
+  camera.position.set(zoom*Math.sin(rY)*Math.cos(rX), zoom*Math.sin(rX), zoom*Math.cos(rY)*Math.cos(rX));
+  camera.lookAt(0, 0, 0);
+  updateScene(performance.now());
+  updateTubeLines();
+  renderer.render(scene, camera);
+}
+animate();
+</script>
+</body>
+</html>

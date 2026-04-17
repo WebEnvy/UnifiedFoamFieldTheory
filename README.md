@@ -1,9 +1,10 @@
 # Unified Foam Field Theory (UFFT)
 
-**Author:** Luke Martin — Independent Researcher, Sydney, Australia
+**Author:** Luke Martin — Independent Researcher, Newcastle, New South Wales, Australia
+**Contact:** luke@webenvy.com.au · ORCID 0009-0006-3716-5951
 **Priority Date:** 20 February 2026
-**Current Version:** Framework v9 (April 2026)
-**Status:** 50 papers published or pending on Zenodo · Not yet peer reviewed · Independent reproduction invited
+**Current Version:** Framework v10 (April 2026)
+**Status:** 61 papers published on Zenodo · 4 queued for upload · Not yet peer reviewed · Independent reproduction invited
 
 ---
 
@@ -31,7 +32,7 @@ All inputs are topological integers of the truncated octahedron:
 | F_sq | 6 | Square faces |
 | d | 3 | Spatial dimensions |
 | Δ | 17 | Discriminant of master equation |
-| C_A | 3 | Colour number (= F_hx/F − 1) |
+| C_A | 3 | Colour number (= F_hx/F − 1 in the natural normalisation) |
 | r₁ | (9−√17)/2 ≈ 2.438 | Lower T₁u eigenvalue (left-handed fermions) |
 | r₂ | (9+√17)/2 ≈ 6.562 | Upper T₁u eigenvalue (right-handed fermions) |
 
@@ -44,13 +45,17 @@ All inputs are topological integers of the truncated octahedron:
 | Observable | Formula | Accuracy |
 |-----------|---------|----------|
 | α⁻¹ (fine structure) | (4π)^{3/2}π[47/48 + 10/(3·48³) + 22/(3·48⁵)] | 0.3σ from Cs 2018 |
-| sin²θ_W (Weinberg angle) | 3/13 (MS-bar) | 0.3σ |
+| sin²θ_W (EW geometric) | (17 − 3√17)/20 | 0.14% |
 | α_s(M_Z) | C_A² − C_A ln(C_A)/(2π) | 0.01σ |
 | m_H/M_Z | 18/(9+√17) | 0.14% |
 | λ (Cabibbo, NLO) | sin(π/14)(1 + √17/363) | 0.07σ |
+| A (Wolfenstein) | (19+√17)/28 | −0.015σ |
+| R_b (CKM triangle) | (49 − 9√17)/30 | 0.36σ |
+| ρ̄ | R_b cos(δ_CKM) | −0.002σ |
 | δ_PMNS/δ_CKM | = 3 exactly (colour factor C_A) | Novel — testable by DUNE ~2035 |
 | m₁ (neutrino) | = 0 exact theorem | Exact |
 | m₃ (neutrino) | m_e exp(−(11+13√17)/4) | 0.075% |
+| Δm²₃₁/Δm²₂₁ | = 33 (Frobenius = Eisenstein norm) | 0.8σ |
 | Bekenstein area quantum k | = C_A = 3 | Exact |
 | r_p (proton radius) | 4ℏ/(m_p c) | 0.02% |
 
@@ -61,22 +66,34 @@ All inputs are topological integers of the truncated octahedron:
 **δ_PMNS / δ_CKM = 3 exactly.**
 This follows from the colour factor C_A = 3 alone. It is exact, parameter-free, and testable by the DUNE experiment around 2035. If the ratio is confirmed ≠ 3 at >3σ, the framework is falsified.
 
-Full list of 11 falsifiable predictions in `UFFT_Core_Framework_v9.md`.
+Full list of falsifiable predictions in `UFFT_Core_Framework_v9.md`.
 
 ---
 
 ## Repository Structure
 
 ```
-UFFT_Core_Framework_v9.md     ← Canonical framework (57 parts, all derivations)
-papers/                        ← All 50 Zenodo papers (1–46 published, 47–50 pending)
-books/                         ← Full-length books for general and technical readers
-  From_Foam_to_Fermions_v2.md  ← Primary canonical book (most complete)
-  The_Foam_Unites_Us_v4.md
-  The_Shape_of_Everything.md
-verification/                  ← Numerical verification script (zero external data)
-presentations/                 ← Short-form overviews
-explorations/                  ← Connections to adjacent domains (speculative)
+UFFT_Core_Framework_v9.md      ← Canonical framework (77 parts, all derivations)
+From_Foam_to_Fermions.md       ← Self-contained book (44 chapters, narrative + theorems)
+README.md                      ← This file
+LICENSE                        ← CC-BY 4.0 (text/figures) · MIT (code)
+
+papers/                        ← Published Zenodo papers
+  ├── INDEX.md                 ← Master index of all papers with DOIs
+  └── PaperNN_*.md             ← One file per paper, DOI in header
+
+streams/
+  └── education/               ← Explainers, worksheets, decks (per-topic subfolders)
+      ├── Cosmology/
+      ├── Mathematics/
+      ├── Quantum_Foundations/
+      ├── Philosophy/
+      ├── Experimental_Proposals/
+      ├── Materials_Science/
+      ├── Education/           ← General-audience cross-cutting explainers
+      └── presentations/       ← Cross-topic slide decks
+
+verification/                  ← Numerical verification scripts (zero external data)
 ```
 
 ---
@@ -92,18 +109,29 @@ python verification/19079730_UFFT_Spectrum_Verification.py
 
 Runs in under one minute. No external data imported.
 
+For Fedorov-parallelohedron spectral uniqueness:
+
+```bash
+python streams/education/Mathematics/verify_spectra_v2.py
+```
+
+Reproduces all five Fedorov-cell face Laplacian spectra and their characterising identities.
+
 ---
 
 ## Zenodo
 
-Papers 1–46 are published with permanent DOIs. Papers 47–50 are written and pending upload:
+61 papers are published with permanent DOIs. 4 more are queued for upload:
 
-| Paper | Title |
-|-------|-------|
-| 47 | NLO Neutrinos, α_s, M_W |
-| 48 | SM From One Matrix |
-| 49 | Baryon, Bekenstein, Cosmology |
-| 50 | Uniqueness of the Foam Cell |
+| Paper | Title | Status |
+|-------|-------|--------|
+| #62 | Independent Convergence on the Proton Charge Radius and Vacuum Energy Density | Queued |
+| #64 | The Wolfenstein ρ̄ Parameter from the Inter-Type Torsion Operator | Queued |
+| #65 | The Neutrino Mass-Squared Ratio as an Eisenstein Norm | Queued |
+| #66 | The Wolfenstein A Parameter from Face-Spectral Complement | Queued |
+| (math) | Spectral Uniqueness of the Truncated Octahedron Among Fedorov Parallelohedra | Queued |
+
+See `UFFT_Paper_Index.md` for the full list of published papers with DOIs.
 
 ---
 
@@ -111,10 +139,10 @@ Papers 1–46 are published with permanent DOIs. Papers 47–50 are written and 
 
 The framework uses a four-tier classification for all claims:
 
-- **Tier 1 — Mathematical theorems:** m₁ = 0, Koide identity, normal hierarchy, SUSY exclusion
+- **Tier 1 — Mathematical theorems:** m₁ = 0, Koide identity, normal hierarchy, SUSY exclusion, Higgs = A₂u uniquely, sin²θ_W = (17 − 3√17)/20, three-generation theorem, T² = −4·I on T₁u, Eisenstein-norm identity 33 = S² − C_A·P, R_b = r₁²/(r₁r₂ − 1)
 - **Tier 2 — Derived given identifications:** The bulk of 60+ observables
-- **Tier 3 — >1.5σ tension:** ρ̄ parameter (R_b path identified)
-- **Tier 4 — Suggestive/speculative:** Dark energy 6/7 factor, visible spectrum mapping
+- **Tier 3 — >1.5σ tension:** η̄ lever-arm residual (phase sensitivity, not an R_b tension)
+- **Tier 4 — Suggestive/speculative:** Visible spectrum mapping, infinite-nesting cosmology
 
 Full status table in `UFFT_Core_Framework_v9.md`.
 
@@ -122,10 +150,18 @@ Full status table in `UFFT_Core_Framework_v9.md`.
 
 ## AI Disclosure
 
-Developed in collaboration with Claude (Anthropic). All theoretical ideas, physical intuitions, and framework direction: Luke Martin. AI role: numerical computation, derivation verification, formula search, operator construction, document composition. The framework reached 60+ derived observables in approximately five weeks (February–April 2026).
+Developed in collaboration with Claude (Anthropic). All theoretical ideas, physical intuitions, and framework direction: Luke Martin. AI role: numerical computation, derivation verification, formula search, operator construction, document composition.
 
 ---
 
-*Priority Date: 20 February 2026 · Framework v9 · April 2026*
+## License
+
+All text and figures in this repository are released under the Creative Commons Attribution 4.0 International License (CC-BY 4.0). All code is released under the MIT License. Attribute as:
+
+> Martin, L. (2026). *Unified Foam Field Theory*. Zenodo / GitHub. https://github.com/WebEnvy/UnifiedFoamFieldTheory
+
+---
+
+*Priority Date: 20 February 2026 · Framework v10 · April 2026*
 
 **B + V = D**

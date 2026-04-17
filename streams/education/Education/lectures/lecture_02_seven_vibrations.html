@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UFFT Lecture 2 — Seven Ways to Vibrate</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0e17; color: #c8d0e0; font-family: 'Segoe UI', system-ui, sans-serif; overflow: hidden; }
+  #canvas { width: 100vw; height: 100vh; display: block; }
+
+  #sidebar {
+    position: absolute; top: 0; left: 0; width: 420px; height: 100vh;
+    background: rgba(10,14,23,0.94); border-right: 1px solid rgba(46,109,180,0.25);
+    display: flex; flex-direction: column;
+  }
+
+  #progress { position: absolute; top: 0; left: 0; width: 420px; height: 3px; background: rgba(91,163,230,0.1); }
+  #progress-bar { height: 100%; width: 0%; background: #5ba3e6; transition: width 0.5s ease; }
+
+  #sidebar-header { padding: 28px 28px 0; }
+  #sidebar-header .lecture-num { font-size: 14px; color: #5a6577; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; }
+  #sidebar-header h1 { font-size: 26px; color: #5ba3e6; font-weight: 600; margin-bottom: 4px; }
+  #sidebar-header .subtitle { font-size: 16px; color: #7a8599; margin-bottom: 16px; }
+
+  #sidebar-content { flex: 1; overflow-y: auto; padding: 0 28px 28px; }
+  #sidebar-content::-webkit-scrollbar { width: 4px; }
+  #sidebar-content::-webkit-scrollbar-track { background: transparent; }
+  #sidebar-content::-webkit-scrollbar-thumb { background: rgba(91,163,230,0.2); border-radius: 2px; }
+
+  .mode-card {
+    position: relative; margin-bottom: 14px; padding: 16px 16px 16px 52px; border-radius: 8px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer; transition: all 0.3s ease;
+  }
+  .mode-card:hover { background: rgba(255,255,255,0.04); }
+  .mode-card.active { background: rgba(91,163,230,0.08); border-color: rgba(91,163,230,0.3); }
+  .mode-card.visited .check { border-color: #4ade80; background: rgba(74,222,128,0.15); }
+  .mode-card.visited .check svg { opacity: 1; }
+
+  .mode-card .dot {
+    position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+    width: 22px; height: 22px; border-radius: 50%;
+  }
+  .mode-card .check {
+    position: absolute; top: 12px; right: 12px;
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid rgba(91,163,230,0.15);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.4s ease;
+  }
+  .mode-card .check svg { opacity: 0; transition: opacity 0.3s; }
+
+  .mode-card .name { font-size: 16px; color: #dde3ef; font-weight: 500; }
+  .mode-card .details { font-size: 14px; color: #7a8599; margin-top: 4px; line-height: 1.5; }
+  .mode-card .physics { font-size: 14px; color: #5ba3e6; margin-top: 6px; font-weight: 500; }
+
+  #info-panel {
+    margin: 16px 28px; padding: 16px; border-radius: 8px;
+    background: rgba(91,163,230,0.05); border: 1px solid rgba(91,163,230,0.12);
+    font-size: 16px; color: #8a9ab5; line-height: 1.7;
+    transition: all 0.4s;
+  }
+  #info-panel strong { color: #5ba3e6; }
+
+  #eigenvalue-display {
+    margin: 0 28px 8px; padding: 12px 16px; border-radius: 8px;
+    background: rgba(255,255,255,0.02); text-align: center;
+    font-size: 14px; color: #5a6577;
+  }
+  #eigenvalue-display .eigenval { font-size: 28px; font-weight: 700; color: #5ba3e6; font-family: 'Georgia', serif; }
+  #eigenvalue-display .mult { font-size: 14px; color: #7a8599; margin-top: 2px; }
+
+  #nav-buttons { padding: 16px 28px 24px; display: flex; gap: 10px; }
+  .nav-btn {
+    flex: 1; padding: 12px; border: 1px solid rgba(91,163,230,0.3);
+    border-radius: 6px; background: rgba(91,163,230,0.08);
+    color: #5ba3e6; font-size: 14px; cursor: pointer;
+    transition: all 0.2s; text-align: center;
+  }
+  .nav-btn:hover { background: rgba(91,163,230,0.15); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .nav-btn.primary { background: rgba(91,163,230,0.2); font-weight: 600; }
+
+  #tooltip {
+    position: absolute; display: none; padding: 10px 14px;
+    background: rgba(10,14,23,0.95); border: 1px solid rgba(91,163,230,0.4);
+    border-radius: 6px; font-size: 14px; pointer-events: none; z-index: 100;
+    color: #c8d0e0; max-width: 260px; line-height: 1.5;
+  }
+
+  #axiom {
+    position: absolute; bottom: 24px; right: 24px;
+    font-size: 28px; font-weight: 700; color: rgba(91,163,230,0.12);
+    letter-spacing: 4px;
+  }
+
+  #speed-control {
+    margin: 0 28px 12px; display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: #5a6577;
+  }
+  #speed-control input { flex: 1; accent-color: #5ba3e6; }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<div id="sidebar">
+  <div id="progress"><div id="progress-bar"></div></div>
+
+  <div id="sidebar-header">
+    <div class="lecture-num">Lecture 2 of 8</div>
+    <h1>Seven Ways to Vibrate</h1>
+    <div class="subtitle">Every particle and force is a face vibration pattern</div>
+  </div>
+
+  <div id="eigenvalue-display">
+    <div class="eigenval" id="ev-value">—</div>
+    <div class="mult" id="ev-mult">Select a mode</div>
+  </div>
+
+  <div id="sidebar-content"></div>
+
+  <div id="speed-control">
+    <span>Slow</span>
+    <input type="range" id="speed-slider" min="0.2" max="3" step="0.1" value="1">
+    <span>Fast</span>
+  </div>
+
+  <div id="info-panel" id="info-text">
+    Click a mode to see how this shape vibrates. Each vibration pattern is a different particle or force.
+  </div>
+
+  <div id="nav-buttons">
+    <a href="lecture_01_the_shape.html" class="nav-btn" style="text-decoration:none;">← Lecture 1</a>
+    <button class="nav-btn" id="btn-all" onclick="toggleAll()">Show all</button>
+    <a href="lecture_03_making_an_electron.html" class="nav-btn primary" id="btn-next" style="text-decoration:none; opacity:0.5; pointer-events:none;">Lecture 3 →</a>
+  </div>
+</div>
+
+<div id="tooltip"></div>
+<div id="axiom">B + V = D</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ========= Mode Data =========
+// Eigenvectors of the 14×14 face Laplacian of the truncated octahedron
+// Face order: hex0..hex7 (normals ±1,±1,±1), sq0..sq5 (normals ±x,±y,±z)
+// Values = displacement amplitude per face for each eigenmode
+
+const MODES = [
+  {
+    name: 'A₁g', symbol: 'A₁g', eigenvalue: 0, eigenvalueStr: 'λ = 0',
+    multiplicity: 1, multStr: 'Multiplicity: 1',
+    color: 0xffffff, dotColor: '#ffffff',
+    physics: 'Photon / Gravity / EM',
+    desc: 'All 14 faces breathe in and out together. No restoring force — this mode propagates forever. It carries light, gravity, and all electromagnetic forces.',
+    // Uniform: all faces equal
+    ampHex: [1,1,1,1,1,1,1,1], ampSq: [1,1,1,1,1,1]
+  },
+  {
+    name: 'T₁ᵤ (left)', symbol: 'T₁ᵤ', eigenvalue: 2.438, eigenvalueStr: 'λ = (9−√17)/2 ≈ 2.438',
+    multiplicity: 3, multStr: 'Multiplicity: 3 (one per spatial axis)',
+    color: 0xff6b9d, dotColor: '#ff6b9d',
+    physics: 'Left-handed fermions (electron, neutrino, quarks)',
+    desc: 'A dipole pattern — faces push out on one side, pull in on the other. This is matter. The 3-fold multiplicity gives three spatial directions: the three colours of quarks, or spin orientations.',
+    // Dipole along z: hex faces get ±1 by z-component of normal, sq faces get smaller amplitude
+    ampHex: [1,1,-1,-1,1,-1,1,-1], ampSq: [0,0,0,0,0.62,-0.62]
+  },
+  {
+    name: 'Eᵍ', symbol: 'Eᵍ', eigenvalue: 4, eigenvalueStr: 'λ = 4',
+    multiplicity: 2, multStr: 'Multiplicity: 2',
+    color: 0x9966ff, dotColor: '#9966ff',
+    physics: 'Weak force (W and Z bosons)',
+    desc: 'Only the 6 square faces vibrate. The 8 hexagonal faces are completely still. This mode is confined to void boundaries — it carries the weak nuclear force and decays quickly.',
+    ampHex: [0,0,0,0,0,0,0,0], ampSq: [1,-1,1,-1,0,0]
+  },
+  {
+    name: 'T₁ᵤ (right)', symbol: 'T₁ᵤ', eigenvalue: 6.562, eigenvalueStr: 'λ = (9+√17)/2 ≈ 6.562',
+    multiplicity: 3, multStr: 'Multiplicity: 3 (one per spatial axis)',
+    color: 0xff9944, dotColor: '#ff9944',
+    physics: 'Right-handed fermions',
+    desc: 'The second dipole — same pattern, higher frequency. Left and right T₁ᵤ modes have different eigenvalues because the [4,−2;−2,5] block is asymmetric. This asymmetry is why the universe has chirality.',
+    ampHex: [1,1,-1,-1,1,-1,1,-1], ampSq: [0,0,0,0,-1.62,1.62]
+  },
+  {
+    name: 'T₂g', symbol: 'T₂g', eigenvalue: 7, eigenvalueStr: 'λ = 7',
+    multiplicity: 3, multStr: 'Multiplicity: 3 (= the 3 colours)',
+    color: 0x44cc44, dotColor: '#44cc44',
+    physics: 'Strong force (gluons / colour)',
+    desc: 'Hexagonal faces alternate: half push out, half pull in. Square faces are nearly still. This mode dies after one cell — that\'s why the strong force is short-range. Three copies = three colours.',
+    ampHex: [1,-1,1,-1,-1,1,-1,1], ampSq: [0.05,-0.05,0.05,-0.05,0,0]
+  },
+  {
+    name: 'T₂g (flat)', symbol: 'T₂g', eigenvalue: 7, eigenvalueStr: 'λ = 7 (degenerate)',
+    multiplicity: 1, multStr: 'Multiplicity: 1 (extra flat band)',
+    color: 0x888888, dotColor: '#888888',
+    physics: 'Dark matter (geometric, not a particle)',
+    desc: 'Same eigenvalue as the strong force, but a different pattern. This is the flat band — zero group velocity, it doesn\'t propagate. It\'s geometric dark matter: it gravitates but doesn\'t interact with light.',
+    ampHex: [1,-1,-1,1,1,-1,-1,1], ampSq: [0,0,0,0,0,0]
+  },
+  {
+    name: 'A₂ᵤ', symbol: 'A₂ᵤ', eigenvalue: 9, eigenvalueStr: 'λ = 9',
+    multiplicity: 1, multStr: 'Multiplicity: 1',
+    color: 0xffdd44, dotColor: '#ffdd44',
+    physics: 'Higgs field / CP violation',
+    desc: 'The highest mode. Only hexagonal faces vibrate, in a fully antisymmetric pattern — every hex is opposite to its neighbours. This is the Higgs field. Its high eigenvalue gives the Higgs its large mass.',
+    ampHex: [1,-1,-1,1,-1,1,1,-1], ampSq: [0,0,0,0,0,0]
+  }
+];
+
+// ========= Setup =========
+const canvas = document.getElementById('canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const scene = new THREE.Scene();
+const SIDEBAR_W = 420;
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
+camera.position.set(5, 3.5, 5);
+camera.lookAt(0, 0, 0);
+
+function applyCameraOffset() {
+  const w = window.innerWidth, h = window.innerHeight;
+  camera.aspect = w / h;
+  camera.setViewOffset(w, h, -SIDEBAR_W / 2, 0, w, h);
+  camera.updateProjectionMatrix();
+}
+applyCameraOffset();
+
+scene.add(new THREE.AmbientLight(0x334466, 0.6));
+const dirLight = new THREE.DirectionalLight(0x88aacc, 0.8);
+dirLight.position.set(5, 8, 5);
+scene.add(dirLight);
+const dirLight2 = new THREE.DirectionalLight(0x5577aa, 0.4);
+dirLight2.position.set(-3, -2, -5);
+scene.add(dirLight2);
+
+// ========= Truncated Octahedron =========
+const scale = 0.65;
+
+// Vertices
+function getTruncOctVerts(s) {
+  const verts = [];
+  for (let i = 0; i < 3; i++) {
+    for (let s1 of [1,-1]) {
+      for (let s2 of [1,-1]) {
+        const v1 = [0,0,0]; v1[(i+1)%3] = s1; v1[(i+2)%3] = s2*2;
+        verts.push(new THREE.Vector3(v1[0]*s, v1[1]*s, v1[2]*s));
+        const v2 = [0,0,0]; v2[(i+1)%3] = s1*2; v2[(i+2)%3] = s2;
+        verts.push(new THREE.Vector3(v2[0]*s, v2[1]*s, v2[2]*s));
+      }
+    }
+  }
+  const unique = [];
+  for (const v of verts) { if (!unique.find(u => u.distanceTo(v) < 0.01*s)) unique.push(v); }
+  return unique;
+}
+
+const verts = getTruncOctVerts(scale);
+
+function orderPolygon(vertices, normal) {
+  const center = new THREE.Vector3();
+  vertices.forEach(v => center.add(v));
+  center.divideScalar(vertices.length);
+  const n = normal.clone().normalize();
+  let tang = new THREE.Vector3(1,0,0);
+  if (Math.abs(n.dot(tang)) > 0.9) tang = new THREE.Vector3(0,1,0);
+  const u = new THREE.Vector3().crossVectors(n, tang).normalize();
+  const w = new THREE.Vector3().crossVectors(n, u).normalize();
+  return vertices.slice().sort((a,b) => {
+    const da = new THREE.Vector3().subVectors(a, center);
+    const db = new THREE.Vector3().subVectors(b, center);
+    return Math.atan2(da.dot(w), da.dot(u)) - Math.atan2(db.dot(w), db.dot(u));
+  });
+}
+
+// Build faces as groups so we can translate them along their normals
+const faceGroups = []; // {group, meshes, normal, type, index}
+const hexNormals = [];
+for (let sx of [1,-1]) for (let sy of [1,-1]) for (let sz of [1,-1]) hexNormals.push(new THREE.Vector3(sx,sy,sz));
+const sqNormals = [];
+for (let a = 0; a < 3; a++) for (let s of [1,-1]) { const n = new THREE.Vector3(); n.setComponent(a, s); sqNormals.push(n); }
+
+function buildFace(faceVerts, normal, color, opacity) {
+  const ordered = orderPolygon(faceVerts, normal);
+  const center = new THREE.Vector3();
+  ordered.forEach(v => center.add(v));
+  center.divideScalar(ordered.length);
+
+  const group = new THREE.Group();
+  // Face mesh
+  const geo = new THREE.BufferGeometry();
+  const positions = [];
+  for (let i = 1; i < ordered.length - 1; i++) {
+    positions.push(
+      ordered[0].x - center.x, ordered[0].y - center.y, ordered[0].z - center.z,
+      ordered[i].x - center.x, ordered[i].y - center.y, ordered[i].z - center.z,
+      ordered[i+1].x - center.x, ordered[i+1].y - center.y, ordered[i+1].z - center.z
+    );
+  }
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geo.computeVertexNormals();
+  const mat = new THREE.MeshPhongMaterial({
+    color, transparent: true, opacity, side: THREE.DoubleSide,
+    shininess: 40, specular: 0x224466
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  group.add(mesh);
+
+  group.position.copy(center);
+  group.userData.restPos = center.clone();
+  group.userData.normal = normal.clone().normalize();
+  scene.add(group);
+  return { group, mesh, mat, center: center.clone(), normal: normal.clone().normalize() };
+}
+
+const hexFaces = [];
+hexNormals.forEach((n, i) => {
+  const fv = verts.filter(v => Math.abs(n.x*v.x + n.y*v.y + n.z*v.z - 3*scale) < 0.01*scale);
+  if (fv.length === 6) {
+    const f = buildFace(fv, n, 0x2a5a7a, 0.45);
+    f.type = 'hex'; f.index = i;
+    hexFaces.push(f);
+  }
+});
+
+const sqFaces = [];
+sqNormals.forEach((n, i) => {
+  const axis = n.x !== 0 ? 0 : n.y !== 0 ? 1 : 2;
+  const sign = n.getComponent(axis);
+  const fv = verts.filter(v => Math.abs(v.getComponent(axis) - sign*2*scale) < 0.01*scale);
+  if (fv.length === 4) {
+    const f = buildFace(fv, n, 0x1a3050, 0.35);
+    f.type = 'sq'; f.index = i;
+    sqFaces.push(f);
+  }
+});
+
+const allFaces = [...hexFaces, ...sqFaces];
+
+// Wireframe edges
+const edgeSet = new Set();
+for (let i = 0; i < verts.length; i++) {
+  for (let j = i+1; j < verts.length; j++) {
+    if (Math.abs(verts[i].distanceTo(verts[j]) - Math.sqrt(2)*scale) < 0.05*scale) {
+      const key = `${i}-${j}`;
+      if (!edgeSet.has(key)) {
+        edgeSet.add(key);
+        const geo = new THREE.BufferGeometry().setFromPoints([verts[i], verts[j]]);
+        scene.add(new THREE.Line(geo, new THREE.LineBasicMaterial({ color: 0x3a5a7a, transparent: true, opacity: 0.4 })));
+      }
+    }
+  }
+}
+
+// Vertex dots
+verts.forEach(v => {
+  const geo = new THREE.SphereGeometry(0.02, 6, 6);
+  const dot = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: 0x5ba3e6, transparent: true, opacity: 0.4 }));
+  dot.position.copy(v);
+  scene.add(dot);
+});
+
+// ========= Build Sidebar Cards =========
+const sidebarContent = document.getElementById('sidebar-content');
+const visitedModes = new Set();
+
+MODES.forEach((mode, i) => {
+  const card = document.createElement('div');
+  card.className = 'mode-card';
+  card.id = 'card-' + i;
+  card.innerHTML = `
+    <div class="dot" style="background:${mode.dotColor}"></div>
+    <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="name">${mode.name}</div>
+    <div class="details">${mode.eigenvalueStr} · ${mode.multStr.split(':')[0]}${mode.multiplicity > 1 ? ': ' + mode.multiplicity : ': 1'}</div>
+    <div class="physics">${mode.physics}</div>
+  `;
+  card.addEventListener('click', () => selectMode(i));
+  sidebarContent.appendChild(card);
+});
+
+// ========= Mode Selection =========
+let activeMode = -1;
+let animSpeed = 1;
+
+document.getElementById('speed-slider').addEventListener('input', e => {
+  animSpeed = parseFloat(e.target.value);
+});
+
+function selectMode(i) {
+  activeMode = i;
+  const mode = MODES[i];
+
+  // Mark visited
+  visitedModes.add(i);
+  document.getElementById('card-' + i).classList.add('visited');
+
+  // Update cards
+  MODES.forEach((_, j) => {
+    document.getElementById('card-' + j).classList.toggle('active', j === i);
+  });
+
+  // Update eigenvalue display
+  document.getElementById('ev-value').textContent = mode.eigenvalue === 0 ? 'λ = 0' :
+    mode.eigenvalue === 4 ? 'λ = 4' : mode.eigenvalue === 7 ? 'λ = 7' :
+    mode.eigenvalue === 9 ? 'λ = 9' : 'λ ≈ ' + mode.eigenvalue.toFixed(3);
+  document.getElementById('ev-mult').textContent = mode.multStr;
+
+  // Update info
+  document.getElementById('info-panel').innerHTML = mode.desc;
+
+  // Update face colours
+  hexFaces.forEach(f => {
+    f.mat.color.setHex(mode.color);
+    f.mat.emissive.setHex(mode.color);
+    f.mat.emissiveIntensity = 0.15;
+  });
+  sqFaces.forEach(f => {
+    f.mat.color.setHex(mode.color);
+    f.mat.emissive.setHex(mode.color);
+    f.mat.emissiveIntensity = 0.1;
+  });
+
+  // Progress
+  document.getElementById('progress-bar').style.width = (visitedModes.size / MODES.length * 100) + '%';
+
+  // Enable next lecture link when all visited
+  if (visitedModes.size === MODES.length) {
+    const link = document.getElementById('btn-next');
+    link.style.opacity = '1';
+    link.style.pointerEvents = 'auto';
+  }
+}
+
+// ========= Show All Toggle =========
+let showAll = false;
+function toggleAll() {
+  showAll = !showAll;
+  const btn = document.getElementById('btn-all');
+  btn.textContent = showAll ? 'Single mode' : 'Show all';
+  btn.style.background = showAll ? 'rgba(91,163,230,0.25)' : 'rgba(91,163,230,0.08)';
+  if (showAll) {
+    // Mark all as visited
+    MODES.forEach((_, i) => {
+      visitedModes.add(i);
+      document.getElementById('card-' + i).classList.add('visited');
+    });
+    document.getElementById('progress-bar').style.width = '100%';
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('info-panel').innerHTML = 'All seven modes overlaid. Each face displacement is the sum of all active eigenmodes. This is the full vibrational spectrum of one Kelvin cell.';
+    document.getElementById('ev-value').textContent = 'All modes';
+    document.getElementById('ev-mult').textContent = '7 irreps · 14 components · 1 shape';
+  }
+}
+
+// ========= Orbit Controls =========
+let isDragging = false;
+let prevMouse = { x: 0, y: 0 };
+let spherical = { theta: Math.PI/4, phi: Math.PI/6, radius: 7.5 };
+
+function updateCamera() {
+  camera.position.x = spherical.radius * Math.sin(spherical.phi + Math.PI/2) * Math.cos(spherical.theta);
+  camera.position.y = spherical.radius * Math.cos(spherical.phi + Math.PI/2);
+  camera.position.z = spherical.radius * Math.sin(spherical.phi + Math.PI/2) * Math.sin(spherical.theta);
+  camera.lookAt(0,0,0);
+}
+updateCamera();
+
+canvas.addEventListener('pointerdown', e => { if (e.button === 0) { isDragging = true; prevMouse = {x:e.clientX, y:e.clientY}; }});
+canvas.addEventListener('pointermove', e => {
+  if (isDragging) {
+    spherical.theta -= (e.clientX - prevMouse.x) * 0.005;
+    spherical.phi = Math.max(-Math.PI/2.2, Math.min(Math.PI/2.2, spherical.phi - (e.clientY - prevMouse.y) * 0.005));
+    prevMouse = {x:e.clientX, y:e.clientY};
+    updateCamera();
+  }
+});
+canvas.addEventListener('pointerup', () => { isDragging = false; });
+canvas.addEventListener('wheel', e => {
+  spherical.radius = Math.max(4, Math.min(15, spherical.radius + e.deltaY * 0.005));
+  updateCamera();
+});
+
+// ========= Animation =========
+const DISP_SCALE = 0.12; // How far faces push out
+
+function animate() {
+  requestAnimationFrame(animate);
+  const time = Date.now() * 0.001 * animSpeed;
+
+  if (activeMode >= 0 || showAll) {
+    hexFaces.forEach((f, fi) => {
+      let disp = 0;
+      let maxAmp = 0;
+      let dominantColor = 0x2a5a7a;
+
+      if (showAll) {
+        // Sum all modes
+        MODES.forEach((mode, mi) => {
+          const amp = mode.ampHex[fi] || 0;
+          const phase = time * (0.8 + mode.eigenvalue * 0.3) + mi * 0.5;
+          disp += amp * Math.sin(phase) * 0.5;
+        });
+        dominantColor = 0x5ba3e6;
+        maxAmp = 1;
+      } else {
+        const mode = MODES[activeMode];
+        const amp = mode.ampHex[fi] || 0;
+        disp = amp * Math.sin(time * (1 + mode.eigenvalue * 0.2));
+        maxAmp = Math.abs(amp);
+        dominantColor = mode.color;
+      }
+
+      // Displace face group along its normal
+      const n = f.normal;
+      f.group.position.set(
+        f.center.x + n.x * disp * DISP_SCALE,
+        f.center.y + n.y * disp * DISP_SCALE,
+        f.center.z + n.z * disp * DISP_SCALE
+      );
+
+      // Color intensity by amplitude
+      f.mat.opacity = maxAmp > 0.01 ? 0.5 + 0.4 * Math.abs(Math.sin(time)) : 0.15;
+      if (maxAmp < 0.01) {
+        f.mat.color.setHex(0x1a2a3a);
+        f.mat.emissive.setHex(0x000000);
+      }
+    });
+
+    sqFaces.forEach((f, fi) => {
+      let disp = 0;
+      let maxAmp = 0;
+
+      if (showAll) {
+        MODES.forEach((mode, mi) => {
+          const amp = mode.ampSq[fi] || 0;
+          const phase = time * (0.8 + mode.eigenvalue * 0.3) + mi * 0.5;
+          disp += amp * Math.sin(phase) * 0.5;
+        });
+        maxAmp = 1;
+      } else {
+        const mode = MODES[activeMode];
+        const amp = mode.ampSq[fi] || 0;
+        disp = amp * Math.sin(time * (1 + mode.eigenvalue * 0.2));
+        maxAmp = Math.abs(amp);
+      }
+
+      const n = f.normal;
+      f.group.position.set(
+        f.center.x + n.x * disp * DISP_SCALE,
+        f.center.y + n.y * disp * DISP_SCALE,
+        f.center.z + n.z * disp * DISP_SCALE
+      );
+
+      f.mat.opacity = maxAmp > 0.01 ? 0.4 + 0.3 * Math.abs(Math.sin(time)) : 0.1;
+      if (maxAmp < 0.01) {
+        f.mat.color.setHex(0x0f1a28);
+        f.mat.emissive.setHex(0x000000);
+      }
+    });
+  } else {
+    // Idle: gentle breathe
+    hexFaces.forEach((f, fi) => {
+      f.group.position.copy(f.center);
+      f.mat.opacity = 0.35 + 0.08 * Math.sin(time * 0.5 + fi * 0.3);
+      f.mat.color.setHex(0x2a5a7a);
+      f.mat.emissive.setHex(0x000000);
+    });
+    sqFaces.forEach((f, fi) => {
+      f.group.position.copy(f.center);
+      f.mat.opacity = 0.25 + 0.06 * Math.sin(time * 0.5 + fi * 0.5);
+      f.mat.color.setHex(0x1a3050);
+      f.mat.emissive.setHex(0x000000);
+    });
+  }
+
+  // Gentle auto-rotate
+  if (!isDragging) {
+    spherical.theta += 0.0008;
+    updateCamera();
+  }
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// ========= Resize =========
+window.addEventListener('resize', () => {
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  applyCameraOffset();
+});
+
+// ========= Keyboard =========
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+    e.preventDefault();
+    const next = activeMode < MODES.length - 1 ? activeMode + 1 : 0;
+    selectMode(next);
+  }
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    const prev = activeMode > 0 ? activeMode - 1 : MODES.length - 1;
+    selectMode(prev);
+  }
+  if (e.key === ' ') { e.preventDefault(); toggleAll(); }
+});
+
+// Auto-select first mode after a beat
+setTimeout(() => selectMode(0), 800);
+</script>
+</body>
+</html>

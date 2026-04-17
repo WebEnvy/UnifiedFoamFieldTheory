@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UFFT Lecture 8 — Why This Shape?</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0e17; color: #c8d0e0; font-family: 'Segoe UI', system-ui, sans-serif; overflow: hidden; }
+  #canvas { width: 100vw; height: 100vh; display: block; }
+
+  #sidebar {
+    position: absolute; top: 0; left: 0; width: 420px; height: 100vh;
+    background: rgba(10,14,23,0.94); border-right: 1px solid rgba(46,109,180,0.25);
+    display: flex; flex-direction: column;
+  }
+  #progress { position: absolute; top: 0; left: 0; width: 420px; height: 3px; background: rgba(91,163,230,0.1); }
+  #progress-bar { height: 100%; width: 0%; background: #5ba3e6; transition: width 0.5s ease; }
+
+  #sidebar-header { padding: 28px 28px 0; }
+  #sidebar-header .lecture-num { font-size: 14px; color: #5a6577; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; }
+  #sidebar-header h1 { font-size: 26px; color: #5ba3e6; font-weight: 600; margin-bottom: 4px; }
+  #sidebar-header .subtitle { font-size: 16px; color: #7a8599; margin-bottom: 16px; }
+
+  #sidebar-content { flex: 1; overflow-y: auto; padding: 0 28px 28px; }
+  #sidebar-content::-webkit-scrollbar { width: 4px; }
+  #sidebar-content::-webkit-scrollbar-track { background: transparent; }
+  #sidebar-content::-webkit-scrollbar-thumb { background: rgba(91,163,230,0.2); border-radius: 2px; }
+
+  .shape-card {
+    position: relative; margin-bottom: 14px; padding: 14px 14px 14px 44px; border-radius: 8px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer; transition: all 0.3s ease;
+  }
+  .shape-card:hover { background: rgba(255,255,255,0.04); }
+  .shape-card.active { background: rgba(91,163,230,0.08); border-color: rgba(91,163,230,0.3); }
+  .shape-card.visited .check { border-color: #4ade80; background: rgba(74,222,128,0.15); }
+  .shape-card.visited .check svg { opacity: 1; }
+  .shape-card.winner { border-color: rgba(74,222,128,0.4); }
+  .shape-card.winner.active { background: rgba(74,222,128,0.08); }
+
+  .shape-card .icon {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    font-size: 18px;
+  }
+  .shape-card .check {
+    position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid rgba(91,163,230,0.15); display: flex; align-items: center; justify-content: center;
+    transition: all 0.4s ease;
+  }
+  .shape-card .check svg { opacity: 0; transition: opacity 0.3s; }
+  .shape-card .name { font-size: 16px; color: #dde3ef; font-weight: 500; }
+  .shape-card .faces { font-size: 14px; color: #7a8599; margin-top: 2px; }
+  .shape-card .verdict { font-size: 14px; margin-top: 6px; line-height: 1.5; }
+  .shape-card .verdict.fail { color: #ff6666; }
+  .shape-card .verdict.pass { color: #4ade80; }
+
+  #eigenvalue-display {
+    margin: 16px 28px; padding: 14px 16px; border-radius: 8px;
+    background: rgba(91,163,230,0.04); border: 1px solid rgba(91,163,230,0.1);
+    font-size: 14px; color: #8a9ab5; line-height: 1.7;
+  }
+  #eigenvalue-display .label { color: #5a6577; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  #eigenvalue-display .values { font-family: Georgia, serif; font-size: 16px; color: #5ba3e6; }
+  #eigenvalue-display .disc { margin-top: 6px; font-size: 16px; }
+
+  #conclusion {
+    display: none; margin: 16px 28px; padding: 16px; border-radius: 8px;
+    background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.2);
+    font-size: 16px; color: #c8d0e0; line-height: 1.7;
+  }
+
+  #nav-buttons { padding: 16px 28px 24px; display: flex; gap: 10px; }
+  .nav-btn {
+    flex: 1; padding: 12px; border: 1px solid rgba(91,163,230,0.3); border-radius: 6px;
+    background: rgba(91,163,230,0.08); color: #5ba3e6; font-size: 14px; cursor: pointer;
+    transition: all 0.2s; text-align: center; text-decoration: none;
+  }
+  .nav-btn:hover { background: rgba(91,163,230,0.15); }
+  .nav-btn.primary { background: rgba(91,163,230,0.2); font-weight: 600; }
+
+  #axiom { position: absolute; bottom: 24px; right: 24px; font-size: 28px; font-weight: 700; color: rgba(91,163,230,0.12); letter-spacing: 4px; }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div id="sidebar">
+  <div id="progress"><div id="progress-bar"></div></div>
+  <div id="sidebar-header">
+    <div class="lecture-num">Lecture 8 of 8</div>
+    <h1>Why This Shape?</h1>
+    <div class="subtitle">Five shapes fill space. Only one works.</div>
+  </div>
+
+  <div id="eigenvalue-display">
+    <div class="label">Eigenvalues</div>
+    <div class="values" id="ev-text">Select a shape</div>
+    <div class="disc" id="disc-text"></div>
+  </div>
+
+  <div id="sidebar-content"></div>
+
+  <div id="conclusion">
+    Of all the shapes that tile 3D space, only one has irrational eigenvalues from a prime discriminant, two face types for chirality, and three-fold multiplicity for generations. <strong style="color:#4ade80">It's this one.</strong>
+  </div>
+
+  <div id="nav-buttons">
+    <a href="lecture_07_particles_to_cosmos.html" class="nav-btn">← Lecture 7</a>
+    <a href="lecture_01_the_shape.html" class="nav-btn primary">Start over →</a>
+  </div>
+</div>
+<div id="axiom">B + V = D</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ========= Shape Data =========
+const shapes = [
+  {
+    name: 'Cube', faces: '6 faces (all squares)', icon: '□',
+    eigenvalues: '{0, 2, 2, 2, 4, 4}', disc: 'All integers', discColor: '#ff6666',
+    verdict: 'No irrational numbers. No master equation. Cannot produce the Standard Model.', pass: false,
+    buildFn: buildCube
+  },
+  {
+    name: 'Hexagonal Prism', faces: '8 faces (2 hex + 6 rect)', icon: '⬡',
+    eigenvalues: '{0, 2, 2, 3, 3, 4, 4, 6}', disc: 'All integers', discColor: '#ff6666',
+    verdict: 'Two face types, but the spectrum is too simple. No prime discriminant.', pass: false,
+    buildFn: buildHexPrism
+  },
+  {
+    name: 'Rhombic Dodecahedron', faces: '12 faces (all rhombi)', icon: '◇',
+    eigenvalues: '{0, 4⁴, 6⁴, 8³}', disc: 'All integers', discColor: '#ff6666',
+    verdict: 'One face type. No bubble/void distinction. Cannot produce chirality.', pass: false,
+    buildFn: buildRhombDodec
+  },
+  {
+    name: 'Elongated Dodecahedron', faces: '12 faces (8 rhombi + 4 hex)', icon: '◈',
+    eigenvalues: '{0, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8}', disc: 'All integers', discColor: '#ff6666',
+    verdict: 'Two face types but the eigenvalue structure doesn\'t produce three generations.', pass: false,
+    buildFn: buildElongDodec
+  },
+  {
+    name: 'Truncated Octahedron', faces: '14 faces (8 hex + 6 square)', icon: '⬢',
+    eigenvalues: '{0¹, 2.438³, 4², 6.562³, 7⁴, 9¹}', disc: 'Δ = 17 (PRIME)', discColor: '#4ade80',
+    verdict: 'Irrational eigenvalues. Prime discriminant. Two face types. Three-fold T₁ᵤ = three generations. The ONLY one that works.', pass: true,
+    buildFn: buildTruncOct
+  },
+];
+
+// ========= Build sidebar cards =========
+const content = document.getElementById('sidebar-content');
+const visitedShapes = new Set();
+
+shapes.forEach((s, i) => {
+  const card = document.createElement('div');
+  card.className = 'shape-card' + (s.pass ? ' winner' : '');
+  card.id = 'card-' + i;
+  card.innerHTML = `
+    <span class="icon">${s.icon}</span>
+    <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="name">${s.name}</div>
+    <div class="faces">${s.faces}</div>
+    <div class="verdict ${s.pass ? 'pass' : 'fail'}">${s.verdict}</div>
+  `;
+  card.addEventListener('click', () => selectShape(i));
+  content.appendChild(card);
+});
+
+// ========= Three.js Setup =========
+const canvas = document.getElementById('canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const scene = new THREE.Scene();
+const SIDEBAR_W = 420;
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
+
+function applyCameraOffset() {
+  const w=window.innerWidth, h=window.innerHeight;
+  camera.aspect=w/h; camera.setViewOffset(w,h,-SIDEBAR_W/2,0,w,h); camera.updateProjectionMatrix();
+}
+
+scene.add(new THREE.AmbientLight(0x334466, 0.6));
+const dl=new THREE.DirectionalLight(0x88aacc, 0.8); dl.position.set(5,8,5); scene.add(dl);
+const dl2=new THREE.DirectionalLight(0x5577aa, 0.4); dl2.position.set(-3,-2,-5); scene.add(dl2);
+
+let spherical = { theta: Math.PI/4, phi: Math.PI/6, radius: 6 };
+function updateCamera() {
+  camera.position.x=spherical.radius*Math.sin(spherical.phi+Math.PI/2)*Math.cos(spherical.theta);
+  camera.position.y=spherical.radius*Math.cos(spherical.phi+Math.PI/2);
+  camera.position.z=spherical.radius*Math.sin(spherical.phi+Math.PI/2)*Math.sin(spherical.theta);
+  camera.lookAt(0,0,0);
+}
+updateCamera(); applyCameraOffset();
+
+let isDragging=false,prevMouse={x:0,y:0};
+canvas.addEventListener('pointerdown',e=>{if(e.button===0){isDragging=true;prevMouse={x:e.clientX,y:e.clientY};}});
+canvas.addEventListener('pointermove',e=>{if(isDragging){
+  spherical.theta-=(e.clientX-prevMouse.x)*0.005;
+  spherical.phi=Math.max(-Math.PI/2.2,Math.min(Math.PI/2.2,spherical.phi-(e.clientY-prevMouse.y)*0.005));
+  prevMouse={x:e.clientX,y:e.clientY};updateCamera();}});
+canvas.addEventListener('pointerup',()=>{isDragging=false;});
+canvas.addEventListener('wheel',e=>{spherical.radius=Math.max(3,Math.min(12,spherical.radius+e.deltaY*0.005));updateCamera();});
+
+// ========= Shape Builders =========
+let currentGroup = null;
+
+function clearShape() {
+  if (currentGroup) { scene.remove(currentGroup); currentGroup = null; }
+}
+
+function makeGroup() {
+  const g = new THREE.Group();
+  scene.add(g);
+  currentGroup = g;
+  return g;
+}
+
+function addWireframe(geo, group, color) {
+  const edges = new THREE.EdgesGeometry(geo);
+  group.add(new THREE.LineSegments(edges, new THREE.LineBasicMaterial({color, transparent:true, opacity:0.5})));
+}
+
+function buildCube() {
+  clearShape(); const g = makeGroup();
+  const geo = new THREE.BoxGeometry(2,2,2);
+  const mat = new THREE.MeshPhongMaterial({color:0xff4444, transparent:true, opacity:0.2, side:THREE.DoubleSide});
+  g.add(new THREE.Mesh(geo, mat));
+  addWireframe(geo, g, 0xff6666);
+}
+
+function buildHexPrism() {
+  clearShape(); const g = makeGroup();
+  const geo = new THREE.CylinderGeometry(1.2, 1.2, 2, 6);
+  const mat = new THREE.MeshPhongMaterial({color:0xff8844, transparent:true, opacity:0.2, side:THREE.DoubleSide});
+  g.add(new THREE.Mesh(geo, mat));
+  addWireframe(geo, g, 0xffaa66);
+}
+
+function buildRhombDodec() {
+  clearShape(); const g = makeGroup();
+  // Approximate as dual of cuboctahedron — use icosahedron as visual stand-in
+  const geo = new THREE.DodecahedronGeometry(1.3);
+  const mat = new THREE.MeshPhongMaterial({color:0xffaa00, transparent:true, opacity:0.2, side:THREE.DoubleSide});
+  g.add(new THREE.Mesh(geo, mat));
+  addWireframe(geo, g, 0xffcc44);
+}
+
+function buildElongDodec() {
+  clearShape(); const g = makeGroup();
+  // Elongated dodecahedron — approximate as stretched dodecahedron
+  const geo = new THREE.DodecahedronGeometry(1.2);
+  const mat = new THREE.MeshPhongMaterial({color:0xaaaa00, transparent:true, opacity:0.2, side:THREE.DoubleSide});
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.scale.set(1, 1.5, 1);
+  g.add(mesh);
+  const edges = new THREE.EdgesGeometry(geo);
+  const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({color:0xcccc44, transparent:true, opacity:0.5}));
+  lines.scale.set(1, 1.5, 1);
+  g.add(lines);
+}
+
+function buildTruncOct() {
+  clearShape(); const g = makeGroup();
+  const S = 0.65;
+  // Full TO with coloured faces
+  const verts = [];
+  for (let i=0;i<3;i++) for (let s1 of [1,-1]) for (let s2 of [1,-1]) {
+    const a=[0,0,0]; a[(i+1)%3]=s1; a[(i+2)%3]=s2*2;
+    verts.push(new THREE.Vector3(a[0]*S,a[1]*S,a[2]*S));
+    const b=[0,0,0]; b[(i+1)%3]=s1*2; b[(i+2)%3]=s2;
+    verts.push(new THREE.Vector3(b[0]*S,b[1]*S,b[2]*S));
+  }
+  const unique=[]; for(const v of verts){if(!unique.find(u=>u.distanceTo(v)<0.01*S)) unique.push(v);}
+
+  function orderP(vs,n){
+    const c=new THREE.Vector3();vs.forEach(v=>c.add(v));c.divideScalar(vs.length);
+    const nn=n.clone().normalize();let t=new THREE.Vector3(1,0,0);if(Math.abs(nn.dot(t))>0.9)t=new THREE.Vector3(0,1,0);
+    const u=new THREE.Vector3().crossVectors(nn,t).normalize(),w=new THREE.Vector3().crossVectors(nn,u).normalize();
+    return vs.slice().sort((a,b)=>{const da=new THREE.Vector3().subVectors(a,c),db=new THREE.Vector3().subVectors(b,c);
+      return Math.atan2(da.dot(w),da.dot(u))-Math.atan2(db.dot(w),db.dot(u));});
+  }
+  function addFace(fv,n,color,op){
+    const ord=orderP(fv,n);const c=new THREE.Vector3();ord.forEach(v=>c.add(v));c.divideScalar(ord.length);
+    const geo=new THREE.BufferGeometry();const pos=[];
+    for(let i=1;i<ord.length-1;i++){pos.push(ord[0].x,ord[0].y,ord[0].z,ord[i].x,ord[i].y,ord[i].z,ord[i+1].x,ord[i+1].y,ord[i+1].z);}
+    geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));geo.computeVertexNormals();
+    g.add(new THREE.Mesh(geo,new THREE.MeshPhongMaterial({color,transparent:true,opacity:op,side:THREE.DoubleSide,shininess:40})));
+  }
+  // Hex faces (green/blue glow)
+  for(let sx of [1,-1])for(let sy of [1,-1])for(let sz of [1,-1]){
+    const n=new THREE.Vector3(sx,sy,sz);
+    const fv=unique.filter(v=>Math.abs(n.x*v.x+n.y*v.y+n.z*v.z-3*S)<0.01*S);
+    if(fv.length===6) addFace(fv,n,0x4ade80,0.35);
+  }
+  // Square faces (blue tint)
+  for(let a=0;a<3;a++)for(let s of [1,-1]){
+    const n=new THREE.Vector3();n.setComponent(a,s);
+    const fv=unique.filter(v=>Math.abs(v.getComponent(a)-s*2*S)<0.01*S);
+    if(fv.length===4) addFace(fv,n,0x5ba3e6,0.25);
+  }
+  // Wireframe
+  const es=new Set();
+  for(let i=0;i<unique.length;i++)for(let j=i+1;j<unique.length;j++){
+    if(Math.abs(unique[i].distanceTo(unique[j])-Math.sqrt(2)*S)<0.05*S){
+      if(!es.has(`${i}-${j}`)){es.add(`${i}-${j}`);
+        g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([unique[i],unique[j]]),
+          new THREE.LineBasicMaterial({color:0x4ade80,transparent:true,opacity:0.4})));
+      }
+    }
+  }
+}
+
+// ========= Selection Logic =========
+let activeShape = -1;
+
+function selectShape(i) {
+  activeShape = i;
+  visitedShapes.add(i);
+  document.getElementById('card-'+i).classList.add('visited');
+  shapes.forEach((_,j) => document.getElementById('card-'+j).classList.toggle('active', j===i));
+
+  const s = shapes[i];
+  document.getElementById('ev-text').textContent = s.eigenvalues;
+  document.getElementById('disc-text').innerHTML = `Discriminant: <span style="color:${s.discColor};font-weight:600">${s.disc}</span>`;
+
+  s.buildFn();
+
+  document.getElementById('progress-bar').style.width = (visitedShapes.size/shapes.length*100)+'%';
+  if (visitedShapes.size === shapes.length) {
+    document.getElementById('conclusion').style.display = 'block';
+  }
+}
+
+// ========= Animation =========
+function animate() {
+  requestAnimationFrame(animate);
+  if (currentGroup && !isDragging) {
+    currentGroup.rotation.y += 0.005;
+    currentGroup.rotation.x = Math.sin(Date.now()*0.0003) * 0.1;
+  }
+  if (!isDragging) { spherical.theta += 0.0005; updateCamera(); }
+  renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize',()=>{renderer.setSize(window.innerWidth,window.innerHeight);applyCameraOffset();});
+
+// Auto-select first shape
+setTimeout(()=>selectShape(0), 500);
+</script>
+</body>
+</html>

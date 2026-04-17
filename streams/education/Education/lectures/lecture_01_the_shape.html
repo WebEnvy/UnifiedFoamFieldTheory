@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UFFT Lecture 1 — The Shape</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0e17; color: #c8d0e0; font-family: 'Segoe UI', system-ui, sans-serif; overflow: hidden; }
+  #canvas { width: 100vw; height: 100vh; display: block; }
+
+  #sidebar {
+    position: absolute; top: 0; left: 0; width: 420px; height: 100vh;
+    background: rgba(10,14,23,0.94); border-right: 1px solid rgba(46,109,180,0.25);
+    display: flex; flex-direction: column;
+  }
+
+  #sidebar-header {
+    padding: 28px 28px 0;
+  }
+  #sidebar-header .lecture-num { font-size: 14px; color: #5a6577; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; }
+  #sidebar-header h1 { font-size: 26px; color: #5ba3e6; font-weight: 600; margin-bottom: 4px; }
+  #sidebar-header .subtitle { font-size: 16px; color: #7a8599; margin-bottom: 16px; }
+
+  #sidebar-content {
+    flex: 1; overflow-y: auto; padding: 0 28px 28px;
+  }
+
+  .step {
+    margin-bottom: 24px; padding: 16px; border-radius: 8px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.4s ease;
+  }
+  .step.active {
+    background: rgba(91,163,230,0.06); border-color: rgba(91,163,230,0.2);
+  }
+  .step.completed {
+    background: rgba(91,163,230,0.03); border-color: rgba(91,163,230,0.1);
+    opacity: 0.7;
+  }
+  .step.active.completed {
+    background: rgba(74,222,128,0.05); border-color: rgba(74,222,128,0.25);
+    opacity: 1;
+  }
+  .step { position: relative; }
+  .step .step-num { font-size: 14px; color: #5ba3e6; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+  .step h3 { font-size: 18px; color: #dde3ef; margin-bottom: 8px; font-weight: 500; }
+  .step p { font-size: 16px; line-height: 1.7; color: #8a9ab5; }
+  .step .instruction {
+    margin-top: 10px; padding: 10px 14px; border-radius: 5px;
+    background: rgba(91,163,230,0.08); font-size: 14px; color: #5ba3e6;
+  }
+  .step .check {
+    position: absolute; top: 12px; right: 12px;
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid rgba(91,163,230,0.2);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.4s ease;
+  }
+  .step .check svg { opacity: 0; transition: opacity 0.3s; }
+  .step.completed .check {
+    border-color: #4ade80; background: rgba(74,222,128,0.15);
+  }
+  .step.completed .check svg { opacity: 1; }
+
+  #counter-box {
+    margin: 16px 28px; padding: 14px 16px; border-radius: 8px;
+    background: rgba(91,163,230,0.05); border: 1px solid rgba(91,163,230,0.12);
+    font-size: 16px; color: #8a9ab5; line-height: 1.6;
+    transition: all 0.3s;
+  }
+  #counter-box .count { color: #5ba3e6; font-weight: 600; font-size: 22px; }
+  #counter-box .label { color: #5a6577; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+
+  #nav-buttons {
+    padding: 16px 28px 24px; display: flex; gap: 10px;
+  }
+  .nav-btn {
+    flex: 1; padding: 12px; border: 1px solid rgba(91,163,230,0.3);
+    border-radius: 6px; background: rgba(91,163,230,0.08);
+    color: #5ba3e6; font-size: 14px; cursor: pointer;
+    transition: all 0.2s; text-align: center;
+  }
+  .nav-btn:hover { background: rgba(91,163,230,0.15); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .nav-btn.primary { background: rgba(91,163,230,0.2); font-weight: 600; }
+
+  #tooltip {
+    position: absolute; display: none; padding: 10px 14px;
+    background: rgba(10,14,23,0.95); border: 1px solid rgba(91,163,230,0.4);
+    border-radius: 6px; font-size: 14px; pointer-events: none; z-index: 100;
+    color: #c8d0e0; max-width: 260px; line-height: 1.5;
+  }
+
+  #axiom {
+    position: absolute; bottom: 24px; right: 24px;
+    font-size: 28px; font-weight: 700; color: rgba(91,163,230,0.12);
+    letter-spacing: 4px;
+  }
+
+  #progress {
+    position: absolute; top: 0; left: 0; width: 420px; height: 3px;
+    background: rgba(91,163,230,0.1);
+  }
+  #progress-bar {
+    height: 100%; width: 0%; background: #5ba3e6;
+    transition: width 0.5s ease;
+  }
+
+  /* Custom scrollbar */
+  #sidebar-content::-webkit-scrollbar { width: 4px; }
+  #sidebar-content::-webkit-scrollbar-track { background: transparent; }
+  #sidebar-content::-webkit-scrollbar-thumb { background: rgba(91,163,230,0.2); border-radius: 2px; }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<div id="sidebar">
+  <div id="progress"><div id="progress-bar"></div></div>
+
+  <div id="sidebar-header">
+    <div class="lecture-num">Lecture 1 of 8</div>
+    <h1>The Shape</h1>
+    <div class="subtitle">What if everything is made of one shape vibrating?</div>
+  </div>
+
+  <div id="counter-box">
+    <div style="display:flex; justify-content: space-between;">
+      <div><div class="label">Hexagonal</div><div class="count" id="hex-count">0</div></div>
+      <div><div class="label">Square</div><div class="count" id="sq-count">0</div></div>
+      <div><div class="label">Total faces</div><div class="count" id="total-count">0</div></div>
+    </div>
+    <div style="margin-top:8px; font-size:14px; color:#5a6577;" id="click-hint">Click faces to count them</div>
+  </div>
+
+  <div id="sidebar-content">
+    <div class="step active" id="step-0">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 1</div>
+      <h3>Meet the truncated octahedron</h3>
+      <p>This is the shape that might explain everything. 24 vertices, 36 edges, 14 faces. It has two kinds of faces — 8 hexagons and 6 squares.</p>
+      <p style="margin-top:8px;">Rotate it. Look at it from every angle. It's the simplest solid that fills all of 3D space with no gaps and no overlaps.</p>
+      <div class="instruction">Drag to rotate · Scroll to zoom · Click faces to highlight them</div>
+    </div>
+
+    <div class="step" id="step-1">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 2</div>
+      <h3>Two kinds of faces</h3>
+      <p>The 8 hexagonal faces sit at the corners — one in each direction where you'd point if you were inside the shape pointing diagonally. The 6 square faces sit at the flat sides — top, bottom, front, back, left, right.</p>
+      <p style="margin-top:8px;">This two-face structure turns out to matter enormously. In the language of the framework: hexagons carry bubbles, squares carry voids.</p>
+      <div class="instruction">Click "Show hex" and "Show square" to highlight each type</div>
+    </div>
+
+    <div class="step" id="step-2">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 3</div>
+      <h3>Space-filling</h3>
+      <p>Lord Kelvin asked in 1887: what's the most efficient way to divide space into equal cells? His answer was this shape — the truncated octahedron. Pack them together and every face is shared with a neighbour. No gaps, no waste.</p>
+      <p style="margin-top:8px;">Imagine the entire universe filled with these, at the Planck scale — 10⁻³⁵ metres across. That's the foam.</p>
+      <div class="instruction">Click "Tile foam" to see cells pack together</div>
+    </div>
+
+    <div class="step" id="step-3">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 4</div>
+      <h3>Why this shape?</h3>
+      <p>Five shapes fill space. Only one — this one — has the mathematical structure to produce the particles and forces we observe. Its face vibrations produce exactly the right eigenvalues, with a prime discriminant (17), and the right number of faces (14) for three-generation physics.</p>
+      <p style="margin-top:8px;">That's where we're going. But first, you needed to meet the shape.</p>
+      <div class="instruction">Next lecture: the seven ways this shape can vibrate</div>
+    </div>
+  </div>
+
+  <div id="nav-buttons">
+    <button class="nav-btn" id="btn-prev" onclick="prevStep()" disabled>← Back</button>
+    <button class="nav-btn" id="btn-hex" onclick="highlightHex()" style="font-size:11px;">Show hex</button>
+    <button class="nav-btn" id="btn-sq" onclick="highlightSq()" style="font-size:11px;">Show square</button>
+    <button class="nav-btn" id="btn-tile" onclick="toggleTiling()" style="font-size:11px;">Tile foam</button>
+    <button class="nav-btn primary" id="btn-next" onclick="nextStep()">Next step →</button>
+    <a href="lecture_02_seven_vibrations.html" class="nav-btn primary" style="text-decoration:none;">Lecture 2 →</a>
+  </div>
+</div>
+
+<div id="tooltip"></div>
+<div id="axiom">B + V = D</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ========= Setup =========
+const canvas = document.getElementById('canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const scene = new THREE.Scene();
+const SIDEBAR_W = 420;
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
+camera.position.set(5, 3.5, 5);
+camera.lookAt(0, 0, 0);
+
+// Offset the camera frustum so (0,0,0) projects to the centre of the right panel
+function applyCameraOffset() {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  camera.aspect = w / h;
+  camera.setViewOffset(w, h, -SIDEBAR_W / 2, 0, w, h);
+  camera.updateProjectionMatrix();
+}
+applyCameraOffset();
+
+scene.add(new THREE.AmbientLight(0x334466, 0.6));
+const dirLight = new THREE.DirectionalLight(0x88aacc, 0.8);
+dirLight.position.set(5, 8, 5);
+scene.add(dirLight);
+const dirLight2 = new THREE.DirectionalLight(0x5577aa, 0.4);
+dirLight2.position.set(-3, -2, -5);
+scene.add(dirLight2);
+
+// ========= Truncated Octahedron Geometry =========
+function getTruncOctVerts(s) {
+  const verts = [];
+  for (let i = 0; i < 3; i++) {
+    for (let s1 of [1, -1]) {
+      for (let s2 of [1, -1]) {
+        const v1 = [0, 0, 0];
+        v1[i] = 0;
+        v1[(i+1)%3] = s1;
+        v1[(i+2)%3] = s2 * 2;
+        verts.push(new THREE.Vector3(v1[0]*s, v1[1]*s, v1[2]*s));
+        const v2 = [0, 0, 0];
+        v2[i] = 0;
+        v2[(i+1)%3] = s1 * 2;
+        v2[(i+2)%3] = s2;
+        verts.push(new THREE.Vector3(v2[0]*s, v2[1]*s, v2[2]*s));
+      }
+    }
+  }
+  const unique = [];
+  for (const v of verts) {
+    if (!unique.find(u => u.distanceTo(v) < 0.01 * s)) unique.push(v);
+  }
+  return unique;
+}
+
+function orderPolygon(vertices, normal) {
+  const center = new THREE.Vector3();
+  vertices.forEach(v => center.add(v));
+  center.divideScalar(vertices.length);
+  const n = normal.clone().normalize();
+  let tang = new THREE.Vector3(1, 0, 0);
+  if (Math.abs(n.dot(tang)) > 0.9) tang = new THREE.Vector3(0, 1, 0);
+  const u = new THREE.Vector3().crossVectors(n, tang).normalize();
+  const v = new THREE.Vector3().crossVectors(n, u).normalize();
+  return vertices.slice().sort((a, b) => {
+    const da = new THREE.Vector3().subVectors(a, center);
+    const db = new THREE.Vector3().subVectors(b, center);
+    return Math.atan2(da.dot(v), da.dot(u)) - Math.atan2(db.dot(v), db.dot(u));
+  });
+}
+
+function createFaceMesh(vertices, normal, color, opacity) {
+  const ordered = orderPolygon(vertices, normal);
+  const center = new THREE.Vector3();
+  ordered.forEach(v => center.add(v));
+  center.divideScalar(ordered.length);
+  const inset = center.clone().normalize().multiplyScalar(-0.003);
+  const geo = new THREE.BufferGeometry();
+  const positions = [];
+  for (let i = 1; i < ordered.length - 1; i++) {
+    positions.push(
+      ordered[0].x + inset.x, ordered[0].y + inset.y, ordered[0].z + inset.z,
+      ordered[i].x + inset.x, ordered[i].y + inset.y, ordered[i].z + inset.z,
+      ordered[i+1].x + inset.x, ordered[i+1].y + inset.y, ordered[i+1].z + inset.z
+    );
+  }
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geo.computeVertexNormals();
+  const mat = new THREE.MeshPhongMaterial({
+    color, transparent: true, opacity, side: THREE.DoubleSide,
+    shininess: 40, specular: 0x224466
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.userData.center = center.clone();
+  mesh.userData.baseColor = color;
+  mesh.userData.baseOpacity = opacity;
+  return mesh;
+}
+
+function buildCell(scale, offset) {
+  const verts = getTruncOctVerts(scale);
+  if (offset) verts.forEach(v => v.add(offset));
+
+  const cellFaces = { hex: [], sq: [], edges: [], dots: [] };
+
+  // Hex faces
+  for (let sx of [1, -1]) {
+    for (let sy of [1, -1]) {
+      for (let sz of [1, -1]) {
+        const normal = new THREE.Vector3(sx, sy, sz);
+        const fv = verts.filter(v => {
+          const localV = offset ? v.clone().sub(offset) : v;
+          return Math.abs(sx * localV.x + sy * localV.y + sz * localV.z - 3 * scale) < 0.01 * scale;
+        });
+        if (fv.length === 6) {
+          const mesh = createFaceMesh(fv, normal, 0x2a5a7a, 0.45);
+          mesh.userData.type = 'hex';
+          mesh.userData.faceNormal = normal;
+          cellFaces.hex.push(mesh);
+        }
+      }
+    }
+  }
+
+  // Square faces
+  for (let axis = 0; axis < 3; axis++) {
+    for (let sign of [1, -1]) {
+      const normal = new THREE.Vector3();
+      normal.setComponent(axis, sign);
+      const fv = verts.filter(v => {
+        const localV = offset ? v.clone().sub(offset) : v;
+        return Math.abs(localV.getComponent(axis) - sign * 2 * scale) < 0.01 * scale;
+      });
+      if (fv.length === 4) {
+        const mesh = createFaceMesh(fv, normal, 0x1a3050, 0.35);
+        mesh.userData.type = 'sq';
+        mesh.userData.faceNormal = normal;
+        cellFaces.sq.push(mesh);
+      }
+    }
+  }
+
+  // Edges
+  const edgeSet = new Set();
+  for (let i = 0; i < verts.length; i++) {
+    for (let j = i + 1; j < verts.length; j++) {
+      const d = verts[i].distanceTo(verts[j]);
+      if (Math.abs(d - Math.sqrt(2) * scale) < 0.05 * scale) {
+        const key = `${i}-${j}`;
+        if (!edgeSet.has(key)) {
+          edgeSet.add(key);
+          const geo = new THREE.BufferGeometry().setFromPoints([verts[i], verts[j]]);
+          const line = new THREE.Line(geo, new THREE.LineBasicMaterial({ color: 0x3a5a7a, transparent: true, opacity: 0.5 }));
+          cellFaces.edges.push(line);
+        }
+      }
+    }
+  }
+
+  // Vertex dots
+  verts.forEach(v => {
+    const geo = new THREE.SphereGeometry(0.025 * (scale / 0.6), 6, 6);
+    const mat = new THREE.MeshBasicMaterial({ color: 0x5ba3e6, transparent: true, opacity: 0.5 });
+    const dot = new THREE.Mesh(geo, mat);
+    dot.position.copy(v);
+    cellFaces.dots.push(dot);
+  });
+
+  return { verts, faces: cellFaces };
+}
+
+// ========= Main Cell =========
+const mainScale = 0.65;
+const mainCell = buildCell(mainScale);
+const allFaceMeshes = [];
+
+mainCell.faces.hex.forEach(m => { scene.add(m); allFaceMeshes.push(m); });
+mainCell.faces.sq.forEach(m => { scene.add(m); allFaceMeshes.push(m); });
+mainCell.faces.edges.forEach(l => scene.add(l));
+mainCell.faces.dots.forEach(d => scene.add(d));
+
+// ========= Tiling Cells =========
+// BCC lattice vectors for truncated octahedron tiling
+// The truncated octahedron tiles on a BCC lattice with lattice constant 2*sqrt(2)*scale
+const tilingGroup = new THREE.Group();
+tilingGroup.visible = false;
+scene.add(tilingGroup);
+
+const bccA = 2 * Math.sqrt(2) * mainScale; // lattice constant
+// BCC translations: face-sharing neighbours
+const bccTranslations = [
+  // 6 square-face neighbours (axis-aligned)
+  new THREE.Vector3(2 * mainScale * 2, 0, 0),
+  new THREE.Vector3(-2 * mainScale * 2, 0, 0),
+  new THREE.Vector3(0, 2 * mainScale * 2, 0),
+  new THREE.Vector3(0, -2 * mainScale * 2, 0),
+  new THREE.Vector3(0, 0, 2 * mainScale * 2),
+  new THREE.Vector3(0, 0, -2 * mainScale * 2),
+  // 8 hex-face neighbours (body diagonal)
+  new THREE.Vector3(2*mainScale, 2*mainScale, 2*mainScale),
+  new THREE.Vector3(2*mainScale, 2*mainScale, -2*mainScale),
+  new THREE.Vector3(2*mainScale, -2*mainScale, 2*mainScale),
+  new THREE.Vector3(2*mainScale, -2*mainScale, -2*mainScale),
+  new THREE.Vector3(-2*mainScale, 2*mainScale, 2*mainScale),
+  new THREE.Vector3(-2*mainScale, 2*mainScale, -2*mainScale),
+  new THREE.Vector3(-2*mainScale, -2*mainScale, 2*mainScale),
+  new THREE.Vector3(-2*mainScale, -2*mainScale, -2*mainScale),
+];
+
+let tilingCells = [];
+
+function buildTiling() {
+  if (tilingCells.length > 0) return;
+  bccTranslations.forEach(t => {
+    const cell = buildCell(mainScale, t);
+    cell.faces.hex.forEach(m => { m.material.opacity = 0.2; m.material.color.setHex(0x1a3a55); tilingGroup.add(m); });
+    cell.faces.sq.forEach(m => { m.material.opacity = 0.15; m.material.color.setHex(0x122840); tilingGroup.add(m); });
+    cell.faces.edges.forEach(l => { l.material.opacity = 0.2; tilingGroup.add(l); });
+    cell.faces.dots.forEach(d => { d.material.opacity = 0.2; tilingGroup.add(d); });
+    tilingCells.push(cell);
+  });
+}
+
+// ========= Interaction: Orbit Controls =========
+let isDragging = false;
+let prevMouse = { x: 0, y: 0 };
+let spherical = { theta: Math.PI / 4, phi: Math.PI / 6, radius: 8 };
+
+function updateCamera() {
+  camera.position.x = spherical.radius * Math.sin(spherical.phi + Math.PI/2) * Math.cos(spherical.theta);
+  camera.position.y = spherical.radius * Math.cos(spherical.phi + Math.PI/2);
+  camera.position.z = spherical.radius * Math.sin(spherical.phi + Math.PI/2) * Math.sin(spherical.theta);
+  camera.lookAt(0, 0, 0);
+}
+updateCamera();
+
+canvas.addEventListener('pointerdown', e => {
+  if (e.button === 0) { isDragging = true; prevMouse = { x: e.clientX, y: e.clientY }; }
+});
+canvas.addEventListener('pointermove', e => {
+  if (isDragging) {
+    const dx = e.clientX - prevMouse.x;
+    const dy = e.clientY - prevMouse.y;
+    spherical.theta -= dx * 0.005;
+    spherical.phi = Math.max(-Math.PI/2.2, Math.min(Math.PI/2.2, spherical.phi - dy * 0.005));
+    prevMouse = { x: e.clientX, y: e.clientY };
+    updateCamera();
+  }
+  updateTooltip(e);
+});
+canvas.addEventListener('pointerup', () => { isDragging = false; });
+canvas.addEventListener('wheel', e => {
+  spherical.radius = Math.max(4, Math.min(25, spherical.radius + e.deltaY * 0.005));
+  updateCamera();
+});
+
+// ========= Face Clicking =========
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let hexClicked = 0, sqClicked = 0;
+const clickedFaces = new Set();
+
+canvas.addEventListener('click', e => {
+  if (isDragging) return;
+  mouse.x = ((e.clientX) / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(allFaceMeshes);
+  if (hits.length > 0) {
+    const face = hits[0].object;
+    const id = allFaceMeshes.indexOf(face);
+    if (!clickedFaces.has(id)) {
+      clickedFaces.add(id);
+      if (face.userData.type === 'hex') {
+        hexClicked++;
+        face.material.color.setHex(0x4a8abf);
+        face.material.opacity = 0.8;
+      } else {
+        sqClicked++;
+        face.material.color.setHex(0x3a7aaa);
+        face.material.opacity = 0.7;
+      }
+      updateCounters();
+    }
+  }
+});
+
+function updateCounters() {
+  document.getElementById('hex-count').textContent = hexClicked;
+  document.getElementById('sq-count').textContent = sqClicked;
+  document.getElementById('total-count').textContent = hexClicked + sqClicked;
+  if (hexClicked + sqClicked === 14) {
+    document.getElementById('click-hint').textContent = 'All 14 faces found — 8 hexagons + 6 squares';
+    document.getElementById('click-hint').style.color = '#5ba3e6';
+  } else if (hexClicked + sqClicked > 0) {
+    document.getElementById('click-hint').textContent = `${14 - hexClicked - sqClicked} faces remaining`;
+  }
+  // Complete step 0 once user has clicked at least one hex and one square
+  if (hexClicked > 0 && sqClicked > 0) completeStep(0);
+}
+
+// ========= Tooltip =========
+function updateTooltip(e) {
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(allFaceMeshes);
+  const tip = document.getElementById('tooltip');
+  if (hits.length > 0 && !isDragging) {
+    const face = hits[0].object;
+    const type = face.userData.type === 'hex' ? 'Hexagonal face' : 'Square face';
+    const sides = face.userData.type === 'hex' ? '6 sides' : '4 sides';
+    tip.innerHTML = `<strong>${type}</strong><br>${sides}<br><span style="color:#5a6577">Click to highlight</span>`;
+    tip.style.display = 'block';
+    tip.style.left = (e.clientX + 16) + 'px';
+    tip.style.top = (e.clientY - 10) + 'px';
+  } else {
+    tip.style.display = 'none';
+  }
+}
+
+// ========= Step Navigation =========
+let currentStep = 0;
+const totalSteps = 4;
+const stepsCompleted = new Set();
+
+function completeStep(n) {
+  if (stepsCompleted.has(n)) return;
+  stepsCompleted.add(n);
+  updateStepClasses();
+  // Auto-advance: if all steps up to currentStep are done, move to the next incomplete step
+  setTimeout(() => {
+    // Find the first incomplete step
+    let next = -1;
+    for (let i = 0; i < totalSteps; i++) {
+      if (!stepsCompleted.has(i)) { next = i; break; }
+    }
+    if (next >= 0 && next !== currentStep) {
+      currentStep = next;
+      updateStepClasses();
+      const activeEl = document.getElementById('step-' + currentStep);
+      activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, 600);
+}
+
+function updateStepClasses() {
+  for (let i = 0; i < totalSteps; i++) {
+    const el = document.getElementById('step-' + i);
+    if (i === currentStep) {
+      el.className = 'step active' + (stepsCompleted.has(i) ? ' completed' : '');
+    } else if (stepsCompleted.has(i)) {
+      el.className = 'step completed';
+    } else {
+      el.className = 'step';
+    }
+  }
+  document.getElementById('btn-prev').disabled = (currentStep === 0);
+  document.getElementById('progress-bar').style.width = ((Math.max(currentStep, ...stepsCompleted) + 1) / totalSteps * 100) + '%';
+}
+
+function updateSteps() {
+  updateStepClasses();
+  const activeEl = document.getElementById('step-' + currentStep);
+  activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function nextStep() {
+  if (currentStep < totalSteps - 1) {
+    // Mark current step complete when manually advancing
+    stepsCompleted.add(currentStep);
+    currentStep++;
+    updateSteps();
+    onStepChange();
+  }
+}
+
+function prevStep() {
+  if (currentStep > 0) {
+    currentStep--;
+    updateSteps();
+    onStepChange();
+  }
+}
+
+function onStepChange() {
+  if (currentStep === 2) {
+    buildTiling();
+  }
+  // Step 3 (final) auto-completes after arriving and reading for 3 seconds
+  if (currentStep === 3) {
+    setTimeout(() => { if (currentStep === 3) completeStep(3); }, 3000);
+  }
+}
+
+// ========= Highlight Controls =========
+let hexHighlighted = false;
+let sqHighlighted = false;
+let hexEverToggled = false;
+let sqEverToggled = false;
+
+// Distinct colours: hex = warm amber/orange, square = cool cyan/teal
+const HEX_HIGHLIGHT = 0xff9933;   // warm amber
+const SQ_HIGHLIGHT  = 0x33ccdd;   // cool cyan
+const HEX_BASE      = 0x2a5a7a;
+const SQ_BASE       = 0x1a3050;
+
+function highlightHex() {
+  hexHighlighted = !hexHighlighted;
+  hexEverToggled = true;
+  const btn = document.getElementById('btn-hex');
+  btn.style.background = hexHighlighted ? 'rgba(255,153,51,0.3)' : 'rgba(91,163,230,0.08)';
+  btn.style.borderColor = hexHighlighted ? 'rgba(255,153,51,0.6)' : 'rgba(91,163,230,0.3)';
+  btn.style.color = hexHighlighted ? '#ff9933' : '#5ba3e6';
+  mainCell.faces.hex.forEach(m => {
+    if (hexHighlighted) {
+      m.material.color.setHex(HEX_HIGHLIGHT);
+      m.material.opacity = 0.85;
+      m.material.emissive.setHex(0x663300);
+      m.material.emissiveIntensity = 0.4;
+    } else {
+      m.material.color.setHex(clickedFaces.has(allFaceMeshes.indexOf(m)) ? 0x4a8abf : HEX_BASE);
+      m.material.opacity = clickedFaces.has(allFaceMeshes.indexOf(m)) ? 0.8 : 0.45;
+      m.material.emissive.setHex(0x000000);
+      m.material.emissiveIntensity = 0;
+    }
+  });
+  // Dim squares when hex highlighted (contrast)
+  if (!sqHighlighted) {
+    mainCell.faces.sq.forEach(m => {
+      if (hexHighlighted) {
+        m.material.opacity = 0.12;
+      } else {
+        m.material.opacity = clickedFaces.has(allFaceMeshes.indexOf(m)) ? 0.7 : 0.35;
+      }
+    });
+  }
+  // Complete step 1 when user has tried both highlight buttons
+  if (hexEverToggled && sqEverToggled) completeStep(1);
+}
+
+function highlightSq() {
+  sqHighlighted = !sqHighlighted;
+  sqEverToggled = true;
+  const btn = document.getElementById('btn-sq');
+  btn.style.background = sqHighlighted ? 'rgba(51,204,221,0.3)' : 'rgba(91,163,230,0.08)';
+  btn.style.borderColor = sqHighlighted ? 'rgba(51,204,221,0.6)' : 'rgba(91,163,230,0.3)';
+  btn.style.color = sqHighlighted ? '#33ccdd' : '#5ba3e6';
+  mainCell.faces.sq.forEach(m => {
+    if (sqHighlighted) {
+      m.material.color.setHex(SQ_HIGHLIGHT);
+      m.material.opacity = 0.85;
+      m.material.emissive.setHex(0x0a3344);
+      m.material.emissiveIntensity = 0.5;
+    } else {
+      m.material.color.setHex(clickedFaces.has(allFaceMeshes.indexOf(m)) ? 0x3a7aaa : SQ_BASE);
+      m.material.opacity = clickedFaces.has(allFaceMeshes.indexOf(m)) ? 0.7 : 0.35;
+      m.material.emissive.setHex(0x000000);
+      m.material.emissiveIntensity = 0;
+    }
+  });
+  // Dim hexes when square highlighted (contrast)
+  if (!hexHighlighted) {
+    mainCell.faces.hex.forEach(m => {
+      if (sqHighlighted) {
+        m.material.opacity = 0.12;
+      } else {
+        m.material.opacity = clickedFaces.has(allFaceMeshes.indexOf(m)) ? 0.8 : 0.45;
+      }
+    });
+  }
+  // Complete step 1 when user has tried both highlight buttons
+  if (hexEverToggled && sqEverToggled) completeStep(1);
+}
+
+let tilingVisible = false;
+function toggleTiling() {
+  buildTiling();
+  tilingVisible = !tilingVisible;
+  tilingGroup.visible = tilingVisible;
+  document.getElementById('btn-tile').style.background = tilingVisible ? 'rgba(91,163,230,0.25)' : 'rgba(91,163,230,0.08)';
+  if (tilingVisible) completeStep(2);
+
+  // Zoom out if tiling on
+  if (tilingVisible) {
+    animateZoom(14);
+  } else {
+    animateZoom(8);
+  }
+}
+
+function animateZoom(target) {
+  const start = spherical.radius;
+  const duration = 600;
+  const startTime = Date.now();
+  function tick() {
+    const t = Math.min(1, (Date.now() - startTime) / duration);
+    const ease = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
+    spherical.radius = start + (target - start) * ease;
+    updateCamera();
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+// ========= Gentle Auto-Rotate =========
+let autoRotate = true;
+
+// ========= Animation Loop =========
+function animate() {
+  requestAnimationFrame(animate);
+  if (autoRotate && !isDragging) {
+    spherical.theta += 0.001;
+    updateCamera();
+  }
+
+  // Animate faces — pulse when highlighted, gentle breathe otherwise
+  const time = Date.now() * 0.001;
+  if (hexHighlighted) {
+    mainCell.faces.hex.forEach((m, i) => {
+      m.material.opacity = 0.7 + 0.2 * Math.sin(time * 2.0 + i * 0.5);
+      m.material.emissiveIntensity = 0.3 + 0.2 * Math.sin(time * 2.0 + i * 0.5);
+    });
+  } else {
+    mainCell.faces.hex.forEach((m, i) => {
+      if (!clickedFaces.has(allFaceMeshes.indexOf(m)) && !sqHighlighted) {
+        m.material.opacity = 0.4 + 0.08 * Math.sin(time * 0.8 + i * 0.4);
+      }
+    });
+  }
+  if (sqHighlighted) {
+    mainCell.faces.sq.forEach((m, i) => {
+      m.material.opacity = 0.7 + 0.2 * Math.sin(time * 2.0 + i * 0.7);
+      m.material.emissiveIntensity = 0.35 + 0.25 * Math.sin(time * 2.0 + i * 0.7);
+    });
+  }
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// ========= Resize =========
+window.addEventListener('resize', () => {
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  applyCameraOffset();
+});
+
+// ========= Keyboard =========
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextStep(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); prevStep(); }
+});
+</script>
+</body>
+</html>

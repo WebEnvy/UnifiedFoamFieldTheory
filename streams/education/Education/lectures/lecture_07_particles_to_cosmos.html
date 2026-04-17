@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UFFT Lecture 7 — From Particles to the Cosmos</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0e17; color: #c8d0e0; font-family: 'Segoe UI', system-ui, sans-serif; overflow: hidden; }
+
+  #sidebar {
+    position: absolute; top: 0; left: 0; width: 420px; height: 100vh;
+    background: rgba(10,14,23,0.94); border-right: 1px solid rgba(46,109,180,0.25);
+    display: flex; flex-direction: column;
+  }
+  #progress { position: absolute; top: 0; left: 0; width: 420px; height: 3px; background: rgba(91,163,230,0.1); }
+  #progress-bar { height: 100%; width: 0%; background: #5ba3e6; transition: width 0.5s ease; }
+
+  #sidebar-header { padding: 28px 28px 0; }
+  #sidebar-header .lecture-num { font-size: 14px; color: #5a6577; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; }
+  #sidebar-header h1 { font-size: 26px; color: #5ba3e6; font-weight: 600; margin-bottom: 4px; }
+  #sidebar-header .subtitle { font-size: 16px; color: #7a8599; margin-bottom: 16px; }
+
+  #scale-display {
+    margin: 0 28px 12px; padding: 14px 16px; border-radius: 8px;
+    background: rgba(91,163,230,0.05); border: 1px solid rgba(91,163,230,0.12);
+    text-align: center;
+  }
+  #scale-display .size { font-size: 28px; font-weight: 700; color: #5ba3e6; font-family: Georgia, serif; }
+  #scale-display .cells { font-size: 14px; color: #7a8599; margin-top: 4px; }
+  #scale-display .mode { font-size: 14px; color: #ffaa00; margin-top: 4px; }
+
+  .slider-group {
+    margin: 0 28px 16px; padding: 14px 16px; border-radius: 8px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+  }
+  .slider-group label { font-size: 14px; color: #7a8599; display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .slider-group input { width: 100%; accent-color: #5ba3e6; }
+  .scale-labels { display: flex; justify-content: space-between; font-size: 12px; color: #5a6577; margin-top: 4px; }
+
+  #sidebar-content { flex: 1; overflow-y: auto; padding: 0 28px 28px; }
+  #sidebar-content::-webkit-scrollbar { width: 4px; }
+  #sidebar-content::-webkit-scrollbar-track { background: transparent; }
+  #sidebar-content::-webkit-scrollbar-thumb { background: rgba(91,163,230,0.2); border-radius: 2px; }
+
+  .step {
+    position: relative; margin-bottom: 16px; padding: 14px; border-radius: 8px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.4s ease; cursor: pointer;
+  }
+  .step.active { background: rgba(91,163,230,0.06); border-color: rgba(91,163,230,0.2); }
+  .step.completed { background: rgba(91,163,230,0.03); border-color: rgba(91,163,230,0.1); opacity: 0.7; }
+  .step.active.completed { background: rgba(74,222,128,0.05); border-color: rgba(74,222,128,0.25); opacity: 1; }
+  .step .step-num { font-size: 14px; color: #5ba3e6; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
+  .step h3 { font-size: 16px; color: #dde3ef; margin-bottom: 4px; font-weight: 500; }
+  .step p { font-size: 14px; line-height: 1.6; color: #8a9ab5; }
+  .step .check {
+    position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid rgba(91,163,230,0.15); display: flex; align-items: center; justify-content: center;
+    transition: all 0.4s ease;
+  }
+  .step .check svg { opacity: 0; transition: opacity 0.3s; }
+  .step.completed .check { border-color: #4ade80; background: rgba(74,222,128,0.15); }
+  .step.completed .check svg { opacity: 1; }
+
+  #nav-buttons { padding: 16px 28px 24px; display: flex; gap: 10px; }
+  .nav-btn {
+    flex: 1; padding: 12px; border: 1px solid rgba(91,163,230,0.3); border-radius: 6px;
+    background: rgba(91,163,230,0.08); color: #5ba3e6; font-size: 14px; cursor: pointer;
+    transition: all 0.2s; text-align: center; text-decoration: none;
+  }
+  .nav-btn:hover { background: rgba(91,163,230,0.15); }
+  .nav-btn.primary { background: rgba(91,163,230,0.2); font-weight: 600; }
+
+  #viz {
+    position: absolute; top: 0; left: 420px; right: 0; bottom: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #viz canvas { display: block; }
+
+  #axiom { position: absolute; bottom: 24px; right: 24px; font-size: 28px; font-weight: 700; color: rgba(91,163,230,0.12); letter-spacing: 4px; }
+</style>
+</head>
+<body>
+<div id="viz"><canvas id="canvas"></canvas></div>
+
+<div id="sidebar">
+  <div id="progress"><div id="progress-bar"></div></div>
+  <div id="sidebar-header">
+    <div class="lecture-num">Lecture 7 of 8</div>
+    <h1>Particles to Cosmos</h1>
+    <div class="subtitle">One vibration mode, 60 orders of magnitude</div>
+  </div>
+
+  <div id="scale-display">
+    <div class="size" id="size-text">10⁻³⁵ m</div>
+    <div class="cells" id="cells-text">1 cell</div>
+    <div class="mode" id="mode-text">All modes active</div>
+  </div>
+
+  <div class="slider-group">
+    <label>Zoom scale <span id="zoom-val">Planck</span></label>
+    <input type="range" id="zoom-slider" min="0" max="5" step="0.01" value="0">
+    <div class="scale-labels"><span>10⁻³⁵ m</span><span>10²⁶ m</span></div>
+  </div>
+
+  <div id="sidebar-content">
+    <div class="step active" id="step-0" onclick="jumpTo(0)">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Planck scale</div>
+      <h3>10⁻³⁵ m — One cell</h3>
+      <p>One truncated octahedron. 14 faces. Every particle, every force, every constant of nature comes from vibrations of this cell.</p>
+    </div>
+    <div class="step" id="step-1" onclick="jumpTo(1)">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Nuclear scale</div>
+      <h3>10⁻¹⁵ m — T₂g confinement</h3>
+      <p>~10²⁰ cells. T₂g colour confinement binds quarks into protons and neutrons. The strong force can't reach further than this.</p>
+    </div>
+    <div class="step" id="step-2" onclick="jumpTo(2)">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Atomic scale</div>
+      <h3>10⁻¹⁰ m — A₁g binding</h3>
+      <p>~10²⁵ cells. A₁g electromagnetic binding holds electrons to nuclei. Chemistry begins. Everything you can touch exists at this scale.</p>
+    </div>
+    <div class="step" id="step-3" onclick="jumpTo(3)">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Human scale</div>
+      <h3>1 m — 10³⁵ cells</h3>
+      <p>You are approximately 10³⁵ vibrating Kelvin cells. Every atom in your body runs the same eigenmode patterns from Lecture 2.</p>
+    </div>
+    <div class="step" id="step-4" onclick="jumpTo(4)">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Stellar scale</div>
+      <h3>10¹⁰ m — A₁g gravity</h3>
+      <p>~10⁴⁵ cells. A₁g gravitational collapse compresses matter into a star. The same breathing mode that binds atoms now ignites fusion.</p>
+    </div>
+    <div class="step" id="step-5" onclick="jumpTo(5)">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Cosmic web</div>
+      <h3>10²⁶ m — Still A₁g</h3>
+      <p>~10⁶¹ cells. The cosmic web. Still A₁g. Still λ = 0. Still the same shape, 60 orders of magnitude later.</p>
+    </div>
+  </div>
+
+  <div id="nav-buttons">
+    <a href="lecture_06_confinement.html" class="nav-btn">← Lecture 6</a>
+    <a href="lecture_08_why_this_shape.html" class="nav-btn primary">Lecture 8 →</a>
+  </div>
+</div>
+<div id="axiom">B + V = D</div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const viz = document.getElementById('viz');
+
+function resize() {
+  canvas.width = viz.clientWidth;
+  canvas.height = viz.clientHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const levels = [
+  { name:'Planck', size:'10⁻³⁵ m', cells:'1 cell', mode:'All modes active', color:'#5ba3e6' },
+  { name:'Nuclear', size:'10⁻¹⁵ m', cells:'~10²⁰ cells', mode:'T₂g dominant (strong force)', color:'#44cc44' },
+  { name:'Atomic', size:'10⁻¹⁰ m', cells:'~10²⁵ cells', mode:'A₁g dominant (EM)', color:'#ffffff' },
+  { name:'Human', size:'1 m', cells:'~10³⁵ cells', mode:'A₁g (EM binding)', color:'#ff6b9d' },
+  { name:'Stellar', size:'10¹⁰ m', cells:'~10⁴⁵ cells', mode:'A₁g (gravity)', color:'#ffaa00' },
+  { name:'Cosmic', size:'10²⁶ m', cells:'~10⁶¹ cells', mode:'A₁g (large-scale structure)', color:'#5ba3e6' },
+];
+
+let currentLevel = 0;
+const stepsCompleted = new Set();
+const totalSteps = 6;
+
+// ========= Drawing Functions =========
+function drawHexagon(cx, cy, r, rot) {
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const a = (i / 6) * Math.PI * 2 + rot;
+    ctx.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
+  }
+  ctx.closePath();
+}
+
+function drawPlanck(t) {
+  const cx = canvas.width/2, cy = canvas.height/2;
+  const r = Math.min(canvas.width, canvas.height) * 0.25;
+  // Draw truncated octahedron projection (simplified as hex + squares)
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(t * 0.2);
+  // Outer hex
+  ctx.strokeStyle = 'rgba(91,163,230,0.6)';
+  ctx.lineWidth = 2;
+  drawHexagon(0, 0, r, 0); ctx.stroke();
+  // Inner squares (projected)
+  for (let i = 0; i < 6; i++) {
+    const a = (i/6)*Math.PI*2;
+    const x = r*0.7*Math.cos(a), y = r*0.7*Math.sin(a);
+    const sr = r*0.15;
+    ctx.strokeStyle = 'rgba(91,163,230,0.3)';
+    ctx.strokeRect(x-sr, y-sr, sr*2, sr*2);
+  }
+  // Hex faces (inner hexes)
+  for (let i = 0; i < 8; i++) {
+    const a = (i/8)*Math.PI*2 + t*0.3;
+    const x = r*0.45*Math.cos(a), y = r*0.45*Math.sin(a);
+    ctx.fillStyle = `rgba(91,163,230,${0.1+0.08*Math.sin(t*2+i)})`;
+    drawHexagon(x, y, r*0.2, a); ctx.fill();
+  }
+  // Center label
+  ctx.fillStyle = '#5ba3e6';
+  ctx.font = '18px Georgia';
+  ctx.textAlign = 'center';
+  ctx.fillText('14 faces', 0, r + 40);
+  ctx.restore();
+}
+
+function drawNuclear(t) {
+  const cx = canvas.width/2, cy = canvas.height/2;
+  // 3 quarks in Y-junction
+  const colors = ['#ff4444','#44cc44','#4488ff'];
+  const r = 80;
+  // Flux tubes
+  for (let i = 0; i < 3; i++) {
+    const a = (i/3)*Math.PI*2 - Math.PI/2;
+    ctx.strokeStyle = `rgba(255,170,0,${0.5+0.2*Math.sin(t*2+i)})`;
+    ctx.lineWidth = 6;
+    ctx.beginPath(); ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + r*Math.cos(a), cy + r*Math.sin(a));
+    ctx.stroke();
+  }
+  // Junction
+  ctx.fillStyle = `rgba(255,200,0,${0.6+0.2*Math.sin(t*3)})`;
+  ctx.beginPath(); ctx.arc(cx, cy, 8, 0, Math.PI*2); ctx.fill();
+  // Quarks
+  for (let i = 0; i < 3; i++) {
+    const a = (i/3)*Math.PI*2 - Math.PI/2;
+    const qx = cx + r*Math.cos(a), qy = cy + r*Math.sin(a);
+    // Hex cell outline
+    ctx.strokeStyle = colors[i];
+    ctx.lineWidth = 1.5;
+    drawHexagon(qx, qy, 30, t*0.2); ctx.stroke();
+    ctx.fillStyle = colors[i] + '33';
+    drawHexagon(qx, qy, 30, t*0.2); ctx.fill();
+  }
+  ctx.fillStyle = '#44cc44';
+  ctx.font = '16px "Segoe UI"';
+  ctx.textAlign = 'center';
+  ctx.fillText('T₂g colour confinement', cx, cy + r + 55);
+}
+
+function drawAtomic(t) {
+  const cx = canvas.width/2, cy = canvas.height/2;
+  // Nucleus
+  ctx.fillStyle = `rgba(255,170,0,${0.4+0.15*Math.sin(t*2)})`;
+  ctx.beginPath(); ctx.arc(cx, cy, 18, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle = 'rgba(255,170,0,0.6)';
+  ctx.lineWidth = 1;
+  drawHexagon(cx, cy, 22, t*0.3); ctx.stroke();
+  // Electron orbits
+  for (let i = 0; i < 3; i++) {
+    const orbit = 60 + i * 35;
+    ctx.strokeStyle = `rgba(255,107,157,${0.15+0.05*i})`;
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(cx, cy, orbit, orbit*0.4, i*Math.PI/3, 0, Math.PI*2); ctx.stroke();
+    // Electron
+    const ea = t * (1.5 - i*0.3) + i*2;
+    const ex = cx + orbit*Math.cos(ea)*Math.cos(i*Math.PI/3) - orbit*0.4*Math.sin(ea)*Math.sin(i*Math.PI/3);
+    const ey = cy + orbit*Math.cos(ea)*Math.sin(i*Math.PI/3) + orbit*0.4*Math.sin(ea)*Math.cos(i*Math.PI/3);
+    ctx.fillStyle = '#ff6b9d';
+    ctx.beginPath(); ctx.arc(ex, ey, 5, 0, Math.PI*2); ctx.fill();
+  }
+  // A₁g lines radiating (EM field)
+  for (let i = 0; i < 12; i++) {
+    const a = (i/12)*Math.PI*2;
+    const r1 = 30, r2 = 140 + 20*Math.sin(t*1.5+i);
+    ctx.strokeStyle = `rgba(255,255,255,${0.03+0.02*Math.sin(t+i)})`;
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(cx+r1*Math.cos(a), cy+r1*Math.sin(a));
+    ctx.lineTo(cx+r2*Math.cos(a), cy+r2*Math.sin(a)); ctx.stroke();
+  }
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '16px "Segoe UI"';
+  ctx.textAlign = 'center';
+  ctx.fillText('A₁g electromagnetic binding', cx, cy + 160);
+}
+
+function drawHuman(t) {
+  const cx = canvas.width/2, cy = canvas.height/2;
+  // Dot-cloud silhouette
+  const pts = [];
+  // Head
+  for (let i = 0; i < 30; i++) { const a=Math.random()*Math.PI*2, r=15*Math.random(); pts.push([cx+r*Math.cos(a), cy-90+r*Math.sin(a)]); }
+  // Body
+  for (let i = 0; i < 60; i++) { pts.push([cx+(Math.random()-0.5)*40, cy-70+Math.random()*80]); }
+  // Arms
+  for (let i = 0; i < 30; i++) { pts.push([cx-20-Math.random()*40, cy-50+Math.random()*50]); pts.push([cx+20+Math.random()*40, cy-50+Math.random()*50]); }
+  // Legs
+  for (let i = 0; i < 30; i++) { pts.push([cx-10-Math.random()*15, cy+10+Math.random()*80]); pts.push([cx+10+Math.random()*15, cy+10+Math.random()*80]); }
+
+  pts.forEach(([x,y], i) => {
+    const pulse = 0.3 + 0.3*Math.sin(t*1.5 + i*0.1);
+    ctx.fillStyle = `rgba(255,107,157,${pulse})`;
+    ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI*2); ctx.fill();
+  });
+  ctx.fillStyle = '#ff6b9d';
+  ctx.font = '16px "Segoe UI"';
+  ctx.textAlign = 'center';
+  ctx.fillText('10³⁵ vibrating cells', cx, cy + 120);
+}
+
+function drawStellar(t) {
+  const cx = canvas.width/2, cy = canvas.height/2;
+  // Star core
+  const glow = ctx.createRadialGradient(cx, cy, 5, cx, cy, 120);
+  glow.addColorStop(0, `rgba(255,200,50,${0.6+0.2*Math.sin(t*2)})`);
+  glow.addColorStop(0.3, `rgba(255,150,30,${0.3+0.1*Math.sin(t*2)})`);
+  glow.addColorStop(1, 'rgba(255,100,0,0)');
+  ctx.fillStyle = glow;
+  ctx.beginPath(); ctx.arc(cx, cy, 120, 0, Math.PI*2); ctx.fill();
+  // Core
+  ctx.fillStyle = `rgba(255,220,100,${0.8+0.15*Math.sin(t*3)})`;
+  ctx.beginPath(); ctx.arc(cx, cy, 25, 0, Math.PI*2); ctx.fill();
+  // Rays
+  for (let i = 0; i < 16; i++) {
+    const a = (i/16)*Math.PI*2 + t*0.1;
+    const len = 80 + 30*Math.sin(t*2+i*0.7);
+    ctx.strokeStyle = `rgba(255,170,0,${0.15+0.1*Math.sin(t+i)})`;
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(cx+30*Math.cos(a), cy+30*Math.sin(a));
+    ctx.lineTo(cx+len*Math.cos(a), cy+len*Math.sin(a)); ctx.stroke();
+  }
+  ctx.fillStyle = '#ffaa00';
+  ctx.font = '16px "Segoe UI"';
+  ctx.textAlign = 'center';
+  ctx.fillText('A₁g gravitational collapse', cx, cy + 150);
+}
+
+function drawCosmic(t) {
+  const cx = canvas.width/2, cy = canvas.height/2;
+  // Galaxy nodes
+  const nodes = [];
+  const seed = 42;
+  for (let i = 0; i < 25; i++) {
+    const a = (i * 137.5 * Math.PI/180); // golden angle
+    const r = 30 + (i/25) * 180;
+    nodes.push([cx + r*Math.cos(a + t*0.05), cy + r*Math.sin(a + t*0.05), 2+Math.random()*3]);
+  }
+  // Filaments
+  nodes.forEach(([x1,y1], i) => {
+    nodes.forEach(([x2,y2], j) => {
+      if (j <= i) return;
+      const d = Math.sqrt((x2-x1)**2 + (y2-y1)**2);
+      if (d < 120) {
+        ctx.strokeStyle = `rgba(91,163,230,${0.08*(1-d/120)+0.03*Math.sin(t+i+j)})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+      }
+    });
+  });
+  // Nodes
+  nodes.forEach(([x,y,r], i) => {
+    ctx.fillStyle = `rgba(91,163,230,${0.3+0.2*Math.sin(t*0.8+i*0.5)})`;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
+  });
+  ctx.fillStyle = '#5ba3e6';
+  ctx.font = '16px "Segoe UI"';
+  ctx.textAlign = 'center';
+  ctx.fillText('Still A₁g · Still λ = 0 · Still one shape', cx, cy + 220);
+}
+
+const drawFns = [drawPlanck, drawNuclear, drawAtomic, drawHuman, drawStellar, drawCosmic];
+
+// ========= Slider & Steps =========
+const slider = document.getElementById('zoom-slider');
+slider.addEventListener('input', e => {
+  const v = parseFloat(e.target.value);
+  const level = Math.round(v);
+  if (level !== currentLevel) {
+    currentLevel = level;
+    completeStep(level);
+    updateDisplay();
+  }
+});
+
+function jumpTo(n) {
+  currentLevel = n;
+  slider.value = n;
+  completeStep(n);
+  updateDisplay();
+}
+
+function updateDisplay() {
+  const L = levels[currentLevel];
+  document.getElementById('size-text').textContent = L.size;
+  document.getElementById('cells-text').textContent = L.cells;
+  document.getElementById('mode-text').textContent = L.mode;
+  document.getElementById('zoom-val').textContent = L.name;
+}
+
+// ========= Step Logic =========
+function completeStep(n) {
+  if(stepsCompleted.has(n)) return;
+  stepsCompleted.add(n);
+  updateStepClasses();
+  document.getElementById('progress-bar').style.width = (stepsCompleted.size/totalSteps*100)+'%';
+}
+
+function updateStepClasses() {
+  for(let i=0;i<totalSteps;i++){
+    const el=document.getElementById('step-'+i);
+    if(i===currentLevel) el.className='step active'+(stepsCompleted.has(i)?' completed':'');
+    else if(stepsCompleted.has(i)) el.className='step completed';
+    else el.className='step';
+  }
+}
+
+// Start on step 0
+completeStep(0);
+
+// ========= Animation =========
+function animate() {
+  requestAnimationFrame(animate);
+  const t = Date.now() * 0.001;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw current level with fade
+  drawFns[currentLevel](t);
+}
+animate();
+</script>
+</body>
+</html>

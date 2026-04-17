@@ -1,14 +1,48 @@
-# Outreach and fundraising — kept locally, not published to GitHub
-outreach/
-UFFT/
-legacy/
+# ============================================================================
+# UFFT public repo .gitignore
+#
+# Strategy: ALLOWLIST — the default state of any file or folder is NOT
+# published. Only paths explicitly un-ignored below are pushed to GitHub.
+# ============================================================================
 
-# OS files
-.DS_Store
-Thumbs.db
+# Ignore everything by default
+*
 
-# Zip archives
-*.zip
+# --- Root essentials ---
+!.gitignore
+!README.md
+!LICENSE
 
-# PDF duplicates (canonical PDFs kept in submissions_clean)
-*.md.pdf
+# --- Canonical math documents ---
+!UFFT_Core_Framework_v9.md
+!From_Foam_to_Fermions.md
+
+# --- Published papers ---
+!papers
+!papers/**
+
+# --- Education (explainers, worksheets, presentations) ---
+!streams
+!streams/education
+!streams/education/**
+
+# --- Reproducibility artefacts ---
+!verification
+!verification/**
+
+# --- Defensive re-ignores (generic patterns only) ---
+**/DRAFT_*
+**/*.request.yaml
+**/drafts/
+**/CLAUDE.md
+**/REGISTER.md
+**/_INDEX.md
+**/.DS_Store
+**/Thumbs.db
+**/*.swp
+**/*.swo
+**/*~
+**/__pycache__/
+**/*.pyc
+**/.venv/
+**/*.md.pdf

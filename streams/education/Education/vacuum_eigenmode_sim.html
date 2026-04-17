@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<title>UFFT — Vacuum Eigenmode Simulator</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a1a;color:#e0e0e0;font-family:'Segoe UI',system-ui,sans-serif;display:flex;height:100vh;overflow:hidden}
+
+#sidebar{width:420px;min-width:420px;background:#0f0f23;border-right:1px solid #1a1a3e;display:flex;flex-direction:column;overflow-y:auto}
+#sidebar::-webkit-scrollbar{width:6px}
+#sidebar::-webkit-scrollbar-track{background:#0f0f23}
+#sidebar::-webkit-scrollbar-thumb{background:#2a2a4e;border-radius:3px}
+
+.header{padding:24px 20px 16px;border-bottom:1px solid #1a1a3e}
+.header h1{font-size:22px;color:#fff;margin-bottom:4px}
+.header p{font-size:14px;color:#888;line-height:1.5}
+
+.section{padding:16px 20px;border-bottom:1px solid #1a1a3e}
+.section h3{font-size:12px;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+
+.vacuum-btn{width:100%;padding:14px;border:2px solid #333;border-radius:8px;background:#1a1a2e;color:#888;font-size:16px;cursor:pointer;transition:all 0.4s;display:flex;align-items:center;justify-content:center;gap:10px;font-family:inherit}
+.vacuum-btn:hover{border-color:#4ecdc4;color:#ccc}
+.vacuum-btn.active{border-color:#4ecdc4;background:#0d1f1d;color:#4ecdc4}
+.vacuum-dot{width:10px;height:10px;border-radius:50%;background:#333;transition:all 0.4s}
+.vacuum-btn.active .vacuum-dot{background:#4ecdc4;box-shadow:0 0 10px #4ecdc4}
+
+.pressure-bar{margin-top:10px;height:5px;background:#1a1a2e;border-radius:3px;overflow:hidden}
+.pressure-fill{height:100%;width:0%;background:linear-gradient(90deg,#4ecdc4,#00ff88);transition:width 0.8s ease;border-radius:3px}
+
+.spectrum{display:flex;align-items:flex-end;gap:3px;height:50px;margin:0 0 14px;padding:0 2px}
+.spec-col{flex:1;background:#1a1a2e;border-radius:2px 2px 0 0;transition:all 0.3s;cursor:pointer;position:relative;min-width:0}
+.spec-col:hover{background:#2a2a4e}
+.spec-col.active{background:#ff6b9d}
+.spec-lbl{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font-size:9px;color:#555;white-space:nowrap;font-family:'Courier New',monospace}
+
+.mode-card{padding:12px 14px;border:1px solid #1a1a3e;border-radius:8px;margin-bottom:7px;cursor:pointer;transition:all 0.25s;opacity:0.25;pointer-events:none}
+.mode-card.enabled{opacity:1;pointer-events:auto}
+.mode-card.enabled:hover{border-color:#444;background:#12122a}
+.mode-card.active{border-color:#ff6b9d;background:#1a1020}
+.mode-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
+.mode-name{font-size:15px;font-weight:600;color:#fff}
+.mode-lam{font-size:12px;color:#ff6b9d;font-family:'Courier New',monospace}
+.mode-desc{font-size:13px;color:#777;line-height:1.35}
+.mode-phys{font-size:12px;color:#4ecdc4;margin-top:3px;font-style:italic}
+
+.sub-row{display:flex;gap:4px;margin-top:6px}
+.sub-btn{padding:2px 10px;border:1px solid #333;border-radius:4px;background:transparent;color:#666;font-size:11px;cursor:pointer;transition:all 0.2s;font-family:'Courier New',monospace}
+.sub-btn:hover{border-color:#666;color:#aaa}
+.sub-btn.active{border-color:#ff6b9d;color:#ff6b9d;background:#1a1020}
+
+.controls{padding:16px 20px;border-bottom:1px solid #1a1a3e}
+.ctrl-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.ctrl-row:last-child{margin-bottom:0}
+.ctrl-row label{font-size:13px;color:#777;width:75px}
+.ctrl-row input[type=range]{flex:1;accent-color:#ff6b9d}
+.ctrl-row .cv{font-size:13px;color:#ff6b9d;width:40px;text-align:right;font-family:'Courier New',monospace}
+
+.info{padding:14px 20px;background:#08081a;flex:1}
+.info h4{font-size:12px;color:#4ecdc4;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.info p{font-size:13px;color:#777;line-height:1.55}
+.info .hl{color:#ff6b9d;font-family:'Courier New',monospace}
+.info .hc{color:#4ecdc4}
+
+#canvas-wrap{flex:1;position:relative}
+canvas{display:block}
+
+.overlay-box{position:absolute;padding:10px 14px;border-radius:8px;border:1px solid #1a1a3e;background:rgba(10,10,26,0.88);pointer-events:none}
+#freqBox{top:20px;right:20px;text-align:right}
+#freqBox .fl{font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px}
+#freqBox .fv{font-size:22px;color:#4ecdc4;font-family:'Courier New',monospace}
+#freqBox .fn{font-size:12px;color:#888;margin-top:2px}
+
+#legend{bottom:20px;right:20px}
+.leg-item{display:flex;align-items:center;gap:8px;margin-bottom:3px;font-size:12px;color:#777}
+.leg-item:last-child{margin-bottom:0}
+.leg-dot{width:12px;height:12px;border-radius:2px}
+
+.master-eq{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:14px;color:#444;font-family:'Courier New',monospace;letter-spacing:1px}
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div class="header">
+    <h1>Vacuum Eigenmode Sim</h1>
+    <p>Pull vacuum on a truncated octahedron. Atmospheric pressure tensions the faces into drum membranes. Their collective vibration modes are the face Laplacian eigenmodes — the same spectrum UFFT identifies with particle physics.</p>
+  </div>
+
+  <div class="section">
+    <h3>Pressure</h3>
+    <button class="vacuum-btn" id="vacBtn" onclick="toggleVacuum()">
+      <span class="vacuum-dot"></span>
+      <span id="vacLabel">Pull Vacuum</span>
+    </button>
+    <div class="pressure-bar"><div class="pressure-fill" id="pFill"></div></div>
+  </div>
+
+  <div class="section" style="flex:0 0 auto">
+    <h3>Eigenvalue Spectrum</h3>
+    <div class="spectrum" id="specBar"></div>
+    <div id="modeList"></div>
+  </div>
+
+  <div class="controls">
+    <div class="ctrl-row">
+      <label>Amplitude</label>
+      <input type="range" id="slAmp" min="0" max="100" value="50">
+      <span class="cv" id="vAmp">0.50</span>
+    </div>
+    <div class="ctrl-row">
+      <label>Speed</label>
+      <input type="range" id="slSpd" min="1" max="100" value="25">
+      <span class="cv" id="vSpd">0.25</span>
+    </div>
+  </div>
+
+  <div class="info" id="infoPanel">
+    <h4>How it works</h4>
+    <p>The hex faces (larger span) flex more than the squares — they're the primary membranes. All 14 faces are mechanically coupled through shared edges and vertices, constrained by the octahedral symmetry group O<sub>h</sub> (order 48). The result: vibration modes decompose into irreducible representations of O<sub>h</sub> — exactly the face Laplacian eigenmodes of the Kelvin cell.</p>
+    <p style="margin-top:10px">The eigenvalues come from the <span class="hl">master equation λ² − 9λ + 16 = 0</span>, giving <span class="hl">λ = (9 ± √17)/2</span>. Every mode is determined by topology alone — zero free parameters.</p>
+  </div>
+</div>
+
+<div id="canvas-wrap">
+  <div class="overlay-box" id="freqBox" style="display:none">
+    <div class="fl">Frequency ratio</div>
+    <div class="fv" id="freqVal">—</div>
+    <div class="fn" id="freqName"></div>
+  </div>
+  <div class="overlay-box" id="legend">
+    <div class="leg-item"><div class="leg-dot" style="background:#ff6b9d"></div>Outward (push)</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#4ecdc4"></div>Inward (pull)</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#2a2a4e"></div>Node (still)</div>
+  </div>
+  <div class="master-eq">λ² − 9λ + 16 = 0</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============================================================
+   VACUUM EIGENMODE SIMULATOR — MEMBRANE BENDING ENGINE
+   Each face is a subdivided mesh. Edges & corners stay pinned.
+   Face centers bulge in/out like drum membranes.
+   ============================================================ */
+
+/* ===== CONSTANTS ===== */
+const SC = 1.6;                      // cell scale
+const sqrt17 = Math.sqrt(17);
+const r1 = (9 - sqrt17) / 2;        // 2.4384
+const r2 = (9 + sqrt17) / 2;        // 6.5616
+const bR1 = (1 + sqrt17) / 2;       // +2.561  sq/hex ratio at r1
+const bR2 = (1 - sqrt17) / 2;       // -1.561  sq/hex ratio at r2
+const NUM_RINGS = 7;                 // rings per face (0=center, NUM_RINGS=boundary)
+const MAX_DISP = 0.45;              // max displacement at full amplitude
+
+/* ===== MODE DEFINITIONS (exact eigenvectors verified to machine precision) ===== */
+const MODES = [
+  { name:'Breathing', sym:'A₁g', lam:0.001, mult:1, face:'all',
+    phys:'Gravity / EM ground state',
+    desc:'All faces displace in unison. The zero mode — uniform compression under vacuum.',
+    ev: function(f){ return 1; }
+  },
+  { name:'Fermion (L)', sym:'T₁u', lam:r1, mult:3, face:'both',
+    phys:'Left-handed fermions — electron, neutrino',
+    desc:'Dipole: both hex and square faces. Squares vibrate '+Math.abs(bR1).toFixed(1)+'× stronger.',
+    subs:['x','y','z'], subI:0,
+    ev: function(f,si){ const ax=si||0;
+      if(f.type==='hex') return f.signs[ax];
+      return f.axis===ax ? f.sign*bR1 : 0; }
+  },
+  { name:'Weak Force', sym:'Eg', lam:4, mult:2, face:'sq only',
+    phys:'Weak interaction — square faces only',
+    desc:'Quadrupole on squares. Hex faces are nodes (zero displacement).',
+    subs:['z²','x²−y²'], subI:0,
+    ev: function(f,si){ if(f.type==='hex') return 0;
+      if((si||0)===0) return f.axis===2?2:-1;
+      if(f.axis===0) return 1; if(f.axis===1) return -1; return 0; }
+  },
+  { name:'Fermion (R)', sym:'T₁u', lam:r2, mult:3, face:'both',
+    phys:'Right-handed fermions — anti-phase, heavier sector',
+    desc:'Dipole: hex and square anti-phase. Ratio '+bR2.toFixed(2)+' (opposite sign).',
+    subs:['x','y','z'], subI:0,
+    ev: function(f,si){ const ax=si||0;
+      if(f.type==='hex') return f.signs[ax];
+      return f.axis===ax ? f.sign*bR2 : 0; }
+  },
+  { name:'Colour Force', sym:'T₂g', lam:7, mult:3, face:'hex only',
+    phys:'Strong force — hex quadrupole, confined',
+    desc:'Hex-only quadrupole (sᵢsⱼ). Square faces are exact nodes. Confinement.',
+    subs:['xy','xz','yz'], subI:0,
+    ev: function(f,si){ if(f.type==='sq') return 0;
+      const pairs=[[0,1],[0,2],[1,2]]; const p=pairs[si||0];
+      return f.signs[p[0]]*f.signs[p[1]]; }
+  },
+  { name:'Anti-Breathe', sym:'A₁g', lam:7, mult:1, face:'both',
+    phys:'Mixed compression — hex vs square opposition',
+    desc:'Hex and square faces displace in opposite directions. Ratio −4/3.',
+    ev: function(f){ return f.type==='hex'?1:-4/3; }
+  },
+  { name:'Higgs', sym:'A₂u', lam:9, mult:1, face:'hex only',
+    phys:'Higgs alternating — maximum eigenvalue',
+    desc:'Alternating pattern s₁s₂s₃ on hex faces. Squares are nodes. Highest frequency.',
+    ev: function(f){ if(f.type==='sq') return 0;
+      return f.signs[0]*f.signs[1]*f.signs[2]; }
+  }
+];
+
+/* ===== STATE ===== */
+let vacuumOn=false, vacuumT=0, activeMode=-1, amp=0.5, spd=0.25;
+let isDrag=false, prevMX, prevMY, rotX=0.35, rotY=0.6, camDist=7.5;
+let faceMeshData=[];   // {geo, mat, face, restPos, weights, colAttr}
+
+/* ===== THREE.JS SETUP ===== */
+const wrap=document.getElementById('canvas-wrap');
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setClearColor(0x0a0a1a);
+wrap.appendChild(renderer.domElement);
+
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(45,1,0.1,100);
+
+scene.add(new THREE.AmbientLight(0x606080,0.5));
+const dl1=new THREE.DirectionalLight(0xffffff,0.9); dl1.position.set(5,8,6); scene.add(dl1);
+const dl2=new THREE.DirectionalLight(0x4488ff,0.3); dl2.position.set(-4,-3,-5); scene.add(dl2);
+
+const toGroup=new THREE.Group();
+scene.add(toGroup);
+
+/* ===== GENERATE TRUNCATED OCTAHEDRON VERTICES ===== */
+function genVerts(){
+  const v=[];
+  for(let zp=0;zp<3;zp++){
+    const op=[0,1,2].filter(i=>i!==zp);
+    for(let sw=0;sw<2;sw++){
+      const sP=op[sw],tP=op[1-sw];
+      for(let ss=-1;ss<=1;ss+=2) for(let ts=-1;ts<=1;ts+=2){
+        const c=[0,0,0]; c[sP]=ss*SC; c[tP]=ts*2*SC;
+        v.push(new THREE.Vector3(c[0],c[1],c[2]));
+      }
+    }
+  }
+  return v;
+}
+
+/* ===== BUILD FACE DATA ===== */
+function buildFaces(verts){
+  const faces=[],eps=0.01;
+  for(let s1=-1;s1<=1;s1+=2)for(let s2=-1;s2<=1;s2+=2)for(let s3=-1;s3<=1;s3+=2){
+    const n=new THREE.Vector3(s1,s2,s3).normalize(), tgt=3*SC;
+    const fv=verts.filter(v=>Math.abs(v.x*s1+v.y*s2+v.z*s3-tgt)<eps);
+    if(fv.length!==6) continue;
+    const cen=avgVec(fv); sortPoly(fv,cen,n);
+    faces.push({type:'hex',verts:fv,normal:n,centroid:cen,signs:[s1,s2,s3]});
+  }
+  for(let ax=0;ax<3;ax++)for(let sg=-1;sg<=1;sg+=2){
+    const n=new THREE.Vector3(); n.setComponent(ax,sg);
+    const fv=verts.filter(v=>Math.abs(v.getComponent(ax)-sg*2*SC)<eps);
+    if(fv.length!==4) continue;
+    const cen=avgVec(fv); sortPoly(fv,cen,n);
+    faces.push({type:'sq',verts:fv,normal:n,centroid:cen,axis:ax,sign:sg});
+  }
+  return faces;
+}
+function avgVec(arr){
+  const s=new THREE.Vector3();
+  for(const v of arr) s.add(v);
+  return s.divideScalar(arr.length);
+}
+function sortPoly(verts,cen,norm){
+  const up=Math.abs(norm.y)<0.9?new THREE.Vector3(0,1,0):new THREE.Vector3(1,0,0);
+  const u=new THREE.Vector3().crossVectors(norm,up).normalize();
+  const w=new THREE.Vector3().crossVectors(norm,u).normalize();
+  verts.sort((a,b)=>{
+    const da=a.clone().sub(cen),db=b.clone().sub(cen);
+    return Math.atan2(da.dot(w),da.dot(u))-Math.atan2(db.dot(w),db.dot(u));
+  });
+}
+
+/* =============================================================
+   FACE SUBDIVISION — the core of the membrane engine.
+
+   Each face polygon is subdivided into concentric rings.
+   Ring 0 = face center (1 vertex, weight=1.0)
+   Ring N = boundary polygon (edge vertices, weight=0.0)
+   Intermediate rings are scaled copies of the polygon.
+
+   Weight profile: w(t) = cos²(πt/2)  where t = ring/NUM_RINGS
+   This gives smooth zero-slope at both boundary and center,
+   closely matching the first drum membrane eigenmode.
+   ============================================================= */
+function subdivideFace(face){
+  const N = face.verts.length;  // 6 for hex, 4 for square
+  const cen = face.centroid;
+  const norm = face.normal;
+
+  // Build angular boundary points: original vertices + edge midpoints
+  // This doubles angular resolution for smoother rings
+  const boundaryPts = [];  // points on the polygon boundary
+  for(let i=0; i<N; i++){
+    boundaryPts.push(face.verts[i].clone());                                          // vertex
+    boundaryPts.push(face.verts[i].clone().add(face.verts[(i+1)%N]).multiplyScalar(0.5)); // edge mid
+  }
+  const nA = boundaryPts.length;  // 12 for hex, 8 for square
+
+  // Generate all mesh vertices
+  const positions = [];  // flat xyz
+  const weights = [];    // membrane weight per vertex
+
+  // Ring 0: center
+  positions.push(cen.x, cen.y, cen.z);
+  weights.push(1.0);
+
+  // Rings 1..NUM_RINGS
+  for(let r=1; r<=NUM_RINGS; r++){
+    const t = r / NUM_RINGS;  // 0→1
+    const w = Math.cos(Math.PI * t / 2);
+    const w2 = w * w;         // cos² profile
+    for(let a=0; a<nA; a++){
+      const bp = boundaryPts[a];
+      // Lerp from center to boundary point
+      const px = cen.x + t*(bp.x - cen.x);
+      const py = cen.y + t*(bp.y - cen.y);
+      const pz = cen.z + t*(bp.z - cen.z);
+      positions.push(px, py, pz);
+      weights.push(w2);
+    }
+  }
+
+  // Build triangle indices
+  const indices = [];
+
+  // Center fan: ring 0 (vertex 0) → ring 1 (vertices 1..nA)
+  for(let a=0; a<nA; a++){
+    indices.push(0, 1+a, 1+(a+1)%nA);
+  }
+
+  // Ring-to-ring quads (split into 2 triangles each)
+  for(let r=1; r<NUM_RINGS; r++){
+    const base1 = 1 + (r-1)*nA;
+    const base2 = 1 + r*nA;
+    for(let a=0; a<nA; a++){
+      const a2 = (a+1)%nA;
+      indices.push(base1+a, base2+a,  base2+a2);
+      indices.push(base1+a, base2+a2, base1+a2);
+    }
+  }
+
+  return { positions: new Float32Array(positions), weights: new Float32Array(weights), indices };
+}
+
+/* ===== CREATE FACE MESH WITH SUBDIVISION ===== */
+function createFaceMesh(face){
+  const sub = subdivideFace(face);
+  const vertCount = sub.weights.length;
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(sub.positions.slice(), 3));  // mutable copy
+  geo.setIndex(sub.indices);
+  // Vertex colors for displacement gradient
+  const colors = new Float32Array(vertCount * 3);
+  for(let i=0;i<vertCount;i++){ colors[i*3]=0.165; colors[i*3+1]=0.165; colors[i*3+2]=0.306; } // #2a2a4e
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  geo.computeVertexNormals();
+
+  const mat = new THREE.MeshPhongMaterial({
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.12,
+    side: THREE.DoubleSide,
+    shininess: 60,
+    depthWrite: true
+  });
+
+  const mesh = new THREE.Mesh(geo, mat);
+  toGroup.add(mesh);
+
+  return {
+    geo,
+    mat,
+    mesh,
+    face,
+    restPos: sub.positions.slice(),   // original positions (Float32Array copy)
+    weights: sub.weights,             // membrane weights
+    posAttr: geo.getAttribute('position'),
+    colAttr: geo.getAttribute('color')
+  };
+}
+
+/* ===== WIREFRAME EDGES (rigid skeleton — never moves) ===== */
+function makeEdges(verts){
+  const edgeLen=SC*Math.SQRT2, eps=0.05, pts=[];
+  for(let i=0;i<verts.length;i++)
+    for(let j=i+1;j<verts.length;j++)
+      if(Math.abs(verts[i].distanceTo(verts[j])-edgeLen)<eps)
+        pts.push(verts[i],verts[j]);
+  const geo=new THREE.BufferGeometry().setFromPoints(pts);
+  const mat=new THREE.LineBasicMaterial({color:0x556677,transparent:true,opacity:0.7});
+  toGroup.add(new THREE.LineSegments(geo,mat));
+}
+
+/* ===== VERTEX DOTS (rigid — never move) ===== */
+function makeVertDots(verts){
+  const geo=new THREE.SphereBufferGeometry(0.055,8,6);
+  const mat=new THREE.MeshBasicMaterial({color:0x778899});
+  for(const v of verts){
+    const m=new THREE.Mesh(geo,mat);
+    m.position.copy(v);
+    toGroup.add(m);
+  }
+}
+
+/* ===== BUILD SCENE ===== */
+const allVerts = genVerts();
+const allFaces = buildFaces(allVerts);
+for(const f of allFaces) faceMeshData.push(createFaceMesh(f));
+makeEdges(allVerts);
+makeVertDots(allVerts);
+
+/* ===== UI: SPECTRUM BAR ===== */
+const lambdas=[0,r1,4,r2,7,9];
+const lamLabels=['0','r₁','4','r₂','7','9'];
+const specBar=document.getElementById('specBar');
+lambdas.forEach((l,i)=>{
+  const col=document.createElement('div');
+  col.className='spec-col';
+  col.style.height=Math.max(4,(l/9)*100)+'%';
+  col.innerHTML='<span class="spec-lbl">'+lamLabels[i]+'</span>';
+  col.onclick=()=>{
+    const mi=MODES.findIndex(m=>Math.abs(m.lam-l)<0.01||(l<0.01&&m.lam<0.01));
+    if(mi>=0&&vacuumOn) selectMode(mi);
+  };
+  specBar.appendChild(col);
+});
+
+/* ===== UI: MODE CARDS ===== */
+const modeList=document.getElementById('modeList');
+MODES.forEach((m,i)=>{
+  const card=document.createElement('div');
+  card.className='mode-card'; card.id='mc'+i;
+  let html='<div class="mode-top"><span class="mode-name">'+m.name+'</span>';
+  html+='<span class="mode-lam">'+m.sym+' · λ='+m.lam.toFixed(3)+'</span></div>';
+  html+='<div class="mode-desc">'+m.desc+'</div>';
+  html+='<div class="mode-phys">→ '+m.phys+'</div>';
+  if(m.subs){
+    html+='<div class="sub-row">';
+    m.subs.forEach((s,j)=>{
+      html+='<button class="sub-btn'+(j===0?' active':'')+'" data-mi="'+i+'" data-si="'+j+'">'+s+'</button>';
+    });
+    html+='</div>';
+  }
+  card.innerHTML=html;
+  card.onclick=e=>{if(!e.target.classList.contains('sub-btn')&&vacuumOn) selectMode(i);};
+  modeList.appendChild(card);
+});
+document.querySelectorAll('.sub-btn').forEach(btn=>{
+  btn.onclick=e=>{
+    e.stopPropagation(); if(!vacuumOn) return;
+    const mi=+btn.dataset.mi, si=+btn.dataset.si;
+    MODES[mi].subI=si;
+    btn.parentElement.querySelectorAll('.sub-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    if(activeMode!==mi) selectMode(mi);
+    maxComps={};  // clear cache when sub-mode changes
+  };
+});
+
+/* ===== CONTROLS ===== */
+const slAmp=document.getElementById('slAmp'),slSpd=document.getElementById('slSpd');
+const vAmp=document.getElementById('vAmp'),vSpd=document.getElementById('vSpd');
+slAmp.oninput=()=>{amp=slAmp.value/100;vAmp.textContent=amp.toFixed(2)};
+slSpd.oninput=()=>{spd=slSpd.value/100;vSpd.textContent=spd.toFixed(2)};
+
+/* ===== VACUUM TOGGLE ===== */
+function toggleVacuum(){
+  vacuumOn=!vacuumOn;
+  document.getElementById('vacBtn').classList.toggle('active',vacuumOn);
+  document.getElementById('vacLabel').textContent=vacuumOn?'Vacuum Active':'Pull Vacuum';
+  document.getElementById('pFill').style.width=vacuumOn?'100%':'0%';
+  document.querySelectorAll('.mode-card').forEach(c=>c.classList.toggle('enabled',vacuumOn));
+  if(!vacuumOn){
+    activeMode=-1;
+    document.querySelectorAll('.mode-card').forEach(c=>c.classList.remove('active'));
+    document.querySelectorAll('.spec-col').forEach(c=>c.classList.remove('active'));
+    document.getElementById('freqBox').style.display='none';
+    updateInfo(-1);
+  }
+}
+
+/* ===== MODE SELECTION ===== */
+function selectMode(mi){
+  activeMode=mi; maxComps={};
+  document.querySelectorAll('.mode-card').forEach((c,i)=>c.classList.toggle('active',i===mi));
+  const m=MODES[mi];
+  document.querySelectorAll('.spec-col').forEach((c,i)=>{
+    c.classList.toggle('active',Math.abs(lambdas[i]-m.lam)<0.01||(lambdas[i]<0.01&&m.lam<0.01));
+  });
+  document.getElementById('freqBox').style.display='block';
+  document.getElementById('freqVal').textContent=m.lam<0.01?'~0':Math.sqrt(m.lam).toFixed(3);
+  document.getElementById('freqName').textContent=m.sym+' — '+m.name;
+  updateInfo(mi);
+}
+
+/* ===== INFO PANEL ===== */
+function updateInfo(mi){
+  const ip=document.getElementById('infoPanel');
+  if(mi<0){
+    ip.innerHTML='<h4>How it works</h4><p>The hex faces (larger span) flex more than the squares — they\'re the primary membranes. All 14 faces are mechanically coupled through shared edges, constrained by O<sub>h</sub> symmetry (order 48). The vibration modes are the face Laplacian eigenmodes of the Kelvin cell.</p><p style="margin-top:10px">The eigenvalues come from the <span class="hl">master equation λ² − 9λ + 16 = 0</span>, giving <span class="hl">λ = (9 ± √17)/2</span>.</p>';
+    return;
+  }
+  const m=MODES[mi];
+  let h='<h4>'+m.sym+' — '+m.name+'</h4>';
+  h+='<p>Eigenvalue: <span class="hl">λ = '+m.lam.toFixed(4)+'</span><br>';
+  h+='Frequency: <span class="hl">ω ∝ √λ = '+Math.sqrt(m.lam).toFixed(4)+'</span><br>';
+  h+='Multiplicity: <span class="hl">'+m.mult+'</span><br>';
+  h+='Active faces: <span class="hc">'+m.face+'</span></p>';
+  if(Math.abs(m.lam-r1)<0.01||Math.abs(m.lam-r2)<0.01){
+    const ratio=Math.abs(m.lam-r1)<0.01?bR1:bR2;
+    h+='<p style="margin-top:8px">Square-to-hex ratio: <span class="hl">b/a = '+(ratio>0?'+':'')+ratio.toFixed(3)+'</span><br>';
+    h+='Both face types participate.'+(ratio<0?' Anti-phase: hex and square vibrate in opposite directions.':'')+'</p>';
+  }
+  if(Math.abs(m.lam-7)<0.01&&m.mult===3)
+    h+='<p style="margin-top:8px">Hex only — squares are exact nodes. In a BCC lattice this propagates only through hex-hex contacts. <span class="hc">Confinement.</span></p>';
+  if(Math.abs(m.lam-4)<0.01)
+    h+='<p style="margin-top:8px">Square only — hex faces are exact nodes. Weak force propagates only through axis-aligned contacts.</p>';
+  if(Math.abs(m.lam-9)<0.01)
+    h+='<p style="margin-top:8px">Maximum eigenvalue, highest frequency. Alternating s₁s₂s₃ flips sign across every hex neighbour — maximum curvature.</p>';
+  ip.innerHTML=h;
+}
+
+/* ===== MOUSE ORBIT ===== */
+const cvs=renderer.domElement;
+cvs.addEventListener('mousedown',e=>{isDrag=true;prevMX=e.clientX;prevMY=e.clientY});
+window.addEventListener('mousemove',e=>{if(!isDrag)return;
+  rotY+=(e.clientX-prevMX)*0.006; rotX+=(e.clientY-prevMY)*0.006;
+  rotX=Math.max(-1.4,Math.min(1.4,rotX)); prevMX=e.clientX;prevMY=e.clientY;});
+window.addEventListener('mouseup',()=>isDrag=false);
+cvs.addEventListener('wheel',e=>{camDist+=e.deltaY*0.005;
+  camDist=Math.max(4,Math.min(14,camDist));e.preventDefault();},{passive:false});
+
+/* ===== COLOR CONSTANTS ===== */
+const cOutR=1.0, cOutG=0.42, cOutB=0.616;     // #ff6b9d pink
+const cInR=0.306, cInG=0.804, cInB=0.769;      // #4ecdc4 cyan
+const cNoneR=0.165, cNoneG=0.165, cNoneB=0.306; // #2a2a4e neutral
+
+/* ===== MAX EIGENVECTOR COMPONENT CACHE ===== */
+let maxComps={};
+function getMaxComp(mi){
+  const key=mi+'_'+(MODES[mi].subI||0);
+  if(maxComps[key]!==undefined) return maxComps[key];
+  let mx=0; const m=MODES[mi];
+  for(const fd of faceMeshData) mx=Math.max(mx,Math.abs(m.ev(fd.face,m.subI||0)));
+  maxComps[key]=mx; return mx;
+}
+
+/* =============================================================
+   ANIMATION LOOP — per-vertex membrane displacement
+
+   For each face:
+   1. Compute the eigenmode displacement for this face (scalar)
+   2. For each vertex in the subdivided mesh:
+      - displacement = face_disp × membrane_weight(vertex)
+      - new_pos = rest_pos + face_normal × displacement
+      - color = gradient from neutral → pink/cyan based on local disp
+
+   Edges and corners (weight=0) never move. Face centers (weight=1)
+   get maximum displacement. The surface bends smoothly between.
+   ============================================================= */
+let time=0;
+function animate(){
+  requestAnimationFrame(animate);
+  time+=0.016;
+
+  // Smooth vacuum transition
+  vacuumT+=(vacuumOn?1:-1)*0.032;
+  vacuumT=Math.max(0,Math.min(1,vacuumT));
+
+  const vacBias = -0.06 * vacuumT;  // static inward compression
+
+  for(const fd of faceMeshData){
+    const nx=fd.face.normal.x, ny=fd.face.normal.y, nz=fd.face.normal.z;
+    let faceDisp = 0;  // eigenmode displacement for this face
+
+    if(activeMode>=0 && vacuumT>0.5){
+      const m=MODES[activeMode];
+      const rawEv = m.ev(fd.face, m.subI||0);
+      const maxC = getMaxComp(activeMode);
+      const normEv = rawEv/(maxC||1);
+      const freq = Math.sqrt(Math.max(0.3, m.lam));
+      faceDisp = normEv * amp * MAX_DISP * Math.sin(freq * spd * 8 * time);
+    }
+
+    const posArr = fd.posAttr.array;
+    const colArr = fd.colAttr.array;
+    const rest = fd.restPos;
+    const w = fd.weights;
+    const count = fd.posAttr.count;
+
+    for(let i=0; i<count; i++){
+      const wi = w[i];
+      // Total vertex displacement = (vacuum bias + eigenmode) × membrane weight
+      const d = (vacBias + faceDisp) * wi;
+
+      // Update position: rest + normal × displacement
+      posArr[i*3]   = rest[i*3]   + nx*d;
+      posArr[i*3+1] = rest[i*3+1] + ny*d;
+      posArr[i*3+2] = rest[i*3+2] + nz*d;
+
+      // Per-vertex color based on local displacement from eigenmode only
+      const localD = faceDisp * wi;
+      const intensity = Math.min(1, Math.abs(localD) / 0.15);
+
+      let cr, cg, cb;
+      if(intensity < 0.001){
+        cr=cNoneR; cg=cNoneG; cb=cNoneB;
+      } else if(localD > 0){
+        cr=cNoneR+(cOutR-cNoneR)*intensity;
+        cg=cNoneG+(cOutG-cNoneG)*intensity;
+        cb=cNoneB+(cOutB-cNoneB)*intensity;
+      } else {
+        cr=cNoneR+(cInR-cNoneR)*intensity;
+        cg=cNoneG+(cInG-cNoneG)*intensity;
+        cb=cNoneB+(cInB-cNoneB)*intensity;
+      }
+      colArr[i*3]=cr; colArr[i*3+1]=cg; colArr[i*3+2]=cb;
+    }
+
+    fd.posAttr.needsUpdate = true;
+    fd.colAttr.needsUpdate = true;
+
+    // Opacity: solid when vacuum on, slight boost for displacement
+    const baseOp = vacuumT * 0.75;
+    const dispOp = Math.abs(faceDisp) * 1.5;
+    fd.mat.opacity = Math.min(0.95, baseOp + dispOp);
+
+    // Recompute normals for correct lighting on bent surface
+    fd.geo.computeVertexNormals();
+  }
+
+  // Camera orbit
+  camera.position.set(
+    camDist*Math.sin(rotY)*Math.cos(rotX),
+    camDist*Math.sin(rotX),
+    camDist*Math.cos(rotY)*Math.cos(rotX)
+  );
+  camera.lookAt(0,0,0);
+
+  resizeIfNeeded();
+  renderer.render(scene,camera);
+}
+
+/* ===== RESIZE ===== */
+function resizeIfNeeded(){
+  const w=wrap.clientWidth, h=wrap.clientHeight;
+  if(renderer.domElement.width!==w*devicePixelRatio||renderer.domElement.height!==h*devicePixelRatio){
+    renderer.setSize(w,h);
+    camera.aspect=w/h;
+    camera.updateProjectionMatrix();
+  }
+}
+
+/* ===== INIT ===== */
+resizeIfNeeded();
+animate();
+</script>
+</body>
+</html>

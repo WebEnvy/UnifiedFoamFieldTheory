@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UFFT Lecture 3 — Making an Electron</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0e17; color: #c8d0e0; font-family: 'Segoe UI', system-ui, sans-serif; overflow: hidden; }
+  #canvas { width: 100vw; height: 100vh; display: block; }
+
+  #sidebar {
+    position: absolute; top: 0; left: 0; width: 420px; height: 100vh;
+    background: rgba(10,14,23,0.94); border-right: 1px solid rgba(46,109,180,0.25);
+    display: flex; flex-direction: column;
+  }
+
+  #progress { position: absolute; top: 0; left: 0; width: 420px; height: 3px; background: rgba(91,163,230,0.1); }
+  #progress-bar { height: 100%; width: 0%; background: #5ba3e6; transition: width 0.5s ease; }
+
+  #sidebar-header { padding: 28px 28px 0; }
+  #sidebar-header .lecture-num { font-size: 14px; color: #5a6577; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; }
+  #sidebar-header h1 { font-size: 26px; color: #ff6b9d; font-weight: 600; margin-bottom: 4px; }
+  #sidebar-header .subtitle { font-size: 16px; color: #7a8599; margin-bottom: 16px; }
+
+  #sidebar-content { flex: 1; overflow-y: auto; padding: 0 28px 28px; }
+  #sidebar-content::-webkit-scrollbar { width: 4px; }
+  #sidebar-content::-webkit-scrollbar-track { background: transparent; }
+  #sidebar-content::-webkit-scrollbar-thumb { background: rgba(91,163,230,0.2); border-radius: 2px; }
+
+  .step {
+    position: relative; margin-bottom: 20px; padding: 16px; border-radius: 8px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.4s ease;
+  }
+  .step.active { background: rgba(255,107,157,0.06); border-color: rgba(255,107,157,0.25); }
+  .step.completed { background: rgba(91,163,230,0.03); border-color: rgba(91,163,230,0.1); opacity: 0.7; }
+  .step.active.completed { background: rgba(74,222,128,0.05); border-color: rgba(74,222,128,0.25); opacity: 1; }
+  .step .step-num { font-size: 14px; color: #ff6b9d; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+  .step h3 { font-size: 18px; color: #dde3ef; margin-bottom: 8px; font-weight: 500; }
+  .step p { font-size: 16px; line-height: 1.7; color: #8a9ab5; }
+  .step .highlight { color: #ff6b9d; font-weight: 500; }
+  .step .instruction {
+    margin-top: 10px; padding: 10px 14px; border-radius: 5px;
+    background: rgba(255,107,157,0.08); font-size: 14px; color: #ff6b9d;
+  }
+  .step .check {
+    position: absolute; top: 12px; right: 12px;
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid rgba(91,163,230,0.15);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.4s ease;
+  }
+  .step .check svg { opacity: 0; transition: opacity 0.3s; }
+  .step.completed .check { border-color: #4ade80; background: rgba(74,222,128,0.15); }
+  .step.completed .check svg { opacity: 1; }
+
+  .stat-row {
+    margin: 16px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .stat-box {
+    padding: 14px; border-radius: 8px;
+    background: rgba(255,107,157,0.04); border: 1px solid rgba(255,107,157,0.1);
+    text-align: center;
+  }
+  .stat-box .label { font-size: 14px; color: #5a6577; text-transform: uppercase; letter-spacing: 1px; }
+  .stat-box .value { font-size: 22px; font-weight: 700; color: #ff6b9d; margin-top: 4px; font-family: 'Georgia', serif; }
+  .stat-box .unit { font-size: 14px; color: #7a8599; }
+
+  .slider-group {
+    margin: 12px 28px; padding: 14px 16px; border-radius: 8px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+  }
+  .slider-group label { font-size: 14px; color: #7a8599; display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .slider-group label span { color: #ff6b9d; font-weight: 600; }
+  .slider-group input { width: 100%; accent-color: #ff6b9d; }
+
+  #nav-buttons { padding: 16px 28px 24px; display: flex; gap: 10px; }
+  .nav-btn {
+    flex: 1; padding: 12px; border: 1px solid rgba(91,163,230,0.3);
+    border-radius: 6px; background: rgba(91,163,230,0.08);
+    color: #5ba3e6; font-size: 14px; cursor: pointer;
+    transition: all 0.2s; text-align: center; text-decoration: none;
+  }
+  .nav-btn:hover { background: rgba(91,163,230,0.15); }
+  .nav-btn.primary { background: rgba(255,107,157,0.15); border-color: rgba(255,107,157,0.3); color: #ff6b9d; font-weight: 600; }
+
+  #axiom {
+    position: absolute; bottom: 24px; right: 24px;
+    font-size: 28px; font-weight: 700; color: rgba(91,163,230,0.12);
+    letter-spacing: 4px;
+  }
+
+  #energy-bar {
+    margin: 0 28px 12px; padding: 12px 16px; border-radius: 8px;
+    background: rgba(255,107,157,0.03); border: 1px solid rgba(255,107,157,0.08);
+    font-size: 14px; color: #5a6577;
+  }
+  #energy-bar .bar-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; margin-top: 8px; overflow: hidden; }
+  #energy-bar .bar-fill { height: 100%; background: #ff6b9d; border-radius: 3px; transition: width 0.1s; }
+  #energy-label { display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<div id="sidebar">
+  <div id="progress"><div id="progress-bar"></div></div>
+
+  <div id="sidebar-header">
+    <div class="lecture-num">Lecture 3 of 8</div>
+    <h1>Making an Electron</h1>
+    <div class="subtitle">A particle is a vibration that won't stop</div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="label">Eigenvalue</div>
+      <div class="value">λ = r₁</div>
+      <div class="unit">(9−√17)/2 ≈ 2.438</div>
+    </div>
+    <div class="stat-box">
+      <div class="label">Irrep</div>
+      <div class="value">T₁ᵤ</div>
+      <div class="unit">Left-handed dipole</div>
+    </div>
+  </div>
+
+  <div class="slider-group">
+    <label>Amplitude <span id="amp-val">1.0×</span></label>
+    <input type="range" id="amp-slider" min="0.05" max="3" step="0.05" value="1">
+  </div>
+
+  <div class="slider-group">
+    <label>Speed <span id="speed-val">1.0×</span></label>
+    <input type="range" id="speed-slider" min="0.2" max="3" step="0.1" value="1">
+  </div>
+
+  <div id="energy-bar">
+    <div id="energy-label"><span>Kinetic energy</span><span id="ke-val">—</span></div>
+    <div class="bar-track"><div class="bar-fill" id="ke-fill" style="width:50%"></div></div>
+  </div>
+
+  <div id="sidebar-content">
+    <div class="step active" id="step-0">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 1</div>
+      <h3>The dipole pattern</h3>
+      <p>Watch the faces. On one side they push outward; on the opposite side they pull inward. This is a <span class="highlight">dipole</span> — the simplest asymmetric vibration.</p>
+      <p style="margin-top:8px;">This pattern doesn't represent the electron. It <span class="highlight">is</span> the electron. The vibration frequency of this mode is the electron's mass.</p>
+      <div class="instruction">Watch the cell vibrate for a few seconds</div>
+    </div>
+
+    <div class="step" id="step-1">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 2</div>
+      <h3>The pattern persists</h3>
+      <p>Drag the amplitude slider all the way down. Even at the tiniest displacement, the pattern is the same — the geometry sustains it. There is no minimum energy below which the electron "turns off."</p>
+      <p style="margin-top:8px;">Now drag it up. The pattern gets louder but never changes shape. This is <span class="highlight">quantisation</span> — the mode is discrete, not continuous.</p>
+      <div class="instruction">Drag the amplitude slider to minimum, then to maximum</div>
+    </div>
+
+    <div class="step" id="step-2">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 3</div>
+      <h3>Interface mode</h3>
+      <p>Notice both face types vibrate — hexagons <em>and</em> squares. The T₁ᵤ mode is the <span class="highlight">only</span> eigenmode that spans both face types. Every other mode is confined to one type or the other.</p>
+      <p style="margin-top:8px;">In the foam language: the electron lives at the interface between bubble (hex) and void (square). That's what B + V = D means — matter is displacement at the boundary.</p>
+      <div class="instruction">Watch which faces move — both types participate</div>
+    </div>
+
+    <div class="step" id="step-3">
+      <div class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#4ade80" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-num">Step 4</div>
+      <h3>Mass from geometry</h3>
+      <p>The electron mass formula:<br>
+      <span class="highlight" style="font-family:Georgia,serif; font-size:17px;">m_e = r₁ · M_P · exp(−(E−F)(2Δ+√Δ)/16)</span></p>
+      <p style="margin-top:8px;">Every symbol is an integer from this shape: r₁ ≈ 2.438 (eigenvalue), E = 36 (edges), F = 14 (faces), Δ = 17 (discriminant). One cell, zero free parameters, <span class="highlight">0.002% accuracy</span>.</p>
+      <p style="margin-top:8px;">This cell has been vibrating in this pattern for 13.8 billion years.</p>
+      <div class="instruction">Next lecture: building hydrogen from six patterns on one cell</div>
+    </div>
+  </div>
+
+  <div id="nav-buttons">
+    <a href="lecture_02_seven_vibrations.html" class="nav-btn">← Lecture 2</a>
+    <button class="nav-btn primary" id="btn-next" onclick="nextStep()">Next step →</button>
+    <a href="lecture_04_making_hydrogen.html" class="nav-btn primary" style="opacity:0.5; pointer-events:none;" id="link-next-lecture">Lecture 4 →</a>
+  </div>
+</div>
+
+<div id="axiom">B + V = D</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ========= Setup =========
+const canvas = document.getElementById('canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const scene = new THREE.Scene();
+const SIDEBAR_W = 420;
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
+camera.position.set(4.5, 3, 4.5);
+camera.lookAt(0, 0, 0);
+
+function applyCameraOffset() {
+  const w = window.innerWidth, h = window.innerHeight;
+  camera.aspect = w / h;
+  camera.setViewOffset(w, h, -SIDEBAR_W / 2, 0, w, h);
+  camera.updateProjectionMatrix();
+}
+applyCameraOffset();
+
+scene.add(new THREE.AmbientLight(0x443344, 0.5));
+const dirLight = new THREE.DirectionalLight(0xaa88aa, 0.7);
+dirLight.position.set(5, 8, 5);
+scene.add(dirLight);
+scene.add(new THREE.DirectionalLight(0x5577aa, 0.4).position.set(-3, -2, -5) && new THREE.DirectionalLight(0x5577aa, 0.4));
+
+// ========= Truncated Octahedron =========
+const scale = 0.7;
+
+function getTruncOctVerts(s) {
+  const verts = [];
+  for (let i = 0; i < 3; i++) {
+    for (let s1 of [1,-1]) {
+      for (let s2 of [1,-1]) {
+        const v1 = [0,0,0]; v1[(i+1)%3] = s1; v1[(i+2)%3] = s2*2;
+        verts.push(new THREE.Vector3(v1[0]*s, v1[1]*s, v1[2]*s));
+        const v2 = [0,0,0]; v2[(i+1)%3] = s1*2; v2[(i+2)%3] = s2;
+        verts.push(new THREE.Vector3(v2[0]*s, v2[1]*s, v2[2]*s));
+      }
+    }
+  }
+  const unique = [];
+  for (const v of verts) { if (!unique.find(u => u.distanceTo(v) < 0.01*s)) unique.push(v); }
+  return unique;
+}
+
+const verts = getTruncOctVerts(scale);
+
+function orderPolygon(vertices, normal) {
+  const center = new THREE.Vector3();
+  vertices.forEach(v => center.add(v));
+  center.divideScalar(vertices.length);
+  const n = normal.clone().normalize();
+  let tang = new THREE.Vector3(1,0,0);
+  if (Math.abs(n.dot(tang)) > 0.9) tang = new THREE.Vector3(0,1,0);
+  const u = new THREE.Vector3().crossVectors(n, tang).normalize();
+  const w = new THREE.Vector3().crossVectors(n, u).normalize();
+  return vertices.slice().sort((a,b) => {
+    const da = new THREE.Vector3().subVectors(a, center);
+    const db = new THREE.Vector3().subVectors(b, center);
+    return Math.atan2(da.dot(w), da.dot(u)) - Math.atan2(db.dot(w), db.dot(u));
+  });
+}
+
+function buildFace(faceVerts, normal, color, opacity) {
+  const ordered = orderPolygon(faceVerts, normal);
+  const center = new THREE.Vector3();
+  ordered.forEach(v => center.add(v));
+  center.divideScalar(ordered.length);
+  const group = new THREE.Group();
+  const geo = new THREE.BufferGeometry();
+  const positions = [];
+  for (let i = 1; i < ordered.length - 1; i++) {
+    positions.push(
+      ordered[0].x - center.x, ordered[0].y - center.y, ordered[0].z - center.z,
+      ordered[i].x - center.x, ordered[i].y - center.y, ordered[i].z - center.z,
+      ordered[i+1].x - center.x, ordered[i+1].y - center.y, ordered[i+1].z - center.z
+    );
+  }
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geo.computeVertexNormals();
+  const mat = new THREE.MeshPhongMaterial({
+    color, transparent: true, opacity, side: THREE.DoubleSide,
+    shininess: 50, specular: 0x442244
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  group.add(mesh);
+  group.position.copy(center);
+  scene.add(group);
+  return { group, mesh, mat, center: center.clone(), normal: normal.clone().normalize() };
+}
+
+// Hex face normals: (±1,±1,±1)
+const hexNormals = [];
+for (let sx of [1,-1]) for (let sy of [1,-1]) for (let sz of [1,-1]) hexNormals.push(new THREE.Vector3(sx,sy,sz));
+
+// Square face normals: ±x, ±y, ±z
+const sqNormals = [];
+for (let a = 0; a < 3; a++) for (let s of [1,-1]) { const n = new THREE.Vector3(); n.setComponent(a, s); sqNormals.push(n); }
+
+const hexFaces = [];
+hexNormals.forEach(n => {
+  const fv = verts.filter(v => Math.abs(n.x*v.x + n.y*v.y + n.z*v.z - 3*scale) < 0.01*scale);
+  if (fv.length === 6) hexFaces.push(buildFace(fv, n, 0xff6b9d, 0.5));
+});
+
+const sqFaces = [];
+sqNormals.forEach(n => {
+  const axis = n.x !== 0 ? 0 : n.y !== 0 ? 1 : 2;
+  const sign = n.getComponent(axis);
+  const fv = verts.filter(v => Math.abs(v.getComponent(axis) - sign*2*scale) < 0.01*scale);
+  if (fv.length === 4) sqFaces.push(buildFace(fv, n, 0xcc5588, 0.4));
+});
+
+// Wireframe
+const edgeSet = new Set();
+for (let i = 0; i < verts.length; i++) {
+  for (let j = i+1; j < verts.length; j++) {
+    if (Math.abs(verts[i].distanceTo(verts[j]) - Math.sqrt(2)*scale) < 0.05*scale) {
+      const key = `${i}-${j}`;
+      if (!edgeSet.has(key)) {
+        edgeSet.add(key);
+        const geo = new THREE.BufferGeometry().setFromPoints([verts[i], verts[j]]);
+        scene.add(new THREE.Line(geo, new THREE.LineBasicMaterial({ color: 0x4a3a5a, transparent: true, opacity: 0.4 })));
+      }
+    }
+  }
+}
+
+// Vertex dots
+verts.forEach(v => {
+  const geo = new THREE.SphereGeometry(0.022, 6, 6);
+  const dot = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: 0xff6b9d, transparent: true, opacity: 0.4 }));
+  dot.position.copy(v);
+  scene.add(dot);
+});
+
+// ========= T₁u Eigenvector (dipole along (1,1,1) direction) =========
+// Hex face amplitudes: proportional to dot(face_normal, dipole_axis)
+const dipoleAxis = new THREE.Vector3(1, 1, 1).normalize();
+const r1 = (9 - Math.sqrt(17)) / 2; // ≈ 2.438
+
+// Hex amplitudes: each normal is (±1,±1,±1)/√3, dot with (1,1,1)/√3 gives ±1/3, ±1/3, etc.
+const hexAmps = hexNormals.map(n => n.clone().normalize().dot(dipoleAxis));
+// Square amplitudes: smaller, from the off-diagonal coupling [4,-2;-2,5]
+// Ratio of sq to hex amplitude ≈ 0.62 for T₁u(r₁)
+const sqAmps = sqNormals.map(n => n.clone().normalize().dot(dipoleAxis) * 0.62);
+
+// ========= Direction arrow (dipole axis indicator) =========
+const arrowLen = 2.2;
+const arrowGeo = new THREE.BufferGeometry().setFromPoints([
+  dipoleAxis.clone().multiplyScalar(-arrowLen),
+  dipoleAxis.clone().multiplyScalar(arrowLen)
+]);
+const arrowLine = new THREE.Line(arrowGeo, new THREE.LineBasicMaterial({ color: 0xff6b9d, transparent: true, opacity: 0.15 }));
+scene.add(arrowLine);
+
+// + and - labels at ends
+function makeLabel(text, pos, color) {
+  const c = document.createElement('canvas');
+  c.width = 64; c.height = 64;
+  const ctx = c.getContext('2d');
+  ctx.font = 'bold 48px Georgia';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = color;
+  ctx.fillText(text, 32, 32);
+  const tex = new THREE.CanvasTexture(c);
+  const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0.5 });
+  const sprite = new THREE.Sprite(mat);
+  sprite.position.copy(pos);
+  sprite.scale.set(0.4, 0.4, 1);
+  scene.add(sprite);
+  return sprite;
+}
+makeLabel('+', dipoleAxis.clone().multiplyScalar(arrowLen + 0.3), '#ff6b9d');
+makeLabel('−', dipoleAxis.clone().multiplyScalar(-arrowLen - 0.3), '#6b9dff');
+
+// ========= Controls =========
+let amplitude = 1.0;
+let animSpeed = 1.0;
+const DISP_SCALE = 0.15;
+
+document.getElementById('amp-slider').addEventListener('input', e => {
+  amplitude = parseFloat(e.target.value);
+  document.getElementById('amp-val').textContent = amplitude.toFixed(2) + '×';
+  checkAmpStep();
+});
+
+document.getElementById('speed-slider').addEventListener('input', e => {
+  animSpeed = parseFloat(e.target.value);
+  document.getElementById('speed-val').textContent = animSpeed.toFixed(1) + '×';
+});
+
+// ========= Step Completion =========
+let currentStep = 0;
+const totalSteps = 4;
+const stepsCompleted = new Set();
+let ampMin = false, ampMax = false;
+
+function completeStep(n) {
+  if (stepsCompleted.has(n)) return;
+  stepsCompleted.add(n);
+  updateStepClasses();
+  document.getElementById('progress-bar').style.width = (stepsCompleted.size / totalSteps * 100) + '%';
+  setTimeout(() => {
+    let next = -1;
+    for (let i = 0; i < totalSteps; i++) { if (!stepsCompleted.has(i)) { next = i; break; } }
+    if (next >= 0 && next !== currentStep) {
+      currentStep = next;
+      updateStepClasses();
+      document.getElementById('step-' + currentStep).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    if (stepsCompleted.size === totalSteps) {
+      const link = document.getElementById('link-next-lecture');
+      link.style.opacity = '1';
+      link.style.pointerEvents = 'auto';
+    }
+  }, 600);
+}
+
+function updateStepClasses() {
+  for (let i = 0; i < totalSteps; i++) {
+    const el = document.getElementById('step-' + i);
+    if (i === currentStep) {
+      el.className = 'step active' + (stepsCompleted.has(i) ? ' completed' : '');
+    } else if (stepsCompleted.has(i)) {
+      el.className = 'step completed';
+    } else {
+      el.className = 'step';
+    }
+  }
+}
+
+function nextStep() {
+  if (currentStep < totalSteps - 1) {
+    stepsCompleted.add(currentStep);
+    currentStep++;
+    updateStepClasses();
+    document.getElementById('step-' + currentStep).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    document.getElementById('progress-bar').style.width = (stepsCompleted.size / totalSteps * 100) + '%';
+  } else {
+    // Last step — complete it
+    completeStep(currentStep);
+  }
+}
+
+function checkAmpStep() {
+  if (amplitude <= 0.15) ampMin = true;
+  if (amplitude >= 2.5) ampMax = true;
+  if (ampMin && ampMax) completeStep(1);
+}
+
+// Step 0: auto-complete after watching for 4 seconds
+setTimeout(() => completeStep(0), 4000);
+
+// Step 2: auto-complete after 6 seconds (give time to observe both face types)
+setTimeout(() => completeStep(2), 10000);
+
+// ========= Orbit Controls =========
+let isDragging = false;
+let prevMouse = { x: 0, y: 0 };
+let spherical = { theta: Math.PI / 4, phi: Math.PI / 7, radius: 7 };
+
+function updateCamera() {
+  camera.position.x = spherical.radius * Math.sin(spherical.phi + Math.PI/2) * Math.cos(spherical.theta);
+  camera.position.y = spherical.radius * Math.cos(spherical.phi + Math.PI/2);
+  camera.position.z = spherical.radius * Math.sin(spherical.phi + Math.PI/2) * Math.sin(spherical.theta);
+  camera.lookAt(0, 0, 0);
+}
+updateCamera();
+
+canvas.addEventListener('pointerdown', e => { if (e.button === 0) { isDragging = true; prevMouse = {x:e.clientX, y:e.clientY}; }});
+canvas.addEventListener('pointermove', e => {
+  if (isDragging) {
+    spherical.theta -= (e.clientX - prevMouse.x) * 0.005;
+    spherical.phi = Math.max(-Math.PI/2.2, Math.min(Math.PI/2.2, spherical.phi - (e.clientY - prevMouse.y) * 0.005));
+    prevMouse = {x:e.clientX, y:e.clientY};
+    updateCamera();
+  }
+});
+canvas.addEventListener('pointerup', () => { isDragging = false; });
+canvas.addEventListener('wheel', e => {
+  spherical.radius = Math.max(3.5, Math.min(12, spherical.radius + e.deltaY * 0.005));
+  updateCamera();
+});
+
+// ========= Animation =========
+function animate() {
+  requestAnimationFrame(animate);
+  const time = Date.now() * 0.001 * animSpeed;
+  const freq = 1 + r1 * 0.25; // vibration frequency scaled by eigenvalue
+  const phase = Math.sin(time * freq);
+  const disp = phase * amplitude;
+
+  // Displace hex faces
+  hexFaces.forEach((f, i) => {
+    const amp = hexAmps[i] * disp * DISP_SCALE;
+    f.group.position.set(
+      f.center.x + f.normal.x * amp,
+      f.center.y + f.normal.y * amp,
+      f.center.z + f.normal.z * amp
+    );
+    // Color: pink when pushing out, blue-ish when pulling in
+    const t = hexAmps[i] * phase;
+    if (t > 0) {
+      f.mat.color.setHex(0xff6b9d);
+      f.mat.emissive.setHex(0x661133);
+      f.mat.emissiveIntensity = 0.2 + 0.3 * t;
+    } else {
+      f.mat.color.setHex(0x6b9dff);
+      f.mat.emissive.setHex(0x112266);
+      f.mat.emissiveIntensity = 0.2 + 0.3 * Math.abs(t);
+    }
+    f.mat.opacity = 0.4 + 0.4 * Math.abs(t);
+  });
+
+  // Displace square faces
+  sqFaces.forEach((f, i) => {
+    const amp = sqAmps[i] * disp * DISP_SCALE;
+    f.group.position.set(
+      f.center.x + f.normal.x * amp,
+      f.center.y + f.normal.y * amp,
+      f.center.z + f.normal.z * amp
+    );
+    const t = sqAmps[i] * phase;
+    if (t > 0) {
+      f.mat.color.setHex(0xdd5588);
+      f.mat.emissive.setHex(0x441122);
+      f.mat.emissiveIntensity = 0.15 + 0.2 * t;
+    } else {
+      f.mat.color.setHex(0x5588dd);
+      f.mat.emissive.setHex(0x112244);
+      f.mat.emissiveIntensity = 0.15 + 0.2 * Math.abs(t);
+    }
+    f.mat.opacity = 0.3 + 0.35 * Math.abs(t);
+  });
+
+  // Energy bar: KE ∝ (d/dt displacement)² = cos²(ωt) * A²
+  const ke = Math.cos(time * freq) * Math.cos(time * freq) * amplitude * amplitude;
+  const keNorm = Math.min(1, ke / 3);
+  document.getElementById('ke-fill').style.width = (keNorm * 100) + '%';
+  document.getElementById('ke-val').textContent = (ke * 0.511).toFixed(3) + ' MeV';
+
+  // Gentle auto-rotate
+  if (!isDragging) {
+    spherical.theta += 0.0006;
+    updateCamera();
+  }
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// ========= Resize =========
+window.addEventListener('resize', () => {
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  applyCameraOffset();
+});
+
+// ========= Keyboard =========
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextStep(); }
+});
+</script>
+</body>
+</html>
