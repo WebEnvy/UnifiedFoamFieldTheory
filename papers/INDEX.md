@@ -1,6 +1,6 @@
 # UFFT Paper Index — Complete Zenodo Publication Record
 
-**61 papers published · 4 queued for Zenodo upload · 1 private (Paper #51) · 1 standalone math paper · All public papers Open Access · All published records with permanent DOIs**
+**72 public papers on Zenodo + 1 standalone pure-math preprint (Fedorov spectral uniqueness) · Upload queue empty · Applied-Tech stream confidential and excluded from public numbering · All public Zenodo records Open Access with permanent DOIs**
 **Author:** Martin, Luke · Newcastle, Australia · luke@webenvy.com.au
 **GitHub:** https://github.com/WebEnvy/UnifiedFoamFieldTheory
 **Priority date:** 20 February 2026
@@ -12,9 +12,11 @@
 - **Canonical framework document:** UFFT_Core_Framework_v9.md (contains v10 content — filename frozen)
 - **Book:** From_Foam_to_Fermions.md (44 chapters, narrative — self-contained, no external-paper dependencies)
 - **Verification script:** verification/19079730_UFFT_Spectrum_Verification.ipynb
-- **Local papers directory:** papers/ (61 published files with Zenodo IDs + 5 items in papers/pending/)
-- **Zenodo upload queue (active):** UFFT_Zenodo_Upload_Queue_April_2026.md (Papers #62, #64, #65, #66 + Spectral Uniqueness)
-- **Public export checklist:** PUBLIC_EXPORT_CHECKLIST.md (surgery required before pushing to public GitHub)
+- **Local papers directory:** papers/ (public published papers, one file per Zenodo record)
+- **Zenodo upload queue (active):** Empty — Paper #68 ([10.5281/zenodo.19658979](https://zenodo.org/records/19658979)) and Paper #72 ([10.5281/zenodo.19658759](https://zenodo.org/records/19658759)) both filed 2026-04-20. Paper #71 live at [10.5281/zenodo.19626978](https://zenodo.org/records/19626978).
+- **Zenodo queue (WIP / not ready):** empty.
+- **Paper number registry (single source of truth):** `.zenodo_queue/PAPER_NUMBER_REGISTRY.md`
+- **Queue metadata (per-record upload checklist):** `.zenodo_queue/QUEUE.md`
 
 ---
 
@@ -26,10 +28,11 @@
 | 5 | IX | [19030062](https://zenodo.org/records/19030062) | Face Laplacian Spectrum | 19030062_UFFT_Face_Laplacian_Spectrum.md | Spec(L) = {0¹,(9−√17)/2)³,4²,(9+√17)/2)³,7⁴,9¹} | 34 |
 | 16 | XVIII | [19064359](https://zenodo.org/records/19064359) | Master Equation | 19064359_UFFT_Master_Equation.md | λ²−9λ+16=0, Δ=17, C_A=3 | 3 |
 | 46 | — | [19363008](https://zenodo.org/records/19363008) | Local Decision Dynamics | — | Local decision principle, 8 structural results | 22 |
-| 48 | — | [19448024](https://zenodo.org/records/19448024) | SM From One Matrix | 19448024_Paper48_SM_From_One_Matrix.md | S = ψ†L_Tψ → SM Lagrangian | 2 |
-| 50 | — | [19447996](https://zenodo.org/records/19447996) | Uniqueness of Foam Cell | 19447996_Paper50_Uniqueness_of_Foam_Cell.md | Trunc oct unique among Fedorov cells (Δ=17 prime) | 1 |
+| 48 | — | v2 [19662029](https://zenodo.org/records/19662029) (v1 [19448024](https://zenodo.org/records/19448024)) | SM From One Matrix | 19662029_Paper48_SM_From_One_Matrix_v2.md (v1: 19448024_Paper48_SM_From_One_Matrix.md) | S = ψ†L_Tψ → SM Lagrangian; v2 = Paper #72 integration + abstract rewrite | 2 |
+| 50 | — | v2 [19662068](https://zenodo.org/records/19662068) (v1 [19447996](https://zenodo.org/records/19447996)) | Uniqueness of Foam Cell | 19662068_Paper50_Uniqueness_of_Foam_Cell_v2.md (v1: 19447996_Paper50_Uniqueness_of_Foam_Cell.md) | Trunc oct unique among Fedorov cells (Δ=17 prime); v2 = criterion (iii) sharpened + Weaire-Phelan scope note | 1 |
 | 59 | — | [19491095](https://zenodo.org/records/19491095) | Central Theorem | 19491095_Paper59_Central_Theorem.md | BCC lattice → SM+GR, all parameters from 7 integers | 1 |
 | 60 | — | [19491125](https://zenodo.org/records/19491125) | Four Closing Theorems | 19491125_Paper60_Four_Closing_Theorems.md | Anomaly, generations, gravity, continuum completeness | 2 |
+| 63 | LXIII | [19624955](https://zenodo.org/records/19624955) | Pure Mathematics of the Kelvin Cell | 19624955_Paper63_Pure_Mathematics_Kelvin_Cell.md | Face Laplacian spectrum, O_h irreps, Q(√17) ring, Fedorov uniqueness (Tier 1 standalone) | — |
 
 ### Fine Structure Constant (α)
 | # | Part | Zenodo | Title | File | Key Result | Views |
@@ -48,6 +51,7 @@
 | 19 | — | [19084873](https://zenodo.org/records/19084873) | g−2 C₂ Complete | 19084873_UFFT_g2_C2_Complete.md | Full 2-loop derivation | 2 |
 | 20 | — | [19085997](https://zenodo.org/records/19085997) | C₂ Corrigendum | 19085997_UFFT_C2_Corrigendum.md | Independent derivation, 3×10⁻¹⁶ agreement | 3 |
 | 21 | — | [19102302](https://zenodo.org/records/19102302) | Rational Term Closure | 19102302_UFFT_g2_Rational_Term_Closure.md | 197/144 derived, α uniqueness proven | 2 |
+| 68 | LXXIII | [19658979](https://zenodo.org/records/19658979) | Cell-Integer Identities and Single-Cell Obstruction to 197/144 | 19658979_Paper68_Cell_Integer_Identities_and_Single_Cell_Obstruction.md | T68.1 (F−1)(F−14)=0; T68.2 hex–hex=12, tr(L₁²)=288, tr(A_face³)=144; T68.3 Q(√17) recurrence rational/transcendental split; T68.4 single-cell obstruction (min L¹ = 1/144) | — |
 
 ### Electroweak Sector
 | # | Part | Zenodo | Title | File | Key Result | Views |
@@ -72,8 +76,11 @@
 | 35 | — | [19198422](https://zenodo.org/records/19198422) | PMNS Matrix | 19198422_UFFT_PMNS_Matrix.md | tan²θ₁₂=√17/9, sin²θ₁₃=(√17/27)² | 4 |
 | 36 | — | [19198775](https://zenodo.org/records/19198775) | CP Phases | 19198775_UFFT_CP_Phases.md | **δ_PMNS/δ_CKM = 3 exactly** (DUNE test) | 13 |
 | 51 | — | [19477100](https://zenodo.org/records/19477100) | NLO Mixing Correction | 19477100_Paper51_epsilon_NLO_derivation.md | ε=√17/81, Cabibbo 3.7σ→0.07σ | 2 |
-| 64 | LXIV | pending | Wolfenstein ρ̄ NLO | pending/Paper64_Wolfenstein_Rhobar_NLO.md | ρ̄=0.159 (0.002σ), tr(H)=1/3, det(H)=−8 | — |
-| 66 | LXVI | pending | Wolfenstein A NLO | pending/Paper66_Wolfenstein_A_Parameter_NLO.md | A=(19+√17)/28=0.826 (0.015σ) | — |
+| 64 | LXIV | [19624977](https://zenodo.org/records/19624977) | Wolfenstein ρ̄ NLO | 19624977_Paper64_Wolfenstein_Rhobar_NLO.md | ρ̄=0.159 (0.002σ), tr(H)=1/3, det(H)=−8 | — |
+| 66 | LXVI | [19625071](https://zenodo.org/records/19625071) | Wolfenstein A NLO | 19625071_Paper66_Wolfenstein_A_Parameter_NLO.md | A=(19+√17)/28=0.826 (0.015σ) | — |
+| 67 | LXVII | [19625122](https://zenodo.org/records/19625122) | NLO δ_CKM / η̄ Closure | 19625122_Paper67_NLO_Delta_CKM_EtaBar_Closure.md | δ_NLO = δ_LO × 71/72 = 65.438° (±0.002° from PDG); R_b = 13/34 | — |
+| 69 | LXIX | [19626475](https://zenodo.org/records/19626475) | R_b NLO Denominator (Fermion-Walk Operator PT) | 19626475_Paper69_Rb_Denominator_Operator_Perturbation.md | 2V−F = dim(H_fermion^eff); joint (ρ̄,η̄) at 0.02σ vs PDG; closes Paper #67 R_b companion at Tier 2 | — |
+| 71 | LXXI | [19626978](https://zenodo.org/records/19626978) | PMNS Solar Angle NLO (Eigenvalue Self-Energy) | 19626978_Paper71_Solar_Angle_NLO_Eigenvalue_SelfEnergy.md | tan²θ₁₂ = (√17/9)(1−√17/144) = 0.44501 (+0.074σ vs PDG), 7.5× tightening over LO; closes last >0.3σ PMNS residual; Tier 2 | — |
 
 ### Mass Spectrum
 | # | Part | Zenodo | Title | File | Key Result | Views |
@@ -84,7 +91,8 @@
 | 47 | — | [19448066](https://zenodo.org/records/19448066) | NLO Neutrinos, α_s, M_W | 19448066_Paper47_NLO_Neutrinos_AlphaS.md | m₁=0, m₃=49.5 meV, α_s=0.11799 | 2 |
 | 52 | — | [19477132](https://zenodo.org/records/19477132) | n-p Mass Difference NLO | 19477132_Paper52_np_mass_difference_NLO.md | Δm=1.2933 MeV (0.34σ) | 3 |
 | 54 | — | [19484047](https://zenodo.org/records/19484047) | Neutrino Mass Ratio | 19484047_Paper54_Neutrino_Mass_Ratio_33.md | Δm²₃₁/Δm²₂₁ = 33 exactly | 1 |
-| 65 | LXV | pending | Neutrino Mass Ratio — Eisenstein Norm | pending/Paper65_Neutrino_Mass_Ratio_Eisenstein.md | 33 = N(r₁+r₂ω) = S²−C_A·P, Tier 4→2 promotion | — |
+| 65 | LXV | [19625005](https://zenodo.org/records/19625005) | Neutrino Mass Ratio — Eisenstein Norm | 19625005_Paper65_Neutrino_Mass_Ratio_Eisenstein.md | 33 = N(r₁+r₂ω) = S²−C_A·P, Tier 4→2 promotion | — |
+| 72 | LXXII | [19658759](https://zenodo.org/records/19658759) | Dirac Operator, Generation Count, Chirality, m₃ Integer | 19658759_Paper72_Dirac_Doubler_Chirality_m3.md | T72.1 D_F²=L_T, T72.2 N_gen=mult(T₁u)=3, T72.3a L_off\|_{T₁u}=−2σ_x, T72.3b hex↔L sq↔R (V10), T72.4 (11,13,4) best-match m₃ exponent | — |
 
 ### Gravity & General Relativity
 | # | Part | Zenodo | Title | File | Key Result | Views |
@@ -129,6 +137,8 @@
 | 53 | — | [19483955](https://zenodo.org/records/19483955) | Dark Energy 6/7 Factor | 19483955_Paper53_Dark_Energy_6_7_Factor.md | ρ_Λ from (F−χ)/F=6/7, 0.47% | 1 |
 | 55 | — | [19484103](https://zenodo.org/records/19484103) | Tensor-to-Scalar Ratio | 19484103_Paper55_Tensor_Scalar_Ratio.md | r=0.0225, testable by LiteBIRD | 1 |
 | 61 | — | [19491332](https://zenodo.org/records/19491332) | Baryon Asymmetry NLO | 19491332_Paper61_Baryon_Asymmetry_NLO.md | η=6.109×10⁻¹⁰, 0.09σ | 2 |
+| 62 | LXII | [19624911](https://zenodo.org/records/19624911) | Independent Convergence (Proton Radius, Vacuum Energy) | 19624911_Paper62_Independent_Convergence_Proton_Radius_and_Vacuum_Energy.md | r_p = 4ℓ_P(m_P/m_p) = 0.8413 fm; independent convergence with Haramein 2012/2019 | — |
+| 70 | LXX | [19626516](https://zenodo.org/records/19626516) | Graph-Fourier Companion to Paper #53 (6/7 Dark-Energy Factor) | 19626516_Paper70_Graph_Fourier_Companion_Paper53.md | tr(P_int)/F = 6/7 as propagating-mode fraction via band-edge zero-group-velocity lemma; Tier 1 algebraic identity | — |
 
 ### Other
 | # | Part | Zenodo | Title | File | Key Result | Views |
@@ -148,19 +158,30 @@
 
 ---
 
-## Upcoming Papers
+## Upcoming Papers — APPROVED queue (ready for Zenodo upload)
 
-Papers queued for the next Zenodo upload cycle. Titles are final; DOIs will be added here once issued.
+Queue empty as of 2026-04-20. Fourth-wave Papers #68 ([10.5281/zenodo.19658979](https://zenodo.org/records/19658979)) and #72 ([10.5281/zenodo.19658759](https://zenodo.org/records/19658759)) filed 2026-04-20 close the cell-integer/obstruction and Dirac/chirality/m₃ results respectively. Third-wave Paper #71 ([10.5281/zenodo.19626978](https://zenodo.org/records/19626978)) closes the last >0.3σ PMNS mixing residual. Second-wave Papers #69 ([10.5281/zenodo.19626475](https://zenodo.org/records/19626475)) and #70 ([10.5281/zenodo.19626516](https://zenodo.org/records/19626516)) and first-wave #62–#67 plus the Fedorov spectral-uniqueness standalone are all live.
 
-| # | Title |
-|---|-------|
-| 62 | Independent Convergence on the Proton Charge Radius and Vacuum Energy Density |
-| 64 | The Wolfenstein ρ̄ Parameter from the Inter-Type Torsion Operator |
-| 65 | The Neutrino Mass-Squared Ratio as an Eisenstein Norm |
-| 66 | The Wolfenstein A Parameter from Face-Spectral Complement |
-| — | Spectral Uniqueness of the Truncated Octahedron Among Fedorov Parallelohedra (standalone math) |
+## Standalone / Out-of-Sequence Preprints
 
-**Note on Paper #63:** Number reserved; no draft yet.
+Papers published on Zenodo under the author's ORCID but **not** numbered in the public UFFT sequence. Cite independently.
+
+| Zenodo | Title | Files | Notes |
+|--------|-------|-------|-------|
+| [19625142](https://zenodo.org/records/19625142) | Spectral Uniqueness of the Truncated Octahedron Among Fedorov Parallelohedra | `.md` + `.docx` + `verify_spectra_v2.py` | Pure mathematics (MSC 05C50, 52B10, 52C22). Independent combinatorial result; readable without UFFT context. Every claim reproduced by the bundled verification script. |
+
+## On Hold — INBOX (WIP / not ready for upload)
+
+INBOX is empty. Paper #68's 197/144 scaffold (formerly here, Tier 4) was closed via scope change on 2026-04-20: the negative-result core is now Paper #68 (APPROVED, four Tier-1 theorems including T68.4 single-cell obstruction). The original scaffold is preserved at `.zenodo_queue/notes/Paper68_scaffold_history_pre_2026-04-20.md`. The full multi-cell BCC derivation of 197/144 is deferred to a future numbered paper.
+
+## On Hold — Security / Private
+
+| Item | Reason |
+|------|--------|
+| Entire `Applied_Technologies/` stream (private, tracked separately as AT-# numbering; currently AT-1 Torsion Propulsion & Foam Navigation) | Confidential working material; **never** included in the public numbered sequence; withheld pending patents and commercial evaluation. |
+| Any future derivative technology paper flagged under the Applied Tech stream | Same as above. Apply to the Applied Tech chat's registry, not this one. |
+
+Number collision note: Public Paper #51 is `NLO_Mixing_Correction` (published on Zenodo, DOI 10.5281/zenodo.19477100). An earlier draft file with an overloaded name (`Paper51_Torsion_Propulsion_and_Foam_Navigation.md`) no longer exists at the top level; the content moved to the private AT-1 slot. Do not confuse the two.
 
 ---
 

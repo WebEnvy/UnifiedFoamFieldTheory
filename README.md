@@ -14,7 +14,7 @@ The Unified Foam Field Theory derives the dimensionless constants of the Standar
 
 **Axiom Zero: B + V = D** — Bubble + Void = Displacement.
 
-Every event in the universe is a displacement in an infinite pre-existing foam at the Planck scale. From this single axiom and the integer topology of the Kelvin cell, the framework derives **60+ observables with zero free parameters**.
+Every event in the universe is a displacement in an infinite pre-existing foam at the Planck scale. From this single axiom and the integer topology of the Kelvin cell, UFFT pre-registers **eleven falsifiable predictions** (the sharpest near-term being δ_PMNS/δ_CKM = 3, testable by DUNE around 2035) and contains **a family of structural identities and sector-specific identifications of varying derivational status**. The framework's postdictions across roughly 60 observables are under ongoing look-elsewhere-corrected joint-χ² audit; per the 19 April 2026 methodological review, the earlier "60+ observables with zero free parameters" framing has been retired as not defensible against a trials-factor audit. The honest summary of the empirical case lives in `verification/peer_review_deliverables/D1_Supplement_Joint_Chi2_Defense.md`.
 
 ---
 
@@ -140,7 +140,7 @@ See `UFFT_Paper_Index.md` for the full list of published papers with DOIs.
 The framework uses a four-tier classification for all claims:
 
 - **Tier 1 — Mathematical theorems:** m₁ = 0, Koide identity, normal hierarchy, SUSY exclusion, Higgs = A₂u uniquely, sin²θ_W = (17 − 3√17)/20, three-generation theorem, T² = −4·I on T₁u, Eisenstein-norm identity 33 = S² − C_A·P, R_b = r₁²/(r₁r₂ − 1)
-- **Tier 2 — Derived given identifications:** The bulk of 60+ observables
+- **Tier 2 — Derived given identifications:** Sector-specific identifications of varying derivational status across roughly 60 observables; joint statistical significance under look-elsewhere correction is documented in `verification/peer_review_deliverables/D1_Supplement_Joint_Chi2_Defense.md` (two-ledger method)
 - **Tier 3 — >1.5σ tension:** η̄ lever-arm residual (phase sensitivity, not an R_b tension)
 - **Tier 4 — Suggestive/speculative:** Visible spectrum mapping, infinite-nesting cosmology
 
