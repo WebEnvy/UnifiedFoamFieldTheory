@@ -14,6 +14,7 @@
 | Paper | #36 of 63 |
 | Framework | v10 |
 | Status | Complete, Tier 2. Contains the sharpest near-term prediction: δ_PMNS/δ_CKM = C_A = 3 exactly, testable by DUNE ~2035. |
+| Tier | 2 |
 | DOI | 10.5281/zenodo.19198775 |
 | GitHub | https://github.com/WebEnvy/UnifiedFoamFieldTheory |
 
@@ -27,11 +28,11 @@ The CP-violating phases of both the CKM and PMNS mixing matrices are derived fro
 
 The CKM phase is δ_CKM = πR = 66.89°, matching the observed 65.5° ± 3.4° (0.4σ). Setting the unitarity triangle modulus R_b = R gives ρ̄ = R cos(πR) = 0.146 (1.3σ) and η̄ = R sin(πR) = 0.342 (0.6σ), closing the CKM matrix to 4/4 Wolfenstein parameters. The derived sin(2β) = 0.690 matches the B-factory measurement 0.699 ± 0.017 (0.5σ).
 
-The PMNS phase is δ_PMNS = C_A × πR = 3πR = 200.7°, matching the observed 197° ± 25° (0.15σ), where C_A = 3 is the colour number. The factor of C_A arises because leptons couple to all three torsion axes simultaneously, while quarks — confined to colour singlets — couple through a single colour channel.
+The PMNS phase is δ_PMNS = C_A × πR = 3πR = 200.7°, matching the observed 197° ± 25° (0.15σ), where C_A = 3 is the colour number. The factor of C_A arises because leptons couple to all three torsion axes simultaneously, while quarks (confined to colour singlets) couple through a single colour channel.
 
 This gives a sharp prediction: δ_PMNS/δ_CKM = C_A = 3 exactly, testable by DUNE and Hyper-Kamiokande within the decade.
 
-Combined with previous results, the complete quark and lepton mixing sector — 9 parameters total (4 CKM + 4 PMNS angles + 1 mass-squared ratio) — is determined by three cell integers: F = 14, C_A = 3, Δ = 17. Zero free parameters.
+Combined with previous results, the complete quark and lepton mixing sector (9 parameters total (4 CKM + 4 PMNS angles + 1 mass-squared ratio)) is determined by three cell integers: F = 14, C_A = 3, Δ = 17. Zero free parameters.
 
 ---
 
@@ -48,7 +49,7 @@ These are the roots of the master equation λ² − 9λ + 16 = 0, with discrimin
 
 **R ≡ r₁/r₂ = (9−√17)/(9+√17)**
 
-Numerically: R = 0.37163. Algebraically: R = (98−18√17)/64. The quantity R measures how much the foam's symmetry breaking — from the void lattice (integer spectrum) to the bubble lattice (irrational spectrum) — splits the T₁u sector. It has already appeared in the framework as the Higgs-to-Z mass ratio m_H/M_Z = 2/(1+R) [4] and the CKM parameter A = r₁/C_A [1].
+Numerically: R = 0.37163. Algebraically: R = (98−18√17)/64. The quantity R measures how much the foam's symmetry breaking (from the void lattice (integer spectrum) to the bubble lattice (irrational spectrum)) splits the T₁u sector. It has already appeared in the framework as the Higgs-to-Z mass ratio m_H/M_Z = 2/(1+R) [4] and the CKM parameter A = r₁/C_A [1].
 
 ---
 
@@ -149,7 +150,7 @@ The ratio of the two CP phases is:
 
 **δ_PMNS / δ_CKM = C_A = 3 (exactly)**
 
-This is a sharp, falsifiable prediction. It does not depend on R, on the master equation, or on any numerical value — it depends only on the colour number C_A = dim(T₂g) = 3. If both phases are measured to sufficient precision, their ratio must be exactly 3.
+This is a sharp, falsifiable prediction. It does not depend on R, on the master equation, or on any numerical value, it depends only on the colour number C_A = dim(T₂g) = 3. If both phases are measured to sufficient precision, their ratio must be exactly 3.
 
 Current data: δ_PMNS/δ_CKM = 197°/65.5° = 3.01 ± 0.78. Consistent with 3, but the PMNS uncertainty dominates. DUNE (expected ±5° on δ_PMNS by ~2035) will test this to ~8% precision.
 
@@ -203,7 +204,7 @@ Four results below 1σ. Three at 1.3σ. One consistent with wide uncertainty. On
 
 The |V_ub| element (13% discrepancy) and the Jarlskog invariant (15%) are the weakest predictions. Both trace to R_b = R being 4% below the measured value. Three possibilities:
 
-(a) R_b = R is exact and the current |V_ub| measurement is slightly high — it is one of the least precisely known CKM elements and has historically fluctuated.
+(a) R_b = R is exact and the current |V_ub| measurement is slightly high, it is one of the least precisely known CKM elements and has historically fluctuated.
 
 (b) R_b receives a small correction from higher-order terms in the face Laplacian, analogous to the NLO corrections that affect the kaon mass in the hadron sector.
 
@@ -221,7 +222,7 @@ The CP-violating phases of the Standard Model arise from the T₁u eigenvalue as
 
 **δ_PMNS = 3πR** (leptons: three colour channels)
 
-where **R = (9−√17)/(9+√17)** is the ratio of the two T₁u eigenvalues of the master equation λ²−9λ+16 = 0. The colour factor C_A = 3 connecting the two phases is the dimension of the T₂g torsion sector — the same integer that gives the number of colours, the number of generations, and the number of spatial dimensions.
+where **R = (9−√17)/(9+√17)** is the ratio of the two T₁u eigenvalues of the master equation λ²−9λ+16 = 0. The colour factor C_A = 3 connecting the two phases is the dimension of the T₂g torsion sector, the same integer that gives the number of colours, the number of generations, and the number of spatial dimensions.
 
 With these results, the complete CKM matrix (4/4 Wolfenstein parameters) and the complete PMNS matrix (3 angles + phase) are determined by the geometry of a single 14-faced polyhedron. Nine mixing parameters from three integers. Zero free parameters.
 
@@ -244,6 +245,14 @@ With these results, the complete CKM matrix (4/4 Wolfenstein parameters) and the
 [7] Esteban, I. et al. (2020). The fate of hints: updated global analysis of three-flavour neutrino oscillations. JHEP 09, 178. NuFIT 5.2 (2022).
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #36 · DOI: 10.5281/zenodo.19198775 · Priority Date: 20 February 2026*
 

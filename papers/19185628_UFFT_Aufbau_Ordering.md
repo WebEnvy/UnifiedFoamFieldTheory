@@ -55,7 +55,7 @@ In standard solid state physics, atomic orbitals split under O_h (octahedral) sy
 | d | 2 | 5 orbitals | Eg + T2g | 2 + 3 = 5 |
 | f | 3 | 7 orbitals | A2u + T1u + T2u | 1 + 3 + 3 = 7 |
 
-**The key insight: the foam IS the crystal field.** Every atom sits in a BCC lattice of Kelvin cells with O_h symmetry. The splitting is not imposed by an external crystal — it is the geometry of the substrate itself. This is standard physics applied to the foam; the novelty is that the "crystal" is the vacuum.
+**The key insight: the foam IS the crystal field.** Every atom sits in a BCC lattice of Kelvin cells with O_h symmetry. The splitting is not imposed by an external crystal, it is the geometry of the substrate itself. This is standard physics applied to the foam; the novelty is that the "crystal" is the vacuum.
 
 ---
 
@@ -116,7 +116,7 @@ Within each shell, subshells fill in order of increasing face Laplacian eigenval
 | d (Eg) | λ = 4 | Third |
 | f (A2u) | λ = 9 | Fourth |
 
-This ordering — s < p < d < f within each shell — is correct and derived from the eigenvalue spectrum.
+This ordering (s < p < d < f within each shell) is correct and derived from the eigenvalue spectrum.
 
 ---
 
@@ -139,7 +139,7 @@ where λ_l is the face Laplacian eigenvalue for angular momentum l, and λ_max =
 | 2 | 4 | 0.4444 |
 | 3 | 9 | 1.0000 |
 
-This gives the correct ordering for the first five subshells (1s, 2s, 2p, 3s, 3p) but places 3d before 4s — which is the hydrogen-like ordering, not the Madelung ordering.
+This gives the correct ordering for the first five subshells (1s, 2s, 2p, 3s, 3p) but places 3d before 4s, which is the hydrogen-like ordering, not the Madelung ordering.
 
 ### The screening correction
 
@@ -156,16 +156,16 @@ The Madelung rule gives E(n, l) = n + l. The screening correction required is:
 
 The screening correction for each angular momentum type involves the face Laplacian eigenvalues:
 
-- **S(1)/1 = r₂/λ_max** — the upper T1u eigenvalue divided by λ_max
-- **S(2)/2 = 7/9 = λ_T2g/λ_max** — the T2g eigenvalue divided by λ_max
-- **S(3)/3 = 6/9 = (λ_max − C_A)/λ_max** — related to the colour number
+- **S(1)/1 = r₂/λ_max**, the upper T1u eigenvalue divided by λ_max
+- **S(2)/2 = 7/9 = λ_T2g/λ_max**, the T2g eigenvalue divided by λ_max
+- **S(3)/3 = 6/9 = (λ_max − C_A)/λ_max**, related to the colour number
 
 ### Why screening linearises the spectrum
 
 The foam's bare eigenvalue spectrum {0, 0.271, 0.444, 1.000} is nonlinear. Screening converts it to the linear Madelung sequence {0, 1, 2, 3}. The physical reason:
 
 1. **The nuclear potential is Coulombic** (V ∝ 1/r), derived from the foam pressure gradient (Part I of UFFT).
-2. In a Coulomb potential, all l-states within a shell are degenerate — the "accidental" SO(4) symmetry of hydrogen.
+2. In a Coulomb potential, all l-states within a shell are degenerate, the "accidental" SO(4) symmetry of hydrogen.
 3. **Multi-electron screening breaks SO(4) → O_h** (the foam symmetry).
 4. First-order perturbation theory with spherically symmetric screening in a Coulomb potential gives energy corrections **proportional to l**.
 5. This linearises the angular momentum dependence: E(n, l) = n + l.
@@ -181,7 +181,7 @@ The foam's bare eigenvalue spectrum {0, 0.271, 0.444, 1.000} is nonlinear. Scree
 | 5 | Screened Coulomb + O_h splitting → E = n + l | **FOLLOWS** from 3 + 4 |
 | 6 | E = n + l → Madelung rule → Aufbau ordering | **FOLLOWS** from 5 |
 
-Every step is either derived or derivable from the foam. The explicit screening calculation (step 4) is standard computational physics — Hartree-Fock applied to foam torsion loops instead of wavefunctions. The structure of why it works is established. The computation is routine but not yet executed.
+Every step is either derived or derivable from the foam. The explicit screening calculation (step 4) is standard computational physics, Hartree-Fock applied to foam torsion loops instead of wavefunctions. The structure of why it works is established. The computation is routine but not yet executed.
 
 **Standard QM has steps 3–6 but not steps 1–2.** It does not derive the subshell types from vacuum geometry. The foam derives more of the periodic table from first principles than standard physics does.
 
@@ -228,7 +228,7 @@ Same eigenvalues as the vertex Laplacian (from the same underlying graph structu
 Today's colour-frequency calculations established:
 
 - 40.5 = C_A⁴/2 = λ_max²/χ (Howard's hydrogen base frequency)
-- 81 = C_A⁴ (carbon — the midpoint element)
+- 81 = C_A⁴ (carbon, the midpoint element)
 - The element frequency series is octaves of C_A⁴
 
 The Aufbau results connect: carbon's special position at C_A⁴ in the Russell-Howard spiral corresponds to its position as the midpoint element with maximum B-V symmetry (equal creation/dissolution capacity from Axiom Zero). The face Laplacian that determines the subshell structure is the same face Laplacian whose maximum eigenvalue λ_max = 9 determines the element frequency base C_A⁴ = 81 = λ_max².
@@ -241,11 +241,11 @@ The periodic table structure and the element frequency series share the same geo
 
 ### Derived from foam geometry
 
-- ✓ Four subshell types (s, p, d, f) — O_h crystal field splitting
-- ✓ Subshell capacities (2, 6, 10, 14) — irrep dimensions × spin
+- ✓ Four subshell types (s, p, d, f), O_h crystal field splitting
+- ✓ Subshell capacities (2, 6, 10, 14), irrep dimensions × spin
 - ✓ Period lengths (2, 8, 8, 18, 18, 32, 32)
 - ✓ Intra-shell ordering (s < p < d < f by eigenvalue)
-- ✓ Maximum l=3 — no g-orbitals needed through Z=118
+- ✓ Maximum l=3, no g-orbitals needed through Z=118
 - ✓ The foam IS the crystal field (not externally imposed)
 
 ### Derivation chain established (not yet computed)
@@ -268,6 +268,25 @@ The Madelung rule is empirical in standard QM too. Neither framework derives it 
 *Developed in collaboration with Claude (Anthropic). Ideas, framework, direction: Luke Martin. AI role: crystal field analysis, Madelung ordering derivation chain, document composition.*
 
 ---
+
+---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #3 — The Fine Structure Constant from Planck-Scale Foam Geometry. DOI: 10.5281/zenodo.19011758
+- [2] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [3] Paper #8 — Maxwell's Equations from Foam Dynamics. DOI: 10.5281/zenodo.19063671
+- [4] Paper #9 — The Friedmann Equations and Einstein-Hilbert Action from Foam Dynamics. DOI: 10.5281/zenodo.19063718
+- [5] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #30 · DOI: 10.5281/zenodo.19185628 · Priority Date: 20 February 2026*
 

@@ -30,7 +30,7 @@ We derive the electromagnetic fine structure constant α from the geometry of a 
 
 **α⁻¹ = 8π^(5/2) × [(|G|−1)/|G| + (V−F)/(d·|G|³) + (E−F)/(d·|G|⁵)]  [Equation 1]**
 
-where |G| = 48 (order of the octahedral symmetry group O_h), V = 24 vertices, E = 36 edges, F = 14 faces, and d = 3 spatial dimensions, evaluates to α⁻¹ = 137.035999055, compared to the experimental value 137.035999084 ± 0.021 (CODATA 2018). The discrepancy is 0.21 parts per billion — within 1.4 standard deviations of experiment. This is the first derivation of α from first principles with zero fitted constants.
+where |G| = 48 (order of the octahedral symmetry group O_h), V = 24 vertices, E = 36 edges, F = 14 faces, and d = 3 spatial dimensions, evaluates to α⁻¹ = 137.035999055, compared to the experimental value 137.035999084 ± 0.021 (CODATA 2018). The discrepancy is 0.21 parts per billion, within 1.4 standard deviations of experiment. This is the first derivation of α from first principles with zero fitted constants.
 
 ---
 
@@ -38,11 +38,11 @@ where |G| = 48 (order of the octahedral symmetry group O_h), V = 24 vertices, E 
 
 The fine structure constant α ≈ 1/137.036 governs the strength of electromagnetic interactions. It is one of approximately 25 dimensionless constants in the Standard Model. Despite a century of effort beginning with Eddington, Pauli, and others, no derivation from first principles exists. The value is measured, not calculated.
 
-Within the Unified Foam Field Theory (UFFT) [1], the vacuum is modelled as an infinite Planck-density foam with truncated octahedral cell geometry — the Kelvin cell, which is the unique convex polyhedron that tiles three-dimensional space with minimal surface area per unit volume [2]. The electromagnetic coupling constant α is the closure condition of the displacement mode (D-mode): the ratio describing how the propagating displacement field couples back to the bubble-void pair that generated it.
+Within the Unified Foam Field Theory (UFFT) [1], the vacuum is modelled as an infinite Planck-density foam with truncated octahedral cell geometry, the Kelvin cell, which is the unique convex polyhedron that tiles three-dimensional space with minimal surface area per unit volume [2]. The electromagnetic coupling constant α is the closure condition of the displacement mode (D-mode): the ratio describing how the propagating displacement field couples back to the bubble-void pair that generated it.
 
 Previous work within UFFT established the leading-order approximation α⁻¹ ≈ 8π^(5/2) = 139.95, identifying the B-V-D phase torus structure but leaving a 2.1% gap [1]. This paper closes that gap.
 
-The key insight is that α is not a continuous integral but a discrete combinatorial quantity — a property of the CW-complex structure of the cell boundary, calculable from finite group theory on the 48-element octahedral symmetry group O_h. The 100-year failure to derive α may reflect a category error: applying emergent-layer mathematics (smooth manifolds, partition functions) to a substrate-layer quantity that is fundamentally discrete and combinatorial.
+The key insight is that α is not a continuous integral but a discrete combinatorial quantity, a property of the CW-complex structure of the cell boundary, calculable from finite group theory on the 48-element octahedral symmetry group O_h. The 100-year failure to derive α may reflect a category error: applying emergent-layer mathematics (smooth manifolds, partition functions) to a substrate-layer quantity that is fundamentally discrete and combinatorial.
 
 ---
 
@@ -84,7 +84,7 @@ In the BCC tiling, boundary features are shared by multiple cells:
 
 ### 3.1 Prefactor: The B-V-D Closure Torus
 
-The D-mode propagates through d = 3 independent modal directions (B, V, D — the three co-equal modes of Axiom Zero [1]), each with phase range [0, 2π]. The coupling probability is the reciprocal of the phase-space volume explored before return:
+The D-mode propagates through d = 3 independent modal directions (B, V, D, the three co-equal modes of Axiom Zero [1]), each with phase range [0, 2π]. The coupling probability is the reciprocal of the phase-space volume explored before return:
 
 **Phase-space volume of 3-torus: (2π)³**
 
@@ -102,7 +102,7 @@ The D-mode couples through the regular representation of O_h. By the Peter-Weyl 
 
 **Reg = ⊕_ρ d_ρ · ρ,    Σ d_ρ² = |G| = 48**
 
-The identity irrep A₁g (dimension 1, weight 1/|G|) represents self-coupling — displacement returning to its original state without net propagation. This channel does not generate electromagnetic interaction and is subtracted:
+The identity irrep A₁g (dimension 1, weight 1/|G|) represents self-coupling, displacement returning to its original state without net propagation. This channel does not generate electromagnetic interaction and is subtracted:
 
 **w₀ = (|G|−1)/|G| = 47/48  [Equation 4]**
 
@@ -213,7 +213,7 @@ Every input is either a mathematical constant or a topological integer fixed by 
 
 ### 5.1 Why α Resisted Derivation
 
-The derivation uses only finite group theory and CW-complex combinatorics — no integrals, no limits, no continuous fields. The inputs are integers: 48, 24, 36, 14, 3. Every previous attempt to derive α used continuous mathematics: path integrals, smooth manifold geometry, modular functions, continued fractions. If α is fundamentally a discrete combinatorial ratio, the application of continuous methods is a category error.
+The derivation uses only finite group theory and CW-complex combinatorics, no integrals, no limits, no continuous fields. The inputs are integers: 48, 24, 36, 14, 3. Every previous attempt to derive α used continuous mathematics: path integrals, smooth manifold geometry, modular functions, continued fractions. If α is fundamentally a discrete combinatorial ratio, the application of continuous methods is a category error.
 
 ### 5.2 Relation to the Koide Parameter
 
@@ -221,7 +221,7 @@ As shown in [1, Part XVIII], the Koide parameter θ = 0.222 rad is α expressed 
 
 ### 5.3 What Remains Open
 
-One step in the derivation is a physical argument rather than a pure mathematical theorem: the tiling valence power law (Section 3.3), which assigns coupling weight |G|^(−(2v−3)) to a v-cell junction. The exponent 2v − 3 is derived from counting orientational averages and consistency constraints. A fully rigorous derivation would replace this with a spectral theorem about the boundary coupling operator — a finite computation on the 48-element group that this work has reduced to an explicit, verifiable matrix problem.
+One step in the derivation is a physical argument rather than a pure mathematical theorem: the tiling valence power law (Section 3.3), which assigns coupling weight |G|^(−(2v−3)) to a v-cell junction. The exponent 2v − 3 is derived from counting orientational averages and consistency constraints. A fully rigorous derivation would replace this with a spectral theorem about the boundary coupling operator, a finite computation on the 48-element group that this work has reduced to an explicit, verifiable matrix problem.
 
 ---
 

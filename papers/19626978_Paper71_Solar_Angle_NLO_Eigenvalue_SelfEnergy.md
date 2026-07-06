@@ -24,7 +24,7 @@
 
 ## Abstract
 
-Paper #47 resolved the >2σ tensions in the atmospheric and reactor PMNS angles through a Z₂-symmetry-breaking NLO mechanism, and noted (§2.5) that the solar angle tan²θ₁₂ = √Δ/C_A² = √17/9 is *protected* from that mechanism at first order: the Z₂ breaking acts in the 2-3 sector and feeds the 1-2 sector only at order ε² ≈ 0.003, which is below the observational noise floor. The measured +0.56σ LO residual therefore demands a structurally distinct NLO route. We identify and derive that route. The solar angle is built from the eigenvalue *ratio* (r₂ − r₁)/(r₁ + r₂) of the two T₁u irreps of the face Laplacian spectrum, so its NLO behaviour is governed by shifts to the eigenvalue pair itself, not to the 2-3 mixing submatrix. Gauge-boson one-loop self-energies on the T₁u line produce symmetric-about-midpoint shifts r₁ → r₁ + ε, r₂ → r₂ − ε, with the shift magnitude ε = Δ/(V·N_gauge) fixed by the combinatorial loop count: V = 24 fermion-vertex sites, N_gauge = E − V = 12 gauge-boson species, Δ = 17 master discriminant. The Vieta identity r₁ + r₂ = 9 = C_A² (from λ² − 9λ + 16 = 0) is exactly preserved by any O_h-symmetric self-energy, so only the splitting (r₂ − r₁) = √17 changes; it decreases by 2ε because gauge loops attract the chirality-partner eigenvalues. This yields tan²θ₁₂^NLO = (√17/9)(1 − √17/144) = 0.44501, where 144 = V·N_gauge/2 is the half-loop combinatorial factor, and agrees with the PDG global fit 0.443 ± 0.027 at +0.074σ — an 8× tightening from +0.56σ LO. All six PMNS mixing parameters now sit within 0.3σ of observation with zero free parameters. A companion numerical verification (5-second run) confirms the identity.
+Paper #47 resolved the >2σ tensions in the atmospheric and reactor PMNS angles through a Z₂-symmetry-breaking NLO mechanism, and noted (§2.5) that the solar angle tan²θ₁₂ = √Δ/C_A² = √17/9 is *protected* from that mechanism at first order: the Z₂ breaking acts in the 2-3 sector and feeds the 1-2 sector only at order ε² ≈ 0.003, which is below the observational noise floor. The measured +0.56σ LO residual therefore demands a structurally distinct NLO route. We identify and derive that route. The solar angle is built from the eigenvalue *ratio* (r₂ − r₁)/(r₁ + r₂) of the two T₁u irreps of the face Laplacian spectrum, so its NLO behaviour is governed by shifts to the eigenvalue pair itself, not to the 2-3 mixing submatrix. Gauge-boson one-loop self-energies on the T₁u line produce symmetric-about-midpoint shifts r₁ → r₁ + ε, r₂ → r₂ − ε, with the shift magnitude ε = Δ/(V·N_gauge) fixed by the combinatorial loop count: V = 24 fermion-vertex sites, N_gauge = E − V = 12 gauge-boson species, Δ = 17 master discriminant. The Vieta identity r₁ + r₂ = 9 = C_A² (from λ² − 9λ + 16 = 0) is exactly preserved by any O_h-symmetric self-energy, so only the splitting (r₂ − r₁) = √17 changes; it decreases by 2ε because gauge loops attract the chirality-partner eigenvalues. This yields tan²θ₁₂^NLO = (√17/9)(1 − √17/144) = 0.44501, where 144 = V·N_gauge/2 is the half-loop combinatorial factor, and agrees with the PDG global fit 0.443 ± 0.027 at +0.074σ, an 8× tightening from +0.56σ LO. All six PMNS mixing parameters now sit within 0.3σ of observation with zero free parameters. A companion numerical verification (5-second run) confirms the identity.
 
 ---
 
@@ -43,7 +43,7 @@ Paper #47 §2.5 argued that the solar angle is protected from the Z₂-breaking 
 
 But 0.003/0.027 ≈ 0.11σ of protection-induced shift versus the observed +0.56σ residual leaves a factor-of-five gap. Either the residual is noise (consistent with LO at 0.56σ, no mechanism required), or there is a structurally distinct NLO route that Paper #47 did not cover.
 
-This paper identifies that second route: gauge-boson one-loop self-energy on the T₁u line, which shifts the eigenvalue pair symmetrically and reduces the LO splitting directly — a mechanism unrelated to the 2-3 sector Z₂ breaking.
+This paper identifies that second route: gauge-boson one-loop self-energy on the T₁u line, which shifts the eigenvalue pair symmetrically and reduces the LO splitting directly, a mechanism unrelated to the 2-3 sector Z₂ breaking.
 
 ---
 
@@ -112,7 +112,7 @@ This is the per-line magnitude. The sign depends on chirality parity, discussed 
 
 The lower T₁u (r₁) carries the left-handed chirality projector; the upper T₁u (r₂) the right-handed (Paper #56, T₁u theorems). A vector gauge-boson couples to both chiralities with opposite sign under the parity-flip encoded in the A₂u ⊗ T₁u vertex.
 
-For two chirality-partner eigenvalues coupled by a vector loop, the one-loop self-energy is *attractive* — it pulls the eigenvalues toward their midpoint. This is the familiar level-attraction mechanism of QED-like radiative corrections between left and right chirality sectors.
+For two chirality-partner eigenvalues coupled by a vector loop, the one-loop self-energy is *attractive*, it pulls the eigenvalues toward their midpoint. This is the familiar level-attraction mechanism of QED-like radiative corrections between left and right chirality sectors.
 
 Therefore:
 ```
@@ -227,7 +227,7 @@ The identification "gauge boson = vertex-walk closure irreducible" is the Paper 
 
 Paper #47 §2.5 correctly states that the Z₂-breaking NLO mechanism does not touch tan²θ₁₂ at first order; it enters only at order ε²_PMNS ≈ 0.003, i.e. ≈0.11σ of shift. That statement remains correct.
 
-This paper adds a *second*, structurally distinct NLO mechanism — gauge-loop self-energy on the T₁u eigenvalue pair — that was not covered in Paper #47. The gauge-loop shift √17/144 ≈ 0.029 is larger than the Z₂-feedback shift (0.003), so it is the dominant NLO contribution to tan²θ₁₂. Combining both would give:
+This paper adds a *second*, structurally distinct NLO mechanism (gauge-loop self-energy on the T₁u eigenvalue pair) that was not covered in Paper #47. The gauge-loop shift √17/144 ≈ 0.029 is larger than the Z₂-feedback shift (0.003), so it is the dominant NLO contribution to tan²θ₁₂. Combining both would give:
 
 ```
 tan²θ₁₂^NLO(full) = (√17/9) · (1 − √17/144) + O(ε²_PMNS)
@@ -257,5 +257,13 @@ At the current observational precision (±0.027), the ε² correction is negligi
 ---
 
 *Working draft 2026-04-17 · Part LXXI · APPROVED pending verification script run · awaiting Zenodo upload.*
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *B + V = D*

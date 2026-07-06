@@ -24,7 +24,7 @@
 
 ## Abstract
 
-We compute the complete Wolfenstein ρ̄ parameter from the inter-type torsion operator on the truncated octahedron's 14-face graph. The operator O = [(C_A−1)P_sq + P_hx]·T, restricted to the two T₁u irreducible representations, yields a 2×2 effective generation matrix H with four Schur scalars. We discover three exact algebraic identities: tr(H) = 1/3, det(H) = −8, and the characteristic polynomial 3μ²−μ−24 = 0 whose discriminant is 289 = 17² = Δ² — the square of the master discriminant. The eigenvalues are μ₁ = C_A = 3 and μ₂ = −r₁r₂/(2C_A) = −8/3, tying the generation matrix directly to the colour number and master equation product.
+We compute the complete Wolfenstein ρ̄ parameter from the inter-type torsion operator on the truncated octahedron's 14-face graph. The operator O = [(C_A−1)P_sq + P_hx]·T, restricted to the two T₁u irreducible representations, yields a 2×2 effective generation matrix H with four Schur scalars. We discover three exact algebraic identities: tr(H) = 1/3, det(H) = −8, and the characteristic polynomial 3μ²−μ−24 = 0 whose discriminant is 289 = 17² = Δ², the square of the master discriminant. The eigenvalues are μ₁ = C_A = 3 and μ₂ = −r₁r₂/(2C_A) = −8/3, tying the generation matrix directly to the colour number and master equation product.
 
 The CKM CP phase δ = arg(λ₁₂) = 66.36° was established in Paper #39. We derive R_b = r₁²/(r₁r₂−1) = (49−9√17)/30, an NLO correction to the tree-level ratio r₁/r₂ with factor 16/15 = r₁r₂/(r₁r₂−1), interpretable as a self-energy vertex renormalisation. This yields ρ̄ = 0.1590 (−0.002σ from PDG 2024), resolving the previous 1.0σ tension. The companion prediction η̄ = 0.363 sits at +1.5σ, attributable to the 0.91° offset in δ from the experimental central value. The combined CKM unitarity triangle is determined by cell integers alone, with no free parameters.
 
@@ -39,7 +39,7 @@ The CKM unitarity triangle is parametrised by two real numbers: the Wolfenstein 
 - ρ̄ = 0.159 ± 0.010
 - η̄ = 0.348 ± 0.010
 
-In the UFFT framework, the CKM mixing matrix arises from the inter-type torsion operator O on the face graph of the truncated octahedron (Paper #39 [DOI: 10.5281/zenodo.19306447]). The operator's restriction to the T₁u sector — the two three-dimensional irreducible representations that carry left-handed (r₁) and right-handed (r₂) fermion chirality — yields a 2×2 generation matrix whose entries encode the full CKM parametrisation.
+In the UFFT framework, the CKM mixing matrix arises from the inter-type torsion operator O on the face graph of the truncated octahedron (Paper #39 [DOI: 10.5281/zenodo.19306447]). The operator's restriction to the T₁u sector (the two three-dimensional irreducible representations that carry left-handed (r₁) and right-handed (r₂) fermion chirality) yields a 2×2 generation matrix whose entries encode the full CKM parametrisation.
 
 Paper #34 [DOI: 10.5281/zenodo.19198360] established the tree-level Wolfenstein parameters:
 
@@ -48,7 +48,7 @@ Paper #34 [DOI: 10.5281/zenodo.19198360] established the tree-level Wolfenstein 
 
 Paper #36 [DOI: 10.5281/zenodo.19198775] derived the CKM CP phase δ = arg(λ₁₂) = 66.36° from the off-diagonal Schur scalar.
 
-This paper completes the CKM unitarity triangle by deriving R_b — the modulus of ρ̄ + iη̄ — from the same operator.
+This paper completes the CKM unitarity triangle by deriving R_b (the modulus of ρ̄ + iη̄) from the same operator.
 
 ---
 
@@ -147,7 +147,7 @@ giving:
 μ₂ = −16/6 = −8/3 = −r₁r₂/(2C_A)
 ```
 
-The larger eigenvalue is exactly C_A. The smaller eigenvalue involves the product r₁r₂ = 16 from the master equation. These eigenvalues are real and rational — the generation matrix has no complex eigenvalues despite having complex entries.
+The larger eigenvalue is exactly C_A. The smaller eigenvalue involves the product r₁r₂ = 16 from the master equation. These eigenvalues are real and rational, the generation matrix has no complex eigenvalues despite having complex entries.
 
 ### 3.4 Summary of exact identities
 
@@ -199,9 +199,9 @@ r₁r₂/(r₁r₂ − 1) = 16/15
 
 The denominator 15 = r₁r₂ − 1 admits three equivalent cell-integer representations:
 
-1. **r₁r₂ − 1 = 16 − 1 = 15** — the master equation product minus the identity
-2. **V − (r₁+r₂) = 24 − 9 = 15** — vertices minus the eigenvalue sum
-3. **F + 1 = 14 + 1 = 15** — faces plus one
+1. **r₁r₂ − 1 = 16 − 1 = 15**, the master equation product minus the identity
+2. **V − (r₁+r₂) = 24 − 9 = 15**, vertices minus the eigenvalue sum
+3. **F + 1 = 14 + 1 = 15**, faces plus one
 
 Interpretation (a) is the most natural: the factor r₁r₂/(r₁r₂−1) is a self-energy renormalisation, the ratio of the full eigenvalue product to the reduced product after subtracting the identity (vacuum) contribution. This is the same philosophy as the NLO Cabibbo correction (Paper #51 [DOI: 10.5281/zenodo.19477100]) where the wall correction 1 + √17/363 corrects the geometric LO ratio by the leading self-energy insertion.
 
@@ -226,7 +226,7 @@ The companion prediction η̄ = 0.363 sits at +1.5σ from the PDG central value.
 
 The phase offset is 0.91°, which is only 0.38σ in δ itself but gets amplified through sin(δ) to produce the 1.5σ η̄ residual. This is a lever-arm effect, not a structural failure of the formula.
 
-To demonstrate this: at the experimental central δ = 65.44°, the NLO R_b gives ρ̄ = 0.165 (+0.6σ) and η̄ = 0.360 (+1.2σ), with combined tension 1.38σ — reduced but still present because R_b = 0.396 slightly overshoots the optimal 0.383.
+To demonstrate this: at the experimental central δ = 65.44°, the NLO R_b gives ρ̄ = 0.165 (+0.6σ) and η̄ = 0.360 (+1.2σ), with combined tension 1.38σ, reduced but still present because R_b = 0.396 slightly overshoots the optimal 0.383.
 
 The honest assessment: R_b = r₁²/15 is the correct NLO formula for ρ̄, but closing the combined (ρ̄, η̄) tension below 1σ requires either an NLO correction to δ from the operator itself, or a more refined R_b. We note that the pure cell-integer ratio F/E = 7/18 = 0.3889 gives a combined tension of 0.88σ, suggesting that the exact R_b may involve the face/edge numbers, but we do not yet have a derivation of this from first principles.
 
@@ -259,7 +259,7 @@ Using the UFFT values: J_UFFT = (r₁/C_A)² · sin⁶(π/14) · R_b · sin(δ),
 
 ### 5.3 The δ_PMNS/δ_CKM = 3 prediction
 
-Paper #36 [DOI: 10.5281/zenodo.19198775] showed that δ_PMNS = 3·δ_CKM exactly (the factor is C_A). With δ_CKM = 66.36°, this gives δ_PMNS = 199.07°, testable by DUNE around 2035. The ρ̄ derivation in this paper does not affect this prediction — it depends only on δ, not on R_b.
+Paper #36 [DOI: 10.5281/zenodo.19198775] showed that δ_PMNS = 3·δ_CKM exactly (the factor is C_A). With δ_CKM = 66.36°, this gives δ_PMNS = 199.07°, testable by DUNE around 2035. The ρ̄ derivation in this paper does not affect this prediction, it depends only on δ, not on R_b.
 
 ---
 
@@ -327,7 +327,7 @@ where 24 = V (vertices of the truncated octahedron) and 3 = C_A. The generation 
 
 ## 9. Conclusion
 
-The Wolfenstein ρ̄ parameter is derived from the inter-type torsion operator on the truncated octahedron with zero free parameters. The NLO formula R_b = r₁²/(r₁r₂−1) = (49−9√17)/30 resolves the previous 1.0σ tension to 0.002σ. The 2×2 effective generation matrix reveals exact algebraic structure — tr = 1/3, det = −8, eigenvalues {C_A, −r₁r₂/(2C_A)} — with the master discriminant Δ = 17 controlling the generation spectrum just as it controls the face Laplacian spectrum. Every input is a topological integer of the Kelvin cell.
+The Wolfenstein ρ̄ parameter is derived from the inter-type torsion operator on the truncated octahedron with zero free parameters. The NLO formula R_b = r₁²/(r₁r₂−1) = (49−9√17)/30 resolves the previous 1.0σ tension to 0.002σ. The 2×2 effective generation matrix reveals exact algebraic structure (tr = 1/3, det = −8, eigenvalues {C_A, −r₁r₂/(2C_A)}) with the master discriminant Δ = 17 controlling the generation spectrum just as it controls the face Laplacian spectrum. Every input is a topological integer of the Kelvin cell.
 
 ---
 
@@ -335,16 +335,24 @@ The Wolfenstein ρ̄ parameter is derived from the inter-type torsion operator o
 
 ### UFFT Papers
 - [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
-- [2] Paper #16 — The Master Equation. DOI: 10.5281/zenodo.19064359
-- [3] Paper #34 — CKM Matrix from T₁u Eigenvalue Ratio. DOI: 10.5281/zenodo.19198360
-- [4] Paper #36 — CP-Violating Phases of the CKM and PMNS Matrices. DOI: 10.5281/zenodo.19198775
-- [5] Paper #39 — The Inter-Type Torsion Operator. DOI: 10.5281/zenodo.19306447
-- [6] Paper #51 — NLO Mixing Correction. DOI: 10.5281/zenodo.19477100
+- [2] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+- [3] Paper #34 — The CKM Quark Mixing Matrix from Foam Cell Geometry. DOI: 10.5281/zenodo.19198360
+- [4] Paper #36 — CP-Violating Phases of the CKM and PMNS Matrices from the T₁u Eigenvalue Ratio. DOI: 10.5281/zenodo.19198775
+- [5] Paper #39 — The Inter-Type Torsion Operator on the Truncated Octahedron. DOI: 10.5281/zenodo.19306447
+- [6] Paper #51 — The NLO Mixing Correction from First Principles. DOI: 10.5281/zenodo.19477100
 
 ### External References
 - [7] Particle Data Group (2024). Review of Particle Physics. Phys. Rev. D 110, 030001.
 - [8] CKMfitter Group (2024). Updated results on the CKM matrix. http://ckmfitter.in2p3.fr
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *B + V = D*

@@ -55,9 +55,9 @@ This gives the complete spectrum:
 
 The two eigenvalues used in this paper:
 
-- **λ_A₂u = 9** — from the factor (λ−9); the spectral maximum, non-degenerate. Physical identification: the Higgs field. The A₂u irrep is the fully antipodal mode in which every pair of adjacent faces carries opposite amplitude. It is the unique mode with no spatial symmetry direction — the foam's scalar mode. Its identification as the Higgs sector follows from it being the sole scalar mode and the spectral maximum.
+- **λ_A₂u = 9** (from the factor (λ−9); the spectral maximum, non-degenerate. Physical identification: the Higgs field. The A₂u irrep is the fully antipodal mode in which every pair of adjacent faces carries opposite amplitude. It is the unique mode with no spatial symmetry direction) the foam's scalar mode. Its identification as the Higgs sector follows from it being the sole scalar mode and the spectral maximum.
 
-- **λ_T₁u_hi = (9+√17)/2** — from the roots of (λ²−9λ+16) = 0. The discriminant is 81−64 = **17** exactly, giving roots (9±√17)/2. The T₁u irrep (dim=3) gives SU(2)_L since N²−1 = 3 → N = 2. The upper eigenvalue λ₂ = (9+√17)/2 corresponds to the heavier weak sector modes and sets the Z boson mass sector.
+- **λ_T₁u_hi = (9+√17)/2**, from the roots of (λ²−9λ+16) = 0. The discriminant is 81−64 = **17** exactly, giving roots (9±√17)/2. The T₁u irrep (dim=3) gives SU(2)_L since N²−1 = 3 → N = 2. The upper eigenvalue λ₂ = (9+√17)/2 corresponds to the heavier weak sector modes and sets the Z boson mass sector.
 
 ---
 
@@ -78,9 +78,9 @@ Numerical evaluation:
 
 ## 3. Physical Interpretation
 
-The A₂u mode is the Higgs: the foam's resistance to topological deformation. The T₁u sector (upper eigenvalue) is the weak gauge sector containing the Z boson. The Higgs couples to the Z through the Higgs mechanism — the Z acquires mass by absorbing one degree of freedom from the Higgs doublet. In the foam, this corresponds to the A₂u mode (Higgs) coupling to the T₁u mode (Z). The mass ratio is set by the ratio of their spectral positions.
+The A₂u mode is the Higgs: the foam's resistance to topological deformation. The T₁u sector (upper eigenvalue) is the weak gauge sector containing the Z boson. The Higgs couples to the Z through the Higgs mechanism, the Z acquires mass by absorbing one degree of freedom from the Higgs doublet. In the foam, this corresponds to the A₂u mode (Higgs) coupling to the T₁u mode (Z). The mass ratio is set by the ratio of their spectral positions.
 
-The formula m_H/M_Z = λ_A₂u/λ_T₁u_hi states that the Higgs-to-Z mass ratio is the ratio of the scalar spectral maximum to the upper vector spectral eigenvalue — a topological invariant of the BCC foam geometry.
+The formula m_H/M_Z = λ_A₂u/λ_T₁u_hi states that the Higgs-to-Z mass ratio is the ratio of the scalar spectral maximum to the upper vector spectral eigenvalue, a topological invariant of the BCC foam geometry.
 
 ---
 
@@ -108,7 +108,7 @@ The integer 17 appearing in all three (in √17, in λ₂−λ₁, and in 9+√1
 
 ---
 
-**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis — physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
+**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis, physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
 
 ## UFFT Papers
 
@@ -121,6 +121,15 @@ The integer 17 appearing in all three (in √17, in λ₂−λ₁, and in 9+√1
 [3] Particle Data Group, *Review of Particle Physics*, Prog. Theor. Exp. Phys. 2022, 083C01
 
 ---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #2 — Void-Pair Conservation as the Physical Mechanism of Quantum Entanglement and Bell Correlations. DOI: 10.5281/zenodo.18706806
+- [2] Paper #3 — The Fine Structure Constant from Planck-Scale Foam Geometry. DOI: 10.5281/zenodo.19011758
+- [3] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
 
 ## AI Disclosure
 

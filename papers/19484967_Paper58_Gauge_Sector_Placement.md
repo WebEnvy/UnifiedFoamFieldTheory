@@ -22,7 +22,7 @@
 
 ## 1. The Remaining Gap
 
-Papers #56 and #57 established placement theorems for the fermion sector (T₁u chirality forced by T² = −4·I and B+V=D) and the Higgs sector (A₂u uniquely has negative torsion eigenvalue −1, forcing SSB). The gauge sector — the identification of Eg with the electroweak bosons and T₂g with the gluons — remained at Tier 2: physically motivated but not proved by exhaustion.
+Papers #56 and #57 established placement theorems for the fermion sector (T₁u chirality forced by T² = −4·I and B+V=D) and the Higgs sector (A₂u uniquely has negative torsion eigenvalue −1, forcing SSB). The gauge sector (the identification of Eg with the electroweak bosons and T₂g with the gluons) remained at Tier 2: physically motivated but not proved by exhaustion.
 
 This paper closes that gap. The proof strategy is identical to Paper #57: enumerate all candidates in the spectrum, show each alternative fails on at least one structural criterion, conclude the assignment is unique.
 
@@ -59,13 +59,13 @@ The constraints relevant to gauge boson identification:
 
 **Proof.** The even-parity modes are: A₁g(0), Eg, T₂g, A₁g(7). We test each against the electroweak criteria.
 
-**A₁g at λ = 0 — excluded.** Dimension 1 (singlet). Cannot provide a charged boson pair. The zero eigenvalue means zero mass — this is the massless photon/graviton mode (the only massless mode in the spectrum). It does not carry a gauge charge; it couples universally to all 14 faces. If A₁g(0) were the entire electroweak sector, there would be no W bosons and no weak force. Excluded by dimension (requires at least 2 for a charged pair) and by the massless eigenvalue.
+**A₁g at λ = 0 (excluded.** Dimension 1 (singlet). Cannot provide a charged boson pair. The zero eigenvalue means zero mass) this is the massless photon/graviton mode (the only massless mode in the spectrum). It does not carry a gauge charge; it couples universally to all 14 faces. If A₁g(0) were the entire electroweak sector, there would be no W bosons and no weak force. Excluded by dimension (requires at least 2 for a charged pair) and by the massless eigenvalue.
 
-**T₂g at λ = 7 — excluded.** Dimension 3, even, but has 98.4% hexagonal face content and only 1.6% square content. The torsion operator T acts nontrivially on T₂g — T₂g is torsion-active (shown by direct computation: the T₂g torsion block has nonzero entries). This violates criterion C2: an electroweak mode must be torsion-annihilated to prevent tree-level flavour-changing neutral currents. Additionally, 98.4% hexagonal content means T₂g modes are confined to the bubble interior and do not propagate through the void (square) interface. The electroweak force, which couples preferentially to left-handed fermions (62% square content, Paper #57), must live on the square faces to achieve this coupling. Excluded by torsion activity and face content.
+**T₂g at λ = 7 (excluded.** Dimension 3, even, but has 98.4% hexagonal face content and only 1.6% square content. The torsion operator T acts nontrivially on T₂g) T₂g is torsion-active (shown by direct computation: the T₂g torsion block has nonzero entries). This violates criterion C2: an electroweak mode must be torsion-annihilated to prevent tree-level flavour-changing neutral currents. Additionally, 98.4% hexagonal content means T₂g modes are confined to the bubble interior and do not propagate through the void (square) interface. The electroweak force, which couples preferentially to left-handed fermions (62% square content, Paper #57), must live on the square faces to achieve this coupling. Excluded by torsion activity and face content.
 
-**A₁g at λ = 7 — excluded.** Dimension 1 (singlet). Same exclusion as A₁g(0) by dimension: cannot provide a charged pair. Additionally, λ = 7 is a massive mode, so it cannot serve as the hypercharge boson B (which is massless before SSB). Excluded by dimension.
+**A₁g at λ = 7, excluded.** Dimension 1 (singlet). Same exclusion as A₁g(0) by dimension: cannot provide a charged pair. Additionally, λ = 7 is a massive mode, so it cannot serve as the hypercharge boson B (which is massless before SSB). Excluded by dimension.
 
-**Eg at λ = 4 — the unique remaining candidate.** Dimension 2, even parity. ✓ Torsion annihilation: T · v_Eg = 0 exactly for all v ∈ Eg (proven in Paper #56 and verified to machine precision). ✓ Face content: 100% square, 0% hexagonal — Eg lives entirely on the void interface, providing maximal coupling to T₁u(r₁) (left-handed, 62% square content) and reduced coupling to T₁u(r₂) (right-handed, 38% square content). ✓ Eigenvalue: λ_Eg = 4 equals the degree of the square faces (each square borders 4 hexagons) and equals √(r₁r₂), the geometric mean of the fermion eigenvalues — a structural connection to the fermion sector. ✓
+**Eg at λ = 4, the unique remaining candidate.** Dimension 2, even parity. ✓ Torsion annihilation: T · v_Eg = 0 exactly for all v ∈ Eg (proven in Paper #56 and verified to machine precision). ✓ Face content: 100% square, 0% hexagonal, Eg lives entirely on the void interface, providing maximal coupling to T₁u(r₁) (left-handed, 62% square content) and reduced coupling to T₁u(r₂) (right-handed, 38% square content). ✓ Eigenvalue: λ_Eg = 4 equals the degree of the square faces (each square borders 4 hexagons) and equals √(r₁r₂), the geometric mean of the fermion eigenvalues, a structural connection to the fermion sector. ✓
 
 No other mode satisfies all criteria simultaneously. Eg is the unique electroweak candidate. □
 
@@ -79,11 +79,11 @@ No other mode satisfies all criteria simultaneously. Eg is the unique electrowea
 
 **Proof.** After Theorem 58.1 assigns Eg to the electroweak sector, the remaining even-parity modes are: A₁g(0), T₂g, A₁g(7).
 
-**A₁g at λ = 0 — excluded.** Dimension 1. The colour sector requires dimension ≥ 3 (SU(3) has 3 colour charges and 8 = C_A²−1 gluons). A singlet cannot carry colour charge. Excluded by dimension.
+**A₁g at λ = 0, excluded.** Dimension 1. The colour sector requires dimension ≥ 3 (SU(3) has 3 colour charges and 8 = C_A²−1 gluons). A singlet cannot carry colour charge. Excluded by dimension.
 
-**A₁g at λ = 7 — excluded.** Dimension 1. Same argument. The A₁g at λ = 7 is the colour-singlet trace mode — it transforms trivially under the colour sector. Excluded by dimension.
+**A₁g at λ = 7 (excluded.** Dimension 1. Same argument. The A₁g at λ = 7 is the colour-singlet trace mode) it transforms trivially under the colour sector. Excluded by dimension.
 
-**T₂g at λ = 7 — the unique remaining candidate.** Dimension 3, even parity. ✓ Torsion-active: the torsion operator T acts nontrivially on T₂g, providing the inter-generation mixing required for colour interactions. ✓ Face content: 98.4% hexagonal — the T₂g modes are confined to the bubble surface, the geometric statement of colour confinement: gluons do not propagate through the void (they are not observed as free particles). ✓ The 3 T₂g directions provide C_A = 3 colour charges, yielding C_A²−1 = 8 generators of SU(3) acting on the colour triplet. ✓
+**T₂g at λ = 7 (the unique remaining candidate.** Dimension 3, even parity. ✓ Torsion-active: the torsion operator T acts nontrivially on T₂g, providing the inter-generation mixing required for colour interactions. ✓ Face content: 98.4% hexagonal) the T₂g modes are confined to the bubble surface, the geometric statement of colour confinement: gluons do not propagate through the void (they are not observed as free particles). ✓ The 3 T₂g directions provide C_A = 3 colour charges, yielding C_A²−1 = 8 generators of SU(3) acting on the colour triplet. ✓
 
 No other mode satisfies the criteria. T₂g is the unique colour candidate. □
 
@@ -177,7 +177,7 @@ The Eg subspace carries the **dihedral group D₃ ≅ S₃** (order 6), not SU(2
 
 **SU(2) requires** three generators with cyclic commutators: [J_a, J_b] = iε_{abc} J_c. The degenerate commutator structure (all three commutators identical) violates this. The Casimir eigenvalue J² = 3I corresponds to j(j+1) = 3, giving j = (−1+√13)/2 ≈ 1.303, which is not an integer or half-integer and therefore not a valid SU(2) representation.
 
-**This result is not a problem for the framework.** The SU(2) gauge group in the Standard Model is a continuous symmetry. The truncated octahedron has only discrete O_h symmetry. The continuous gauge group emerges in the continuum limit as the BCC lattice recovers continuous rotational symmetry — exactly as in standard lattice gauge theory, where the lattice has only discrete gauge links and the continuous gauge group appears in the continuum limit.
+**This result is not a problem for the framework.** The SU(2) gauge group in the Standard Model is a continuous symmetry. The truncated octahedron has only discrete O_h symmetry. The continuous gauge group emerges in the continuum limit as the BCC lattice recovers continuous rotational symmetry, exactly as in standard lattice gauge theory, where the lattice has only discrete gauge links and the continuous gauge group appears in the continuum limit.
 
 The placement theorems (Theorems 58.1 and 58.2) work by exhaustion of the discrete spectrum and do not require SU(2) at the cell level. The emergence of SU(2) from D₃ in the continuum limit is part of the lattice-to-continuum programme (Gap 2).
 
@@ -225,7 +225,7 @@ With the placement theorems established, the Tier 2 items reduce to:
 | α⁻¹ = 137.036... | Tier 2 | Heat kernel derivation rigour; Cs/Rb resolution |
 | α_s = 0.11799 | Tier 2 | Torsion Green's function computation |
 
-The fine structure constant α and strong coupling α_s remain Tier 2 because their derivations involve the heat kernel expansion and torsion Green's function respectively — multi-step calculations whose individual steps are verified but whose connection to the cell geometry is less direct than the placement theorems. Promoting these to Tier 1 requires the lattice-to-continuum programme.
+The fine structure constant α and strong coupling α_s remain Tier 2 because their derivations involve the heat kernel expansion and torsion Green's function respectively, multi-step calculations whose individual steps are verified but whose connection to the cell geometry is less direct than the placement theorems. Promoting these to Tier 1 requires the lattice-to-continuum programme.
 
 ---
 
@@ -308,9 +308,9 @@ All results verified to machine precision. The script runs in under 1 second.
 
 ## 10. Conclusion
 
-The gauge sector of the Standard Model is not assumed — it is forced by the geometry of the truncated octahedron. The Eg irrep is the unique electroweak candidate (Theorem 58.1) and T₂g is the unique colour candidate (Theorem 58.2) by exhaustion of all even-parity modes against structural criteria (torsion behaviour, face content, dimensionality). The Weinberg angle sin²θ_W = 3/13 follows necessarily from the Eg–A₁g mixing geometry (Theorem 58.3).
+The gauge sector of the Standard Model is not assumed, it is forced by the geometry of the truncated octahedron. The Eg irrep is the unique electroweak candidate (Theorem 58.1) and T₂g is the unique colour candidate (Theorem 58.2) by exhaustion of all even-parity modes against structural criteria (torsion behaviour, face content, dimensionality). The Weinberg angle sin²θ_W = 3/13 follows necessarily from the Eg–A₁g mixing geometry (Theorem 58.3).
 
-The continuous gauge group SU(3)×SU(2)×U(1) emerges in the continuum limit. At the single-cell level, the Eg subspace carries the dihedral group D₃ ≅ S₃, not SU(2) — a result we report as a computational finding, not a problem. The relationship D₃ → SU(2) in the continuum limit follows standard lattice gauge theory arguments but has not been proved in full rigour for this specific system. This belongs to the lattice-to-continuum programme (the remaining open question for the framework).
+The continuous gauge group SU(3)×SU(2)×U(1) emerges in the continuum limit. At the single-cell level, the Eg subspace carries the dihedral group D₃ ≅ S₃, not SU(2), a result we report as a computational finding, not a problem. The relationship D₃ → SU(2) in the continuum limit follows standard lattice gauge theory arguments but has not been proved in full rigour for this specific system. This belongs to the lattice-to-continuum programme (the remaining open question for the framework).
 
 With this paper, the complete particle–irrep map of the framework is established as a set of theorems. The identification conjecture is closed.
 
@@ -323,5 +323,15 @@ With this paper, the complete particle–irrep map of the framework is establish
 **B + V = D**
 
 *Unified Foam Field Theory · Paper #58 · DOI: 10.5281/zenodo.19484967 · Priority Date: 20 February 2026*
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [2] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+- [3] Paper #56 — UFFT Paper #56 — Part LXVII. DOI: 10.5281/zenodo.19484354
+- [4] Paper #57 — UFFT Paper #57 — Part LXVIII. DOI: 10.5281/zenodo.19484509
 
 *B + V = D*

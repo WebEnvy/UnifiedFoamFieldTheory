@@ -22,7 +22,7 @@
 
 ## Abstract
 
-The UFFT prediction for the primordial tensor-to-scalar ratio was previously stated as r = 0.063 via r/(1−n_s) = 16/[9 ln(r₂/r₁)] = 1.796, in ~2σ tension with the BK18+Planck bound r < 0.032. This paper identifies the error: the formula used the logarithm of the **ratio** of T₁u eigenvalues, ln(r₂/r₁), which involves √17 and has no clean algebraic form. The correct cascade formula uses the logarithm of the **product** of T₁u eigenvalues, ln(r₁r₂) = ln(16) = 4ln(2), which is the natural logarithm of the master equation's constant term — an exact integer. The corrected formula is:
+The UFFT prediction for the primordial tensor-to-scalar ratio was previously stated as r = 0.063 via r/(1−n_s) = 16/[9 ln(r₂/r₁)] = 1.796, in ~2σ tension with the BK18+Planck bound r < 0.032. This paper identifies the error: the formula used the logarithm of the **ratio** of T₁u eigenvalues, ln(r₂/r₁), which involves √17 and has no clean algebraic form. The correct cascade formula uses the logarithm of the **product** of T₁u eigenvalues, ln(r₁r₂) = ln(16) = 4ln(2), which is the natural logarithm of the master equation's constant term, an exact integer. The corrected formula is:
 
 **r = r₁r₂/[(r₁+r₂) ln(r₁r₂)] × (1−n_s) = 16/[9 ln(16)] × (1−n_s) ≈ 0.641 × (1−n_s)**
 
@@ -61,7 +61,7 @@ The product r₁r₂ = 16 is an **exact integer**, directly encoded in the maste
 
 **Physical meaning of ln(r₂/r₁):** The logarithm of the chirality *anisotropy* of the T₁u sector. This measures how different the left-handed (r₁) and right-handed (r₂) foam modes are. It is a measure of parity asymmetry.
 
-**Physical meaning of ln(r₁r₂) = ln(16):** The logarithm of the *total T₁u amplitude product*. This measures the combined phase-space volume of both T₁u modes — the full scale of the T₁u sector. Since r₁r₂ = 16 = λ_Eg² (where λ_Eg = 4 is the weak-force eigenvalue), this logarithm connects the T₁u fermion sector to the Eg gauge sector:
+**Physical meaning of ln(r₁r₂) = ln(16):** The logarithm of the *total T₁u amplitude product*. This measures the combined phase-space volume of both T₁u modes, the full scale of the T₁u sector. Since r₁r₂ = 16 = λ_Eg² (where λ_Eg = 4 is the weak-force eigenvalue), this logarithm connects the T₁u fermion sector to the Eg gauge sector:
 
 **ln(r₁r₂) = ln(λ_Eg²) = 2 ln(4)**
 
@@ -71,7 +71,7 @@ This is a structural identity: the product of T₁u eigenvalues equals the squar
 
 ## 3. The Cascade Model and the Correct E-Fold Number
 
-In the UFFT Big Bang cascade model, the primordial spectrum arises from the initial pressure wave that creates the observable universe. Unlike slow-roll inflation, the foam cascade does not maintain a slow-roll field — it is a single compression event at the Planck scale.
+In the UFFT Big Bang cascade model, the primordial spectrum arises from the initial pressure wave that creates the observable universe. Unlike slow-roll inflation, the foam cascade does not maintain a slow-roll field, it is a single compression event at the Planck scale.
 
 The analogue of inflationary e-folds in the cascade model is the **log-amplitude ratio** of the cascade from initial to final scale:
 
@@ -84,8 +84,8 @@ where A is the cascade amplitude. The initial amplitude is set by the Planck-sca
 
 This gives two possible e-fold definitions:
 
-1. **N_ratio = ln(r₂/r₁)** — the log of the RATIO of final to initial amplitude (anisotropy measure)
-2. **N_product = ln(√(r₁r₂)) = (1/2)ln(16) = ln(4)** — the log of the GEOMETRIC MEAN amplitude (average measure)
+1. **N_ratio = ln(r₂/r₁)**, the log of the RATIO of final to initial amplitude (anisotropy measure)
+2. **N_product = ln(√(r₁r₂)) = (1/2)ln(16) = ln(4)**, the log of the GEOMETRIC MEAN amplitude (average measure)
 
 The correct definition for the scalar power spectrum normalisation is the **geometric mean**, not the ratio. The scalar power spectrum P_s is proportional to the total T₁u phase space amplitude, which is set by the *average* amplitude √(r₁r₂) = 4, not by the anisotropy r₂/r₁.
 
@@ -112,7 +112,7 @@ The tensor-to-scalar formula uses both coefficients:
 
 **r/(1−n_s) = (constant term)/[(sum coefficient) × ln(constant term)] = 16/[9 ln(16)]**
 
-This is a direct readout of the master equation — the two fundamental integers 9 and 16, combined with their logarithmic ratio. No irrational numbers appear. No √17. This is the simplest formula consistent with the master equation's algebraic structure.
+This is a direct readout of the master equation, the two fundamental integers 9 and 16, combined with their logarithmic ratio. No irrational numbers appear. No √17. This is the simplest formula consistent with the master equation's algebraic structure.
 
 **Structural identity:** 16 = r₁r₂ = λ_Eg² = (C_A+1)² = 4². The cascade amplitude product equals the square of the weak-force eigenvalue. The tensor-to-scalar formula therefore connects gravity waves (set by the scalar cascade amplitude) to the electroweak sector (set by λ_Eg = 4).
 
@@ -149,7 +149,7 @@ The corrected prediction r = 0.0225 sits comfortably inside the BK18 bound and w
 
 ## 6. The n_s Consistency Check
 
-The spectral index formula from the cascade model (UFFT_Spectral_Index.md) gives n_s = 0.9621, which is 0.7σ from the observed 0.9649. This result is unchanged — it depends on different cascade statistics and is independent of the tensor-to-scalar formula. The two formulas are consistent: both use the cascade model, and both give sub-1σ predictions.
+The spectral index formula from the cascade model (UFFT_Spectral_Index.md) gives n_s = 0.9621, which is 0.7σ from the observed 0.9649. This result is unchanged, it depends on different cascade statistics and is independent of the tensor-to-scalar formula. The two formulas are consistent: both use the cascade model, and both give sub-1σ predictions.
 
 Using the UFFT-predicted n_s = 0.9621 in the corrected formula:
 r = 16/[9 ln(16)] × (1 − 0.9621) = 0.641 × 0.0379 = **0.0243**
@@ -168,7 +168,7 @@ This differs from the standard inflationary consistency relation r = −8n_t (wh
 
 **n_t = −r/8 × [ln(r₂/r₁)/ln(r₁r₂)] = −r × ln(r₂/r₁)/[8 ln(16)] = −r × 0.357**
 
-This gives n_t ≈ −0.008 for r = 0.0225 — a slightly steeper tensor tilt than standard inflation (which gives n_t = −r/8 = −0.0028). This is a prediction testable by future B-mode polarisation experiments with sufficient sensitivity.
+This gives n_t ≈ −0.008 for r = 0.0225, a slightly steeper tensor tilt than standard inflation (which gives n_t = −r/8 = −0.0028). This is a prediction testable by future B-mode polarisation experiments with sufficient sensitivity.
 
 ---
 
@@ -203,7 +203,7 @@ The prediction r ≈ 0.022 is **directly testable by LiteBIRD around 2032** at >
 
 ## 10. Conclusion
 
-The tensor-to-scalar ratio tension is resolved by identifying the correct logarithm in the cascade formula. The T₁u product ln(r₁r₂) = ln(16) — the logarithm of the master equation's constant term — is the correct cascade e-fold number, not the chirality anisotropy ln(r₂/r₁). The corrected prediction r = 16/[9 ln(16)] × (1−n_s) = 0.0225 is inside the BK18 bound and will be tested to high precision by LiteBIRD. No new parameters are introduced — the formula uses only the master equation integers 9 and 16.
+The tensor-to-scalar ratio tension is resolved by identifying the correct logarithm in the cascade formula. The T₁u product ln(r₁r₂) = ln(16), the logarithm of the master equation's constant term, is the correct cascade e-fold number, not the chirality anisotropy ln(r₂/r₁). The corrected prediction r = 16/[9 ln(16)] × (1−n_s) = 0.0225 is inside the BK18 bound and will be tested to high precision by LiteBIRD. No new parameters are introduced, the formula uses only the master equation integers 9 and 16.
 
 The structural identity r₁r₂ = 16 = λ_Eg² connects the tensor-to-scalar ratio to the electroweak sector: the cascade amplitude is set by the same integer that governs the weak-force eigenvalue.
 
@@ -213,7 +213,7 @@ The structural identity r₁r₂ = 16 = λ_Eg² connects the tensor-to-scalar ra
 
 [1] Martin, L. (2026). UFFT Core Framework v9. April 2026.
 
-[2] Martin, L. (2026). Part XXI — Cosmological Expansion and Dark Energy. DOI: 10.5281/zenodo.19306447.
+[2] Martin, L. (2026). Part XXI, Cosmological Expansion and Dark Energy. DOI: 10.5281/zenodo.19306447.
 
 [3] Martin, L. (2026). Baryon Asymmetry, Bekenstein Entropy, and Cosmological Predictions (Paper #49). DOI: 10.5281/zenodo.19448089.
 

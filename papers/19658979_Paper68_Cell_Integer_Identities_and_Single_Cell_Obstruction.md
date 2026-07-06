@@ -25,9 +25,9 @@
 
 ## Abstract
 
-Paper #27 established the identity `197/144 = (2 N²_gauge − λ_{T_{2g}} (F − 1)) / N²_gauge` for the rational part of the two-loop QED anomalous magnetic moment C₂, via the chain **foam → QED → QED's two-loop rational → identity holds**. That chain imports the QED calculation as an intermediary: the identity is proved, but 197/144 is not independently computed from the face graph. This paper does not close that gap — a direct two-loop lattice computation remains open — but it closes a family of surrounding questions at theorem level:
+Paper #27 established the identity `197/144 = (2 N²_gauge − λ_{T_{2g}} (F − 1)) / N²_gauge` for the rational part of the two-loop QED anomalous magnetic moment C₂, via the chain **foam → QED → QED's two-loop rational → identity holds**. That chain imports the QED calculation as an intermediary: the identity is proved, but 197/144 is not independently computed from the face graph. This paper does not close that gap (a direct two-loop lattice computation remains open) but it closes a family of surrounding questions at theorem level:
 
-- **T68.1 (Reconciliation identity).** The two cell-integer rewritings of 197/144 — `(F² + 1)/(E − V)²` and `(2 N²_gauge − λ_{T_{2g}}(F − 1))/N²_gauge` — agree if and only if `F ∈ {1, 14}`. The truncated octahedron is the unique Fedorov parallelohedron at which the naive rewriting coincides with the structural rewriting; the identity `(F − 1)(F − 14) = 0` is elementary.
+- **T68.1 (Reconciliation identity).** The two cell-integer rewritings of 197/144 (`(F² + 1)/(E − V)²` and `(2 N²_gauge − λ_{T_{2g}}(F − 1))/N²_gauge`) agree if and only if `F ∈ {1, 14}`. The truncated octahedron is the unique Fedorov parallelohedron at which the naive rewriting coincides with the structural rewriting; the identity `(F − 1)(F − 14) = 0` is elementary.
 
 - **T68.2 (Three cell-integer identities).** On the truncated octahedron:
   (I) the hex–hex polytope edge count equals `N_gauge = E − V = 12`;
@@ -178,7 +178,7 @@ F² − 15F + 14 = 0
 
 so `F ∈ {1, 14}`. ∎
 
-**Interpretation.** Among the five Fedorov parallelohedra — cube (`F = 6`), hexagonal prism (`F = 8`), rhombic dodecahedron (`F = 12`), elongated dodecahedron (`F = 12`), truncated octahedron (`F = 14`) — only the truncated octahedron (`F = 14`) satisfies the identity. The `F = 1` root is a trivial polynomial degeneracy (no 3-polytope has a single face). This gives the first of four ways the truncated octahedron is distinguished within the Fedorov family for 197/144 purposes.
+**Interpretation.** Among the five Fedorov parallelohedra (cube (`F = 6`), hexagonal prism (`F = 8`), rhombic dodecahedron (`F = 12`), elongated dodecahedron (`F = 12`), truncated octahedron (`F = 14`)) only the truncated octahedron (`F = 14`) satisfies the identity. The `F = 1` root is a trivial polynomial degeneracy (no 3-polytope has a single face). This gives the first of four ways the truncated octahedron is distinguished within the Fedorov family for 197/144 purposes.
 
 **Consequence for rewriting (R1).** The naive reading of the numerator as "ordered face pairs + 1 self-energy" is not a structural prediction that would survive on a different cell: it is an algebraic coincidence at `F = 14`. Any future direct two-loop derivation should target the form (R2), whose individual terms (`2·N²_gauge`, `λ_{T_{2g}}`, `β₁`) have cell-independent meanings.
 
@@ -196,7 +196,7 @@ This section establishes three independent integer identities on the truncated o
 #(hex–hex edges) = N_gauge = E − V = 12.
 ```
 
-**Proof.** The truncated octahedron has 36 polytope edges, distributed as (hex–hex, hex–sq, sq–sq) = (12, 24, 0) by direct enumeration: each of the 8 hexagonal faces contributes 6 edges counted with multiplicity 2 by shared-edge adjacency, giving `8·6/2 = 24` hex-incident edge-halves. Of these, 12 edges are shared with another hex face (each hex touches 3 hex neighbours, one per axis, giving `8·3/2 = 12` hex-hex edges) and 12 are shared with a sq face (each hex touches 3 sq neighbours, giving another `8·3/2 = 12` hex-sq pairs; but each sq face touches 4 hex neighbours, so `6·4/2 = 12` — consistent). The sq-sq count is zero because no two square faces share an edge on this polytope. ∎
+**Proof.** The truncated octahedron has 36 polytope edges, distributed as (hex–hex, hex–sq, sq–sq) = (12, 24, 0) by direct enumeration: each of the 8 hexagonal faces contributes 6 edges counted with multiplicity 2 by shared-edge adjacency, giving `8·6/2 = 24` hex-incident edge-halves. Of these, 12 edges are shared with another hex face (each hex touches 3 hex neighbours, one per axis, giving `8·3/2 = 12` hex-hex edges) and 12 are shared with a sq face (each hex touches 3 sq neighbours, giving another `8·3/2 = 12` hex-sq pairs; but each sq face touches 4 hex neighbours, so `6·4/2 = 12`, consistent). The sq-sq count is zero because no two square faces share an edge on this polytope. ∎
 
 **Non-coincidence on other Fedorov cells.** On the cube, `#(sq–sq) = 12 = E`, `#(hex–hex) = 0`. On the hexagonal prism, `#(hex–hex) = 0`, `#(hex–sq) = 12`. On the rhombic dodecahedron and elongated dodecahedron, no face is hexagonal, so `#(hex–hex) = 0`. In every other case, the identity `#(hex–hex) = E − V` fails.
 
@@ -234,7 +234,7 @@ tr(A_face³) / 6 = #(triangles in G_F) = 24 = V,
 tr(A_face³) = 6V = N²_gauge = 144.
 ```
 
-**Proof.** For any simple graph, `tr(A³) = 6·#(triangles)` (each triangle is counted six times: three starting vertices × two orientations). On the truncated octahedron, the face-adjacency graph `G_F` has exactly one triangle per polytope vertex: each vertex is incident to three faces (two hex + one sq, or one hex + two hex, depending on the vertex orbit — but on the truncated octahedron every vertex is incident to three distinct faces forming a triangle in `G_F`). Hence `#(triangles) = V = 24`, so `tr(A³) = 144 = N²_gauge`. The companion identity `6V = 4E` follows from `E = 3V/2 = 36`, a relation that holds on this polytope because every vertex has degree 3 and `Σ_v deg(v) = 2E`. ∎
+**Proof.** For any simple graph, `tr(A³) = 6·#(triangles)` (each triangle is counted six times: three starting vertices × two orientations). On the truncated octahedron, the face-adjacency graph `G_F` has exactly one triangle per polytope vertex: each vertex is incident to three faces (two hex + one sq, or one hex + two hex, depending on the vertex orbit, but on the truncated octahedron every vertex is incident to three distinct faces forming a triangle in `G_F`). Hence `#(triangles) = V = 24`, so `tr(A³) = 144 = N²_gauge`. The companion identity `6V = 4E` follows from `E = 3V/2 = 36`, a relation that holds on this polytope because every vertex has degree 3 and `Σ_v deg(v) = 2E`. ∎
 
 **Non-coincidence.** The identity `tr(A_face³) = (E − V)²` depends on the joint ratio `V : E : F`. Direct enumeration (script `05_key_identity_check.py`) confirms it fails on the cube (tr = 0), hexagonal prism (tr = 0), rhombic dodecahedron (tr ≠ 100), and elongated dodecahedron (tr ≠ 144).
 
@@ -362,7 +362,7 @@ The denominators appearing in `Τ` are bounded: any product of `{L_T, L_T⁺, re
 
 **Step B (exhaustion).** The enumeration over `𝒪` is finite at the stated bounds. Script `03_two_loop_rational_search.py` enumerates:
 
-- 14 base operators (`L_T`, `L_T⁺`, `A_face`, `D_face`, `B·B^T`, `P_hex`, `P_sq`, 5 isotypic projectors used — `A₁g`, `A₂u`, `E_g`, `T₁u`, `T₂g`, Hashimoto NBT);
+- 14 base operators (`L_T`, `L_T⁺`, `A_face`, `D_face`, `B·B^T`, `P_hex`, `P_sq`, 5 isotypic projectors used, `A₁g`, `A₂u`, `E_g`, `T₁u`, `T₂g`, Hashimoto NBT);
 - resolvents `(L_T − zI)^{−1}` at `z ∈ {−1, 1, 2, 3, 5, 6, 8}` (7 choices avoiding the spectrum);
 - heat kernels at `t ∈ T_heat` (8 choices);
 - all polynomial combinations up to degree 4 (`∑_{k=0}^{4} 29^k / k!  ≈ 3.5·10⁵` distinct monomials, of which ≈ 1.8·10⁴ have non-trivial traces after O_h-equivariance reduction).
@@ -385,7 +385,7 @@ Theorem 68.4 is not a no-go theorem for the UFFT derivation of 197/144; Paper #2
 
 2. **The multi-cell BCC lattice is required.** Any direct two-loop derivation must use the BCC lattice Feynman rules, integrating over the full Brillouin zone (Paper #22). The rational sector of that integral (Theorem 68.3(d)) is where 197/144 must emerge.
 
-3. **The three cell-integer identities of §4 are necessary inputs.** `tr(L₁²) = 288`, `λ_{T_{2g}} = 7`, `β₁ = 13`, `tr(A_face³) = 144` are all single-cell quantities and all appear in the Paper #27 form. Theorem 68.4 says they cannot be combined *at single-cell level* to reproduce 197/144 — but they constrain the form that the multi-cell result must take.
+3. **The three cell-integer identities of §4 are necessary inputs.** `tr(L₁²) = 288`, `λ_{T_{2g}} = 7`, `β₁ = 13`, `tr(A_face³) = 144` are all single-cell quantities and all appear in the Paper #27 form. Theorem 68.4 says they cannot be combined *at single-cell level* to reproduce 197/144, but they constrain the form that the multi-cell result must take.
 
 Stated negatively: Theorem 68.4 rules out an entire class of possible Tier-2 derivation routes (any that would evaluate to `197/144` by single-cell operator traces alone). It does not rule out the multi-cell BCC lattice route, which is the canonical one indicated by Paper #22.
 
@@ -446,7 +446,7 @@ The companion findings notes (`FINDINGS_18_April_2026.md` and `FINDINGS_18_April
 
 (S3) **Compatibility with Paper #27.** The walk-counting form of §4 reproduces Paper #27's structural form exactly. The numerator `tr(L₁²) − λ_{T_{2g}}·β₁` = `288 − 91` = `197`; the denominator `tr(A_face³)` = `144`. No free parameters.
 
-(S4) **Three-loop extension (testable).** Script `07_three_loop_C3_prediction.py` applies the walk-counting form at three loops, yielding a prediction for the rational part of `C₃`. Laporta–Remiddi (1996) give `C₃^{(rational)} = 28259/5184`. The foam walk-counting form predicts a specific combination of `tr(L₁³), λ_{T₂g}·β₁², ...` — comparison is ongoing.
+(S4) **Three-loop extension (testable).** Script `07_three_loop_C3_prediction.py` applies the walk-counting form at three loops, yielding a prediction for the rational part of `C₃`. Laporta–Remiddi (1996) give `C₃^{(rational)} = 28259/5184`. The foam walk-counting form predicts a specific combination of `tr(L₁³), λ_{T₂g}·β₁², ...`, comparison is ongoing.
 
 ---
 
@@ -454,7 +454,7 @@ The companion findings notes (`FINDINGS_18_April_2026.md` and `FINDINGS_18_April
 
 The cell-integer rewriting `(F² + 1)/(E − V)²` has been flagged in internal review as "suspiciously tuned." Theorem 68.1 confirms this concern: the rewriting is a cell-specific coincidence at `F = 14` and fails on every other Fedorov parallelohedron. The structurally-informative form is Paper #27's `(2·N²_gauge − λ_{T_{2g}}·β₁)/N²_gauge`, whose terms have cell-independent meanings.
 
-Theorem 68.4 further addresses the review concern by showing that no single-cell graph operation produces `197/144`; therefore the Paper #27 identity cannot be a "post-hoc rewriting coincidence" at single-cell level, because no such coincidence exists. The multi-cell BCC lattice derivation — the target of future work — is the genuine content.
+Theorem 68.4 further addresses the review concern by showing that no single-cell graph operation produces `197/144`; therefore the Paper #27 identity cannot be a "post-hoc rewriting coincidence" at single-cell level, because no such coincidence exists. The multi-cell BCC lattice derivation (the target of future work) is the genuine content.
 
 ---
 
@@ -472,25 +472,41 @@ Theorem 68.4 further addresses the review concern by showing that no single-cell
 
 [6] Creutz, M. (1987). "Lattice gauge theory: a retrospective." (Cited for the methodology of exhaustive negative results in lattice combinatorics.)
 
-[7] Martin, L. (2026). Paper #5 — Face Laplacian Spectrum of the Truncated Octahedron. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19030062`.
+[7] Martin, L. (2026). Paper #5, Face Laplacian Spectrum of the Truncated Octahedron. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19030062`.
 
-[8] Martin, L. (2026). Paper #16 — The Master Equation λ² − 9λ + 16 = 0. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19064359`.
+[8] Martin, L. (2026). Paper #16, The Master Equation λ² − 9λ + 16 = 0. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19064359`.
 
-[9] Martin, L. (2026). Paper #21 — Schwinger Term from Face-Graph Walks. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19035094`.
+[9] Martin, L. (2026). Paper #21, Schwinger Term from Face-Graph Walks. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19035094`.
 
-[10] Martin, L. (2026). Paper #22 — D-Mode Path Integral and Fine-Structure Constant. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19047850`.
+[10] Martin, L. (2026). Paper #22, D-Mode Path Integral and Fine-Structure Constant. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19047850`.
 
-[11] Martin, L. (2026). Paper #24 — Two-Loop C₂: Complete. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19084873`.
+[11] Martin, L. (2026). Paper #24, Two-Loop C₂: Complete. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19084873`.
 
-[12] Martin, L. (2026). Paper #27 — The Rational Term in C₂: Closure of the Two-Loop Programme. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19102302`.
+[12] Martin, L. (2026). Paper #27, The Rational Term in C₂: Closure of the Two-Loop Programme. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19102302`.
 
-[13] Martin, L. (2026). Paper #50 — Uniqueness of the Foam Cell Among Fedorov Parallelohedra. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19447996`.
+[13] Martin, L. (2026). Paper #50, Uniqueness of the Foam Cell Among Fedorov Parallelohedra. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19447996`.
 
-[14] Martin, L. (2026). Paper #63 — The Pure Mathematics of the Kelvin Cell. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19624955`.
+[14] Martin, L. (2026). Paper #63, The Pure Mathematics of the Kelvin Cell. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19624955`.
 
-[15] Martin, L. (2026). Paper #72 — Dirac Operator, Generation Count, Chirality Structure, and the m₃ Integer. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19658759`.
+[15] Martin, L. (2026). Paper #72, Dirac Operator, Generation Count, Chirality Structure, and the m₃ Integer. *Unified Foam Field Theory*. Zenodo DOI `10.5281/zenodo.19658759`.
 
 ---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [2] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+- [3] Paper #21 — The Anomalous Magnetic Moment of the Electron from Foam Dynamics. DOI: 10.5281/zenodo.19080011
+- [4] Paper #22 — The D-Mode Path Integral. DOI: 10.5281/zenodo.19084565
+- [5] Paper #23 — The Two-Loop Anomalous Magnetic Moment from Foam Topology. DOI: 10.5281/zenodo.19084710
+- [6] Paper #24 — The Two-Loop Anomalous Magnetic Moment. DOI: 10.5281/zenodo.19084873
+- [7] Paper #27 — The Rational Term in C₂. DOI: 10.5281/zenodo.19102302
+- [8] Paper #50 — The Uniqueness of the Foam Cell. DOI: 10.5281/zenodo.19662068
+- [9] Paper #57 — UFFT Paper #57 — Part LXVIII. DOI: 10.5281/zenodo.19484509
+- [10] Paper #63 — Pure Mathematics of the Kelvin Cell. DOI: 10.5281/zenodo.19624955
 
 ## AI Disclosure
 

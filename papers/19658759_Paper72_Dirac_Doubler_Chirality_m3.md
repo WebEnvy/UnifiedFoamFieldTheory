@@ -37,7 +37,7 @@ The results:
 - **T72.1** (existence of a canonical foam-cell Dirac operator `D_F` with `D_F² = L_T`, self-adjoint, commuting with the permutation representation of O_h): theorem with proof. Verified by V1, V3, V4 of `verify_Paper72_Oh_irreps.py`.
 - **T72.2** (three-generation count = T₁u multiplicity, derived by O_h character theory): theorem with proof. Verified by V2, V5.
 - **T72.3a** (chirality-mixing operator on T₁u sector = `−2 σ_x` in the canonical face-type basis): theorem with proof. The canonical face-type orbit splitting `L_T = L_diag + L_off` yields `L_off|_{T₁u} = −2 σ_x` exactly, uniform across all three T₁u generation copies. Verified by V8 to machine precision.
-- **T72.3b** (physical chirality identification hex ↔ L, sq ↔ R): conjecture with V10 heuristic support. V10 verifies the orbit-restricted irrep decompositions `hex (8-dim) = A_1g ⊕ T_1u ⊕ T_2g ⊕ A_2u` and `sq (6-dim) = A_1g ⊕ E_g ⊕ T_1u`, showing that T_2g lives only on the hex-orbit. In the standard SM embedding where SU(2)_L adjoint ↔ T_2g, this forces hex-T₁u to form SU(2)_L doublets (left-handed) and sq-T₁u to be an SU(2)_L singlet (right-handed) — a geometric necessary condition for T72.3b.
+- **T72.3b** (physical chirality identification hex ↔ L, sq ↔ R): conjecture with V10 heuristic support. V10 verifies the orbit-restricted irrep decompositions `hex (8-dim) = A_1g ⊕ T_1u ⊕ T_2g ⊕ A_2u` and `sq (6-dim) = A_1g ⊕ E_g ⊕ T_1u`, showing that T_2g lives only on the hex-orbit. In the standard SM embedding where SU(2)_L adjoint ↔ T_2g, this forces hex-T₁u to form SU(2)_L doublets (left-handed) and sq-T₁u to be an SU(2)_L singlet (right-handed), a geometric necessary condition for T72.3b.
 - **T72.4** (integer triple (11, 13, 4) in the m₃ exponent): best-match primitive triple in a principled search space. V9 surfaces three natural cell-integer decompositions of (11, 13). V11 performs an exhaustive search over 12,800 integer triples `(a, b, c)` with `a, b ∈ [1, 40]`, `c ∈ {1, 2, 3, 4, 6, 8, 12, 16}` and shows that (11, 13, 4) is the single primitive (gcd = 1) triple within 1 sigma of the PDG 2024 reference `m₃ = 49.50 meV`, ranked #1 by rel-err accuracy (0.019%) across the full 4-sigma window. The 1-sigma match count is consistent with the uniform-prior expectation of ~1.4 primitive matches, so V11 provides a principled search-space characterization rather than statistical evidence against random placement. No closed-form counting rule is derived.
 
 Three of five sub-claims are theorems. T72.3b rests on a geometric necessary condition (V10) pending substantiation of the SU(2)_L-↔-T_2g embedding. T72.4 has a characterized best-match identification (V11) pending a closed-form counting rule and resolution of the PDG-vs-NuFIT convention dependence. Both open items are well-defined closed-form problems with documented candidate paths.
@@ -56,7 +56,7 @@ This paper builds the foam-cell Dirac operator `D_F` whose square is L_T, derive
 
 Let `G = (V_F, E_F)` be the face adjacency graph of the truncated octahedron: `|V_F| = 14` faces (6 square `S₀…S₅`, 8 hexagonal `H₀…H₇`); `|E_F| = 36` face-sharing adjacencies, distributed as 12 hexagon–hexagon + 24 hexagon–square + 0 square–square. Let `A` be the 14×14 adjacency matrix, `D = diag(6, 6, 6, 6, 6, 6, 6, 6, 4, 4, 4, 4, 4, 4)` the degree matrix (hexagons have 6 neighbours, squares have 4), and `L_T = D − A` the face Laplacian.
 
-**Symmetry action.** The octahedral symmetry group O_h has order 48 and acts on V_F by permuting faces. This action preserves the partition of V_F into the hex-orbit (8 faces) and the sq-orbit (6 faces) — these are the two distinct O_h orbits on V_F, and no group element mixes them. The induced 14-dimensional permutation representation `ρ: O_h → GL₁₄(R)` is constructed explicitly in V2 of `verify_Paper72_Oh_irreps.py`.
+**Symmetry action.** The octahedral symmetry group O_h has order 48 and acts on V_F by permuting faces. This action preserves the partition of V_F into the hex-orbit (8 faces) and the sq-orbit (6 faces), these are the two distinct O_h orbits on V_F, and no group element mixes them. The induced 14-dimensional permutation representation `ρ: O_h → GL₁₄(R)` is constructed explicitly in V2 of `verify_Paper72_Oh_irreps.py`.
 
 **Spectrum of L_T** (V1 pass). The eigenvalues of L_T are
 `{0, r₁, r₁, r₁, 4, 4, r₂, r₂, r₂, 7, 7, 7, 7, 9}`
@@ -102,7 +102,7 @@ The 2×2 block structure is computed in V3. The hex-T_1u basis is `{(1/√8) Σ_
 where |O_h| = 48 and the sum ranges over the 10 conjugacy classes of O_h. Then:
 - `m_{A_1g} = 2` (one hex-constant mode, one sq-constant mode)
 - `m_{E_g} = 1` (supported on squares)
-- `m_{T_1u} = 2` (hex-T_1u and sq-T_1u — the object of T72.3)
+- `m_{T_1u} = 2` (hex-T_1u and sq-T_1u, the object of T72.3)
 - `m_{T_2g} = 1` (supported on hexagons)
 - `m_{A_2u} = 1` (supported on hexagons)
 
@@ -112,7 +112,7 @@ with total dimension `2·1 + 1·2 + 2·3 + 1·3 + 1·1 = 14 = dim ρ`.
 
 **Proof.** Direct character computation, verified by `verify_Paper72_Oh_irreps.py` V2. Construct the 48-element O_h explicitly by closure under the generators `{R_x(90°), R_y(90°), R_z(90°), inversion}`; partition into conjugacy classes by the quadruple (element order, 3×3-matrix trace, 3×3-matrix determinant, 14×14-permutation-matrix trace); compute the character `χ_ρ(c) = Tr(ρ(g)) = #fixed faces under g`; apply character orthogonality against the standard O_h character table. Character orthogonality is an exact algebraic identity in finite-group representation theory; the script confirms numerical identity to better than 10⁻⁹. ∎
 
-**Remark on Nielsen–Ninomiya.** The three-generation count is *not* a Nielsen–Ninomiya doubler-count result. The Nielsen–Ninomiya theorem counts zero modes of a Dirac operator in momentum space on a Bravais lattice; the foam-cell `D_F` has exactly one zero mode (the A_1g(0) mode, identified with the Higgs at the relevant scale). The **nonzero** T_1u modes at eigenvalues `√r₁` and `√r₂` are not doublers in the Nielsen–Ninomiya sense — they are massive propagating modes. The three-generation count comes from the dimension of the T_1u irrep itself, a symmetry-protected representation-theoretic datum, not from a BZ momentum enumeration.
+**Remark on Nielsen–Ninomiya.** The three-generation count is *not* a Nielsen–Ninomiya doubler-count result. The Nielsen–Ninomiya theorem counts zero modes of a Dirac operator in momentum space on a Bravais lattice; the foam-cell `D_F` has exactly one zero mode (the A_1g(0) mode, identified with the Higgs at the relevant scale). The **nonzero** T_1u modes at eigenvalues `√r₁` and `√r₂` are not doublers in the Nielsen–Ninomiya sense, they are massive propagating modes. The three-generation count comes from the dimension of the T_1u irrep itself, a symmetry-protected representation-theoretic datum, not from a BZ momentum enumeration.
 
 **Connection to Paper #48.** Paper #48 §5.2's identification "T_1u multiplicity ↔ three generations" is now derived, not asserted, by T72.2.
 
@@ -120,7 +120,7 @@ with total dimension `2·1 + 1·2 + 2·3 + 1·3 + 1·1 = 14 = dim ρ`.
 
 ## 5. Theorem T72.3 — Pauli Structure of the Chirality-Mixing Operator on T_1u
 
-This section characterises the chirality-mixing operator on the T_1u sector of L_T. The canonical face-type orbit splitting `L_T = L_diag + L_off` — the unique decomposition of L_T with respect to the two O_h orbits on V_F (hex-orbit and sq-orbit) — yields `L_off|_{T_1u} = −2 σ_x` exactly in the canonical (hex-T_1u, sq-T_1u) basis, uniform across the three T_1u generation copies. This establishes T72.3 in its geometric form. The physical identification of (hex, sq) orbits with chirality is treated as a separate conjecture, supported by the orbit-restricted irrep decomposition derived in §5.2.
+This section characterises the chirality-mixing operator on the T_1u sector of L_T. The canonical face-type orbit splitting `L_T = L_diag + L_off` (the unique decomposition of L_T with respect to the two O_h orbits on V_F (hex-orbit and sq-orbit)) yields `L_off|_{T_1u} = −2 σ_x` exactly in the canonical (hex-T_1u, sq-T_1u) basis, uniform across the three T_1u generation copies. This establishes T72.3 in its geometric form. The physical identification of (hex, sq) orbits with chirality is treated as a separate conjecture, supported by the orbit-restricted irrep decomposition derived in §5.2.
 
 ### 5.1. Geometric Theorem (T72.3a, Theorem)
 
@@ -176,7 +176,7 @@ The conjecture is **falsifiable**: any independent UFFT calculation that derives
 
 ### 5.3. Why the Face-Type Splitting, Not a Uniform-Regge Torsion
 
-A natural alternative candidate for the chirality-mixing operator is the uniform-Regge hex-hex torsion `T_hex` of Paper #28. V6 of the verification script computes its T_1u projection and shows `T_hex|_{T_1u} = [[1, 0], [0, 0]]` — scalar, not σ_x. The reason is geometric: `T_hex` is supported only on the hex-hex block, so its hex-sq off-diagonal vanishes by construction. `L_off`, by contrast, is supported precisely on the hex-sq block and carries the σ_x structure required for a Dirac mass coupling between the two T_1u chirality partners. The face-type splitting is the correct O_h-equivariant decomposition of L_T that isolates the chirality-mixing block.
+A natural alternative candidate for the chirality-mixing operator is the uniform-Regge hex-hex torsion `T_hex` of Paper #28. V6 of the verification script computes its T_1u projection and shows `T_hex|_{T_1u} = [[1, 0], [0, 0]]`, scalar, not σ_x. The reason is geometric: `T_hex` is supported only on the hex-hex block, so its hex-sq off-diagonal vanishes by construction. `L_off`, by contrast, is supported precisely on the hex-sq block and carries the σ_x structure required for a Dirac mass coupling between the two T_1u chirality partners. The face-type splitting is the correct O_h-equivariant decomposition of L_T that isolates the chirality-mixing block.
 
 ### 5.4. Impact on Paper #48
 
@@ -196,17 +196,17 @@ V7 tabulates heat-kernel moments `Tr(L_T^n)` for `n = 1, …, 6` and confirms th
 
 V9 searches cell-integer combinations that produce 11 and 13. Three natural decompositions surface:
 
-**Candidate (A) — Vieta-mixed decomposition.**
+**Candidate (A), Vieta-mixed decomposition.**
 - `a = 3(r₁ + r₂) − r₁ r₂ = 27 − 16 = 11`
 - `b = 3(r₁ + r₂) − F = 27 − 14 = 13`
 where (r₁ + r₂, r₁ r₂) = (9, 16) are the Vieta data of the master equation and F = 14 is the dim of the face permutation rep.
 
-**Candidate (B) — Face-count-minus-k.**
+**Candidate (B), Face-count-minus-k.**
 - `a = F − C_A = 14 − 3 = 11`  (face count minus colour number)
 - `b = F − 1 = 14 − 1 = 13`      (face count minus singleton)
 Difference `b − a = C_A − 1 = 2`.
 
-**Candidate (C) — Non-T_1u spectrum-pair.**
+**Candidate (C), Non-T_1u spectrum-pair.**
 - `a = λ_7 + λ_4 = 7 + 4 = 11`  (T_2g + E_g)
 - `b = λ_9 + λ_4 = 9 + 4 = 13`  (top A_1g + E_g)
 Both are two-term sums of integer eigenvalues in the non-T_1u sector.
@@ -225,9 +225,9 @@ V11 performs an exhaustive search over integer triples `(a, b, c)` with `a ∈ [
 | 2 sigma (1%)   | 4 | 2 | ~2.8 |
 | 4 sigma (2%)   | 11 | 9 | ~5.6 |
 
-Within 1 sigma of PDG 49.50 meV, exactly one primitive triple exists: **(11, 13, 4)** — the triple of the Paper #72 formula. The other two 1-sigma matches, `(22, 26, 8) = 2·(11, 13, 4)` and `(33, 39, 12) = 3·(11, 13, 4)`, are non-primitive rescalings giving the same exponent.
+Within 1 sigma of PDG 49.50 meV, exactly one primitive triple exists: **(11, 13, 4)**, the triple of the Paper #72 formula. The other two 1-sigma matches, `(22, 26, 8) = 2·(11, 13, 4)` and `(33, 39, 12) = 3·(11, 13, 4)`, are non-primitive rescalings giving the same exponent.
 
-**Interpretation — what the data does and does not show.**
+**Interpretation, what the data does and does not show.**
 
 The uniform-prior expectation is ~1.4 primitive matches in the 1-sigma window; the observation is 1. This is consistent with chance under a uniform distribution, slightly below the uniform-prior expectation. The observation does not constitute statistical evidence against the null hypothesis of random integer-triple placement.
 
@@ -258,7 +258,7 @@ What remains unfinished:
 
 T72.4 is therefore not yet a theorem, and the V11 match-distribution analysis does not constitute statistical evidence against random placement. What V11 provides is a principled search-space characterization: under a defined ansatz, (11, 13, 4) is the best-matching primitive triple by accuracy, consistent with its role in the framework but not forced by sparseness.
 
-**Impact on Paper #48.** Paper #48 §5.2's m_3 formula status is **upgraded** to "identification — best-match primitive triple in principled search space (V11), pending closed-form counting rule and convention-dependence resolution."
+**Impact on Paper #48.** Paper #48 §5.2's m_3 formula status is **upgraded** to "identification, best-match primitive triple in principled search space (V11), pending closed-form counting rule and convention-dependence resolution."
 
 ---
 
@@ -272,7 +272,7 @@ T72.4 is therefore not yet a theorem, and the V11 match-distribution analysis do
 | Hex/sq ↔ L/R identification | **Conjecture with V10 heuristic support (T72.3b)** | Orbit-restricted irrep decomposition: T_2g hosts only on hex-orbit — geometric necessary condition under standard SM embedding; V10 |
 | Integer triple (11, 13, 4) | **Best-match primitive triple in a principled search space (T72.4)** | Single primitive 1-sigma match in 12,800-triple exhaustive search against PDG 2024 m_3 = 49.50 meV (V11); match count (1) consistent with uniform-prior expectation of ~1.4, i.e. the result is a principled search-space characterisation rather than statistical evidence against random placement |
 
-Closing the two remaining items at theorem level would require (i) substantiation of T72.3b — promotion of the SU(2)_L-↔-T_2g embedding from ansatz to derivation (for example via CKM/PMNS with δ_PMNS/δ_CKM = 3 = C_A, or via the V_e/V_b cosmological ratio, or from neutron-star Regge-torsion chirality), and (ii) a closed-form counting rule for T72.4 that uniquely selects one of candidates (A), (B), (C) of §6.2 and derives the denominator c = 4. Both items are well-defined open problems suitable for follow-up work.
+Closing the two remaining items at theorem level would require (i) substantiation of T72.3b, promotion of the SU(2)_L-↔-T_2g embedding from ansatz to derivation (for example via CKM/PMNS with δ_PMNS/δ_CKM = 3 = C_A, or via the V_e/V_b cosmological ratio, or from neutron-star Regge-torsion chirality), and (ii) a closed-form counting rule for T72.4 that uniquely selects one of candidates (A), (B), (C) of §6.2 and derives the denominator c = 4. Both items are well-defined open problems suitable for follow-up work.
 
 ---
 
@@ -285,12 +285,12 @@ Every numerical claim in this paper is verified by `/verification/verify_Paper72
 - T_1u 2×2 block `[[5, −2], [−2, 4]]` to 10⁻¹⁵ precision, with Vieta-matching trace and determinant (V3)
 - Canonical D_F via spectral square root, `||D_F² − L_T|| < 10⁻⁸` (V4)
 - Generation count 3 = T_1u dimension (V5)
-- Uniform-Regge hex-hex torsion `T_hex` projection onto T_1u 2×2 = `[[1, 0], [0, 0]]` (scalar, not σ_x — see §5.3) (V6)
+- Uniform-Regge hex-hex torsion `T_hex` projection onto T_1u 2×2 = `[[1, 0], [0, 0]]` (scalar, not σ_x, see §5.3) (V6)
 - Heat-kernel moments Tr(L_T^n) for n = 1, …, 6 (V7)
-- **Face-type splitting `L_T = L_diag + L_off`** with `L_diag|_{T_1u} = diag(5, 4)` and `L_off|_{T_1u} = −2 σ_x`, uniform across all three T_1u generation copies, machine-precision (4.4 × 10⁻¹⁶) — the T72.3a geometric result (V8)
+- **Face-type splitting `L_T = L_diag + L_off`** with `L_diag|_{T_1u} = diag(5, 4)` and `L_off|_{T_1u} = −2 σ_x`, uniform across all three T_1u generation copies, machine-precision (4.4 × 10⁻¹⁶), the T72.3a geometric result (V8)
 - T72.4 systematic decomposition search: three natural candidates (A: Vieta-mixed; B: F-minus-k; C: spectrum-pair) reproduce (11, 13); no unique forcing rule (V9)
-- **Orbit-restricted irrep decomposition** (V10): hex-orbit (8-dim) = A_1g ⊕ T_1u ⊕ T_2g ⊕ A_2u; sq-orbit (6-dim) = A_1g ⊕ E_g ⊕ T_1u. Verifies T_2g multiplicity = 1 on hex, 0 on sq — the T72.3b heuristic support
-- **Primitive-triple enumeration** (V11): 12,800-triple exhaustive search with `a, b ∈ [1, 40]`, `c ∈ {1, 2, 3, 4, 6, 8, 12, 16}`. Identifies (11, 13, 4) as the single primitive (gcd = 1) match within 1 sigma of PDG 2024 m_3 = 49.50 meV, ranked #1 by rel-err accuracy (0.019%) across the full 4-sigma match window. 1-sigma match count (1) is consistent with uniform-prior expectation (~1.4) — the T72.4 best-match-triple characterisation
+- **Orbit-restricted irrep decomposition** (V10): hex-orbit (8-dim) = A_1g ⊕ T_1u ⊕ T_2g ⊕ A_2u; sq-orbit (6-dim) = A_1g ⊕ E_g ⊕ T_1u. Verifies T_2g multiplicity = 1 on hex, 0 on sq, the T72.3b heuristic support
+- **Primitive-triple enumeration** (V11): 12,800-triple exhaustive search with `a, b ∈ [1, 40]`, `c ∈ {1, 2, 3, 4, 6, 8, 12, 16}`. Identifies (11, 13, 4) as the single primitive (gcd = 1) match within 1 sigma of PDG 2024 m_3 = 49.50 meV, ranked #1 by rel-err accuracy (0.019%) across the full 4-sigma match window. 1-sigma match count (1) is consistent with uniform-prior expectation (~1.4), the T72.4 best-match-triple characterisation
 
 Script runs in under 10 seconds on a laptop. No free parameters. All inputs are cell integers `{F = 14, F_hx = 8, F_sq = 6, V = 24, E = 36, C_A = 3}` and the master equation `λ² − 9λ + 16 = 0`.
 
@@ -306,15 +306,15 @@ Script runs in under 10 seconds on a laptop. No free parameters. All inputs are 
 | T72.3b (chirality identification) | Conjecture + V10 heuristic support (T_2g hex-only) | Independent derivation promoting SU(2)_L-↔-T_2g from embedding ansatz to forced identification (from CKM/PMNS hierarchy with δ_PMNS/δ_CKM = 3 = C_A, V_e/V_b cosmological ratio, or neutron-star Regge-torsion chirality) |
 | T72.4 | Best-match primitive triple in principled search space | Closed-form counting rule that selects one of candidates (A), (B), (C), derives the denominator c = 4, and resolves the PDG-vs-NuFIT convention dependence |
 
-Three of five items are closed at theorem level; T72.3b has V10 heuristic support as a geometric necessary condition; T72.4 has V11 match-distribution analysis showing (11, 13, 4) is the best-matching primitive triple in the search space — the 1-sigma match count is consistent with uniform-prior expectation, so this is a principled characterization rather than statistical evidence against random placement. The remaining two closures are well-defined mathematical/physical problems suitable for follow-up papers.
+Three of five items are closed at theorem level; T72.3b has V10 heuristic support as a geometric necessary condition; T72.4 has V11 match-distribution analysis showing (11, 13, 4) is the best-matching primitive triple in the search space, the 1-sigma match count is consistent with uniform-prior expectation, so this is a principled characterization rather than statistical evidence against random placement. The remaining two closures are well-defined mathematical/physical problems suitable for follow-up papers.
 
 ---
 
 ## References
 
-[1] Martin, L. (2026). Paper #48 — The Standard Model From One Matrix. *Unified Foam Field Theory*. Zenodo DOI to follow.
-[2] Martin, L. (2026). Paper #05 — Face Laplacian Spectrum of the Truncated Octahedron. *Unified Foam Field Theory*. Zenodo DOI 10.5281/zenodo.19030062.
-[3] Martin, L. (2026). Paper #28 — Schwarzschild Metric and Regge Torsion Convention. *Unified Foam Field Theory*. Zenodo DOI pending.
+[1] Martin, L. (2026). Paper #48, The Standard Model From One Matrix. *Unified Foam Field Theory*. Zenodo DOI to follow.
+[2] Martin, L. (2026). Paper #05, Face Laplacian Spectrum of the Truncated Octahedron. *Unified Foam Field Theory*. Zenodo DOI 10.5281/zenodo.19030062.
+[3] Martin, L. (2026). Paper #28, Schwarzschild Metric and Regge Torsion Convention. *Unified Foam Field Theory*. Zenodo DOI pending.
 [4] Nielsen, H. B. & Ninomiya, M. (1981). Absence of neutrinos on a lattice. *Phys. Lett. B* **105**, 219. (T72.2 is derived by O_h character theory directly and is not a Nielsen–Ninomiya doubler count; reference retained for the contrast discussed in §4.)
 [5] Serre, J.-P. (1977). *Linear Representations of Finite Groups.* Springer. (Character orthogonality used in T72.2; Schur's lemma used in T72.1 and T72.3a.)
 [6] Regge, T. (1961). General relativity without coordinates. *Nuovo Cimento* **19**, 558. (Regge angular-deficit torsion convention; used in V6's uniform hex-hex torsion construction. The σ_x structure of the chirality-mixing operator comes from the face-type orbit splitting of L_T itself, not from `T_hex`; see §5.3.)

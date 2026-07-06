@@ -199,7 +199,7 @@ The face space is 14-dimensional (F = 14). The O_h irrep decomposition is exhaus
 
 dim(A₁g) + dim(T₁u) + dim(Eg) + dim(T₁u) + dim(T₂g) + dim(A₁g) + dim(A₂u) = 1+3+2+3+3+1+1 = 14
 
-No additional sectors can appear without increasing F beyond 14, which would require a different polyhedron — but the truncated octahedron is the unique space-filler with prime discriminant (Paper #50). The Standard Model is the ONLY theory that fits in 14 dimensions with the O_h symmetry constraints.
+No additional sectors can appear without increasing F beyond 14, which would require a different polyhedron, but the truncated octahedron is the unique space-filler with prime discriminant (Paper #50). The Standard Model is the ONLY theory that fits in 14 dimensions with the O_h symmetry constraints.
 
 ### 6.4 D₃ → SU(2) emergence
 
@@ -212,7 +212,7 @@ Paper #58 showed that the Eg subspace carries the dihedral group D₃ ≅ S₃ a
 **S_W = β Σ_P Re Tr(1 − U_P)**
 
 is invariant under the full SU(2) gauge group, regardless of the discrete D₃ structure of individual plaquettes.
-(iv) In the continuum limit, the lattice gauge theory with SU(2) link variables and Wilson action flows to SU(2) Yang-Mills — this is the foundational result of lattice gauge theory (Wilson 1974, Creutz 1980).
+(iv) In the continuum limit, the lattice gauge theory with SU(2) link variables and Wilson action flows to SU(2) Yang-Mills, this is the foundational result of lattice gauge theory (Wilson 1974, Creutz 1980).
 
 The same argument applies to SU(3) via the T₂g sector, where the discrete D₃ structure of the three torsion directions embeds into the full SU(3) gauge group through the lattice link variables. □
 
@@ -220,7 +220,7 @@ The same argument applies to SU(3) via the T₂g sector, where the discrete D₃
 
 ## 7. The Symanzik Matching — Computed
 
-The five steps above constitute the proof. The Symanzik matching — the one caveat identified in the original formulation — has now been computed explicitly.
+The five steps above constitute the proof. The Symanzik matching (the one caveat identified in the original formulation) has now been computed explicitly.
 
 **The Symanzik effective theory** expands the lattice action in powers of the lattice spacing a:
 
@@ -232,7 +232,7 @@ where O_i^(6) are dimension-6 operators. For the BCC truncated octahedron lattic
 
 **Fermion sector (natural Wilson fermions):** The Wilson parameter r_W = (m_hx − m_sq)/2 = (5−4)/2 = 1/2 gives c_ferm = r_W/2 = 1/4. The mass gap √17 lifts all doublers.
 
-**O_h anisotropy:** The Q₄ = Σ k_i⁴ − (3/5)|k|⁴ coefficient from the BCC nearest-neighbour geometry is 1.2 (nonzero — the BCC lattice does break O(3) at fourth order in momentum). This produces dimension-6 operators of the form (∂⁴φ) with O_h symmetry rather than O(3) symmetry. These operators are **irrelevant** in 4D (dimension 6 > 4), confirming Step 5 of the proof.
+**O_h anisotropy:** The Q₄ = Σ k_i⁴ − (3/5)|k|⁴ coefficient from the BCC nearest-neighbour geometry is 1.2 (nonzero, the BCC lattice does break O(3) at fourth order in momentum). This produces dimension-6 operators of the form (∂⁴φ) with O_h symmetry rather than O(3) symmetry. These operators are **irrelevant** in 4D (dimension 6 > 4), confirming Step 5 of the proof.
 
 **Physical magnitude:** At the electroweak scale, the Symanzik corrections scale as:
 
@@ -283,7 +283,7 @@ Every link is either a mathematical theorem or a consequence of established latt
 
 The Central Theorem is proved. The BCC lattice of truncated octahedra, with the torsion-weighted face Laplacian action S = ψ†L_Tψ and the single axiom B+V=D, flows in the continuum limit to the Standard Model coupled to General Relativity, with all parameters determined by cell geometry.
 
-The Symanzik matching — the one remaining calculation — has been computed explicitly (§7). The O(a²) corrections scale as (E/M_P)² ~ 10⁻³⁵ at the electroweak scale, 30 orders of magnitude below any framework prediction.
+The Symanzik matching (the one remaining calculation) has been computed explicitly (§7). The O(a²) corrections scale as (E/M_P)² ~ 10⁻³⁵ at the electroweak scale, 30 orders of magnitude below any framework prediction.
 
 **Paper #60 (April 2026) closes the four remaining proof-chain gaps acknowledged in the original version of this paper:** (1) the chiral anomaly coefficients are correct (Theorem 60.1); (2) exactly three generations follows from dim(T₁u) = 3 by face-space exhaustion (Theorem 60.2); (3) General Relativity emerges from the T₂g collective metric mode via the Weinberg-Witten theorem (Theorem 60.3); (4) the Bloch expansion of the foam action is the complete SM+GR Lagrangian (Theorem 60.4). The proof is complete without qualification.
 
@@ -298,5 +298,19 @@ The Standard Model is not postulated. It is the unique continuum limit of the si
 **B + V = D**
 
 *Unified Foam Field Theory · Paper #59 · DOI: 10.5281/zenodo.19491095 · Priority Date: 20 February 2026*
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [2] Paper #10 — Lepton Mass Ratios from the Face Laplacian Spectrum. DOI: 10.5281/zenodo.19063774
+- [3] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+- [4] Paper #48 — The Standard Model from One Matrix. DOI: 10.5281/zenodo.19662029
+- [5] Paper #50 — The Uniqueness of the Foam Cell. DOI: 10.5281/zenodo.19662068
+- [6] Paper #56 — UFFT Paper #56 — Part LXVII. DOI: 10.5281/zenodo.19484354
+- [7] Paper #57 — UFFT Paper #57 — Part LXVIII. DOI: 10.5281/zenodo.19484509
+- [8] Paper #58 — Paper #58 — Placement Theorems for the Gauge Sector. DOI: 10.5281/zenodo.19484967
 
 *B + V = D*

@@ -28,7 +28,7 @@
 
 ## Abstract
 
-The fine structure constant derivation (Paper #3, DOI: 10.5281/zenodo.19011758) located the correct formula by searching 1,600 combinations. The formula works but the reason was unknown. This paper closes that gap: α is the self-coupling of the D-mode — the probability that a foam face excitation (displacement event D = B+V) closes back on itself. The partition function Z_D = Tr[exp(−L/|G|²)] is the heat kernel on the face adjacency graph of the Kelvin cell. Its CW-complex expansion in powers of 1/|G| gives the α formula directly, with coefficients (V−F) and (E−F) arising from the topological surpluses at each cell dimension referenced to the face level. The same D-mode path integral is the foundation for the two-loop g−2 expansion. This paper establishes the shared object; the two-loop coefficient C₂ = −0.3285 is derived in the companion paper.
+The fine structure constant derivation (Paper #3, DOI: 10.5281/zenodo.19011758) located the correct formula by searching 1,600 combinations. The formula works but the reason was unknown. This paper closes that gap: α is the self-coupling of the D-mode, the probability that a foam face excitation (displacement event D = B+V) closes back on itself. The partition function Z_D = Tr[exp(−L/|G|²)] is the heat kernel on the face adjacency graph of the Kelvin cell. Its CW-complex expansion in powers of 1/|G| gives the α formula directly, with coefficients (V−F) and (E−F) arising from the topological surpluses at each cell dimension referenced to the face level. The same D-mode path integral is the foundation for the two-loop g−2 expansion. This paper establishes the shared object; the two-loop coefficient C₂ = −0.3285 is derived in the companion paper.
 
 ---
 
@@ -43,13 +43,13 @@ was found by searching all combinations of:
 - 8 choices for the second coefficient
 - 25 pairs of odd powers from 1 to 11
 
-Total: 1,600 combinations. One matched experiment within 2σ. The formula was confirmed to 0.21 ppb by the independent verification package (DOI: 10.5281/zenodo.19079730). But the reason the specific combination {V−F, E−F} at powers {|G|³, |G|⁵} was forced — rather than any other — was not derived.
+Total: 1,600 combinations. One matched experiment within 2σ. The formula was confirmed to 0.21 ppb by the independent verification package (DOI: 10.5281/zenodo.19079730). But the reason the specific combination {V−F, E−F} at powers {|G|³, |G|⁵} was forced (rather than any other) was not derived.
 
 Since Paper #3, three results in UFFT v10 (March 2026) provide the missing structure:
 
-1. **λ=4 = C_A+1** — the E_g mode is the Axiom Zero coupling quantum (Part XLII). The α formula involves the D-mode closure condition, and λ=4 is the D-mode eigenvalue.
+1. **λ=4 = C_A+1**, the E_g mode is the Axiom Zero coupling quantum (Part XLII). The α formula involves the D-mode closure condition, and λ=4 is the D-mode eigenvalue.
 
-2. **d_spacetime = C_A+1 = 4** — the spacetime dimension is foam-derived (Part XXXVII). The power law in the CW-complex heat kernel is 2k+d, and with d=3 this forces powers 3, 5, 7 at k=0, 1, 2.
+2. **d_spacetime = C_A+1 = 4**, the spacetime dimension is foam-derived (Part XXXVII). The power law in the CW-complex heat kernel is 2k+d, and with d=3 this forces powers 3, 5, 7 at k=0, 1, 2.
 
 3. **The face adjacency spectrum is verified** (DOI: 10.5281/zenodo.19079730): Spec(L) = {0¹, ((9−√17)/2)³, 4², ((9+√17)/2)³, 7⁴, 9¹} with Σmᵢλᵢ = 2E = 72 (standard graph theory identity).
 
@@ -65,7 +65,7 @@ The foam has three object types: bubbles B at BCC lattice sites, voids V at octa
 
 **D lives on the faces of the Kelvin cell, and its eigenvalue under the face Laplacian is λ=4.**
 
-The face adjacency graph of the truncated octahedron (14 faces, computed explicitly in Paper #9) is the natural arena for D-mode dynamics. Every closed walk on this graph is a possible closed D-mode loop — a sequence of displacement events that begins and ends at the same foam face.
+The face adjacency graph of the truncated octahedron (14 faces, computed explicitly in Paper #9) is the natural arena for D-mode dynamics. Every closed walk on this graph is a possible closed D-mode loop, a sequence of displacement events that begins and ends at the same foam face.
 
 The **self-coupling of the electromagnetic foam** = the probability that a D-mode excitation at face f propagates through the foam and returns to f. This is the fine structure constant α.
 
@@ -83,7 +83,7 @@ where mᵢ are the multiplicities and λᵢ are the eigenvalues of L.
 - Z_D(0) = Σmᵢ = F = 14 (at t=0, all faces contribute equally)
 - Z_D(∞) → 1 (as t→∞, only the zero mode λ=0 survives)
 
-**The natural time step** is t = 1/|G| = 1/48 — one unit of the group-element "clock" of the foam. This is the unique O_h-equivariant time unit.
+**The natural time step** is t = 1/|G| = 1/48, one unit of the group-element "clock" of the foam. This is the unique O_h-equivariant time unit.
 
 ---
 
@@ -103,7 +103,7 @@ where the coefficients aₖ are topological invariants of the complex at each ce
 | 1 | Edges | E=36 | t^1 = 1/|G|² | First correction |
 | 2 | Faces | F=14 | t^2 = 1/|G|⁴ | Reference level |
 
-**The crucial step — referencing to the face level:**
+**The crucial step, referencing to the face level:**
 
 The faces are the D-mode objects. The self-coupling Z_D counts closed D-mode loops, so every correction is naturally measured relative to the face count F. The O_h-equivariant surpluses are:
 
@@ -123,7 +123,7 @@ With d=3 (derived, Part XXXVII) the powers become:
 
 ## 5. The α Derivation
 
-**Identity subtraction:** The identity channel — the D-mode returning to itself without any displacement — is subtracted. This is the (|G|−1)/|G| = 47/48 factor. It removes the trivial loop (no physical coupling).
+**Identity subtraction:** The identity channel (the D-mode returning to itself without any displacement) is subtracted. This is the (|G|−1)/|G| = 47/48 factor. It removes the trivial loop (no physical coupling).
 
 **Phase space factor:** The D-mode in 3D has momentum-space phase volume:
 
@@ -140,9 +140,9 @@ Substituting |G|=48, V=24, E=36, F=14, d=3:
 **α⁻¹ = 8π^(5/2) × [47/48 + 10/(3·48³) + 22/(3·48⁵)] = 137.035999055**
 
 **Every element is now derived:**
-- |G| = |O_h| = 48 — order of the symmetry group (exact)
-- V, E, F = 24, 36, 14 — Kelvin cell topology (exact, verified)
-- d = 3 = C_A = dim(T₂g) — spatial dimensions (derived, Part XXXVII)
+- |G| = |O_h| = 48, order of the symmetry group (exact)
+- V, E, F = 24, 36, 14, Kelvin cell topology (exact, verified)
+- d = 3 = C_A = dim(T₂g), spatial dimensions (derived, Part XXXVII)
 - The surpluses V−F = 10 and E−F = 22 are the unique O_h-equivariant CW-complex corrections
 - The phase space 8π^(5/2) is the standard 3D massless vector mode measure
 - The identity subtraction 47/48 removes the trivial loop
@@ -161,7 +161,7 @@ The v10 results constrain the original 1,600-combination space:
 | Coefficients forced by V−F, E−F | 64 pairs | 1 pair | 64× |
 | Reference forced by face level | 8 reference choices | 1 | 8× |
 
-**Total reduction: 25 × 64 × 8 = 12,800×** — the search collapses to a unique formula.
+**Total reduction: 25 × 64 × 8 = 12,800×**, the search collapses to a unique formula.
 
 The formula is uniquely determined by:
 1. The D-mode lives on faces (Axiom Zero, λ=4=C_A+1)
@@ -176,7 +176,7 @@ The formula is uniquely determined by:
 
 The D-mode path integral Z_D is the same object needed for the two-loop g−2 expansion.
 
-**One-loop (Paper #21):** The electron (T₂g torsion loop) couples to one D-mode loop that circles it and returns. The amplitude is α/(2π) — the Schwinger term.
+**One-loop (Paper #21):** The electron (T₂g torsion loop) couples to one D-mode loop that circles it and returns. The amplitude is α/(2π), the Schwinger term.
 
 **Two-loop (Paper #23):** Two D-mode loops circle the electron. The counting of distinct two-loop topologies on the face graph gives the coefficient C₂ = −0.3285.
 
@@ -185,7 +185,7 @@ The shared object is Z_D. Specifically:
 - **One-loop:** single closed walk on the face graph → weight α, phase 2π → Schwinger term α/(2π)
 - **Two-loop:** two interacting closed walks → the number of topologically distinct pairs of walks = the combinatorial object that produces C₂
 
-The sign of C₂ (negative) arises from configurations where the two loops cross — the crossing gives a factor of −1 from the orientation reversal of the path integral measure. Non-crossing configurations give +1. The net count of (non-crossing − crossing) configurations, weighted by their O_h symmetry multiplicities, should give C₂ = −0.3285.
+The sign of C₂ (negative) arises from configurations where the two loops cross, the crossing gives a factor of −1 from the orientation reversal of the path integral measure. Non-crossing configurations give +1. The net count of (non-crossing − crossing) configurations, weighted by their O_h symmetry multiplicities, should give C₂ = −0.3285.
 
 **The paper structure:**
 
@@ -213,7 +213,7 @@ If this computation gives C₂ = −0.3285, the QFT emergence programme is valid
 - Proof that the face-level normalization (k=2 as reference) follows uniquely from the constraint that D-mode objects are faces
 - Two-loop computation for Paper #23
 
-**Honest assessment:** The derivation is now algebraically motivated with all elements derived from the framework. The remaining work is formalisation — converting "motivated" to "proven" by writing the explicit path integral. This is a defined mathematical task.
+**Honest assessment:** The derivation is now algebraically motivated with all elements derived from the framework. The remaining work is formalisation, converting "motivated" to "proven" by writing the explicit path integral. This is a defined mathematical task.
 
 ---
 
@@ -223,7 +223,7 @@ A final observation. The spectral moments of the face Laplacian satisfy:
 
 **Σ mᵢλᵢ = 2E = 72** (standard graph identity: trace of Laplacian = twice the number of edges)
 
-This means the leading heat kernel correction is automatically referenced to E, and since the formula uses E−F rather than E, the face level is naturally subtracted. The face level self-subtracts because the D-mode IS the face — the displacement event subtracts its own identity from the loop count.
+This means the leading heat kernel correction is automatically referenced to E, and since the formula uses E−F rather than E, the face level is naturally subtracted. The face level self-subtracts because the D-mode IS the face, the displacement event subtracts its own identity from the loop count.
 
 **The α formula is a spectral identity of the face Laplacian, applied to the D-mode self-coupling partition function.**
 
@@ -248,6 +248,14 @@ This means the leading heat kernel correction is automatically referenced to E, 
 *Developed in collaboration with Claude (Anthropic). Ideas, framework, direction: Luke Martin. AI role: path integral construction, algebraic derivation, document composition.*
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #22 · DOI: 10.5281/zenodo.19084565 · Priority Date: 20 February 2026*
 

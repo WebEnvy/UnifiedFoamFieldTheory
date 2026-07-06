@@ -14,6 +14,7 @@
 | Paper | #32 of 63 |
 | Framework | v10 |
 | Status | Complete, Tier 1 |
+| Tier | 1 |
 | DOI | 10.5281/zenodo.19196872 |
 | GitHub | https://github.com/WebEnvy/UnifiedFoamFieldTheory |
 
@@ -23,7 +24,7 @@
 
 ## Abstract
 
-The strong CP problem — why the QCD vacuum angle θ_phys is experimentally constrained to be less than 10⁻¹⁰ despite having no symmetry reason to vanish — is dissolved within the Unified Foam Field Theory. Two independent results combine: (1) the QCD vacuum angle θ_QCD = 0 because the foam's torsion potential V(θ) = k(1 − cos θ) has its unique minimum at θ = 0, and the foam vacuum IS the ground state of this potential; (2) arg(det M_q) = 0 because quark masses are eigenvalues of a Hermitian torsion Hamiltonian with a real potential, forcing all mass eigenvalues to be real and positive. Therefore θ_phys = θ_QCD + arg(det M_q) = 0 + 0 = 0 exactly. No axion, no new symmetry, no new particles, no fine-tuning. The result produces two falsifiable predictions: no axion will be detected by any search (ADMX, CASPEr, ABRACADABRA), and the neutron electric dipole moment is exactly zero. Any nonzero measurement of either falsifies this resolution.
+The strong CP problem (why the QCD vacuum angle θ_phys is experimentally constrained to be less than 10⁻¹⁰ despite having no symmetry reason to vanish) is dissolved within the Unified Foam Field Theory. Two independent results combine: (1) the QCD vacuum angle θ_QCD = 0 because the foam's torsion potential V(θ) = k(1 − cos θ) has its unique minimum at θ = 0, and the foam vacuum IS the ground state of this potential; (2) arg(det M_q) = 0 because quark masses are eigenvalues of a Hermitian torsion Hamiltonian with a real potential, forcing all mass eigenvalues to be real and positive. Therefore θ_phys = θ_QCD + arg(det M_q) = 0 + 0 = 0 exactly. No axion, no new symmetry, no new particles, no fine-tuning. The result produces two falsifiable predictions: no axion will be detected by any search (ADMX, CASPEr, ABRACADABRA), and the neutron electric dipole moment is exactly zero. Any nonzero measurement of either falsifies this resolution.
 
 ---
 
@@ -33,7 +34,7 @@ The QCD Lagrangian permits a topological term
 
 **L_θ = θ × (g²/32π²) × G_μν G̃^μν**
 
-where G̃^μν = ½ε^μνρσ G_ρσ is the dual gluon field strength tensor. This term violates CP, P, and T symmetries. It is a total derivative (∂_μK^μ) and therefore does not affect perturbative physics, but it contributes through instantons — topologically non-trivial gauge configurations that tunnel between degenerate vacua with different winding numbers [1].
+where G̃^μν = ½ε^μνρσ G_ρσ is the dual gluon field strength tensor. This term violates CP, P, and T symmetries. It is a total derivative (∂_μK^μ) and therefore does not affect perturbative physics, but it contributes through instantons, topologically non-trivial gauge configurations that tunnel between degenerate vacua with different winding numbers [1].
 
 The parameter θ is not fixed by any symmetry of the Standard Model. Any value in [0, 2π) is permitted. The physical vacuum angle is
 
@@ -69,7 +70,7 @@ In the UFFT framework, the strong force is the torsion sector of the Planck-scal
 
 which plateaus at θ = π (constant string tension) and is harmonic at θ → 0 (asymptotic freedom).
 
-This potential has a unique minimum at θ = 0 (mod 2π). The vacuum state is the configuration with all cells at θ = 0 — no net torsion.
+This potential has a unique minimum at θ = 0 (mod 2π). The vacuum state is the configuration with all cells at θ = 0, no net torsion.
 
 ### 3.2 The θ-Vacuum as the Torsion Ground State
 
@@ -91,7 +92,7 @@ The torsion stiffness k is the energy cost of rotating one cell by angle θ rela
 
 The minimum of both functions is at θ = 0. The foam vacuum IS the θ = 0 state because the torsion ground state IS the minimum of V(θ).
 
-**θ_QCD = 0** — not by fine-tuning, but because the vacuum is the ground state of the torsion potential.
+**θ_QCD = 0**, not by fine-tuning, but because the vacuum is the ground state of the torsion potential.
 
 ### 3.3 The Quark Mass Phase
 
@@ -111,7 +112,7 @@ This is not a dynamical relaxation (as in the axion mechanism). It is a mathemat
 
 ### 3.4 The CKM Phase Does Not Contribute
 
-The observed CP violation in the weak sector (the CKM phase δ_CKM ≈ 1.20 rad) does not affect θ_phys. The CKM matrix V_CKM rotates between mass eigenstates and weak interaction eigenstates. Its complex phase produces CP violation through quantum interference between different weak decay amplitudes — this is the CP violation observed at B-factories and LHCb [12].
+The observed CP violation in the weak sector (the CKM phase δ_CKM ≈ 1.20 rad) does not affect θ_phys. The CKM matrix V_CKM rotates between mass eigenstates and weak interaction eigenstates. Its complex phase produces CP violation through quantum interference between different weak decay amplitudes, this is the CP violation observed at B-factories and LHCb [12].
 
 The quantity arg(det M_q) depends on the mass eigenvalues, not on the mixing matrix. The mass eigenvalues are the physical quark masses, which are real and positive. The CKM phase is a property of the ROTATION between bases, not of the eigenvalues themselves. The determinant of the mass matrix is basis-independent and equals the product of eigenvalues.
 
@@ -172,7 +173,7 @@ Any observable that depends on θ_phys (e.g., the η' mass splitting from instan
 - θ_phys = 0 exactly, with no free parameters.
 
 **What needs further work:**
-- The explicit construction of the foam partition function summed over instanton sectors, showing that the effective potential reproduces V(θ) = k(1 − cos θ) with the correct topological susceptibility. This is a lattice gauge theory calculation on the Kelvin cell lattice — tractable but not yet performed.
+- The explicit construction of the foam partition function summed over instanton sectors, showing that the effective potential reproduces V(θ) = k(1 − cos θ) with the correct topological susceptibility. This is a lattice gauge theory calculation on the Kelvin cell lattice, tractable but not yet performed.
 - The formal demonstration that the torsion Hamiltonian remains Hermitian under all radiative corrections (i.e., that the zero phase is radiatively stable). The physical argument is that V(θ) is real at all orders, but the perturbative proof has not been written.
 
 **What this parallels in the framework:**
@@ -213,6 +214,14 @@ Any observable that depends on θ_phys (e.g., the η' mass splitting from instan
 [14] Ahmed, M. et al. (2019). A New Cryogenic Apparatus to Search for the Neutron Electric Dipole Moment. JINST 14, P11017.
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #32 · DOI: 10.5281/zenodo.19196872 · Priority Date: 20 February 2026*
 

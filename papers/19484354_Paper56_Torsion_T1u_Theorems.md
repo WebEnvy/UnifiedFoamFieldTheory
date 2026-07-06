@@ -22,7 +22,7 @@
 
 ## Abstract
 
-We compute the inter-type torsion operator T explicitly in the full 14-dimensional face Laplacian basis of the truncated octahedron and project it onto the T₁u subspace. Two exact theorems follow from the 14×14 matrix. **Theorem 56.1:** T²|_{T₁u} = −4·I — the torsion operator squares to minus four times the identity on the T₁u subspace, where 4 = λ_Eg = √(r₁r₂) = √16 is the Eg eigenvalue and the square root of the master equation constant term. **Theorem 56.2:** the cross-block matrix ⟨T₁u(r₂)|T|T₁u(r₁)⟩ = 2·U where U is unitary — the inter-block torsion has all singular values equal to 2 exactly, meaning all three generations couple to the torsion field with equal strength. This maximal generation symmetry proves that the CKM hierarchy (Wolfenstein parameters λ, A, R_b) does not originate in the torsion operator. The LO identification R_b = r₁/r₂ is confirmed. The ~1.25σ combined tension in (ρ̄, η̄) is structural — it resides in the intra-block quark mass spectrum — and ρ̄ remains Tier 3. A new cross-sector identity is identified: the torsion eigenvalue 4 = λ_Eg connects the inflationary tensor-to-scalar sector (Paper #55) to the electroweak CKM sector through the single master equation constant r₁r₂ = 16.
+We compute the inter-type torsion operator T explicitly in the full 14-dimensional face Laplacian basis of the truncated octahedron and project it onto the T₁u subspace. Two exact theorems follow from the 14×14 matrix. **Theorem 56.1:** T²|_{T₁u} = −4·I, the torsion operator squares to minus four times the identity on the T₁u subspace, where 4 = λ_Eg = √(r₁r₂) = √16 is the Eg eigenvalue and the square root of the master equation constant term. **Theorem 56.2:** the cross-block matrix ⟨T₁u(r₂)|T|T₁u(r₁)⟩ = 2·U where U is unitary, the inter-block torsion has all singular values equal to 2 exactly, meaning all three generations couple to the torsion field with equal strength. This maximal generation symmetry proves that the CKM hierarchy (Wolfenstein parameters λ, A, R_b) does not originate in the torsion operator. The LO identification R_b = r₁/r₂ is confirmed. The ~1.25σ combined tension in (ρ̄, η̄) is structural, it resides in the intra-block quark mass spectrum, and ρ̄ remains Tier 3. A new cross-sector identity is identified: the torsion eigenvalue 4 = λ_Eg connects the inflationary tensor-to-scalar sector (Paper #55) to the electroweak CKM sector through the single master equation constant r₁r₂ = 16.
 
 ---
 
@@ -30,7 +30,7 @@ We compute the inter-type torsion operator T explicitly in the full 14-dimension
 
 The truncated octahedron has F = 14 faces: 8 hexagonal (H₀–H₇) and 6 square (S₀–S₅). We label them by the direction of their outward normal:
 
-**Hexagonal faces** — normals along (±1,±1,±1)/√3:
+**Hexagonal faces**, normals along (±1,±1,±1)/√3:
 
 | Index | Signs (x,y,z) |
 |-------|--------------|
@@ -43,7 +43,7 @@ The truncated octahedron has F = 14 faces: 8 hexagonal (H₀–H₇) and 6 squar
 | H₆ | (−,−,+) |
 | H₇ | (−,−,−) |
 
-**Square faces** — normals along ±x̂, ±ŷ, ±ẑ:
+**Square faces**, normals along ±x̂, ±ŷ, ±ẑ:
 
 | Index | Normal |
 |-------|--------|
@@ -72,7 +72,7 @@ The inter-type torsion operator is defined as:
 
 **T = P_sq · L · P_hex − P_hex · L · P_sq**
 
-where P_hex and P_sq are the projectors onto the hexagonal and square face subspaces respectively. This operator encodes the chiral transfer of displacement between hex-type and square-type faces — the physical mechanism of weak interaction in UFFT (the square faces carry the weak isospin charge). T is antisymmetric: T^T = −T.
+where P_hex and P_sq are the projectors onto the hexagonal and square face subspaces respectively. This operator encodes the chiral transfer of displacement between hex-type and square-type faces, the physical mechanism of weak interaction in UFFT (the square faces carry the weak isospin charge). T is antisymmetric: T^T = −T.
 
 ---
 
@@ -103,7 +103,7 @@ The diagonal T₁u blocks vanish identically: V_{r₁}^T · T · V_{r₁} = 0 an
 - 4² = 16 = r₁r₂: the constant term of the master equation λ² − 9λ + 16 = 0
 - In Paper #55: r₁r₂ = 16 appears as ln(r₁r₂) = ln(16) in the tensor-to-scalar formula
 
-This is a cross-sector identity: **T²|_{T₁u} = −(r₁r₂)^{1/2} · (r₁r₂)^{1/2} · I = −λ_Eg² · I** connects the torsion sector (CKM/weak) to the inflationary sector (tensor-to-scalar) through a single algebraic quantity — the constant term of the master equation.
+This is a cross-sector identity: **T²|_{T₁u} = −(r₁r₂)^{1/2} · (r₁r₂)^{1/2} · I = −λ_Eg² · I** connects the torsion sector (CKM/weak) to the inflationary sector (tensor-to-scalar) through a single algebraic quantity, the constant term of the master equation.
 
 ---
 
@@ -123,7 +123,7 @@ where U is a 3×3 real orthogonal matrix.
 - There is no preferential 1–3 or 1–2 suppression in the torsion operator
 - The torsion is **maximally generation-symmetric** at the level of the face Laplacian
 
-This is a structural result: **the CKM hierarchy (Wolfenstein λ, A, R_b) does not originate in the inter-type torsion operator.** It must arise from the intra-block structure — specifically, the quark mass splittings within each T₁u eigenspace, which are set by the BCC band structure (Paper #44).
+This is a structural result: **the CKM hierarchy (Wolfenstein λ, A, R_b) does not originate in the inter-type torsion operator.** It must arise from the intra-block structure, specifically, the quark mass splittings within each T₁u eigenspace, which are set by the BCC band structure (Paper #44).
 
 ---
 
@@ -143,7 +143,7 @@ The unitarity triangle parameters follow from R_b = r₁/r₂ and δ_CKM = 66.36
 | η̄ | R_b sin(δ_CKM) | 0.3404 | 0.348 ± 0.010 | −0.8σ |
 | sin(2β) | from triangle | 0.690 | 0.699 ± 0.017 | −0.55σ |
 
-Combined χ² = 1.57, equivalent to ~1.25σ for two parameters. This is **Tier 3** — the formula is identified, the derivation is clean, and the mild tension is structurally understood: it comes from the intra-block quark mass spectrum, which introduces corrections of order (quark mass splitting)/(T₁u eigenvalue splitting). A full NLO derivation requires the explicit BCC quark mass spectrum from Paper #44.
+Combined χ² = 1.57, equivalent to ~1.25σ for two parameters. This is **Tier 3**, the formula is identified, the derivation is clean, and the mild tension is structurally understood: it comes from the intra-block quark mass spectrum, which introduces corrections of order (quark mass splitting)/(T₁u eigenvalue splitting). A full NLO derivation requires the explicit BCC quark mass spectrum from Paper #44.
 
 **Note on the earlier formula ρ̄ = R cos(πR) (Paper #36):** this was an approximation using the angle πR = π(r₁/r₂) = 66.89° as a proxy for δ_CKM = 66.36°. The two differ by 0.53°, which accounts for the difference between the 1.3σ tension quoted there and the 1.0σ in the decomposition above. The correct parameterisation is ρ̄ = R_b cos(δ_CKM), η̄ = R_b sin(δ_CKM), using the independently derived δ_CKM.
 
@@ -243,6 +243,25 @@ All results verified numerically. The computation runs in under one second.
 *Priority Date: 20 February 2026 · Framework v9 · April 2026*
 
 **B + V = D**
+
+---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [2] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+- [3] Paper #36 — CP-Violating Phases of the CKM and PMNS Matrices from the T₁u Eigenvalue Ratio. DOI: 10.5281/zenodo.19198775
+- [4] Paper #44 — The Complete Particle Mass Spectrum from Planck-Scale Foam Geometry. DOI: 10.5281/zenodo.19307003
+- [5] Paper #55 — The Tensor-to-Scalar Ratio from the Master Equation Product. DOI: 10.5281/zenodo.19484103
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #56 · DOI: 10.5281/zenodo.19484354 · Priority Date: 20 February 2026*
 

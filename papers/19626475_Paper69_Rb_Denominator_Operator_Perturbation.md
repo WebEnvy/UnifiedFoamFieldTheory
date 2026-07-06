@@ -24,7 +24,7 @@
 
 ## Abstract
 
-Paper #67 closed the η̄ lever-arm of the Wolfenstein unitarity triangle by identifying the NLO CKM phase δ_NLO = δ_LO × (2E − 1)/(2E) = 65.44°, then paired this with a candidate radial coordinate R_b = (F − 1)/(2V − F) = 13/34 = 0.38235. The numerator F − 1 was identified as β₁(edge skeleton) — the first Betti number of the 1-skeleton of the Kelvin cell — which is a Tier 1 topological invariant. The denominator 2V − F = 34 was listed with three candidate decompositions (|G| − F, V + (V − F), 2E − 2N_gauge − F) but without an operator-theoretic anchor. Paper #67 therefore assigned the R_b companion Tier 3.
+Paper #67 closed the η̄ lever-arm of the Wolfenstein unitarity triangle by identifying the NLO CKM phase δ_NLO = δ_LO × (2E − 1)/(2E) = 65.44°, then paired this with a candidate radial coordinate R_b = (F − 1)/(2V − F) = 13/34 = 0.38235. The numerator F − 1 was identified as β₁(edge skeleton) (the first Betti number of the 1-skeleton of the Kelvin cell) which is a Tier 1 topological invariant. The denominator 2V − F = 34 was listed with three candidate decompositions (|G| − F, V + (V − F), 2E − 2N_gauge − F) but without an operator-theoretic anchor. Paper #67 therefore assigned the R_b companion Tier 3.
 
 This paper closes that gap. We prove that
 
@@ -93,7 +93,7 @@ The F = 14 face modes span a subspace H_face = ℂ^F that lives on faces, not ve
 
 **Claim (face-sector theorem).** The F face-scalar modes decouple from the vertex-sector T₁u block under the master operator H.
 
-**Proof sketch.** The face modes are supported on the F-dimensional face space; the T₁u vertex sector is supported on the 3V-dimensional vertex–tangent space. Any matrix element ⟨vertex T₁u | H | face⟩ transforms under the V parity operator as (even) × (odd) = odd, but the diagonal H is V-symmetric (V is an involution that commutes with H after proper block alignment — Paper #45 Theorem 3.2). Therefore ⟨T₁u | H | face⟩ = 0 on irrep grounds. The 14 face modes do not participate in the T₁u fermion walk amplitudes. QED for the decoupling.
+**Proof sketch.** The face modes are supported on the F-dimensional face space; the T₁u vertex sector is supported on the 3V-dimensional vertex–tangent space. Any matrix element ⟨vertex T₁u | H | face⟩ transforms under the V parity operator as (even) × (odd) = odd, but the diagonal H is V-symmetric (V is an involution that commutes with H after proper block alignment, Paper #45 Theorem 3.2). Therefore ⟨T₁u | H | face⟩ = 0 on irrep grounds. The 14 face modes do not participate in the T₁u fermion walk amplitudes. QED for the decoupling.
 
 ### 2.4 The effective fermion walk dimension
 
@@ -163,7 +163,7 @@ For completeness we collect the Paper #67 numerator identification:
 
 > **F − 1 = 13 = E − V + 1 = β₁(1-skeleton)**
 
-where β₁ is the first Betti number of the 1-skeleton (the edge graph). This is exact via Euler's formula: for a connected planar graph on S², β₁(graph) = E − V + 1, and Euler gives F = E − V + 2, so F − 1 = E − V + 1 = β₁. The numerator counts independent closed walks on the edge skeleton — exactly the quantity that enters the amplitude ratio for flavour-mixing walks.
+where β₁ is the first Betti number of the 1-skeleton (the edge graph). This is exact via Euler's formula: for a connected planar graph on S², β₁(graph) = E − V + 1, and Euler gives F = E − V + 2, so F − 1 = E − V + 1 = β₁. The numerator counts independent closed walks on the edge skeleton, exactly the quantity that enters the amplitude ratio for flavour-mixing walks.
 
 The numerator is Tier 1 (topological invariant). Together with §3, the full ratio R_b = 13/34 is now a ratio of two Tier 1 cell-integer quantities.
 
@@ -193,7 +193,7 @@ Taking the ratio of the two R_b candidates and factoring,
 
 > **R_b^{(#64)} / R_b^{(#69)} = [r₁² / (F − 1)] × [(2V − F) / (r₁ r₂ − 1)] = 0.45739 × 2.26667 = 1.03674**.
 
-The first factor 0.45739 = r₁² / (F − 1) compares the squared smaller T₁u eigenvalue against the skeleton Betti number. The second factor 34/15 = (2V − F) / (r₁ r₂ − 1) compares the full fermion-walk Hilbert dimension against the Vieta-reduced master-equation-product. Both factors are Eisenstein-like ratios of cell integers and small T₁u eigenvalue combinations. Their product 1.03674 is the 3.5% correction between the two R_b forms — the higher-order walk-sum remainder. This establishes that Paper #64's form is a first-order approximation to Paper #69's exact walk-sum form.
+The first factor 0.45739 = r₁² / (F − 1) compares the squared smaller T₁u eigenvalue against the skeleton Betti number. The second factor 34/15 = (2V − F) / (r₁ r₂ − 1) compares the full fermion-walk Hilbert dimension against the Vieta-reduced master-equation-product. Both factors are Eisenstein-like ratios of cell integers and small T₁u eigenvalue combinations. Their product 1.03674 is the 3.5% correction between the two R_b forms, the higher-order walk-sum remainder. This establishes that Paper #64's form is a first-order approximation to Paper #69's exact walk-sum form.
 
 Paper #64 therefore remains valid as the leading-order NLO expansion; Paper #69 supersedes it at the level of exact resummation for the R_b radial coordinate.
 
@@ -223,7 +223,7 @@ The unitarity-triangle apex is closed at 0.02σ jointly. Every input is a cell i
 | R_b = 13/34 | Tier 3 | **Tier 2** | Ratio of two Tier-1/Tier-2 quantities |
 | (ρ̄, η̄) joint closure | Tier 3 (Paper #67) | **Tier 2** | Combines Paper #67 Tier-2 δ_NLO with this paper's Tier-2 R_b |
 
-The CKM sector is now fully closed at Tier 2 or better. The only remaining open item is the multiplicative walk-sum correction that reconciles Paper #64's r₁²/(r₁r₂ − 1) form to Paper #69's (F−1)/(2V−F) form at all orders — §5 establishes they agree at leading order with a computable 34/15 prefactor, but the full all-orders identity is not proven here.
+The CKM sector is now fully closed at Tier 2 or better. The only remaining open item is the multiplicative walk-sum correction that reconciles Paper #64's r₁²/(r₁r₂ − 1) form to Paper #69's (F−1)/(2V−F) form at all orders, §5 establishes they agree at leading order with a computable 34/15 prefactor, but the full all-orders identity is not proven here.
 
 ---
 
@@ -306,7 +306,7 @@ All four decompositions agree at 34. All three Wolfenstein-apex coordinates clos
 ## 9. Summary
 
 - The R_b NLO denominator 2V − F = 34 is the effective fermion-walk Hilbert space dimension on a single Kelvin cell, obtained by T₁u chirality doubling of the V = 24 vertices followed by decoupling of the F = 14 face scalars via the A₂u/T₁u parity selection rule of the void-channel Hamiltonian H = L + ηV (Paper #45).
-- Four independent cell-integer identities — symmetry-inventory, edge-incidence, Euler-equivalent, and dual-cell — all produce 34, forced to coincide by Euler's formula, orbit-stabiliser on vertices, gauge-Casimir counting, and Poincaré self-duality.
+- Four independent cell-integer identities (symmetry-inventory, edge-incidence, Euler-equivalent, and dual-cell) all produce 34, forced to coincide by Euler's formula, orbit-stabiliser on vertices, gauge-Casimir counting, and Poincaré self-duality.
 - Combined with the β₁ numerator F − 1 = 13 and Paper #67's δ_NLO = 65.44°, this closes the Wolfenstein unitarity-triangle apex (ρ̄, η̄) at 0.02σ jointly.
 - The R_b companion is promoted from Tier 3 to Tier 2. The full CKM sector (Papers #34, #51, #64, #66, #67, #69) is now closed at Tier 2 with zero free parameters.
 - Paper #64's alternative NLO form r₁²/(r₁r₂ − 1) = 0.39640 is shown to be a first-order expansion of the walk-sum form, with an integer-ratio correction 34/15 between the two denominators.
@@ -330,3 +330,11 @@ All four decompositions agree at 34. All three Wolfenstein-apex coordinates clos
 ---
 
 *Paper #69 · reserved 2026-04-17 · APPROVED 2026-04-17 · awaiting Zenodo upload · target: Tier 2 closure of the R_b companion to Paper #67.*
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory

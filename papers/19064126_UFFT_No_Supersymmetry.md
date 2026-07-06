@@ -24,13 +24,13 @@
 
 ## Abstract
 
-The Unified Foam Field Theory (UFFT) derives all Standard Model structure from the face Laplacian of the truncated octahedron — the Kelvin cell, the unique equal-volume space-filling polyhedron on the BCC lattice. The cell has exactly 14 faces, giving exactly 14 foam modes, corresponding to exactly the observed SM particle content. Supersymmetry would require doubling the spectrum to 28 modes. No 28-face equal-volume space-filling polyhedron exists on the BCC lattice; the Kelvin cell is unique by Kelvin's theorem. Therefore supersymmetry is geometrically forbidden in UFFT. All LHC null results for SUSY particles (Run 1, 2, and 3) are confirmed predictions of the framework. The gauge couplings do not precisely unify at a single point — the ~5% spread at M_GUT ≈ 1.5×10¹⁶ GeV is the correct UFFT prediction, not a problem to be fixed by SUSY.
+The Unified Foam Field Theory (UFFT) derives all Standard Model structure from the face Laplacian of the truncated octahedron (the Kelvin cell, the unique equal-volume space-filling polyhedron on the BCC lattice. The cell has exactly 14 faces, giving exactly 14 foam modes, corresponding to exactly the observed SM particle content. Supersymmetry would require doubling the spectrum to 28 modes. No 28-face equal-volume space-filling polyhedron exists on the BCC lattice; the Kelvin cell is unique by Kelvin's theorem. Therefore supersymmetry is geometrically forbidden in UFFT. All LHC null results for SUSY particles (Run 1, 2, and 3) are confirmed predictions of the framework. The gauge couplings do not precisely unify at a single point) the ~5% spread at M_GUT ≈ 1.5×10¹⁶ GeV is the correct UFFT prediction, not a problem to be fixed by SUSY.
 
 ---
 
 ## 1. The Kelvin Cell and Its Uniqueness
 
-The UFFT framework is built on a BCC (body-centred cubic) foam whose fundamental cell is the truncated octahedron — the Wigner-Seitz cell of the BCC lattice (Core Framework v2, Part I). This cell divides 3D space into equal-volume regions with minimum total surface area. Lord Kelvin proved in 1887 that the truncated octahedron is the unique solution to this problem for equal cells.
+The UFFT framework is built on a BCC (body-centred cubic) foam whose fundamental cell is the truncated octahedron, the Wigner-Seitz cell of the BCC lattice (Core Framework v2, Part I). This cell divides 3D space into equal-volume regions with minimum total surface area. Lord Kelvin proved in 1887 that the truncated octahedron is the unique solution to this problem for equal cells.
 
 The truncated octahedron has:
 - **14 faces** (8 hexagonal + 6 square)
@@ -58,9 +58,9 @@ Supersymmetry (SUSY) requires that for every bosonic mode there exists a fermion
 
 28 modes would correspond to a 28-face space-filling polyhedron on the BCC lattice. By Kelvin's theorem, **no such polyhedron exists**. The truncated octahedron is the unique equal-volume BCC tiling cell. A 28-face cell:
 
-1. Does not solve Kelvin's problem — no 28-face equal-volume space-filling polyhedron is known that tiles BCC space.
+1. Does not solve Kelvin's problem, no 28-face equal-volume space-filling polyhedron is known that tiles BCC space.
 2. Would destroy the BCC lattice symmetry group O_h from which the foam's gauge structure is derived.
-3. Would require the foam to not fill space — contradicting Axiom Zero (the foam is the substrate of all space).
+3. Would require the foam to not fill space, contradicting Axiom Zero (the foam is the substrate of all space).
 
 There is no geometric extension of the Kelvin cell to accommodate superpartners. **SUSY is geometrically impossible in UFFT.**
 
@@ -70,7 +70,7 @@ There is no geometric extension of the Kelvin cell to accommodate superpartners.
 
 ### 3.1 No Superpartners at Any Energy Scale
 
-Since the absence of SUSY follows from the geometry of the foam cell rather than a particular energy scale, there are no squarks, gluinos, charginos, neutralinos, or any other superpartners at **any** energy — not just below the LHC reach, but at all energies whatsoever. This is a strong prediction: future colliders at any energy will not find SUSY particles.
+Since the absence of SUSY follows from the geometry of the foam cell rather than a particular energy scale, there are no squarks, gluinos, charginos, neutralinos, or any other superpartners at **any** energy, not just below the LHC reach, but at all energies whatsoever. This is a strong prediction: future colliders at any energy will not find SUSY particles.
 
 ### 3.2 Gauge Coupling Non-Unification
 
@@ -84,11 +84,11 @@ At M_GUT = 1.50×10¹⁶ GeV (2-loop self-consistent result, Part XXXV; using b�
 | 1/α_W | ≈ 46 |
 | 1/α_s | ≈ 46 |
 
-The strong and weak couplings approximately unify (consistent with sin²θ_W = 3/8 at M_GUT, Part XX). The EM coupling runs separately — because there are no SUSY scalars to accelerate it. The ~5% spread is the **correct UFFT prediction**, not a failure.
+The strong and weak couplings approximately unify (consistent with sin²θ_W = 3/8 at M_GUT, Part XX). The EM coupling runs separately, because there are no SUSY scalars to accelerate it. The ~5% spread is the **correct UFFT prediction**, not a failure.
 
 ### 3.3 The Higgs Mass is Natural
 
-The SM "hierarchy problem" — why m_H = 125 GeV is so much smaller than M_Planck — motivated much of the SUSY programme. In UFFT, the Higgs mass is not a free parameter: it follows from the spectral ratio m_H/M_Z = 18/(9+√17) (Part XXV, [3]). There is no hierarchy problem to solve: the Higgs mass is set by the foam geometry. SUSY is not needed to stabilise it.
+The SM "hierarchy problem" (why m_H = 125 GeV is so much smaller than M_Planck) motivated much of the SUSY programme. In UFFT, the Higgs mass is not a free parameter: it follows from the spectral ratio m_H/M_Z = 18/(9+√17) (Part XXV, [3]). There is no hierarchy problem to solve: the Higgs mass is set by the foam geometry. SUSY is not needed to stabilise it.
 
 ---
 
@@ -110,13 +110,13 @@ The LHC has conducted the most comprehensive SUSY search in history across Run 1
 
 ## 5. Relation to Kelvin's Conjecture and the Weaire-Phelan Structure
 
-In 1994, Weaire and Phelan found a foam structure using two cell types (dodecahedra and tetrakaidecahedra) that has 0.3% lower surface area than the Kelvin cell. This shows the Kelvin cell is not strictly the global minimum for **mixed-cell** foams. However, UFFT specifically uses the **single-cell equal-volume** constraint (all cells identical, equal volume), for which the Kelvin cell remains unique. A Weaire-Phelan foam would violate the uniformity of the vacuum (Axiom Zero requires all foam cells to be equivalent — there is no preferred location). Therefore the Weaire-Phelan structure is not available as a foam vacuum, and the Kelvin cell uniqueness argument stands.
+In 1994, Weaire and Phelan found a foam structure using two cell types (dodecahedra and tetrakaidecahedra) that has 0.3% lower surface area than the Kelvin cell. This shows the Kelvin cell is not strictly the global minimum for **mixed-cell** foams. However, UFFT specifically uses the **single-cell equal-volume** constraint (all cells identical, equal volume), for which the Kelvin cell remains unique. A Weaire-Phelan foam would violate the uniformity of the vacuum (Axiom Zero requires all foam cells to be equivalent, there is no preferred location). Therefore the Weaire-Phelan structure is not available as a foam vacuum, and the Kelvin cell uniqueness argument stands.
 
 ---
 
 **Note (March 2026):** The 2-loop self-consistent GUT calculation (Part XXXV of the Core Framework v2) refines M_GUT to 1.50×10¹⁶ GeV and α_GUT = 1/46, with α_s(M_Z) = 0.1179 reproduced exactly from the GUT chain. All beta coefficients now foam-derived at 2-loop (Parts XXIII, XXIV, XXX, XXXI).
 
-**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis — physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
+**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis, physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
 
 ## UFFT Papers
 
@@ -139,6 +139,16 @@ In 1994, Weaire and Phelan found a foam structure using two cell types (dodecahe
 [8] Particle Data Group, *Review of Particle Physics*, Prog. Theor. Exp. Phys. 2022, 083C01
 
 ---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #2 — Void-Pair Conservation as the Physical Mechanism of Quantum Entanglement and Bell Correlations. DOI: 10.5281/zenodo.18706806
+- [2] Paper #3 — The Fine Structure Constant from Planck-Scale Foam Geometry. DOI: 10.5281/zenodo.19011758
+- [3] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [4] Paper #8 — Maxwell's Equations from Foam Dynamics. DOI: 10.5281/zenodo.19063671
 
 ## AI Disclosure
 

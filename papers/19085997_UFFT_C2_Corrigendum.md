@@ -54,7 +54,7 @@ This derivation makes no reference to QED and uses only:
 
 **Foam derivation:** The E_g mode eigenvalue λ_Eg = C_A+1 = 4 (Axiom Zero coupling quantum, Part XLII) sets the physical threshold at q² = λ_Eg × m_e². The threshold ratio q/m_e = √λ_Eg = √4 = 2, giving ln(q/m_e) = ln2.
 
-This is exact if and only if C_A = 3 (so C_A+1 = 4, √4 = 2). Since C_A = dim(T₂g) = 3 is proven from the face Laplacian, the ln2 is forced — not a coincidence.
+This is exact if and only if C_A = 3 (so C_A+1 = 4, √4 = 2). Since C_A = dim(T₂g) = 3 is proven from the face Laplacian, the ln2 is forced, not a coincidence.
 
 The coefficient −1/2 = −1/(C_A−1) when C_A=3. The negative sign: the threshold contribution interferes destructively with the main amplitude.
 
@@ -72,7 +72,7 @@ The T₂g mode has C_A = 3 independent torsion axes, each contributing ζ(3), no
 
 **Status: FULLY DERIVED from π₁(T₂g) = ℤ and the winding harmonic structure.**
 
-This is the result of deepest significance: Apéry's constant ζ(3) is not produced by a Feynman integral — it is the sum over the topological winding spectrum of the electron defect.
+This is the result of deepest significance: Apéry's constant ζ(3) is not produced by a Feynman integral, it is the sum over the topological winding spectrum of the electron defect.
 
 ---
 
@@ -125,13 +125,13 @@ The following results from Papers #21–#25 are unaffected by this corrigendum:
 
 5. **π²/12 from loop topology**: clean topological argument. This stands.
 
-What is incomplete: the rational 197/144 has been *identified* in foam language but not *derived* diagram by diagram. This is a defined calculation — the next paper.
+What is incomplete: the rational 197/144 has been *identified* in foam language but not *derived* diagram by diagram. This is a defined calculation, the next paper.
 
 ---
 
 ## Next Step
 
-**Paper #27:** The foam renormalization programme — computing the rational parts of the two-loop self-energy, vertex, and vacuum polarisation diagrams in foam language and showing their sum = (2N_gauge² − λ_T2g(F−1))/N_gauge².
+**Paper #27:** The foam renormalization programme, computing the rational parts of the two-loop self-energy, vertex, and vacuum polarisation diagrams in foam language and showing their sum = (2N_gauge² − λ_T2g(F−1))/N_gauge².
 
 This will complete the C₂ derivation fully at the diagram level, closing the last gap in the independent foam derivation of the two-loop anomalous magnetic moment.
 
@@ -140,6 +140,25 @@ This will complete the C₂ derivation fully at the diagram level, closing the l
 *Developed in collaboration with Claude (Anthropic). Ideas, framework, direction: Luke Martin. AI role: honest assessment, status clarification, document composition.*
 
 ---
+
+---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [2] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+- [3] Paper #18 — Asymptotic Freedom and Quark Confinement as Geometric Theorems. DOI: 10.5281/zenodo.19064581
+- [4] Paper #23 — The Two-Loop Anomalous Magnetic Moment from Foam Topology. DOI: 10.5281/zenodo.19084710
+- [5] Paper #24 — The Two-Loop Anomalous Magnetic Moment. DOI: 10.5281/zenodo.19084873
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #26 · DOI: 10.5281/zenodo.19085997 · Priority Date: 20 February 2026*
 

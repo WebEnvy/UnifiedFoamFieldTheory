@@ -42,7 +42,7 @@ All eigenvalues are algebraic numbers over Q(√17). Using the full octahedral s
 
 The truncated octahedron is the unique Archimedean solid that tiles three-dimensional Euclidean space. It is the Voronoi cell of the body-centred cubic (BCC) lattice and the solution to Kelvin's problem of partitioning space into cells of equal volume with minimal surface area [1]. Its graph-theoretic properties are relevant to crystallography, foam physics, and discrete geometry.
 
-The vertex adjacency graph and edge adjacency graph of the truncated octahedron are well studied [2]. The face adjacency graph — where vertices represent faces and edges connect faces sharing a common edge of the polyhedron — appears not to have been studied in the literature. We compute its complete Laplacian spectrum and identify each eigenspace with an irreducible representation of the symmetry group.
+The vertex adjacency graph and edge adjacency graph of the truncated octahedron are well studied [2]. The face adjacency graph (where vertices represent faces and edges connect faces sharing a common edge of the polyhedron) appears not to have been studied in the literature. We compute its complete Laplacian spectrum and identify each eigenspace with an irreducible representation of the symmetry group.
 
 ---
 
@@ -168,7 +168,7 @@ The character of the O_h action restricted to each eigenspace was computed by co
 
 ### 6.4 Notable Features
 
-The two copies of T1u (each 3-dimensional) correspond to the two irrational eigenvalues (9±√17)/2. The quadratic x²−9x+16 = 0 is the minimal polynomial governing the T1u splitting. The fact that T1u splits into two eigenspaces (rather than having a single 6-dimensional eigenspace) reflects the inequivalence of the two T1u copies in the face representation — one arises from the square-hex coupling and the other from the hex-hex coupling.
+The two copies of T1u (each 3-dimensional) correspond to the two irrational eigenvalues (9±√17)/2. The quadratic x²−9x+16 = 0 is the minimal polynomial governing the T1u splitting. The fact that T1u splits into two eigenspaces (rather than having a single 6-dimensional eigenspace) reflects the inequivalence of the two T1u copies in the face representation, one arises from the square-hex coupling and the other from the hex-hex coupling.
 
 The eigenspace at λ = 7 carries A1g ⊕ T2g (dimensions 1+3 = 4). This is the only eigenspace containing more than one irrep, forced by the coincidence of eigenvalues from two distinct irrep sectors.
 

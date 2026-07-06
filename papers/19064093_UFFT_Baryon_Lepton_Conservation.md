@@ -24,13 +24,13 @@
 
 ## Abstract
 
-In the Unified Foam Field Theory (UFFT), baryons and leptons are topological defects of the BCC foam with integer torsion winding numbers. Baryon number B and lepton number L are both independently conserved as topological invariants — more fundamental than the accidental symmetry status they hold in the Standard Model. This implies the proton is **absolutely stable**: τ_proton = ∞. Neutrinoless double beta decay is forbidden. These predictions are consistent with all current experimental limits and sharply distinguish UFFT from SU(5) GUT models that predict proton decay.
+In the Unified Foam Field Theory (UFFT), baryons and leptons are topological defects of the BCC foam with integer torsion winding numbers. Baryon number B and lepton number L are both independently conserved as topological invariants, more fundamental than the accidental symmetry status they hold in the Standard Model. This implies the proton is **absolutely stable**: τ_proton = ∞. Neutrinoless double beta decay is forbidden. These predictions are consistent with all current experimental limits and sharply distinguish UFFT from SU(5) GUT models that predict proton decay.
 
 ---
 
 ## 1. Topological Identity of Baryons and Leptons
 
-In the UFFT framework (Core Framework v2, Part I), matter consists of topological defects in the BCC foam — persistent configurations of the torsion field that carry conserved quantum numbers.
+In the UFFT framework (Core Framework v2, Part I), matter consists of topological defects in the BCC foam, persistent configurations of the torsion field that carry conserved quantum numbers.
 
 **Quarks** are open, confined, fractional T₂g torsion strands carrying winding number 1/3. Confinement arises because fractional winding cannot be closed alone: the torsion potential V(θ) = k(1−cosθ) grows without bound for a separated colour charge. Three quarks together complete an integer winding and become colour-neutral.
 
@@ -48,7 +48,7 @@ In the UFFT framework (Core Framework v2, Part I), matter consists of topologica
 ### Theorem 1 (Baryon Number)
 *B is exactly conserved: ΔB ∈ {0, ±2, ±4, ...} only.*
 
-**Proof.** The torsion vacuum has homotopy group π₁(T₂g vacuum) = ℤ. A torsion winding number is a topological invariant of this configuration. Changing B by ±1 requires a continuous deformation that changes an integer winding number by ±1 — which requires the torsion loop to pass through a configuration of zero size (topological transition). The confining torsion potential V(θ) = k(1−cosθ) assigns infinite energy to a separated fractional winding. Therefore no finite-energy process can change B by ±1. The only allowed changes are ΔB = ±2 (baryon-antibaryon pair creation/annihilation). □
+**Proof.** The torsion vacuum has homotopy group π₁(T₂g vacuum) = ℤ. A torsion winding number is a topological invariant of this configuration. Changing B by ±1 requires a continuous deformation that changes an integer winding number by ±1, which requires the torsion loop to pass through a configuration of zero size (topological transition). The confining torsion potential V(θ) = k(1−cosθ) assigns infinite energy to a separated fractional winding. Therefore no finite-energy process can change B by ±1. The only allowed changes are ΔB = ±2 (baryon-antibaryon pair creation/annihilation). □
 
 ### Theorem 2 (Lepton Number)
 *L is exactly conserved: ΔL ∈ {0, ±2, ±4, ...} only.*
@@ -66,7 +66,7 @@ The proton is the lightest baryon (lowest-energy closed T₂g torsion triplet). 
 ### Corollary (Neutrinoless Double Beta Decay)
 *Neutrinoless double beta decay (0νββ) is forbidden.*
 
-0νββ requires ΔL = ±2, which would require neutrinos to be Majorana particles (their own antiparticle). In UFFT, lepton number L is a topological integer invariant — Majorana mass terms violate L conservation and are therefore forbidden. Neutrinos are Dirac fermions. 0νββ experiments will find null results.
+0νββ requires ΔL = ±2, which would require neutrinos to be Majorana particles (their own antiparticle). In UFFT, lepton number L is a topological integer invariant, Majorana mass terms violate L conservation and are therefore forbidden. Neutrinos are Dirac fermions. 0νββ experiments will find null results.
 
 ---
 
@@ -93,13 +93,13 @@ The proton is the lightest baryon (lowest-energy closed T₂g torsion triplet). 
 
 ## 5. Relation to B−L Conservation in the SM
 
-The SM conserves B−L (baryon minus lepton number) perturbatively. UFFT is strictly stronger: both B and L are separately conserved. Any process that changes B = L by the same amount (such as sphaleron transitions or GUT gauge bosons) is also forbidden in UFFT. Sphaleron processes (which conserve B−L but violate B and L separately) cannot occur in the foam because they require a topological transition — which costs infinite energy by the same argument as the proof above.
+The SM conserves B−L (baryon minus lepton number) perturbatively. UFFT is strictly stronger: both B and L are separately conserved. Any process that changes B = L by the same amount (such as sphaleron transitions or GUT gauge bosons) is also forbidden in UFFT. Sphaleron processes (which conserve B−L but violate B and L separately) cannot occur in the foam because they require a topological transition, which costs infinite energy by the same argument as the proof above.
 
 This has implications for baryogenesis: the standard electroweak baryogenesis mechanism (sphaleron-mediated B+L violation) is unavailable in UFFT. Baryogenesis in UFFT must arise from initial conditions set at the Planck scale (when the foam first condensed), not from later phase transitions.
 
 ---
 
-**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis — physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
+**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis, physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
 
 ## UFFT Papers
 
@@ -116,6 +116,15 @@ This has implications for baryogenesis: the standard electroweak baryogenesis me
 [5] Particle Data Group, *Review of Particle Physics*, Prog. Theor. Exp. Phys. 2022, 083C01
 
 ---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #3 — The Fine Structure Constant from Planck-Scale Foam Geometry. DOI: 10.5281/zenodo.19011758
+- [2] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [3] Paper #8 — Maxwell's Equations from Foam Dynamics. DOI: 10.5281/zenodo.19063671
 
 ## AI Disclosure
 

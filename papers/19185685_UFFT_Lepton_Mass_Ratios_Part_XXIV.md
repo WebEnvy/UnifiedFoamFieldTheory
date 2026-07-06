@@ -14,6 +14,7 @@
 | Paper | #31 of 63 |
 | Framework | v10 |
 | Status | Complete, Tier 1. Updates Paper #10 with derived Koide angle θ=2/9. |
+| Tier | 1 |
 | DOI | 10.5281/zenodo.19185685 |
 | GitHub | https://github.com/WebEnvy/UnifiedFoamFieldTheory |
 
@@ -48,7 +49,7 @@ Two numbers, both unexplained. This Part derives both from the face Laplacian sp
 
 The three lepton generations (electron, muon, tau) are identified in UFFT as the three Z₃-rotated states of the T₂g torsion sector (Part XVIII). The T₂g irrep of O_h has dimension d = 3, corresponding to the three BCC torsion axes.
 
-The three lepton generations are the Z₃ orbit of the minimal closed T₂g torsion loop — the electron defect type — rotated through the three torsion axes by 2π/3 each.
+The three lepton generations are the Z₃ orbit of the minimal closed T₂g torsion loop (the electron defect type) rotated through the three torsion axes by 2π/3 each.
 
 For a Z₃-symmetric system of dimension d, the Koide amplitude is:
 
@@ -56,7 +57,7 @@ For a Z₃-symmetric system of dimension d, the Koide amplitude is:
 
 This is the magnitude of the Fourier coefficient for the first harmonic of a Z₃-symmetric function on a representation of dimension 3. It is a theorem about Z₃ acting on a 3-dimensional representation, not an assumption.
 
-Consequence: **Q = 2/3 exactly** — the Koide identity is enforced by the T₂g representation dimension.
+Consequence: **Q = 2/3 exactly**, the Koide identity is enforced by the T₂g representation dimension.
 
 ---
 
@@ -79,16 +80,16 @@ with irrep assignments:
 
 Two eigenvalues are critical:
 
-- **λ_T₂g = 7** — the lepton/torsion sector (T₂g component of the λ=7 degenerate quartet)
-- **λ_A₂u = 9** — the maximum eigenvalue, unique non-degenerate antipodal mode
+- **λ_T₂g = 7**, the lepton/torsion sector (T₂g component of the λ=7 degenerate quartet)
+- **λ_A₂u = 9**, the maximum eigenvalue, unique non-degenerate antipodal mode
 
-The A₂u mode (λ=9) is the spectral antipode of the A₁g ground state (λ=0). It is the unique eigenmode in which adjacent faces carry strictly opposite signs — maximal alternation across the cell. It is the only mode with opposite parity (u vs g) to the T₂g torsion sector.
+The A₂u mode (λ=9) is the spectral antipode of the A₁g ground state (λ=0). It is the unique eigenmode in which adjacent faces carry strictly opposite signs, maximal alternation across the cell. It is the only mode with opposite parity (u vs g) to the T₂g torsion sector.
 
 **The spectral gap:**
 
 **λ_A₂u − λ_T₂g = 9 − 7 = 2**
 
-This gap equals the Axiom Zero endpoint count (B + V = 2 per displacement event). This is not a numerical coincidence — it is a theorem about the face adjacency structure of the truncated octahedron. The characteristic polynomial (Part X) is:
+This gap equals the Axiom Zero endpoint count (B + V = 2 per displacement event). This is not a numerical coincidence, it is a theorem about the face adjacency structure of the truncated octahedron. The characteristic polynomial (Part X) is:
 
 **p(λ) = λ(λ²−9λ+16)³(λ−4)²(λ−7)⁴(λ−9)**
 
@@ -144,9 +145,9 @@ The lepton mass RATIOS are determined by two foam parameters, both derived from 
 
 These are the first first-principles derivations of the lepton mass ratios with zero free parameters.
 
-**Still open — absolute mass scale:**
+**Still open, absolute mass scale:**
 
-The parameter r₀ sets the absolute mass scale. It requires the torsion condensate scale Λ_QCD — the non-perturbative energy scale at which the T₂g torsion sector undergoes confinement. Once Λ_QCD is derived from the torsion potential V(θ) = k(1−cosθ), the absolute masses follow:
+The parameter r₀ sets the absolute mass scale. It requires the torsion condensate scale Λ_QCD, the non-perturbative energy scale at which the T₂g torsion sector undergoes confinement. Once Λ_QCD is derived from the torsion potential V(θ) = k(1−cosθ), the absolute masses follow:
 
 m_e = r₀² × (1 + √2 cos(δ))²,     where r₀ ~ Λ_QCD / (foam coupling)
 
@@ -154,7 +155,7 @@ This is the torsion condensate programme (Step 5).
 
 **Honest assessment:**
 
-The derivation of θ = (λ_A₂u − λ_T₂g)/λ_A₂u is physically motivated — the Koide angle is the spectral gap normalised to the spectral maximum — but the precise statement that this ratio equals the Z₃ phase shift has not been derived from a microscopic torsion loop calculation. The argument is: same ingredients, same pattern, same Axiom Zero factor of 2. The identification is productive and verified numerically; the microscopic derivation from the torsion propagator is the deeper programme.
+The derivation of θ = (λ_A₂u − λ_T₂g)/λ_A₂u is physically motivated (the Koide angle is the spectral gap normalised to the spectral maximum) but the precise statement that this ratio equals the Z₃ phase shift has not been derived from a microscopic torsion loop calculation. The argument is: same ingredients, same pattern, same Axiom Zero factor of 2. The identification is productive and verified numerically; the microscopic derivation from the torsion propagator is the deeper programme.
 
 This is the same epistemological status as every other identification in the framework: A_μ = D-mode (Maxwell), foam = spacetime (Birkhoff), T₂g chiral = frame-dragging (Kerr).
 
@@ -169,13 +170,30 @@ This is the same epistemological status as every other identification in the fra
 | δ | 2π/3 + θ | 2π/3 + 2/9 | Full Koide phase |
 
 Ingredients used:
-- **Axiom Zero** (the factor 2 in the numerator — same as beta function, same as α formula)
+- **Axiom Zero** (the factor 2 in the numerator, same as beta function, same as α formula)
 - **Face Laplacian spectrum** (λ_T₂g = 7 and λ_A₂u = 9, from Part X)
 - **T₂g representation dimension** (d = 3, from O_h character table)
 
 No new inputs beyond what was already in the framework.
 
 ---
+
+---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [2] Paper #10 — Lepton Mass Ratios from the Face Laplacian Spectrum. DOI: 10.5281/zenodo.19063774
+- [3] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #31 · DOI: 10.5281/zenodo.19185685 · Priority Date: 20 February 2026*
 

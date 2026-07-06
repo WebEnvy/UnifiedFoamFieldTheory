@@ -100,9 +100,9 @@ is the spectral weight available for higher-generation mixing.
 
 ### 3.2 Connection to the generation hierarchy
 
-The Wolfenstein A parameter controls the ratio |V_cb|/|V_us|² — the relative strength of second-to-first generation mixing. The face-spectral complement formula says: A measures how much of the face graph's spectral space lies above the first-generation eigenvalue.
+The Wolfenstein A parameter controls the ratio |V_cb|/|V_us|², the relative strength of second-to-first generation mixing. The face-spectral complement formula says: A measures how much of the face graph's spectral space lies above the first-generation eigenvalue.
 
-For a graph with more spectral weight in the lower eigenvalue (larger r₁/F), A would be smaller, meaning weaker second-generation mixing. The truncated octahedron's particular eigenvalue placement gives A ≈ 0.826 — close to unity, reflecting the fact that r₁ ≈ 2.44 is small relative to F = 14.
+For a graph with more spectral weight in the lower eigenvalue (larger r₁/F), A would be smaller, meaning weaker second-generation mixing. The truncated octahedron's particular eigenvalue placement gives A ≈ 0.826, close to unity, reflecting the fact that r₁ ≈ 2.44 is small relative to F = 14.
 
 ### 3.3 Comparison with the LO formula
 
@@ -162,14 +162,22 @@ The Wolfenstein A parameter is the face-spectral complement A = (F−r₁)/F = (
 
 ### UFFT Papers
 - [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
-- [2] Paper #16 — The Master Equation. DOI: 10.5281/zenodo.19064359
-- [3] Paper #34 — CKM Matrix from T₁u Eigenvalue Ratio. DOI: 10.5281/zenodo.19198360
-- [4] Paper #51 — NLO Mixing Correction. DOI: 10.5281/zenodo.19477100
+- [2] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+- [3] Paper #34 — The CKM Quark Mixing Matrix from Foam Cell Geometry. DOI: 10.5281/zenodo.19198360
+- [4] Paper #51 — The NLO Mixing Correction from First Principles. DOI: 10.5281/zenodo.19477100
 - [5] Paper #64 — Wolfenstein ρ̄ from Inter-Type Torsion. (Pending)
 
 ### External References
 - [6] Particle Data Group (2024). Review of Particle Physics. Phys. Rev. D 110, 030001.
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *B + V = D*

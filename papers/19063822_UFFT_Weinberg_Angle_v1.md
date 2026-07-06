@@ -62,6 +62,16 @@ The same foam integers that derive the fine structure constant (dim T₂g = 3, A
 
 ---
 
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #1 — Gravitational Suppression of Quantum Decoherence via Variable Vacuum Foam Density. DOI: 10.5281/zenodo.18706756
+- [2] Paper #2 — Void-Pair Conservation as the Physical Mechanism of Quantum Entanglement and Bell Correlations. DOI: 10.5281/zenodo.18706806
+- [3] Paper #3 — The Fine Structure Constant from Planck-Scale Foam Geometry. DOI: 10.5281/zenodo.19011758
+- [4] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+
 ## AI Disclosure
 
 This paper was developed in collaboration with Claude (Anthropic). Ideas, theory, and direction: Luke Martin. AI role: derivation formulation, verification of the Tr(Y²)/Tr(T₃²) calculation, document composition.

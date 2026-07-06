@@ -14,6 +14,7 @@
 | Paper | #37 of 63 |
 | Framework | v10 |
 | Status | Complete, Tier 4 |
+| Tier | 4 |
 | DOI | 10.5281/zenodo.19306316 |
 | GitHub | https://github.com/WebEnvy/UnifiedFoamFieldTheory |
 
@@ -23,9 +24,9 @@
 
 ## Abstract
 
-The face Laplacian of the truncated octahedron has maximum eigenvalue λ_max = 9 = C_A² and Euler characteristic χ = 2. The ratio λ_max²/χ = C_A⁴/2 = 40.5 is a dimensionless topological invariant of the foam cell. This number matches, exactly, the empirical base frequency (in Hz) assigned to hydrogen in the Russell spiral periodic table — where elements at the midpoints between noble gas shells form an octave series: H = 40.5, C = 81, Si = 162, Co = 324, Rh = 648. The entire series is 2^n × C_A⁴, where C_A = 3 is the colour number.
+The face Laplacian of the truncated octahedron has maximum eigenvalue λ_max = 9 = C_A² and Euler characteristic χ = 2. The ratio λ_max²/χ = C_A⁴/2 = 40.5 is a dimensionless topological invariant of the foam cell. This number matches, exactly, the empirical base frequency (in Hz) assigned to hydrogen in the Russell spiral periodic table, where elements at the midpoints between noble gas shells form an octave series: H = 40.5, C = 81, Si = 162, Co = 324, Rh = 648. The entire series is 2^n × C_A⁴, where C_A = 3 is the colour number.
 
-Raised to the visible spectrum by 43 octave doublings, C_A⁴ × 2⁴³ = 712.5 THz = 421 nm = indigo. The pineal gland contains calcite piezoelectric microcrystals (Baconnier et al., 2002) whose acoustic resonant frequency sits at the exact octave midpoint between the audible base (40.5 Hz) and the visible landing (712.5 THz) — a transducer positioned at the optimal frequency for bridging the acoustic and electromagnetic domains.
+Raised to the visible spectrum by 43 octave doublings, C_A⁴ × 2⁴³ = 712.5 THz = 421 nm = indigo. The pineal gland contains calcite piezoelectric microcrystals (Baconnier et al., 2002) whose acoustic resonant frequency sits at the exact octave midpoint between the audible base (40.5 Hz) and the visible landing (712.5 THz), a transducer positioned at the optimal frequency for bridging the acoustic and electromagnetic domains.
 
 The face Laplacian has 7 irreducible representation copies under O_h symmetry. This count matches the number of spectral bands in Newton's visible spectrum and the number of energy centres in the chakra tradition. The eigenvalue ordering is consistent with the frequency ordering of the visible spectrum (red to violet).
 
@@ -45,7 +46,7 @@ The dimensionless ratio:
 
 **f₀ = λ_max² / χ = 9² / 2 = 81/2 = 40.5**
 
-This is an exact algebraic quantity — a ratio of two topological invariants of the foam cell. It requires no physical constants, no measurement, and no fitted parameters.
+This is an exact algebraic quantity, a ratio of two topological invariants of the foam cell. It requires no physical constants, no measurement, and no fitted parameters.
 
 The number 40.5 appears independently in the Russell spiral periodic table [1], where it is assigned as the base frequency (in Hz) of hydrogen. The Russell table organises elements by their positions relative to noble gas closed shells, with elements at the midpoints forming an octave-doubling series.
 
@@ -53,7 +54,7 @@ The number 40.5 appears independently in the Russell spiral periodic table [1], 
 
 ## 2. The Midpoint Element Series
 
-Elements at the midpoint between consecutive noble gas shells share a common topological property: half-filled electron shells, corresponding to maximum configurational flexibility. In the UFFT framework, these are the elements at maximum foam shell openness — equidistant from two stable closed configurations [2].
+Elements at the midpoint between consecutive noble gas shells share a common topological property: half-filled electron shells, corresponding to maximum configurational flexibility. In the UFFT framework, these are the elements at maximum foam shell openness, equidistant from two stable closed configurations [2].
 
 | Element | Z | Noble gas midpoint | Frequency | Foam formula |
 |---------|---|--------------------|-----------|-------------|
@@ -63,7 +64,7 @@ Elements at the midpoint between consecutive noble gas shells share a common top
 | Cobalt | 27 | (18 + 36) / 2 = 27 | 324 Hz | 4 × C_A⁴ |
 | Rhodium | 45 | (36 + 54) / 2 = 45 | 648 Hz | 8 × C_A⁴ |
 
-The entire series is **2^n × C_A⁴** where n = −1, 0, 1, 2, 3. Carbon — the basis of organic chemistry, the most chemically versatile element — sits at the fundamental: C_A⁴ = 3⁴ = 81.
+The entire series is **2^n × C_A⁴** where n = −1, 0, 1, 2, 3. Carbon (the basis of organic chemistry, the most chemically versatile element) sits at the fundamental: C_A⁴ = 3⁴ = 81.
 
 ---
 
@@ -75,7 +76,7 @@ In Pythagorean tuning with scientific pitch (C₄ = 256 = 2⁸ Hz):
 - E₄ = (81/64) × 256 = 324 Hz exactly
 - E₃ = 162 Hz, E₂ = 81 Hz, E₁ = 40.5 Hz
 
-Every frequency in the midpoint element series is exact in Pythagorean tuning. The major third interval — one of the foundational consonances of Western music — is the ratio C_A⁴/2⁶, composed entirely of foam cell integers. No irrational numbers. No equal temperament approximation.
+Every frequency in the midpoint element series is exact in Pythagorean tuning. The major third interval (one of the foundational consonances of Western music) is the ratio C_A⁴/2⁶, composed entirely of foam cell integers. No irrational numbers. No equal temperament approximation.
 
 In the A₄ = 432 Hz tuning system (advocated by various musicians and acousticians as more "natural" than the modern A₄ = 440 Hz standard), the Pythagorean E₂ = 80.91 Hz, matching C_A⁴ = 81 to 0.1%.
 
@@ -124,7 +125,7 @@ where v_sound = 6,500 m/s along the calcite c-axis.
 | 19 | 171.1 | 22.01 | 21.99 | 0.500 |
 | 20 | 162.5 | 21.94 | 22.06 | 0.499 |
 
-At 19 μm — within the observed size range — the crystal resonance sits at the **exact octave midpoint** between the audible foam base (40.5 Hz) and the visible foam signature (712.5 THz).
+At 19 μm (within the observed size range) the crystal resonance sits at the **exact octave midpoint** between the audible foam base (40.5 Hz) and the visible foam signature (712.5 THz).
 
 The transduction chain:
 
@@ -176,7 +177,7 @@ Whether the Earth's electromagnetic cavity resonance is constrained by the foam 
 
 ## 8. Light and Sound in the Foam
 
-In the UFFT framework, both sound and light are displacement (D-mode) waves in the foam substrate [5]. Sound is a longitudinal pressure wave. Light is a transverse electromagnetic wave. Both propagate in the same medium — the Planck-density foam with equation of state P = ρc².
+In the UFFT framework, both sound and light are displacement (D-mode) waves in the foam substrate [5]. Sound is a longitudinal pressure wave. Light is a transverse electromagnetic wave. Both propagate in the same medium, the Planck-density foam with equation of state P = ρc².
 
 The speed of light c = √(P₀/ρ₀) is the sound speed of the foam at Planck density. Light IS sound in the foam, at a different polarisation. The distinction between acoustic and electromagnetic phenomena is an emergent-layer categorisation, not a substrate-level distinction.
 
@@ -245,6 +246,14 @@ These are algebraic facts of the truncated octahedron's geometry. The dimensiona
 [5] Martin, L. (2026). The Unified Foam Field Theory: Core Mathematical Framework. Zenodo. DOI: 10.5281/zenodo.18706756.
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #37 · DOI: 10.5281/zenodo.19306316 · Priority Date: 20 February 2026*
 

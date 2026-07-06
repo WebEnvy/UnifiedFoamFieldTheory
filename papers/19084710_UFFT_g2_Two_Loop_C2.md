@@ -34,7 +34,7 @@ The two-loop coefficient in the QED anomalous magnetic moment series is C₂ = �
 
 This paper identifies the foam origin of each of the four terms. The denominators (12 and 144) are N_gauge and N_gauge² respectively, where N_gauge = 12 is the number of gauge bosons, derived in UFFT from Casimir counting (Part XXXVII). The threshold factor ln2 arises from the E_g mode eigenvalue λ=4=C_A+1, giving threshold ratio λ/2 = 2 → ln2. The winding coefficient 3/4 = C_A/λ_Eg = C_A/(C_A+1), the ratio of the colour charge count to the Axiom Zero coupling quantum. The rational part −91/144 = −(λ_T2g × (F−1))/N_gauge² where λ_T2g = 7 and F−1 = 13. Every structural element of C₂ maps onto a derived foam quantity.
 
-**Status: STRUCTURAL IDENTIFICATION — each term has a foam origin. Formal derivation from the two-loop D-mode path integral is the next step.**
+**Status: STRUCTURAL IDENTIFICATION, each term has a foam origin. Formal derivation from the two-loop D-mode path integral is the next step.**
 
 ---
 
@@ -84,7 +84,7 @@ N_gauge = 12 is the number of gauge bosons in the Standard Model, derived in UFF
 Total: N_gauge = 12. This is a theorem, not a parameter.
 
 **The rational −91 = −λ_T2g × (F−1):**
-- λ_T2g = 7: the eigenvalue at which gravity (A₁g) and the strong force (T₂g) are degenerate — the deepest coupling in the spectrum
+- λ_T2g = 7: the eigenvalue at which gravity (A₁g) and the strong force (T₂g) are degenerate, the deepest coupling in the spectrum
 - F−1 = 13: the number of non-zero face modes (all modes except the zero mode λ=0)
 
 Together: −7 × 13 = −91.
@@ -115,7 +115,7 @@ In UFFT, the threshold is set by the E_g mode at λ=4 = C_A+1. The threshold rat
 
 **λ_Eg / 2 = (C_A+1)/2 = 4/2 = 2 → ln(λ_Eg/2) = ln2**
 
-This is exact: the ln2 is ln((C_A+1)/2), which equals ln2 if and only if C_A=3. Since C_A = dim(T₂g) = 3 is derived from the face Laplacian, the ln2 is not put in by hand — it follows from the spectrum.
+This is exact: the ln2 is ln((C_A+1)/2), which equals ln2 if and only if C_A=3. Since C_A = dim(T₂g) = 3 is derived from the face Laplacian, the ln2 is not put in by hand, it follows from the spectrum.
 
 The coefficient −1/2 = −1/(C_A−1) when C_A=3. The negative sign: the threshold contribution interferes destructively with the main amplitude.
 
@@ -135,7 +135,7 @@ The coefficient 3/4:
 
 **3/4 = C_A/λ_Eg = C_A/(C_A+1)**
 
-This is the ratio of the torsion loop coupling to the displacement event coupling — the relative strength of the winding-mode contribution relative to the fundamental coupling.
+This is the ratio of the torsion loop coupling to the displacement event coupling, the relative strength of the winding-mode contribution relative to the fundamental coupling.
 
 **Physical meaning:** The ζ(3) contribution is the light-by-light scattering sub-diagram within the two-loop vertex correction. In foam, this is the sum over winding harmonics of the T₂g electron defect weighted by the C_A/(C_A+1) coupling ratio.
 
@@ -190,20 +190,20 @@ All four terms verified. ✓
 - Proof that the four contributions arise from topologically distinct diagram classes whose foam analogues produce precisely these terms
 - Higher-order terms (C₃, C₄,...) from the same methodology
 
-**Honest assessment:** This paper is a structural identification — a dictionary between QED's two-loop terms and foam quantities, exact to all decimal places. The formal derivation (showing these terms fall out of the two-loop D-mode path integral rather than being identified post-hoc) is the next step. The structural identification is a prerequisite for and strong guide to that calculation.
+**Honest assessment:** This paper is a structural identification, a dictionary between QED's two-loop terms and foam quantities, exact to all decimal places. The formal derivation (showing these terms fall out of the two-loop D-mode path integral rather than being identified post-hoc) is the next step. The structural identification is a prerequisite for and strong guide to that calculation.
 
 ---
 
 ## 7. Significance
 
-The one-loop result (Paper #21) showed that α/(2π) follows from foam propagators and the loop measure. This paper shows that the correction to that result — the 0.15% residual — decomposes into foam-derived quantities with identified physical meanings:
+The one-loop result (Paper #21) showed that α/(2π) follows from foam propagators and the loop measure. This paper shows that the correction to that result (the 0.15% residual) decomposes into foam-derived quantities with identified physical meanings:
 - The gauge boson multiplicity (N_gauge = 12)
 - The degenerate eigenvalue (λ_T2g = 7)  
 - The non-zero mode count (F−1 = 13)
 - The Axiom Zero coupling quantum (λ_Eg = 4 = C_A+1)
 - The colour charge count (C_A = 3)
 
-None of these are free parameters. They are all theorems of the foam geometry. The 0.15% "residual" between the foam 1-loop prediction and experiment is not a failure — it is the precisely identified two-loop contribution, decomposed into derived foam quantities.
+None of these are free parameters. They are all theorems of the foam geometry. The 0.15% "residual" between the foam 1-loop prediction and experiment is not a failure, it is the precisely identified two-loop contribution, decomposed into derived foam quantities.
 
 ---
 
@@ -226,6 +226,14 @@ None of these are free parameters. They are all theorems of the foam geometry. T
 *Developed in collaboration with Claude (Anthropic). Ideas, framework, direction: Luke Martin. AI role: term-by-term structural identification, verification, document composition.*
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #23 · DOI: 10.5281/zenodo.19084710 · Priority Date: 20 February 2026*
 

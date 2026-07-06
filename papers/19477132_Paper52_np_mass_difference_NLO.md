@@ -26,7 +26,7 @@ We derive the neutron–proton mass difference to next-to-leading order (NLO) wi
 
 **Δm_NLO = m_e × (6+√17)/4 × [1 + α√17 / ((V−F) × E)] = m_e × (6+√17)/4 × [1 + α√17/360]**
 
-This gives 1.2933322 MeV — a residual of +0.17 eV, a tension of +0.34σ against PDG 2022. The correction factor (V−F) × E = 10 × 36 = 360 is the same Euler topological integer governing NLO corrections to the fine structure constant and the Weinberg angle, confirming structural coherence across the electromagnetic sector. Zero free parameters. In the context of Haramein, Alirol and Guermonprez (2025), this result completes the nucleon mass sector: their framework anchors m_p to vacuum fluctuation dynamics; UFFT anchors Δm = m_n − m_p to cell geometry.
+This gives 1.2933322 MeV, a residual of +0.17 eV, a tension of +0.34σ against PDG 2022. The correction factor (V−F) × E = 10 × 36 = 360 is the same Euler topological integer governing NLO corrections to the fine structure constant and the Weinberg angle, confirming structural coherence across the electromagnetic sector. Zero free parameters. In the context of Haramein, Alirol and Guermonprez (2025), this result completes the nucleon mass sector: their framework anchors m_p to vacuum fluctuation dynamics; UFFT anchors Δm = m_n − m_p to cell geometry.
 
 **Keywords:** neutron-proton mass difference, NLO correction, electromagnetic self-energy, Euler characteristic, truncated octahedron, nucleon mass, foam field theory, UFFT
 
@@ -34,7 +34,7 @@ This gives 1.2933322 MeV — a residual of +0.17 eV, a tension of +0.34σ agains
 
 ## 1. Status Entering This Paper
 
-The neutron–proton mass difference Δm = m_n − m_p = 1.29333 MeV is one of the most consequential numbers in physics. It determines the stability of hydrogen, the neutron lifetime, and the primordial abundance of helium. A clean first-principles derivation remains elusive in standard physics — lattice QCD reproduces the value approximately but with large numerical effort and percent-level uncertainties.
+The neutron–proton mass difference Δm = m_n − m_p = 1.29333 MeV is one of the most consequential numbers in physics. It determines the stability of hydrogen, the neutron lifetime, and the primordial abundance of helium. A clean first-principles derivation remains elusive in standard physics, lattice QCD reproduces the value approximately but with large numerical effort and percent-level uncertainties.
 
 Paper #49 established the LO formula:
 
@@ -47,7 +47,7 @@ Paper #49 established the LO formula:
 | Residual | −107.91 eV | −215.8σ |
 | Fractional error | 0.008% | |
 
-The LO formula achieves 0.008% accuracy by value — remarkable for a derivation using only cell integers — but falls 108 eV short of experimental precision. An NLO correction is required.
+The LO formula achieves 0.008% accuracy by value (remarkable for a derivation using only cell integers) but falls 108 eV short of experimental precision. An NLO correction is required.
 
 ---
 
@@ -55,8 +55,8 @@ The LO formula achieves 0.008% accuracy by value — remarkable for a derivation
 
 In standard physics, the neutron–proton mass difference has two components:
 
-1. **Quark mass contribution:** m_d − m_u ≈ +2.5 MeV (positive — makes neutron heavier)
-2. **Electromagnetic self-energy:** Δm_EM ≈ −0.76 MeV (negative — proton's EM self-energy partially cancels)
+1. **Quark mass contribution:** m_d − m_u ≈ +2.5 MeV (positive, makes neutron heavier)
+2. **Electromagnetic self-energy:** Δm_EM ≈ −0.76 MeV (negative, proton's EM self-energy partially cancels)
 
 The net Δm ≈ 1.293 MeV results from approximate cancellation between these two large contributions. The LO UFFT formula captures the net value to 0.008%; the NLO term accounts for the residual electromagnetic correction at the level of α × Δm_LO ≈ 9.4 eV.
 
@@ -64,7 +64,7 @@ The net Δm ≈ 1.293 MeV results from approximate cancellation between these tw
 
 ## 3. The UFFT Electromagnetic Channel
 
-In UFFT, electromagnetism is carried by the Eg mode — eigenvalue 4, 100% square-face confined (Theorem X.1, Session 3 verification). The proton (uud quarks, total charge +1) has electromagnetic self-energy; the neutron (udd quarks, total charge 0) does not couple to the Eg mode.
+In UFFT, electromagnetism is carried by the Eg mode, eigenvalue 4, 100% square-face confined (Theorem X.1, Session 3 verification). The proton (uud quarks, total charge +1) has electromagnetic self-energy; the neutron (udd quarks, total charge 0) does not couple to the Eg mode.
 
 The one-loop EM self-energy correction in UFFT runs over all E = 36 edges of the cell, with Euler topological weight (V−F) = 10. This is the same factor that appears in:
 
@@ -80,7 +80,7 @@ The NLO correction factor is:
 
 ## 4. Why √17 Appears in the Correction
 
-The factor √17 = √Δ arises because the electromagnetic self-energy of the fermion sector couples through the T₁u eigenvalue structure. The T₁u eigenvalues r₁ and r₂ satisfy the master equation λ² − 9λ + 16 = 0 with discriminant Δ = 17. All corrections within the fermion sector that involve coupling between the T₁u (matter) and Eg (EM) channels inherit √Δ as a coupling factor — directly analogous to the appearance of √17 in the neutrino mass formulas and the PMNS mixing angles.
+The factor √17 = √Δ arises because the electromagnetic self-energy of the fermion sector couples through the T₁u eigenvalue structure. The T₁u eigenvalues r₁ and r₂ satisfy the master equation λ² − 9λ + 16 = 0 with discriminant Δ = 17. All corrections within the fermion sector that involve coupling between the T₁u (matter) and Eg (EM) channels inherit √Δ as a coupling factor, directly analogous to the appearance of √17 in the neutrino mass formulas and the PMNS mixing angles.
 
 ---
 
@@ -88,8 +88,8 @@ The factor √17 = √Δ arises because the electromagnetic self-energy of the f
 
 The denominator has a clean topological derivation:
 
-- **(V−F) = 10:** The Euler characteristic of the truncated octahedron is V − E + F = 24 − 36 + 14 = 2, so V − F = 24 − 14 = 10. This integer counts the net topological excess of vertices over faces — a measure of the cell's deviation from a sphere.
-- **E = 36:** The total number of edges — the nearest-neighbour connections over which the one-loop self-energy integral runs.
+- **(V−F) = 10:** The Euler characteristic of the truncated octahedron is V − E + F = 24 − 36 + 14 = 2, so V − F = 24 − 14 = 10. This integer counts the net topological excess of vertices over faces, a measure of the cell's deviation from a sphere.
+- **E = 36:** The total number of edges, the nearest-neighbour connections over which the one-loop self-energy integral runs.
 
 Their product (V−F) × E = 10 × 36 = 360 is the total number of topologically weighted edge connections in the EM self-energy loop.
 
@@ -129,7 +129,7 @@ All three use (V−F) = 10 as the topological weight. The denominators differ be
 
 ## 8. Connection to Haramein, Alirol and Guermonprez (2025)
 
-The recent preprint by Haramein, Alirol and Guermonprez — "Extending Einstein-Rosen's Geometric Vision: Vacuum Fluctuations-Induced Curvature as the Source of Mass, Gravity and Nuclear Confinement" (Preprints.org 2025091835) — derives the proton mass m_p from electromagnetic vacuum fluctuations treated as coherent modes of zero-temperature black-body radiation undergoing decoherence within the proton's resonant cavity.
+The recent preprint by Haramein, Alirol and Guermonprez ("Extending Einstein-Rosen's Geometric Vision: Vacuum Fluctuations-Induced Curvature as the Source of Mass, Gravity and Nuclear Confinement" (Preprints.org 2025091835)) derives the proton mass m_p from electromagnetic vacuum fluctuations treated as coherent modes of zero-temperature black-body radiation undergoing decoherence within the proton's resonant cavity.
 
 The two frameworks are complementary:
 
@@ -168,7 +168,7 @@ The following steps would elevate this result from Tier 3 to Tier 2:
 
 ## 11. Conclusion
 
-The neutron–proton mass difference is derived to NLO within UFFT, giving 1.2933322 MeV against the PDG value of 1.2933320 MeV — a tension of +0.34σ, with residual +0.17 eV against experimental precision of ±0.5 eV.
+The neutron–proton mass difference is derived to NLO within UFFT, giving 1.2933322 MeV against the PDG value of 1.2933320 MeV, a tension of +0.34σ, with residual +0.17 eV against experimental precision of ±0.5 eV.
 
 The NLO correction α√17/((V−F)×E) = α√17/360 is determined entirely by cell geometry and the fine structure constant. No free parameters are introduced. The correction factor (V−F) × E = 10 × 36 = 360 is the same Euler topological integer governing NLO corrections to α and sin²θ_W, demonstrating structural coherence across the entire electromagnetic sector.
 

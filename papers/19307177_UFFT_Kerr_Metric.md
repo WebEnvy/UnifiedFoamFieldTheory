@@ -24,7 +24,7 @@
 
 The exact Kerr metric is derived from three conditions on the Planck-density foam: (1) covariant vacuum density ρ = ρ₀(1 − r_s r/Σ) from the oblate density profile of a rotating mass, (2) foam incompressibility ν = 1/2 giving g_rr = Σ/Δ and g_θθ = Σ with the centrifugal correction Δ = r² − r_s r + a², and (3) torsion = angular momentum giving g_tφ = −r_s r a sin²θ/Σ from the frame-dragging torsion gradient. The remaining metric component g_φφ follows from the determinant condition √(−g) = Σ sin θ (incompressible cell count conservation). All five metric components are derived from foam mechanics with zero free parameters beyond M and J.
 
-The spin-statistics classification emerges from Wilson loop flux: the fermion triangle carries total torsion flux Φ = 2θ_sh + θ_hh = π exactly (the total torsion identity). Angular momentum = flux/(2π) gives spin = π/(2π) = 1/2 for fermions. Bosonic 4-cycles carry flux 0 (spin 0) or 2π (spin 1). The graviton carries flux 4π (spin 2). Every Kerr feature — the event horizon, ergosphere, ring singularity, frame dragging, and cosmic censorship — has a direct foam interpretation in terms of edge saturation, torsion inversion, cell merging, torsion gradients, and the structural limit of the lattice topology.
+The spin-statistics classification emerges from Wilson loop flux: the fermion triangle carries total torsion flux Φ = 2θ_sh + θ_hh = π exactly (the total torsion identity). Angular momentum = flux/(2π) gives spin = π/(2π) = 1/2 for fermions. Bosonic 4-cycles carry flux 0 (spin 0) or 2π (spin 1). The graviton carries flux 4π (spin 2). Every Kerr feature (the event horizon, ergosphere, ring singularity, frame dragging, and cosmic censorship) has a direct foam interpretation in terms of edge saturation, torsion inversion, cell merging, torsion gradients, and the structural limit of the lattice topology.
 
 **Keywords:** Kerr metric, rotating black hole, frame dragging, incompressibility, Poisson ratio, torsion, angular momentum, spin-statistics, Wilson loop, foam field theory, UFFT
 
@@ -34,10 +34,10 @@ The spin-statistics classification emerges from Wilson loop flux: the fermion tr
 
 The Schwarzschild metric was derived in earlier work from two conditions:
 
-**Condition 1 — Covariant vacuum density:**
+**Condition 1, Covariant vacuum density:**
 ρ(r) = ρ₀ × (−g_tt/c²), yielding g_tt = −(1 − r_s/r).
 
-**Condition 2 — Foam incompressibility (ν = 1/2):**
+**Condition 2, Foam incompressibility (ν = 1/2):**
 Proper volume = coordinate volume × density factor, yielding g_rr = 1/(1 − r_s/r).
 
 These give the exact Schwarzschild metric: ds² = −(1−r_s/r)c²dt² + dr²/(1−r_s/r) + r²dΩ².
@@ -48,7 +48,7 @@ These give the exact Schwarzschild metric: ds² = −(1−r_s/r)c²dt² + dr²/(
 
 ### 2.1 How the foam carries angular momentum
 
-Each truncated octahedral cell has 6 square faces defining 3 cubic axes. Angular momentum J about the z-axis corresponds to torsion (twist) on the edges connecting the ±z square faces to their hexagonal neighbours. A rotating cell drags its neighbours through the shared walls — Newton's third law applied to rotating walls. This drag is frame dragging.
+Each truncated octahedral cell has 6 square faces defining 3 cubic axes. Angular momentum J about the z-axis corresponds to torsion (twist) on the edges connecting the ±z square faces to their hexagonal neighbours. A rotating cell drags its neighbours through the shared walls, Newton's third law applied to rotating walls. This drag is frame dragging.
 
 ### 2.2 The oblate density profile
 
@@ -82,7 +82,7 @@ The density ρ(r,θ) = ρ₀(1 − r_s r/Σ) is the unique axisymmetric extensio
 
 ### 3.3 Condition 3: Torsion = angular momentum
 
-The off-diagonal component comes from the torsion gradient — frame dragging:
+The off-diagonal component comes from the torsion gradient, frame dragging:
 
 **g_tφ = −r_s r a sin²θ / Σ**
 
@@ -110,15 +110,15 @@ This is the exact Kerr metric in Boyer-Lindquist coordinates. No approximation. 
 
 ### 5.1 Event horizon (Δ = 0)
 
-The surface r₊ = r_s/2 + √(r_s²/4 − a²) is where radial edges reach saturation — cells cannot push signal outward against the inflow. Rotation reduces the horizon radius because cells have angular escape routes (the torsion provides tangential channels).
+The surface r₊ = r_s/2 + √(r_s²/4 − a²) is where radial edges reach saturation, cells cannot push signal outward against the inflow. Rotation reduces the horizon radius because cells have angular escape routes (the torsion provides tangential channels).
 
 ### 5.2 Ergosphere
 
-The region between the horizon and the surface where g_tt = 0 (at r = r_s/2 + √(r_s²/4 − a²cos²θ)). Inside the ergosphere, the foam density is "inverted" — all cells are dragged in the φ direction by the torsion. Energy extraction via the Penrose process corresponds to surfing the torsion gradient: counter-rotating against the drag extracts rotational energy from the foam.
+The region between the horizon and the surface where g_tt = 0 (at r = r_s/2 + √(r_s²/4 − a²cos²θ)). Inside the ergosphere, the foam density is "inverted", all cells are dragged in the φ direction by the torsion. Energy extraction via the Penrose process corresponds to surfing the torsion gradient: counter-rotating against the drag extracts rotational energy from the foam.
 
 ### 5.3 Ring singularity (Σ = 0)
 
-At r = 0, θ = π/2: a ring of radius a where the density diverges. In the foam, cells in the equatorial plane at r = 0 are maximally compressed. Inside the ring (Σ < 0), the foam has "flipped" its orientation — a topological transition, not a physical infinity.
+At r = 0, θ = π/2: a ring of radius a where the density diverges. In the foam, cells in the equatorial plane at r = 0 are maximally compressed. Inside the ring (Σ < 0), the foam has "flipped" its orientation, a topological transition, not a physical infinity.
 
 ### 5.4 Frame dragging
 
@@ -126,7 +126,7 @@ The g_tφ component is the torsion gradient: rotating cells drag their neighbour
 
 ### 5.5 Cosmic censorship (a ≤ M)
 
-The maximum spin a² ≤ r_s²/4 is the structural limit of the foam. If a > M, the horizon function Δ has no real roots — no horizon forms. In the foam, this would require torsion exceeding the incompressibility limit. The topology changes before this threshold, preventing naked singularities.
+The maximum spin a² ≤ r_s²/4 is the structural limit of the foam. If a > M, the horizon function Δ has no real roots, no horizon forms. In the foam, this would require torsion exceeding the incompressibility limit. The topology changes before this threshold, preventing naked singularities.
 
 ---
 
@@ -144,7 +144,7 @@ The angular momentum of the excitation:
 
 **Spin = Φ/(2π) = π/(2π) = 1/2**
 
-Spin-1/2 is half-integer flux divided by 2π. The electron is a spin-1/2 particle because its fermion triangle carries exactly π of torsion flux — an algebraic fact about the dihedral angles of the truncated octahedron.
+Spin-1/2 is half-integer flux divided by 2π. The electron is a spin-1/2 particle because its fermion triangle carries exactly π of torsion flux, an algebraic fact about the dihedral angles of the truncated octahedron.
 
 ### 6.2 The spin-statistics classification
 
@@ -155,7 +155,7 @@ Spin-1/2 is half-integer flux divided by 2π. The electron is a spin-1/2 particl
 | Vector 4-cycle | 2π | 1 | Bose-Einstein | γ, W, Z, gluons |
 | Tensor loop | 4π | 2 | Bose-Einstein | Graviton |
 
-The spin-statistics theorem is not imposed — it follows from the Wilson loop flux on the face graph. Fermions have half-integer flux (π). Bosons have integer flux (0, 2π, 4π). The connection between spin and statistics is the connection between torsion flux and the topology of the loop on which the excitation lives.
+The spin-statistics theorem is not imposed, it follows from the Wilson loop flux on the face graph. Fermions have half-integer flux (π). Bosons have integer flux (0, 2π, 4π). The connection between spin and statistics is the connection between torsion flux and the topology of the loop on which the excitation lives.
 
 ---
 

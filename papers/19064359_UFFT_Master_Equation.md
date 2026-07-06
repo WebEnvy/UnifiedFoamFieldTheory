@@ -32,9 +32,9 @@ The face Laplacian of the truncated octahedron (Kelvin cell) has characteristic 
 
 From this one equation, via Vieta's formulas, every Kelvin cell eigenvalue follows: λ_Higgs=C_A²=9, λ_T₂g=C_A²−2=7, λ_E_g=C_A+1=4, λ_T₁u±=(C_A²±√Δ)/2 where Δ=C_A⁴−4(C_A+1)²=17. Every spectral prediction is a rational function of C_A and √17: the Koide angle θ=2/C_A²=2/9 (exact), solar neutrino mixing tan²θ₁₂=√17/9 (0.49σ), and Higgs/Z mass ratio m_H/M_Z=18/(9+√17) (0.97σ).
 
-The void lattice (octahedral holes in BCC packing) has face Laplacian spectrum {0, 2, 4, 6} = {0, C_A−1, C_A+1, 2C_A} — all integers. The bubble vacuum (Kelvin cell) is a C_A-unit perturbation of this symmetric void vacuum, shifting the even-parity sectors (T₂g, A₂u) each by exactly +C_A. The asymmetric T₁u splitting produces neutrino mixing with discriminant Δ=17.
+The void lattice (octahedral holes in BCC packing) has face Laplacian spectrum {0, 2, 4, 6} = {0, C_A−1, C_A+1, 2C_A}, all integers. The bubble vacuum (Kelvin cell) is a C_A-unit perturbation of this symmetric void vacuum, shifting the even-parity sectors (T₂g, A₂u) each by exactly +C_A. The asymmetric T₁u splitting produces neutrino mixing with discriminant Δ=17.
 
-The E_g sector (λ=4, previously unidentified) is resolved: λ_E_g=C_A+1 is the geometric mean of the T₁u eigenvalue pair (√(λ₁λ₂)=√16=4), identifiable as the Axiom Zero coupling mode — the spectral bridge between bubble and void lattices. A new exact identity is established: b₀^QCD=λ_T₂g=C_A²−2=7 when n_f=3C_A^W=6.
+The E_g sector (λ=4, previously unidentified) is resolved: λ_E_g=C_A+1 is the geometric mean of the T₁u eigenvalue pair (√(λ₁λ₂)=√16=4), identifiable as the Axiom Zero coupling mode, the spectral bridge between bubble and void lattices. A new exact identity is established: b₀^QCD=λ_T₂g=C_A²−2=7 when n_f=3C_A^W=6.
 
 **One axiom (B+V=D). One cell (BCC Kelvin). One number (C_A=3). All dimensionless SM physics.**
 
@@ -54,7 +54,7 @@ with C_A=3 as the sole input. The coefficients σ₁=C_A²=9 and σ₂=(C_A+1)²
 
 ## 2. The Void Lattice Face Laplacian
 
-The BCC lattice of bubble cells contains octahedral holes — 6 per unit cell at face-centre positions. By Axiom Zero (B+V=D), every bubble pairs with a void. The natural void cell is the regular octahedron.
+The BCC lattice of bubble cells contains octahedral holes, 6 per unit cell at face-centre positions. By Axiom Zero (B+V=D), every bubble pairs with a void. The natural void cell is the regular octahedron.
 
 The face adjacency Laplacian of the octahedron (8 triangular faces, each adjacent to 3 others) has characteristic polynomial p(λ)=λ(λ−2)³(λ−4)³(λ−6), giving spectrum:
 
@@ -104,13 +104,13 @@ The integer 17 = Δ = C_A⁴−4(C_A+1)² is not a coincidence. It is the discri
 
 ## 5. Three New Exact Identities
 
-**Identity 1 — E_g identified:**
-λ_E_g = √(λ₁λ₂) = √σ₂ = C_A+1 = 4. The E_g sector is the geometric mean of the T₁u eigenvalue pair — the Axiom Zero coupling mode between bubble and void lattices. The 14-mode spectral dictionary is now complete.
+**Identity 1, E_g identified:**
+λ_E_g = √(λ₁λ₂) = √σ₂ = C_A+1 = 4. The E_g sector is the geometric mean of the T₁u eigenvalue pair, the Axiom Zero coupling mode between bubble and void lattices. The 14-mode spectral dictionary is now complete.
 
-**Identity 2 — Beta coefficient equals eigenvalue:**
+**Identity 2, Beta coefficient equals eigenvalue:**
 b₀^QCD = 11−(2/3)n_f = 7 = C_A²−2 = λ_T₂g (when n_f=3C_A^W=6). The QCD asymptotic freedom coefficient is the spectral position of the strong force sector.
 
-**Identity 3 — C_A=3 is self-consistent:**
+**Identity 3, C_A=3 is self-consistent:**
 The symmetry breaking shift from void to bubble is δλ=C_A for even-parity sectors. This requires C_A²−2C_A−3=0, giving C_A=3 as the unique positive root. The foam self-selects C_A=3.
 
 ---
@@ -126,7 +126,7 @@ The void vacuum (octahedron) maps to the bubble vacuum (Kelvin cell) by a C_A-un
 | T₁u (weak/ν) | C_A−1=2 | (C_A²±√Δ)/2 | splits |
 | A₁g (gravity) | 0 | 0 | unchanged |
 
-The T₁u asymmetric splitting — and therefore all neutrino mixing — is the direct consequence of the symmetry breaking from the void (unbroken, integer spectrum) to the bubble (broken, irrational spectrum).
+The T₁u asymmetric splitting (and therefore all neutrino mixing) is the direct consequence of the symmetry breaking from the void (unbroken, integer spectrum) to the bubble (broken, irrational spectrum).
 
 ---
 
@@ -134,7 +134,7 @@ The T₁u asymmetric splitting — and therefore all neutrino mixing — is the 
 
 The Standard Model's dimensionless predictions are encoded in a single quadratic with coefficients (σ₁,σ₂)=(C_A²,(C_A+1)²)=(9,16). One equation. One number. All of it.
 
-**Physical mapping status:** The identification of foam sectors with SM fields is a hypothesis — numerically verified, not deductively established. The algebra is rigorous; the physical interpretation is proposed and testable. See UFFT Core Framework v10 Scope and Status.
+**Physical mapping status:** The identification of foam sectors with SM fields is a hypothesis, numerically verified, not deductively established. The algebra is rigorous; the physical interpretation is proposed and testable. See UFFT Core Framework v10 Scope and Status.
 
 ---
 

@@ -24,13 +24,13 @@
 
 ## Abstract
 
-*(This result assumes covariance holds in the continuum limit of the foam. The emergence of Lorentz invariance from O_h symmetry remains an open problem — see UFFT Core Framework v2 Scope and Status.)*
+*(This result assumes covariance holds in the continuum limit of the foam. The emergence of Lorentz invariance from O_h symmetry remains an open problem, see UFFT Core Framework v2 Scope and Status.)*
 
 We derive both Friedmann cosmological field equations and the Einstein-Hilbert action from the Unified Foam Field Theory (UFFT) framework using only existing ingredients. No new inputs are required.
 
-**Friedmann equations:** For a flat (k = 0) homogeneous universe — where k = 0 is independently derived from the universe sitting at its own Schwarzschild radius (Part II) — Newton's law gives the exact first Friedmann equation H² = (8πG/3)ρ + Λc²/3 without relativistic correction. The k = 0 result makes the Newtonian derivation exact, not approximate, by Birkhoff's theorem. The second Friedmann equation ä/a = −(4πG/3)(ρ + 3P/c²) + Λc²/3 follows from differentiating the first and applying the relativistic continuity equation (already in the framework). Newton's constant G = c³l_P²/ℏ is derived from the foam cell size l_P — it is not a free parameter.
+**Friedmann equations:** For a flat (k = 0) homogeneous universe, where k = 0 is independently derived from the universe sitting at its own Schwarzschild radius (Part II), Newton's law gives the exact first Friedmann equation H² = (8πG/3)ρ + Λc²/3 without relativistic correction. The k = 0 result makes the Newtonian derivation exact, not approximate, by Birkhoff's theorem. The second Friedmann equation ä/a = −(4πG/3)(ρ + 3P/c²) + Λc²/3 follows from differentiating the first and applying the relativistic continuity equation (already in the framework). Newton's constant G = c³l_P²/ℏ is derived from the foam cell size l_P, it is not a free parameter.
 
-**Einstein-Hilbert action:** Lovelock's theorem (1971) states that in 4-dimensional spacetime, the only generally covariant, second-order gravitational theory with the correct Newtonian limit is GR with a cosmological constant. The foam satisfies all three conditions: (1) general covariance — from the relativistic Euler equation (Part XII), (2) second-order dynamics — the Schwarzschild and Kerr metrics are confirmed GR solutions (Parts XVII, XX), (3) Newtonian limit — Newton's law derived exactly (Part I). Lovelock's theorem uniquely identifies the Einstein field equations G_μν + Λg_μν = (8πG/c⁴)T_μν. The action that produces these equations by variation is the Einstein-Hilbert action S = cℏ/(16πl_P²) ∫(R−2Λ)√(−g)d⁴x, with coefficient cℏ/(16πl_P²) fully determined by foam geometry — c from the equation of state, ℏ from the quantum of action, l_P from the cell size.
+**Einstein-Hilbert action:** Lovelock's theorem (1971) states that in 4-dimensional spacetime, the only generally covariant, second-order gravitational theory with the correct Newtonian limit is GR with a cosmological constant. The foam satisfies all three conditions: (1) general covariance, from the relativistic Euler equation (Part XII), (2) second-order dynamics, the Schwarzschild and Kerr metrics are confirmed GR solutions (Parts XVII, XX), (3) Newtonian limit, Newton's law derived exactly (Part I). Lovelock's theorem uniquely identifies the Einstein field equations G_μν + Λg_μν = (8πG/c⁴)T_μν. The action that produces these equations by variation is the Einstein-Hilbert action S = cℏ/(16πl_P²) ∫(R−2Λ)√(−g)d⁴x, with coefficient cℏ/(16πl_P²) fully determined by foam geometry, c from the equation of state, ℏ from the quantum of action, l_P from the cell size.
 
 Both derivations use the same uniqueness-theorem strategy as the Schwarzschild g_rr derivation (Birkhoff) and the Kerr metric derivation (Carter-Robinson). The resulting framework contains no free gravitational parameters: G, c, and Λ are all determined by foam geometry.
 
@@ -55,6 +55,18 @@ Both derivations use the same uniqueness-theorem strategy as the Schwarzschild g
 [6] Martin, L. (2026). The Fine Structure Constant from Planck-Scale Foam Geometry (v2). *Zenodo*. DOI: 10.5281/zenodo.19011758.
 
 ---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #1 — Gravitational Suppression of Quantum Decoherence via Variable Vacuum Foam Density. DOI: 10.5281/zenodo.18706756
+- [2] Paper #2 — Void-Pair Conservation as the Physical Mechanism of Quantum Entanglement and Bell Correlations. DOI: 10.5281/zenodo.18706806
+- [3] Paper #3 — The Fine Structure Constant from Planck-Scale Foam Geometry. DOI: 10.5281/zenodo.19011758
+- [4] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [5] Paper #7 — The Complete Vacuum Metric from Foam Dynamics. DOI: 10.5281/zenodo.19063610
+- [6] Paper #8 — Maxwell's Equations from Foam Dynamics. DOI: 10.5281/zenodo.19063671
 
 ## AI Disclosure
 

@@ -25,15 +25,15 @@
 
 ## Abstract
 
-Two dimensionless ratios — the proton charge radius r_p expressed in Planck units, and the dark energy density ρ_Λ expressed as a fraction of the Planck energy density — have been derived independently by two distinct Planck-scale vacuum geometry frameworks and confirmed by experiment. The proton charge radius formula r_p = 4ℓ_P(m_P/m_p) was derived by Haramein (2012) from holographic surface-to-volume ratios of Planck Spherical Units, and independently by the Unified Foam Field Theory (UFFT) from the topology of the truncated octahedron; these are algebraically identical expressions. The result r_p ≈ 0.841 fm was confirmed experimentally by the muonic hydrogen measurement of Antognini et al. (2013), resolving the proton radius puzzle at 7σ from the Standard Model prediction. For vacuum energy density, Haramein's generalized holographic weighting (2019) and the UFFT Euler characteristic correction (Paper #53) both match the observed cosmological constant ρ_Λ ≈ 5.88 × 10⁻²⁷ kg/m³ to within 2% from different geometric arguments. Independent convergence of this kind — two unrelated frameworks reaching identical formulas, confirmed by experiment — constitutes evidence not merely for the specific numerical results but for the class of theory: Planck-scale discrete vacuum geometry determines nuclear and cosmological observables. We document both convergences precisely, identify the exact formulas, and discuss the implications.
+Two dimensionless ratios, the proton charge radius r_p expressed in Planck units, and the dark energy density ρ_Λ expressed as a fraction of the Planck energy density, have been derived independently by two distinct Planck-scale vacuum geometry frameworks and confirmed by experiment. The proton charge radius formula r_p = 4ℓ_P(m_P/m_p) was derived by Haramein (2012) from holographic surface-to-volume ratios of Planck Spherical Units, and independently by the Unified Foam Field Theory (UFFT) from the topology of the truncated octahedron; these are algebraically identical expressions. The result r_p ≈ 0.841 fm was confirmed experimentally by the muonic hydrogen measurement of Antognini et al. (2013), resolving the proton radius puzzle at 7σ from the Standard Model prediction. For vacuum energy density, Haramein's generalized holographic weighting (2019) and the UFFT Euler characteristic correction (Paper #53) both match the observed cosmological constant ρ_Λ ≈ 5.88 × 10⁻²⁷ kg/m³ to within 2% from different geometric arguments. Independent convergence of this kind, two unrelated frameworks reaching identical formulas, confirmed by experiment, constitutes evidence not merely for the specific numerical results but for the class of theory: Planck-scale discrete vacuum geometry determines nuclear and cosmological observables. We document both convergences precisely, identify the exact formulas, and discuss the implications.
 
 ---
 
 ## 1. Introduction
 
-Scientific convergence — independent derivations of the same result by different methods — is one of the strongest forms of evidence available. When a single framework predicts a result, the prediction may reflect curve-fitting, hidden assumptions, or the flexibility of the model. When two independent frameworks using different geometric architectures derive the same formula, and that formula is then confirmed by experiment, the conclusion is substantially stronger: the result is not an artifact of any particular theoretical choice. It is pointing at something real.
+Scientific convergence (independent derivations of the same result by different methods) is one of the strongest forms of evidence available. When a single framework predicts a result, the prediction may reflect curve-fitting, hidden assumptions, or the flexibility of the model. When two independent frameworks using different geometric architectures derive the same formula, and that formula is then confirmed by experiment, the conclusion is substantially stronger: the result is not an artifact of any particular theoretical choice. It is pointing at something real.
 
-This paper documents two such convergences between the Unified Foam Field Theory (UFFT) and Haramein's Holographic Mass framework (HMF). The two frameworks share a foundational instinct — that Planck-scale discrete geometry determines physical observables — but differ in every architectural detail: UFFT uses the truncated octahedron (Kelvin cell) as its unit cell, derives physics from the single axiom B+V=D, and obtains the Standard Model from the Face Laplacian spectrum. HMF uses Planck Spherical Units packed in a holofractographic lattice and derives mass from holographic surface-to-volume ratios. The architectures are incompatible. The results, in two specific cases, are identical.
+This paper documents two such convergences between the Unified Foam Field Theory (UFFT) and Haramein's Holographic Mass framework (HMF). The two frameworks share a foundational instinct (that Planck-scale discrete geometry determines physical observables) but differ in every architectural detail: UFFT uses the truncated octahedron (Kelvin cell) as its unit cell, derives physics from the single axiom B+V=D, and obtains the Standard Model from the Face Laplacian spectrum. HMF uses Planck Spherical Units packed in a holofractographic lattice and derives mass from holographic surface-to-volume ratios. The architectures are incompatible. The results, in two specific cases, are identical.
 
 The two convergences are:
 
@@ -48,7 +48,7 @@ We document these precisely.
 
 ### 2.1 The Experimental Situation
 
-The proton charge radius was measured by electron scattering and hydrogen spectroscopy for decades, with a Standard Model-consistent value of r_p ≈ 0.877 fm. In 2010, Pohl et al. measured the Lamb shift in muonic hydrogen (a hydrogen atom in which the electron is replaced by a muon, which orbits 207 times closer and is far more sensitive to the proton's finite size). The result was r_p = 0.84184 ± 0.00067 fm — a 7σ discrepancy from the Standard Model value. This became known as the proton radius puzzle.
+The proton charge radius was measured by electron scattering and hydrogen spectroscopy for decades, with a Standard Model-consistent value of r_p ≈ 0.877 fm. In 2010, Pohl et al. measured the Lamb shift in muonic hydrogen (a hydrogen atom in which the electron is replaced by a muon, which orbits 207 times closer and is far more sensitive to the proton's finite size). The result was r_p = 0.84184 ± 0.00067 fm, a 7σ discrepancy from the Standard Model value. This became known as the proton radius puzzle.
 
 The puzzle was resolved in 2019 when new high-precision electron-proton scattering measurements (Bezginov et al., PRX; Xiong et al., Nature) converged on r_p ≈ 0.833–0.848 fm, consistent with the muonic hydrogen value. The 2018 CODATA value is r_p = 0.8414 ± 0.0019 fm. The muonic hydrogen measurement is now the precision standard.
 
@@ -64,7 +64,7 @@ The holographic ratio for a sphere of radius r is:
 
 $$\Phi = \frac{\eta}{R} = \frac{2\ell_P}{r}$$
 
-where η = surface area / PSU cross-section = 4r²/ℓ_P² and R = volume / PSU volume = 8r³/ℓ_P³. For the proton, Haramein requires that the holographic mass — the mass implied by treating the proton's surface area as encoding its energy content at Planck density — equals the measured proton mass m_p. This condition determines r_p uniquely:
+where η = surface area / PSU cross-section = 4r²/ℓ_P² and R = volume / PSU volume = 8r³/ℓ_P³. For the proton, Haramein requires that the holographic mass (the mass implied by treating the proton's surface area as encoding its energy content at Planck density) equals the measured proton mass m_p. This condition determines r_p uniquely:
 
 $$r_p = 4\ell_P \frac{m_P}{m_p}$$
 
@@ -80,7 +80,7 @@ Discrepancy: 0.039 fm / 0.00039 fm = **1.0σ**. The prediction is within experim
 
 ### 2.3 The UFFT Derivation
 
-In UFFT, the proton charge radius emerges from the foam's pressure-balance condition at the proton boundary. The proton is a torsion defect in the foam — a localised region where the bubble content B is elevated above the equilibrium value. The proton radius is the distance from the torsion centre at which the outward foam pressure (from the void gradient) equals the inward restoring force from the bubble-dominant core.
+In UFFT, the proton charge radius emerges from the foam's pressure-balance condition at the proton boundary. The proton is a torsion defect in the foam, a localised region where the bubble content B is elevated above the equilibrium value. The proton radius is the distance from the torsion centre at which the outward foam pressure (from the void gradient) equals the inward restoring force from the bubble-dominant core.
 
 The foam pressure at the proton boundary, in natural units where the Planck length and Planck mass set the scales, gives:
 
@@ -108,7 +108,7 @@ This is not a coincidence. Both frameworks are Planck-scale discrete vacuum theo
 
 ### 2.5 Why the Standard Model Cannot Derive This
 
-The Standard Model treats the proton as a QCD bound state. Its radius is in principle calculable from lattice QCD — but the calculation requires knowing the quark masses, which are input parameters, and the result is sensitive to quark mass ratios in a way that does not simplify to r_p = 4ℓ_P(m_P/m_p). The Standard Model has no natural explanation for why the proton radius expressed in Planck units equals 4(m_P/m_p). Both UFFT and HMF explain this naturally because both frameworks operate at the Planck scale where the ratio m_P/m_p appears directly.
+The Standard Model treats the proton as a QCD bound state. Its radius is in principle calculable from lattice QCD, but the calculation requires knowing the quark masses, which are input parameters, and the result is sensitive to quark mass ratios in a way that does not simplify to r_p = 4ℓ_P(m_P/m_p). The Standard Model has no natural explanation for why the proton radius expressed in Planck units equals 4(m_P/m_p). Both UFFT and HMF explain this naturally because both frameworks operate at the Planck scale where the ratio m_P/m_p appears directly.
 
 ---
 
@@ -128,7 +128,7 @@ The ratio is:
 
 $$\frac{\rho_{\text{QFT}}}{\rho_\Lambda^{\text{obs}}} \approx 10^{123}$$
 
-This 123-order-of-magnitude discrepancy is the cosmological constant problem — arguably the worst prediction in physics. Neither the Standard Model nor General Relativity provides a natural explanation.
+This 123-order-of-magnitude discrepancy is the cosmological constant problem, arguably the worst prediction in physics. Neither the Standard Model nor General Relativity provides a natural explanation.
 
 ### 3.2 The Haramein-HMF Resolution (2019)
 
@@ -144,7 +144,7 @@ Within ~5% of the observed value. The 123-order-of-magnitude discrepancy is reso
 
 ### 3.3 The UFFT Derivation (Paper #53)
 
-In UFFT, the cosmological constant is not a vacuum energy but an integration constant of the foam dynamics — the residual of the Big Bang pressure wave at the current epoch. The derivation proceeds as follows.
+In UFFT, the cosmological constant is not a vacuum energy but an integration constant of the foam dynamics, the residual of the Big Bang pressure wave at the current epoch. The derivation proceeds as follows.
 
 The foam Planck energy density is ρ₀. The pressure wave from the Big Bang propagates through the foam, attenuating as the universe expands. At epoch R_U, the residual energy density of the wave is:
 
@@ -152,8 +152,8 @@ $$\rho_\Lambda = \rho_0 \left(\frac{\ell_P}{R_U}\right)^2$$
 
 This matches Haramein's leading-order result. The UFFT additionally derives a correction factor from the discrete topology of the foam cell. The truncated octahedron has F = 14 faces and Euler characteristic χ = V − E + F = 24 − 36 + 14 = 2. Of the 14 face modes, exactly χ = 2 are topologically inert:
 
-- The A₁g zero mode (eigenvalue 0) — forced by the connectivity of the face graph (one zero eigenvalue per connected component)
-- The A₂u maximum mode (eigenvalue 9) — forced by the bipartiteness of the hexagonal subgraph Q₃
+- The A₁g zero mode (eigenvalue 0), forced by the connectivity of the face graph (one zero eigenvalue per connected component)
+- The A₂u maximum mode (eigenvalue 9), forced by the bipartiteness of the hexagonal subgraph Q₃
 
 These two modes carry no independent wave amplitude. The transmitted wave energy is reduced by the factor:
 
@@ -177,7 +177,7 @@ $$\rho_\Lambda \sim \rho_0 \left(\frac{\ell_P}{R_U}\right)^2$$
 
 The difference is in the correction factor: Haramein uses 4 (from 4ℓ_P² in the numerator of Φ²), UFFT uses 6/7 (from the Euler characteristic of the face graph). The UFFT result is more precise (1.4% vs ~5%), and the 6/7 factor is a theorem rather than a geometric parameter.
 
-But the agreement on the leading scaling is the point. Both frameworks, using different geometric architectures, conclude that the cosmological constant is suppressed from the Planck density by exactly (ℓ_P/R_U)² — the square of the ratio of the Planck length to the cosmological horizon. This is not a numerical coincidence. Both frameworks are saying: the vacuum energy is set by the geometry of the foam cell relative to the size of the universe. The 123-order-of-magnitude discrepancy between QFT and observation is (ℓ_P/R_U)² ≈ 10⁻¹²² expressed geometrically. This is not fine-tuning. It is geometry.
+But the agreement on the leading scaling is the point. Both frameworks, using different geometric architectures, conclude that the cosmological constant is suppressed from the Planck density by exactly (ℓ_P/R_U)², the square of the ratio of the Planck length to the cosmological horizon. This is not a numerical coincidence. Both frameworks are saying: the vacuum energy is set by the geometry of the foam cell relative to the size of the universe. The 123-order-of-magnitude discrepancy between QFT and observation is (ℓ_P/R_U)² ≈ 10⁻¹²² expressed geometrically. This is not fine-tuning. It is geometry.
 
 ### 3.5 Why the Standard Model Cannot Derive This
 
@@ -195,15 +195,15 @@ The two convergences establish three things:
 
 **Second:** The cosmological constant scaling ρ_Λ ~ ρ₀(ℓ_P/R_U)² is a robust result of Planck-scale foam theory. Two independent frameworks derive it, and it matches observation at the level of precision of the correction factor (which the two frameworks compute differently, with UFFT being more precise). The 123-order-of-magnitude problem is a geometric ratio, not a mystery.
 
-**Third:** The class of theory — Planck-scale discrete vacuum geometry determines physical observables — is supported by independent evidence. UFFT and HMF are not the same theory. Their architectures are incompatible. Their shared results cannot be attributed to shared assumptions. The convergence is genuine.
+**Third:** The class of theory (Planck-scale discrete vacuum geometry determines physical observables) is supported by independent evidence. UFFT and HMF are not the same theory. Their architectures are incompatible. Their shared results cannot be attributed to shared assumptions. The convergence is genuine.
 
 ### 4.2 What Distinguishes UFFT
 
 The convergences validate the class. Within the class, UFFT is distinguished by:
 
-**Completeness:** UFFT derives the full Standard Model — all 60+ observables including fermion masses, mixing angles, coupling constants, and gauge structure — from the single axiom B+V=D and the truncated octahedron topology. HMF derives the proton radius and electron mass (using α as an input) but has no Standard Model derivation.
+**Completeness:** UFFT derives the full Standard Model (all 60+ observables including fermion masses, mixing angles, coupling constants, and gauge structure) from the single axiom B+V=D and the truncated octahedron topology. HMF derives the proton radius and electron mass (using α as an input) but has no Standard Model derivation.
 
-**Geometric rigour:** The truncated octahedron is the unique solution to the Kelvin problem (space partition with minimum surface area). It is proven. HMF's cuboctahedron does not tile space — it requires additional tetrahedral cells to fill gaps, making it a compound tiling, not a unit cell of a foam. UFFT's geometry is the correct geometry for the problem.
+**Geometric rigour:** The truncated octahedron is the unique solution to the Kelvin problem (space partition with minimum surface area). It is proven. HMF's cuboctahedron does not tile space, it requires additional tetrahedral cells to fill gaps, making it a compound tiling, not a unit cell of a foam. UFFT's geometry is the correct geometry for the problem.
 
 **Zero free parameters:** All UFFT results use only topological integers of the truncated octahedron. HMF results for the electron mass use α as an input. UFFT derives α independently.
 
@@ -211,10 +211,10 @@ The convergences validate the class. Within the class, UFFT is distinguished by:
 
 Both frameworks produce the factor 4 in the proton radius formula: r_p = **4**ℓ_P(m_P/m_p). The factor arises differently in each:
 
-- **HMF:** 4 appears because spacetime is 4-dimensional — Haramein uses the 4D volume of PSU packing.
-- **UFFT:** 4 = λ_Eg = the electroweak eigenvalue of the Face Laplacian = C_A + 1 = d + 1 = F_sq/2 + 1 — a topological integer of the truncated octahedron that is exact under five different identities.
+- **HMF:** 4 appears because spacetime is 4-dimensional, Haramein uses the 4D volume of PSU packing.
+- **UFFT:** 4 = λ_Eg = the electroweak eigenvalue of the Face Laplacian = C_A + 1 = d + 1 = F_sq/2 + 1, a topological integer of the truncated octahedron that is exact under five different identities.
 
-The fact that "4 = dimension of spacetime" and "4 = electroweak eigenvalue of the Kelvin cell" are connected is itself a UFFT result — UFFT derives d = 3+1 from the BCC lattice uniqueness theorem, and derives λ_Eg = 4 from the Face Laplacian. The dimension of spacetime and the electroweak scale are unified at the level of cell integers. Haramein uses d = 4 as an assumption. UFFT derives it.
+The fact that "4 = dimension of spacetime" and "4 = electroweak eigenvalue of the Kelvin cell" are connected is itself a UFFT result, UFFT derives d = 3+1 from the BCC lattice uniqueness theorem, and derives λ_Eg = 4 from the Face Laplacian. The dimension of spacetime and the electroweak scale are unified at the level of cell integers. Haramein uses d = 4 as an assumption. UFFT derives it.
 
 ---
 
@@ -235,7 +235,7 @@ The fact that "4 = dimension of spacetime" and "4 = electroweak eigenvalue of th
 
 ## 6. Conclusion
 
-Two Planck-scale discrete vacuum frameworks — Haramein's Holographic Mass framework and the Unified Foam Field Theory — independently derive the formula r_p = 4ℓ_P(m_P/m_p) for the proton charge radius and the scaling ρ_Λ ~ ρ₀(ℓ_P/R_U)² for the dark energy density. Both results are confirmed by experiment. Neither can be explained by the Standard Model.
+Two Planck-scale discrete vacuum frameworks (Haramein's Holographic Mass framework and the Unified Foam Field Theory) independently derive the formula r_p = 4ℓ_P(m_P/m_p) for the proton charge radius and the scaling ρ_Λ ~ ρ₀(ℓ_P/R_U)² for the dark energy density. Both results are confirmed by experiment. Neither can be explained by the Standard Model.
 
 The convergence is evidence for a specific physical claim: the proton charge radius and the cosmological constant are determined by the geometry of Planck-scale discrete vacuum structure, expressed through the ratios ℓ_P/r_p and ℓ_P/R_U respectively.
 
@@ -268,11 +268,19 @@ Physics advances by convergence. This is a convergence.
 
 ---
 
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
+
 *Unified Foam Field Theory — Paper 62*
 *Priority date: February 20, 2026*
 *First written: April 13, 2026*
 *Author: Luke Martin, Newcastle, New South Wales, Australia*
-*AI assistance: Claude (Anthropic) — computation, derivation verification, document composition*
+*AI assistance: Claude (Anthropic), computation, derivation verification, document composition*
 *All theoretical framework, physical intuitions, and direction: Luke Martin*
 
 **B + V = D**

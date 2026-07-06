@@ -82,7 +82,7 @@ This gives one equation (mass conservation) in two unknowns (l_r and l_⊥). A s
 
 ## 4. The Second Constraint: Foam Incompressibility
 
-The foam equation of state is P = ρc² (maximally stiff). This is the stiffest equation of state permitted by relativity — the sound speed equals the speed of light.
+The foam equation of state is P = ρc² (maximally stiff). This is the stiffest equation of state permitted by relativity, the sound speed equals the speed of light.
 
 In elasticity theory, the Poisson ratio ν characterises how a material deforms under uniaxial load:
 
@@ -92,7 +92,7 @@ In elasticity theory, the Poisson ratio ν characterises how a material deforms 
 
 An **incompressible material** has **ν = 1/2** exactly. When compressed in one direction, it expands in the other two by exactly half the amount, conserving volume.
 
-In non-relativistic mechanics, an incompressible fluid has infinite sound speed. The foam has c_s = c — the maximum sound speed permitted by relativity. The foam is **relativistically incompressible**.
+In non-relativistic mechanics, an incompressible fluid has infinite sound speed. The foam has c_s = c, the maximum sound speed permitted by relativity. The foam is **relativistically incompressible**.
 
 **Therefore: ν = 1/2 for the foam.**
 
@@ -164,7 +164,7 @@ The two-component model (Part I) gives the lensing angle:
 - g_rr contributes GM/(c²b)
 - Total: 4GM/(c²b) ✓
 
-With the independently derived g_rr, both contributions are confirmed. The factor of 4 is no longer a consistency check — it is a prediction verified.
+With the independently derived g_rr, both contributions are confirmed. The factor of 4 is no longer a consistency check, it is a prediction verified.
 
 ### Horizon
 
@@ -239,7 +239,7 @@ The acceleration equation requires the pressure contribution to gravity. In the 
 
 **ä/a = −(4πG/3) Σ_i ρ_i(1 + 3w_i)**
 
-The foam substrate pressure P₀ = ρ₀c² does NOT contribute — the substrate is the metric (Paper #7), not a source. Only matter/radiation pressure enters.
+The foam substrate pressure P₀ = ρ₀c² does NOT contribute, the substrate is the metric (Paper #7), not a source. Only matter/radiation pressure enters.
 
 ### Spatial curvature
 
@@ -303,6 +303,24 @@ Accuracy: 1.4% from Planck 2018 observation.
 *Developed in collaboration with Claude (Anthropic). Ideas, framework, direction: Luke Martin. AI role: anisotropic deformation analysis, Poisson ratio application, document composition.*
 
 ---
+
+---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [2] Paper #7 — The Complete Vacuum Metric from Foam Dynamics. DOI: 10.5281/zenodo.19063610
+- [3] Paper #8 — Maxwell's Equations from Foam Dynamics. DOI: 10.5281/zenodo.19063671
+- [4] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #28 · DOI: 10.5281/zenodo.19184702 · Priority Date: 20 February 2026*
 

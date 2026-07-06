@@ -116,7 +116,7 @@ N(r₁ + r₂ω) = r₁² − r₁r₂ + r₂² = r₁² + r₂² − r₁r₂ =
 The Eisenstein integers are the natural algebraic structure for C_A = 3:
 
 1. The cube root of unity ω generates the cyclic group ℤ₃, the centre of SU(3)
-2. The Eisenstein lattice in the complex plane is a triangular lattice — the dual of the hexagonal lattice that appears in the truncated octahedron's face structure
+2. The Eisenstein lattice in the complex plane is a triangular lattice, the dual of the hexagonal lattice that appears in the truncated octahedron's face structure
 3. The norm involves the factor −ab where the coefficient 1 comes from ω + ω̄ = −1, equivalently from the cosine of the C_A-fold rotation angle: 2cos(2π/3) = −1
 
 The physical argument: the three spatial components (k = x, y, z) of the T₁u basis sum with relative phases of 2π/3 in the O_h-symmetric coupling. This 120° phase is exactly the angle between Eisenstein lattice vectors, generating the cross-term −r₁r₂ in the norm.
@@ -236,7 +236,7 @@ The neutrino mass-squared ratio Δm²₃₁/Δm²₂₁ = 33 is the Eisenstein n
 33 = N(r₁ + r₂ω) = r₁² + r₂² − r₁r₂ = S² − C_A·P = Δ + P
 ```
 
-This single identity encodes the neutrino mass hierarchy through the same integers — S = 9, P = 16, Δ = 17, C_A = 3 — that control the face Laplacian, the master equation, and the generation mixing. The Eisenstein structure ties the neutrino sector to SU(3) colour through the cube root of unity. The prediction agrees with experiment at −0.63σ.
+This single identity encodes the neutrino mass hierarchy through the same integers (S = 9, P = 16, Δ = 17, C_A = 3) that control the face Laplacian, the master equation, and the generation mixing. The Eisenstein structure ties the neutrino sector to SU(3) colour through the cube root of unity. The prediction agrees with experiment at −0.63σ.
 
 ---
 
@@ -244,15 +244,23 @@ This single identity encodes the neutrino mass hierarchy through the same intege
 
 ### UFFT Papers
 - [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
-- [2] Paper #16 — The Master Equation. DOI: 10.5281/zenodo.19064359
-- [3] Paper #39 — The Inter-Type Torsion Operator. DOI: 10.5281/zenodo.19306447
-- [4] Paper #47 — NLO Neutrinos, α_s, M_W. DOI: 10.5281/zenodo.19448066
-- [5] Paper #54 — Neutrino Mass Ratio. DOI: 10.5281/zenodo.19484047
+- [2] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+- [3] Paper #39 — The Inter-Type Torsion Operator on the Truncated Octahedron. DOI: 10.5281/zenodo.19306447
+- [4] Paper #47 — NLO Corrections, Neutrino Masses, and the Strong Coupling Constant. DOI: 10.5281/zenodo.19448066
+- [5] Paper #54 — The Neutrino Mass-Squared Ratio from T₁u Geometry. DOI: 10.5281/zenodo.19484047
 
 ### External References
 - [6] Particle Data Group (2024). Review of Particle Physics. Phys. Rev. D 110, 030001.
 - [7] Esteban, I. et al. (2024). NuFIT 5.3. http://www.nu-fit.org
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *B + V = D*

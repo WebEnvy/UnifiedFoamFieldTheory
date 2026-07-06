@@ -22,7 +22,7 @@
 
 ## Abstract
 
-The dark energy density formula ρ_Λ = ρ₀(l_P/R_U)² × 6/7 has been known within UFFT since Part XVI but the correction factor 6/7 = (F−χ)/F = 12/14 was previously identified rather than derived — stated as an Euler correction without a first-principles justification for why exactly χ = 2 face modes are dynamically inert. This paper provides the missing derivation. We show that the two inert modes are the A₁g zero mode (forced by connectivity of the face graph, one zero per connected component) and the A₂u maximum mode (forced by bipartiteness of the hexagonal subgraph, which is the cube graph Q₃). Both constraints are graph-theoretic theorems requiring no physical identification. Together they account for exactly χ = V − E + F = 2 inert degrees of freedom, reducing the wave-carrying face fraction from F = 14 to F − χ = 12, giving the factor 6/7 as a theorem of the cell topology. The dark energy density 6/7 correction is thereby elevated from Tier 4 (identified) to Tier 2 (derived given the face Laplacian identification).
+The dark energy density formula ρ_Λ = ρ₀(l_P/R_U)² × 6/7 has been known within UFFT since Part XVI but the correction factor 6/7 = (F−χ)/F = 12/14 was previously identified rather than derived, stated as an Euler correction without a first-principles justification for why exactly χ = 2 face modes are dynamically inert. This paper provides the missing derivation. We show that the two inert modes are the A₁g zero mode (forced by connectivity of the face graph, one zero per connected component) and the A₂u maximum mode (forced by bipartiteness of the hexagonal subgraph, which is the cube graph Q₃). Both constraints are graph-theoretic theorems requiring no physical identification. Together they account for exactly χ = V − E + F = 2 inert degrees of freedom, reducing the wave-carrying face fraction from F = 14 to F − χ = 12, giving the factor 6/7 as a theorem of the cell topology. The dark energy density 6/7 correction is thereby elevated from Tier 4 (identified) to Tier 2 (derived given the face Laplacian identification).
 
 **Keywords:** dark energy, cosmological constant, face Laplacian, Euler characteristic, bipartite graph, truncated octahedron, foam field theory, UFFT
 
@@ -34,7 +34,7 @@ Part XVI of the UFFT Core Framework derives the dark energy density as the resid
 
 **ρ_Λ = ρ₀ × (l_P/R_U)²**
 
-where ρ₀ = m_P/l_P³ is the Planck density and R_U is the radius of the observable universe. This formula alone gives ρ_Λ ≈ 5.96 × 10⁻²⁷ kg/m³ against the observed 5.88 × 10⁻²⁷ kg/m³ — a 1.4% match with zero free parameters. The cosmological constant problem is dissolved: the ratio ρ_Λ/ρ₀ ≈ 10⁻¹²³ is not fine-tuning but the natural (l_P/R_U)² suppression of a wave that has propagated 10⁶¹ Planck lengths.
+where ρ₀ = m_P/l_P³ is the Planck density and R_U is the radius of the observable universe. This formula alone gives ρ_Λ ≈ 5.96 × 10⁻²⁷ kg/m³ against the observed 5.88 × 10⁻²⁷ kg/m³, a 1.4% match with zero free parameters. The cosmological constant problem is dissolved: the ratio ρ_Λ/ρ₀ ≈ 10⁻¹²³ is not fine-tuning but the natural (l_P/R_U)² suppression of a wave that has propagated 10⁶¹ Planck lengths.
 
 The corrected formula introduces the 6/7 factor:
 
@@ -42,7 +42,7 @@ The corrected formula introduces the 6/7 factor:
 
 where F = 14 is the face count of the Kelvin cell and χ = V − E + F = 2 is its Euler characteristic.
 
-The previously stated justification was: "the closed polyhedral surface has Euler characteristic χ = 2, which constrains 2 of the 14 face degrees of freedom topologically." This is correct in conclusion but was an identification — the constraint mechanism was not derived from the face Laplacian dynamics. This paper derives it.
+The previously stated justification was: "the closed polyhedral surface has Euler characteristic χ = 2, which constrains 2 of the 14 face degrees of freedom topologically." This is correct in conclusion but was an identification, the constraint mechanism was not derived from the face Laplacian dynamics. This paper derives it.
 
 ---
 
@@ -75,9 +75,9 @@ Two modes have multiplicity 1 and sit at the spectral extremes: the zero mode A�
 
 **Proof.** The face Laplacian is L = D − A where D is the degree matrix and A is the face adjacency matrix. For any graph Laplacian, the kernel is spanned by the constant vector on each connected component. The face adjacency graph of the truncated octahedron is connected (every face can be reached from every other face via shared edges). By the rank-nullity theorem, dim(ker L) = number of connected components = 1. The unique zero eigenvector is (1/√14)(1,...,1). □
 
-**Physical interpretation.** The zero mode carries no spatial information — it is the same amplitude on every face, corresponding to a uniform displacement of the entire foam with no relative motion between cells. In B+V=D terms: a uniform displacement is not a local event, carries no energy relative to the background, and cannot propagate as a wave. The A₁g mode is the equilibrium state of the foam, not a propagating degree of freedom.
+**Physical interpretation.** The zero mode carries no spatial information, it is the same amplitude on every face, corresponding to a uniform displacement of the entire foam with no relative motion between cells. In B+V=D terms: a uniform displacement is not a local event, carries no energy relative to the background, and cannot propagate as a wave. The A₁g mode is the equilibrium state of the foam, not a propagating degree of freedom.
 
-**Connection to Euler characteristic.** The number of connected components equals the nullity of L. For a connected polyhedron, this is 1. The Euler characteristic χ = V − E + F = 2 (Euler's theorem for convex polyhedra, proven) implies — through the Euler-Poincaré formula — that the first Betti number b₁ = 0 for a simply connected surface, so the face graph has one connected component. Thus the zero mode multiplicity is exactly 1, fixed by χ. □
+**Connection to Euler characteristic.** The number of connected components equals the nullity of L. For a connected polyhedron, this is 1. The Euler characteristic χ = V − E + F = 2 (Euler's theorem for convex polyhedra, proven) implies (through the Euler-Poincaré formula) that the first Betti number b₁ = 0 for a simply connected surface, so the face graph has one connected component. Thus the zero mode multiplicity is exactly 1, fixed by χ. □
 
 ---
 
@@ -89,7 +89,7 @@ Two modes have multiplicity 1 and sit at the spectral extremes: the zero mode A�
 
 **Step 1: The hexagonal subgraph is the cube graph Q₃.** The 8 hexagonal faces of the truncated octahedron are connected in pairs by shared edges. Each hexagonal face shares exactly 3 edges with other hexagonal faces. The resulting 8-vertex, 3-regular graph is the cube graph Q₃ (vertices = hexagonal faces, edges = shared hex-hex edges). This is a structural theorem of the truncated octahedron's geometry.
 
-**Step 2: Q₃ is bipartite.** The cube graph is bipartite with bipartition {0,3,5,6} and {1,2,4,7} (labelling hex faces by their normal directions ±x, ±y, ±z — opposite faces have the same label, adjacent faces have different labels). Bipartiteness can be verified directly: each hex face is adjacent only to hex faces with differently oriented normal components.
+**Step 2: Q₃ is bipartite.** The cube graph is bipartite with bipartition {0,3,5,6} and {1,2,4,7} (labelling hex faces by their normal directions ±x, ±y, ±z, opposite faces have the same label, adjacent faces have different labels). Bipartiteness can be verified directly: each hex face is adjacent only to hex faces with differently oriented normal components.
 
 **Step 3: Maximum adjacency eigenvalue of Q₃.** For any d-regular bipartite graph, the adjacency eigenvalues are symmetric about 0, with extremes ±d. For Q₃ (d=3): max adjacency eigenvalue = +3 (uniform mode, all +1), min adjacency eigenvalue = −3 (alternating mode, ±1 on bipartition). The alternating mode v_alt = (+1 on partition A, −1 on partition B) satisfies A_hh · v_alt = −3 · v_alt exactly.
 
@@ -102,13 +102,13 @@ For any hexagonal face f ∈ partition A (so ṽ_f = +1):
 
 Total: (L · ṽ)_f = 6 + 3 + 0 = 9 = 9 × ṽ_f ✓
 
-By symmetry, the same holds for f ∈ partition B (value −1). For any square face s: ṽ_s = 0 and (L · ṽ)_s = 0 = 9 × 0 ✓. Wait — this gives (L · ṽ)_s = −Σ_{f hex-adj s} ṽ_f. For a square face adjacent to 4 hex faces, two in each partition, these cancel: Σ = (−1) + (−1) + (+1) + (+1) = 0. ✓
+By symmetry, the same holds for f ∈ partition B (value −1). For any square face s: ṽ_s = 0 and (L · ṽ)_s = 0 = 9 × 0 ✓. Wait, this gives (L · ṽ)_s = −Σ_{f hex-adj s} ṽ_f. For a square face adjacent to 4 hex faces, two in each partition, these cancel: Σ = (−1) + (−1) + (+1) + (+1) = 0. ✓
 
 Therefore L · ṽ = 9ṽ exactly.
 
 **Step 5: Multiplicity 1.** The A₂u irrep of O_h is 1-dimensional (it is the pseudoscalar representation, fully antisymmetric under all improper rotations). Since the face Laplacian commutes with the O_h action, each eigenspace decomposes into irreps. The eigenvalue 9 eigenspace contains exactly one copy of A₂u and no other irreps, giving multiplicity 1.
 
-**Physical interpretation.** The A₂u mode alternates ±1 between the two sublattices of hex faces, with zero square-face amplitude. In B+V=D terms: this mode represents a configuration where adjacent bubble walls are out of phase — one expanding while its neighbour contracts. This is a static frustrated configuration, not a propagating wave. The torsion operator T satisfies T · v_A₂u = −v_A₂u (the A₂u irrep has torsion eigenvalue −1, proven in Paper #10). A mode with torsion eigenvalue −1 is at unstable equilibrium — it collapses into the Higgs vacuum rather than propagating. It carries no wave energy. □
+**Physical interpretation.** The A₂u mode alternates ±1 between the two sublattices of hex faces, with zero square-face amplitude. In B+V=D terms: this mode represents a configuration where adjacent bubble walls are out of phase (one expanding while its neighbour contracts. This is a static frustrated configuration, not a propagating wave. The torsion operator T satisfies T · v_A₂u = −v_A₂u (the A₂u irrep has torsion eigenvalue −1, proven in Paper #10). A mode with torsion eigenvalue −1 is at unstable equilibrium) it collapses into the Higgs vacuum rather than propagating. It carries no wave energy. □
 
 ---
 
@@ -183,7 +183,7 @@ The residual 0.47% brings the formula inside 0.5% of observation, a significant 
 
 The residual 0.47% error is within the systematic uncertainty on R_U (the radius of the observable universe depends on H₀ and the assumed cosmological model). A precise derivation would require:
 
-1. A first-principles derivation of R_U from the foam dynamics (currently the foam takes R_U as an observed input — it is set by initial conditions, not by L alone).
+1. A first-principles derivation of R_U from the foam dynamics (currently the foam takes R_U as an observed input, it is set by initial conditions, not by L alone).
 2. The value w = −1 for the dark energy equation of state, which requires showing the A₁g and A₂u modes remain inert under cosmological expansion, not just at the current epoch.
 
 Both are addressable within the framework but are not closed by this paper.
@@ -205,11 +205,11 @@ Both have multiplicity 1. Their count χ = 2 equals the Euler characteristic V �
 
 [1] Martin, L. (2026). UFFT Core Framework v9. April 2026.
 
-[2] Martin, L. (2026). Part XVI — Cosmological Expansion and Dark Energy. DOI: 10.5281/zenodo.19306447.
+[2] Martin, L. (2026). Part XVI, Cosmological Expansion and Dark Energy. DOI: 10.5281/zenodo.19306447.
 
-[3] Martin, L. (2026). Part X — The Laplacian Spectrum of the Kelvin Cell. DOI: 10.5281/zenodo.19030062.
+[3] Martin, L. (2026). Part X, The Laplacian Spectrum of the Kelvin Cell. DOI: 10.5281/zenodo.19030062.
 
-[4] Martin, L. (2026). Theorem X.1 — Face Content and the Particle-Irrep Mapping. UFFT Core Framework v9, Section 9 (April 2026 update).
+[4] Martin, L. (2026). Theorem X.1, Face Content and the Particle-Irrep Mapping. UFFT Core Framework v9, Section 9 (April 2026 update).
 
 [5] Euler, L. (1758). Elementa doctrinae solidorum. Novi commentarii academiae scientiarum Petropolitanae 4, 109–140.
 

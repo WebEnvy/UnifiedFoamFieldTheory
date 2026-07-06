@@ -28,9 +28,9 @@
 
 ## Abstract
 
-We complete the derivation of the two-loop anomalous magnetic moment of the electron from the Unified Foam Field Theory. The proof has three steps: (1) the foam generates QED in the IR limit — propagator, vertex, and loop measure are all foam-derived; (2) QED with these ingredients gives (g−2)/2|₂ = C₂(α/π)² at two loops, where C₂ = −0.328478966 (Petermann 1957, Sommerfield 1957); (3) α = 1/137.036 is foam-derived (Paper #3). Therefore (g−2)/2 through two loops = α/(2π) + C₂(α/π)² is completely foam-derived. Numerically: 0.001161410 − 0.000001772 = **0.001159638**, against the observed 0.001159652 — residual 1.47×10⁻⁸, consistent with the known 3-loop contribution C₃(α/π)³ = 1.48×10⁻⁸. Zero free parameters. All inputs foam-derived.
+We complete the derivation of the two-loop anomalous magnetic moment of the electron from the Unified Foam Field Theory. The proof has three steps: (1) the foam generates QED in the IR limit (propagator, vertex, and loop measure are all foam-derived; (2) QED with these ingredients gives (g−2)/2|₂ = C₂(α/π)² at two loops, where C₂ = −0.328478966 (Petermann 1957, Sommerfield 1957); (3) α = 1/137.036 is foam-derived (Paper #3). Therefore (g−2)/2 through two loops = α/(2π) + C₂(α/π)² is completely foam-derived. Numerically: 0.001161410 − 0.000001772 = **0.001159638**, against the observed 0.001159652) residual 1.47×10⁻⁸, consistent with the known 3-loop contribution C₃(α/π)³ = 1.48×10⁻⁸. Zero free parameters. All inputs foam-derived.
 
-We also establish what the combinatorial approach can and cannot prove: the face graph topology gives the sign structure of the two-loop diagrams (84 non-crossing − 72 crossing = 12 net configurations), but the transcendental values π², ln2, ζ(3) require continuous Feynman parameter integration and cannot arise from discrete graph counting alone. This is not a limitation of UFFT — it is the correct relationship between substrate (topology) and emergent layer (integration).
+We also establish what the combinatorial approach can and cannot prove: the face graph topology gives the sign structure of the two-loop diagrams (84 non-crossing − 72 crossing = 12 net configurations), but the transcendental values π², ln2, ζ(3) require continuous Feynman parameter integration and cannot arise from discrete graph counting alone. This is not a limitation of UFFT, it is the correct relationship between substrate (topology) and emergent layer (integration).
 
 ---
 
@@ -48,7 +48,7 @@ The foam has been shown to generate:
 - Loop measure d⁴k/(2π)⁴ from the correspondence principle in 4D spacetime (Part IV; d=4=C_A+1 derived, Part XXXVII)
 - Coupling constant α = 1/137.035999055 from O_h geometry (Paper #3, 0.21 ppb)
 
-These are precisely the QED ingredients. In the IR limit, the foam IS QED — same propagator, same vertex, same loop measure, same coupling (to 0.21 ppb).
+These are precisely the QED ingredients. In the IR limit, the foam IS QED, same propagator, same vertex, same loop measure, same coupling (to 0.21 ppb).
 
 **Step 2: QED with these ingredients gives C₂ at two loops.**
 
@@ -89,7 +89,7 @@ is foam-derived. ■
 
 **3-loop check:** C₃(α/π)³ = 1.181241 × (α/π)³ = **1.48 × 10⁻⁸** ✓
 
-The residual after two loops matches the known three-loop contribution to within numerical precision. This is not a coincidence — it confirms that the foam's perturbation series IS the QED perturbation series.
+The residual after two loops matches the known three-loop contribution to within numerical precision. This is not a coincidence, it confirms that the foam's perturbation series IS the QED perturbation series.
 
 ---
 
@@ -100,11 +100,11 @@ The residual after two loops matches the known three-loop contribution to within
 The face adjacency graph of the truncated octahedron has the following two-loop topology:
 
 For each reference face (the "electron") and pairs of adjacent faces (the two "virtual photon loops"):
-- **84 non-crossing pairs**: the two loop faces don't directly interact — contributes +1 each
-- **72 crossing pairs**: the two loop faces also share an edge — contributes −1 each
+- **84 non-crossing pairs**: the two loop faces don't directly interact, contributes +1 each
+- **72 crossing pairs**: the two loop faces also share an edge, contributes −1 each
 - **Net: 84 − 72 = 12**
 
-This integer count gives the TOPOLOGICAL structure of the two-loop amplitude — which diagram topologies exist and what sign they carry. This is the foam analogue of Wick's theorem: counting Feynman diagram topologies.
+This integer count gives the TOPOLOGICAL structure of the two-loop amplitude, which diagram topologies exist and what sign they carry. This is the foam analogue of Wick's theorem: counting Feynman diagram topologies.
 
 **What requires continuous integration:**
 
@@ -113,7 +113,7 @@ The VALUES of those diagrams (the actual numbers π², ln2, ζ(3)) arise from Fe
 - ln2 ← from ∫₀¹ dz/(z+1) = ln2
 - ζ(3) ← from light-by-light sub-diagram involving ∑ 1/n³
 
-No discrete graph counting can produce ζ(3). This is a mathematical fact. It is not a limitation of UFFT — it is correct physics.
+No discrete graph counting can produce ζ(3). This is a mathematical fact. It is not a limitation of UFFT, it is correct physics.
 
 **The right way to understand this:**
 
@@ -165,7 +165,7 @@ The QFT emergence open item in the UFFT framework now reads:
 | Chiral anomalies | Within QED/QFT derived from foam; anomaly cancellation from gauge group |
 | Higher-loop g−2 | Derived by same argument (foam → QED → higher loops) |
 
-The most significant remaining gap between UFFT and a complete replacement for QFT is now **LSZ reduction and S-matrix elements** — showing that the foam's wave mechanics gives the standard scattering cross-sections. This is a defined programme.
+The most significant remaining gap between UFFT and a complete replacement for QFT is now **LSZ reduction and S-matrix elements**, showing that the foam's wave mechanics gives the standard scattering cross-sections. This is a defined programme.
 
 ---
 
@@ -182,7 +182,7 @@ The most significant remaining gap between UFFT and a complete replacement for Q
 - The LSZ reduction from foam wave mechanics
 - The optical theorem and unitarity from foam first principles
 
-These are legitimate remaining items. The present proof derives C₂ via the foam-QED correspondence. The deeper derivation — showing C₂ falls out of foam combinatorics alone — would require showing that the Feynman parameter integrals are determined by the face graph spectral measure, which would connect ζ(3) to a spectral zeta function of the truncated octahedron. This is a beautiful open question in discrete mathematics.
+These are legitimate remaining items. The present proof derives C₂ via the foam-QED correspondence. The deeper derivation (showing C₂ falls out of foam combinatorics alone) would require showing that the Feynman parameter integrals are determined by the face graph spectral measure, which would connect ζ(3) to a spectral zeta function of the truncated octahedron. This is a beautiful open question in discrete mathematics.
 
 ---
 
@@ -209,6 +209,14 @@ These are legitimate remaining items. The present proof derives C₂ via the foa
 *Developed in collaboration with Claude (Anthropic). Ideas, framework, direction: Luke Martin. AI role: proof construction, combinatorial analysis, document composition.*
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #24 · DOI: 10.5281/zenodo.19084873 · Priority Date: 20 February 2026*
 

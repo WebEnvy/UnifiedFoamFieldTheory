@@ -26,7 +26,7 @@
 
 ## Abstract
 
-The NLO correction parameter ε = √Δ/(r₁+r₂)² = √17/81 was identified in Paper #47 as a universal correction to the PMNS mixing matrix. A reviewer correctly noted that this identification was not derived from first principles — it was found to fix three mixing tensions simultaneously, raising the question of whether it is a post-hoc fit. This paper provides the missing derivation. We show that ε arises from second-order perturbation theory of the T₁u mass matrix when the diagonal eigenvalue splitting (r₂−r₁) = √Δ is treated as a perturbation to the symmetric (r₁+r₂) sector average. The result ε = (r₂−r₁)/(r₁+r₂)² follows from a Z₂ parity argument that requires no new integers, no new identifications, and no free parameters. The same expression, colour-averaged, gives ε_CKM = √17/363 for the quark sector. A single algebraically fixed expression simultaneously resolves three mixing tensions with coupling strengths predicted a priori — not tuned.
+The NLO correction parameter ε = √Δ/(r₁+r₂)² = √17/81 was identified in Paper #47 as a universal correction to the PMNS mixing matrix. A reviewer correctly noted that this identification was not derived from first principles (it was found to fix three mixing tensions simultaneously, raising the question of whether it is a post-hoc fit. This paper provides the missing derivation. We show that ε arises from second-order perturbation theory of the T₁u mass matrix when the diagonal eigenvalue splitting (r₂−r₁) = √Δ is treated as a perturbation to the symmetric (r₁+r₂) sector average. The result ε = (r₂−r₁)/(r₁+r₂)² follows from a Z₂ parity argument that requires no new integers, no new identifications, and no free parameters. The same expression, colour-averaged, gives ε_CKM = √17/363 for the quark sector. A single algebraically fixed expression simultaneously resolves three mixing tensions with coupling strengths predicted a priori) not tuned.
 
 **Keywords:** NLO correction, PMNS mixing, Z₂ symmetry, neutrino mixing, CKM mixing, truncated octahedron, foam field theory, perturbation theory, UFFT
 
@@ -52,7 +52,7 @@ These are clean results because the LO formulas use only the sum r₁+r₂ = 9 a
 
 The exact T₁u eigenvalues are r₁ = (9−√17)/2 and r₂ = (9+√17)/2. These are irrational. The actual T₁u sector in the BCC foam is not exactly degenerate in the two lower modes. The near-degeneracy of the two left-handed fermion modes (both at eigenvalue r₁) is protected by the Z₂ μ–τ exchange symmetry of the truncated octahedron's face graph.
 
-When the full BCC lattice geometry is included — specifically when the void channel correction (the V operator in H = L + ηV) acts on the T₁u sector — the Z₂ symmetry is broken at order η_sq. The void coupling to the T₁u sector is:
+When the full BCC lattice geometry is included (specifically when the void channel correction (the V operator in H = L + ηV) acts on the T₁u sector) the Z₂ symmetry is broken at order η_sq. The void coupling to the T₁u sector is:
 
 **δM = η_sq × diag(−ε_v, +ε_v, 0)**
 
@@ -78,11 +78,11 @@ This is the unique dimensionless ratio of first order in the eigenvalue splittin
 
 ## 4. Why Linear, Not Quadratic: The Z₂ Parity Argument
 
-The Z₂ symmetry argument is central to the uniqueness of ε. The leading-order Z₂ symmetry (μ–τ exchange) is a symmetry of the truncated octahedron's face graph under the swap of the two T₁u lower modes. A perturbation that breaks Z₂ must transform as the odd representation under Z₂ exchange — it must be proportional to (r₂−r₁) = √Δ, not (r₂−r₁)² = Δ. Quadratic corrections are even under Z₂ and do not break the symmetry at first order.
+The Z₂ symmetry argument is central to the uniqueness of ε. The leading-order Z₂ symmetry (μ–τ exchange) is a symmetry of the truncated octahedron's face graph under the swap of the two T₁u lower modes. A perturbation that breaks Z₂ must transform as the odd representation under Z₂ exchange, it must be proportional to (r₂−r₁) = √Δ, not (r₂−r₁)² = Δ. Quadratic corrections are even under Z₂ and do not break the symmetry at first order.
 
 This is why:
 
-- **ε = √17/81 (linear in √Δ)** — not Δ/81, not √17/9, not Δ/9²
+- **ε = √17/81 (linear in √Δ)**, not Δ/81, not √17/9, not Δ/9²
 - The correction enters at first order in the perturbation
 - The denominator is (r₁+r₂)² = 81, the square of the total T₁u sector weight
 
@@ -96,13 +96,13 @@ In the quark sector (CKM), the same perturbation is colour-averaged. Each quark 
 
 **ε_CKM = √Δ / [C_A × (λ_T₂g + λ_Eg)²] = √17 / 363**
 
-The physical reason: mixing in the quark sector is suppressed relative to the lepton sector by a factor of C_A × (gauge eigenvalue sum)² / (T₁u sum)² = 363/81 ≈ 4.5. This is why CKM mixing is smaller than PMNS mixing — it is colour-averaged, not a separate coincidence.
+The physical reason: mixing in the quark sector is suppressed relative to the lepton sector by a factor of C_A × (gauge eigenvalue sum)² / (T₁u sum)² = 363/81 ≈ 4.5. This is why CKM mixing is smaller than PMNS mixing, it is colour-averaged, not a separate coincidence.
 
 ---
 
 ## 6. The Three-for-One Test
 
-If ε were a free parameter tuned to fix one tension, we would expect it to fix exactly one mixing angle and leave the others unconstrained. Instead, the single expression ε = √17/81 — with no freedom — simultaneously resolves three separate tensions:
+If ε were a free parameter tuned to fix one tension, we would expect it to fix exactly one mixing angle and leave the others unconstrained. Instead, the single expression ε = √17/81 (with no freedom) simultaneously resolves three separate tensions:
 
 | Angle | LO tension | NLO formula | NLO tension |
 |-------|-----------|-------------|------------|
@@ -116,7 +116,7 @@ Each formula uses the same ε (or ε_CKM derived from it) with the algebraic str
 - **θ₁₃:** feeds through from the 2–3 sector at half strength (ε/2 appears)
 - **Cabibbo:** colour-averaged version (ε_CKM = ε × 81/363)
 
-A tuned free parameter with three targets would require three parameters. One algebraically fixed expression hitting three targets simultaneously with coupling strengths predicted a priori is not tuning — it is the propagation of a single symmetry-breaking through three observables with coupling strengths fixed by geometry.
+A tuned free parameter with three targets would require three parameters. One algebraically fixed expression hitting three targets simultaneously with coupling strengths predicted a priori is not tuning, it is the propagation of a single symmetry-breaking through three observables with coupling strengths fixed by geometry.
 
 ---
 
@@ -148,7 +148,7 @@ None of these steps introduces new physics or new parameters. They are algebraic
 
 ## 9. Conclusion
 
-ε = √17/81 is not a free parameter. It is the unique first-order Z₂-odd dimensionless perturbation parameter of the T₁u sector of the face Laplacian, constructible from r₁ and r₂ alone. It arises from void-channel Z₂ breaking of the degenerate 2–3 subspace. Its application to three separate mixing angles is not tuning — it is the propagation of a single symmetry-breaking through three observables with coupling strengths fixed by geometry.
+ε = √17/81 is not a free parameter. It is the unique first-order Z₂-odd dimensionless perturbation parameter of the T₁u sector of the face Laplacian, constructible from r₁ and r₂ alone. It arises from void-channel Z₂ breaking of the degenerate 2–3 subspace. Its application to three separate mixing angles is not tuning, it is the propagation of a single symmetry-breaking through three observables with coupling strengths fixed by geometry.
 
 The reviewer's objection is addressed: ε has a derivation. The derivation is physical, rigorous in argument, and requires formalisation of the explicit matrix computation as the remaining step.
 

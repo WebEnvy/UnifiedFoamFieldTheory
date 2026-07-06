@@ -32,9 +32,9 @@ We derive the LSZ reduction formula and the S-matrix from the Unified Foam Field
 
 **⟨f|S|i⟩ = [Πⱼ i(pⱼ²−mⱼ²)] × G̃(p₁,...,pₙ)|_{all pⱼ²→mⱼ²}**
 
-The unitarity S†S = 1 follows from Axiom Zero void-pair conservation: B+V=D ensures total foam displacement is conserved through every scattering event. The optical theorem follows from unitarity. The S-matrix of the foam IS the S-matrix of QED in the IR limit — with foam-derived α (0.21 ppb) and foam-derived m_e (0.007%).
+The unitarity S†S = 1 follows from Axiom Zero void-pair conservation: B+V=D ensures total foam displacement is conserved through every scattering event. The optical theorem follows from unitarity. The S-matrix of the foam IS the S-matrix of QED in the IR limit, with foam-derived α (0.21 ppb) and foam-derived m_e (0.007%).
 
-As a concrete verification: the Compton scattering cross section (Klein-Nishina formula) follows from the foam with zero free parameters. Thomson limit σ_T = (8π/3)r_e² = 6.6523 × 10⁻²⁹ m² against the observed 6.6524 × 10⁻²⁹ m² — agreement to 0.002%.
+As a concrete verification: the Compton scattering cross section (Klein-Nishina formula) follows from the foam with zero free parameters. Thomson limit σ_T = (8π/3)r_e² = 6.6523 × 10⁻²⁹ m² against the observed 6.6524 × 10⁻²⁹ m², agreement to 0.002%.
 
 ---
 
@@ -70,7 +70,7 @@ This is the canonical quantisation of the Dirac equation for the T₂g torsion s
 
 **At t → ±∞:** incoming and outgoing particles are well-separated topological defects propagating in flat foam. The T₂g torsion loops and D-mode waves satisfy their respective free wave equations. All interactions are spacetime-local.
 
-**The foam vacuum is stable at t → ±∞:** The equation of state P = ρc² provides an exponential restoring force: any local perturbation of ρ away from ρ₀ propagates as a wave and disperses. The foam returns to ρ₀ exponentially as |t| → ∞. This is the foam's analogue of the adiabatic theorem — the in-vacuum and out-vacuum are the same: |0⟩.
+**The foam vacuum is stable at t → ±∞:** The equation of state P = ρc² provides an exponential restoring force: any local perturbation of ρ away from ρ₀ propagates as a wave and disperses. The foam returns to ρ₀ exponentially as |t| → ∞. This is the foam's analogue of the adiabatic theorem, the in-vacuum and out-vacuum are the same: |0⟩.
 
 **S-matrix definition:**
 
@@ -86,9 +86,9 @@ where U(t₂,t₁) = T[exp(−i∫_{t₁}^{t₂} H_int dt)] is the time evolutio
 
 The time-ordered product T[φ(x₁)φ(x₂)] = θ(t₁−t₂)φ(x₁)φ(x₂) + θ(t₂−t₁)φ(x₂)φ(x₁) requires an absolute time ordering of foam events.
 
-**This is provided by Axiom Zero irreversibility (Part XLIII):** Displacement events D are irreversible — the winding number only increases monotonically. Each D event has a definite time stamp. The time ordering of foam events is absolute and well-defined. The causal structure is built into the substrate.
+**This is provided by Axiom Zero irreversibility (Part XLIII):** Displacement events D are irreversible, the winding number only increases monotonically. Each D event has a definite time stamp. The time ordering of foam events is absolute and well-defined. The causal structure is built into the substrate.
 
-**T[φ(x₁)φ(x₂)] follows from Axiom Zero.** This is not an additional postulate — it is a consequence of the foam's fundamental irreversibility.
+**T[φ(x₁)φ(x₂)] follows from Axiom Zero.** This is not an additional postulate, it is a consequence of the foam's fundamental irreversibility.
 
 ### 3.2 Photon Reduction
 
@@ -96,7 +96,7 @@ The Haag-Ruelle identity for the D-mode:
 
 **a_out(k,λ) − a_in(k,λ) = i ∫ d⁴x e^{ikx} ε^μ*(k,λ) □_x A_μ(x)**
 
-The key input: **□A_μ = μ₀J_μ** — Maxwell's equation, derived from foam dynamics (Paper #8). In a scattering region, J_μ = eψ̄γ_μψ is the electron current. This equation has been derived; the reduction formula uses it directly.
+The key input: **□A_μ = μ₀J_μ**, Maxwell's equation, derived from foam dynamics (Paper #8). In a scattering region, J_μ = eψ̄γ_μψ is the electron current. This equation has been derived; the reduction formula uses it directly.
 
 ### 3.3 Electron Reduction
 
@@ -128,7 +128,7 @@ This IS the standard LSZ formula, derived from foam ingredients. ■
 
 **S†S = 1** follows from Axiom Zero void-pair conservation.
 
-**Proof:** Every displacement event D creates exactly one bubble B and one void V (Axiom Zero: B+V=D). In any scattering process, the total number of displacement events is conserved — every D that enters the interaction region exits it (possibly in different configurations, but the total topological charge is conserved).
+**Proof:** Every displacement event D creates exactly one bubble B and one void V (Axiom Zero: B+V=D). In any scattering process, the total number of displacement events is conserved, every D that enters the interaction region exits it (possibly in different configurations, but the total topological charge is conserved).
 
 This is equivalent to the conservation of probability:
 
@@ -154,7 +154,7 @@ The foam action in the IR limit:
 
 **S_foam = ∫ d⁴x [−(1/4)F_μν F^μν + ψ̄(iγ·D − m_e)ψ]**
 
-is the QED action — derived from foam dynamics (Maxwell equations from Paper #8, Dirac equation from T₂g sector). The coupling constant is α_foam = 1/137.036 (Paper #3). The electron mass is m_e,foam = 0.51096 MeV (Part XLIV).
+is the QED action, derived from foam dynamics (Maxwell equations from Paper #8, Dirac equation from T₂g sector). The coupling constant is α_foam = 1/137.036 (Paper #3). The electron mass is m_e,foam = 0.51096 MeV (Part XLIV).
 
 **Therefore:**
 
@@ -184,7 +184,7 @@ As a specific check, Compton scattering γ + e⁻ → γ + e⁻ at leading order
 | σ(511 keV) | 2.8653 × 10⁻²⁹ m² | Klein-Nishina | **exact** |
 | σ(1 MeV) | 2.1120 × 10⁻²⁹ m² | Klein-Nishina | **exact** |
 
-"Exact" means the foam gives the identical formula to QED — because the foam IS QED in the IR limit.
+"Exact" means the foam gives the identical formula to QED, because the foam IS QED in the IR limit.
 
 ---
 
@@ -205,17 +205,17 @@ The QFT emergence open item is now substantially closed:
 **Remaining:**
 - Chiral anomalies: within the derived QED/QCD; anomaly cancellation from foam gauge group (SU(3)×SU(2)×U(1) derived)
 - Non-perturbative QCD: confinement derived (Part XLI); hadron spectrum from torsion bound states (defined programme)
-- Gravity + QFT: covariant QFT in curved foam spacetime — the quantum gravity programme
+- Gravity + QFT: covariant QFT in curved foam spacetime, the quantum gravity programme
 
 ---
 
 ## 8. Honest Assessment
 
-**The proof structure:** This paper derives LSZ and the S-matrix via the same route as Papers #21 and #24 — by showing the foam generates QED in the IR, then applying standard QED results. The derivation is logically complete and rigorous.
+**The proof structure:** This paper derives LSZ and the S-matrix via the same route as Papers #21 and #24, by showing the foam generates QED in the IR, then applying standard QED results. The derivation is logically complete and rigorous.
 
-**What is implicit:** The foam Dirac equation (iγ·∂ − m_e)ψ = 0 is stated as following from "T₂g torsion dynamics" — this identification has been established in Parts XIII and XLIV (electron = T₂g torsion loop, mass derived), but the explicit Dirac equation derivation from the torsion dynamics has not been written out in a standalone paper. It is the natural next formal step.
+**What is implicit:** The foam Dirac equation (iγ·∂ − m_e)ψ = 0 is stated as following from "T₂g torsion dynamics", this identification has been established in Parts XIII and XLIV (electron = T₂g torsion loop, mass derived), but the explicit Dirac equation derivation from the torsion dynamics has not been written out in a standalone paper. It is the natural next formal step.
 
-**The deeper programme:** This paper closes the LSZ/S-matrix open item. The programme of deriving individual Feynman rules directly from foam combinatorics — rather than via the QED route — remains the deeper challenge and the subject of future work.
+**The deeper programme:** This paper closes the LSZ/S-matrix open item. The programme of deriving individual Feynman rules directly from foam combinatorics (rather than via the QED route) remains the deeper challenge and the subject of future work.
 
 ---
 
@@ -240,6 +240,14 @@ The QFT emergence open item is now substantially closed:
 *Developed in collaboration with Claude (Anthropic). Ideas, framework, direction: Luke Martin. AI role: LSZ construction, unitarity proof, document composition.*
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #25 · DOI: 10.5281/zenodo.19085007 · Priority Date: 20 February 2026*
 

@@ -32,7 +32,7 @@ The central result is a single-integer NLO factor:
 
 This matches the experimental apex phase δ_exp = arctan(η̄_exp/ρ̄_exp) = 65.44° to within 0.002°. The factor (2E−1)/(2E) has a clean interpretation: at next order in the face-graph walk expansion, the vertex self-energy subtracts one edge from the full edge-incidence count 2E = 72. No new integer is introduced; 2E is the standard edge-incidence quantity already used in the g−2 Schwinger-term derivation (Paper #21).
 
-Paper #64's R_b = 0.3964 combined with δ_NLO = 65.44° gives ρ̄ = 0.165 (+0.58σ) and η̄ = 0.360 (+1.25σ), combined 1.38σ — the δ correction alone does not close the joint fit. A companion NLO correction to R_b is required. We propose a candidate identification R_b → (F−1)/(2V−F) = 13/34 = 0.3824, which combined with δ_NLO gives (ρ̄, η̄) = (0.1589, 0.3478) at (−0.01σ, −0.02σ), closing the combined tension to 0.02σ. The numerator F−1 = β₁(skeleton) is the first Betti number of the edge skeleton (a clean cell invariant); the denominator 2V−F = 34 is a vertex–face incidence combination whose structural derivation from the torsion operator is open.
+Paper #64's R_b = 0.3964 combined with δ_NLO = 65.44° gives ρ̄ = 0.165 (+0.58σ) and η̄ = 0.360 (+1.25σ), combined 1.38σ, the δ correction alone does not close the joint fit. A companion NLO correction to R_b is required. We propose a candidate identification R_b → (F−1)/(2V−F) = 13/34 = 0.3824, which combined with δ_NLO gives (ρ̄, η̄) = (0.1589, 0.3478) at (−0.01σ, −0.02σ), closing the combined tension to 0.02σ. The numerator F−1 = β₁(skeleton) is the first Betti number of the edge skeleton (a clean cell invariant); the denominator 2V−F = 34 is a vertex–face incidence combination whose structural derivation from the torsion operator is open.
 
 Paper #67 therefore closes the δ lever-arm at Tier 2 and raises the combined unitarity-triangle closure to Tier 3, pending derivation of the R_b companion NLO from operator perturbation theory.
 
@@ -45,9 +45,9 @@ The Wolfenstein unitarity-triangle apex (ρ̄, η̄) is fixed in UFFT by two qua
 - **LO:** R_b = r₁/r₂ = 0.3716, δ_LO = 66.36°, giving (ρ̄, η̄) = (0.1491, 0.3411). Combined tension 1.25σ.
 - **NLO (Paper #64):** R_b = r₁²/(r₁r₂−1) = (49−9√17)/30 = 0.39640, δ_LO = 66.36°, giving (ρ̄, η̄) = (0.1590, 0.3631). ρ̄ at −0.002σ; η̄ at +1.51σ. Combined tension 1.51σ.
 
-Paper #64 identified the residual η̄ tension as a *lever-arm effect* — the 0.91° offset in δ amplifies through sin(δ) to 1.5σ in η̄ while producing only 0.38σ in δ itself. The open item left for the present paper is:
+Paper #64 identified the residual η̄ tension as a *lever-arm effect*, the 0.91° offset in δ amplifies through sin(δ) to 1.5σ in η̄ while producing only 0.38σ in δ itself. The open item left for the present paper is:
 
-> *An NLO correction to δ from the operator structure (analogous to the Cabibbo wall correction Paper #51) would close both ρ̄ and η̄ simultaneously.* — Paper #64, §5
+> *An NLO correction to δ from the operator structure (analogous to the Cabibbo wall correction Paper #51) would close both ρ̄ and η̄ simultaneously.*, Paper #64, §5
 
 This paper proposes such a correction.
 
@@ -90,7 +90,7 @@ With δ_LO = 66.360° (Paper #36, Paper #39) and the NLO factor 71/72:
 | δ_exp = arctan(η̄_exp/ρ̄_exp) = arctan(0.348/0.159) | 65.440° |
 | Residual offset | 0.002° |
 
-The NLO δ matches the experimental apex phase to 0.002° — three decimal places. The PDG 1σ band on δ_exp itself is ±2.5° (η̄, ρ̄ have ~6% individual errors), so the NLO formula agrees with experiment to ~10⁻³ σ in δ.
+The NLO δ matches the experimental apex phase to 0.002°, three decimal places. The PDG 1σ band on δ_exp itself is ±2.5° (η̄, ρ̄ have ~6% individual errors), so the NLO formula agrees with experiment to ~10⁻³ σ in δ.
 
 ### 2.3 Why (2E − 1)/(2E) and not another cell-integer fraction
 
@@ -105,7 +105,7 @@ The truncated octahedron's small-integer ratios in the range 0.980–0.992 are:
 | (|G|−1)/|G| = 47/48 | 0.9792 | symmetry-element subtraction | 64.98° (slightly low) |
 | (χ_tot−1)/χ_tot where χ_tot = V+E+F = 74 | 0.9865 | total-simplex subtraction | 65.46° (close) |
 
-Only **(2E−1)/(2E)** matches δ_exp to three decimals. The close runner-up (V+E+F−1)/(V+E+F) = 73/74 predicts 65.46° — 0.02° off, 20× larger residual. The match at 2E = 72 is therefore specific to the directed-edge-incidence interpretation, not a generic numerological hit.
+Only **(2E−1)/(2E)** matches δ_exp to three decimals. The close runner-up (V+E+F−1)/(V+E+F) = 73/74 predicts 65.46°, 0.02° off, 20× larger residual. The match at 2E = 72 is therefore specific to the directed-edge-incidence interpretation, not a generic numerological hit.
 
 ### 2.4 Consistency with previous 2E appearances
 
@@ -159,7 +159,7 @@ The numerator F − 1 = 13 is the *first Betti number of the edge skeleton* of t
 
 The equality β₁(skeleton) = F − 1 follows from the Euler relation V − E + F = χ = 2 on a closed polyhedral surface: F = 2 + E − V, so F − 1 = E − V + 1 = β₁. This is a topological invariant of the cell, not a post-hoc integer.
 
-In walk-sum language, β₁(skeleton) counts the independent closed walks on the 1-skeleton — exactly the degrees of freedom that contribute to a CKM-like matrix element at leading order before the full face structure is resolved. The numerator of R_b therefore counts independent closed edge-walks.
+In walk-sum language, β₁(skeleton) counts the independent closed walks on the 1-skeleton, exactly the degrees of freedom that contribute to a CKM-like matrix element at leading order before the full face structure is resolved. The numerator of R_b therefore counts independent closed edge-walks.
 
 ### 3.4 Structural interpretation of the 2V − F denominator (open)
 
@@ -219,7 +219,7 @@ The formula δ_NLO = δ_LO × 71/72 is falsified if:
 
 ```python
 """
-UFFT Paper #67 — NLO delta_CKM verification
+UFFT Paper #67, NLO delta_CKM verification
 Inputs: cell integers only (V=24, E=36, F=14, r1=(9-sqrt(17))/2).
 Output: delta_NLO, rho_bar, eta_bar.
 """
@@ -279,7 +279,7 @@ combined tension = 0.02 sigma
 | #64 | R_b (ρ̄ modulus) | r₁/r₂ | r₁r₂/(r₁r₂−1) | +6.7% |
 | **#67** | **δ_CKM (phase)** | **arg(λ₁₂) = 66.36°** | **(2E−1)/(2E)** | **−1.4%** |
 
-All three NLO corrections are small rational multiplicative factors involving only cell integers. The δ correction is the simplest of the three — a single ratio of integers, no square roots. This is consistent with δ being a phase (real number) while λ and R_b are amplitude ratios (may involve √Δ through self-energy vertex corrections).
+All three NLO corrections are small rational multiplicative factors involving only cell integers. The δ correction is the simplest of the three, a single ratio of integers, no square roots. This is consistent with δ being a phase (real number) while λ and R_b are amplitude ratios (may involve √Δ through self-energy vertex corrections).
 
 ---
 
@@ -303,7 +303,7 @@ All four Wolfenstein parameters plus the CKM phase are now at ≤0.1σ individua
 
 Paper #67 identifies **(2E − 1)/(2E) = 71/72** as the NLO self-energy correction to the CKM phase δ. The factor has a clean structural interpretation (single-edge-incidence subtraction in the NLO walk sum), uses no new integer beyond the edge-incidence count 2E already appearing in Papers #21, #22, #40, and matches the experimental apex phase δ_exp = arctan(η̄/ρ̄) = 65.44° to 0.002°.
 
-Combined with a companion R_b identification (F−1)/(2V−F) = 13/34, this closes the unitarity-triangle apex to (ρ̄, η̄) within 0.02σ of PDG jointly. The R_b companion is Tier 3 — the numerator F−1 is the skeleton first Betti number (Tier 1), the denominator 2V−F = 34 admits several decompositions but lacks an operator-theoretic derivation. That derivation is the remaining step for full Tier 2 closure of the CKM sector.
+Combined with a companion R_b identification (F−1)/(2V−F) = 13/34, this closes the unitarity-triangle apex to (ρ̄, η̄) within 0.02σ of PDG jointly. The R_b companion is Tier 3, the numerator F−1 is the skeleton first Betti number (Tier 1), the denominator 2V−F = 34 admits several decompositions but lacks an operator-theoretic derivation. That derivation is the remaining step for full Tier 2 closure of the CKM sector.
 
 The η̄ lever-arm tension flagged as open in Paper #64 is therefore closed at the level of the phase, with the companion R_b NLO as the single remaining item.
 
@@ -311,12 +311,12 @@ The η̄ lever-arm tension flagged as open in Paper #64 is therefore closed at t
 
 ## References
 
-[1] Luke Martin, *UFFT Paper #34 — The CKM Matrix from Inter-Type Torsion*. DOI: 10.5281/zenodo.19198360.
-[2] Luke Martin, *UFFT Paper #36 — CP Phases from Off-Diagonal Schur Scalars*. DOI: 10.5281/zenodo.19198775.
-[3] Luke Martin, *UFFT Paper #39 — The Inter-Type Torsion Operator*. DOI: 10.5281/zenodo.19306447.
-[4] Luke Martin, *UFFT Paper #51 — NLO Mixing Correction: The √17/363 Wall Factor*. DOI: 10.5281/zenodo.19477100.
-[5] Luke Martin, *UFFT Paper #64 — The Wolfenstein ρ̄ Parameter from the Inter-Type Torsion Operator*. DOI: pending.
-[6] Luke Martin, *UFFT Paper #66 — Wolfenstein A from the Face-Spectral Complement*. DOI: pending.
+[1] Luke Martin, *UFFT Paper #34, The CKM Matrix from Inter-Type Torsion*. DOI: 10.5281/zenodo.19198360.
+[2] Luke Martin, *UFFT Paper #36, CP Phases from Off-Diagonal Schur Scalars*. DOI: 10.5281/zenodo.19198775.
+[3] Luke Martin, *UFFT Paper #39, The Inter-Type Torsion Operator*. DOI: 10.5281/zenodo.19306447.
+[4] Luke Martin, *UFFT Paper #51, NLO Mixing Correction: The √17/363 Wall Factor*. DOI: 10.5281/zenodo.19477100.
+[5] Luke Martin, *UFFT Paper #64, The Wolfenstein ρ̄ Parameter from the Inter-Type Torsion Operator*. DOI: pending.
+[6] Luke Martin, *UFFT Paper #66, Wolfenstein A from the Face-Spectral Complement*. DOI: pending.
 [7] Particle Data Group, Workman et al., *Review of Particle Physics 2024*. PTEP 2024, 083C01. CKM fit values for (ρ̄, η̄, A, λ).
 
 ---
@@ -326,12 +326,20 @@ The η̄ lever-arm tension flagged as open in Paper #64 is therefore closed at t
 Exhaustive search over ratios p/q with p, q ∈ {1, 2, ..., 50} formed from cell-integer combinations of {V, E, F, F_hx, F_sq, |G|, C_A, Δ, V−F, E−F, E−V, F−1, F+1, 2V−F, 2E−F, V+E, V+F, E+F}. Tolerance: |R_b − 0.3826| < 0.001 (i.e. within 0.1σ of target).
 
 Matches found:
-1. 13/34 = (F−1)/(2V−F) = 0.38235 — **primary candidate, exact combined-tension minimum**
-2. 43/112 = 0.38393 — involves no identifiable cell integer combination (112 = 48+F_sq×F_sq·... unclear)
-3. 49/128 = 0.38281 — 128 = 2⁷ is the cuboctahedral edge-pair count but not a Kelvin-cell invariant
+1. 13/34 = (F−1)/(2V−F) = 0.38235, **primary candidate, exact combined-tension minimum**
+2. 43/112 = 0.38393, involves no identifiable cell integer combination (112 = 48+F_sq×F_sq·... unclear)
+3. 49/128 = 0.38281, 128 = 2⁷ is the cuboctahedral edge-pair count but not a Kelvin-cell invariant
 
 Only (F−1)/(2V−F) is expressible in native cell integers.
 
 ---
 
 **End of Paper #67.**
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory

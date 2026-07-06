@@ -24,7 +24,7 @@
 
 ## Abstract
 
-We present a derivation of quantum decoherence rates within a vacuum pressure gradient model of gravity, in which local vacuum density decreases near massive objects according to ρ_vac(r) = ρ₀(1 - 2GM/rc²). This model predicts that decoherence rates are *suppressed* near massive objects — in direct opposition to the Diosi-Penrose (DP) model. The sign reversal in the gravitational correction term produces a measurable difference of 3GM/rc² in decoherence rate ratios at two gravitational potentials. We propose a concrete experimental protocol using atomic interferometry at varying gravitational potentials, achievable with existing space-based platforms, that can discriminate between the two models.
+We present a derivation of quantum decoherence rates within a vacuum pressure gradient model of gravity, in which local vacuum density decreases near massive objects according to ρ_vac(r) = ρ₀(1 - 2GM/rc²). This model predicts that decoherence rates are *suppressed* near massive objects, in direct opposition to the Diosi-Penrose (DP) model. The sign reversal in the gravitational correction term produces a measurable difference of 3GM/rc² in decoherence rate ratios at two gravitational potentials. We propose a concrete experimental protocol using atomic interferometry at varying gravitational potentials, achievable with existing space-based platforms, that can discriminate between the two models.
 
 ---
 
@@ -74,7 +74,7 @@ Quantitatively:
 - **Vacuum Density model:** Γ_VD(r)/Γ_VD(∞) = 1 - 2GM/rc²
 - **Diosi-Penrose:** Γ_DP(r)/Γ_DP(∞) = 1 + GM/rc²
 
-The difference between predictions is **3GM/rc²** — a factor of 3 in the coefficient and opposite sign.
+The difference between predictions is **3GM/rc²**, a factor of 3 in the coefficient and opposite sign.
 
 ---
 
@@ -110,7 +110,7 @@ This is within the sensitivity range of next-generation space atom interferomete
 
 ### 4.1 Universal Qubit-Independence
 
-A crucial additional prediction: the suppression effect must be *identical* for all qubit implementations — superconducting, photonic, trapped ion, NV center, etc. Any variation between qubit types would falsify the vacuum-density mechanism.
+A crucial additional prediction: the suppression effect must be *identical* for all qubit implementations, superconducting, photonic, trapped ion, NV center, etc. Any variation between qubit types would falsify the vacuum-density mechanism.
 
 This prediction is sharper than the sign test alone and provides a clean falsification criterion.
 
@@ -125,7 +125,7 @@ If the vacuum density model is confirmed:
 
 ## 5. Conclusion
 
-The vacuum foam density model predicts gravitational suppression of decoherence — opposite in sign to Diosi-Penrose. The sign difference is unambiguous and forms the basis of a clean experimental discrimination using existing space-based atom interferometry technology.
+The vacuum foam density model predicts gravitational suppression of decoherence, opposite in sign to Diosi-Penrose. The sign difference is unambiguous and forms the basis of a clean experimental discrimination using existing space-based atom interferometry technology.
 
 The predicted effect magnitude (~10⁻¹¹ fractional) is challenging but within reach of planned missions. The universal qubit-independence prediction provides an additional falsification path.
 

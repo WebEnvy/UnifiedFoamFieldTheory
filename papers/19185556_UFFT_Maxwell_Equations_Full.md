@@ -94,13 +94,13 @@ The wave equation □D = 0, applied to the decomposed field D = E + B, requires 
 
 **∇×B = μ₀ε₀ ∂E/∂t = (1/c²) ∂E/∂t**
 
-These are the necessary and sufficient conditions for a transverse wave to propagate at speed c in the foam. They are not postulated — they follow from □D = 0 plus the Helmholtz decomposition.
+These are the necessary and sufficient conditions for a transverse wave to propagate at speed c in the foam. They are not postulated, they follow from □D = 0 plus the Helmholtz decomposition.
 
 **No magnetic monopoles:**
 
 **∇·B = 0**
 
-This is the mathematical identity ∇·(∇×A) ≡ 0. It holds for any vector field defined as a curl. It is not a physical law — it is a theorem of vector calculus.
+This is the mathematical identity ∇·(∇×A) ≡ 0. It holds for any vector field defined as a curl. It is not a physical law, it is a theorem of vector calculus.
 
 **Status:** Three of four Maxwell equations derived. The remaining equation (Gauss's law with sources) requires identifying what charges are in the foam.
 
@@ -115,7 +115,7 @@ In any crystalline lattice, two types of topological defect are possible:
 | Dislocation | Translation mismatch around a loop (Burgers vector) | — |
 | Disclination | Rotation mismatch around a loop (Frank vector) | Electric charge |
 
-The foam lattice (BCC Kelvin cells) supports disclinations — regions where one cell is rotated relative to its neighbours. A closed disclination loop with total Frank rotation 2π is a **torsion defect** in the T₂g sector of O_h.
+The foam lattice (BCC Kelvin cells) supports disclinations, regions where one cell is rotated relative to its neighbours. A closed disclination loop with total Frank rotation 2π is a **torsion defect** in the T₂g sector of O_h.
 
 The electron is a torsion defect: a closed loop through 3 face-adjacent cells, each rotated by 2π/C_A = 2π/3 = 120°, giving a total rotation of 2π.
 
@@ -166,7 +166,7 @@ Fractional quark charges are lattice rotation fractions. The electron charge is 
 
 **Theorem (Winding Number Conservation):** The total winding number of topological defects in a continuous medium is conserved under continuous deformations. A defect can only be created as a defect-antidefect pair (total winding number zero).
 
-In the foam: Axiom Zero states B + V = D — every displacement creates a bubble-void pair. Applied to torsion defects: every charge is created with its anticharge. The total topological charge is conserved.
+In the foam: Axiom Zero states B + V = D, every displacement creates a bubble-void pair. Applied to torsion defects: every charge is created with its anticharge. The total topological charge is conserved.
 
 **Continuity equation:**
 
@@ -186,9 +186,9 @@ Ampère's law with sources requires the displacement current term for consistenc
 
 0 = μ₀∇·J + μ₀ε₀ ∂(∇·E)/∂t = μ₀(∇·J + ∂ρ_e/∂t)
 
-This is the continuity equation — charge conservation. Without the displacement current, ∇·(∇×B) = μ₀∇·J ≠ 0 whenever charge accumulates. The displacement current is the mathematical consequence of requiring Gauss's law + charge conservation + Ampère simultaneously.
+This is the continuity equation, charge conservation. Without the displacement current, ∇·(∇×B) = μ₀∇·J ≠ 0 whenever charge accumulates. The displacement current is the mathematical consequence of requiring Gauss's law + charge conservation + Ampère simultaneously.
 
-Physically: the displacement current μ₀ε₀∂E/∂t is the foam's elastic response to a changing electric field — the polarisation current of the foam cells shifting under the time-varying displacement field.
+Physically: the displacement current μ₀ε₀∂E/∂t is the foam's elastic response to a changing electric field, the polarisation current of the foam cells shifting under the time-varying displacement field.
 
 ---
 
@@ -201,7 +201,7 @@ The potentials (φ, A) are not unique. The fields E and B are unchanged under:
 
 for any scalar function χ.
 
-In the foam: gauge invariance is translational symmetry. A uniform displacement of the entire foam changes the potentials but not the physical fields (strain and rotation). The fields depend on derivatives of the potentials, not the potentials themselves, because the foam is homogeneous — absolute displacement has no physical meaning.
+In the foam: gauge invariance is translational symmetry. A uniform displacement of the entire foam changes the potentials but not the physical fields (strain and rotation). The fields depend on derivatives of the potentials, not the potentials themselves, because the foam is homogeneous, absolute displacement has no physical meaning.
 
 The gauge group is U(1) because the displacement field at each point has one degree of freedom (the displacement magnitude along a given direction). The gauge orbit is the set of displacements that produce the same physical strain.
 
@@ -258,13 +258,30 @@ Every step is either a theorem of mathematics (Helmholtz, Volterra, vector ident
 
 ## What This Closes
 
-This derivation closes what was identified in UFFT v10 as "the most significant gap in the framework's coverage of known physics." The complete electromagnetic theory — field equations, gauge structure, charge quantisation, charge conservation, and the Coulomb law — follows from the mechanical properties of the foam and the topology of its defects.
+This derivation closes what was identified in UFFT v10 as "the most significant gap in the framework's coverage of known physics." The complete electromagnetic theory (field equations, gauge structure, charge quantisation, charge conservation, and the Coulomb law) follows from the mechanical properties of the foam and the topology of its defects.
 
 ---
 
 *Developed in collaboration with Claude (Anthropic). Ideas, framework, direction: Luke Martin. AI role: charge quantisation analysis, lattice symmetry application, document composition.*
 
 ---
+
+---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [2] Paper #8 — Maxwell's Equations from Foam Dynamics. DOI: 10.5281/zenodo.19063671
+- [3] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #29 · DOI: 10.5281/zenodo.19185556 · Priority Date: 20 February 2026*
 

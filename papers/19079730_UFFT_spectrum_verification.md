@@ -60,13 +60,13 @@ Every UFFT physical prediction depending on √17 rests on this spectrum:
 
 ## Running the Verification
 
-**Option 1 — Jupyter notebook:**
+**Option 1, Jupyter notebook:**
 ```
 jupyter notebook UFFT_Spectrum_Verification.ipynb
 ```
 Run all cells. Each step is documented with explanation.
 
-**Option 2 — Python script:**
+**Option 2, Python script:**
 ```
 python UFFT_Spectrum_Verification.py
 ```
@@ -135,6 +135,23 @@ If you use this verification, please cite the underlying paper:
 *Developed in collaboration with Claude (Anthropic). Ideas, framework, direction: Luke Martin. AI role: code implementation, notebook structure.*
 
 ---
+
+---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #3 — The Fine Structure Constant from Planck-Scale Foam Geometry. DOI: 10.5281/zenodo.19011758
+- [2] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [3] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #20 · DOI: 10.5281/zenodo.19079730 · Priority Date: 20 February 2026*
 

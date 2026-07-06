@@ -27,7 +27,7 @@
 
 ## Abstract
 
-This paper is a standalone presentation of the pure-mathematical content underlying the Unified Foam Field Theory. It makes no physical claims. Every theorem stated here is a result of finite linear algebra, group representation theory, or combinatorial topology applied to the truncated octahedron — the unique space-filling polyhedron with full O_h point symmetry (Fedorov 1891; confirmed by Paper #50 of this series).
+This paper is a standalone presentation of the pure-mathematical content underlying the Unified Foam Field Theory. It makes no physical claims. Every theorem stated here is a result of finite linear algebra, group representation theory, or combinatorial topology applied to the truncated octahedron, the unique space-filling polyhedron with full O_h point symmetry (Fedorov 1891; confirmed by Paper #50 of this series).
 
 The paper collects in one place the mathematical results that the UFFT physics papers reference repeatedly: (i) the construction of the face Laplacian L on the truncated octahedron's face-adjacency graph; (ii) its spectrum σ(L) = {0, r₁, 4, r₂, 7, 9} with multiplicities (1, 3, 2, 3, 4, 1), where r₁, r₂ are roots of the master equation λ² − 9λ + 16 = 0; (iii) the O_h irreducible decomposition of the 14-dimensional face space; (iv) the ring Q(√17) structure of the eigenvalue algebra; and (v) the uniqueness theorem for the Kelvin cell among Fedorov parallelohedra.
 
@@ -47,11 +47,11 @@ The purpose of this standalone version is to allow the mathematical content to b
 
 ### Definition 1.1 (Face graph)
 
-The **face graph** G_F of P is the graph whose vertices are the 14 faces of P, with an edge between two faces iff they share an edge in P. G_F is 3-regular: each face has three distinct neighbours (every hexagon borders 3 squares and 3 hexagons alternately; every square borders 4 hexagons, but the edge count in G_F from a square is 4 — see Remark 1.2).
+The **face graph** G_F of P is the graph whose vertices are the 14 faces of P, with an edge between two faces iff they share an edge in P. G_F is 3-regular: each face has three distinct neighbours (every hexagon borders 3 squares and 3 hexagons alternately; every square borders 4 hexagons, but the edge count in G_F from a square is 4, see Remark 1.2).
 
 ### Remark 1.2 (Edge multiplicities in G_F)
 
-G_F inherits exactly one edge per shared cell-edge. A hexagon shares an edge with 3 squares and 3 hexagons; a square shares an edge with 4 hexagons. Total edges in G_F: 4·6 + 3·8 = 48/2 (hexagons share edges pairwise) — i.e. Σ deg = 4·6 + 6·8 = 72 = 2E_P, so |E(G_F)| = 36 = E_P. The face graph edge count equals the cell-edge count, as expected from the bijection (cell-edge) ↔ (pair of adjacent faces).
+G_F inherits exactly one edge per shared cell-edge. A hexagon shares an edge with 3 squares and 3 hexagons; a square shares an edge with 4 hexagons. Total edges in G_F: 4·6 + 3·8 = 48/2 (hexagons share edges pairwise), i.e. Σ deg = 4·6 + 6·8 = 72 = 2E_P, so |E(G_F)| = 36 = E_P. The face graph edge count equals the cell-edge count, as expected from the bijection (cell-edge) ↔ (pair of adjacent faces).
 
 ### Definition 1.3 (Face Laplacian)
 
@@ -146,7 +146,7 @@ The 14-dimensional face representation ρ_F: O_h → GL(ℂ^14) decomposes as:
 
 **ρ_F = A_{1g} ⊕ A_{2u} ⊕ E_g ⊕ T_{1u} ⊕ T_{2g} ⊕ T_{1u}**
 
-(dimensions: 1 + 1 + 2 + 3 + 3 + 3 = 13; plus a subtlety with T_{2g} dimension — see Remark 3.3)
+(dimensions: 1 + 1 + 2 + 3 + 3 + 3 = 13; plus a subtlety with T_{2g} dimension, see Remark 3.3)
 
 **Remark 3.3 (Explicit multiplicities).** The correct decomposition with full multiplicities is:
 
@@ -160,7 +160,7 @@ The 14-dimensional face representation ρ_F: O_h → GL(ℂ^14) decomposes as:
 | T_{2u} | 3 | 0 | 0 |
 | — | — | — | **14 ✓** |
 
-*(Verification: character computation — the reducible character χ_F at each conjugacy class matches the sum of irreducible characters with the stated multiplicities. See Appendix A.)*
+*(Verification: character computation, the reducible character χ_F at each conjugacy class matches the sum of irreducible characters with the stated multiplicities. See Appendix A.)*
 
 ### 3.4 Correspondence of L-eigenvalues with O_h isotypic components
 
@@ -175,7 +175,7 @@ Each O_h isotypic subspace is an L-eigenspace (because L commutes with the O_h a
 | 7 | 4 | T_{2g} ⊕ A_{1g} (2nd)? — *see Note below* |
 | 9 | 1 | A_{2u} |
 
-**Note on the λ = 7 eigenspace (multiplicity 4).** The λ = 7 eigenspace decomposes as T_{2g} ⊕ A_{?}. The T_{2g} is unambiguous (dim 3); the additional 1-dimensional component is either A_{2g} or A_{1u} depending on the orientation convention — determined by explicit character computation in Appendix A. For the combinatorial statement of Theorem 1.4 the distinction is immaterial; for later applications in the UFFT physics papers, the convention is fixed and the component is A_{2u}.
+**Note on the λ = 7 eigenspace (multiplicity 4).** The λ = 7 eigenspace decomposes as T_{2g} ⊕ A_{?}. The T_{2g} is unambiguous (dim 3); the additional 1-dimensional component is either A_{2g} or A_{1u} depending on the orientation convention, determined by explicit character computation in Appendix A. For the combinatorial statement of Theorem 1.4 the distinction is immaterial; for later applications in the UFFT physics papers, the convention is fixed and the component is A_{2u}.
 
 ### 3.5 The doubled T_{1u}
 
@@ -233,7 +233,7 @@ Let K = 1-skeleton of P (vertices + edges, forgetting face structure). Then:
 
 ### 5.2 Chromatic number of G_F
 
-G_F admits a proper 3-colouring (theorem, e.g., via explicit construction: hexagons in two classes by face-centre parity, squares in a third class). It admits no 2-colouring (G_F contains triangles — three mutually adjacent hexagons around each vertex of P). Therefore:
+G_F admits a proper 3-colouring (theorem, e.g., via explicit construction: hexagons in two classes by face-centre parity, squares in a third class). It admits no 2-colouring (G_F contains triangles, three mutually adjacent hexagons around each vertex of P). Therefore:
 
 χ(G_F) = 3.
 
@@ -284,7 +284,7 @@ Every theorem above is a statement about finite matrices, characters of a finite
 
 ## 7. Relation to the UFFT Physics Programme (non-claim)
 
-The Unified Foam Field Theory (Paper #1 onward) **identifies** certain mathematical objects of this paper with physical quantities — for example, r₁ and r₂ with left-handed and right-handed fermion chirality sectors; the T_{1u} doubling with the fermion generation structure; the master equation discriminant Δ = 17 with the dimensionless input to the fine-structure constant. These identifications are physics hypotheses and are not proved here. The purpose of Paper #63 is to allow the mathematical content to stand on its own, verifiable by anyone with a linear-algebra package, independent of whether the physics identifications are ultimately correct.
+The Unified Foam Field Theory (Paper #1 onward) **identifies** certain mathematical objects of this paper with physical quantities, for example, r₁ and r₂ with left-handed and right-handed fermion chirality sectors; the T_{1u} doubling with the fermion generation structure; the master equation discriminant Δ = 17 with the dimensionless input to the fine-structure constant. These identifications are physics hypotheses and are not proved here. The purpose of Paper #63 is to allow the mathematical content to stand on its own, verifiable by anyone with a linear-algebra package, independent of whether the physics identifications are ultimately correct.
 
 ---
 
@@ -313,7 +313,7 @@ The missing dimension (14 − 13 = 1) sits with the λ = 7 eigenspace; detailed 
 
 ρ_F = A_{1g} ⊕ A_{2u} ⊕ E_g ⊕ 2·T_{1u} ⊕ T_{2g} ⊕ A_{2u}
 
-with dimension 1 + 1 + 2 + 6 + 3 + 1 = **14 ✓**. (The double-A_{2u} structure — with one copy at λ = 9 and one at λ = 7 — is a feature of the 3-regular face graph on the truncated octahedron, not a standard result but verifiable by direct computation.)
+with dimension 1 + 1 + 2 + 6 + 3 + 1 = **14 ✓**. (The double-A_{2u} structure (with one copy at λ = 9 and one at λ = 7) is a feature of the 3-regular face graph on the truncated octahedron, not a standard result but verifiable by direct computation.)
 
 ---
 
@@ -338,16 +338,24 @@ Complete A matrix and L = D − A are available as `verification/face_laplacian_
 
 [3] Chung, F. R. K. (1997). *Spectral Graph Theory*. CBMS Regional Conference Series 92, AMS. (Foundational reference for combinatorial Laplacians.)
 
-[4] Luke Martin, *UFFT Paper #50 — Uniqueness of the Foam Cell: Exhaustive Fedorov Parallelohedra Check*. DOI: 10.5281/zenodo.19258720. (Proof of Theorem 4.2 in full detail.)
+[4] Luke Martin, *UFFT Paper #50, Uniqueness of the Foam Cell: Exhaustive Fedorov Parallelohedra Check*. DOI: 10.5281/zenodo.19258720. (Proof of Theorem 4.2 in full detail.)
 
-[5] Luke Martin, *UFFT Paper #5 — The Face Laplacian Spectrum*. DOI: 10.5281/zenodo.18993762. (Original derivation of Theorem 1.4.)
+[5] Luke Martin, *UFFT Paper #5, The Face Laplacian Spectrum*. DOI: 10.5281/zenodo.18993762. (Original derivation of Theorem 1.4.)
 
-[6] Luke Martin, *UFFT Paper #16 — The Master Equation*. DOI: 10.5281/zenodo.19066957. (Derivation of λ² − 9λ + 16 = 0 and its discriminant Δ = 17.)
+[6] Luke Martin, *UFFT Paper #16, The Master Equation*. DOI: 10.5281/zenodo.19066957. (Derivation of λ² − 9λ + 16 = 0 and its discriminant Δ = 17.)
 
-[7] Luke Martin, *UFFT Paper #38 — Three-Generation Structure from T_{1u} Doubling*. DOI: 10.5281/zenodo.19274895. (Character-theoretic derivation of the doubled T_{1u}.)
+[7] Luke Martin, *UFFT Paper #38, Three-Generation Structure from T_{1u} Doubling*. DOI: 10.5281/zenodo.19274895. (Character-theoretic derivation of the doubled T_{1u}.)
 
 ---
 
 **End of Paper #63.**
 
 *This paper can be cited as a standalone mathematics reference. It is intended for submission to a general-mathematics or mathematical-physics journal independently of the UFFT physics preprints.*
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory

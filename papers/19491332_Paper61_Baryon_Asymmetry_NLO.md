@@ -44,7 +44,7 @@ The leading-order UFFT derivation (Paper #49) identified η_B with the cube of t
 
 This formula captures the dominant physics: each baryon asymmetry event requires three electromagnetic vertices (α³), proceeds through C_A = 3 colour channels, and the six square faces of the Kelvin cell (F_sq = 6) encode the three spatial orientation pairs of the sphaleron field. The factor F_sq³ = 216 counts the cube of directional degeneracy.
 
-The residual gap was 1.79% — small but real, and the last genuinely open numerical discrepancy in the framework. In this paper we derive the NLO correction from first principles in the foam lattice geometry.
+The residual gap was 1.79%, small but real, and the last genuinely open numerical discrepancy in the framework. In this paper we derive the NLO correction from first principles in the foam lattice geometry.
 
 ---
 
@@ -58,9 +58,9 @@ Baryogenesis in UFFT occurs at the electroweak phase transition, which is first-
 
 The bubble wall, in the foam lattice picture, is a two-dimensional surface of displaced cells. At the wall, each Kelvin cell sits at the boundary between the broken and unbroken phase. The wall has a composite topology:
 
-**Vertex displacement channels:** Each cell has V = 24 vertices and F = 14 faces. The net vertex channels available for displacement at the wall — vertices that are not face-constrained — number V − F = 24 − 14 = **10**. These represent the degrees of freedom of vertex displacement that are not captured by face topology alone.
+**Vertex displacement channels:** Each cell has V = 24 vertices and F = 14 faces. The net vertex channels available for displacement at the wall (vertices that are not face-constrained) number V − F = 24 − 14 = **10**. These represent the degrees of freedom of vertex displacement that are not captured by face topology alone.
 
-**Edge propagation loops:** Each cell has E = 36 edges and F = 14 faces. The independent edge loops — edges that close paths not already determined by face boundaries — number E − F = 36 − 14 = **22**. These are the independent loop degrees of freedom through which the sphaleron field propagates.
+**Edge propagation loops:** Each cell has E = 36 edges and F = 14 faces. The independent edge loops (edges that close paths not already determined by face boundaries) number E − F = 36 − 14 = **22**. These are the independent loop degrees of freedom through which the sphaleron field propagates.
 
 The total number of independent wall channels is the product:
 
@@ -129,7 +129,7 @@ Zero free parameters. The NLO correction is uniquely determined by the cell geom
 
 ### 4.4 Relationship to LO
 
-The fractional correction is √17/220 ≈ 1.87%. This is a genuine NLO effect: small (< 2%) and positive. It is not a parameter-fitting exercise — the denominator 220 is fixed by the cell and could not have been tuned (the nearest alternatives, 210 = (V−F)(E−F−8) and 231 = 3×77, give 1.9% corrections or miss the observed value by larger amounts).
+The fractional correction is √17/220 ≈ 1.87%. This is a genuine NLO effect: small (< 2%) and positive. It is not a parameter-fitting exercise, the denominator 220 is fixed by the cell and could not have been tuned (the nearest alternatives, 210 = (V−F)(E−F−8) and 231 = 3×77, give 1.9% corrections or miss the observed value by larger amounts).
 
 ---
 
@@ -137,7 +137,7 @@ The fractional correction is √17/220 ≈ 1.87%. This is a genuine NLO effect: 
 
 ### 5.1 The Sphaleron in the Foam
 
-In the Standard Model, baryogenesis at a first-order EW phase transition proceeds when sphalerons — non-perturbative field configurations — transition over the energy barrier between topologically distinct vacua. Each sphaleron transition changes baryon number by one unit (per generation).
+In the Standard Model, baryogenesis at a first-order EW phase transition proceeds when sphalerons (non-perturbative field configurations) transition over the energy barrier between topologically distinct vacua. Each sphaleron transition changes baryon number by one unit (per generation).
 
 In UFFT, the sphaleron corresponds to a closed topological path in the foam: a loop of edge displacements that forms a closed surface enclosing a change of foam topology. The sphaleron rate in the bulk is captured by α³ (three gauge vertices) modulated by the colour and spatial degeneracy factors C_A and F_sq³.
 
@@ -145,14 +145,14 @@ In UFFT, the sphaleron corresponds to a closed topological path in the foam: a l
 
 At the bubble wall, the foam cells are not in equilibrium. The wall passes through each cell on a timescale short compared to the thermal relaxation time. During this passage, the cell has access to additional topological channels:
 
-- The (V−F) = 10 vertex channels represent the excess of vertex degrees of freedom over face constraints — the "loose" vertices that can participate in displacement events without being tied to a face.
-- The (E−F) = 22 edge loops represent the independent closed paths through the cell that are not face boundaries — the topological handles through which the sphaleron field can thread.
+- The (V−F) = 10 vertex channels represent the excess of vertex degrees of freedom over face constraints, the "loose" vertices that can participate in displacement events without being tied to a face.
+- The (E−F) = 22 edge loops represent the independent closed paths through the cell that are not face boundaries, the topological handles through which the sphaleron field can thread.
 
-When the wall sweeps through, it activates all 220 of these channels simultaneously. The NLO correction √17/220 is the amplitude for one additional baryon violation event per 220/√17 ≈ 53.4 wall crossings. This is a geometric suppression — most wall crossings do not produce an additional baryon, but a fraction 1/53.4 do, producing the observed 1.87% enhancement.
+When the wall sweeps through, it activates all 220 of these channels simultaneously. The NLO correction √17/220 is the amplitude for one additional baryon violation event per 220/√17 ≈ 53.4 wall crossings. This is a geometric suppression, most wall crossings do not produce an additional baryon, but a fraction 1/53.4 do, producing the observed 1.87% enhancement.
 
 ### 5.3 Connection to the EW Phase Transition Prediction
 
-UFFT predicts a first-order EW phase transition (Paper #49, Theorem 49.3). A first-order transition is required for this baryogenesis mechanism to work: the bubble wall must exist. The NLO correction derived here is therefore internally consistent — it presupposes the first-order transition that UFFT itself predicts.
+UFFT predicts a first-order EW phase transition (Paper #49, Theorem 49.3). A first-order transition is required for this baryogenesis mechanism to work: the bubble wall must exist. The NLO correction derived here is therefore internally consistent, it presupposes the first-order transition that UFFT itself predicts.
 
 ---
 
@@ -257,6 +257,24 @@ All computations use only cell integers and the UFFT α prediction. No external 
 ---
 
 *Priority Date: 20 February 2026 · Paper #61 · B + V = D*
+
+---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #1 — Gravitational Suppression of Quantum Decoherence via Variable Vacuum Foam Density. DOI: 10.5281/zenodo.18706756
+- [2] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [3] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+- [4] Paper #49 — Baryon Asymmetry, Bekenstein Entropy, and Cosmological Predictions from Foam Cell Geometry. DOI: 10.5281/zenodo.19448089
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #61 · DOI: 10.5281/zenodo.19491332 · Priority Date: 20 February 2026*
 

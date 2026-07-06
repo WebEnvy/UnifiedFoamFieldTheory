@@ -22,7 +22,7 @@
 
 ## Abstract
 
-Twelve new results are derived from the truncated octahedral foam with zero additional free parameters. (1–3) The three >2σ tensions in the mixing sector — Cabibbo angle (3.7σ), atmospheric angle (2.2σ), and reactor angle (2.3σ) — are resolved by a universal NLO correction ε = √Δ/(sector eigenvalue sum)², reducing all three to <0.3σ. (4–7) The absolute neutrino mass scale is derived: m₃ = m_e exp(−(11+13√17)/4) = 49.49 meV (0.1σ from observed), m₁ = 0 exactly from the T₁u mass matrix, implying normal hierarchy and Dirac neutrinos. (8) The strong coupling constant α_s(M_Z) = 1/(9−3ln3/(2π)) = 0.11799 matches the world average to 0.01σ. (9) The Higgs quartic coupling at leading order is λ = 1/8, derived from the cube subgraph of hexagonal faces (3.4%). (10) The Weinberg angle formula is identified as giving the effective Z-pole value sin²θ_W^eff (0.3σ from LEP), resolving an apparent 10σ tension. (11) M_W = 80.37 GeV follows from the scheme identification (0.3σ). (12) The complete fermion mass table now contains all 15 Standard Model fermions from cell integers. Five sharp predictions are made: normal hierarchy (JUNO ~2027), Dirac neutrinos (LEGEND/nEXO/CUPID), Σm_ν = 58.1 meV (CMB-S4/Euclid), α_s to 0.01%, and λ_H = 1/8 (HL-LHC).
+Twelve new results are derived from the truncated octahedral foam with zero additional free parameters. (1–3) The three >2σ tensions in the mixing sector (Cabibbo angle (3.7σ), atmospheric angle (2.2σ), and reactor angle (2.3σ)) are resolved by a universal NLO correction ε = √Δ/(sector eigenvalue sum)², reducing all three to <0.3σ. (4–7) The absolute neutrino mass scale is derived: m₃ = m_e exp(−(11+13√17)/4) = 49.49 meV (0.1σ from observed), m₁ = 0 exactly from the T₁u mass matrix, implying normal hierarchy and Dirac neutrinos. (8) The strong coupling constant α_s(M_Z) = 1/(9−3ln3/(2π)) = 0.11799 matches the world average to 0.01σ. (9) The Higgs quartic coupling at leading order is λ = 1/8, derived from the cube subgraph of hexagonal faces (3.4%). (10) The Weinberg angle formula is identified as giving the effective Z-pole value sin²θ_W^eff (0.3σ from LEP), resolving an apparent 10σ tension. (11) M_W = 80.37 GeV follows from the scheme identification (0.3σ). (12) The complete fermion mass table now contains all 15 Standard Model fermions from cell integers. Five sharp predictions are made: normal hierarchy (JUNO ~2027), Dirac neutrinos (LEGEND/nEXO/CUPID), Σm_ν = 58.1 meV (CMB-S4/Euclid), α_s to 0.01%, and λ_H = 1/8 (HL-LHC).
 
 **Keywords:** NLO corrections, neutrino mass, mass hierarchy, Dirac neutrino, strong coupling, Higgs quartic, Weinberg angle, Cabibbo angle, mixing angles, truncated octahedron, foam field theory, UFFT
 
@@ -94,7 +94,7 @@ Observed: 0.22500 ± 0.00067. **Deviation: 0.07σ.**
 
 ### 2.5 Solar angle protection
 
-The solar angle tan²θ₁₂ = √Δ/C_A² is unaffected at first order because the Z₂ breaking acts in the 2-3 sector. The correction to θ₁₂ enters at order ε² ≈ 0.003 — negligible. The LO result (0.56σ) is preserved.
+The solar angle tan²θ₁₂ = √Δ/C_A² is unaffected at first order because the Z₂ breaking acts in the 2-3 sector. The correction to θ₁₂ enters at order ε² ≈ 0.003, negligible. The LO result (0.56σ) is preserved.
 
 ### 2.6 Complete NLO mixing table
 
@@ -129,7 +129,7 @@ Observed (from √|Δm²₃₂|): 49.53 ± 0.33 meV. **Deviation: 0.1σ.**
 
 **B = −(F−1) = −13.** All non-vacuum face modes contribute to the mass suppression. This is the same counting as the vacuum polarisation rational term: −91/144 = −λ_T₂g(F−1)/N_gauge².
 
-**C = λ_Eg = 4.** The Eg eigenvalue — the pure weak sector. The neutrino mass is normalised by the weak eigenvalue because neutrinos only interact weakly. Quarks use C = 8 or 16 (strong+EW sectors).
+**C = λ_Eg = 4.** The Eg eigenvalue, the pure weak sector. The neutrino mass is normalised by the weak eigenvalue because neutrinos only interact weakly. Quarks use C = 8 or 16 (strong+EW sectors).
 
 ### 3.3 m₁ = 0: a theorem
 
@@ -139,7 +139,7 @@ D = √(Δ + 4c²) = √(17 + 64) = √81 = 9 = r₁+r₂
 
 The two eigenvalues become (9+9)/2 = 9 and (9−9)/2 = **0 exactly**.
 
-The lightest neutrino is massless. This is not an assumption — it is a theorem of the T₁u sector. The coupling c = √(r₁r₂) is the natural geometric mean coupling between two eigenspaces related by Vieta's formulas (r₁r₂ = 16 = constant term of the master equation).
+The lightest neutrino is massless. This is not an assumption, it is a theorem of the T₁u sector. The coupling c = √(r₁r₂) is the natural geometric mean coupling between two eigenspaces related by Vieta's formulas (r₁r₂ = 16 = constant term of the master equation).
 
 ### 3.4 Complete spectrum
 
@@ -154,7 +154,7 @@ The lightest neutrino is massless. This is not an assumption — it is a theorem
 
 **Normal hierarchy** (m₁ < m₂ < m₃) is derived, not assumed.
 
-**Dirac neutrinos.** The mass formula follows the same pattern as all other fermion masses — a direct exponential from cell integers. No seesaw mechanism is invoked. No right-handed Majorana mass M_R exists in the framework. Neutrinos are Dirac fermions.
+**Dirac neutrinos.** The mass formula follows the same pattern as all other fermion masses, a direct exponential from cell integers. No seesaw mechanism is invoked. No right-handed Majorana mass M_R exists in the framework. Neutrinos are Dirac fermions.
 
 **Prediction: no neutrinoless double-beta decay.** All 0νββ experiments (LEGEND-200, nEXO, CUPID) will return null results. The effective Majorana mass m_ββ = 0 exactly.
 
@@ -170,9 +170,9 @@ Observed (PDG 2024): 0.1180 ± 0.0009. **Deviation: 0.01σ.**
 
 ### 4.1 Physical interpretation
 
-The bare torsion coupling is C_A² = 9 — the same quantity as β₀(n_f = C_A), the QCD β-function coefficient when the number of active quark flavours equals the colour number. The one-loop torsion self-energy correction subtracts C_A ln(C_A)/(2π): the colour field corrects its own strength by its own logarithm divided by the loop factor.
+The bare torsion coupling is C_A² = 9, the same quantity as β₀(n_f = C_A), the QCD β-function coefficient when the number of active quark flavours equals the colour number. The one-loop torsion self-energy correction subtracts C_A ln(C_A)/(2π): the colour field corrects its own strength by its own logarithm divided by the loop factor.
 
-The formula uses only C_A = 3 and 2π. It is QCD-specific (does not generalise to SU(2)) because it depends on the n_f = C_A condition — the natural QCD regime.
+The formula uses only C_A = 3 and 2π. It is QCD-specific (does not generalise to SU(2)) because it depends on the n_f = C_A condition, the natural QCD regime.
 
 ### 4.2 Status
 
@@ -264,7 +264,7 @@ Twelve fermion masses derived from cell integers. Three boson masses from derive
 | sin²θ_W scheme | Identified as effective Z-pole value | HIGH |
 | M_W | Follows from scheme identification | HIGH |
 
-Two results (m₃ and α_s) were found by numerical search over cell integer combinations and subsequently given physical interpretations. The derivation paths — T₁u Dirac propagator for m₃ and torsion Green's function for α_s — are identified but not yet computed.
+Two results (m₃ and α_s) were found by numerical search over cell integer combinations and subsequently given physical interpretations. The derivation paths (T₁u Dirac propagator for m₃ and torsion Green's function for α_s) are identified but not yet computed.
 
 ---
 

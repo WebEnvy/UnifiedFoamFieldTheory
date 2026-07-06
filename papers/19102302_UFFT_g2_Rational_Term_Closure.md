@@ -30,13 +30,13 @@
 
 This paper closes two open items simultaneously.
 
-**Item 1 — α normalization uniqueness (Open item 11):** The coefficients V−F=10 and E−F=22 in the α formula are uniquely forced by three conditions: (i) the D-mode lives on faces (λ_Eg = C_A+1, proven Part XLII), (ii) O_h equivariance, and (iii) positivity. The only O_h-equivariant positive integer differences referenced to the face level are V−F and E−F. This closes Open item 11 completely. The α formula is now fully derived.
+**Item 1, α normalization uniqueness (Open item 11):** The coefficients V−F=10 and E−F=22 in the α formula are uniquely forced by three conditions: (i) the D-mode lives on faces (λ_Eg = C_A+1, proven Part XLII), (ii) O_h equivariance, and (iii) positivity. The only O_h-equivariant positive integer differences referenced to the face level are V−F and E−F. This closes Open item 11 completely. The α formula is now fully derived.
 
-**Item 2 — Rational 197/144 (Paper #27):** The rational part of C₂ satisfies the identity:
+**Item 2, Rational 197/144 (Paper #27):** The rational part of C₂ satisfies the identity:
 
 **197/144 = (2N_gauge² − λ_T2g(F−1)) / N_gauge²**
 
-This identity is proven via the chain: foam generates QED (Papers #8, #21, #22, #25) → QED computes 197/144 as its two-loop rational → foam quantities satisfy this identity. The antecedent is proven. The identity is therefore established. An independent derivation — computing the foam's renormalized diagram contributions without QED as intermediary — remains open as a defined future calculation.
+This identity is proven via the chain: foam generates QED (Papers #8, #21, #22, #25) → QED computes 197/144 as its two-loop rational → foam quantities satisfy this identity. The antecedent is proven. The identity is therefore established. An independent derivation (computing the foam's renormalized diagram contributions without QED as intermediary) remains open as a defined future calculation.
 
 Together, these results complete the two-loop g−2 programme: all four terms of C₂ are derived (three independently in Paper #26, the rational via the foam→QED→identity chain here).
 
@@ -46,13 +46,13 @@ Together, these results complete the two-loop g−2 programme: all four terms of
 
 ### The Open Question
 
-Paper #22 established that the D-mode heat kernel Z_D = Tr[exp(−L/|G|²)] gives α with coefficients V−F=10 and E−F=22, referenced to the face level F. The proof that this reference level is *uniquely forced* — rather than merely natural — was identified as the remaining open item.
+Paper #22 established that the D-mode heat kernel Z_D = Tr[exp(−L/|G|²)] gives α with coefficients V−F=10 and E−F=22, referenced to the face level F. The proof that this reference level is *uniquely forced* (rather than merely natural) was identified as the remaining open item.
 
 ### The Proof
 
 **Established:** D lives on k=2 faces. This follows from λ_Eg = C_A+1 = 4 being the Axiom Zero coupling quantum (Part XLII): the E_g irreducible representation acts on face-pairs, making the face the natural arena for displacement events.
 
-**Consequence:** The heat kernel Z_D counts closed D-mode loops. The corrections to Z_D at each CW-complex dimension must be measured relative to the face level — because the faces are where D lives, and deviations from the face count measure the topological features that modify closed-loop counting.
+**Consequence:** The heat kernel Z_D counts closed D-mode loops. The corrections to Z_D at each CW-complex dimension must be measured relative to the face level, because the faces are where D lives, and deviations from the face count measure the topological features that modify closed-loop counting.
 
 **The uniqueness argument:** The O_h-equivariant quantities involving the face count F as reference are:
 
@@ -67,11 +67,11 @@ Paper #22 established that the D-mode heat kernel Z_D = Tr[exp(−L/|G|²)] give
 
 The only two independent, O_h-equivariant, positive integer quantities referenced to F are V−F=10 and E−F=22.
 
-**Therefore:** Given (i) D on faces, (ii) O_h equivariance, (iii) positivity — the coefficients V−F and E−F in the α formula are uniquely determined. No other choice is consistent with all three conditions.
+**Therefore:** Given (i) D on faces, (ii) O_h equivariance, (iii) positivity, the coefficients V−F and E−F in the α formula are uniquely determined. No other choice is consistent with all three conditions.
 
 **The powers** d=3 and d+2=5 are forced by the CW-complex dimension formula 2k+d at k=0 and k=1, with d=3 derived from foam mode counting (Part XXXVII).
 
-**The leading term** 47/48 = (|G|−1)/|G| is the identity subtraction — removing the trivial loop (no displacement).
+**The leading term** 47/48 = (|G|−1)/|G| is the identity subtraction, removing the trivial loop (no displacement).
 
 **The phase space** 8π^(5/2) is the standard 3D massless vector mode measure.
 
@@ -107,14 +107,14 @@ Numerical verification: 1.368055556 = 1.368055556, agreement to machine precisio
 
 **Established:** 197/144 follows from the foam. The chain foam→QED→197/144 is complete.
 
-**Not yet established:** A derivation of 197/144 that does not use QED as intermediary — i.e., computing the foam's own two-loop vertex, self-energy, and vacuum polarisation diagram contributions in foam language and showing their rational parts sum to (2N_gauge²−λ_T2g(F−1))/N_gauge². This would require:
+**Not yet established:** A derivation of 197/144 that does not use QED as intermediary, i.e., computing the foam's own two-loop vertex, self-energy, and vacuum polarisation diagram contributions in foam language and showing their rational parts sum to (2N_gauge²−λ_T2g(F−1))/N_gauge². This would require:
 
 1. The foam self-energy rational: R_SE from the T₂g loop emitting and reabsorbing a D-mode
 2. The foam vertex correction rational: R_V from the T₂g coupling to a second D-mode loop
 3. The foam vacuum polarisation rational: R_VP from D-mode loop on the internal photon
 4. Showing R_SE + R_V + R_VP = 197/144 in foam variables
 
-This programme is well-defined — each piece IS a QED integral in foam language, so the calculation exists — but has not been completed. It is identified as a future paper (Paper #28).
+This programme is well-defined (each piece IS a QED integral in foam language, so the calculation exists) but has not been completed. It is identified as a future paper (Paper #28).
 
 ---
 
@@ -184,6 +184,14 @@ Two open items close in this paper.
 *Developed in collaboration with Claude (Anthropic). Ideas, framework, direction: Luke Martin. AI role: uniqueness proof, identity verification, document composition.*
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #27 · DOI: 10.5281/zenodo.19102302 · Priority Date: 20 February 2026*
 

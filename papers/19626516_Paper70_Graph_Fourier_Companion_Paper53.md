@@ -24,11 +24,11 @@
 
 ## Abstract
 
-Paper #53 derived the dark-energy correction factor (F − χ)/F = 6/7 by identifying the two topologically inert face-modes of the Kelvin-cell face Laplacian as the A₁g zero mode (λ = 0, forced by connectivity) and the A₂u maximum mode (λ = 9, forced by bipartiteness of the hexagonal subgraph Q₃). The Tier 1 sub-theorems there — A₁g uniqueness, A₂u uniqueness, and inert count equal to χ(S²) = 2 — settle the *counting*, while the physical identification linking the inert subspace to the absence of pressure-wave energy rested on the A₂u ↔ Higgs identification of Paper #45 (Tier 2).
+Paper #53 derived the dark-energy correction factor (F − χ)/F = 6/7 by identifying the two topologically inert face-modes of the Kelvin-cell face Laplacian as the A₁g zero mode (λ = 0, forced by connectivity) and the A₂u maximum mode (λ = 9, forced by bipartiteness of the hexagonal subgraph Q₃). The Tier 1 sub-theorems there (A₁g uniqueness, A₂u uniqueness, and inert count equal to χ(S²) = 2) settle the *counting*, while the physical identification linking the inert subspace to the absence of pressure-wave energy rested on the A₂u ↔ Higgs identification of Paper #45 (Tier 2).
 
-This companion paper gives an independent route. We show that the 6/7 factor equals the trace over F = 14 of the spectral projector of the face Laplacian onto the open interval (λ_min, λ_max) = (0, 9). This identity is purely algebraic — a consequence of the spectrum multiplicities 1 + 3 + 2 + 3 + 4 + 1 = 14 with the two 1-dimensional irreps living at the band edges. A band-edge zero-group-velocity lemma from graph Fourier analysis then provides a physical complement: for the hyperbolic wave equation ∂²ψ/∂t² + c²Lψ = 0, the unique eigenvectors at λ_min and λ_max carry zero group velocity and therefore transport no wave energy. Together these establish the 6/7 factor as the fraction of *propagating* modes, without invoking Higgs absorption.
+This companion paper gives an independent route. We show that the 6/7 factor equals the trace over F = 14 of the spectral projector of the face Laplacian onto the open interval (λ_min, λ_max) = (0, 9). This identity is purely algebraic, a consequence of the spectrum multiplicities 1 + 3 + 2 + 3 + 4 + 1 = 14 with the two 1-dimensional irreps living at the band edges. A band-edge zero-group-velocity lemma from graph Fourier analysis then provides a physical complement: for the hyperbolic wave equation ∂²ψ/∂t² + c²Lψ = 0, the unique eigenvectors at λ_min and λ_max carry zero group velocity and therefore transport no wave energy. Together these establish the 6/7 factor as the fraction of *propagating* modes, without invoking Higgs absorption.
 
-Consequence: the algebraic identity tr(P_int)/F = 6/7 is Tier 1. The physical link to the cosmological pressure wave remains Tier 2 — shifted from the Paper-#45 A₂u=Higgs identification to the Part-X wave-equation identification, but not promoted. Full Tier 1 for ρ_Λ requires closure of Paper #48.
+Consequence: the algebraic identity tr(P_int)/F = 6/7 is Tier 1. The physical link to the cosmological pressure wave remains Tier 2, shifted from the Paper-#45 A₂u=Higgs identification to the Part-X wave-equation identification, but not promoted. Full Tier 1 for ρ_Λ requires closure of Paper #48.
 
 ---
 
@@ -86,7 +86,7 @@ Consider the hyperbolic wave equation on the face graph,
 
 > **∂²ψ/∂t² + c² L ψ = 0**,
 
-whose normal-mode solutions are ψ_k(t) = v_k exp(±iω_k t) with dispersion ω_k² = c² λ_k. On a finite graph the eigenvalues are discrete, but the eigenvalue function λ(k) can be thought of as the restriction of a smooth dispersion surface (obtained by continuous embedding of the graph into the infinite BCC lattice — see Paper #5 Appendix B).
+whose normal-mode solutions are ψ_k(t) = v_k exp(±iω_k t) with dispersion ω_k² = c² λ_k. On a finite graph the eigenvalues are discrete, but the eigenvalue function λ(k) can be thought of as the restriction of a smooth dispersion surface (obtained by continuous embedding of the graph into the infinite BCC lattice, see Paper #5 Appendix B).
 
 **Lemma 70.2 (Band-edge zero-group-velocity).** *For any connected simple graph G with Laplacian L, the eigenvectors at λ_min = 0 and λ_max (the spectral extremes) have group velocity zero in any smooth dispersion-relation completion:*
 
@@ -94,9 +94,9 @@ whose normal-mode solutions are ψ_k(t) = v_k exp(±iω_k t) with dispersion ω_
 
 **Proof.** The group velocity is v_g(λ) = (c / (2 √λ)) · (∂λ / ∂k) where k is a wavenumber parametrising the dispersion surface. At a spectral extremum, λ is either a minimum (λ = 0) or a maximum (λ = λ_max). At an extremum ∂λ/∂k = 0 by elementary calculus (the stationary point of a smooth function has zero gradient). Therefore v_g = 0 at both band edges. At λ = 0 there is an additional kinematic factor: ω = c√λ → 0, so energy transport vanishes there trivially. □
 
-**Physical interpretation.** A propagating wave has non-zero group velocity. Band-edge modes are standing-wave configurations that do not transport energy. Any localised disturbance on the face graph — for example the residual Big Bang pressure wave — has support only on the *propagating* modes, i.e., the interior spectrum.
+**Physical interpretation.** A propagating wave has non-zero group velocity. Band-edge modes are standing-wave configurations that do not transport energy. Any localised disturbance on the face graph (for example the residual Big Bang pressure wave) has support only on the *propagating* modes, i.e., the interior spectrum.
 
-**Comparison with Paper #53's argument.** Paper #53 §4 argues A₂u is inert because "A mode with torsion eigenvalue −1 is at unstable equilibrium — it collapses into the Higgs vacuum rather than propagating." Lemma 70.2 replaces that with a kinematic statement: A₂u is inert because its group velocity is zero at the dispersion maximum. The physical content is the same; the mathematical framing is now a standard result in lattice wave mechanics (van Hove band-edge singularities, 1953).
+**Comparison with Paper #53's argument.** Paper #53 §4 argues A₂u is inert because "A mode with torsion eigenvalue −1 is at unstable equilibrium, it collapses into the Higgs vacuum rather than propagating." Lemma 70.2 replaces that with a kinematic statement: A₂u is inert because its group velocity is zero at the dispersion maximum. The physical content is the same; the mathematical framing is now a standard result in lattice wave mechanics (van Hove band-edge singularities, 1953).
 
 ---
 
@@ -108,7 +108,7 @@ Combining Theorem 70.1 and Lemma 70.2:
 
 **Proof.** By Lemma 70.2, the non-propagating modes are the band-edge eigenvectors at λ_min = 0 and λ_max = 9. By Paper #53 Theorems 53.1 and 53.2, each of these eigenspaces has dimension 1. By Theorem 70.1 the complement has dimension F − 2 = 12. The propagating-mode fraction is therefore 12/14 = 6/7. □
 
-This is the mathematical content that Paper #53's §6 assumed but did not prove in closed form — Paper #53 proved the *count* (via Euler-Poincaré), and this paper proves that the count equals the fraction of *propagating* modes under the face-graph wave equation.
+This is the mathematical content that Paper #53's §6 assumed but did not prove in closed form, Paper #53 proved the *count* (via Euler-Poincaré), and this paper proves that the count equals the fraction of *propagating* modes under the face-graph wave equation.
 
 ---
 
@@ -167,9 +167,9 @@ All Paper #70 projector and bipartite-structure checks pass.
 
 **Relationship to Paper #53.** Paper #53 and Paper #70 prove the same numerical result (6/7) by overlapping but distinct routes. Paper #53 leads with the A₁g/A₂u irrep identification and closes via Euler-Poincaré. Paper #70 leads with the interior-spectrum projector trace and closes via the band-edge zero-group-velocity lemma from graph Fourier analysis. The two routes meet at the three Paper-#53 Tier 1 sub-theorems. Paper #70 adds a fourth Tier 1 theorem (Theorem 70.3) making the 6/7 factor itself a propagating-mode fraction, rather than a "static/frustrated count" as in Paper #53.
 
-**Relationship to standard condensed-matter theory.** The band-edge zero-group-velocity lemma is a lattice-wave result known since van Hove 1953. Applying it to the face graph of the Kelvin cell is the non-obvious step — the face graph is finite and has only 14 modes, but the dispersion-relation structure survives onto this finite case exactly. The two van Hove singularities at λ = 0 and λ = 9 correspond to the bottom and top of the "face band," analogous to the conduction and valence band edges of a solid-state crystal.
+**Relationship to standard condensed-matter theory.** The band-edge zero-group-velocity lemma is a lattice-wave result known since van Hove 1953. Applying it to the face graph of the Kelvin cell is the non-obvious step, the face graph is finite and has only 14 modes, but the dispersion-relation structure survives onto this finite case exactly. The two van Hove singularities at λ = 0 and λ = 9 correspond to the bottom and top of the "face band," analogous to the conduction and valence band edges of a solid-state crystal.
 
-**Limits of the promotion.** The Tier 2 identification that remains — *L is the physical wave operator of the foam* — is equivalent to Paper #48's lattice-to-continuum claim. We do not close that identification here. The result is that the 6/7 factor, as a piece of pure spectral algebra, is promoted to Tier 1; ρ_Λ itself remains at Tier 2 until Paper #48 closes.
+**Limits of the promotion.** The Tier 2 identification that remains (*L is the physical wave operator of the foam*) is equivalent to Paper #48's lattice-to-continuum claim. We do not close that identification here. The result is that the 6/7 factor, as a piece of pure spectral algebra, is promoted to Tier 1; ρ_Λ itself remains at Tier 2 until Paper #48 closes.
 
 **Novel content.** The interior-spectrum projector formulation of the 6/7 factor is, as far as we are aware, original to Paper #70 and does not appear in Paper #53. The band-edge zero-group-velocity lemma is standard in a continuous-lattice setting but has not previously been applied to the finite face graph of the Kelvin cell in the UFFT literature.
 

@@ -26,7 +26,7 @@
 
 ## Abstract
 
-We propose that quantum entanglement is the physical manifestation of void-pair conservation in a quantized vacuum foam. A displacement event D — the creation of one bubble and one complementary void — is the fundamental ontological object. The bubble and void are two addresses of one event, not two correlated objects. This model escapes Bell's theorem because D is inherently non-local and resists the factorization Bell's proof requires. The antipodal symmetry of the void-pair selects the quantum singlet state, which produces the experimentally confirmed correlation E(a,b) = -cos(θ). A testable prediction for three-particle connected foam topologies is proposed.
+We propose that quantum entanglement is the physical manifestation of void-pair conservation in a quantized vacuum foam. A displacement event D (the creation of one bubble and one complementary void) is the fundamental ontological object. The bubble and void are two addresses of one event, not two correlated objects. This model escapes Bell's theorem because D is inherently non-local and resists the factorization Bell's proof requires. The antipodal symmetry of the void-pair selects the quantum singlet state, which produces the experimentally confirmed correlation E(a,b) = -cos(θ). A testable prediction for three-particle connected foam topologies is proposed.
 
 ---
 
@@ -34,7 +34,7 @@ We propose that quantum entanglement is the physical manifestation of void-pair 
 
 Bell's theorem [1] demonstrates that no local hidden variable theory can reproduce the correlations predicted by quantum mechanics for entangled particles. Experimental tests [2,3] have confirmed the quantum mechanical predictions to high precision.
 
-However, Bell's proof depends on a specific mathematical structure: the correlation function must be expressible as an integral over local hidden variables. We present a physical model in which the fundamental object — the displacement event D — is inherently non-local and therefore does not admit the factorization Bell's proof requires.
+However, Bell's proof depends on a specific mathematical structure: the correlation function must be expressible as an integral over local hidden variables. We present a physical model in which the fundamental object (the displacement event D) is inherently non-local and therefore does not admit the factorization Bell's proof requires.
 
 ---
 
@@ -44,13 +44,13 @@ However, Bell's proof depends on a specific mathematical structure: the correlat
 
 We postulate a single axiom:
 
-**B(x) + V(x') = D**  [Axiom Zero — Void-Pair Conservation]
+**B(x) + V(x') = D**  [Axiom Zero, Void-Pair Conservation]
 
 Every displacement event D in the vacuum foam creates exactly one bubble B at position x and one complementary void V at position x'. The displacement event D is the fundamental object. B and V are its endpoints.
 
 ### 2.2 Ontological Status
 
-Critically, D is **not** two separate objects that happen to be correlated. D is **one** object with two addresses. The bubble and void are not created independently and then correlated — they are created as a single event that happens to have two spatially separated manifestations.
+Critically, D is **not** two separate objects that happen to be correlated. D is **one** object with two addresses. The bubble and void are not created independently and then correlated, they are created as a single event that happens to have two spatially separated manifestations.
 
 ---
 
@@ -66,11 +66,11 @@ where λ is a local hidden variable that determines the measurement outcomes at 
 
 ### 3.2 Why D Resists Factorization
 
-The displacement event D is defined by its extension between both endpoints simultaneously. It is not a property that can be assigned to one location — it is inherently a relation between two locations.
+The displacement event D is defined by its extension between both endpoints simultaneously. It is not a property that can be assigned to one location, it is inherently a relation between two locations.
 
 Attempting to factor D into local parts:
 - D cannot be written as D_A ⊗ D_B where D_A contains only information at x and D_B contains only information at x'
-- The void V is defined relative to the bubble B — they are antipodal complements
+- The void V is defined relative to the bubble B, they are antipodal complements
 - The "hidden variable" λ = D cannot be localized
 
 The foam escapes Bell not by finding a flaw in the theorem but by providing an ontological category that Bell's proof was not designed to test.
@@ -81,11 +81,11 @@ The foam escapes Bell not by finding a flaw in the theorem but by providing an o
 
 ### 4.1 Selection by Symmetry
 
-The void is the antipodal complement of the bubble — opposite in every direction. What quantum state satisfies perfect anti-correlation in every measurement direction simultaneously?
+The void is the antipodal complement of the bubble, opposite in every direction. What quantum state satisfies perfect anti-correlation in every measurement direction simultaneously?
 
 **|D⟩ = (1/√2)(|↑↓⟩ - |↓↑⟩)**  [Equation 2]
 
-This is the unique two-particle state with this property. It is not assigned arbitrarily — it is selected by the antipodal symmetry of the void-pair.
+This is the unique two-particle state with this property. It is not assigned arbitrarily, it is selected by the antipodal symmetry of the void-pair.
 
 ### 4.2 Correlation Function
 
@@ -117,7 +117,7 @@ For three particles created from a single topologically connected void-pair casc
 
 **|Ψ_foam⟩ = (1/√2)(|010⟩ - |101⟩)**  [Equation 4]
 
-This is neither a GHZ state nor a W state — it is a topologically distinct entanglement class forced by the cascade geometry.
+This is neither a GHZ state nor a W state, it is a topologically distinct entanglement class forced by the cascade geometry.
 
 ### 5.2 Experimental Discriminator
 

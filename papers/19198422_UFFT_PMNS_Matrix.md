@@ -14,6 +14,7 @@
 | Paper | #35 of 63 |
 | Framework | v10 |
 | Status | Complete, Tier 2. NLO corrections in Paper #51 improve atmospheric and reactor angles to 0.2σ each. |
+| Tier | 2 |
 | DOI | 10.5281/zenodo.19198422 |
 | GitHub | https://github.com/WebEnvy/UnifiedFoamFieldTheory |
 
@@ -78,7 +79,7 @@ Discriminant: Δ = 81 − 64 = 17 (prime)
 
 ### 2.2 Why T₁u controls mixing
 
-The T₁u representation is the only O_h irrep that appears with multiplicity greater than one in the face Laplacian spectrum. All other irreps (A₁g, Eg, T₂g, A₂u) appear once and have unique eigenvalues. The T₁u appears twice — at r₁ and r₂ — creating a two-dimensional parameter space in the T₁u sector.
+The T₁u representation is the only O_h irrep that appears with multiplicity greater than one in the face Laplacian spectrum. All other irreps (A₁g, Eg, T₂g, A₂u) appear once and have unique eigenvalues. The T₁u appears twice (at r₁ and r₂) creating a two-dimensional parameter space in the T₁u sector.
 
 Neutrino flavour states (ν_e, ν_μ, ν_τ) correspond to one basis of this doubled T₁u space; mass states (ν₁, ν₂, ν₃) correspond to the other. The PMNS matrix is the rotation between these two bases. The mixing angles are determined by the geometric relationship between the two T₁u eigenspaces within the 14-dimensional face function space.
 
@@ -103,7 +104,7 @@ The numerator √17 is the T₁u eigenvalue splitting (the asymmetric part); the
 
 ### 3.3 Status
 
-**DERIVED.** The formula is an algebraic identity of the face Laplacian spectrum. The inputs (Δ = 17, C_A = 3) are topological integers. Zero free parameters. The physical mechanism — T₁u eigenvalue splitting controlling 1-2 mixing — is the same mechanism that produces the Higgs/Z mass ratio (m_H/M_Z = 2C_A²/(C_A² + √Δ) = 18/(9+√17)) from the same eigenvalue pair [5]. Both predictions use the same algebraic quantities and agree with experiment.
+**DERIVED.** The formula is an algebraic identity of the face Laplacian spectrum. The inputs (Δ = 17, C_A = 3) are topological integers. Zero free parameters. The physical mechanism (T₁u eigenvalue splitting controlling 1-2 mixing) is the same mechanism that produces the Higgs/Z mass ratio (m_H/M_Z = 2C_A²/(C_A² + √Δ) = 18/(9+√17)) from the same eigenvalue pair [5]. Both predictions use the same algebraic quantities and agree with experiment.
 
 ---
 
@@ -192,7 +193,7 @@ The CP-violating phase δ_CP ≈ 197° ± 25° (NuFIT 5.2, NO) has not been deri
 
 The truncated octahedron has two types of dihedral angles: square-hexagon (125.3°) and hexagon-hexagon (109.5°). Their supplement angles (54.7° and 70.5°, geometric mean ≈ 62.1°) are in the vicinity of the Jarlskog-invariant-related angle but no clean formula has been found.
 
-The CKM CP phase (δ_CKM ≈ 65°) is similarly open [7]. Both CP phases likely require the complex structure of the inter-generation torsion coupling, which involves the relative phase between the two T₁u eigenspaces — a quantity not yet computed from the face Laplacian alone.
+The CKM CP phase (δ_CKM ≈ 65°) is similarly open [7]. Both CP phases likely require the complex structure of the inter-generation torsion coupling, which involves the relative phase between the two T₁u eigenspaces, a quantity not yet computed from the face Laplacian alone.
 
 ---
 
@@ -222,7 +223,7 @@ The discriminant Δ = 17 and colour number C_A = 3 that control the PMNS matrix 
 | Koide angle | θ_K = 2/C_A² = 2/9 | exact | DOI: 10.5281/zenodo.19063774 |
 | CKM parameter A | A = r₁/C_A = (9−√17)/6 | 1.6% | DOI: 10.5281/zenodo.19197458 |
 
-The PMNS angles, the CKM parameter A, and the Higgs mass all emerge from the same algebraic object: the quadratic λ² − 9λ + 16 = 0 with discriminant 17. This is not a coincidence — it is the single master equation of the truncated octahedron face Laplacian.
+The PMNS angles, the CKM parameter A, and the Higgs mass all emerge from the same algebraic object: the quadratic λ² − 9λ + 16 = 0 with discriminant 17. This is not a coincidence, it is the single master equation of the truncated octahedron face Laplacian.
 
 ---
 
@@ -257,6 +258,14 @@ Four results from two foam integers (Δ = 17, C_A = 3) and one symmetry (T₁u Z
 [7] Martin, L. (2026). The CKM Quark Mixing Matrix from Foam Cell Geometry. Zenodo. DOI: 10.5281/zenodo.19197458.
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #35 · DOI: 10.5281/zenodo.19198422 · Priority Date: 20 February 2026*
 

@@ -30,7 +30,7 @@ The Koide formula Q = (m_e + m_μ + m_τ)/(√m_e + √m_μ + √m_τ)² = 2/3 h
 
 **ε = √(dim T₂g − 1) = √(3 − 1) = √2.** The three lepton generations are the Z₃ orbit of the minimal T₂g torsion defect (electron) under the three BCC torsion axes. For a Z₃-symmetric system carried by a representation of dimension d = 3, the Koide amplitude is √(d−1) = √2. This is a theorem about Z₃ acting on the T₂g irrep and enforces Q = 2/3 exactly.
 
-**θ = (λ_A₂u − λ_T₂g)/λ_A₂u = (9 − 7)/9 = 2/9.** The face Laplacian spectrum of the truncated octahedron (14 faces, O_h symmetry) has maximum eigenvalue λ_max = 9, carried by the unique non-degenerate A₂u antipodal mode. The lepton/torsion sector sits at λ_T₂g = 7. The spectral gap 9 − 7 = 2 equals the Axiom Zero endpoint count (B + V = 2 per displacement event — the same factor that appears in the beta function coefficient 2/(3π) and in the fine structure constant formula). The Koide angle is this gap normalised to the spectral maximum: θ = 2/9.
+**θ = (λ_A₂u − λ_T₂g)/λ_A₂u = (9 − 7)/9 = 2/9.** The face Laplacian spectrum of the truncated octahedron (14 faces, O_h symmetry) has maximum eigenvalue λ_max = 9, carried by the unique non-degenerate A₂u antipodal mode. The lepton/torsion sector sits at λ_T₂g = 7. The spectral gap 9 − 7 = 2 equals the Axiom Zero endpoint count (B + V = 2 per displacement event, the same factor that appears in the beta function coefficient 2/(3π) and in the fine structure constant formula). The Koide angle is this gap normalised to the spectral maximum: θ = 2/9.
 
 Predicted mass ratios from θ = 2/9, ε = √2 alone: m_μ/m_e = 206.7703 (observed 206.7683, error 10 ppm), m_τ/m_μ = 16.8180 (observed 16.8170, error 60 ppm). Both predictions lie within the measurement uncertainty on m_τ (PDG ±0.12 MeV → δθ ~ 8 μrad; the residual θ − 2/9 = 7.4 μrad is sub-measurement-precision). The absolute mass scale r₀ requires the torsion condensate scale Λ_QCD and remains open.
 
@@ -59,6 +59,16 @@ Predicted mass ratios from θ = 2/9, ε = √2 alone: m_μ/m_e = 206.7703 (obser
 [7] Brannen, C. A. (2006). The Lepton Masses. Unpublished preprint. (Independent analysis of Koide parameterisation structure.)
 
 ---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #1 — Gravitational Suppression of Quantum Decoherence via Variable Vacuum Foam Density. DOI: 10.5281/zenodo.18706756
+- [2] Paper #2 — Void-Pair Conservation as the Physical Mechanism of Quantum Entanglement and Bell Correlations. DOI: 10.5281/zenodo.18706806
+- [3] Paper #3 — The Fine Structure Constant from Planck-Scale Foam Geometry. DOI: 10.5281/zenodo.19011758
+- [4] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
 
 ## AI Disclosure
 

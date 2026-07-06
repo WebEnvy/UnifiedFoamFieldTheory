@@ -46,7 +46,7 @@ Using all foam-derived beta coefficients at 2-loop, with observed α_s(M_Z)=0.11
 
 **α_s(M_Z) = 0.1179 reproduced exactly from the GUT chain**
 
-**Λ_QCD^(5) = 165 MeV** (observed 210±14 MeV, 2.9σ — limited by GUT boundary precision)
+**Λ_QCD^(5) = 165 MeV** (observed 210±14 MeV, 2.9σ, limited by GUT boundary precision)
 
 The 2-loop correction shifts M_GUT from 9.6×10¹⁶ (1-loop) to 1.50×10¹⁶ GeV, bringing it into agreement with the standard non-SUSY expectation. α_s(M_Z) goes from 15% off (1-loop) to exact (2-loop).
 
@@ -91,7 +91,7 @@ Running all three couplings simultaneously from M_Z upward with 2-loop RGE, incl
 | Λ_QCD^(5) | ~150 MeV | **165 MeV** | 210±14 MeV |
 | sin²θ_W(M_GUT) | 0.44 | 0.434 | 3/8=0.375 (no-SUSY spread) |
 
-The 2-loop correction moves M_GUT by a factor of 6.4 in scale. The W and strong couplings unify exactly (confirming the foam sin²θ_W=3/8 theorem at M_GUT). The EM coupling runs separately — the correct non-SUSY prediction (Supersymmetry is Geometrically Forbidden, DOI: 10.5281/zenodo.19064126).
+The 2-loop correction moves M_GUT by a factor of 6.4 in scale. The W and strong couplings unify exactly (confirming the foam sin²θ_W=3/8 theorem at M_GUT). The EM coupling runs separately, the correct non-SUSY prediction (Supersymmetry is Geometrically Forbidden, DOI: 10.5281/zenodo.19064126).
 
 ---
 

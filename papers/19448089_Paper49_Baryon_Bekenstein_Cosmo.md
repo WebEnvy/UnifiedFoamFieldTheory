@@ -40,7 +40,7 @@ where F_sq = 6 (square faces), Δ = 17 (discriminant), C_A = 3 (colours), and m_
 
 Observed: 1.29333 ± 0.00005 MeV (PDG 2024). **Deviation: 0.008%, 2.1σ.**
 
-Physical interpretation: The factor (F_sq + √Δ) counts the total electromagnetic face contribution — six rational (square) modes plus the irrational (√17) splitting from the master equation. The denominator (C_A + 1) = 4 is the colour-averaged normalisation (3 colours + 1 singlet channel).
+Physical interpretation: The factor (F_sq + √Δ) counts the total electromagnetic face contribution, six rational (square) modes plus the irrational (√17) splitting from the master equation. The denominator (C_A + 1) = 4 is the colour-averaged normalisation (3 colours + 1 singlet channel).
 
 ---
 
@@ -58,7 +58,7 @@ The prefactor 4 has a geometric identification:
 
 **4 = C_A + 1 = d + 1 = λ_Eg**
 
-This triple coincidence (colour number + 1 = spatial dimension + 1 = weak eigenvalue) is specific to d = 3 and the truncated octahedron. It is not a general result — it is a consequence of the foam cell being the unique space-filler in three dimensions.
+This triple coincidence (colour number + 1 = spatial dimension + 1 = weak eigenvalue) is specific to d = 3 and the truncated octahedron. It is not a general result, it is a consequence of the foam cell being the unique space-filler in three dimensions.
 
 ---
 

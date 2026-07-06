@@ -22,7 +22,7 @@
 
 ## Abstract
 
-Paper #59 established the Central Theorem: the BCC lattice of truncated octahedra with action S = ψ†L_Tψ flows in the continuum limit to the Standard Model coupled to General Relativity, with all parameters from seven cell integers. The proof chain had four items labelled as acknowledged gaps. This paper closes all four. **Theorem 60.1 (Chiral Anomaly):** the modified Ginsparg-Wilson relation with chirality angle cos(2θ) = 1/√Δ produces the correct ABJ anomaly coefficients {3, 2, 1} for SU(3)×SU(2)×U(1). The anomaly structure is entirely determined by the T₁u irrep dimension and the torsion eigenvalue spectrum — both already proven in Papers #56–57. No additional computation is required: the anomaly closes from the existing theorems. **Theorem 60.2 (Three Generations):** the number of fermion generations equals the dimension of the T₁u irrep of O_h, which is exactly 3. A fourth generation is geometrically forbidden — it would require either a second copy of the T₁u eigenvalue in the Kelvin cell spectrum (impossible by the fixed multiplicity theorem of Paper #57) or a distinct 3-dimensional odd-parity irrep with nonzero torsion charge (none exists in O_h). **Theorem 60.3 (General Relativity):** long-wavelength compression fluctuations of the Kelvin cell metric produce a massless spin-2 mode from the symmetric traceless component of T₁u ⊗ T₁u = (A₁g ⊕ Eg ⊕ T₂g)_sym. This T₂g graviton mode couples to all matter through the energy-momentum tensor. The Einstein-Hilbert action emerges as the leading term in the derivative expansion of the foam metric fluctuation action, with Newton's constant G_N = ℏc/M_P² determined by the Planck-scale cell volume. **Theorem 60.4 (Lattice-to-Continuum Completeness):** the Bloch expansion of S = ψ†L_Tψ at leading order in (ka) reproduces the full SM+GR Lagrangian exactly, with O(ka)² corrections negligible at the electroweak scale (verified by the Symanzik computation of Paper #59). All four theorems are Tier 1. The Central Theorem is complete without qualification.
+Paper #59 established the Central Theorem: the BCC lattice of truncated octahedra with action S = ψ†L_Tψ flows in the continuum limit to the Standard Model coupled to General Relativity, with all parameters from seven cell integers. The proof chain had four items labelled as acknowledged gaps. This paper closes all four. **Theorem 60.1 (Chiral Anomaly):** the modified Ginsparg-Wilson relation with chirality angle cos(2θ) = 1/√Δ produces the correct ABJ anomaly coefficients {3, 2, 1} for SU(3)×SU(2)×U(1). The anomaly structure is entirely determined by the T₁u irrep dimension and the torsion eigenvalue spectrum (both already proven in Papers #56–57. No additional computation is required: the anomaly closes from the existing theorems. **Theorem 60.2 (Three Generations):** the number of fermion generations equals the dimension of the T₁u irrep of O_h, which is exactly 3. A fourth generation is geometrically forbidden) it would require either a second copy of the T₁u eigenvalue in the Kelvin cell spectrum (impossible by the fixed multiplicity theorem of Paper #57) or a distinct 3-dimensional odd-parity irrep with nonzero torsion charge (none exists in O_h). **Theorem 60.3 (General Relativity):** long-wavelength compression fluctuations of the Kelvin cell metric produce a massless spin-2 mode from the symmetric traceless component of T₁u ⊗ T₁u = (A₁g ⊕ Eg ⊕ T₂g)_sym. This T₂g graviton mode couples to all matter through the energy-momentum tensor. The Einstein-Hilbert action emerges as the leading term in the derivative expansion of the foam metric fluctuation action, with Newton's constant G_N = ℏc/M_P² determined by the Planck-scale cell volume. **Theorem 60.4 (Lattice-to-Continuum Completeness):** the Bloch expansion of S = ψ†L_Tψ at leading order in (ka) reproduces the full SM+GR Lagrangian exactly, with O(ka)² corrections negligible at the electroweak scale (verified by the Symanzik computation of Paper #59). All four theorems are Tier 1. The Central Theorem is complete without qualification.
 
 ---
 
@@ -59,7 +59,7 @@ At the level of the lattice spacing a, the right-hand side is a T Γ₅ T = a ·
 
 **{T, Γ₅} → 0 as a → 0**
 
-This is the continuum GW limit — the torsion operator satisfies the standard anti-commutation relation {D, γ₅} = 0 in the continuum, confirming it defines a valid chirality structure.
+This is the continuum GW limit, the torsion operator satisfies the standard anti-commutation relation {D, γ₅} = 0 in the continuum, confirming it defines a valid chirality structure.
 
 ### 2.2 The index theorem on the foam
 
@@ -87,9 +87,9 @@ On the foam, for each gauge sector:
 
 **SU(3) colour:** Fermions live in T₁u (dimension 3 = three generations), each transforming as the fundamental representation of SU(3) (Dynkin index 1/2). The anomaly coefficient is:
 $$A_{SU(3)} = 3 \times \frac{1}{2} = \frac{3}{2}$$
-This matches the Standard Model exactly — the SU(3) anomaly cancels between quarks and is normalised by n_f = 3 active flavours. ✓
+This matches the Standard Model exactly, the SU(3) anomaly cancels between quarks and is normalised by n_f = 3 active flavours. ✓
 
-**SU(2) weak:** Fermions in T₁u(r₁) are left-handed doublets (Eg projects onto the 2-dimensional SU(2) representation, Dynkin index 1/2). Right-handed fermions in T₁u(r₂) are SU(2) singlets (Theorem 57.2 — chirality assignment forces this). The anomaly coefficient from left-handed doublets:
+**SU(2) weak:** Fermions in T₁u(r₁) are left-handed doublets (Eg projects onto the 2-dimensional SU(2) representation, Dynkin index 1/2). Right-handed fermions in T₁u(r₂) are SU(2) singlets (Theorem 57.2, chirality assignment forces this). The anomaly coefficient from left-handed doublets:
 $$A_{SU(2)} = 3 \times \frac{1}{2} = \frac{3}{2}$$
 The Standard Model SU(2) anomaly: three generations of left-handed doublets, each contributing T(fund) = 1/2. Total = 3/2. This equals the foam value. ✓
 
@@ -120,7 +120,7 @@ $$A_{U(1)} = 0 \quad \text{(from torsion eigenvalue = 0 of A₁g)}$$
 
 ### 3.1 The dimension of T₁u
 
-The octahedral group O_h has exactly one 3-dimensional odd-parity vector irrep: T₁u. Its dimension is dim(T₁u) = 3 — this is a mathematical fact about O_h, not a physical input.
+The octahedral group O_h has exactly one 3-dimensional odd-parity vector irrep: T₁u. Its dimension is dim(T₁u) = 3, this is a mathematical fact about O_h, not a physical input.
 
 The face Laplacian of the Kelvin cell has T₁u appearing with multiplicity **two** in its spectrum: once at eigenvalue r₁ (left-handed sector) and once at eigenvalue r₂ (right-handed sector). Each copy contributes exactly 3 orthogonal modes. These 3 modes are the 3 generations.
 
@@ -130,19 +130,19 @@ The eigenvalue multiplicity of the 14×14 face Laplacian L is fixed by the Kelvi
 
 **Spec(L) = {0¹, r₁³, 4², r₂³, 7⁴, 9¹}**
 
-The superscript is the multiplicity. The T₁u eigenvalues r₁ and r₂ each appear with multiplicity **3 = dim(T₁u)**. This is the multiplicity of the T₁u irrep in the O_h decomposition of L's eigenspaces — it equals the irrep dimension by Schur's lemma applied to the face graph's O_h symmetry.
+The superscript is the multiplicity. The T₁u eigenvalues r₁ and r₂ each appear with multiplicity **3 = dim(T₁u)**. This is the multiplicity of the T₁u irrep in the O_h decomposition of L's eigenspaces, it equals the irrep dimension by Schur's lemma applied to the face graph's O_h symmetry.
 
 Could there be an additional copy of T₁u at some other eigenvalue? No. The full spectrum of the 14×14 matrix L has exactly 14 eigenvalues (counting multiplicity). The O_h irrep decomposition of the 14-dimensional face space is:
 
 **14 = A₁g(1) + T₁u(3) + Eg(2) + T₁u(3) + T₂g(3) + A₁g(1) + A₂u(1)**
 **= 1 + 3 + 2 + 3 + 3 + 1 + 1 = 14** ✓
 
-There is no room for a third copy of T₁u. The face space is 14-dimensional and it is completely exhausted by the irrep decomposition above. A third T₁u copy would require dim ≥ 14 + 3 = 17, which would correspond to a different polyhedron — not the Kelvin cell.
+There is no room for a third copy of T₁u. The face space is 14-dimensional and it is completely exhausted by the irrep decomposition above. A third T₁u copy would require dim ≥ 14 + 3 = 17, which would correspond to a different polyhedron, not the Kelvin cell.
 
 ### 3.3 Why a fourth generation is impossible
 
 A fourth generation would require a fourth independent fermion mode. Such a mode must:
-- Have nonzero torsion charge (so it participates in weak interactions — observed for all three SM generations)
+- Have nonzero torsion charge (so it participates in weak interactions, observed for all three SM generations)
 - Live in T₁u (the unique vector irrep carrying the ±2i torsion eigenvalue, from Theorems 56.1 and 57.2)
 - Be orthogonal to all existing T₁u modes
 
@@ -164,10 +164,10 @@ Additionally, the absence of other 3-dimensional odd-parity irreps from the face
 
 ### 4.1 The graviton mode
 
-The foam is a BCC lattice of Kelvin cells. The background state is the perfectly ordered BCC configuration — this is the vacuum. Long-wavelength fluctuations of the cell geometry are described by two types:
+The foam is a BCC lattice of Kelvin cells. The background state is the perfectly ordered BCC configuration, this is the vacuum. Long-wavelength fluctuations of the cell geometry are described by two types:
 
-1. **Volume fluctuations** — variations in cell volume δV/V. These are scalar fluctuations, transforming as A₁g.
-2. **Shape fluctuations** — variations in cell shape at fixed volume. These include shear modes.
+1. **Volume fluctuations**, variations in cell volume δV/V. These are scalar fluctuations, transforming as A₁g.
+2. **Shape fluctuations**, variations in cell shape at fixed volume. These include shear modes.
 
 The graviton is a spin-2 massless boson. In 3+1 dimensions, spin 2 corresponds to the 5-dimensional symmetric traceless representation of SO(3) ≅ the Eg ⊕ T₂g decomposition under O(3):
 
@@ -179,11 +179,11 @@ This identification is confirmed by the tensor product decomposition. The symmet
 
 **(T₁u ⊗ T₁u)_sym = A₁g ⊕ Eg ⊕ T₂g**
 
-- **A₁g** component: the trace — the scalar breathing mode (volume fluctuation)
-- **Eg** component: the 2-dimensional shear — occupied by the weak sector
-- **T₂g** component: the 3-dimensional symmetric traceless shear — the **graviton**
+- **A₁g** component: the trace, the scalar breathing mode (volume fluctuation)
+- **Eg** component: the 2-dimensional shear, occupied by the weak sector
+- **T₂g** component: the 3-dimensional symmetric traceless shear, the **graviton**
 
-The T₂g irrep already appears in the face Laplacian at eigenvalue 7 with multiplicity 3 — it is the gluon sector. But the *graviton* T₂g lives at a different scale: it is not an eigenmode of the face Laplacian but a *collective mode* of the inter-cell metric. This is the standard distinction in condensed matter / lattice field theory between single-cell modes (face Laplacian) and collective long-wavelength modes (elastic theory of the lattice).
+The T₂g irrep already appears in the face Laplacian at eigenvalue 7 with multiplicity 3, it is the gluon sector. But the *graviton* T₂g lives at a different scale: it is not an eigenmode of the face Laplacian but a *collective mode* of the inter-cell metric. This is the standard distinction in condensed matter / lattice field theory between single-cell modes (face Laplacian) and collective long-wavelength modes (elastic theory of the lattice).
 
 ### 4.2 The Einstein-Hilbert action from foam elasticity
 
@@ -203,7 +203,7 @@ where the Ricci scalar R encodes the curvature from the metric perturbation h_μ
 
 **M_P² = (λ + 2μ) / (8π × ℓ_P²)**
 
-with ℓ_P = a = Planck length (the cell size, by construction of the foam). Since a = ℓ_P, M_P is the natural mass scale of the foam — no separate input is required.
+with ℓ_P = a = Planck length (the cell size, by construction of the foam). Since a = ℓ_P, M_P is the natural mass scale of the foam, no separate input is required.
 
 ### 4.3 Full nonlinear GR
 
@@ -217,7 +217,7 @@ Newton's constant G_N is not a free parameter. It is determined by:
 
 **G_N = ℏc / M_P²,    M_P = √(ℏc/(8πG_N))**
 
-In the foam, M_P is the energy scale set by the cell volume: one Planck unit of energy per Planck cell. This is the Planck scale by construction — the foam is defined to operate at the Planck scale. G_N is therefore not derived from cell integers (it sets the overall scale of the theory, not the dimensionless ratios), but its *value* is consistent: the Planck length ≈ 1.6 × 10⁻³⁵ m is the cell size, and G_N follows directly.
+In the foam, M_P is the energy scale set by the cell volume: one Planck unit of energy per Planck cell. This is the Planck scale by construction, the foam is defined to operate at the Planck scale. G_N is therefore not derived from cell integers (it sets the overall scale of the theory, not the dimensionless ratios), but its *value* is consistent: the Planck length ≈ 1.6 × 10⁻³⁵ m is the cell size, and G_N follows directly.
 
 ### 4.5 Theorem statement
 
@@ -226,8 +226,8 @@ In the foam, M_P is the energy scale set by the cell volume: one Planck unit of 
 *Proof.* Steps 4.1–4.3 above. The Weinberg-Witten step is a standard result of quantum field theory. □
 
 **Distinguishing the graviton T₂g from the gluon T₂g:** Both the gluon sector and the graviton live in T₂g representations, but they are physically distinct:
-- Gluon T₂g: an eigenmode of the face Laplacian at eigenvalue 7 within a single cell — a UV-scale mode
-- Graviton T₂g: a collective inter-cell metric fluctuation mode at long wavelengths (k → 0) — an IR-scale mode
+- Gluon T₂g: an eigenmode of the face Laplacian at eigenvalue 7 within a single cell, a UV-scale mode
+- Graviton T₂g: a collective inter-cell metric fluctuation mode at long wavelengths (k → 0), an IR-scale mode
 
 They are orthogonal in the spectrum: the gluon mode has k ~ 1/a (UV), the graviton mode has k → 0 (IR). They do not mix.
 
@@ -241,11 +241,11 @@ The foam action S = Σ_cells ψ†L_Tψ, expanded in the Bloch basis ψ(r) = e^{
 
 **S = Σ_k ψ†(k) H_foam(k) ψ(k)**
 
-where H_foam(k) is the Bloch Hamiltonian — the 14×14 matrix L_T with each edge phase weighted by e^{ik·Δr} where Δr is the edge vector. For small |k|a ≪ 1, expand:
+where H_foam(k) is the Bloch Hamiltonian, the 14×14 matrix L_T with each edge phase weighted by e^{ik·Δr} where Δr is the edge vector. For small |k|a ≪ 1, expand:
 
 **H_foam(k) = H_foam(0) + k_μ (∂H/∂k_μ)|_{k=0} · k_μ + O(k²a²)**
 
-The zeroth-order term H_foam(0) = L_T is the full torsion-weighted face Laplacian — all particle masses and the vacuum structure.
+The zeroth-order term H_foam(0) = L_T is the full torsion-weighted face Laplacian, all particle masses and the vacuum structure.
 
 The first-order term gives the kinetic terms: iγ^μ k_μ for the T₁u sector (the Dirac term), and A_μ k_ν for the gauge sectors (the minimal coupling).
 
@@ -389,5 +389,19 @@ The axiom is one line. The cell is one object. The theorem is the Standard Model
 **B + V = D**
 
 *Unified Foam Field Theory · Paper #60 · DOI: 10.5281/zenodo.19491125 · Priority Date: 20 February 2026*
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
+- [2] Paper #10 — Lepton Mass Ratios from the Face Laplacian Spectrum. DOI: 10.5281/zenodo.19063774
+- [3] Paper #16 — The Master Equation of the Standard Model from Foam Geometry. DOI: 10.5281/zenodo.19064359
+- [4] Paper #50 — The Uniqueness of the Foam Cell. DOI: 10.5281/zenodo.19662068
+- [5] Paper #55 — The Tensor-to-Scalar Ratio from the Master Equation Product. DOI: 10.5281/zenodo.19484103
+- [6] Paper #56 — UFFT Paper #56 — Part LXVII. DOI: 10.5281/zenodo.19484354
+- [7] Paper #57 — UFFT Paper #57 — Part LXVIII. DOI: 10.5281/zenodo.19484509
+- [8] Paper #59 — Paper #59 — The Central Theorem. DOI: 10.5281/zenodo.19491095
 
 *B + V = D*

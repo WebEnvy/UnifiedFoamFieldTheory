@@ -28,7 +28,7 @@
 
 ## Abstract
 
-Two defining properties of QCD — asymptotic freedom and quark confinement — are proved as theorems from the foam geometry, requiring no dynamical calculation.
+Two defining properties of QCD (asymptotic freedom and quark confinement) are proved as theorems from the foam geometry, requiring no dynamical calculation.
 
 **Asymptotic Freedom Theorem:** The QCD coupling is asymptotically free because dim(T₂g)×11 > 2×n_f, which reduces to 33>4 with C_A=3 and n_f=6. The foam cannot produce a non-asymptotically-free strong force. This is a geometric inequality, not a perturbative result.
 
@@ -50,7 +50,7 @@ From foam geometry:
 
 **b₀^QCD = 11−4 = 7 > 0. QCD is asymptotically free.** □
 
-Note: b₀^QCD = 7 = C_A²−2 = λ_T₂g — the QCD beta coefficient equals the T₂g face Laplacian eigenvalue (a new exact identity, Part XLII of the Core Framework v10).
+Note: b₀^QCD = 7 = C_A²−2 = λ_T₂g, the QCD beta coefficient equals the T₂g face Laplacian eigenvalue (a new exact identity, Part XLII of the Core Framework v10).
 
 The foam geometry cannot produce a non-asymptotically-free strong force for any C_A≥1 with n_f=2×dim(T₁u). The 2004 Nobel Prize result (Gross, Politzer, Wilczek) is here a theorem.
 

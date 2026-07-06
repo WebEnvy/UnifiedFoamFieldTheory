@@ -22,7 +22,7 @@
 
 ## Abstract
 
-The Standard Model Lagrangian is conjectured to be the continuum limit of a single lattice action: **S = Σ_cells ψ† L_T ψ**, where L_T = D − T is the torsion-weighted face Laplacian on the 14-face graph of the truncated octahedron. The O_h symmetry group forces L_T to decompose into six irreducible blocks; Schur's lemma and dimensional completeness (Σ dim = F = 14) determine the matching to SM sectors: A₁g (λ=0, photon), T₁u (λ=r₁,r₂, fermions), Eg (λ=4, W±/Z), T₂g (λ=7, gluons), A₂u (λ=9, Higgs). Three sector-specific identifications are examined: α_s(M_Z) from the T₂g self-energy at the foam-intrinsic flavour condition n_f = C_A (a fit, not a forward derivation; see Deliverable 4 in the verification record); m₃ from the colourless T₁u propagator (an identification whose integer selection is pending Paper #72, the explicit Dirac-operator construction); and η_B from the first-order EW phase transition forced by T₂g↔A₂u hex-face coupling (an NLO post-hoc factor of order 1, not a forward derivation at current precision). An exhaustive check of all five Fedorov parallelohedra shows the truncated octahedron is the unique convex parallelohedron whose face Laplacian has prime discriminant, integer r₁r₂ = Δ−1, and eigenvalue sum equal to C_A² (§6). **UFFT's current empirical case is twelve pre-registered predictions — sharpest near-term: δ_PMNS/δ_CKM = 3, testable by DUNE around 2035; nearest-term: r ≈ 0.063, decisive at CMB-S4 — plus a family of structural identities and postdictions whose joint statistical significance is addressed in a forthcoming look-elsewhere-corrected defense document. The "60+ observables with zero free parameters" framing used in earlier UFFT materials is withdrawn in this amendment as not defensible against a trials-factor audit.**
+The Standard Model Lagrangian is conjectured to be the continuum limit of a single lattice action: **S = Σ_cells ψ† L_T ψ**, where L_T = D − T is the torsion-weighted face Laplacian on the 14-face graph of the truncated octahedron. The O_h symmetry group forces L_T to decompose into six irreducible blocks; Schur's lemma and dimensional completeness (Σ dim = F = 14) determine the matching to SM sectors: A₁g (λ=0, photon), T₁u (λ=r₁,r₂, fermions), Eg (λ=4, W±/Z), T₂g (λ=7, gluons), A₂u (λ=9, Higgs). Three sector-specific identifications are examined: α_s(M_Z) from the T₂g self-energy at the foam-intrinsic flavour condition n_f = C_A (a fit, not a forward derivation; see Deliverable 4 in the verification record); m₃ from the colourless T₁u propagator (an identification whose integer selection is pending Paper #72, the explicit Dirac-operator construction); and η_B from the first-order EW phase transition forced by T₂g↔A₂u hex-face coupling (an NLO post-hoc factor of order 1, not a forward derivation at current precision). An exhaustive check of all five Fedorov parallelohedra shows the truncated octahedron is the unique convex parallelohedron whose face Laplacian has prime discriminant, integer r₁r₂ = Δ−1, and eigenvalue sum equal to C_A² (§6). **UFFT's current empirical case is twelve pre-registered predictions (sharpest near-term: δ_PMNS/δ_CKM = 3, testable by DUNE around 2035; nearest-term: r ≈ 0.063, decisive at CMB-S4) plus a family of structural identities and postdictions whose joint statistical significance is addressed in a forthcoming look-elsewhere-corrected defense document. The "60+ observables with zero free parameters" framing used in earlier UFFT materials is withdrawn in this amendment as not defensible against a trials-factor audit.**
 
 **Keywords:** Standard Model, lattice action, face Laplacian, torsion, truncated octahedron, irreducible representation, uniqueness, Fedorov parallelohedra, epistemological status, UFFT
 
@@ -90,7 +90,7 @@ Schur's lemma forces L to decompose under O_h into irreducible blocks. The assig
 
 **Step 4.** Identify sectors: the eigenvalue, dimension, and torsion parity of each block match exactly one SM sector. The gauge group SU(3)×SU(2)×U(1) is forced by the torsion topology of the face graph.
 
-**Step 5.** All coefficients — coupling constants, masses, mixing angles, CP phases — are determined by the entries of L_T. No free parameters.
+**Step 5.** All coefficients (coupling constants, masses, mixing angles, CP phases) are determined by the entries of L_T. No free parameters.
 
 **Step 6.** No extra terms: Σ dim = 14 = F is exhaustive. Five independent arguments confirm no additional sectors can arise.
 
@@ -102,7 +102,7 @@ Schur's lemma forces L to decompose under O_h into irreducible blocks. The assig
 
 ## 5. Sector-Specific Identifications with Varying Derivational Status
 
-Three results previously presented as "forward derivations" from L_T are reclassified here by their current epistemological status (see `verification/peer_review_deliverables/D1_Methodological_Note.md`, Sections E and F, for the full methodological argument). The labels used below are: **Identification (fit)** — numerical match contingent on a sector-specific input choice not derived from L_T elsewhere in the paper; **Identification (pending)** — integer selection depends on a computation not yet performed (Paper #72); **Identification (post-hoc)** — NLO factor supplied after observing the LO result and the target.
+Three results previously presented as "forward derivations" from L_T are reclassified here by their current epistemological status (see `verification/peer_review_deliverables/D1_Methodological_Note.md`, Sections E and F, for the full methodological argument). The labels used below are: **Identification (fit)**, numerical match contingent on a sector-specific input choice not derived from L_T elsewhere in the paper; **Identification (pending)**, integer selection depends on a computation not yet performed (Paper #72); **Identification (post-hoc)**, NLO factor supplied after observing the LO result and the target.
 
 ### 5.1 α_s(M_Z) — Identification (fit), not forward derivation
 
@@ -120,11 +120,11 @@ The numerical claim α_s = 0.11799 remains falsifiable and testable against futu
 
 The neutrino is a T₁u mode without colour charge. Paper #72 (DOI 10.5281/zenodo.19658759) establishes the structure at the following status, verified by scripts V1–V5 and V8 to machine precision:
 
-- **T72.1 (Dirac operator existence)** — **Theorem.** A foam-cell Dirac operator `D_F` exists with `D_F² = L_T` on the non-kernel part and with the T₁u eigenvalue pair as its chirality-labelled modes.
-- **T72.2 (doubler count = 3 per chirality)** — **Theorem.** The BCC Brillouin-zone structure of the truncated octahedron replaces the hypercubic Nielsen-Ninomiya count of 2^d = 16 with the T₁u multiplicity 3. Three generations, not sixteen.
-- **T72.3a (chirality commutator on T₁u)** — **Theorem.** The face-type splitting of L_T yields [γ_F, T] = −2σ_x on the T₁u block; the σ-structure pairs r₁ and r₂ as chirality partners.
-- **T72.3b (chirality assignment across the irrep)** — **Conjecture** with V10 orbit-restricted irrep-decomposition support: r₁ ↔ left-handed, r₂ ↔ right-handed.
-- **T72.4 (integer selection of (11, 13))** — **Best-match primitive triple** in a principled search space: V11's 12,800-triple enumeration returns (11, 13, 4) as the unique primitive match in the F-derived integer family (not a sparseness claim — 1 match vs ~1.4 expected at random).
+- **T72.1 (Dirac operator existence)**, **Theorem.** A foam-cell Dirac operator `D_F` exists with `D_F² = L_T` on the non-kernel part and with the T₁u eigenvalue pair as its chirality-labelled modes.
+- **T72.2 (doubler count = 3 per chirality)**, **Theorem.** The BCC Brillouin-zone structure of the truncated octahedron replaces the hypercubic Nielsen-Ninomiya count of 2^d = 16 with the T₁u multiplicity 3. Three generations, not sixteen.
+- **T72.3a (chirality commutator on T₁u)**, **Theorem.** The face-type splitting of L_T yields [γ_F, T] = −2σ_x on the T₁u block; the σ-structure pairs r₁ and r₂ as chirality partners.
+- **T72.3b (chirality assignment across the irrep)**, **Conjecture** with V10 orbit-restricted irrep-decomposition support: r₁ ↔ left-handed, r₂ ↔ right-handed.
+- **T72.4 (integer selection of (11, 13))** (**Best-match primitive triple** in a principled search space: V11's 12,800-triple enumeration returns (11, 13, 4) as the unique primitive match in the F-derived integer family (not a sparseness claim) 1 match vs ~1.4 expected at random).
 
 **Status.** With T72.1, T72.2, and T72.3a established as theorems, the *structure* of the identification (that m₃ is a T₁u mode, chirality-partnered, with an exponential integer-quantised mass relative to m_e) is a **derivation**. The chirality assignment across the irrep (T72.3b) rests on V10 heuristic support and remains a conjecture. The specific integer triple (11, 13, 4) is the best-match primitive triple in a principled search space (T72.4); the argument against it being coincidental is V11's enumeration, not a selection theorem. The m₁ = 0 exactness and the neutrino sector's Tier 1 theorems elsewhere in UFFT (see Core Framework v9) are unaffected.
 
@@ -134,7 +134,7 @@ The neutrino is a T₁u mode without colour charge. Paper #72 (DOI 10.5281/zenod
 
 The T₂g↔A₂u coupling through shared hexagonal faces drives the electroweak phase transition first-order at leading order. The counting α³ × 1/C_A × 1/F_sq³ × sign(δ_CKM) encodes three gauge exchanges, a colour singlet, a three-generation routing factor, and the CP-violating topological winding.
 
-**Status.** At leading order (without the F_sq³ factor, or with different combinatoric choices) the match is not at 1.8%. The factor 1/F_sq³ = 1/216 together with 1/C_A = 1/3 giving denominator 648 reproduces the observation, but the specific combinatoric was selected after the target value was known. It is therefore a post-hoc NLO correction, not a forward derivation. The factor-of-three-to-six structure is plausible from the T₂g–A₂u hex-face architecture, but the exact combinatoric is not forced by an independent derivation. This reclassification does not change the direction of the argument (baryogenesis via first-order EW phase transition sourced by hex-face coupling) — only the label attached to the 1.8% numerical match.
+**Status.** At leading order (without the F_sq³ factor, or with different combinatoric choices) the match is not at 1.8%. The factor 1/F_sq³ = 1/216 together with 1/C_A = 1/3 giving denominator 648 reproduces the observation, but the specific combinatoric was selected after the target value was known. It is therefore a post-hoc NLO correction, not a forward derivation. The factor-of-three-to-six structure is plausible from the T₂g–A₂u hex-face architecture, but the exact combinatoric is not forced by an independent derivation. This reclassification does not change the direction of the argument (baryogenesis via first-order EW phase transition sourced by hex-face coupling), only the label attached to the 1.8% numerical match.
 
 ---
 
@@ -201,9 +201,9 @@ Both follow from standard lattice→continuum expansion with the face Laplacian 
 [6] Particle Data Group (2024). Review of Particle Physics. Phys. Rev. D 110, 030001.
 [7] NuFIT 5.2 (2022). Esteban et al. JHEP 09, 178.
 [8] Planck Collaboration (2020). A&A 641, A6.
-[9] Martin, L. (2026). *Paper #72 — Dirac Operator, Doubler Spectrum, Chirality Assignment, and the m₃ Integer*. Zenodo. DOI: 10.5281/zenodo.19658759.
-[10] Martin, L. (2026). *Verification/peer_review_deliverables/D1_Methodological_Note.md* — methodological clarification, epistemological tier table, look-elsewhere audit. Documents the empirical case as 12 pre-registered predictions plus a forthcoming joint-χ² defense (D1 Supplement) rather than "60+ observables with zero free parameters."
-[11] Martin, L. (2026). *Verification/peer_review_deliverables/D4_n_f_Resolution.md* — binary disposition on n_f = C_A.
+[9] Martin, L. (2026). *Paper #72, Dirac Operator, Doubler Spectrum, Chirality Assignment, and the m₃ Integer*. Zenodo. DOI: 10.5281/zenodo.19658759.
+[10] Martin, L. (2026). *Verification/peer_review_deliverables/D1_Methodological_Note.md*, methodological clarification, epistemological tier table, look-elsewhere audit. Documents the empirical case as 12 pre-registered predictions plus a forthcoming joint-χ² defense (D1 Supplement) rather than "60+ observables with zero free parameters."
+[11] Martin, L. (2026). *Verification/peer_review_deliverables/D4_n_f_Resolution.md*, binary disposition on n_f = C_A.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## UFFT Paper #48 (Part LIX) — April 2026
 
-**Luke Martin · Independent Researcher, Sydney**
+**Luke Martin · Independent Researcher, Newcastle**
 
 **Depends on:** Core Framework (v9), Spectrum (Part X), Weinberg Angle (Part LII), Three Generations (Part XLIX), Inter-Type Operator (Part L), CP Phases (Part XLVI), Particle Masses (Part LV), Paper #47 (NLO + α_s + λ_H)
 
@@ -78,7 +78,7 @@ Schur's lemma forces L to decompose under O_h into irreducible blocks. The assig
 
 **Step 4.** Identify sectors: the eigenvalue, dimension, and torsion parity of each block match exactly one SM sector. The gauge group SU(3)×SU(2)×U(1) is forced by the torsion topology of the face graph.
 
-**Step 5.** All coefficients — coupling constants, masses, mixing angles, CP phases — are determined by the entries of L_T. No free parameters.
+**Step 5.** All coefficients (coupling constants, masses, mixing angles, CP phases) are determined by the entries of L_T. No free parameters.
 
 **Step 6.** No extra terms: Σ dim = 14 = F is exhaustive. Five independent arguments confirm no additional sectors can arise.
 
@@ -186,4 +186,4 @@ This paper was developed in collaboration with Claude (Anthropic). Ideas, direct
 
 ---
 
-*UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory*
+*UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheor

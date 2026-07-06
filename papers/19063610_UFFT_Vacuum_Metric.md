@@ -26,11 +26,11 @@
 
 ## Abstract
 
-*(This result assumes covariance holds in the continuum limit of the foam. The emergence of Lorentz invariance from O_h symmetry remains an open problem — see UFFT Core Framework v2 Scope and Status.)*
+*(This result assumes covariance holds in the continuum limit of the foam. The emergence of Lorentz invariance from O_h symmetry remains an open problem, see UFFT Core Framework v2 Scope and Status.)*
 
-We derive the complete vacuum metric of general relativity — both the Schwarzschild and Kerr solutions — from the Unified Foam Field Theory (UFFT) framework using only existing ingredients: Axiom Zero (B + V = D), the truncated octahedral foam geometry, the equation of state P = ρc² (w = 1), and the identification of the foam as spacetime rather than matter. No new inputs are required.
+We derive the complete vacuum metric of general relativity (both the Schwarzschild and Kerr solutions) from the Unified Foam Field Theory (UFFT) framework using only existing ingredients: Axiom Zero (B + V = D), the truncated octahedral foam geometry, the equation of state P = ρc² (w = 1), and the identification of the foam as spacetime rather than matter. No new inputs are required.
 
-The temporal component g_tt = −c²(1 − 2GM/rc²) was previously derived from the relativistic Euler equation for P = ρc² (Part XII). We close the last metric open problem — the spatial component g_rr — by two independent covariant paths. **Path 1 (vacuum consistency):** the foam IS spacetime, not matter, therefore T_μν = 0 in pure foam regions; the vacuum Einstein equations G_μν = 0 hold; for static spherical symmetry, Birkhoff's theorem gives the unique solution g_rr = (1 − 2GM/rc²)^{−1}. **Path 2 (propagation isotropy):** the equation of state w = 1 implies foam excitations propagate at c in all directions; null radial geodesics require g_tt × g_rr = −c²; combined with the derived g_tt this gives g_rr = (1 − 2GM/rc²)^{−1} exactly. The angular metric g_θθ = r² and g_φφ = r²sin²θ are derived from O_h acting transitively on the vacuum foam — no preferred angular direction exists, so the cell-crossing count for any closed surface scales as 4πr² identically.
+The temporal component g_tt = −c²(1 − 2GM/rc²) was previously derived from the relativistic Euler equation for P = ρc² (Part XII). We close the last metric open problem, the spatial component g_rr, by two independent covariant paths. **Path 1 (vacuum consistency):** the foam IS spacetime, not matter, therefore T_μν = 0 in pure foam regions; the vacuum Einstein equations G_μν = 0 hold; for static spherical symmetry, Birkhoff's theorem gives the unique solution g_rr = (1 − 2GM/rc²)^{−1}. **Path 2 (propagation isotropy):** the equation of state w = 1 implies foam excitations propagate at c in all directions; null radial geodesics require g_tt × g_rr = −c²; combined with the derived g_tt this gives g_rr = (1 − 2GM/rc²)^{−1} exactly. The angular metric g_θθ = r² and g_φφ = r²sin²θ are derived from O_h acting transitively on the vacuum foam, no preferred angular direction exists, so the cell-crossing count for any closed surface scales as 4πr² identically.
 
 The two derivation paths are independent and agree exactly. The previous discrepancy (g_rr ∝ (1−x)^{−2/3} from non-covariant cell-volume conservation) is identified as an error: the isotropic dilation assumption is invalid in areal coordinates where angular dimensions are pinned.
 
@@ -44,7 +44,7 @@ The full Schwarzschild line element ds² = −c²(1−2GM/rc²)dt² + (1−2GM/r
 
 The Unified Foam Field Theory [1] proposes that the vacuum is a Planck-density foam with truncated octahedral cell geometry, obeying the maximally stiff equation of state P = ρc² (w = 1). Gravity is a foam density gradient: the covariant vacuum density ρ_foam = ρ₀(−g_tt/c²) was derived in [2] from the relativistic Euler equation for a w = 1 perfect fluid, uniquely identifying the foam density with the metric time component.
 
-The spatial metric component g_rr remained an open problem. An earlier attempt — conserving foam mass per Planck cell via ρl³ = const — gave g_rr ∝ (1−x)^{−2/3}, inconsistent with the Schwarzschild value (1−x)^{−1}. The discrepancy was correctly identified as an open problem in [1].
+The spatial metric component g_rr remained an open problem. An earlier attempt (conserving foam mass per Planck cell via ρl³ = const) gave g_rr ∝ (1−x)^{−2/3}, inconsistent with the Schwarzschild value (1−x)^{−1}. The discrepancy was correctly identified as an open problem in [1].
 
 This paper closes that problem by two independent routes that each give the exact Schwarzschild result, and extends the derivation to the Kerr metric for rotating sources.
 
@@ -64,7 +64,7 @@ Symmetry group: O_h (order 48), acting transitively on all cell orientations
 
 BCC tiling: truncated octahedral cells (V = 24, E = 36, F = 14) tile ℝ³ on a BCC lattice [3]
 
-**Newton's constant from foam geometry:** The Planck length is defined as l_P = √(ħG/c³), giving G = c³l_P²/ħ. Since l_P is the foam cell edge length, c follows from the equation of state, and ħ is the quantum of action in the foam lattice, Newton's constant G is determined entirely by foam geometry — it is not a free parameter. This means the Einstein-Hilbert action coefficient c⁴/(16πG) = cħ/(16πl_P²) is fully determined by foam geometry [5].
+**Newton's constant from foam geometry:** The Planck length is defined as l_P = √(ħG/c³), giving G = c³l_P²/ħ. Since l_P is the foam cell edge length, c follows from the equation of state, and ħ is the quantum of action in the foam lattice, Newton's constant G is determined entirely by foam geometry, it is not a free parameter. This means the Einstein-Hilbert action coefficient c⁴/(16πG) = cħ/(16πl_P²) is fully determined by foam geometry [5].
 
 ### 2.2 The Temporal Component (from [2])
 
@@ -80,7 +80,7 @@ where x = 2GM/(rc²). This holds exactly and is the starting point for both deri
 
 ### 3.1 Path 1 — Vacuum Consistency
 
-The UFFT framework states explicitly [1]: *"The foam does not source gravity through Einstein's equations as additional matter — the foam IS spacetime. Only non-foam matter (particles, radiation) enters T_μν."*
+The UFFT framework states explicitly [1]: *"The foam does not source gravity through Einstein's equations as additional matter, the foam IS spacetime. Only non-foam matter (particles, radiation) enters T_μν."*
 
 This ontological identification has a direct consequence. In a region containing only foam and no topological defects (particles), the stress-energy tensor is:
 
@@ -106,7 +106,7 @@ Since foam excitations propagate at c: (dr/dt)² = c². Therefore:
 
 −g_tt/g_rr = 1  →  **g_tt × g_rr = −c²     [product constraint, unique to w = 1]**
 
-Verification: for general equation of state P = wρc², the same procedure gives g_tt × g_rr = −c²^{(1+w)/w} / c² — the product constraint g_tt × g_rr = −c² holds only when w = 1.
+Verification: for general equation of state P = wρc², the same procedure gives g_tt × g_rr = −c²^{(1+w)/w} / c², the product constraint g_tt × g_rr = −c² holds only when w = 1.
 
 Substituting the derived g_tt = −c²(1−x):
 
@@ -120,7 +120,7 @@ Path 1 (Birkhoff) and Path 2 (propagation isotropy) are independent derivations 
 
 The earlier g_rr ∝ (1−x)^{−2/3} arose from cell conservation: ρ × l³ = const, with isotropic dilation l ∝ ρ^{−1/3}. This derivation assumed each spatial dimension dilates equally.
 
-In areal (Schwarzschild) coordinates, the radial coordinate r is defined as the areal radius: the area of any sphere at coordinate r is exactly 4πr² by definition. This pins the angular cell dimensions to the coordinate r. Angular dilation is therefore absent in areal coordinates — the full density compensation falls on the radial dimension alone. The isotropic assumption is a coordinate error: it is valid in isotropic coordinates but not in areal coordinates. Both derivation paths avoid this error entirely.
+In areal (Schwarzschild) coordinates, the radial coordinate r is defined as the areal radius: the area of any sphere at coordinate r is exactly 4πr² by definition. This pins the angular cell dimensions to the coordinate r. Angular dilation is therefore absent in areal coordinates, the full density compensation falls on the radial dimension alone. The isotropic assumption is a coordinate error: it is valid in isotropic coordinates but not in areal coordinates. Both derivation paths avoid this error entirely.
 
 ---
 
@@ -175,7 +175,7 @@ A mass M creates two conjugate metric deformations:
 - Temporal: g_tt → g_tt − contribution: bending angle GM/(c²b)
 - Radial: g_rr → g_rr − contribution: bending angle GM/(c²b)
 
-Total lensing angle: **4GM/(c²b)** — matching GR exactly ✓
+Total lensing angle: **4GM/(c²b)**, matching GR exactly ✓
 
 With g_rr now derived, both contributions are grounded. The factor of 4 (versus 2 from Newtonian gravity) is confirmed from foam mechanics.
 
@@ -185,7 +185,7 @@ With g_rr now derived, both contributions are grounded. The factor of 4 (versus 
 
 ### 6.1 Rotating Defects and Chiral Torsion
 
-The T₂g irrep of O_h (3-dimensional, pseudo-vector) supports helical winding modes — torsional excitations along BCC axes that carry handedness. A macroscopic rotating central defect (a particle with angular momentum J) excites coherent chiral torsion loops that drag neighbouring foam cells azimuthally, breaking time-reversal symmetry and producing an off-diagonal metric term g_tφ.
+The T₂g irrep of O_h (3-dimensional, pseudo-vector) supports helical winding modes, torsional excitations along BCC axes that carry handedness. A macroscopic rotating central defect (a particle with angular momentum J) excites coherent chiral torsion loops that drag neighbouring foam cells azimuthally, breaking time-reversal symmetry and producing an off-diagonal metric term g_tφ.
 
 The angular momentum parameter a = J/(Mc) emerges from the helical winding number of the coherent chiral loop, with J quantised in units of ħ in the quantum limit.
 
@@ -215,7 +215,7 @@ The Kerr metric structure follows from the Carter-Robinson theorem applied to T_
 
 **What is not claimed:**
 
-1. The identification "foam IS spacetime" is the foundation of both derivations. This identification is motivated by every element of the framework — it is the only self-consistent interpretation that avoids the foam self-gravity catastrophe [1] — but it is an identification, not derived from a more primitive level.
+1. The identification "foam IS spacetime" is the foundation of both derivations. This identification is motivated by every element of the framework (it is the only self-consistent interpretation that avoids the foam self-gravity catastrophe [1]) but it is an identification, not derived from a more primitive level.
 
 2. The Einstein field equations G_μν = 8πGT_μν/c⁴ are not derived from a foam action principle. The Einstein-Hilbert action remains an open problem. The vacuum solutions are derived via uniqueness theorems that do not require the action; the sourced solutions (with matter) require the full Einstein equations.
 
@@ -251,7 +251,7 @@ All results can be reproduced independently:
 
 6. **Kerr:** Identify T₂g chiral mode as frame-dragging source. State T_μν = 0 + stationary + axisymmetric → Carter-Robinson → Kerr unique. Write Boyer-Lindquist form.
 
-Requires standard GR algebra, Birkhoff's theorem, and Carter-Robinson theorem — all available in standard references.
+Requires standard GR algebra, Birkhoff's theorem, and Carter-Robinson theorem, all available in standard references.
 
 ---
 
@@ -268,7 +268,7 @@ Every component is independently justified. The previously reported discrepancy 
 
 ---
 
-**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis — physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
+**Physical mapping status:** The identification of foam sectors with Standard Model fields (T₂g → colour, T₁u → weak, A₂u → Higgs, etc.) is a hypothesis, physically motivated by the O_h symmetry structure and numerically verified to high precision, but not deductively established from the mathematics alone. The algebra in this paper is rigorous. The physical interpretation is proposed and testable. See the UFFT Core Framework v2 Scope and Status section for a complete classification.
 
 ## UFFT Papers
 
@@ -276,7 +276,7 @@ Every component is independently justified. The previously reported discrepancy 
 
 [1] Martin, L. (2026). The Unified Foam Field Theory: Complete Works (v14). Independent publication. DOIs: 10.5281/zenodo.18706756, 10.5281/zenodo.18706806.
 
-[2] Martin, L. (2026). The Unified Foam Field Theory — Core Framework (Part XII: The Covariant Vacuum Density). Independent publication.
+[2] Martin, L. (2026). The Unified Foam Field Theory, Core Framework (Part XII: The Covariant Vacuum Density). Independent publication.
 
 [3] Thomson, W. (Lord Kelvin) (1887). On the division of space with minimum partitional area. *Philosophical Magazine*, 24, 503.
 
@@ -291,6 +291,16 @@ Every component is independently justified. The previously reported discrepancy 
 [8] Martin, L. (2026). The Fine Structure Constant from Planck-Scale Foam Geometry (v3). *Zenodo*. DOI: 10.5281/zenodo.19011758.
 
 ---
+
+---
+
+## References
+
+### UFFT Papers
+- [1] Paper #1 — Gravitational Suppression of Quantum Decoherence via Variable Vacuum Foam Density. DOI: 10.5281/zenodo.18706756
+- [2] Paper #2 — Void-Pair Conservation as the Physical Mechanism of Quantum Entanglement and Bell Correlations. DOI: 10.5281/zenodo.18706806
+- [3] Paper #3 — The Fine Structure Constant from Planck-Scale Foam Geometry. DOI: 10.5281/zenodo.19011758
+- [4] Paper #5 — The Laplacian Spectrum of the Truncated Octahedron Face Adjacency Graph. DOI: 10.5281/zenodo.19030062
 
 ## AI Disclosure
 

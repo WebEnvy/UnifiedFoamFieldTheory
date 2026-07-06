@@ -14,6 +14,7 @@
 | Paper | #34 of 63 |
 | Framework | v10 |
 | Status | Complete, Tier 2. NLO corrections derived in Paper #51 [DOI: 10.5281/zenodo.19477100], improving Cabibbo angle from 1.1% to 0.07σ. |
+| Tier | 2 |
 | DOI | 10.5281/zenodo.19197458 |
 | GitHub | https://github.com/WebEnvy/UnifiedFoamFieldTheory |
 
@@ -23,7 +24,7 @@
 
 ## Abstract
 
-Two of the four Wolfenstein parameters of the CKM quark mixing matrix are derived from the geometry of the truncated octahedron. The Cabibbo angle is θ_C = π/F where F = 14 is the face count: sin(π/14) = 0.22252, matching the observed λ = 0.22500 ± 0.00067 to 1.1% (within 0.4σ). The second parameter A = r₁/C_A = (9−√17)/6 = 0.8128, where r₁ is the smaller root of the master equation λ²−9λ+16 = 0 and C_A = 3 is the colour number; this matches the observed A = 0.826 ± 0.015 to 1.6% (within 0.9σ). The derivation reveals a new connection: the down-to-strange quark mass ratio m_d/m_s ≈ sin²(π/14) to 1%, providing a geometric origin for the Froggatt-Nielsen texture — the empirical observation that quark mass hierarchies scale as powers of the Cabibbo angle. From these two parameters, |V_cb| = Aλ² = 0.0402 (observed: 0.0412, 2.4%). The CP-violating parameters ρ̄ and η̄ remain open — they require the complex phase of the inter-generation torsion coupling. Zero free parameters.
+Two of the four Wolfenstein parameters of the CKM quark mixing matrix are derived from the geometry of the truncated octahedron. The Cabibbo angle is θ_C = π/F where F = 14 is the face count: sin(π/14) = 0.22252, matching the observed λ = 0.22500 ± 0.00067 to 1.1% (within 0.4σ). The second parameter A = r₁/C_A = (9−√17)/6 = 0.8128, where r₁ is the smaller root of the master equation λ²−9λ+16 = 0 and C_A = 3 is the colour number; this matches the observed A = 0.826 ± 0.015 to 1.6% (within 0.9σ). The derivation reveals a new connection: the down-to-strange quark mass ratio m_d/m_s ≈ sin²(π/14) to 1%, providing a geometric origin for the Froggatt-Nielsen texture (the empirical observation that quark mass hierarchies scale as powers of the Cabibbo angle. From these two parameters, |V_cb| = Aλ² = 0.0402 (observed: 0.0412, 2.4%). The CP-violating parameters ρ̄ and η̄ remain open) they require the complex phase of the inter-generation torsion coupling. Zero free parameters.
 
 ---
 
@@ -162,6 +163,14 @@ Three results from one cell integer (F = 14) and one spectral root (r₁). Zero 
 [6] Froggatt, C. & Nielsen, H. (1979). Hierarchy of Quark Masses, Cabibbo Angles, and CP Violation. Nucl. Phys. B 147, 277.
 
 ---
+
+---
+
+## AI Disclosure
+
+This paper was developed in collaboration with Claude (Anthropic). Ideas, framework, direction, and physical interpretation: Luke Martin. AI role: numerical computation and document composition.
+
+UFFT Core Framework: github.com/WebEnvy/UnifiedFoamFieldTheory
 
 *Unified Foam Field Theory · Paper #34 · DOI: 10.5281/zenodo.19197458 · Priority Date: 20 February 2026*
 
